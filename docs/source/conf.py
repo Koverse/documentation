@@ -43,7 +43,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Koverse'
-copyright = u'2015, Koverse Inc'
+copyright = u'2016, Koverse Inc'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -343,7 +343,7 @@ intersphinx_mapping = {'http://docs.python.org/': None}
 # regardless of the global pdf_compressed setting.
 
 pdf_documents = [
-    ('index', u'Koverse Manual', u'Koverse Manual', u'Koverse Inc'),
+    ('index', u'Koverse Manual', u'Koverse Manual'),
 ]
 
 # A comma-separated list of custom stylesheets. Example:
@@ -383,7 +383,7 @@ pdf_break_level = 0
 #pdf_inline_footnotes = True
 
 # verbosity level. 0 1 or 2
-pdf_verbosity = 0
+pdf_verbosity = 1
 
 # If false, no index is generated.
 #pdf_use_index = True
