@@ -2,7 +2,7 @@
 
 :tocdepth: 2
 
-Koverse Administration Guide
+Administration Guide
 ============================
 
 System Requirements and Dependencies

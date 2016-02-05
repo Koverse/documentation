@@ -2,7 +2,7 @@
 
 :tocdepth: 2
 
-Koverse Operations Guide
+Operations Guide
 ============================
 
 Architecture

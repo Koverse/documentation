@@ -3,7 +3,7 @@
 .. _DeveloperDocumentation:
 
 ===============================
-Koverse Developer Documentation
+Developer Documentation
 ===============================
 
 

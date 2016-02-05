@@ -3,7 +3,7 @@
 .. _usage-guide:
 
 ===================
-Koverse User Guide
+User's Guide
 ===================
 
 The Koverse User Guide provides instructions for using the applications that are accessible via the Koverse Applications Dashboard.  
