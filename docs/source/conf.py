@@ -188,7 +188,7 @@ htmlhelp_basename = 'Koversedoc'
 
 # -- Options for LaTeX output --------------------------------------------------
 
-latex_elements = {
+#latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
 #'papersize': 'letterpaper',
 
@@ -197,14 +197,14 @@ latex_elements = {
 
 # Additional stuff for the LaTeX preamble.
 #'preamble': '',
-}
+#}
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-  ('index', 'Koverse.tex', u'Koverse Documentation',
-   u'Koverse', 'manual'),
-]
+#latex_documents = [
+#  ('index', 'Koverse.tex', u'Koverse Documentation',
+#   u'Koverse', 'manual'),
+#]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -231,10 +231,10 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    ('index', 'koverse', u'Koverse Documentation',
-     [u'Koverse Inc'], 1)
-]
+#man_pages = [
+#    ('index', 'koverse', u'Koverse Documentation',
+#     [u'Koverse Inc'], 1)
+#]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
@@ -245,11 +245,11 @@ man_pages = [
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-  ('index', 'Koverse', u'Koverse Documentation',
-   u'Koverse Inc', 'Koverse', 'One line description of project.',
-   'Miscellaneous'),
-]
+#texinfo_documents = [
+#  ('index', 'Koverse', u'Koverse Documentation',
+#   u'Koverse Inc', 'Koverse', 'One line description of project.',
+#   'Miscellaneous'),
+#]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
@@ -267,10 +267,10 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'Koverse'
-epub_author = u'Koverse Inc'
-epub_publisher = u'Koverse Inc'
-epub_copyright = u'2015, Koverse Inc'
+#epub_title = u'Koverse'
+#epub_author = u'Koverse Inc'
+#epub_publisher = u'Koverse Inc'
+#epub_copyright = u'2015, Koverse Inc'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
@@ -323,7 +323,7 @@ epub_copyright = u'2015, Koverse Inc'
 
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'http://docs.python.org/': None}
+#intersphinx_mapping = {'http://docs.python.org/': None}
 
 
 # -- Options for PDF output --------------------------------------------------
@@ -342,13 +342,13 @@ intersphinx_mapping = {'http://docs.python.org/': None}
 # would mean that specific document would be compressed
 # regardless of the global pdf_compressed setting.
 
-pdf_documents = [
-    ('index', u'Koverse Manual', u'Koverse Manual'),
-]
+#pdf_documents = [
+#   ('index', u'Koverse Manual', u'Koverse Manual'),
+#]
 
 # A comma-separated list of custom stylesheets. Example:
 #pdf_stylesheets = ['sphinx','kerning','a4','koverse_styles_pdf']
-pdf_stylesheets = ['_styles/koverse_styles_pdf.style']
+#pdf_stylesheets = ['_styles/koverse_styles_pdf.style']
 #pdf_stylesheets = ['/Users/aaron/Code/Koverse/trunk/koverse-webapp/src/main/docs/source/_styles/koverse_styles_pdf.style']
 
 # A list of folders to search for stylesheets. Example:
@@ -363,16 +363,16 @@ pdf_stylesheets = ['_styles/koverse_styles_pdf.style']
 #pdf_font_path = ['/usr/share/fonts', '/usr/share/texmf-dist/fonts/']
 
 # Language to be used for hyphenation support
-pdf_language = "en"
+#pdf_language = "en"
 
 # Mode for literal blocks wider than the frame. Can be
 # overflow, shrink or truncate
-pdf_fit_mode = "shrink"
+#pdf_fit_mode = "shrink"
 
 # Section level that forces a break page.
 # For example: 1 means top-level sections start in a new page
 # 0 means disabled
-pdf_break_level = 0
+#pdf_break_level = 0
 
 # When a section starts in a new page, force it to be 'even', 'odd',
 # or just use 'any'
@@ -383,7 +383,7 @@ pdf_break_level = 0
 #pdf_inline_footnotes = True
 
 # verbosity level. 0 1 or 2
-pdf_verbosity = 1
+#pdf_verbosity = 1
 
 # If false, no index is generated.
 #pdf_use_index = True
@@ -392,10 +392,10 @@ pdf_verbosity = 1
 #pdf_use_modindex = True
 
 # If false, no coverpage is generated.
-pdf_use_coverpage = True
+#pdf_use_coverpage = True
 
 # Name of the cover page template to use
-pdf_cover_template = 'koverse_coverPage.tmpl'
+#pdf_cover_template = 'koverse_coverPage.tmpl'
 
 # Documents to append as an appendix to all manuals.
 #pdf_appendices = []
@@ -405,7 +405,7 @@ pdf_cover_template = 'koverse_coverPage.tmpl'
 #pdf_splittables = False
 
 # Set the default DPI for images
-pdf_default_dpi = 150
+#pdf_default_dpi = 150
 
 # Enable rst2pdf extension modules (default is only vectorpdf)
 # you need vectorpdf if you want to use sphinx's graphviz support
@@ -415,13 +415,13 @@ pdf_default_dpi = 150
 #pdf_page_template = 'cutePage'
 
 # Show Table Of Contents at the beginning?
-pdf_use_toc = True
+#pdf_use_toc = True
 
 # How many levels deep should the table of contents be?
 #pdf_toc_depth = 9999
 
 # Add section number to section references
-pdf_use_numbered_links = False
+#pdf_use_numbered_links = False
 
 # Background images fitting mode
-pdf_fit_background_mode = 'scale'
+#pdf_fit_background_mode = 'scale'
