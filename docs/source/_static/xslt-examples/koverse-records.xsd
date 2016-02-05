@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" 
+           xmlns:tns="http://www.koverse/xml/records/1.0.0" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.koverse/xml/records/1.0.0" >
+
+  <xs:element name="records" type="tns:records"/>
+
+  <xs:complexType name="boolean" final="extension restriction">
+    <xs:complexContent>
+      <xs:extension base="tns:scalar-field">
+        <xs:sequence>
+          <xs:element name="value" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="scalar-field" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="tns:field">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="field" abstract="true">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="date" final="extension restriction">
+    <xs:complexContent>
+      <xs:extension base="tns:scalar-field">
+        <xs:sequence>
+          <xs:element name="value" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="array" final="extension restriction">
+    <xs:complexContent>
+      <xs:extension base="tns:container-field">
+        <xs:sequence>
+          <xs:element name="element" type="tns:field" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="container-field" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="tns:field">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="map" final="extension restriction">
+    <xs:complexContent>
+      <xs:extension base="tns:container-field">
+        <xs:sequence>
+          <xs:element name="entry" type="tns:entry" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="entry" final="extension restriction">
+    <xs:sequence>
+      <xs:element name="entry-name" type="xs:string"/>
+      <xs:element name="entry-value" type="tns:field"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="records" final="extension restriction">
+    <xs:sequence>
+      <xs:element name="record" type="tns:record" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="record" final="extension restriction">
+    <xs:sequence>
+      <xs:element name="securityLabel" type="xs:string"/>
+      <xs:element name="fields" type="tns:map"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="string" final="extension restriction">
+    <xs:complexContent>
+      <xs:extension base="tns:scalar-field">
+        <xs:sequence>
+          <xs:element name="value" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="decimal" final="extension restriction">
+    <xs:complexContent>
+      <xs:extension base="tns:scalar-field">
+        <xs:sequence>
+          <xs:element name="value" type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+

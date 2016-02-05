@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<records xmlns:b="http://www.koverse/xml/example/books/1.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xmlns="http://www.koverse/xml/records/1.0.0">
+  
+  <record>
+    <securityLabel/>
+    <fields>
+      <entry>
+        <entry-name>id</entry-name>
+        <entry-value xsi:type="decimal">
+          <value>1</value>
+        </entry-value>
+      </entry>
+      <entry>
+        <entry-name>author</entry-name>
+        <entry-value xsi:type="string">
+          <value>Miguel De Cervantes</value>
+        </entry-value>
+      </entry>
+      <entry>
+        <entry-name>title</entry-name>
+        <entry-value xsi:type="string">
+          <value>Don Quixote</value>
+        </entry-value>
+      </entry>
+    </fields>
+  </record>
+  
+  <record>
+    <securityLabel/>
+    <fields>
+      <entry>
+        <entry-name>id</entry-name>
+        <entry-value xsi:type="decimal">
+          <value>2</value>
+        </entry-value>
+      </entry>
+      <entry>
+        <entry-name>author</entry-name>
+        <entry-value xsi:type="string">
+          <value>John Bunyan</value>
+        </entry-value>
+      </entry>
+      <entry>
+        <entry-name>title</entry-name>
+        <entry-value xsi:type="string">
+          <value>Pilgrim's Progress</value>
+        </entry-value>
+      </entry>
+    </fields>
+  </record>
+  
+  <record>
+    <securityLabel/>
+    <fields>
+      <entry>
+        <entry-name>id</entry-name>
+        <entry-value xsi:type="decimal">
+          <value>3</value>
+        </entry-value>
+      </entry>
+      <entry>
+        <entry-name>author</entry-name>
+        <entry-value xsi:type="string">
+          <value>Daniel Defoe</value>
+        </entry-value>
+      </entry>
+      <entry>
+        <entry-name>title</entry-name>
+        <entry-value xsi:type="string">
+          <value>Robinson Crusoe</value>
+        </entry-value>
+      </entry>
+    </fields>
+  </record>
+  
+</records>
