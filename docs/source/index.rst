@@ -14,6 +14,4 @@
    devguide
    usecases
    tutorials
-   
-
-
+   sparksql
