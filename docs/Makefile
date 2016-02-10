@@ -51,9 +51,8 @@ clean:
 	rm -rf $(BUILDDIR)/_static
 	rm -rf $(BUILDDIR)/_images
 	rm -rf $(BUILDDIR)/doctrees
-	rm $(BUILDDIR)/*.html
-	rm $(BUILDDIR)/*.inv
-	rm $(BUILDDIR)/*.js
+	rm -rf $(BUILDDIR)/docs/build/html
+	rm -rf $(BUILDDIR)/docs/build/pdf
 
 
 html:
