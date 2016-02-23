@@ -96,24 +96,30 @@ keep_warnings = True
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+#html_theme = 'default'
+import sphinx_rtd_theme
+html_theme = "sphinx_rtd_theme"
+
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-html_theme_options = {
-	"stickysidebar": "true",
-	"footerbgcolor": "#000000",
-	"sidebarbgcolor": "#000000",
-	"sidebarlinkcolor": "#0088cc",
-	"relbarbgcolor": "#000000",
-	"bodyfont": "helvetica",
-	"headfont": "helvetica",
-	"headbgcolor": "#ffffff",
-	"headtextcolor": "#000000",
-	"codebgcolor": "#f0f0f0",
-	"linkcolor": "#0088cc",
-}
+
+# Commented out these options with the switch to the RTD theme
+#html_theme_options = {
+#	"stickysidebar": "true",
+#	"footerbgcolor": "#000000",
+#	"sidebarbgcolor": "#000000",
+#	"sidebarlinkcolor": "#0088cc",
+#	"relbarbgcolor": "#000000",
+#	"bodyfont": "helvetica",
+#	"headfont": "helvetica",
+#	"headbgcolor": "#ffffff",
+#	"headtextcolor": "#000000",
+#	"codebgcolor": "#f0f0f0",
+#	"linkcolor": "#0088cc",
+#}
 
 #"sidebarlinkcolor": "#E6E6E6",
 
