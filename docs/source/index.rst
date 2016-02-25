@@ -14,3 +14,4 @@ Koverse
    devguide
    usecases
    tutorials
+   permissions_short
