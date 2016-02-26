@@ -15,3 +15,4 @@ Koverse
    usecases
    tutorials
    permissions_short
+   permissions_full
