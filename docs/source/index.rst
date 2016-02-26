@@ -14,3 +14,6 @@ Koverse
    devguide
    usecases
    tutorials
+   permissions_short
+   permissions_full
+   access_control_flowcharts
