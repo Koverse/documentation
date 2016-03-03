@@ -300,9 +300,9 @@ Postgres Configuration
 
 	GRANT ALL PRIVILEGES ON DATABASE koverse TO koverse;
 
-6. update pg_hba.conf to set all connections METHOD to trust e.g.::
+6. update pg_hba.conf to set all connections METHOD to password e.g.::
 
-	local  all  all  trust
+	local  all  all  password
 
 
 
