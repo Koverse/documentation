@@ -25,6 +25,8 @@ A Koverse cluster relies on the following software infrastructure
 +------------------+------------------+
 | JBoss AS         | 7.1.1            |
 +------------------+------------------+
+| Oracle Java      | 1.7.x            |
++------------------+------------------+
 | Kafka (optional) | 0.8.1            |
 +------------------+------------------+
 
