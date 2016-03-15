@@ -10,7 +10,7 @@ Koverse
 
    intro
    usageguide
-   newadminguide
+   adminguide
    devguide
    usecases
    tutorials

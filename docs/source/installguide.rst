@@ -24,7 +24,7 @@ A described in the :ref:`InfraGuide`, Koverse runs atop several distributed syst
 .. _Cloudera Manager: https://cloudera.com/products/cloudera-manager.html
 .. _Apache Ambari: http://hortonworks.com/hadoop/ambari/
 
-Koverse is supported on the latest distributions from Cloudera, Hortonworks, and MapR. Due to observed incompatibilities with vendor builds, Koverse requires the Apache distribution of Spark 1.5.1 distribution to be available on its server.  Koverse also requires the Hadoop client binaries and configuration to be installed on the server.
+Koverse is supported on the latest distributions from Cloudera, Hortonworks, and MapR. Koverse also requires the Hadoop client binaries and configuration to be installed on the server.
 
 
 Hardware
@@ -42,6 +42,14 @@ Koverse runs on off-the-shelf commodity hardware. The two Koverse software compo
 
 Step-by-Step Installation Instructions
 --------------------------------------
+
+MBefore starting this install process, you should have downloaded the 3 required Koverse RPMs listed below. If you do not know where to get the RPMs from, please contact Koverse Support at support@koverse.com.
+
+#. koverse-server-<VERSION>.rpm
+#. koverse-webapp-<VERSION>.rpm
+#. jboss-rpm-7.1.1-<BUILD VERSION>.rpm
+
+While separate components, typical installs will install both the Koverse Server and Koverse Web App/JBoss on the same server. The directions below assume commands are being executed on this single server.
 
 Users
 ^^^^^
@@ -61,19 +69,21 @@ And then add 'koverse' to this group::
 
   usermod -a -G hadoop koverse
 
-**WHAT ABOUT ACCUMULO USER? do we want to setup a different group besides 'hadoop' and make hdfs://koverse owned by that group and then see if 'accumulo' being in that groups makes things work without 'accumulo' being in the superuser group?**
+It is also currently required to have the 'accumulo' user in this same group, so also run::
 
-Now we need to create a directory in HDFS for Koverse to use. Assuming the typical 'hdfs' exists for your Hadoop install, run::
+  usermod -a -G hadoop accumulo
+
+Now we need to create a directory in HDFS for Koverse to use. Assuming the typical 'hdfs' user exists for your Hadoop install, run::
 
  sudo -u hdfs hdfs dfs -mkdir /koverse
-  sudo -u hdfs hdfs dfs -chown koverse:hadoop /koverse
+ sudo -u hdfs hdfs dfs -chown koverse:hadoop /koverse
 
 .. _AccumuloInit:
 
 Accumulo Initialization
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Koverse will access authenticate to Accumulo using its own username and password. Initially Accumulo has a single user 'root' with a default password of 'secret'. You may have changed the password for 'root' during your install of Accumulo. To create a 'koverse' user in Accumulo, start the Accumulo shell::
+Koverse will authenticate to Accumulo using its own username and password. Initially Accumulo has a single user 'root' with a default password of 'secret'. You may have changed the password for 'root' during your install of Accumulo. To create a 'koverse' user in Accumulo, start the Accumulo shell::
 
   accumulo shell -u root
 
@@ -84,9 +94,9 @@ After entering the password for the 'root' user, create a 'koverse' user and pas
 Then grant the 'koverse' Accumulo user the required permissions to manage its tables::
 
  root@accumulo> grant -s System.CREATE_TABLE -u koverse
-  root@accumulo> grant -s System.DROP_TABLE -u koverse
-  root@accumulo> grant -s System.ALTER_TABLE -u koverse
-  root@accumulo> grant -s System.SYSTEM -u koverse
+ root@accumulo> grant -s System.DROP_TABLE -u koverse
+ root@accumulo> grant -s System.ALTER_TABLE -u koverse
+ root@accumulo> grant -s System.SYSTEM -u koverse
 
 Koverse Server Install
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -100,7 +110,7 @@ This will install into */opt/koverse-server/* as well as create a script at */et
 JBoss Install
 ^^^^^^^^^^^^^
 
-JBoss is the Java application server used to host the Koverse Webapp. There is no reason thought that the Koverse Webapp couldn't run on other Java servlet containers such as Tomcat. To install JBoss, please use the Koverse-provided JBoss RPM and run::
+JBoss is the Java application server used to host the Koverse Webapp. There is no reason though that the Koverse Webapp couldn't run on other Java servlet containers such as Tomcat. To install JBoss, please use the Koverse-provided JBoss RPM and run::
 
   yum localinstall jboss-rpm-7.1.1-<BUILD VERSION>.rpm
 
@@ -120,7 +130,7 @@ This will install an exploded WAR file to */opt/jboss/standalone/deployments/Kov
 PostgreSQL Setup
 ^^^^^^^^^^^^^^^^
 
-Koverse stores metadata about Data Collections, Users, Transforms, etc in an RDBMS such as PostgreSQL. These instructions assume PostgreSQL has already been installed. In an environment where Cloudera Manager is used, Koverse can leverage the PostgreSQL database that is installed via Cloudera Manager.
+Koverse stores metadata about Data Collections, Users, Transforms, etc in an RDBMS such as PostgreSQL. These instructions assume PostgreSQL has already been installed. In an environment where Cloudera Manager is used, Koverse can leverage the PostgreSQL database that is installed via Cloudera Manager. If you wish to use a different password than the default 'koverse1234', you will need to follow the procedure in :ref:`AppendixA` for encoding this password before putting it into the *koverse-server.properties* file.
 
 Cloudera Manager Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -133,7 +143,7 @@ Then login with the user 'cloudera-scm'::
 
   psql -U cloudera-scm -h localhost -p 7432 -d postgres
 
-Create the 'koverse' user with a password of 'koverse1234'. If you wish to use a different password, you will need to follow the procedure in :ref:`AppendixA` for encoding this password before putting it into the *koverse-server.properties* file.::
+Create the 'koverse' user with a password of 'koverse1234'::
 
   postgres=# CREATE ROLE koverse LOGIN PASSWORD 'koverse1234';
 
@@ -143,6 +153,18 @@ And finally create the database that Koverse will use::
 
 Manually Installed
 ~~~~~~~~~~~~~~~~~~
+
+If you have manually install PostgreSQL, use the following steps to setup the user and database for Koverse.::
+
+  su -u postgres
+  createdb koverse
+  psql -s koverse
+  postgres=# CREATE USER koverse PASSWORD 'koverse1234';
+  postgres=# GRANT ALL PRIVILEGES ON DATABASE koverse TO koverse;
+
+Finally, update pg_hba.conf to set all connections METHOD to password e.g.::
+
+	local  all  all  password
 
 Koverse Configuration
 ^^^^^^^^^^^^^^^^^^^^^
@@ -220,7 +242,39 @@ In order to utilize the :ref:`aggregation <AggregationIntro>` functions of Kover
 Running Koverse
 ^^^^^^^^^^^^^^^
 
+As discussed, Koverse software runs as two processes. To start the Koverse Server, as root run::
+
+  service koverse-server start
+
+The Koverse Webapp runs within JBoss, so to bring it up, run::
+
+  service jboss start
+
+Once both processes have started up, you can access the Koverse user interface from a web browser at
+
+``http://<hostname>:8080/Koverse``
+
+The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
+
+Logs
+~~~~
+The Koverse Server redirects stdout and stderr to */opt/koverse-server/logs/server.err* but most application logging can be seen in */var/log/koverse-server/koverse-server.log*
+
+The Koverse Webapp logs to JBoss's server.log at */opt/jboss/standalone/log/server.log*
+
+More information on the operations of Koverse can be found in the :ref:`Ops Guide`
+
 .. _AppendixA:
 
 Appendix A: Changing Encoded Passwords
 --------------------------------------
+
+If you are changing a password from its default you will need to run the koverse-squirrel utility to encode the password and store it in koverse-server.properties.
+
+When Koverse runs, it uses the value in the *com.koverse.license.verification* property as a symmetric key to encode and decode the value of passwords. This is not intended to be a cryptographically secure solution, but simply to provide some level of obfuscation versus plaintext passwords.
+
+To generate a new encoded password, run::
+
+  sh /opt/koverse-server/bin/licensetool.sh -m encrypt
+
+First enter the *com.koverse.license.verification* value from *koverse-server.properties* when prompted. Then you will be prompted to enter the password that you wish to encoded. Copy and paste the encoded password into the properties file, for example to change the value for *com.koverse.server.jdbc.password*

@@ -17,6 +17,8 @@ A Koverse cluster relies on the following software infrastructure
 +------------------+------------------+
 | Hadoop - YARN    | 2.6              |
 +------------------+------------------+
+| Spark            | 1.5              |
++------------------+------------------+
 | ZooKeeper        | 3.4              |
 +------------------+------------------+
 | Accumulo         | 1.6              |
@@ -30,7 +32,7 @@ A Koverse cluster relies on the following software infrastructure
 | Kafka (optional) | 0.8.1            |
 +------------------+------------------+
 
-Koverse leverages Hadoop MapReduce and Spark (Apache Spark 1.5.1 distribution is required) for data processing and analytics, but these components run as applications on YARN, so besides some very lightweight Job History servers, they don't require any running infrastructure besides YARN.
+Koverse leverages Hadoop MapReduce and Spark for data processing and analytics, but these components run as applications on YARN, so besides some very lightweight Job History servers, they don't require any running infrastructure besides YARN.
 
 Additionally the Koverse software runs as
 
