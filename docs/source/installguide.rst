@@ -43,7 +43,7 @@ Koverse runs on off-the-shelf commodity hardware. The two Koverse software compo
 Step-by-Step Installation Instructions
 --------------------------------------
 
-MBefore starting this install process, you should have downloaded the 3 required Koverse RPMs listed below. If you do not know where to get the RPMs from, please contact Koverse Support at support@koverse.com.
+Before starting this install process, you should have downloaded the 3 required Koverse RPMs listed below. If you do not know where to get the RPMs from, please contact Koverse Support at support@koverse.com.
 
 #. koverse-server-<VERSION>.rpm
 #. koverse-webapp-<VERSION>.rpm
