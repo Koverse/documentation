@@ -149,7 +149,7 @@ Create the 'koverse' user with a password of 'koverse1234'::
 
 And finally create the database that Koverse will use::
 
-  postgres=# CREATE DATABASE koverse OWNER koverse ENCODING ‘UTF-8';
+  postgres=# CREATE DATABASE koverse OWNER koverse ENCODING 'UTF-8';
 
 Manually Installed
 ~~~~~~~~~~~~~~~~~~
