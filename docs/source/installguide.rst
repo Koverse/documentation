@@ -194,6 +194,10 @@ The value of this property needs to be updated to the correct hostname and port 
 
 If you are running Spark-on-YARN, the value of this property should be 'yarn'. If you are running Spark standalone, set the value to 'master'.
 
+**com.koverse.server.spark.dir**
+
+This needs to be set to the directory where Spark is installed locally. Koverse uses the 'spark-submit' script and therefore needs to know where it is located.
+
 settings.xml
 ~~~~~~~~~~~~
 
