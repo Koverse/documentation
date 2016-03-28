@@ -6,7 +6,7 @@
 User's Guide
 ===================
 
-The Koverse User Guide provides instructions for using the applications that are accessible via the Koverse Applications Dashboard.  
+The Koverse User Guide provides instructions for using the applications that are accessible via the Koverse Applications Dashboard.
 The User Guide Dashboard includes a number of icons which provide a link to all applications that have been deployed to the Koverse software platform.
 
 .. note:: All images displayed in this online document are 'clickable'. When clicked, the image open in a new windows in full size.
@@ -18,16 +18,15 @@ For easy navigation, account maintenance and general help, the Koverse Dashboard
 Please Note that clicking the Koverse logo at the left of the bar will take you home to the Dashboard from any child application page.
 
 .. image:: /_static/Navigation-Bar.png
-		:height: 50 px
-		:width: 800 px
+
 
 Navigation Bar Features:
 ^^^^^^^^^^^^^^^^^^^^^^^^
 * Application Navigation
 * Edit and view account details
-    * email address 
-    * first last name 
-    * authorization tokens 
+    * email address
+    * first last name
+    * authorization tokens
     * edit password
 * Help
     * Koverse User Guide
@@ -42,8 +41,7 @@ The Koverse Application Dashboard
 ---------------------------------
 
 .. image:: /_static/Dashboard.png
-		:height: 300 px
-		:width: 400 px
+
 
 The Koverse dashboard categorizes the suite of features into the follow application groups:
 
@@ -73,12 +71,10 @@ Each application's features, functionality and usage are discussed and presented
 Analytics Application Group
 ---------------------------
 
-The **Analytics Application Group** provides a package of applications which provide abilities to examine big data to uncover hidden patterns, unknown correlations and other useful information that can be used to make better decisions. 
-By using the Koverse analytic tools in this application group, data scientists and others can analyze huge volumes of data that conventional analytics and business intelligence solutions can't touch. 
+The **Analytics Application Group** provides a package of applications which provide abilities to examine big data to uncover hidden patterns, unknown correlations and other useful information that can be used to make better decisions.
+By using the Koverse analytic tools in this application group, data scientists and others can analyze huge volumes of data that conventional analytics and business intelligence solutions can't touch.
 
 .. image:: /_static/Analytics-Group/Correlation-App-Icon.png
-		:height: 75 px
-		:width: 75 px
                 :align: left
 
 Correlation Application
@@ -90,8 +86,8 @@ How to analyze data using the Correlation Application
 .....................................................
 
 #. Click the Koverse Logo on the black **Navigation Bar** at the top of the screen.
- 
-#. Click the **Correlation Application** Icon. 
+
+#. Click the **Correlation Application** Icon.
 
 #. Click the Setup tab. This shows a list of collections that are appropriate for analysis using the Pearson Correlation transform.
 
@@ -99,7 +95,7 @@ How to analyze data using the Correlation Application
 
 #. You can view the transform progress in the Data Flow Application by clicking on the black Navigation Bar and selecting Data Flow Icon.
 
-#. Wait for the transform to complete - based on the current load of the system. 
+#. Wait for the transform to complete - based on the current load of the system.
 
 #. After the transform is complete Koverse will profile and index the analytical results. The progress and output of these jobs can be seen in the Data Collections app.
 
@@ -113,8 +109,6 @@ The **Data Discovery Application Group** bundles all the visualization elements 
 |
 
 .. image:: /_static/Data-Discovery-Group/Dashboard-Builder-Icon.png
-		:height: 75 px
-		:width: 75 px
                 :align: left
 
 Dashboard Builder
@@ -178,8 +172,8 @@ The **Data Management Application Group** delivers all the abilities to load and
 Data Collections
 ^^^^^^^^^^^^^^^^
 
-The Data Collections Application provides the users the ability to manage and explore Data Collections. 
-A Data Collection is simply a named collection of records. 
+The Data Collections Application provides the users the ability to manage and explore Data Collections.
+A Data Collection is simply a named collection of records.
 Collections are the primary mechanism by which data is tracked and managed in Koverse.
 
 * To learn more about **Data Collection** functionality, click :ref:`usr-kov-Data-Collection`
@@ -200,7 +194,7 @@ Collections are the primary mechanism by which data is tracked and managed in Ko
 * Name: give the collection a name.
 * Description: provide a textual description of the collection.
 * Data Permissions: enter the data permission information by group.(see configuring collection permissions for more info)
-* Data Model: in the data model section you can specify any information you want to record about the data  model which applies to the data in the data collection. (see Configuring Collection Data Model for more info) 
+* Data Model: in the data model section you can specify any information you want to record about the data  model which applies to the data in the data collection. (see Configuring Collection Data Model for more info)
 
 To learn more about the **Data Collections** application features and functionality, please refer to: :ref:`usr-kov-Data-Collection`
 
@@ -257,7 +251,7 @@ File Upload Application provides the ability to ingest local files from the file
 
                 Screen Snapshot: File Upload Drag and Drop Area
 
-After selecting the file to load into the 'File Upload' staging cache, a series of parameters and configuration options are displayed to properly configure your file upload operation. 
+After selecting the file to load into the 'File Upload' staging cache, a series of parameters and configuration options are displayed to properly configure your file upload operation.
 
 .. figure:: /_static/Data-Management-Group/File-Upload-Parameters.png
 		:height: 200 px
@@ -278,7 +272,7 @@ System Administration Application Group
 Audit Log
 ^^^^^^^^^
 
-The Audit Log application displays details of all user activity, sorted in the order of the most recent events.  
+The Audit Log application displays details of all user activity, sorted in the order of the most recent events.
 
 For each event, the following information is displayed:
 
@@ -309,7 +303,7 @@ There are two features that allow the user to perform audit event analysis beyon
 
 The first feature is the **Download** feature which allows the user to download a JSON formatted file that contains audit events for a date range.
 
-The second feature provides key-word **Search** features for events of interest, such as a specific user's activity or a specific type of event. 
+The second feature provides key-word **Search** features for events of interest, such as a specific user's activity or a specific type of event.
 
 .. figure:: /_static/Analytics-Group/Audit-Log-Search.png
 		:height: 200 px
@@ -327,7 +321,7 @@ The second feature provides key-word **Search** features for events of interest,
 Configuration Manager
 ^^^^^^^^^^^^^^^^^^^^^
 
-The Configuration Manager application gives users the ability to upload and download configuration for Data Collections, Sinks, Sources, and Transforms.  
+The Configuration Manager application gives users the ability to upload and download configuration for Data Collections, Sinks, Sources, and Transforms.
 In this manner, new Koverse instances can be stood up or reinitialized without the laborious task of reconfiguring all of these items.  Note that no actual data will be uploaded or downloaded from within this app, only *configuration*.
 
 The Configuration Manager consists of two tabs applications **(Download and Upload)**.
@@ -352,7 +346,7 @@ The Configuration Manager consists of two tabs applications **(Download and Uplo
 System Administration
 ^^^^^^^^^^^^^^^^^^^^^
 
-Koverse System Administration application provides access to common administrative tasks for the product. 
+Koverse System Administration application provides access to common administrative tasks for the product.
 The administrative abilities are grouped into category tabs of 'Users', 'Groups', 'System', 'Add-Ons', 'Applications' and 'API'.
 
 * To learn more about **System Administration** application, click :ref:`usr-kov-System-Admin`
@@ -406,7 +400,7 @@ Create a New Collection
 A new data collection can be created from the **Data Collections** application simply by typing in the new collection name and clicking the 'Create New Collection' button.
 
 To add data to a collection.
-* First ensure that the data collection exists.  All data collections can be seen by clicking on the collections tab and are listed on the main page.   
+* First ensure that the data collection exists.  All data collections can be seen by clicking on the collections tab and are listed on the main page.
 * Select the desired data source from the Import tab. and click load data source and select the desired collection as the destination of the import.
 
 .. figure:: /_static/Data-Management-Group/collection-create.png
@@ -432,10 +426,10 @@ To view the details of a particular collection, click on the collection name in 
 
 A new collection will be missing much of this information, as it is gathered from the data within the collection. To import data into a new collection, follow the instructions under 'Adding Data to a Collection' in the next section.
 
-In the collections tab click on configure and then click on configure access. This will take you to the access control view of the collection.  In this area a user can: 
+In the collections tab click on configure and then click on configure access. This will take you to the access control view of the collection.  In this area a user can:
 
-* Can control access to every column of every dataset(in later versions you can control access to each individual cell of every dataset).  
-* Define a default access control rule for un-identified elements in the data. 
+* Can control access to every column of every dataset(in later versions you can control access to each individual cell of every dataset).
+* Define a default access control rule for un-identified elements in the data.
 * View, and optionally mark, the observed data elements from within already loaded datasets.
 
 Adding Data to a Collection
@@ -467,11 +461,11 @@ Editing Collection Details, Deleting, and Clearing a Collection
 
         Screen snapshot: Collection Details screen.
 
-Deleting a data collection removes all data contained within that data collection, and all meta data. Scheduled jobs that use the data collection will fail. 
+Deleting a data collection removes all data contained within that data collection, and all meta data. Scheduled jobs that use the data collection will fail.
 
 Clearing a collection removes all records within a collection but leaves the configuration information intact including indexing policy, user and group access.
 
-	
+
 Configuring Collection Permissions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -487,14 +481,14 @@ To affect changes, simply check the boxes that represent the type of access to g
 
 .. figure:: /_static/CollectionManagerScreenshots/collection-permissions.png
 	:height: 300 px
-	:width: 600 px	
+	:width: 600 px
 
         Screen snapshot: Collection permissions screen.
 
 Configuring Indexing
 ^^^^^^^^^^^^^^^^^^^^
 
-In the Collection Details view click on the "Fields" tab to see the list of fields and indexing options. This information is gathered from the actual data that has be ingested into the collection and is updated when new data is imported. This field information for a collection is passed along with raw data to both internal Koverse processes and to processes accessing the data via the SDK.  Within the Fields view user can: 
+In the Collection Details view click on the "Fields" tab to see the list of fields and indexing options. This information is gathered from the actual data that has be ingested into the collection and is updated when new data is imported. This field information for a collection is passed along with raw data to both internal Koverse processes and to processes accessing the data via the SDK.  Within the Fields view user can:
 
 * Choose fields to index
 * Configure indexing options for a particular field
@@ -505,20 +499,20 @@ In the Collection Details view click on the "Fields" tab to see the list of fiel
 	:width: 600 px
 
 For collections with no data, Koverse can automatically index all fields in records that may be imported into this collection in the future by clicking the 'Edit Field Defaults' button and checking 'Index All New Fields' and clicking the 'Save Defaults' button.
-	
+
 .. image:: /_static/CollectionManagerScreenshots/index-defaults.*
 	:height: 300 px
 	:width: 600 px
-	
+
 To save time and disk space, users may wish to choose to not index any fields until after the first import of data is complete. Koverse will then show a list of every field found in at least one record, including information about the type of the field, how often it is present in records, and estimates for things like cardinality (ie the number of unique values in this field), average size, etc.
-	
+
 This information is used to help users decide what fields to index, and to understand what kind of information is found in each field. Users can then choose to index particular fields by checking the box on the right of the table. After a number of fields are checked for indexing, users can put the new indexing policy into effect by clicking the 'Save' button at the bottom of the page.
-	
+
 .. image:: /_static/CollectionManagerScreenshots/save-indexes.*
 	:height: 300 px
 	:width: 600 px
-	
-Additional options for some types of fields are available by clicking the options button to the right of the check-box. For example, for String types, users can choose to index the whole field as it appears, or to tokenize the text found and index it in additional ways such as lowercase in addition to whatever case already exists, to remove stop words (common words like 'the'), and whether to index pairs or triples of tokens and so on (also known as n-grams). Clicking 'Save' after choosing these options will also put them into effect. 
+
+Additional options for some types of fields are available by clicking the options button to the right of the check-box. For example, for String types, users can choose to index the whole field as it appears, or to tokenize the text found and index it in additional ways such as lowercase in addition to whatever case already exists, to remove stop words (common words like 'the'), and whether to index pairs or triples of tokens and so on (also known as n-grams). Clicking 'Save' after choosing these options will also put them into effect.
 
 .. image:: /_static/CollectionManagerScreenshots/index-options.*
 	:height: 300 px
@@ -532,9 +526,9 @@ Koverse automatically updates any indexes present for a collection as new data i
 
 Composite Indexes
 ^^^^^^^^^^^^^^^^^
-	
+
 Composite indexes are indexes built on two or more fields to enable querying combining ranges across those fields in queries. For example, in order query on a range of values in a field called 'height' and also a range of values in a field called 'age', a composite index must be created that will enable this query to run quickly, without doing expensive set operations on the server side.
-	
+
 Creating composite indexes is simple. In the Collection Details view, users can click on the 'Composite Indexes' tab to see a list of the composite indexes that already exist. New composite indexes can be created by clicking 'Add Composite Index' and selecting two or more fields from the drop down menu that appears.
 
 .. image:: /_static/CollectionManagerScreenshots/composite-indexes.*
@@ -542,9 +536,9 @@ Creating composite indexes is simple. In the Collection Details view, users can 
 	:width: 600 px
 
 Each entry in the drop down menu consists of a field name and a type. For example we might see 'height (string)' and 'height (float)'. This means that both string (text) and floating point number values have been observed in this field. It might be likely that the string values are erroneous. In any case, we wish to query for ranges across numerical values for the height field in our example so we choose 'height (float)'.
-	
+
 Users can choose up to four fields in one index, but beyond four users may start to see performance issues with queries.
-	
+
 Clicking the black 'Add Composite Index' button will cause Koverse to begin building this index on any data already available, and Koverse will update this index if any new data is imported into this collection.
 
 * Click the Collections tab in the main menu.
@@ -557,7 +551,7 @@ Clicking the black 'Add Composite Index' button will cause Koverse to begin buil
 		:height: 75 px
 		:width: 75 px
                 :align: left
-    
+
 .. _usr-kov-Data-Flow:
 
 Data Flow Application
@@ -572,7 +566,7 @@ Flow Tab
 
 The flow tab shows a visualization of the Transforms that are configured.  Users will be able to view Transforms on Collections they have permission to read.  The flow starts on the right and moves left, showing how initial Collections are transformed into new Collections. Clicking on an individual section of the flow will take the user to the configuration details for that Transform.
 
-If the user has appropriate permissions, the Flow tab also provides the ability to configure new Sources, Transforms, and Sinks: 
+If the user has appropriate permissions, the Flow tab also provides the ability to configure new Sources, Transforms, and Sinks:
 
 .. _NewSource:
 
@@ -586,11 +580,11 @@ Adding an Import Source
 
 #. Fill out the Source configuration fields. (See the tips below on configuring some of the more advanced Sources.)
 
-#. To Optionally add Import Time Transforms - select a desired import time transfrom from the list, and then click "Add Import Transform". You may add more than one. 
+#. To Optionally add Import Time Transforms - select a desired import time transfrom from the list, and then click "Add Import Transform". You may add more than one.
 
-#. Select a output data collection for storing records from this source. 
+#. Select a output data collection for storing records from this source.
 
-#. Select the type of flow - either manual, periodic, or continuous. Manual means that a user must kick off of jobs. Periodic means the job will be run on a defined schedule. Continuous means the job will be run continuously until this setting is changed. 
+#. Select the type of flow - either manual, periodic, or continuous. Manual means that a user must kick off of jobs. Periodic means the job will be run on a defined schedule. Continuous means the job will be run continuously until this setting is changed.
 
 #. Click the "Add Source" button.  Note that data will not actually be imported until this source is run from the :ref:`usr-Flow-Tab`.
 
@@ -601,53 +595,53 @@ Adding an Import Source
 #. *Create Twitter Dev Application:*
 
 	#. Log onto https://dev.twitter.com/
-	
+
 	#. Under your avatar, select My Applications
-	
+
 	#. Click Create a new application button
-	
+
 		* ex name: twitter koverse test
-		
+
 		* ex description: twitter koverse test
-		
+
 		* ex website: ``http://localhost.com/Koverse``
-		
+
 		* callback: none
-		
+
 	#. Select Yes, I agree to the Developer Rules Of The Road
-	
+
 	#. Enter CAPTCHA displayed
-	
+
 	#. Click Create your Twitter application
-	
+
 	#. Your Twitter application properties should now be shown on the next page
-	
+
 	#. Click Create my access token
-	
+
 	#. Refresh page to have access tokens appear
-	
+
 	#. Leaving the details page open move onto Creating the Koverse Twitter Streaming Source
 
 #. *Configuration Options for the Twitter Source in Koverse:*
 
 	New Source Type: - Select Twitter Streaming"
-	
+
     * Source Name: example 'twitter koverse test'
-	
+
     * Security Field Label: (optional)
-	
+
     * Security Label Parser: Identity Parser
-	
+
     * Twitter App Consumer Key: Copy & Paste details from Twitter Dev App
-	
+
     * Twitter App Consumer Secret: Copy & Paste details from Twitter Dev App
-	
+
     * Twitter App Access Token: Copy & Paste details from Twitter Dev App
-	
+
     * Twitter App Access Token Secret: Copy & Paste details from Twitter Dev App
-	
-    * Keywords(optional) 
-	
+
+    * Keywords(optional)
+
     * Locations (optional)
 
 Note: Twitter Streaming Sources will continue to update every 10 minutes unless you stop the job.
@@ -657,33 +651,33 @@ Note: Twitter Streaming Sources will continue to update every 10 minutes unless 
 * Input the following required fields:
 
 	* Source Name - example: Personal Gmail
-	
+
 	* Server - example: imap.gmail.com
-	
+
 	* Username - example: youremail@gmail.com
-	
+
 	* Password - example: password123
-	
+
 	* Security Label Field (optional)
-	
+
 	* Security Label Parser (Default = Identity Parser)
 
 
-	
+
 **Configuring an Newsfeed Source**
 
 * Input the following required fields:
 
 	* Source Name - example: NY Times Business
-	
+
 	* Security Label Field (optional)
-	
+
 	* Security Label Parser (default: Identity Parser)
-	
+
 	* RSS Feed URL - example: http://www.nytimes.com/services/xml/rss/nyt/Business.xml
-	
+
 	* Polling Frequency (in minutes) - example: 5
-	
+
 **Configuring an Amazon S3**
 
 * Source Parameters:
@@ -694,34 +688,34 @@ Note: Twitter Streaming Sources will continue to update every 10 minutes unless 
 
 	* Security Label Parser (Dropdown)
 
-	* Access Key ID (Required) - 	This is actually a username. It is alphanumeric text string that uniquely identifies the user who owns the account. 
+	* Access Key ID (Required) - 	This is actually a username. It is alphanumeric text string that uniquely identifies the user who owns the account.
 
 	* Secret Key (Required) - This key plays the role of a password.
 
 	* Mime Types (Optional) - This is optional however we recommend to always select a Mime Type.
 
-	* Include files in subdirectories ( Checkbox ) - This is optional and if checked includes files in the subdirectories of the S3 Bucket you specify. 
+	* Include files in subdirectories ( Checkbox ) - This is optional and if checked includes files in the subdirectories of the S3 Bucket you specify.
 
-	* Import files with names matching regular expression - Specifying the name of the file(s) you want to import. 
+	* Import files with names matching regular expression - Specifying the name of the file(s) you want to import.
 
-	* Date 
-	
+	* Date
+
 
 Import Sources
 ^^^^^^^^^^^^^^
 
-	
+
 **All of Wikipedia Source**
 
 Wikipedia offers free copies of all available content to interested users. Enabling this source will stream the Wikipedia Records into your target collection.
 
 **Newsfeed Source**
 
-The Newsfeed source allows users to import information directly from RSS feeds. 
+The Newsfeed source allows users to import information directly from RSS feeds.
 
 **Amazon S3**
 
-The Amazon S3 import source allows users to import files directly from Amazon's S3 service. 
+The Amazon S3 import source allows users to import files directly from Amazon's S3 service.
 
 
 **Apache Commons VFS**
@@ -730,17 +724,17 @@ Commons VFS provides a single API for accessing various different file systems. 
 
 **Email Account (IMAP)**
 
-IMAP is an Internet standard protocol used by email e-mail clients to retrieve e-mail messages from a mail server over TCP/IP connection. 
+IMAP is an Internet standard protocol used by email e-mail clients to retrieve e-mail messages from a mail server over TCP/IP connection.
 
 
 **File Transfer Protocol (FTP)**
 
-The File Transfer Protocol is a standard network protocol used to transfer computer files from one host to another host over a TCP-based network, such as the internet. 
+The File Transfer Protocol is a standard network protocol used to transfer computer files from one host to another host over a TCP-based network, such as the internet.
 
 
 **Hadoop Distributed File System (HDFS)**
 
-The Hadoop distributed file system (HDFS) is a distributed, scalable, and portable file-system written in Java for the Hadoop framework. A Hadoop cluster has nominally a single namenode plus a cluster of datanodes, although redundancy options are available for the namenode due to its criticality. Each datanode serves up blocks of data over the network using a block protocol specific to HDFS. 
+The Hadoop distributed file system (HDFS) is a distributed, scalable, and portable file-system written in Java for the Hadoop framework. A Hadoop cluster has nominally a single namenode plus a cluster of datanodes, although redundancy options are available for the namenode due to its criticality. Each datanode serves up blocks of data over the network using a block protocol specific to HDFS.
 
 **Kafka 0.8 Source**
 
@@ -757,12 +751,12 @@ MySQL is a relational database management system (RDBMS), it was the world's sec
 
 **Oracle 11gR2**
 
-Oracle 11gR2 is the second and terminal release of the Oracle 11g database. 
+Oracle 11gR2 is the second and terminal release of the Oracle 11g database.
 
 
 **Oracle RAC 11gR2**
 
-In database computing, Oracle Real Application Clusters (RAC) - provides software for clustering and high availability in Oracle database environments. 
+In database computing, Oracle Real Application Clusters (RAC) - provides software for clustering and high availability in Oracle database environments.
 
 
 **PostgreSQL**
@@ -775,14 +769,14 @@ URL source is our own custom source type that allows our users to select multipl
 
 **Web Crawler**
 
-Web Crawler uses our Kafka streaming to allow you to specify the number of workers, the starting URL, the maximum levels to crawl, the broker list, and the zookeeper services to utilize. 
+Web Crawler uses our Kafka streaming to allow you to specify the number of workers, the starting URL, the maximum levels to crawl, the broker list, and the zookeeper services to utilize.
 
 **Wikipedia Page Sources**
 
 Wikipedia offers free copies of all available content to interested users. Enabling this source will stream a single page source from the Wikipedia Records into your target collection.
-	
+
 .. _NewTransform:
- 
+
 Adding a Transform
 ^^^^^^^^^^^^^^^^^^^
 
@@ -823,40 +817,40 @@ Locate the existing data source you wish to modify in the list on the main page 
 * **Configuration Tab:** Shows the existing configuration for this import Source.
 
 	* If the configuration looks good, you can choose to import data at this point by hitting the "Run Import Job" button.  See :ref:`ImportJobs` for details.
-	
+
 	* If the configuration needs to be modified, hit the "Edit Configuration" button and follow the instructions in the :ref:`NewSource` section.
-	
+
 	* If you wish to delete this Source, hit the "Delete Source" button.  Note that this will not delete any data that has already been imported, it will only delete the Source's definition.
-	
+
 * **Import Flows Tab:** Shows any imports flows for this Source. A source may have more than one flow. Flows connect sources to data collections, with specific import time transforms and schedules.
 
 	* If you wish to create an additional import flow for this source
-	
-		#. Click the "Add Import Flow" button. 
-		
-		#. Optionally add Import Time Transforms. 
-		
-		#. Select the output Data Collection. 
-		
-		#. Select the flow type - manual, periodic, or continuous. 
-		
+
+		#. Click the "Add Import Flow" button.
+
+		#. Optionally add Import Time Transforms.
+
+		#. Select the output Data Collection.
+
+		#. Select the flow type - manual, periodic, or continuous.
+
 		#. Click "Add Import Flow"
 
-	* If you wish to edit an Import flow, click the "Edit" button on the desired import flow row. 
-		 
-	* Existing Import Flows can be removed by checking the flows to be deleted, and then clicking the "Delete Selected Import Flows" button. 
-	
+	* If you wish to edit an Import flow, click the "Edit" button on the desired import flow row.
+
+	* Existing Import Flows can be removed by checking the flows to be deleted, and then clicking the "Delete Selected Import Flows" button.
+
 * **Permissions Tab:** Use the check boxes to assign import, edit and delete permissions to various user groups for a given Source.  Note that *import* permission will allow users to actually import data from the Source, *edit* permission will allow users to edit the configuration of the Source, and *delete* permission will allow users to delete the Source's definition.  These permissions do not relate to permissions to access, edit or delete any particular data Collection and only relate to configuring and executing the Source itself.
 
 * **Jobs Tab:** This tab displays a list of the historical import jobs that have run to import data from this Source.  In order to run a new import job, click the "Run Import Job" button and follow the instructions in the :ref:`ImportJobs` section
 
-	
-.. _ImportJobs:	
+
+.. _ImportJobs:
 
 Running an Import Job
 ^^^^^^^^^^^^^^^^^^^^^^
 
-#. Click the "Run Import Job" button. If more than one Import Flow is present on a source, you will be presented with the option of which to run. If only one Import Flow is configured for the source, that Import Flow will be run - and you will be taken immediately to the import job progress page. 
+#. Click the "Run Import Job" button. If more than one Import Flow is present on a source, you will be presented with the option of which to run. If only one Import Flow is configured for the source, that Import Flow will be run - and you will be taken immediately to the import job progress page.
 
 
 Deleting a Source
@@ -879,12 +873,12 @@ Locate the existing Transform you wish to modify in the list on the main page an
 
 * **Configuration Tab:** Shows the existing configuration for this Transform.
 
-	* If the configuration looks good, you can choose to transform data at this point by hitting the "Run Transform Job" button.  
-	
+	* If the configuration looks good, you can choose to transform data at this point by hitting the "Run Transform Job" button.
+
 	* If the configuration needs to be modified, hit the "Edit Configuration" button and follow the instructions in the :ref:`NewTransform` section.
-	
+
 	* If you wish to delete this Transform, hit the "Delete Transform" button.  Note that this will not delete any data that has already been processed, it will only delete the Transform's definition.
-	
+
 
 * **Jobs Tab:** This tab displays a list of the historical jobs that have run to execute this Transform.  In order to run a new Transform job, click the "Run Transform Job" button and observe the progress of the Transform as it runs to completion.
 
@@ -949,7 +943,7 @@ Search Application
 ------------------
 
 The Search application provides users the ability to interactively query one or more Koverse Collections to find all Records that match their search criteria. While many end-user analytics will be custom in nature and rely heavily on data model semantics, the data discovery application allows users to search in a schema-free manner, or to use the schema as necessary. Within the data data discovery tab a user can:
-	
+
 	 * Search across all collections or specific collections
 	 * Search across any field or within specific fields
 	 * Combine search terms
@@ -961,19 +955,19 @@ Initially, the Search application starts with nothing selected, and the applicat
 	:height: 300 px
 	:width: 600 px
 
-The Search application returns results grouped by collection. 
+The Search application returns results grouped by collection.
 
 .. image:: /_static/SearchScreenshots/multi-coll-results.*
 	:height: 300 px
 	:width: 600 px
-	
+
 Users can then choose to show specific fields within those search results by expanding the set of field names for a collection and selecting fields to show on the left of the screen.
 
 .. image:: /_static/SearchScreenshots/show-fields.*
 	:height: 300 px
 	:width: 600 px
 
-Koverse Search also auto-suggests fields that appear in all or selected collections, and users can choose a field in which to search. Auto-suggest will then only suggest terms that appear within the selected field. 
+Koverse Search also auto-suggests fields that appear in all or selected collections, and users can choose a field in which to search. Auto-suggest will then only suggest terms that appear within the selected field.
 
 .. image:: /_static/SearchScreenshots/auto-complete-field.*
 	:height: 300 px
@@ -1003,7 +997,7 @@ The Search App is designed to be somewhat like Google in design. Users can simpl
 Searching for records that contain a term in any field::
 
 	mary
-	
+
 To search for terms that contain spaces, use quotes around the terms::
 
 	"mary had a"
@@ -1016,13 +1010,13 @@ Combining Terms
 ^^^^^^^^^^^^^^^
 
 Searching for records that contain a term in one field and another term in another field. This is like requesting records that match the first clause, AND the second::
-	
+
 	name: mary occupation: shepherd
 
 Two or more terms may be combined this way. Some terms can be field specific and others not. For example::
 
 	name: mary shepherd
-	
+
 Would return any records where the value "mary" appeared in the name field, and where the value "shepherd" appeared in any other field, including the name field.
 
 Note that the difference between querying for a two-word phrase with containing a space and searching for one word within a field and one word in any field requires quotes. To search for a two-word phrase within a single field, use quotes around the two-word phrase::
@@ -1035,23 +1029,23 @@ Range queries
 ^^^^^^^^^^^^^
 
 To search for records that contain a value within a range, use square brackets and word 'TO'::
-	
+
 	height: [60 TO 70]
 
 For an open-ended search, use an asterisk, * , to indicate positive or negative infinity. The following means return records with a value for the height field that is greater than or equal to 60::
-	
+
 	height: [60 TO *]
 
 The following returns all records with a value in the height field less than or equal to 60::
-	
+
 	height: [* TO 60]
 
 Searches can also be done across ranges of text values using wildcard syntax. Only trailing wildcards are supported. The following returns records with a value beginning with the letters 'ma' in any field::
-	
+
 	ma*
 
 Koverse understands the ordering of several types of values including numbers, text strings, URLs, dates, and IP addresses::
-	
+
 	[192.168.1.0 TO 192.168.34.0]
 
 To query a range of dates, the following formats are recognized::
@@ -1065,7 +1059,7 @@ To query a range of dates, the following formats are recognized::
 	"yyyy/MM/dd HH:mm:ss.SSS"
 	"MM/dd/yyyy HH:mm"
 	"ddHHmm'Z' MMM yy"
-	
+
 	yyyy - four digit year
 	yy - two digit year
 	MM - two digit month
@@ -1102,11 +1096,11 @@ Combining Ranges
 Koverse supports querying for multiple ranges or ranges and single terms simultaneously but requires that composite indexes be built first before such queries can be executed. This is because composite indexes reduce the work done at query time to just a few short scans without having to do any set operations so queries with multiple ranges can return quickly, without impacting other users of the system.
 
 An example of a query that combines a range with a single term. To perform this query, a composite index of the height and name field is required. See :ref:`CompositeIndexes` for how to build this type of index.::
-	
+
 	height: [* TO 10] name: mary
 
 An example of a query that combines multiple ranges. To perform this query, a composite index of the height and weight field is required.::
-	
+
 	height: [* TO 10] weight: [70 TO 80]
 
 To query across a range of geos and time simultaneously, do the following. To perform this query, a composite index on the geo field and time field is required.::
@@ -1123,8 +1117,8 @@ To query across a range of geos and time simultaneously, do the following. To pe
 
 System Administration Application
 ---------------------------------
-	
-The System Administration application provides a graphical user interface for system administration activities, such as system configuration, user accounts, user groups, etc.  Only users with administration privileges will be able to access this App.  The default administrator username and password are admin and admin, respectively. Be sure to change the default admin password. 
+
+The System Administration application provides a graphical user interface for system administration activities, such as system configuration, user accounts, user groups, etc.  Only users with administration privileges will be able to access this App.  The default administrator username and password are admin and admin, respectively. Be sure to change the default admin password.
 
 .. need to update screenshot
 
@@ -1144,7 +1138,7 @@ The links described below will only be present if the current user is a member o
 Koverse uses email addresses as primary user IDs.  To create a new user,
 
 #. Click the Add User link.
-#. Enter the new users email address. 
+#. Enter the new users email address.
 #. Click the Add User button.
 
 **Edit User:** Change a user's ID and/or manage the groups a user is in.
@@ -1176,7 +1170,7 @@ Group/Roles
 Koverse provides groups as a way to manage privileges for multiple users. Users are members of one or more group.
 
 **Add Group:** Create a new group.
- 
+
 #. Click the Add Group link.
 #. Enter the new groups name.
 #. Click the Add Group button.
@@ -1198,7 +1192,7 @@ Koverse provides groups as a way to manage privileges for multiple users. Users 
 System
 ^^^^^^
 
-**System Configuration:** Configure the system properties for Koverse, Hadoop, Accumulo, and SMTP.  These properties will need to be configured correctly for Koverse to be fully functional.  
+**System Configuration:** Configure the system properties for Koverse, Hadoop, Accumulo, and SMTP.  These properties will need to be configured correctly for Koverse to be fully functional.
 
 In most cases, the fields are self-explanatory and the pre-populated defaults can be used.  The main exception to this are the **Data Store** properties:
 
@@ -1218,7 +1212,7 @@ When finished entering all System settings, hit the "Save" button.  If there are
 
 **Lock Down:** Lock down mode is used to disable all data interactions in this system. While lock down mode is enabled, only accounts with permissions to manage users, groups, view the audit log, and manage lock down mode will be able to interact with this system. If you choose to enter lock down mode, click in the "Lock Down" link and hit the "Enable Lock Down Mode" button. The same link is used to disable lock down mode.
 
-**Resources:** Manage Auto-Running Transforms.  Normally, transforms will run periodically on scheduled intervals.  If you wish to disable this feature and only run transforms manually, 
+**Resources:** Manage Auto-Running Transforms.  Normally, transforms will run periodically on scheduled intervals.  If you wish to disable this feature and only run transforms manually,
 
 #. Select the "Resources" link.
 #. Check the "Disable Auto-Running Transform" box.
@@ -1246,7 +1240,7 @@ Applications
 #. Click the Name of the Application you wish to configure.
 #. Under the "Permissions" tab, check the boxes that correspond to the group permissions you wish to assign to this Application.
 #. Hit "Save Permissions".
-#. Under the  "Parameters" tab, configure any parameter values you wish to set/change. 
+#. Under the  "Parameters" tab, configure any parameter values you wish to set/change.
 
 **Deploy Application from Template:** Deploy instances of Applications whose templates have been uploaded to Koverse as part of an Addon.
 
@@ -1265,7 +1259,7 @@ The Koverse REST API and SDK allow:
 
 * Transform: data into specialized indexes, analytic summaries, and algorithmic processing of data within the system, from external systems and 3rd party plugins
 * Data Discovery: indexing and query calls to quickly search and explore data.
-* Data Collection Management: administer access permissions, data models, view provenance, and purge data. 
+* Data Collection Management: administer access permissions, data models, view provenance, and purge data.
 * Import: import data into Koverse from a range of sources
 * Data Export: download to external systems
 * Direct access: to the data within the system, from external systems
@@ -1311,13 +1305,13 @@ This displays a status of whether or not key processes are reachable.
 * A **green** icon indicates that the process is up and reachable.
 
 * A **red** icon indicates the the process is not reachable.  In this case,
-	
+
 	#. Make sure the server that hosts the process is reachable over the network.
-	
+
 	#. Check to see that the process in question is still running on the control node.
-	
+
 	#. If it is verified that there are no hardware or network problems affecting the host, please see the :ref:`Troubleshooting` section, which has process-specific tips.
-	
+
 
 **Worker Nodes**
 
@@ -1337,7 +1331,7 @@ These timelines show the current ingest and query activity that the Koverse data
 .. image:: /_static/SystemMonitorScreenshots/DataProcessing.*
 	:height: 170 px
 	:width: 1010 px
-	
+
 This section shows the progress of any jobs that are currently running, organized by job type.  All Koverse jobs run in the Hadoop MapReduce framework, so if you desire more detailed information about specific jobs, please see the :ref:`CheckingMapreduce` instructions.
 
 **Distributed Storage**
@@ -1345,10 +1339,10 @@ This section shows the progress of any jobs that are currently running, organize
 .. image:: /_static/SystemMonitorScreenshots/DistributedStorage.*
 	:height: 494 px
 	:width: 322 px
-	
-This section gives information about the state of the distributed storage system.  
 
-* This same information can be seen by :ref:`CheckingNamenode`.  
+This section gives information about the state of the distributed storage system.
+
+* This same information can be seen by :ref:`CheckingNamenode`.
 
 * In general, safemode should be set to "false". If it is not, see the :ref:`Safemode` section of the troubleshooting guide.
 
@@ -1357,7 +1351,7 @@ This section gives information about the state of the distributed storage system
 .. image:: /_static/SystemMonitorScreenshots/MapReduce.*
 	:height: 506 px
 	:width: 324 px
-	
+
 This section of the monitoring page shows the current state and configuration of the Hadoop MapReduce cluster.
 
 * For more detailed information, see the :ref:`CheckingJobtracker` and :ref:`CheckingTasktracker` sections of the troubleshooting guide.
@@ -1367,7 +1361,7 @@ This section of the monitoring page shows the current state and configuration of
 .. image:: /_static/SystemMonitorScreenshots/DataStore.*
 	:height: 762 px
 	:width: 322 px
-	
+
 This portion of the monitoring page displays information about the configuration and state of the Apache Accumulo instance that hosts Koverse's data store.
 
 * More information can be found in the :ref:`CheckingAccumulo` and :ref:`CheckingZookeeper` sections of the troubleshooting guide.
@@ -1433,7 +1427,7 @@ Recursive File Selection
 ------------------------
 
 * The user can select `**Include files in subdirectories**` which allows recursive navigation through the directory structure of the file system to retrieve files for ingest.
-* Filtering matches are on an **OR** basis, so either date, or regular expression is used during the file matching process. 
+* Filtering matches are on an **OR** basis, so either date, or regular expression is used during the file matching process.
 * Then that file is included in Map-Reduce import job....
 
 .. image:: /_static/FileImportControls/FileFilterRecursion.*
@@ -1443,7 +1437,7 @@ Recursive File Selection
 Mime Type Override
 ------------------
 
-* The user can select various ``mime-type override`` options to supersede the default parser used for a particular type of file. 
+* The user can select various ``mime-type override`` options to supersede the default parser used for a particular type of file.
 
 .. image:: /_static/FileImportControls/MimeTypeOverride.*
 	:height: 80 px
@@ -1458,13 +1452,13 @@ Converting Outlook .pst email messages to mbox-compatible format
 Koverse currently does not support the direct import of Outlook .pst email messages but by following these instructions, a user with an Outlook .pst file can convert the email messages to .mbox format which Koverse 'does' support.
 Here is the process for converting the .pst email messages:
 
-* The first step is to to take the .pst email messages file and convert it to mbox-compatible format. 
+* The first step is to to take the .pst email messages file and convert it to mbox-compatible format.
 * The conversion can be done by using the libpst.0.6.44 package utility. (note link below)
 * The Libpst utilities includes a **readpst** command which can be used to convert .pst email messages to mailbox .mbox format.
 * Run the following command to perform the conversion:  **'readpst -r <outlook.pst file>'**
 * The -r option changes the output format to Recursive. This will create folders as named in the PST file, and will put all emails in a file called "mbox" inside each folder. These files are then compatible with all mbox-compatible email clients.
 
-Install libpst on Linux: 
+Install libpst on Linux:
 
 * **Download site for libpst**:   http://rpm.pbone.net/index.php3/stat/4/idpl/30517395/dir/scientific_linux_6/com/libpst-0.6.44-3.el6.x86_64.rpm.html
 * **Install rpm file**:  rpm -i libpst-0.6.44-3.el6.x86_64.rpm
@@ -1488,14 +1482,14 @@ Glossary of Koverse Terminology
 .. glossary::
 
    Data Collection
-      Data Collections are the basic container for data in Koverse. 
+      Data Collections are the basic container for data in Koverse.
       You can think of them like tables - but every record in a data collection can be completely unique in structure.
 
    Configuration Manager
       The Configuration Manager application gives users the ability to upload and download configuration for Data Collections, Sinks, Sources, and Transforms.
 
    Data Collection
-      The Data Collections App gives users the ability to manage and explore Data Collections. A Data Collection is simply a named collection of records. 
+      The Data Collections App gives users the ability to manage and explore Data Collections. A Data Collection is simply a named collection of records.
       Collections are the primary mechanism by which data is tracked and managed in Koverse.
 
    Data Flow
