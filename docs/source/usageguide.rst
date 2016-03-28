@@ -87,7 +87,7 @@ Correlation Application
 Koverse's Correlation application was specifically designed to be used with the `Pearson Correlation <https://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient>`_ analytic.
 
 How to analyze data using the Correlation Application
-.....................................................
+------------------------------------------------------
 
 #. Click the Koverse Logo on the black **Navigation Bar** at the top of the screen.
  
