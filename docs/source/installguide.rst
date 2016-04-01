@@ -19,7 +19,7 @@ Koverse requires all servers in a cluster to have clocks synchronized within a f
 
 Software
 ^^^^^^^^
-A described in the :ref:`InfraGuide`, Koverse runs atop several distributed systems. All of these dependent systems need to be properly installed and configured for Koverse to execute successfully. The proper installation of Hadoop and associated software infrastructure is not within the scope of this document, nor is it a trivial undertaking. If your organization does not have well established provisioning tools and/or experience installing Hadoop ecosystem software, we highly recommend tools like `Cloudera Manager`_ or `Apache Ambari`_ to help automate and manage the installation of the required software infrastructure.
+As described in the :ref:`InfraGuide`, Koverse runs atop several distributed systems. All of these dependent systems need to be properly installed and configured for Koverse to execute successfully. The proper installation of Hadoop and associated software infrastructure is not within the scope of this document, nor is it a trivial undertaking. If your organization does not have well established provisioning tools and/or experience installing Hadoop ecosystem software, we highly recommend tools like `Cloudera Manager`_ or `Apache Ambari`_ to help automate and manage the installation of the required software infrastructure.
 
 .. _Cloudera Manager: https://cloudera.com/products/cloudera-manager.html
 .. _Apache Ambari: http://hortonworks.com/hadoop/ambari/
@@ -43,13 +43,12 @@ Koverse runs on off-the-shelf commodity hardware. The two Koverse software compo
 Step-by-Step Installation Instructions
 --------------------------------------
 
-Before starting this install process, you should have downloaded the 3 required Koverse RPMs listed below. If you do not know where to get the RPMs from, please contact Koverse Support at support@koverse.com.
+Before starting this install process, you should have downloaded the 2 required Koverse RPMs listed below. If you do not know where to get the RPMs from, please contact Koverse Support at support@koverse.com.
 
 #. koverse-server-<VERSION>.rpm
 #. koverse-webapp-<VERSION>.rpm
-#. jboss-rpm-7.1.1-<BUILD VERSION>.rpm
 
-While separate components, typical installs will install both the Koverse Server and Koverse Web App/JBoss on the same server. The directions below assume commands are being executed on this single server.
+While separate components, typical installs will install both the Koverse Server and Koverse Web App on the same server. The directions below assume commands are being executed on this single server.
 
 Users
 ^^^^^
@@ -107,23 +106,14 @@ To install the Koverse Server from RPM, simply run::
 
 This will install into */opt/koverse-server/* as well as create a script at */etc/init.d/koverse-server* for starting and stopping the process.
 
-JBoss Install
-^^^^^^^^^^^^^
+Koverse Web App Install
+^^^^^^^^^^^^^^^^^^^^^^^
 
-JBoss is the Java application server used to host the Koverse Webapp. There is no reason though that the Koverse Webapp couldn't run on other Java servlet containers such as Tomcat. To install JBoss, please use the Koverse-provided JBoss RPM and run::
-
-  yum localinstall jboss-rpm-7.1.1-<BUILD VERSION>.rpm
-
-This will install into */opt/jboss/* as well as create a script at */etc/init.d/jboss* for starting and stopping JBoss
-
-Koverse Webapp Install
-^^^^^^^^^^^^^^^^^^^^^^
-
-To install the Koverse Webapp from RPM, simply run::
+To install the Koverse Web App from RPM, simply run::
 
   yum localinstall koverse-webapp-<VERSION>.rpm
 
-This will install an exploded WAR file to */opt/jboss/standalone/deployments/Koverse.WAR/*
+This will install into */opt/koverse-webapp/* as well as create a script at */etc/init.d/koverse-webapp* for starting and stopping the process.
 
 .. _PostgreSQLSetup:
 
@@ -171,14 +161,14 @@ Koverse Configuration
 
 Environment
 ~~~~~~~~~~~
-The 'koverse' user needs to have the 'java' command in their path for the Koverse startup scripts to execute correctly. Again, this needs to be Oracle Java 1.7.x.
+The 'koverse' user needs to have the 'java' command in their path for the Koverse startup scripts to execute correctly. Again, this needs to be Oracle Java 1.7 or 1.8.
 
 The environment variable *HADOOP_CONF_DIR* needs to be set for the 'koverse' user so Koverse can take advantage of the Hadoop client configuration. The startup script */opt/koverse-server/bin/startup.sh* will default this environment variable to */etc/hadoop/conf* if it is not already set.
 
 koverse-server.properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Many of the property values seen in */opt/koverse-server/conf/koverse-server.properties* can be left as their default values. The few that do need to be examined and/or updated are called out below.
+Many of the available configuration properties for Koverse can be left to their default values. Please see the :ref:`ConfigurationGuide` for the complete list of properties. */opt/koverse-server/conf/koverse-server.properties* is where required properties can be set or defaults overriden. A few of these commonly set user properties are discussed below.
 
 **com.koverse.server.jdbc.user**
 
@@ -197,11 +187,6 @@ If you are running Spark-on-YARN, the value of this property should be 'yarn'. I
 **com.koverse.server.spark.dir**
 
 This needs to be set to the directory where Spark is installed locally. Koverse uses the 'spark-submit' script and therefore needs to know where it is located.
-
-settings.xml
-~~~~~~~~~~~~
-
-Like the *koverse-server.properties* file, many of the properties in */opt/koverse-server/conf/settings.xml* can be left with their default values. The following properties will need to be updated.
 
 **dataStoreSetting.instanceName**
 
@@ -235,7 +220,7 @@ This is a comma-separated list of ZooKeeper servers in the form of <HOSTNAME>:<P
 koverse-webapp.properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The file */opt/jboss/standalone/deployments/Koverse.war/WEB-INF/conf/koverse-webapp.properties* controls the configuration for the Koverse Webapp. Unless you are running JBoss on a different server than the Koverse Server, there are no properties in this file that are required to be changed. If they are running on different servers, update *com.koverse.server.thrift.host* to the hostname where the Koverse Server is running.
+Again, please see the :ref:`ConfigurationGuide` for the complete list of properties that can be set for the Koverse Web App. */opt/koverse-webapp/conf/koverse-webapp.properties* is where required properties can be set or defaults overriden, for example to change the ports for the web server or to enable and configure HTTPS.
 
 Koverse Aggregation Library Distribution
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -250,13 +235,13 @@ As discussed, Koverse software runs as two processes. To start the Koverse Serve
 
   service koverse-server start
 
-The Koverse Webapp runs within JBoss, so to bring it up, run::
+And for the Web App, run::
 
-  service jboss start
+  service koverse-webapp start
 
 Once both processes have started up, you can access the Koverse user interface from a web browser at
 
-``http://<hostname>:8080/Koverse``
+``http://<hostname>:8080``
 
 The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
 
@@ -264,7 +249,7 @@ Logs
 ~~~~
 The Koverse Server redirects stdout and stderr to */opt/koverse-server/logs/server.err* but most application logging can be seen in */var/log/koverse-server/koverse-server.log*
 
-The Koverse Webapp logs to JBoss's server.log at */opt/jboss/standalone/log/server.log*
+The Koverse Web App logs to */var/log/koverse-webapp/koverse-webapp.log* with stdout and stderr redirected to the same directory.
 
 More information on the operations of Koverse can be found in the :ref:`Ops Guide`
 

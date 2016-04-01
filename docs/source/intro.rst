@@ -30,7 +30,7 @@ Koverse frees organizations from the time, expense, and risk of cobbling togethe
 
 Koverse Logical Architecture
 -----------------------------
-The logical architecture of the Koverse platform was conceived to lower the barriers to entry that exist for many organizations who want to become data-driven. Big data solutions such as Hadoop and Accumulo are essential to big data success, but do not offer enough on their own to quickly and easily turn data into insights. Koverse fills this gap by building on well-established technologies and providing the additional capabilities that are necessary to deliver meaningful insights.  
+The logical architecture of the Koverse platform was conceived to lower the barriers to entry that exist for many organizations who want to become data-driven. Big data solutions such as Hadoop and Accumulo are essential to big data success, but do not offer enough on their own to quickly and easily turn data into insights. Koverse fills this gap by building on well-established technologies and providing the additional capabilities that are necessary to deliver meaningful insights.
 
 
 Below is a diagram of the Koverse platform's logical architecture.  The foundation is formed by Apache Hadoop and Accumulo.  Koverse builds on this foundation, offering built-in applications and analytics, in addition to tools for customers to create custom applications and analytics that support both legacy systems and revolutionary new use cases.
@@ -41,10 +41,10 @@ Below is a diagram of the Koverse platform's logical architecture.  The foundati
 	:width: 600 px
 	:align: center
 
-	
+
 
 	Koverse Logical Architecture
-	
+
 	|
 	|
 
@@ -56,26 +56,26 @@ Physical Architecture
 Koverse's software components are designed to run on top of Apache Hadoop - which is a scalable stack of software for data processing. Both Hadoop and Koverse's components are designed to allow for small to very large scale-up. Therefore, when describing the physical architecture one must consider that many of these software components are duplicated across many physical machines.
 
 
-Koverse is comprised of two software components named Koverse Webapp and Koverse Server. The Koverse Webapp is a traditional Java WAR file that runs in a JBoss server. This webapp provides assets like HTML, Javascript, images, and CSS for web browser based clients. It also provides the REST API end point for third party integrations. The Koverse Webapp communicates with the Koverse Server to service requests for data. The Koverse Server provides the business logic for executing queries, applying data security, and monitoring systems. Koverse Server is a stand-alone Java process. The Koverse Server support 3rd party clients using an Apache Thrift API. 
+Koverse is comprised of two software components named Koverse Web App and Koverse Server. The Koverse Web App is a traditional Java WAR file that runs in a JBoss server. This webapp provides assets like HTML, Javascript, images, and CSS for web browser based clients. It also provides the REST API end point for third party integrations. The Koverse Webapp communicates with the Koverse Server to service requests for data. The Koverse Server provides the business logic for executing queries, applying data security, and monitoring systems. Koverse Server is a stand-alone Java process. The Koverse Server support 3rd party clients using an Apache Thrift API. 
 
 
-Koverse runs on Apache Hadoop, and therefore requires the base Hadoop components - which are Jobtracker and Namenode. The Hadoop Jobtracker maintains state around jobs that are executing across the Hadoop cluster, and communicates with many Tasktrackers. The Namenode maintains a file system index for the Hadoop Data File System (HDFS), and communicates with many Datanodes. See http://hadoop.apache.org/ for more information about Hadoop. 
+Koverse runs on Apache Hadoop, and therefore requires the base Hadoop components - which are Jobtracker and Namenode. The Hadoop Jobtracker maintains state around jobs that are executing across the Hadoop cluster, and communicates with many Tasktrackers. The Namenode maintains a file system index for the Hadoop Data File System (HDFS), and communicates with many Datanodes. See http://hadoop.apache.org/ for more information about Hadoop.
 
 
-Koverse uses Apache Accumulo, which is a key-value NoSQL data store on Hadoop. Accumulo generally has single a "Master" process and many "Tablet Servers". See http://accumulo.apache.org/ for more information about Accumulo. 
+Koverse uses Apache Accumulo, which is a key-value NoSQL data store on Hadoop. Accumulo generally has single a "Master" process and many "Tablet Servers". See http://accumulo.apache.org/ for more information about Accumulo.
 
 
-Koverse uses Apache Kafka for streaming data processing. Kafka is a distributed queue that provides guaranteed processing of data across many nodes. See http://kafka.apache.org/ for more information. 
+Koverse uses Apache Kafka for streaming data processing. Kafka is a distributed queue that provides guaranteed processing of data across many nodes. See http://kafka.apache.org/ for more information.
 
 
 **Network Requirements**
 
-The nodes in a Koverse installation should be connected via dedicated gigabit ethernet with a full bandwidth switching plane. The nodes should be physically and logically network isolated - as they perform network intensive operations. 
+The nodes in a Koverse installation should be connected via dedicated gigabit ethernet with a full bandwidth switching plane. The nodes should be physically and logically network isolated - as they perform network intensive operations.
 
 
 **DNS Requirements**
 
-Koverse, Hadoop, Accumulo, and Zookeeper have strict DNS requirements that must be met before an installation can begin. The following is a break down of a DNS entry for one physical machine in the Koverse cluster. Note the four part DNS name - where the first (lowest) part of the DNS name is the physical server "hostname", and the second part of the DNS name is the name of the "cluster". 
+Koverse, Hadoop, Accumulo, and Zookeeper have strict DNS requirements that must be met before an installation can begin. The following is a break down of a DNS entry for one physical machine in the Koverse cluster. Note the four part DNS name - where the first (lowest) part of the DNS name is the physical server "hostname", and the second part of the DNS name is the name of the "cluster".
 
 
 hostname.cluster.domain.tld
@@ -95,7 +95,7 @@ The sections below define the hostnames that must resolve for each node.
 
 **Minimal Koverse Physical Architecture**
 
-This section describes the minimum necessary physical architecture for a distributed Koverse installation. The sections below name and describe the five physical servers in this configuration. 
+This section describes the minimum necessary physical architecture for a distributed Koverse installation. The sections below name and describe the five physical servers in this configuration.
 
 
 * 'Control' Node
@@ -106,7 +106,7 @@ This section describes the minimum necessary physical architecture for a distrib
 
 	* DNS Hostnames: master, jobtracker, namenode
 
-	* 16GB of RAM, 20GB of Disk Storage, 4 CPUs 
+	* 16GB of RAM, 20GB of Disk Storage, 4 CPUs
 
 * 'Koverse' Node
 
@@ -147,7 +147,7 @@ This section describes the typical physical architecture for a production Kovers
 
 	* DNS Hostnames:  namenode
 
-	* 64GB of RAM, 100GB of Disk Storage, 8 CPUs 
+	* 64GB of RAM, 100GB of Disk Storage, 8 CPUs
 
 
 * 'Jobtracker' Nodes
@@ -156,15 +156,15 @@ This section describes the typical physical architecture for a production Kovers
 
 	* DNS Hostnames: jobtracker
 
-	* 64GB of RAM, 100GB of Disk Storage, 8 CPUs 
+	* 64GB of RAM, 100GB of Disk Storage, 8 CPUs
 
-*  'Accumulo Master', 
+*  'Accumulo Master',
 
 	* Accumulo Master, Monitor, Garbage Collector Services
 
-	* DNS Hostnames: master, 
+	* DNS Hostnames: master,
 
-	* 32GB of RAM, 100GB of Disk Storage, 8 CPUs 
+	* 32GB of RAM, 100GB of Disk Storage, 8 CPUs
 
 
 * 'Koverse' Node
@@ -174,13 +174,13 @@ This section describes the typical physical architecture for a production Kovers
 	* DNS Hostnames: koverse1, www
 
 	* 32GB of RAM, 8GB of Disk Storage, 8 CPUs
-	
+
 * 'Zookeeper' Nodes
-	
+
 	* Three of these running zookeeper servers
-	
+
 	* DNS Hostnames: zoo1, zoo2, zoo3
-	
+
 	* 8GB of RAM, One 8 GB root drive, 4 CPUs
 
 * 'Worker' Nodes
@@ -202,7 +202,7 @@ This section describes the typical physical architecture for a production Kovers
 Security Model
 ---------------
 
-Security is a fundamental component of the Koverse architecture because it allows Koverse to operate as a multi-tenant system. Multiple users can use the system, but with controlled access to all system resources.  Koverse uses Authentication, Authorization, and Auditing at multiple levels to ensure that the correct users are given access to the correct resources.  
+Security is a fundamental component of the Koverse architecture because it allows Koverse to operate as a multi-tenant system. Multiple users can use the system, but with controlled access to all system resources.  Koverse uses Authentication, Authorization, and Auditing at multiple levels to ensure that the correct users are given access to the correct resources.
 
 
 **Authentication** is defined in this context as verifying the identity of a user, and **authorization** is granting an authenticated user access to specific resources.  All actions within Koverse are permitted only by authorized users.
@@ -213,13 +213,13 @@ Security is a fundamental component of the Koverse architecture because it allow
 
 Authentication
 ^^^^^^^^^^^^^^
-Authentication is the first step required in order to access Koverse resources. Access to Koverse resources can be requested either through built-in Koverse web apps, or through direct calls to the Koverse Thrift API.  In both cases, the user is requesting access via a client of the Koverse server, so authentication will occur in the same manner.  
+Authentication is the first step required in order to access Koverse resources. Access to Koverse resources can be requested either through built-in Koverse web apps, or through direct calls to the Koverse Thrift API.  In both cases, the user is requesting access via a client of the Koverse server, so authentication will occur in the same manner.
 
 
 Default Koverse Authentication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The :ref:`DefaultAuthFigure` figure below illustrates the steps which occur to authenticate a user who is requesting access to Koverse resources using the default method of authentication, which consists of a username and password. 
+The :ref:`DefaultAuthFigure` figure below illustrates the steps which occur to authenticate a user who is requesting access to Koverse resources using the default method of authentication, which consists of a username and password.
 
 .. _DefaultAuthFigure:
 
@@ -230,8 +230,8 @@ The :ref:`DefaultAuthFigure` figure below illustrates the steps which occur to a
 
 
 	Koverse Default Authentication
-	
-	
+
+
 
 
 1. User submits credentials (username and password) to web app.
@@ -247,7 +247,7 @@ The :ref:`DefaultAuthFigure` figure below illustrates the steps which occur to a
 Third-Party Authentication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The :ref:`3rdPartyAuthFigure` diagram shows the steps which occur to authenticate a user who is requesting access to Koverse resources using third-party authentication. 
+The :ref:`3rdPartyAuthFigure` diagram shows the steps which occur to authenticate a user who is requesting access to Koverse resources using third-party authentication.
 
 
 .. _3rdPartyAuthFigure:
@@ -256,17 +256,17 @@ The :ref:`3rdPartyAuthFigure` diagram shows the steps which occur to authenticat
 	:height: 540 px
 	:width: 400 px
 	:align: center
-	
+
 	Third-Party Authentication
-	
-	
-	
+
+
+
 
 1. User submits third-party credentials to web app.
 
-2. Web app authenticates to third-party system (identified within Koverse by it's 'Authenticator Type') and, if successful, retrieves user's third-party userID. 
+2. Web app authenticates to third-party system (identified within Koverse by it's 'Authenticator Type') and, if successful, retrieves user's third-party userID.
 
-3. Web app passes in Authenticator Type, authenticator password, and third-party UserID to Koverse server. 
+3. Web app passes in Authenticator Type, authenticator password, and third-party UserID to Koverse server.
 
 4. If the third-party Authenticator Type and authenticator password match one that is registered with Koverse as a trusted service, the third-party authentication is automatically accepted by Koverse and no further authentication is required.
 
@@ -279,14 +279,14 @@ See the :ref:`Extensibility` and :ref:`DeveloperDocumentation` for more informat
 Authorization
 ^^^^^^^^^^^^^
 
-Koverse maintains the rules for which users have permission to access to which resources.  Once a user has been authenticated, there are two main types of resources a user can request access to in Koverse: 1) The ability to perform administrative actions and 2) the ability to access data in the datastore.  The process of authorization will determine whether access is granted. 
+Koverse maintains the rules for which users have permission to access to which resources.  Once a user has been authenticated, there are two main types of resources a user can request access to in Koverse: 1) The ability to perform administrative actions and 2) the ability to access data in the datastore.  The process of authorization will determine whether access is granted.
 
 
 
 Authorization to Perform Administrative Actions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Within Koverse, each user is assigned to one or more groups and each group is granted permissions to perform specific administrative actions, such as the ability to manage data collections, manage user accounts, view audit logs, etc.  More details on configuring user groups can be found in the :ref:`usage-guide`.  
+Within Koverse, each user is assigned to one or more groups and each group is granted permissions to perform specific administrative actions, such as the ability to manage data collections, manage user accounts, view audit logs, etc.  More details on configuring user groups can be found in the :ref:`usage-guide`.
 
 
 Groups may correspond to external user groups assigned by a third-party authorization system, which allows for easy integration when customers already have their users organized into various groups.  In this case, the third-party authorization service is registered with Koverse as a trusted service and all group memberships the service associates with a particular user will be honored by the Koverse Server.
@@ -308,9 +308,9 @@ When a user attempts to perform an administrative action, either via built-in Ko
 Authorization to Access Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Koverse provides fine-grained access control that allows multiple datasets to coexist in the same datastore without compromising sensitive information.  The fundamental constructs that make up data stored in Koverse are Collections and Records.  Details on these constructs can be found in the :ref:`Data Model` section, but for the purposes of this section, a Record can be thought of as an individual piece of data and a Collection as being made up of all of the Records that belong together as part of some logical dataset.  
+Koverse provides fine-grained access control that allows multiple datasets to coexist in the same datastore without compromising sensitive information.  The fundamental constructs that make up data stored in Koverse are Collections and Records.  Details on these constructs can be found in the :ref:`Data Model` section, but for the purposes of this section, a Record can be thought of as an individual piece of data and a Collection as being made up of all of the Records that belong together as part of some logical dataset.
 
-  
+
 
 Each Record is assigned a security label that determines which permissions a user must possess in order to access that Record.  This allows Koverse to control access to Collections in their entirety, in addition to providing even more precise access control on individual Records.
 
@@ -335,7 +335,7 @@ Consider the following scenarios:
 
 
 
-**Scenario 1:** User1 is from an another institution and does *not* have the authority to view Export Controlled Research. 
+**Scenario 1:** User1 is from an another institution and does *not* have the authority to view Export Controlled Research.
 
 User1 can access non-ECR rows in Public Findings.
 
@@ -364,7 +364,7 @@ User2 can access non-ECR rows in Public and Private Findings.
 
 
 
-**Scenario 3:** User3 is a faculty member who has the authority to view Export Controlled Research.  
+**Scenario 3:** User3 is a faculty member who has the authority to view Export Controlled Research.
 
 User3 can access all rows in Public and Private Findings.
 
@@ -378,7 +378,7 @@ User3 can access all rows in Public and Private Findings.
 
 
 
-**Scenario 4:** User4 is from an outside institution and has the authority to view Export Controlled Research. 
+**Scenario 4:** User4 is from an outside institution and has the authority to view Export Controlled Research.
 
 User4 Can access all rows in Public Findings.
 
@@ -400,7 +400,7 @@ Koverse's fine-grained access controls create an environment that is not only se
 Auditing
 ^^^^^^^^
 
-Koverse keeps an audit log of user actions.  Examples of actions that are audited are login attempts, queries, and changes to data flow configuration.  The audit log provides an additional layer of assurance that users are not violating, or attempting to violate, the security rules of the system.  Only administrators have access to the audit logs.  
+Koverse keeps an audit log of user actions.  Examples of actions that are audited are login attempts, queries, and changes to data flow configuration.  The audit log provides an additional layer of assurance that users are not violating, or attempting to violate, the security rules of the system.  Only administrators have access to the audit logs.
 
 
 .. _BuiltInCapabilities:
@@ -429,7 +429,7 @@ Data collections in Koverse are comprised of a set of Records. Records can be fl
 * Browse details about the fields that exist in the data collection:
 
 	* Field Name
-	
+
 	* Presence - how many times the field appears in the data collection
 
 	* Average size in bytes
@@ -437,7 +437,7 @@ Data collections in Koverse are comprised of a set of Records. Records can be fl
 	* Estimate of cardinality - how many unique values exist for this field
 
 	* Value types (e.g., string, integer, etc.) and relative frequency of each type
-	
+
 * Configure indexing to refine searchability of the collection.
 
 * View data imports and transforms that affect the collection.
@@ -445,7 +445,7 @@ Data collections in Koverse are comprised of a set of Records. Records can be fl
 
 Imports
 ^^^^^^^
-Koverse supports import of data from external data sources.  User access to manage individual sources is configurable. 
+Koverse supports import of data from external data sources.  User access to manage individual sources is configurable.
 
 
 .. _CommonDataSources:
@@ -547,7 +547,7 @@ Users can submit queries and get back a set of Records.  Koverse provides the fo
 Koverse automatically recognizes the following value types and will make them discoverable:
 
 
-* Strings / free form text 
+* Strings / free form text
 
 * Numbers (integers and reals)
 
@@ -564,7 +564,7 @@ Koverse automatically recognizes the following value types and will make them di
 
 Transforms
 ^^^^^^^^^^^
-Transforms allow users to glean valuable insights from one or more collections and store them in a new collection. They can be run once or set to run automatically. Transforms can be configured to process only new data or reprocess all the data in its input collections.  There is also the option to transform data at the time of import. The output of a transform can either append to the output collection or replace the output collection every time the transform is run. 
+Transforms allow users to glean valuable insights from one or more collections and store them in a new collection. They can be run once or set to run automatically. Transforms can be configured to process only new data or reprocess all the data in its input collections.  There is also the option to transform data at the time of import. The output of a transform can either append to the output collection or replace the output collection every time the transform is run.
 
 
 Because Koverse transforms are run using the Hadoop MapReduce framework, they benefit from all of the MapReduce features.  For example, in addition to being massively parallel, transforms are fault-tolerant, and can be run using a configurable number of dedicated resources.
@@ -575,7 +575,7 @@ Koverse has a number of built-in transforms that can be run on collections witho
 Built-in Transforms
 ^^^^^^^^^^^^^^^^^^^
 
-* **Close Graph** - The closed graph transform is a basic result which characterizes continuous functions in terms of their graphs. 
+* **Close Graph** - The closed graph transform is a basic result which characterizes continuous functions in terms of their graphs.
 
 * **Corpus Entity Stats** - Transform on an object-level which automatically ex-tract and integrate the semantic information about entities and return a list of ranked entities.
 
@@ -601,7 +601,7 @@ Built-in Transforms
 
 * **Nearest Neighbors** - This analytic first extracts features as is done in the Feature Extraction application, and then proceeds to compare each entity to each other entity and calculates a score of similarity between two entities, based on features they have in common.
 
-* **Pearson Correlation** - Transform to determine the correlation between sets of data and a measure of how well they are related. 
+* **Pearson Correlation** - Transform to determine the correlation between sets of data and a measure of how well they are related.
 
 * **Pig Transform** - Run a custom Apache Pig script to transform data. This can include User Defined Functions (UDFs) which can be packaged into jars and uploaded via the UI.
 
@@ -613,9 +613,9 @@ Built-in Transforms
 
 * **Sentiment Analysis** - Calculates sentiment per a given field based on some text appearing with that field in a record. E.g. characterize the sentiment of locations, based on text associated with each location.
 
-* **Sequence N-Grams** - Transform to find probability of an n-gram in a contiguous sequence of n items from a given sequence of text or speech. 
+* **Sequence N-Grams** - Transform to find probability of an n-gram in a contiguous sequence of n items from a given sequence of text or speech.
 
-* **Sequence Similarity** - Transform to sequence similarity of an empirical relationship between sequences. 
+* **Sequence Similarity** - Transform to sequence similarity of an empirical relationship between sequences.
 
 * **Simple Regression Scoring Transform** - A transform to to fit a statistical regression model on one set of data and then evaluate the model on another set of data.
 
@@ -656,7 +656,7 @@ Here is a list of the existing built-in Apps, and the capabilities they provide:
 
 * **Data Collections** - Manage and explore data Collections.
 
-* **Data Flow** - Visualize, configure, and execute the movement of data within the Koverse system. 
+* **Data Flow** - Visualize, configure, and execute the movement of data within the Koverse system.
 
 * **Search** - Query one or more Koverse Collections to find all Records that match search criteria.
 
@@ -672,7 +672,7 @@ Exports
 Koverse collections can easily be exported to external systems.
 
 
-Records can be exported as JSON, as CSV when Records have a flat structure, or to relational database tables.  
+Records can be exported as JSON, as CSV when Records have a flat structure, or to relational database tables.
 
 
 Built-in Export Sinks
@@ -736,11 +736,11 @@ There are several places Koverse can be extended to accommodate unique input/out
 	:align: center
 
 	Koverse Integration Architecture
-	
+
 	|
 	|
 
-Additionally, Koverse enables integration with existing enterprise identity management systems via extensible authentication and authorization modules.	
+Additionally, Koverse enables integration with existing enterprise identity management systems via extensible authentication and authorization modules.
 
 Below is a list of the developer resources that are available for extending Koverse.  Please see the :ref:`DeveloperDocumentation` for details.
 
@@ -761,7 +761,7 @@ Below is a list of the developer resources that are available for extending Kove
 Additional Resources
 ^^^^^^^^^^^^^^^^^^^^^
 
-Koverse software ships with documentation and SDKs available for direct download. Change the host name in the following URL to match your Koverse instance hostname. 
+Koverse software ships with documentation and SDKs available for direct download. Change the host name in the following URL to match your Koverse instance hostname.
 
 ``https://<hostname>/Koverse/docs``
 
@@ -771,7 +771,7 @@ Koverse software ships with documentation and SDKs available for direct download
 Contacting Koverse Sales,Training, and Support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Koverse, Inc. offers 24/7 paid support and comprehensive training for all Koverse products. 
+Koverse, Inc. offers 24/7 paid support and comprehensive training for all Koverse products.
 
 
 Sales
@@ -798,4 +798,4 @@ support@koverse.com
 
 
 
-** Service Level Agreements (SLAs) support requests can only be initiated via phone contact. 
+** Service Level Agreements (SLAs) support requests can only be initiated via phone contact.

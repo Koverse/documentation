@@ -25,9 +25,7 @@ A Koverse cluster relies on the following software infrastructure
 +------------------+------------------+
 | Postgresql       | 8.x or 9.x       |
 +------------------+------------------+
-| JBoss AS         | 7.1.1            |
-+------------------+------------------+
-| Oracle Java      | 1.7.x            |
+| Oracle Java      | 1.7 or 1.8       |
 +------------------+------------------+
 | Kafka (optional) | 0.8.1            |
 +------------------+------------------+
@@ -36,8 +34,8 @@ Koverse leverages Hadoop MapReduce and Spark for data processing and analytics, 
 
 Additionally the Koverse software runs as
 
-* a server java process
-* a web application in JBoss
+* a server java process (koverse-server)
+* a web application process using embedded Jetty (koverse-webapp)
 
 Much of the required infrastructure software is actually comprised of multiple processes that run as a distributed system. As such, there are clearly many combinations of how to map all of these processes to some number of servers in a cluster. For production use cases where fault tolerance is required (a disk or server can fail without data loss) there are some guidelines that should be considered.
 
@@ -61,8 +59,8 @@ Ignoring High Availability (HA) configurations, we can segregate processes by ho
   * HDFS Secondary NameNode
   * YARN ResourceManager
   * Accumulo Master
-  * JBoss
   * Koverse Server
+  * Koverse Web App
   * Postgresql
 
 * In-between processes (1+ process per cluster, depending on usage)
@@ -85,7 +83,7 @@ Example Minimum HW: EC2 d2.4xlarge with 16 CPU, 122G memory
 +------------+-------------------------------+---------------------+---------------------+
 | 0          | koverse-server                | 2                   | 8                   |
 +------------+-------------------------------+---------------------+---------------------+
-|            | JBoss                         | 1                   | 4                   |
+|            | koverse-webapp                | 1                   | 4                   |
 +------------+-------------------------------+---------------------+---------------------+
 |            | Postgresql                    | 1                   | 2                   |
 +------------+-------------------------------+---------------------+---------------------+
@@ -126,7 +124,7 @@ Example Minimum HW: EC2 d2.2xlarge with 8 CPU, 61G memory
 +--------------+-------------------------------+---------------------+---------------------+
 | 0            | koverse-server                | 2                   | 8                   |
 +--------------+-------------------------------+---------------------+---------------------+
-|              | JBoss                         | 1                   | 4                   |
+|              | koverse-webapp                | 1                   | 4                   |
 +--------------+-------------------------------+---------------------+---------------------+
 |              | Postgresql                    | 1                   | 2                   |
 +--------------+-------------------------------+---------------------+---------------------+
@@ -169,7 +167,7 @@ Example Minimum HW: EC2 d2.2xlarge with 8 CPU, 61G memory
 +--------------+-------------------------------+---------------------+---------------------+
 | 0            | koverse-server                | 2                   | 8                   |
 +--------------+-------------------------------+---------------------+---------------------+
-|              | JBoss                         | 1                   | 4                   |
+|              | koverse-webapp                | 1                   | 4                   |
 +--------------+-------------------------------+---------------------+---------------------+
 |              | Postgresql                    | 1                   | 2                   |
 +--------------+-------------------------------+---------------------+---------------------+
@@ -228,7 +226,7 @@ Example ZooKeeper HW: EC2 m3.medium with 1 CPU, 3.75G memory, and 4G local SSD s
 +-----------------+-------------------------------+---------------------+---------------------+
 | 0               | koverse-server                | 4                   | 24                  |
 +-----------------+-------------------------------+---------------------+---------------------+
-|                 | JBoss                         | 2                   | 12                  |
+|                 | koverse-webapp                | 2                   | 12                  |
 +-----------------+-------------------------------+---------------------+---------------------+
 |                 | Postgresql                    | 2                   | 4                   |
 +-----------------+-------------------------------+---------------------+---------------------+
