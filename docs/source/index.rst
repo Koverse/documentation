@@ -6,14 +6,9 @@ Koverse
 =======
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    intro
    usageguide
    adminguide
    devguide
-   usecases
-   tutorials
-   permissions_short
-   permissions_full
-   access_control_flowcharts
