@@ -52,7 +52,7 @@ The modern data work flow consists of the following activities, but they may not
 - Bringing a wide variety of data science tools to bear on analytical questions
 - Putting analytics into production
 - Making the analytical results as well as raw data data searchable
-- Exposing an API on analytical results and building interactive
+- Exposing an API on analytical results and building interactive applications
 - Providing a unified security model across data access, search, and analytics
 - Auditing all activity
 
