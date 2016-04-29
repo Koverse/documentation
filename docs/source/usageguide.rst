@@ -13,15 +13,15 @@ Downloading
 -----------
 
 A free evaluation version of Koverse can be downloaded from the Koverse website.
-Visit http://www.koverse.com/_____________.
+Visit http://www.koverse.com
 
 Choose whether to download the RPM, for installation using the Red Hat Package Manager, or a Cloudera parcel for installation on CDH, the Cloudera Distribution for Hadoop.
 
 Installation and Configuration
 ------------------------------
 
-To install Koverse, see detailed installation instructions for the RPM at `RPM Installation Instructions`.
-For the Cloudera parcel, see `Cloudera Parcel Installation Instructions`.
+To install Koverse, see detailed installation instructions for the RPM at :ref:`RpmInstallation`.
+For the Cloudera parcel, see :ref:`ClouderaParcelInstallation`.
 
 Using Koverse
 ^^^^^^^^^^^^^
@@ -32,14 +32,14 @@ Key Terms and Concepts
 ----------------------
 
 Data Set
-  A collection of 'records' managed by Koverse.
-  These records may have been imported into Koverse from an external data 'Source' such as a relational database, a set of structured files such as CSV files or JSON or 'unstructured' files such as Microsoft Office documents in a remote file system such as an FTP server, or even a messages from a streaming source such network socket or a message queue.
+  A set of records managed by Koverse.
+  These records may have been imported into Koverse from an external data source such as a relational database, a set of structured files such as CSV files or JSON or more unstructured files such as Microsoft Office documents in a remote file system such as an FTP server, or even a messages from a streaming source such network socket or a message queue.
 
 Record
   A set of one or more attributes.
 
 Attribute
-  Sometimes called a 'field' or a column.
+  Sometimes called a 'field' or a 'column'.
   A single attribute consists of a name and a value.
   For example, from a relational database we may import several rows from a table, each of which is stored as a record in Koverse.
   The individual columns of each row from the database table are the attributes of the record.
@@ -506,7 +506,7 @@ These files will be staged and listed on the right.
 If you wish to remove some staged files before importing, click the minus icon next to the file you wish to remove.
 To clear all the files currently staged, click on the minus icon at the top of the list of staged files.
 
-Note that typically files loaded into a single data collection will have the same 'schema' or structure.
+Note that typically files loaded into a single data set will have the same 'schema' or structure.
 For example, you may have several CSV files you wish to load.
 Each CSV file may have a header that identifies the names of fields contained in the CSV records.
 If the fields in each file are not the same it may make working with the data set more inconvenient later on.
@@ -514,7 +514,7 @@ If the fields in each file are not the same it may make working with the data se
 However, Koverse makes no restrictions on the fields that records in a data set can have, and it is often the case that not all records have exactly the same fields.
 Koverse also does not require that all the values in a particular field be of the same size or type.
 
-If the set of files you want to load are of the same schema (have the same set of fields) but for some reason are of differing formats, e.g. some fields are CSV and others are XML, you should load the files of each format into separate collections and combine them into one data set later using a transform.
+If the set of files you want to load are of the same schema (have the same set of fields) but for some reason are of differing formats, e.g. some fields are CSV and others are XML, you should load the files of each format into separate data sets and combine them into one data set later using a transform.
 This is because Koverse will use one parser per import job, so you can use a CSV parser to import the CSV files in one import, and an XML parser to import XML files in another import job.
 
 When you are satisfied with the list of files staged, click Next.
@@ -537,6 +537,10 @@ For example, the records from a CSV file may have all their values concatenated 
 In this case you may need to change some of the options specific to the parser, such as the delimiter character used to separate individual values within records.
 
 After making a change to a parser or its options, click Apply to re-run the import preview and verify that records look correct.
+
+One common situation is importing XML data.
+Koverse requires that an XSLT script be provided to let Koverse know how the XML file should be broken into individual records, since there isn't enough information in XML files to do this reliably automatically.
+See the section on `Providing an XML Transform (XSLT) to import XML data`_ for details.
 
 We can choose to apply optional normalization rules next, or simply click next to go to step 3.
 
@@ -696,13 +700,290 @@ Interactive Analytics
 
 In addition to running transforms to process data sets at scale, Koverse also enables users to perform interactive analysis of data sets at scale via popular tools such as Apache Spark and Jupyter Notebook.
 
+Using Python with Koverse
+-------------------------
+Python is a popular interpreted programming language.
+
+Koverse ships with a Python client to allow Python scripts to access the Koverse API.
+The Koverse Python client uses Apache Thrift to communicate with the Koverse server. It is possible to generate clients for other languages as well.
+
+To use the Koverse Python client, do the following::
+
+ sudo pip install koverse
+ Downloading/unpacking koverse
+  Downloading koverse-X.X.X-py2.py3-none-any.whl (144kB): 144kB downloaded
+ Requirement already satisfied (use --upgrade to upgrade): thrift in /Library/Python/2.7/site-packages (from koverse)
+ Requirement already satisfied (use --upgrade to upgrade): kafka-python in /Library/Python/2.7/site-packages (from koverse)
+ Requirement already satisfied (use --upgrade to upgrade): six in /Library/Python/2.7/site-packages (from kafka-python->koverse)
+ Installing collected packages: koverse
+ Successfully installed koverse
+ Cleaning up...
+
+The Koverse Python client can then be used in Python scripts by importing the koverse module::
+
+ $ python
+ Python 2.7.6 (default, Sep  9 2014, 15:04:36)
+ [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+ Type "help", "copyright", "credits" or "license" for more information.
+ >>> from koverse import client
+
+Connecting to the Koverse Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Python client can connect to the hostname of the Koverse Server (note: this is not the address of the Koverse Web App)::
+
+ >>> client.connect('localhost')
+
+If for some reason the client loses the connection to the Koverse Server, such as when the Koverse Server is restarted, the client can reconnect simply by calling client.connect() again.
+
+Users can authenticate themselves to the Koverse server using their username and base-64 encoded passwords::
+
+ >>> import base64
+ >>> client.authenticateUser('myusername', base64.b64encode('mypassword'))
+ >>>
+
+If the authentication is unsuccessful an exception is raised::
+
+ Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Library/Python/2.7/site-packages/koverse/client.py", line 93, in authenticateUser
+    tUser = ugClient.authenticateUser(auth, None, parameters)
+  File "/Library/Python/2.7/site-packages/koverse/thriftgen/usergroup/UserGroupService.py", line 782, in authenticateUser
+    return self.recv_authenticateUser()
+  File "/Library/Python/2.7/site-packages/koverse/thriftgen/usergroup/UserGroupService.py", line 807, in recv_authenticateUser
+    raise result.ke
+ koverse.thriftgen.ttypes.TKoverseException: TKoverseException(_message='No authenticated user found')
+
+Querying Koverse Data Sets
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Koverse Python client can be used to interactively query data sets, fetch samples, create data sets and run transforms.
+
+To query one or more data sets, use the client's query() method. In this example, we'll query Koverse for any data set that has a value above 100 in a field named 'Close'.::
+
+ >>> results = client.query({'Close': {'$gt': 100.0}})
+ >>> len(results)
+ 736
+
+Results are returned as a list of Python dicts, each representing a record from a Koverse data set::
+
+ >>> import pprint
+ >>> pprint.pprint(results[0])
+ {'AdjClose': 34.9,
+  'Close': 256.88,
+  'Date': time.struct_time(tm_year=42304, tm_mon=11, tm_mday=6, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=6, tm_yday=311, tm_isdst=0),
+  'High': 267.88,
+  'Low': 199.25,
+  'Open': 263.84,
+  'Volume': 236228300}
+
+Koverse records contain fields and values. Values may be of a simple type such as int and date, but may also contain lists or dicts.
+
+To query a specific set of data sets, specify an optional parameter with a list of data set names to query::
+
+ >>> client.query({'Close': {'$gt': 100.0}}, ['stocks'])
+
+or, by using the name parameter 'datasets'::
+
+ >>> client.query({'Close': {'$gt': 100.0}}, datasets=['stocks'])
+
+Clients can also request that the results be limited to a set number, and can request that the Koverse server deliver results beginning at a specified offset. For example::
+
+ >>> client.query({'Close': {'$gt': 100.0}}, datasets=['stocks'], limit=10, offset=100)
+
+Clients can also request that the Koverse Server return only a subset of the fields in each record by specifying a list of field names to include::
+
+ >>> pprint.pprint(client.query({'Close': {'$gt': 100.0}}, data sets=['stocks'], limit=10, offset=100, fields=['Close']))
+ [{'Close': 110.88},
+  {'Close': 111.56},
+  {'Close': 111.25},
+  {'Close': 110.75},
+  {'Close': 111.63},
+  {'Close': 111.25},
+  {'Close': 111.5},
+  {'Close': 111.25},
+  {'Close': 111.5},
+  {'Close': 111.5}]
+
+Fetching Data Set Samples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Because Python runs on a single machine, and because Koverse data sets may contain a large volume of records, it can be useful to
+work with a sample of a data set's records, especially when building statistical models designed to be trained on a representative sample.
+
+Koverse maintains representative samples for all data sets by default. These samples can be retrieved by the client using the getSamples() method::
+
+ >>> samples = client.getSamples('stocks')
+ >>> len(samples)
+ 1000
+
+
+
+Uploading resource files
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+One advantage of Python is that is has a number of well supported libraries for doing
+sophisticated data analysis , such as numpy (http://www.numpy.org), scipy (http://www.scipy.org),
+nltk for natural language processing (http://nltk.org),
+pandas for data manipulation and analysis http://pandas.pydata.org,
+scikit-learn for machine learning (http://scikit-learn.org/stable/), etc.
+
+For this simple example, we'll model the distribution of day to day changes in stock prices so we can identify anomalous jumps or dips in price.
+We can pull a sample of the stock prices from Koverse using the getSamples() method::
+
+ >>> samples = client.getSamples('stocks')
+
+We'll model the day-to-day changes in price as a gaussian random walk (https://en.wikipedia.org/wiki/Random_walk#Gaussian_random_walk).::
+
+ >>> differences = [r['Close'] - r['Open'] for r in samples]
+ >>> import numpy
+ >>> mean = numpy.mean(differences)
+ >>> mean
+ -0.085472972972972849
+ >>> stddev = numpy.std(differences)
+ >>> stddev
+ 8.6134268092274517
+
+Now we'll store our model, which just consists of these two numbers, the mean and standard deviation, in a file that we can upload and use in a transform.
+Typically we wouldn't do this for such a simple model, we could pass those numbers as parameters to a transform.
+But for more complicated models using a file is much more convenient.
+The storeResourceFile() method will upload the model data to a file in HDFS so that it can be accessed by workers in parallel::
+
+ >>> import cPickle
+ >>> modelData = base64.b64encode(cPickle.dumps((mean, stddev)))
+ >>> modelFilename = client.storeResourceFile('model1',modelData)
+ >>> modelFilename
+ '1438664105966model1'
+
+Note: we used the numpy package to obtain these parameters, which means numpy must also be installed on our MapReduce worker nodes.
+
+The storeResourceFile() method returns a unique filename that Transform scripts can reference.
+Now we can use it to score all the daily changes in price to look for anomalous changes, for example: changes that are greater than two standard deviations from the mean.
+We'll do that in the next section.
+
+Running a Python Script as a Transform
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Koverse supports running Python scripts in Transforms. These transforms are simple map-only transforms.
+
+
+We'll write our Python script for scoring daily stock changes based on our model.
+The list of any resource files included will be passed in as an argument to our script.
+In our case, we have one model filename. If there are multiple resource files, they will be separated by commas::
+
+ >>> script = '''
+ #/usr/bin/python
+
+ import numpy
+ import cPickle
+ import base64
+ import sys
+ import json
+
+ # load our model
+ modelFile = sys.argv[1]
+ f = open('/tmp/' + modelFile)
+ mean, stddev = cPickle.loads(base64.b64decode(f.read()))
+ f.close()
+
+ # records from input data sets are delivered as JSON objects via stdin
+ for line in sys.stdin:
+
+	record = json.loads(line.strip())
+
+	# calculate price change
+	change = record['Close'] - record['Open']
+
+	# if change is more than two standard deviations from the mean
+	# consider it anomalous and output the record
+	if abs(change - mean) / stddev > 2.0:
+		print json.dumps(record)
+		sys.stdout.flush()
+
+ '''
+
+Be sure to call sys.stdout.flush() after outputting a new record.
+
+Any libraries our script needs to use should be installed on all the MapReduce worker nodes before hand.
+Care should be taken to ensure the proper versions of libraries are installed.
+See instructions on this site https://www.digitalocean.com/community/tutorials/how-to-set-up-python-2-7-6-and-3-3-3-on-centos-6-4 for tips on installing python 2.7 packages on CentOS.
+
+In our example, workers will need the popular numpy package, which can be installed via::
+
+ sudo /usr/local/bin/pip install numpy
+
+once Python 2.7 and pip are installed.
+
+To get a description of a Transform use the getTransformDescription() method. This will tell us the parameters we need to fill out to create a transform.
+We're using the Python script Transform that ships with Koverse, identified by the name 'python-transform'::
+
+ >>> desc = client.getTransformDescription('python-transform')
+ >>> for param in desc.parameters:
+ ...     print param.parameterName + ': ' + param.displayName
+ ...
+ inputDataSet: Input Data Set(s)
+ outputDataSet: Output Data Set
+ pythonPathParam: Path to Python Executable
+ scriptParam: Python script
+ resourceFiles: Comma separated resource file paths
+
+The pythonPathParam should reference the path to the Python executable on MapReduce workers. This allows us
+to use a particular version of the Python interpreter if necessary.
+
+Define the options we'll pass to our Transform, which includes the Python script and the model filename we stored in the previous section.
+We don't need to specify the input and output data sets here, we'll do that later in the call to create the transform.::
+
+ >>> options = {
+	'pythonPathParam': '/usr/local/bin/python2.7',
+	'scriptParam': script,
+	'resourceFiles': modelFilename
+ }
+
+Create a data set to store the output::
+
+ >>> client.createDataSet('anomalous changes')
+
+To setup a transform, use the createTransform() method.::
+
+ >>> transform = client.createTransform(
+		'python-transform',
+		'score daily changes',
+		['stocks'],
+		'anomalous changes',
+		options)
+
+This returns a Transform object.
+To obtain a list of Transforms that have already been created, use the listTransforms() method.
+
+To run the transform we'll use its run() method::
+
+ >>> job = transform.run()
+
+This will instantiate a MapReduce job that executes our Python script on all of the MapReduce worker nodes in parallel.
+This way we can process a large amount of data efficiently.
+
+Note that Transforms are configured by default to not run sooner than once per hour. Any jobs submitted earlier than that will be blocked until an hour has passed.
+
+The output will be stored in the output data set we specified.
+We can examine a sample of the output to verify our results::
+
+ >>> sampleOutput = client.getSamples('anomalous changes')
+ >>> first = sampleOutput[0]
+ >>> print first['Close'] - first['Open']
+ -22.44
+
+This shows an example of a day when a stock dropped by 22.44 points, which is more than two standard deviations from the typical daily change.
+
+The Python client can also be used in the context of Python tools such as iPython Notebook (http://ipython.org/notebook.html).
+Simply use the same methods described above in iPython Notebooks.
+
 
 Analyzing Data Sets with the PySpark Shell
 ------------------------------------------
 
 PySpark is the name of Apache Spark's Python API and it includes an interactive shell for analyzing large amounts of data with Python and Spark.
 
-Koverse supports processing data from Koverse Collections using PySpark and storing Resilient Distributed Datasets (RDDs) into Koverse Collections.
+Koverse supports processing data from Koverse data sets using PySpark and storing Resilient Distributed Datasets (RDDs) into Koverse data sets.
 
 To use Koverse with PySpark, follow these steps.
 
@@ -761,15 +1042,15 @@ To access Koverse's Spark functionality import the following::
 
  >>> from koverse.spark import *
 
-A KoverseSparkContext object is used to obtain Spark RDDs for specified Koverse collections.
+A KoverseSparkContext object is used to obtain Spark RDDs for specified Koverse data sets.
 Simply pass in the pre-created SparkContext object, the hostname of the Koverse Server, and your username and password::
 
  >>> import base64
  >>> ksc = KoverseSparkContext(sc, 'localhost', 'username', base64.b64encode('password'))
 
-To get an RDD for a Koverse Collection, call the koverseCollection() method::
+To get an RDD for a Koverse data set, call the koverseDataSet() method::
 
- >>> rdd = ksc.koverseCollection('stocks')
+ >>> rdd = ksc.koverseDataSet('stocks')
 
 This rdd can be used like other RDDs.
 
@@ -803,15 +1084,15 @@ Now we can apply our model directly to our differences RDD.
 Note that, unlike the previous example, here we are not setting up a Koverse Transform which means this analysis workflow will only exist during this PySpark session.
 We can persist the output, but if we want to repeat this process we'll need to run these commands again.
 
-If we wish to persist these anomalies in a Koverse collection to that applications and users can access and search these results we can use the saveAsKoverseCollection() method.
+If we wish to persist these anomalies in a Koverse data set to that applications and users can access and search these results we can use the saveAsKoverseDataSet() method.
 
- >>> ksc.saveAsKoverseCollection(anomalies, 'anomalies')
+ >>> ksc.saveAsKoverseDataSet(anomalies, 'anomalies')
 
-This will create a collection called 'anomalies' and store the information from our RDD into it.
+This will create a data set called 'anomalies' and store the information from our RDD into it.
 
-If the collection already exists and we wish to simply add new data to it, we can specify append=True
+If the data set already exists and we wish to simply add new data to it, we can specify append=True
 
- >>> ksc.saveAsKoverseCollection(anomalies, 'anomalies', append=True)
+ >>> ksc.saveAsKoverseDataSet(anomalies, 'anomalies', append=True)
 
 
 
@@ -879,7 +1160,7 @@ In that notebook, you can connect to a Koverse instance via::
 
 You can create an RDD from a Koverse instance as follows, for example::
 
- rentals = ksc.koverseCollection('Customer Rentals')
+ rentals = ksc.koverseDataSet('Customer Rentals')
  rentals.take(1)
 
  [{u'email': u'DIANNE.SHELTON@sakilacustomer.org',
@@ -898,7 +1179,7 @@ You can process the RDD the same as other Spark RDDs::
 When you want to write an RDD to Koverse, convert it to be a set of Python dicts and save::
 
  ncRecords = nameCount.map(lambda nc: {'name': nc[0], 'count': nc[1]})
- ksc.saveAsKoverseCollection(ncRecords, 'name count', append=True)
+ ksc.saveAsKoverseDataSet(ncRecords, 'name count', append=True)
 
 
 
@@ -956,7 +1237,7 @@ Now iPython Notebook can be started from the Spark installation directory::
 Visit http://localhost:8880 in a web browser to access iPython Notebook and create a new notebook.
 In this new notebook, everything should be imported and initialized for us to start using PySpark with Koverse.
 
-Use the same methods described in the previous section on PySpark in iPython notebooks to obtain RDDs from Koverse collections, process them, and persist RDDs to Koverse collections.
+Use the same methods described in the previous section on PySpark in iPython notebooks to obtain RDDs from Koverse data sets, process them, and persist RDDs to Koverse data sets.
 
 .. image:: /_static/PySpark_Notebook.png
 	:height: 550 px
@@ -1057,3 +1338,37 @@ To make a data set available to everyone, simply add the 'Everyone' group to the
 
 Access Control for Analytics and Applications
 ---------------------------------------------
+
+Appendix
+^^^^^^^^
+
+Providing an XML Transform (XSLT) to import XML data
+----------------------------------------------------
+
+XML can be imported into Koverse as any file can.
+To parse XML data into proper Koverse records, an XSLT must be used to convert XML into Koverse Record XML.
+
+For example, let's say you have the following XML file which you wish to import:
+
+.. literalinclude:: /_static/xslt-examples/books-example.xml
+	:language: xml
+
+For this example, this XML file would conform to your XML schema (XSD):
+
+.. literalinclude:: /_static/xslt-examples/books-example.xsd
+	:language: xml
+
+Now, to transform this XML into XML that represents Koverse records, the following XSLT would be used:
+
+.. literalinclude:: /_static/xslt-examples/books-example.xsl
+	:language: xml
+
+Which would produce the following XML file that conforms to the Koverse Record XML Schema:
+
+.. literalinclude:: /_static/xslt-examples/books-example-transformed.xml
+	:language: xml
+
+Finally, for your reference, here is the complete Koverse XML Schema:
+
+.. literalinclude:: /_static/xslt-examples/koverse-records.xsd
+	:language: xml

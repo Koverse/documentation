@@ -8,17 +8,17 @@ Install Guide
 This section describes the prerequisites and process for installing Koverse software on your cluster.
 
 Infrastructure Requirements
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 For a complete description of the infrastructure required for a Koverse install, please see the :ref:`InfraGuide`.
 
 Operating System
-^^^^^^^^^^^^^^^^
+----------------
 Koverse requires a Linux operating system. Installation packages (RPMs) are provided for RedHat/CentOS distributions, but other distributions are also supported with .tar.gz packages.
 
 Koverse requires all servers in a cluster to have clocks synchronized within a few seconds of each other, so it is recommended to use ntpd for this purpose.
 
 Software
-^^^^^^^^
+--------
 As described in the :ref:`InfraGuide`, Koverse runs atop several distributed systems. All of these dependent systems need to be properly installed and configured for Koverse to execute successfully. The proper installation of Hadoop and associated software infrastructure is not within the scope of this document, nor is it a trivial undertaking. If your organization does not have well established provisioning tools and/or experience installing Hadoop ecosystem software, we highly recommend tools like `Cloudera Manager`_ or `Apache Ambari`_ to help automate and manage the installation of the required software infrastructure.
 
 .. _Cloudera Manager: https://cloudera.com/products/cloudera-manager.html
@@ -28,7 +28,7 @@ Koverse is supported on the latest distributions from Cloudera, Hortonworks, and
 
 
 Hardware
-^^^^^^^^
+--------
 Koverse runs on off-the-shelf commodity hardware. The two Koverse software components, koverse-server and koverse-webapp, require minimum HW resources as shown below. As the number of concurrent users of Koverse grows, these resource requirements would also increase.
 
 +----------------+--------------------+--------------------+
@@ -40,8 +40,10 @@ Koverse runs on off-the-shelf commodity hardware. The two Koverse software compo
 +----------------+--------------------+--------------------+
 
 
-Step-by-Step Installation Instructions
---------------------------------------
+.. _RpmInstallation:
+
+RPM Installation
+^^^^^^^^^^^^^^^^
 
 Before starting this install process, you should have downloaded the 2 required Koverse RPMs listed below. If you do not know where to get the RPMs from, please contact Koverse Support at support@koverse.com.
 
@@ -51,14 +53,14 @@ Before starting this install process, you should have downloaded the 2 required 
 While separate components, typical installs will install both the Koverse Server and Koverse Web App on the same server. The directions below assume commands are being executed on this single server.
 
 Users
-^^^^^
+-----
 
 The *koverse-server* and *koverse-webapp* processes run as the user 'koverse'. To create this user, as root run::
 
   useradd koverse
 
 HDFS Configuration
-^^^^^^^^^^^^^^^^^^
+------------------
 
 The 'koverse' user added above needs to be in the HDFS Superuser Group. This group is defined in the HDFS configuration property of *dfs.permissions.superusergroup*. Additionally, the value of that property must be a UNIX group on the server. For instance, if *dfs.permissions.superusergroup* was 'hadoop', ensure this group exists, and if not::
 
@@ -80,7 +82,7 @@ Now we need to create a directory in HDFS for Koverse to use. Assuming the typic
 .. _AccumuloInit:
 
 Accumulo Initialization
-^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 Koverse will authenticate to Accumulo using its own username and password. Initially Accumulo has a single user 'root' with a default password of 'secret'. You may have changed the password for 'root' during your install of Accumulo. To create a 'koverse' user in Accumulo, start the Accumulo shell::
 
@@ -98,7 +100,7 @@ Then grant the 'koverse' Accumulo user the required permissions to manage its ta
  root@accumulo> grant -s System.SYSTEM -u koverse
 
 Koverse Server Install
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 To install the Koverse Server from RPM, simply run::
 
@@ -107,7 +109,7 @@ To install the Koverse Server from RPM, simply run::
 This will install into */opt/koverse-server/* as well as create a script at */etc/init.d/koverse-server* for starting and stopping the process.
 
 Koverse Web App Install
-^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 To install the Koverse Web App from RPM, simply run::
 
@@ -118,7 +120,7 @@ This will install into */opt/koverse-webapp/* as well as create a script at */et
 .. _PostgreSQLSetup:
 
 PostgreSQL Setup
-^^^^^^^^^^^^^^^^
+----------------
 
 Koverse stores metadata about Data Collections, Users, Transforms, etc in an RDBMS such as PostgreSQL. These instructions assume PostgreSQL has already been installed. In an environment where Cloudera Manager is used, Koverse can leverage the PostgreSQL database that is installed via Cloudera Manager. If you wish to use a different password than the default 'koverse1234', you will need to follow the procedure in :ref:`AppendixA` for encoding this password before putting it into the *koverse-server.properties* file.
 
@@ -156,17 +158,121 @@ Finally, update pg_hba.conf to set all connections METHOD to password e.g.::
 
 	local  all  all  password
 
+Configuration
+-------------
+
+Follow the instructions below in the `Koverse Configuration`_ section.
+
+Running Koverse
+---------------
+
+As discussed, Koverse software runs as two processes. To start the Koverse Server, as root run::
+
+  service koverse-server start
+
+And for the Web App, run::
+
+  service koverse-webapp start
+
+Once both processes have started up, you can access the Koverse user interface from a web browser at
+
+``http://<hostname>:8080``
+
+The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
+
+Logs
+----
+The Koverse Server redirects stdout and stderr to */opt/koverse-server/logs/server.err* but most application logging can be seen in */var/log/koverse-server/koverse-server.log*
+
+The Koverse Web App logs to */var/log/koverse-webapp/koverse-webapp.log* with stdout and stderr redirected to the same directory.
+
+More information on the operations of Koverse can be found in the :ref:`Ops Guide`
+
+.. _ClouderaParcelInstallation:
+
+Cloudera Parcel Installation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Koverse provides the following files.
+
+KOVERSE-1.0.jar
+  Cloudera Service Descriptor for Koverse
+KOVERSE-2.0.0-el6.parcel
+  parcel file
+KOVERSE-2.0.0-el6.parcel.sha
+  parcel SHA file
+manifest.json
+  repository file for local parcel repository
+
+
+Cloudera Service Descriptor Installation
+----------------------------------------
+
+1. Install the Cloudera Service Descriptor for Koverse, restart Cloudera Manager
+2. Copy the Cloudera Service Descriptor file onto the Cloudera Manager server in /opt/cloudera/csd
+3. chmod 644 the Cloudera Service Descriptor file in /opt/cloudera/csd
+4. chown cloudera-scm:cloudera-scm the Cloudera Service Descriptor file in /opt/cloudera/csd
+5. Restart Cloudera Manager to pick up the new Koverse Service from the Cloudera Service Descriptor: service cloudera-scm-server restart
+6. For further reference: http://www.cloudera.com/documentation/enterprise/5-5-x/topics/cm_mc_addon_services.html
+
+Parcel Installation
+-------------------
+
+1. Copy over parcel file to /opt/cloudera/parcel-repo
+2. Copy over the parcel SHA file to /opt/cloudera/parcel-repo
+3. Copy over manifest.repo to /opt/cloudera/parcel-repo
+4. Change ownership of all files in /opt/cloudera/parcel-repo to cloudera-scm:cloudera-scm
+5. Install the parcel through Cloudera Manager user interface.
+6. Hosts -> Parcels -> Check for New Parcels.  The Koverse parcel should show up shortly.
+7. Use the button near Koverse to distribute the parcel to the Cloudera cluster.
+8. Use the button near Koverse to activate the parcel on the Cloudera cluster.
+
+
+Configuration
+-------------
+
+On the host where the Koverse Service and Koverse WebApp roles will be run, perform manual configuration steps listed in `Koverse Configuration`_.
+Then return to this section.
+
+1. Ensure that dfs.permissions.superusergroup is set to an existing Unix group( a group setting of hadoop is used in the examples below).
+2. This will probably require restarting HDFS as well on the cluster.
+3. Add koverse and accumulo to superusergroup
+4. usermod -a -G hadoop koverse
+5. usermod -a -G hadoop accumulo
+6. Copy aggregation JAR over to Accumulo tablet servers.  This step is only required if explicitly using the Aggregation Framework functionality. See the Koverse Aggregation Library Distribution section of the install guide.
+7. Ensure that the java binaries are available in the path for the koverse user.  If these are not already in the system path somewhere, it can be added using these commands:
+8. alternatives --install /usr/bin/java java /usr/java/jdk1.7.0_67-cloudera/bin/java 120 --slave /usr/bin/keytool keytool /usr/java/jdk1.7.0_67-cloudera/bin/keytool --slave /usr/bin/rmiregistry rmiregistry /usr/java/jdk1.7.0_67-cloudera/bin/rmiregistry
+9. alternatives --install /usr/bin/javac javac /usr/java/jdk1.7.0_67-cloudera/bin/javac 120 --slave /usr/bin/jar  jar  /usr/java/jdk1.7.0_67-cloudera/bin/jar --slave /usr/bin/rmic rmic /usr/java/jdk1.7.0_67-cloudera/bin/rmic
+
+Add the Service through the Cloudera Manager user interface
+
+
+Select the Koverse service from the list
+
+
+
+Select the hosts to install the Koverse server and web server on.
+
+
+
+Enter the initial configuration parameters.  Note that PostgreSQL password can be left blank if you are using the Cloudera Manager PostgreSQL database.  The installation process will automatically retrieve the login credentials from Cloudera
+
+
+Verify that everything has installed and started properly:
+
+
+
 Koverse Configuration
 ^^^^^^^^^^^^^^^^^^^^^
 
 Environment
-~~~~~~~~~~~
+-----------
 The 'koverse' user needs to have the 'java' command in their path for the Koverse startup scripts to execute correctly. Again, this needs to be Oracle Java 1.7 or 1.8.
 
 The environment variable *HADOOP_CONF_DIR* needs to be set for the 'koverse' user so Koverse can take advantage of the Hadoop client configuration. The startup script */opt/koverse-server/bin/startup.sh* will default this environment variable to */etc/hadoop/conf* if it is not already set.
 
 koverse-server.properties
-~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
 Many of the available configuration properties for Koverse can be left to their default values. Please see the :ref:`ConfigurationGuide` for the complete list of properties. */opt/koverse-server/conf/koverse-server.properties* is where required properties can be set or defaults overriden. A few of these commonly set user properties are discussed below.
 
@@ -218,40 +324,18 @@ This is the password for the Accumulo user created in :ref:`AccumuloInit`
 This is a comma-separated list of ZooKeeper servers in the form of <HOSTNAME>:<PORT>. The default ZooKeeper port is 2181.
 
 koverse-webapp.properties
-~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
 Again, please see the :ref:`ConfigurationGuide` for the complete list of properties that can be set for the Koverse Web App. */opt/koverse-webapp/conf/koverse-webapp.properties* is where required properties can be set or defaults overriden, for example to change the ports for the web server or to enable and configure HTTPS.
 
 Koverse Aggregation Library Distribution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------
 
 In order to utilize the :ref:`aggregation <AggregationIntro>` functions of Koverse, the koverse-aggregation-<VERSION>.jar needs to be deployed to a location where Accumulo can load it. The default location would be in $ACCUMULO_HOME/lib/ext on all Accumulo tablet servers. This JAR file can be found on the Koverse Server in */opt/koverse-server/lib/koverse-aggregation-<VERSION>.jar*
 
 
-Running Koverse
-^^^^^^^^^^^^^^^
 
-As discussed, Koverse software runs as two processes. To start the Koverse Server, as root run::
 
-  service koverse-server start
-
-And for the Web App, run::
-
-  service koverse-webapp start
-
-Once both processes have started up, you can access the Koverse user interface from a web browser at
-
-``http://<hostname>:8080``
-
-The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
-
-Logs
-~~~~
-The Koverse Server redirects stdout and stderr to */opt/koverse-server/logs/server.err* but most application logging can be seen in */var/log/koverse-server/koverse-server.log*
-
-The Koverse Web App logs to */var/log/koverse-webapp/koverse-webapp.log* with stdout and stderr redirected to the same directory.
-
-More information on the operations of Koverse can be found in the :ref:`Ops Guide`
 
 .. _AppendixA:
 

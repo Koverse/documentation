@@ -43,7 +43,11 @@ The following sections provide a basic introduction to the basic abstract concep
 Data Model
 ^^^^^^^^^^
 
-The Koverse data model has two main conceptual components: **Records**, and **Data Collections**. Logically, each Data Collection contains a set of Records.
+The Koverse data model has two main conceptual components: **Records**, and **Data Collections**.
+Logically, each Data Collection contains a set of Records.
+
+In this version of Koverse, we may refer to Data Collections as 'Data Sets'.
+They are equivalent.
 
 For those familiar with relational database management systems such as Oracle or MySQL, the analogy is that a Data Collection is similar to a Table, a Record is similar to a Row, and the fields of a Record are similar to the Columns.
 However, unlike traditional relational databases, Records in a single Collection in Koverse do not have to all have the same fields, and fields can contain complex values, like lists and mappings of fields to values.

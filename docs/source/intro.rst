@@ -4,11 +4,7 @@
 Introduction
 ============
 
-
-Overview
-^^^^^^^^^
-
-
+Koverse is the only demand-driven platform for big data that, from day one, enables users to easily run advanced analytics against any data source and develop result driven applications.
 
 Key Benefits
 ^^^^^^^^^^^^
@@ -16,101 +12,33 @@ Key Benefits
 Ubiquitous access to data
 -------------------------
 
-Koverse automatically indexes all data
-Lucene library used for text tokenization
-Index is stored in accumulo, same security controls
+Koverse automatically indexes all data.
+The Apache Lucene library used for text tokenization.
+Indexes are stored in Apache Accumulo, a scalable NoSQL database that provides the same security controls over indexes as original records.
 
 Enable data science through bulk analysis with latest tools
 -----------------------------------------------------------
 
-Data scientists can develop analytics that run on data in situ, that can be reused because analytic configuration can be matched to the schema information koverse keeps
-Developers can use spark, spark SQL, hadoop map reduce, python, apache pig, R, iPython notebook, Tableau, Excel
+Data scientists can develop analytics that run on data in-situ, that can be reused because analytic configuration can be matched to the schema information Koverse maintains.
+Developers can use spark, spark SQL, hadoop map reduce, python, apache pig, R, iPython notebook, Tableau, Excel.
 
 Schema-free ingest
 ------------------
 
-Users do not have to provide any information about the data schema. Data doesn’t have to be well understood or consistent
-Store data from external systems once, in a flexible data model in accumulo
-Via data profiling and sampling discover data structure and address data quality issues
+Users do not have to provide any information about the data schema.
+Data doesn’t have to be well understood or consistent.
+Store data from external systems once, in a flexible data model in accumulo.
+Discover data structure and address data quality issues via data profiling and sampling.
 
 Flexible access control
 -----------------------
 
-Koverse labels data, protects it immediately
-Koverse manages group to data set access
+Koverse labels all data ingested, and protects it immediately.
+Koverse manages group-to-data set access and does additional record-level filtering.
 
-Enabling the Modern Data Work Flow
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Koverse is designed to address some of the most common and challenging barriers organizations must overcome in order to successfully put all of their data to work.
-The modern data work flow consists of the following activities, but they may not always appear in this order and not all of the steps is always required:
-
-- Gathering data from operational systems
-- Staging data in a scalable system where multiple data sets can be combined
-- Detecting and describing data structure or schemas
-- Detecting and exposing potential data quality issues
-- Bringing a wide variety of data science tools to bear on analytical questions
-- Putting analytics into production
-- Making the analytical results as well as raw data data searchable
-- Exposing an API on analytical results and building interactive applications
-- Providing a unified security model across data access, search, and analytics
-- Auditing all activity
-
-Let's talk about each of those steps in depth and describe how Koverse addresses each.
-
-Gathering Data
---------------
-Much of the data in organizations is currently housed in operational systems which often consist of relational databases and file systems on which applications run that support business activities such as taking orders, making transactions, and recording and updating customer information.
-Some of this data may already have been copied into an analytical system such as a data warehouse.
-Regardless of where the information is stored, it must be gathered into a flexible analytical system that can handle structured and unstructured data from a wide variety of sources so that analytical processes can benefit from a combined view of an organization.
-
-
-Staging multiple data sets
---------------------------
-
-Detecting data structure
-------------------------
-
-Detecting data quality issues
------------------------------
-
-Supporting data science development
------------------------------------
-
-Putting analytics into production
----------------------------------
-
-Making data searchable
-----------------------
-
-Building applications
----------------------
-
-Unified security
-----------------
-
-Auditing
---------
-
-
-Concepts
-^^^^^^^^
-
-Data Set
---------
-
-Record
-------
-
-Attribute
----------
-
-Transform
----------
 
 Koverse Architecture
 ^^^^^^^^^^^^^^^^^^^^
-
 
 .. figure:: /_static/KoverseLogicalArchitecture.*
 	:height: 350 px
