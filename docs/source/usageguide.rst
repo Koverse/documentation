@@ -73,7 +73,7 @@ In some production instances of Koverse, authentication is handled automatically
 If so, when you first visit the Koverse URL in a browser you will automatically be logged in.
 On a system that is using built-in Koverse user and group management, you will see the following login screen:
 
-- screenshot
+.. image:: /_static/UsageGuide/login.png
 
 To login to a newly installed Koverse instance, type in 'admin' for the user name and 'admin' for the password.
 Otherwise, login using the username (often your email address) and password that have been provided to you by your administrator.
@@ -82,6 +82,8 @@ If your password is incorrect you will see an error.
 
 
 Once logged in successfully, you will now see elements of the Koverse user interface, which are described below.
+
+.. image:: /_static/UsageGuide/ui.png
 
 Navigation
 -----------
@@ -123,14 +125,23 @@ On the left you will see a list of data sets in alphabetical order.
 These are the data sets your user is allowed to see.
 There may be other data sets managed by the system that your user account does not have access to that do not appear in this list.
 
+.. image:: /_static/UsageGuide/datasets.png
+
 To filter the view of the data sets in the list, click on the search bar labeled 'Search Everything' just to the right of the list of data sets.
 You will see a drop-down menu with a list of labels that may have been applied to these data sets, as indicated by the icon that looks like a little label or tag.
+
+.. image:: /_static/UsageGuide/searchLabels.png
+
 Clicking on a label will limit the list of data sets to the data sets that have that label.
 You can click 'show all' to return to the full list of data sets.
+
+.. image:: /_static/UsageGuide/viewLabel.png
 
 You can also filter the list of data sets to those that have a name matching a particular word by typing in a word in the search bar.
 The drop-down menu will automatically change to show a list of the data sets whose name matches the word typed.
 Clicking on a suggested data set will show that data set's details.
+
+.. image:: /_static/UsageGuide/dataSetSuggest.png
 
 The search bar will also suggest values as search terms that match records in any data set.
 We'll discuss searching the records of data sets in the `Search`_ section.
@@ -168,6 +179,8 @@ Exploring a Data Set
 To explore summary information about a data set, click on the 'Data' button on the primary navigation menu on the left and select a data set from the list to the right of the navigation menu.
 The information in the 'Overview' tab is shown first, which displays a summary of all the attributes in this data set.
 
+.. image:: /_static/UsageGuide/datasets.png
+
 When any data is imported, Koverse automatically profiles the incoming records and keeps track of information about individual attributes.
 Information about each of these attributes is displayed here including:
 
@@ -178,6 +191,8 @@ Information about each of these attributes is displayed here including:
 - a visualization of the distribution of values
 
 To see the associated visualization for an attribute, click the down arrow at the right of the attribute information.
+
+.. image:: /_static/UsageGuide/attributes.png
 
 This information can help you get a sense for what kind of information a particular data set contains, and can help identify potential opportunities for answering questions using this information either in searches or in analytics, as well as any data quality issues that might exist.
 For example, as a data scientist I might be interested to find out which attributes in a data set contain text that I can process to extract a sentiment score.
@@ -210,6 +225,8 @@ Data set suggestions have a small page with writing icon next to them.
 
 Clicking on a suggested search term will execute a search for that term.
 
+.. image:: /_static/UsageGuide/autocomplete.png
+
 Viewing Results from All Data Sets
 ----------------------------------
 To search across all data sets, type in one or more search terms in the search bar and hit enter.
@@ -222,6 +239,8 @@ The number of attributes names matched is listed, followed by the number of reco
 
 Additional information about the data set follows, including the number of total records in the data set, the creation date and date the data set was last updated.
 The first 10 records are shown in a table for each data set.
+
+.. image:: /_static/UsageGuide/searchResults.png
 
 Records in the table can be sorted by a particular attribute by clicking the down arrow next to the attribute name and selecting 'Sort ascending' or 'Sort descending'.
 Clicking on 'Pin Left' will pin the attribute and it's values for each record to the left side of the table.
@@ -239,10 +258,14 @@ Search results for a single data set appear in the 'Data' tab of the data set de
 
 The number of matches on attribute names and on records are shown.
 
+.. image:: /_static/UsageGuide/dataSetResults.png
+
 Below this there is a link labeled 'View and search attributes'.
 Clicking on this link expands a section containing a list of attributes in these search results.
 Users can filter the list of attributes shown by typing a word into the box labeled 'search attributes'.
 Clicking on a particular attribute name will cause the record table below to scroll to that attribute.
+
+.. image:: /_static/UsageGuide/searchAttribute.png
 
 The set of records resulting from the search appear in a table.
 Users can scroll down to view more records, up to the first 50 records.
@@ -393,6 +416,7 @@ When viewing search results for a single data set, the full set of results can b
 CSV files can be loaded into many other tools such as Microsoft Excel and Tableau, and is a good choice when records consist of simple values and don't have nested lists or other structures.
 JSON is a good choice for records that have complex values such as lists and lists of field-value pairs.
 
+.. image:: /_static/UsageGuide/downloadSearchResults.png
 
 Changing Data Set Settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -404,6 +428,8 @@ The first section allows the name of the data set to be changed.
 To edit the data set name, click the gear icon to the right of the 'Data Set' title.
 Enter a new name in the input labeled 'Name' and click Save to save the new name, or Cancel to discard the change.
 
+.. image:: /_static/UsageGuide/dataSetSettings.png
+
 Data Set Source
 ---------------
 
@@ -413,9 +439,13 @@ Changes can be saved by clicking Save or discarded by clicking Cancel.
 
 The source can be deleted by clicking the trash can icon.
 
+.. image:: /_static/UsageGuide/editSource.png
+
 To re-run an import process to load data from this source, click the icon of two circular arrows.
 This will start a new import job.
 The status for the new import job will be shown in the History table lower down on this page.
+
+.. image:: /_static/UsageGuide/historyTable.png
 
 Input Transforms
 ----------------
@@ -428,6 +458,8 @@ The Inputs table allows a user to run a transform again on-demand by clicking th
 To edit the configuration of an input transform, click the gear icon for a transform under the 'Edit' column.
 This will take you to the transform page where the configuration can be viewed and changed.
 See the documentation on transforms at `Analyzing and Transforming a Data Set`_ for details.
+
+.. image:: /_static/UsageGuide/inputsOutputs.png
 
 Output Transforms
 -----------------
@@ -456,6 +488,7 @@ Viewing audit information
 All actions performed that involve a particular data set can be viewed on the Audit tab of the data set detail page.
 These audit log entries are shown in reverse chronological order so the most recent events appear first in the table.
 
+.. image:: /_static/UsageGuide/dataSetAudit.png
 
 Downloading an Entire Data Set
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -465,6 +498,8 @@ Records can be downloaded to your browser as a CSV file or a JSON file.
 
 Note that if a data set may contain more records than can be stored on a single disk drive.
 For data sets with more than about a hundred million records or so it may not be possible to download the entire set to a desktop or laptop machine.
+
+.. image:: /_static/UsageGuide/download.png
 
 Adding a New Data Set
 ^^^^^^^^^^^^^^^^^^^^^
@@ -484,16 +519,20 @@ Loading data into Koverse is a three-step process.
 Step 1. Selecting a source type
 --------------------------------
 
-To export data from an external data source (versus via uploading files from your browser) ensure that 'Connect Source' is selected at the top of the Add Data Set page.
+To import data from an external data source (versus via uploading files from your browser) ensure that 'Connect Source' is selected at the top of the Add Data Set page.
 Choose a source type from the list shown.
+
+.. image:: /_static/UsageGuide/add.png
 
 After a source type is selected you will see a list of parameters used to identify and connect to that data source.
 Fill out the access information and click Next.
 To change the type of source selected, click Back.
 Clicking Cancel will allow you to start over from the beginning.
 
+
+
 After clicking next you will see a preview of the records to be imported.
-See the section `View a Preview of the Data`_ to proceed.
+See the section `Step 2. View a Preview of the Data`_ to proceed.
 
 Step 1. Uploading files from desktop
 -------------------------------------
@@ -505,6 +544,8 @@ You can drag and drop files from your desktop into the grey rectangular section 
 These files will be staged and listed on the right.
 If you wish to remove some staged files before importing, click the minus icon next to the file you wish to remove.
 To clear all the files currently staged, click on the minus icon at the top of the list of staged files.
+
+.. image:: /_static/UsageGuide/fileUpload.png
 
 Note that typically files loaded into a single data set will have the same 'schema' or structure.
 For example, you may have several CSV files you wish to load.
@@ -526,8 +567,12 @@ Step 2. View a Preview of the Data
 After selecting an external source or uploading files you will be able to view a preview of records to be imported.
 It may take a few seconds to connect to the external data source or open uploaded files.
 
+.. image:: /_static/UsageGuide/importPreviewGrid.png
+
 Once the preview of records is ready it will be displayed as either a table of records, or as a 'tree' view of records with nested values, depending on the structure of data imported.
 You can change the type of view by clicking the buttons on the upper right of the list of records.
+
+.. image:: /_static/UsageGuide/importPreviewNested.png
 
 On the right there are settings for changing the type of parser used for this import, as well as a set of optional normalization rules you can apply to records as they are imported.
 If for some reason the records being displayed to not look right, for example, records from a file containing CSV records, but ending in .txt may have been imported all into one field called 'body', you can change the parser used to process raw records by clicking the drop-down menu at the top of the darkened section on the right to select a new parser to try.
@@ -550,6 +595,8 @@ Applying Normalization Rules
 In addition to correctly configuring a parser for an import, users can apply one or more optional normalization rules to modify records being imported.
 On the right below the parser settings on the records preview page there is a list of available normalization rules to apply.
 
+.. image:: /_static/UsageGuide/normalization.png
+
 For example, you may choose to only import a subset of fields available in records.
 Choose the 'Select Fields' normalization from the list by clicking on it.
 This will display a section at the top of the right hand section where you can enter in a comma-separated list of fields that you wish to import.
@@ -564,6 +611,8 @@ Step 3. Choose a Destination Data Set
 -------------------------------------
 
 After a source has been selected or files uploaded, and after verifying that our parser settings are correct and applying any optional normalization rules, records are ready to be imported into a destination data set.
+
+.. image:: /_static/UsageGuide/importStepThree.png
 
 Enter a name for this new data set.
 If records are being imported from uploaded files, this import will be a one-time process.
@@ -595,6 +644,8 @@ If the import is one-time or continuous, within a short time you begin to see pr
 There are a few follow-on jobs that run after the import completes or after a continuous job has been running for a while, including indexing the data, gathering statistics, and sampling the data.
 Progress for these jobs will display until they complete.
 
+.. image:: /_static/UsageGuide/importProgress.png
+
 Once complete, the view will update to show an overview of the attributes contained within the data set.
 You can now explore and search the data set as described in the sections `Exploring a Data Set`_ and `Search`_.
 
@@ -612,6 +663,8 @@ Data sets created this way are also managed by Koverse and can be searched and e
 To use a transform to process a data set, click on the 'Transforms' button on the primary navigation menu on the left.
 Note that your user account must be a member of at least one group with the permission to 'manage transforms' in order to use the transforms feature.
 
+.. image:: /_static/UsageGuide/transforms.png
+
 Once on the Add Transform page, you will see a drop-down menu for selecting one or more data sets that will provide input records to this transform, an input for specifying a new data set or selecting an existing data set that will store the output records from this transform, and a list of available transform types.
 
 Selecting Data Sets
@@ -628,6 +681,8 @@ Configure Transform Parameters
 ------------------------------
 Selecting a transform type will show a description of what this transform does as well as a list of parameters used to configure this transform.
 Read the transform description to determine how a transforms is designed to work and what if any expectations it may have for the data sets used as input.
+
+.. image:: /_static/UsageGuide/configureTransform.png
 
 Fill out the transform parameters.
 In some cases, transform parameters expect the names of attributes from input data sets.
@@ -662,6 +717,8 @@ If a transform is set to run automatically, and there is already data in the inp
 To run a transform manually, click on the 'Data' button on the primary navigation menu on the left.
 Select the output data set of the transform (if you just created the transform you will be navigated to this page).
 Click on the settings tab to see the Inputs list of transforms for this data set.
+
+.. image:: /_static/UsageGuide/runTransform.png
 
 Next to the transform type desired, click the right arrow icon for that transform under the 'Run' column.
 This will start a new transform job.
@@ -962,8 +1019,6 @@ To run the transform we'll use its run() method::
 This will instantiate a MapReduce job that executes our Python script on all of the MapReduce worker nodes in parallel.
 This way we can process a large amount of data efficiently.
 
-Note that Transforms are configured by default to not run sooner than once per hour. Any jobs submitted earlier than that will be blocked until an hour has passed.
-
 The output will be stored in the output data set we specified.
 We can examine a sample of the output to verify our results::
 
@@ -1005,7 +1060,7 @@ Copy the following JAR files into a the Spark installation directory::
  cp $ACCUMULO_HOME/lib/guava.jar .
 
  cp $KOVERSE_HOME/lib/koverse-sdk-xml*.jar koverse-sdk-xml.jar
- cp $KOVERSE_HOME/lib/koverse-sdk-1*.jar koverse-sdk.jar
+ cp $KOVERSE_HOME/lib/koverse-sdk*.jar koverse-sdk.jar
  cp $KOVERSE_HOME/lib/koverse-server-base*.jar koverse-server-base.jar
  cp $KOVERSE_HOME/lib/koverse-shaded-deps*.jar koverse-shaded-deps.jar
  cp $KOVERSE_HOME/lib/koverse-thrift*.jar koverse-thrift.jar
@@ -1257,8 +1312,12 @@ Click on the Settings tab and scroll down to the Exports section.
 Click the 'Create Export' button.
 Select the type of storage system to which data will be exported from the list.
 
+.. image:: /_static/UsageGuide/export.png
+
 You will see a set of parameters to configure that identify the storage system as well as parameters to control the maximum records to output per file, a prefix for naming files, and an output directory in the case of file-based storage systems.
 If outputting to a file-based system you can choose the file format to use as well as whether and what type of compression to apply.
+
+.. image:: /_static/UsageGuide/configureExport.png
 
 Choose whether to run this export 'Automatically', meaning whenever there is new data written to this data set, or 'Periodically on a schedule'.
 If choosing to export on a schedule, you will have the option to add a specific schedule by specifying the start date and time, how often to repeat, and when the schedule ends if ever.
@@ -1274,6 +1333,8 @@ Running an Export
 If the export is configured to run on a schedule it will automatically start according to the schedule.
 To run an export manually, you can click on the right-arrow icon for an export under the 'Run' column.
 This will kick off an export job.
+
+.. image:: /_static/UsageGuide/runExport.png
 
 Export jobs will appear in the History table for a data set in the Settings tab.
 You can view progress information and view any errors associated with the export job.
@@ -1310,10 +1371,15 @@ By default this user is the only user that can see that this data set exists, an
 To ensure that a data set is private and accessible only by the responsible user, remove all groups from the permissions list on the data sets Settings tab.
 Do this by clicking the X icon under the 'Remove' column in the permissions list for all groups.
 
+.. image:: /_static/UsageGuide/setPermissions.png
+
 Making a Data Set Available to a Limited Group of Users
 -------------------------------------------------------
 
 To grant specific access to a limited group of users, first add the group that you wish to allow access to by typing in the name of the group in the input box labeled 'Add Group', if the group does not already appear in the permissions list.
+
+.. image:: /_static/UsageGuide/addGroup.png
+
 Even though the group is now added to the permissions list, the users that belong to this group still won't be able to perform any actions on this data set until specific actions are granted.
 Select the specific actions to grant to this group from the list, which includes:
 
@@ -1336,8 +1402,6 @@ Koverse ships by default with a group called 'Everyone', which all new users are
 
 To make a data set available to everyone, simply add the 'Everyone' group to the permissions table and grant the actions desired to this group.
 
-Access Control for Analytics and Applications
----------------------------------------------
 
 Appendix
 ^^^^^^^^
