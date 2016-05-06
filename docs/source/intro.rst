@@ -152,7 +152,7 @@ Koverse automatically recognizes the following value types and will make them di
 
 * Dates
 
-* Byte arrays
+* Email addresses
 
 
 Bulk Analysis via Transforms
@@ -179,6 +179,10 @@ Export data sets to external systems:
 
 * HDFS
 
+* Amazon S3
+
+* Kafka
+
 Export to the following file formats:
 
 * CSV
@@ -198,14 +202,13 @@ Build Custom Applications
 Extend Koverse Capabilities
 ---------------------------
 
-
 * Custom Import Sources
 
 * Custom Transforms
 
 * Custom Export Destinations
 
-* Customer Export File Formats
+* Custom Export File Formats
 
 * Custom Applications
 
@@ -222,7 +225,7 @@ Extend Koverse Capabilities
 	|
 
 
-* Java SDK for Custom Sources,Transforms, and Sinks
+* Java SDK for Custom Sources, Transforms, and Sinks
 
 * REST API
 
