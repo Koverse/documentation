@@ -190,76 +190,98 @@ More information on the operations of Koverse can be found in the :ref:`Ops Guid
 
 .. _ClouderaParcelInstallation:
 
-Cloudera Parcel Installation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Cloudera Manager Installation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Koverse provides the following files.
+Koverse provides a Cloudera Manager Parcel and Custom Service Descriptor (CSD) for easy installation and management through Cloudera Manager. The following files are provided to support both online and offline installs.
 
 KOVERSE-1.0.jar
-  Cloudera Service Descriptor for Koverse
-KOVERSE-2.0.0-el6.parcel
-  parcel file
-KOVERSE-2.0.0-el6.parcel.sha
-  parcel SHA file
+  Custom Service Descriptor for Koverse
+KOVERSE-2.0.2-el6.parcel
+  Parcel file
+KOVERSE-2.0.2-el6.parcel.sha
+  Parcel SHA file
 manifest.json
-  repository file for local parcel repository
+  Repository file for local parcel repository
 
 
-Cloudera Service Descriptor Installation
-----------------------------------------
-
-1. Install the Cloudera Service Descriptor for Koverse, restart Cloudera Manager
-2. Copy the Cloudera Service Descriptor file onto the Cloudera Manager server in /opt/cloudera/csd
-3. chmod 644 the Cloudera Service Descriptor file in /opt/cloudera/csd
-4. chown cloudera-scm:cloudera-scm the Cloudera Service Descriptor file in /opt/cloudera/csd
-5. Restart Cloudera Manager to pick up the new Koverse Service from the Cloudera Service Descriptor: service cloudera-scm-server restart
-6. For further reference: http://www.cloudera.com/documentation/enterprise/5-5-x/topics/cm_mc_addon_services.html
-
-Parcel Installation
+CSD Installation
 -------------------
 
-1. Copy over parcel file to /opt/cloudera/parcel-repo
-2. Copy over the parcel SHA file to /opt/cloudera/parcel-repo
-3. Copy over manifest.repo to /opt/cloudera/parcel-repo
-4. Change ownership of all files in /opt/cloudera/parcel-repo to cloudera-scm:cloudera-scm
-5. Install the parcel through Cloudera Manager user interface.
-6. Hosts -> Parcels -> Check for New Parcels.  The Koverse parcel should show up shortly.
-7. Use the button near Koverse to distribute the parcel to the Cloudera cluster.
-8. Use the button near Koverse to activate the parcel on the Cloudera cluster.
+- Copy the CSD file onto the Cloudera Manager server and place it in */opt/cloudera/csd*
+- Change the permissions on the CSD file
+  ::
+
+    chmod 644 /opt/cloudera/csd/KOVERSE-1.0.jar
+
+- Change the owner of the CSD file to *cloudera-scm*
+  ::
+
+    chown cloudera-scm:cloudera-scm /opt/cloudera/csd/KOVERSE-1.0.jar
+
+- Restart Cloudera Manager to pick up the new Koverse Service from the Cloudera Service Descriptor
+  ::
+
+    service cloudera-scm-server restart
+
+- For further reference: http://www.cloudera.com/documentation/enterprise/5-5-x/topics/cm_mc_addon_services.html
+
+Manual Parcel Installation (Optional)
+-----------------------------------------
+The CSD automatically installs the parcel repository where Cloudera Manager can download the Koverse Parcel from. If you are installing on a cluster without Internet connectivity though, you will need to manually install the Koverse parcel and checksum to the local parcel respository.
+
+- Copy the parcel file and SHA file to */opt/cloudera/parcel-repo*
+- Copy over manifest.repo to */opt/cloudera/parcel-repo*
+- Change ownership of all files *cloudera-scm*
+  ::
+
+    chown cloudera-scm:cloudera-scm /opt/cloudera/parcel-repo/*
+
+
+Distribute and Active Parcel
+----------------------------------
+1. Click the Parcel icon in the menu bar of the Cloudera Manager UI. The Koverse parcel should be visible in the list. If not, click the *Check for new Parcels* button.
+2. Click the *Download* button. Once downloaded, the button becomes the *Distribute* button.
+3. Click the *Distribute* button. Once distribuetd, the button become the *Active* button.
+4. Click the *Activate* button.
+5. Use the button near Koverse to activate the parcel on the Cloudera cluster.
 
 
 Configuration
 -------------
+Currently there are a few manual configuration steps that need to occur before adding and starting the Koverse Service in Cloudera Manager. In the future, these will be automated as part of the parcel install. All of these should be performed on the host where you will install the Koverse Service.
 
-On the host where the Koverse Service and Koverse WebApp roles will be run, perform manual configuration steps listed in `Koverse Configuration`_.
-Then return to this section.
+- Ensure that *dfs.permissions.superusergroup* is set to an existing Unix group. You can check the value of this property in Cloudera Manger by navigating to the HDFS Service and then selecting the Configuration tab and searching for this property. On the host you can view */etc/group* to confirm this group exists. A *dfs.permissions.superusergroup* value of "hadoop" is used in the examples below.
+- Add koverse and accumulo users to the superusergroup
+  ::
 
-1. Ensure that dfs.permissions.superusergroup is set to an existing Unix group( a group setting of hadoop is used in the examples below).
-2. This will probably require restarting HDFS as well on the cluster.
-3. Add koverse and accumulo to superusergroup
-4. usermod -a -G hadoop koverse
-5. usermod -a -G hadoop accumulo
-6. Copy aggregation JAR over to Accumulo tablet servers.  This step is only required if explicitly using the Aggregation Framework functionality. See the Koverse Aggregation Library Distribution section of the install guide.
-7. Ensure that the java binaries are available in the path for the koverse user.  If these are not already in the system path somewhere, it can be added using these commands:
-8. alternatives --install /usr/bin/java java /usr/java/jdk1.7.0_67-cloudera/bin/java 120 --slave /usr/bin/keytool keytool /usr/java/jdk1.7.0_67-cloudera/bin/keytool --slave /usr/bin/rmiregistry rmiregistry /usr/java/jdk1.7.0_67-cloudera/bin/rmiregistry
-9. alternatives --install /usr/bin/javac javac /usr/java/jdk1.7.0_67-cloudera/bin/javac 120 --slave /usr/bin/jar  jar  /usr/java/jdk1.7.0_67-cloudera/bin/jar --slave /usr/bin/rmic rmic /usr/java/jdk1.7.0_67-cloudera/bin/rmic
+    usermod -a -G hadoop koverse
+    usermod -a -G hadoop accumulo
 
-Add the Service through the Cloudera Manager user interface
+- Ensure that the java binaries are available in the path for the koverse user.  If these are not already in the system path somewhere, it can be added using these commands
+  ::
 
+    alternatives --install /usr/bin/java java /usr/java/jdk1.7.0_67-cloudera/bin/java 120 --slave /usr/bin/keytool keytool /usr/java/jdk1.7.0_67-cloudera/bin/keytool --slave /usr/bin/rmiregistry rmiregistry /usr/java/jdk1.7.0_67-cloudera/bin/rmiregistry
 
-Select the Koverse service from the list
+    alternatives --install /usr/bin/javac javac /usr/java/jdk1.7.0_67-cloudera/bin/javac 120 --slave /usr/bin/jar  jar  /usr/java/jdk1.7.0_67-cloudera/bin/jar --slave /usr/bin/rmic rmic /usr/java/jdk1.7.0_67-cloudera/bin/rmic
 
 
+Add the Koverse Service
+-------------------------
+1. In Cloudera Manager, click the dropdown menu for your cluster and click *Add a Service*.
+2. Select the Koverse Service and click the *Continue* button.
+3. Select the host where you want to install the Koverse Server and Koverse Web Server Roles. The same server should be selected for both Roles. Click the *Continue* button.
+4. Enter the initial configuration
 
-Select the hosts to install the Koverse server and web server on.
-
-
-
-Enter the initial configuration parameters.  Note that PostgreSQL password can be left blank if you are using the Cloudera Manager PostgreSQL database.  The installation process will automatically retrieve the login credentials from Cloudera
+  a. Accumulo Instance: This is the instance name for the Accumulo cluster. It can be found in Cloudera Manager in Configuration section of the Accumulo Service under *accumulo_instance_name*
+  b. JDBC connection string: It is recommended to share the existing PostgreSQL database server that Cloudera Manager uses. If you have installed the Koverse Roles on the same host as you are running the Cloudera Manager server, you can leave the default value of "jdbc:postgresql://localhost:7432/koverse". If you have installed the Koverse Roles on a different host, you will need to update the host in the connection string to the hostname of the Cloudera Manager server. Also if running on a different host, you may need to update the PostgreSQL configuration in */var/lib/cloudera-scm-server-db/data/pg_hba.conf* to allow remote connections to the *koverse* database.
+  c. Zookeeper Servers: A comma separated list of host:port where ZooKeeper is running. The hosts can be seen in Cloudera Manager under the ZooKeeper Service on the Instances tab.
+  d. PostgreSQL Password: this can be left blank if you are using the Cloudera Manager PostgreSQL database as the installation process will automatically retrieve the login credentials.
+  e. Accumulo Password: The password for the root user in Accumulo. Accumulo's default is "secret".
+  f. Webserver port: The port the Koverse webserver will listen on.
 
 
 Verify that everything has installed and started properly:
-
 
 
 Koverse Configuration
