@@ -2,1056 +2,342 @@
 
 .. _usage-guide:
 
-===================
-User's Guide
-===================
+===========
+Usage Guide
+===========
 
-The Koverse User Guide provides instructions for using the applications that are accessible via the Koverse Applications Dashboard.  
-The User Guide Dashboard includes a number of icons which provide a link to all applications that have been deployed to the Koverse software platform.
-
-.. note:: All images displayed in this online document are 'clickable'. When clicked, the image open in a new windows in full size.
-
-Utility Navigation Bar
-^^^^^^^^^^^^^^^^^^^^^^^
-
-For easy navigation, account maintenance and general help, the Koverse Dashboard provides a **Utilitiy Navigation Bar** and is always available when navigating through all the various Koverse applications.
-Please Note that clicking the Koverse logo at the left of the bar will take you home to the Dashboard from any child application page.
-
-.. image:: /_static/Navigation-Bar.png
-		:height: 50 px
-		:width: 800 px
-
-Navigation Bar Features:
-^^^^^^^^^^^^^^^^^^^^^^^^
-* Application Navigation
-* Edit and view account details
-    * email address 
-    * first last name 
-    * authorization tokens 
-    * edit password
-* Help
-    * Koverse User Guide
-    * Koverse Administration Guide
-    * Koverse Operations Guide
-    * Koverse Developers Documentation
-    * Use Cases
-    * Tutorials
-* Logout of Koverse
-
-The Koverse Application Dashboard
----------------------------------
-
-.. image:: /_static/Dashboard.png
-		:height: 300 px
-		:width: 400 px
-
-The Koverse dashboard categorizes the suite of features into the follow application groups:
-
-* :ref:`kov-Analytics`
-    * Correlation Application
-    * Graph Viewer
-    * Sequence Similarity
-* :ref:`kov-Data_Discovery`
-    * Dashboard Builder
-    * Document Analysis
-    * Geo Discovery
-    * Search
-* :ref:`kov-Data_Management`
-    * Data Collections
-    * Data Flow
-    * File Upload
-* :ref:`kov-System-Admin`
-    * Audit Log
-    * Configuration Manager
-    * System Administration
-    * System Monitoring
-
-Each application's features, functionality and usage are discussed and presented throughout this user guide.
-
-.. _kov-Analytics:
-
-Analytics Application Group
----------------------------
-
-The **Analytics Application Group** provides a package of applications which provide abilities to examine big data to uncover hidden patterns, unknown correlations and other useful information that can be used to make better decisions. 
-By using the Koverse analytic tools in this application group, data scientists and others can analyze huge volumes of data that conventional analytics and business intelligence solutions can't touch. 
-
-.. image:: /_static/Analytics-Group/Correlation-App-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
-
-Correlation Application
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Koverse's Correlation application was specifically designed to be used with the `Pearson Correlation <https://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient>`_ analytic.
-
-How to analyze data using the Correlation Application
-.....................................................
-
-#. Click the Koverse Logo on the black **Navigation Bar** at the top of the screen.
- 
-#. Click the **Correlation Application** Icon. 
-
-#. Click the Setup tab. This shows a list of collections that are appropriate for analysis using the Pearson Correlation transform.
-
-#. Click the Analyze button. The Pearson Correlation transform is now running.
-
-#. You can view the transform progress in the Data Flow Application by clicking on the black Navigation Bar and selecting Data Flow Icon.
-
-#. Wait for the transform to complete - based on the current load of the system. 
-
-#. After the transform is complete Koverse will profile and index the analytical results. The progress and output of these jobs can be seen in the Data Collections app.
-
-.. _kov-Data_Discovery:
-
-Data Discovery Application Group
---------------------------------
-
-The **Data Discovery Application Group** bundles all the visualization elements together to deliver indexing, search and query abilities, and advanced capability of exploring data.
-
-|
-
-.. image:: /_static/Data-Discovery-Group/Dashboard-Builder-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
-
-Dashboard Builder
+Obtaining Koverse
 ^^^^^^^^^^^^^^^^^
 
-The **Dashboard Builder** application is a tool to visualize fields within a collection and view visual summaries of the entire collection or of search results.
+Downloading
+-----------
 
-|
+A free evaluation version of Koverse can be downloaded from the Koverse website.
+Visit http://www.koverse.com
 
-.. image:: /_static/Data-Discovery-Group/Document-Analysis-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
+Choose whether to download the RPM, for installation using the Red Hat Package Manager, or a Cloudera parcel for installation on CDH, the Cloudera Distribution for Hadoop.
 
-Document Analysis
-^^^^^^^^^^^^^^^^^
+Installation and Configuration
+------------------------------
 
-The **Document Analysis** application enables you to collect and audit correlated data using the HP Fortify Runtime Hybrid Analysis technology. The Koverse platform comes with several build-in advanced analytics and machine learning algorithms.
+To install Koverse, see detailed installation instructions for the RPM at :ref:`RpmInstallation`.
+For the Cloudera parcel, see :ref:`ClouderaParcelInstallation`.
 
-These include, for example, the Pearson correlation, nearest neighbor calculation, simple regression scoring, and comprehensive in-0database near real-time aggregations such as TopK, sum, geobin, min, max, average, cardinality estimation, sets, quantile estimation, etc.
-
-.. image:: /_static/Data-Discovery-Group/Geo-Discovery-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
-
-Geo Discovery
+Using Koverse
 ^^^^^^^^^^^^^
 
-The **Geo Discovery** application is used to create a heat-map from geographical data that can be explored by zooming and panning.
+Koverse is a server process and a web application that provides users with an interface for managing diverse, complex, and large data sets effectively.
 
-|
+Key Terms and Concepts
+----------------------
 
-.. image:: /_static/Data-Discovery-Group/Search-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
+Data Set
+  A set of records managed by Koverse.
+  These records may have been imported into Koverse from an external data source such as a relational database, a set of structured files such as CSV files or JSON or more unstructured files such as Microsoft Office documents in a remote file system such as an FTP server, or even a messages from a streaming source such network socket or a message queue.
 
-Search Application
-^^^^^^^^^^^^^^^^^^
+Record
+  A set of one or more attributes.
 
-The Search Application provides the user the ability to interactively query one or more Koverse Collections.
+Attribute
+  Sometimes called a 'field' or a 'column'.
+  A single attribute consists of a name and a value.
+  For example, from a relational database we may import several rows from a table, each of which is stored as a record in Koverse.
+  The individual columns of each row from the database table are the attributes of the record.
+  But Koverse records in the same data set do not necessarily all have the same set of attributes.
+  And a value associated with an attribute may be a simple value, such as a number or a date, but may also be a large body of text, or a complex value such as a list or a set of name-value pairs.
 
-* To learn more about **Search** functionality, click :ref:`usr-kov-Search`
-* To learn more about **Search Query Syntax**, click :ref:`LuceneQuerySyntax`
+Transform
+  Data sets can be processed to produce new data sets via 'Transforms', which are distributed data processing jobs.
 
-.. _kov-Data_Management:
+Accessing the User Interface
+----------------------------
 
-Data Management Application Group
----------------------------------
+In this user guide we will walk through using the Koverse user interface.
 
-The **Data Management Application Group** delivers all the abilities to load and manage the data collections where all your information resides.
+To access the Koverse user interface you will need to know the URL of your Koverse instance.
+The URL consists of the hostname of the server on which the Koverse web application is running into a browser, followed by :8080 to indicate that port 8080 should be used.
+For example, if the Koverse web application is running on a server called 'koverse-server.net', the user interface can be accessed by visiting http://koverse-server.net:8080 in a web browser.
 
-|
+Supported browsers include:
 
-.. image:: /_static/Data-Management-Group/Data-Collections-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
+- Internet Explorer 10+
+- Microsoft Edge
+- Chrome
+- Firefox
+- Safari
 
-Data Collections
-^^^^^^^^^^^^^^^^
+Logging in
+^^^^^^^^^^
 
-The Data Collections Application provides the users the ability to manage and explore Data Collections. 
-A Data Collection is simply a named collection of records. 
-Collections are the primary mechanism by which data is tracked and managed in Koverse.
+In some production instances of Koverse, authentication is handled automatically by a public key infrastructure or other integrated single-sign on system.
+If so, when you first visit the Koverse URL in a browser you will automatically be logged in.
+On a system that is using built-in Koverse user and group management, you will see the following login screen:
 
-* To learn more about **Data Collection** functionality, click :ref:`usr-kov-Data-Collection`
+.. image:: /_static/UsageGuide/login.png
 
+To login to a newly installed Koverse instance, type in 'admin' for the user name and 'admin' for the password.
+Otherwise, login using the username (often your email address) and password that have been provided to you by your administrator.
 
-* A data collection is made up of data from one or more data sources
-* Import jobs transfer data from outside sources, into a data collection
-* All data in all data collections have the same meta-information:
+If your password is incorrect you will see an error.
 
-    * Data Access rules and permissions
-    * Field statistics
-    * Record Samples
 
-* Access to query or update a collection can be granted to one or more groups of users
-* Data Collection capacity is limited only by the available disk space, which is shared amongst all data collections.
-* Click the Collections tab
-* Click Add Data Collection and follow the prompts
-* Name: give the collection a name.
-* Description: provide a textual description of the collection.
-* Data Permissions: enter the data permission information by group.(see configuring collection permissions for more info)
-* Data Model: in the data model section you can specify any information you want to record about the data  model which applies to the data in the data collection. (see Configuring Collection Data Model for more info) 
+Once logged in successfully, you will now see elements of the Koverse user interface, which are described below.
 
-To learn more about the **Data Collections** application features and functionality, please refer to: :ref:`usr-kov-Data-Collection`
+.. image:: /_static/UsageGuide/ui.png
 
-|
+Navigation
+-----------
 
-.. image:: /_static/Data-Management-Group/Data-Flow-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
+The buttons on the left allow you to navigate between major sections of Koverse.
+Some of these may not be viewable if your user account does not have permission to perform certain actions.
+The major sections are :
 
-Data Flow Application
-^^^^^^^^^^^^^^^^^^^^^
+Data
+~~~~
+Explore data sets that are currently managed by Koverse, via search and viewing summary information. Settings for data sets and audit events can also be seen and changed here.
 
-Koverse **Data Flow** application provides a graphical rendering of the association between data sources and data sinks.
+Add
+~~~
+Add a new data set to Koverse from an existing data source.
+If you do not have permission to add a new data set to Koverse you will not see this button.
 
-To learn more about the **Data Flow** application features and functionality, please refer to: :ref:`usr-kov-Data-Flow`
+Transforms
+~~~~~~~~~~
+Transform are distributed processing jobs that can be used to clean up records in a data set, summarize or aggregate information in a data set, or combine two or more data sets to create a new data set.
+If you don't have permissions to create or run transforms you will not see this tab.
 
-The Data Flow application consists of five logical operational tabs:
+Account
+~~~~~~~
+Access your user information, and make changes such as setting a new password.
 
-.. list-table::
-    :widths: 50 50
-    :header-rows: 1
+Admin
+~~~~~
+Add new users and groups to the built-in Koverse user management database, upload extensions to Koverse called 'Add-ons', and view system wide audit logs.
+If you don't have permissions to manage users and groups, upload add-ons, or view audit logs you will not see this tab.
 
-    * - Tab
-      - Link
-    * - Flow
-      - :ref:`usr-Flow-tab`
-    * - Imports
-      - :ref:`usr-Imports-tab`
-    * - Transforms
-      - :ref:`TransformsTab`
-    * - Exports
-      - :ref:`ExportsTab`
-    * - Jobs
-      - :ref:`kov-Jobs-Tab`
+Next we'll look at the elements of each of the sections we just described.
 
-Each Data Flow Tab provides functionality for managing data flows.
-
-|
-
-.. image:: /_static/Data-Management-Group/File-Upload-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
-
-File Upload
-^^^^^^^^^^^
-
-File Upload Application provides the ability to ingest local files from the file system into Koverse, and load them into existing or new Data Collections. The user interface allows either the 'dragging' of a file, or the ability to ingest a file from a 'file system browser'.
-
-.. figure:: /_static/Data-Management-Group/File-Upload.png
-		:height: 200 px
-		:width: 400 px
-
-                Screen Snapshot: File Upload Drag and Drop Area
-
-After selecting the file to load into the 'File Upload' staging cache, a series of parameters and configuration options are displayed to properly configure your file upload operation. 
-
-.. figure:: /_static/Data-Management-Group/File-Upload-Parameters.png
-		:height: 200 px
-		:width: 400 px
-
-                Screen Snapshot: File Upload Parameters
-
-.. _kov-System-Admin:
-
-System Administration Application Group
----------------------------------------
-
-.. image:: /_static/Analytics-Group/Audit-Log-Icon.png
-		:height: 75 px
-		:width: 75 px
-		:align: left
-
-Audit Log
-^^^^^^^^^
-
-The Audit Log application displays details of all user activity, sorted in the order of the most recent events.  
-
-For each event, the following information is displayed:
-
-.. list-table::
-    :widths: 50 50
-    :header-rows: 1
-
-    * - Column Name
-      - Description
-    * - Time
-      - Date and Time of the event
-    * - User
-      - The name of the user who performed the activity
-    * - Action
-      - The type of the event
-    * - Details
-      - Event details
-
-|
-
-.. figure:: /_static/Analytics-Group/Audit.png
-		:height: 500 px
-		:width: 1000 px
-
-                Screen snapshot: Audit Log Details
-
-There are two features that allow the user to perform audit event analysis beyond scrolling forward and backward through the messages.
-
-The first feature is the **Download** feature which allows the user to download a JSON formatted file that contains audit events for a date range.
-
-The second feature provides key-word **Search** features for events of interest, such as a specific user's activity or a specific type of event. 
-
-.. figure:: /_static/Analytics-Group/Audit-Log-Search.png
-		:height: 200 px
-		:width: 1000 px
-
-                Screen snapshot: Audit Log Search and Download Feature
-
-|
-
-.. image:: /_static/Admin-Monitor-Group/Config-Manager-Icon.png
-		:height: 75 px
-		:width: 75 px
-		:align: left
-
-Configuration Manager
-^^^^^^^^^^^^^^^^^^^^^
-
-The Configuration Manager application gives users the ability to upload and download configuration for Data Collections, Sinks, Sources, and Transforms.  
-In this manner, new Koverse instances can be stood up or reinitialized without the laborious task of reconfiguring all of these items.  Note that no actual data will be uploaded or downloaded from within this app, only *configuration*.
-
-The Configuration Manager consists of two tabs applications **(Download and Upload)**.
-
-.. figure:: /_static/Admin-Monitor-Group/Config-Manager-Download-Tab.png
-		:height: 150 px
-		:width: 300 px
-
-                Screen snapshot: Configuration Manager Download Tab
-
-.. figure:: /_static/Admin-Monitor-Group/Config-Manager-Upload-Tab.png
-		:height: 150 px
-		:width: 300 px
-
-                Screen snapshot: Configuration Manager Upload Tab
-
-.. image:: /_static/Admin-Monitor-Group/System-Admin-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
-
-System Administration
-^^^^^^^^^^^^^^^^^^^^^
-
-Koverse System Administration application provides access to common administrative tasks for the product. 
-The administrative abilities are grouped into category tabs of 'Users', 'Groups', 'System', 'Add-Ons', 'Applications' and 'API'.
-
-* To learn more about **System Administration** application, click :ref:`usr-kov-System-Admin`
-
-|
-
-.. image:: /_static/Admin-Monitor-Group/System-Admin-Icon.png
-		:height: 75 px
-		:width: 75 px
-		:align: left
-
-
-System Monitoring
-^^^^^^^^^^^^^^^^^
-
-The System Monitoring App gives a view into the health and status of the distributed cluster on which Koverse is running.
-
-* To learn more about **System Monitoring** application, click :ref:`SystemMonitoringApp`
-
-|
-
-|
-
-|
-
-.. image:: /_static/Data-Management-Group/Data-Collections-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
-
-.. _usr-kov-Data-Collection:
-
-Data Collection Application
----------------------------
-
-Overview
-^^^^^^^^
-
-Users can view the status of the overall system on the first page of the Data Collections application. A list of all the Collections that the user is authorized to read are displayed. Metrics on the Collections are displayed including and the number of records in each collection.
-
-.. figure:: /_static/Data-Management-Group/collection-overview.png
-	:height: 300 px
-	:width: 400 px
-
-        Screen snapshot: Data Collection overview
-
-
-Create a New Collection
-^^^^^^^^^^^^^^^^^^^^^^^
-
-A new data collection can be created from the **Data Collections** application simply by typing in the new collection name and clicking the 'Create New Collection' button.
-
-To add data to a collection.
-* First ensure that the data collection exists.  All data collections can be seen by clicking on the collections tab and are listed on the main page.   
-* Select the desired data source from the Import tab. and click load data source and select the desired collection as the destination of the import.
-
-.. figure:: /_static/Data-Management-Group/collection-create.png
-	:height: 300 px
-	:width: 600 px
-
-        Screen snapshot: Data Collection Home Screen where a new collection can be created.
-
-This new collection will be empty until some data is imported into it. This can be done in the Data Flow app, but also simply from the Import Jobs table of the Collection Details page, which is described next.
-
-Viewing a Collection's Details
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To view the details of a particular collection, click on the collection name in the list of collections on the overview page. This will show a new page with tabs for the various aspects of a collection:
-
-* Explore - shows a breakdown of the data types found in a collection along with a list of fields and top values found for each field.
-
-.. figure:: /_static/CollectionManagerScreenshots/collection-explore.*
-	:height: 300 px
-	:width: 600 px
-
-        Screen snapshot: Viewing Collection details via the Explore option.
-
-A new collection will be missing much of this information, as it is gathered from the data within the collection. To import data into a new collection, follow the instructions under 'Adding Data to a Collection' in the next section.
-
-In the collections tab click on configure and then click on configure access. This will take you to the access control view of the collection.  In this area a user can: 
-
-* Can control access to every column of every dataset(in later versions you can control access to each individual cell of every dataset).  
-* Define a default access control rule for un-identified elements in the data. 
-* View, and optionally mark, the observed data elements from within already loaded datasets.
-
-Adding Data to a Collection
+Viewing Available Data Sets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Data can be added to a collection from any Data Source that the user has access to. Creating new sources must be done in the Data Flow application :ref:`usr-kov-Data-Flow`.
+The 'data view' the first view seen after logging into Koverse.
+On the left you will see a list of data sets in alphabetical order.
+These are the data sets your user is allowed to see.
+There may be other data sets managed by the system that your user account does not have access to that do not appear in this list.
 
-To import data from a Data Source into a collection:
+.. image:: /_static/UsageGuide/datasets.png
 
-* Click the **Imports** tab in the Data Flow application screen
-* Click the **Run Import Job** button on the right.
-* Select a Data Source from which to import
-* Select the name of the Collection into which to import the data
-* Optionally select any import-time transforms to apply to this import job
-* Click the blue *Run Import Job* button
+To filter the view of the data sets in the list, click on the search bar labeled 'Search Everything' just to the right of the list of data sets.
+You will see a drop-down menu with a list of labels that may have been applied to these data sets, as indicated by the icon that looks like a little label or tag.
 
-.. figure:: /_static/Data-Management-Group/Import-Sources.png
-	:height: 200 px
-	:width: 400 px
+.. image:: /_static/UsageGuide/searchLabels.png
 
-        Screen snapshot: Imports Tab Screen
+Clicking on a label will limit the list of data sets to the data sets that have that label.
+You can click 'show all' to return to the full list of data sets.
 
-Editing Collection Details, Deleting, and Clearing a Collection
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. image:: /_static/UsageGuide/viewLabel.png
 
-.. figure:: /_static/CollectionManagerScreenshots/Collection-Configuration.png
-	:height: 300 px
-	:width: 600 px
+You can also filter the list of data sets to those that have a name matching a particular word by typing in a word in the search bar.
+The drop-down menu will automatically change to show a list of the data sets whose name matches the word typed.
+Clicking on a suggested data set will show that data set's details.
 
-        Screen snapshot: Collection Details screen.
+.. image:: /_static/UsageGuide/dataSetSuggest.png
 
-Deleting a data collection removes all data contained within that data collection, and all meta data. Scheduled jobs that use the data collection will fail. 
+The search bar will also suggest values as search terms that match records in any data set.
+We'll discuss searching the records of data sets in the `Search`_ section.
 
-Clearing a collection removes all records within a collection but leaves the configuration information intact including indexing policy, user and group access.
+Clicking on a data set in the list on the left will show the detail view for that data set.
 
-	
-Configuring Collection Permissions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+When viewing details for a data set the name of the data set appears on the right, and below the name is a list of optional labels that have been applied to this data set.
+To the right, there is a circular button that allows the entire data set to be downloaded, either as a CSV file or a JSON file.
 
-Koverse supports Role-based Access Control for access to Collections. The 'Permissions' tab allows users to configure which groups of users can perform various actions on a collection including:
+Finally we have some 'metadata' about this data set, including the total number of records, the date the data set was created, and the last time data was imported into this data set.
 
-* Read (perform queries and use this collection as the input in transforms)
-* Download
-* Write & Delete
-* Manage Permissions (change which groups can access)
-* Manage Configuration (change details like indexing for this collection)
+Data Tabs
+---------
 
-To affect changes, simply check the boxes that represent the type of access to grant for the desired group and click 'Save Group Permissions'.
+There are four tabs on the data set detail page:
 
-.. figure:: /_static/CollectionManagerScreenshots/collection-permissions.png
-	:height: 300 px
-	:width: 600 px	
+Overview
+  A summary of all the data set 'attributes' (also sometimes called 'fields' or 'columns') found in this data set.
 
-        Screen snapshot: Collection permissions screen.
+Data
+  Search results from this data set will appear here.
 
-Configuring Indexing
+Settings
+  Change data set settings such as the name, import more data, view processing events, and other actions.
+
+Audit
+  View the audit log of events that have taken place involving this data set, such as searches, imports, etc.
+
+We discuss each of these tab pages next.
+
+
+Exploring a Data Set
 ^^^^^^^^^^^^^^^^^^^^
 
-In the Collection Details view click on the "Fields" tab to see the list of fields and indexing options. This information is gathered from the actual data that has be ingested into the collection and is updated when new data is imported. This field information for a collection is passed along with raw data to both internal Koverse processes and to processes accessing the data via the SDK.  Within the Fields view user can: 
+To explore summary information about a data set, click on the 'Data' button on the primary navigation menu on the left and select a data set from the list to the right of the navigation menu.
+The information in the 'Overview' tab is shown first, which displays a summary of all the attributes in this data set.
 
-* Choose fields to index
-* Configure indexing options for a particular field
-* Set the policy for how to index new fields
+.. image:: /_static/UsageGuide/datasets.png
 
-.. image:: /_static/CollectionManagerScreenshots/fields.*
-	:height: 300 px
-	:width: 600 px
+When any data is imported, Koverse automatically profiles the incoming records and keeps track of information about individual attributes.
+Information about each of these attributes is displayed here including:
 
-For collections with no data, Koverse can automatically index all fields in records that may be imported into this collection in the future by clicking the 'Edit Field Defaults' button and checking 'Index All New Fields' and clicking the 'Save Defaults' button.
-	
-.. image:: /_static/CollectionManagerScreenshots/index-defaults.*
-	:height: 300 px
-	:width: 600 px
-	
-To save time and disk space, users may wish to choose to not index any fields until after the first import of data is complete. Koverse will then show a list of every field found in at least one record, including information about the type of the field, how often it is present in records, and estimates for things like cardinality (ie the number of unique values in this field), average size, etc.
-	
-This information is used to help users decide what fields to index, and to understand what kind of information is found in each field. Users can then choose to index particular fields by checking the box on the right of the table. After a number of fields are checked for indexing, users can put the new indexing policy into effect by clicking the 'Save' button at the bottom of the page.
-	
-.. image:: /_static/CollectionManagerScreenshots/save-indexes.*
-	:height: 300 px
-	:width: 600 px
-	
-Additional options for some types of fields are available by clicking the options button to the right of the check-box. For example, for String types, users can choose to index the whole field as it appears, or to tokenize the text found and index it in additional ways such as lowercase in addition to whatever case already exists, to remove stop words (common words like 'the'), and whether to index pairs or triples of tokens and so on (also known as n-grams). Clicking 'Save' after choosing these options will also put them into effect. 
+- the attribute name
+- the number of records in which it is present
+- an estimate of the number of unique values found for this attribute
+- the predominant value type
+- a visualization of the distribution of values
 
-.. image:: /_static/CollectionManagerScreenshots/index-options.*
-	:height: 300 px
-	:width: 600 px
-
-Whenever an indexing policy for a collection has changed, Koverse will automatically update the on-disk indexes using a MapReduce job. The status of this job can be viewed in the Health and Monitoring application.
-
-Koverse automatically updates any indexes present for a collection as new data is imported.
-
-.. _CompositeIndexes:
-
-Composite Indexes
-^^^^^^^^^^^^^^^^^
-	
-Composite indexes are indexes built on two or more fields to enable querying combining ranges across those fields in queries. For example, in order query on a range of values in a field called 'height' and also a range of values in a field called 'age', a composite index must be created that will enable this query to run quickly, without doing expensive set operations on the server side.
-	
-Creating composite indexes is simple. In the Collection Details view, users can click on the 'Composite Indexes' tab to see a list of the composite indexes that already exist. New composite indexes can be created by clicking 'Add Composite Index' and selecting two or more fields from the drop down menu that appears.
-
-.. image:: /_static/CollectionManagerScreenshots/composite-indexes.*
-	:height: 300 px
-	:width: 600 px
-
-Each entry in the drop down menu consists of a field name and a type. For example we might see 'height (string)' and 'height (float)'. This means that both string (text) and floating point number values have been observed in this field. It might be likely that the string values are erroneous. In any case, we wish to query for ranges across numerical values for the height field in our example so we choose 'height (float)'.
-	
-Users can choose up to four fields in one index, but beyond four users may start to see performance issues with queries.
-	
-Clicking the black 'Add Composite Index' button will cause Koverse to begin building this index on any data already available, and Koverse will update this index if any new data is imported into this collection.
-
-* Click the Collections tab in the main menu.
-* If you do not have a Collections tab in the main menu, your user account is not a member of a group with the Manage Data Collections permission.
-* Find the data collection to modify or delete.
-* Click the Edit or Delete button for the appropriate data collection.
-* Confirm the edit or delete.
-
-.. image:: /_static/Data-Management-Group/Data-Flow-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
-    
-.. _usr-kov-Data-Flow:
-
-Data Flow Application
----------------------
-
-The Data Flow application gives users the ability to visualize, configure, and execute the movement of data within the Koverse system. It is important to note that users will only be able to view and interact with data and jobs for which they have the permission to do so.
-
-.. _usr-Flow-Tab:
-
-Flow Tab
-^^^^^^^^
-
-The flow tab shows a visualization of the Transforms that are configured.  Users will be able to view Transforms on Collections they have permission to read.  The flow starts on the right and moves left, showing how initial Collections are transformed into new Collections. Clicking on an individual section of the flow will take the user to the configuration details for that Transform.
-
-If the user has appropriate permissions, the Flow tab also provides the ability to configure new Sources, Transforms, and Sinks: 
-
-.. _NewSource:
-
-
-Adding an Import Source
-^^^^^^^^^^^^^^^^^^^^^^^
-
-#. Click the "Add Import Source" button.  If this button is not visible, you do not have permission to configure Sources.
-
-#. Select the type of Source you wish to add from the dropdown.  (Note that the list of available Sources will include all built-in Sources, in addition to any custom Sources that have been uploaded to Koverse as part of an Addon.  See the :ref:`Installing Addons` section for instructions on uploading Addons.)
-
-#. Fill out the Source configuration fields. (See the tips below on configuring some of the more advanced Sources.)
-
-#. To Optionally add Import Time Transforms - select a desired import time transfrom from the list, and then click "Add Import Transform". You may add more than one. 
-
-#. Select a output data collection for storing records from this source. 
-
-#. Select the type of flow - either manual, periodic, or continuous. Manual means that a user must kick off of jobs. Periodic means the job will be run on a defined schedule. Continuous means the job will be run continuously until this setting is changed. 
-
-#. Click the "Add Source" button.  Note that data will not actually be imported until this source is run from the :ref:`usr-Flow-Tab`.
-
-**Tips for configuring particular Sources:**
-
-**Configuring a Twitter Source**
-
-#. *Create Twitter Dev Application:*
-
-	#. Log onto https://dev.twitter.com/
-	
-	#. Under your avatar, select My Applications
-	
-	#. Click Create a new application button
-	
-		* ex name: twitter koverse test
-		
-		* ex description: twitter koverse test
-		
-		* ex website: ``http://localhost.com/Koverse``
-		
-		* callback: none
-		
-	#. Select Yes, I agree to the Developer Rules Of The Road
-	
-	#. Enter CAPTCHA displayed
-	
-	#. Click Create your Twitter application
-	
-	#. Your Twitter application properties should now be shown on the next page
-	
-	#. Click Create my access token
-	
-	#. Refresh page to have access tokens appear
-	
-	#. Leaving the details page open move onto Creating the Koverse Twitter Streaming Source
-
-#. *Configuration Options for the Twitter Source in Koverse:*
+To see the associated visualization for an attribute, click the down arrow at the right of the attribute information.
 
-	New Source Type: - Select Twitter Streaming"
-	
-    * Source Name: example 'twitter koverse test'
-	
-    * Security Field Label: (optional)
-	
-    * Security Label Parser: Identity Parser
-	
-    * Twitter App Consumer Key: Copy & Paste details from Twitter Dev App
-	
-    * Twitter App Consumer Secret: Copy & Paste details from Twitter Dev App
-	
-    * Twitter App Access Token: Copy & Paste details from Twitter Dev App
-	
-    * Twitter App Access Token Secret: Copy & Paste details from Twitter Dev App
-	
-    * Keywords(optional) 
-	
-    * Locations (optional)
+.. image:: /_static/UsageGuide/attributes.png
 
-Note: Twitter Streaming Sources will continue to update every 10 minutes unless you stop the job.
+This information can help you get a sense for what kind of information a particular data set contains, and can help identify potential opportunities for answering questions using this information either in searches or in analytics, as well as any data quality issues that might exist.
+For example, as a data scientist I might be interested to find out which attributes in a data set contain text that I can process to extract a sentiment score.
+Or I may be interested in finding out what fields contain customer IDs so I can join this data set with another data set.
 
-**Configuring an Email Account (IMAP) Source**
+If I see that a field isn't present in all the records, or of not 100% of the values are of the same time, it may be because there are data quality or consistency issues, or it may be another feature of the data that may need to be considered.
+For example, not all Twitter messages contain hashtags, and I can get a sense for what proportion do from the information in this overview.
 
-* Input the following required fields:
+Search
+^^^^^^
 
-	* Source Name - example: Personal Gmail
-	
-	* Server - example: imap.gmail.com
-	
-	* Username - example: youremail@gmail.com
-	
-	* Password - example: password123
-	
-	* Security Label Field (optional)
-	
-	* Security Label Parser (Default = Identity Parser)
+Koverse enables search across all attributes of all data sets that users are authorized to read.
+Users can also search within a specific attribute or a specific data set.
 
+To access search, click on the 'Data' button on the primary navigation menu on the left.
+A list of available data sets is shown in a list on the left.
+To the right of that at the top of the page is a search bar.
 
-	
-**Configuring an Newsfeed Source**
+By default the search bar is set to search across all data sets.
 
-* Input the following required fields:
+Auto-complete
+-------------
 
-	* Source Name - example: NY Times Business
-	
-	* Security Label Field (optional)
-	
-	* Security Label Parser (default: Identity Parser)
-	
-	* RSS Feed URL - example: http://www.nytimes.com/services/xml/rss/nyt/Business.xml
-	
-	* Polling Frequency (in minutes) - example: 5
-	
-**Configuring an Amazon S3**
+Typing a word in the search bar will show suggested search terms which will match values in any attribute in any record of any data set you have permission to read.
+Search term suggestions matching data set records have a magnifying glass icon next to them.
 
-* Source Parameters:
+In addition to suggested search terms, the names of labels and data sets that match the word typed will also appear.
+Label suggestions have a small label or tag icon next to them.
+Data set suggestions have a small page with writing icon next to them.
 
-	* Source Name (Required)
+Clicking on a suggested search term will execute a search for that term.
 
-	* Security Label Field (Optional)
+.. image:: /_static/UsageGuide/autocomplete.png
 
-	* Security Label Parser (Dropdown)
+Viewing Results from All Data Sets
+----------------------------------
+To search across all data sets, type in one or more search terms in the search bar and hit enter.
+Make sure that the check box labeled 'Limit search to [data set name]' is not checked.
+For a description of valid search syntax, see the section `Search Syntax`_ for details.
 
-	* Access Key ID (Required) - 	This is actually a username. It is alphanumeric text string that uniquely identifies the user who owns the account. 
+You will now see a list of search results from any available data set.
+Each data set is listed in alphabetical order of the data set name.
+The number of attributes names matched is listed, followed by the number of records that match.
 
-	* Secret Key (Required) - This key plays the role of a password.
+Additional information about the data set follows, including the number of total records in the data set, the creation date and date the data set was last updated.
+The first 10 records are shown in a table for each data set.
 
-	* Mime Types (Optional) - This is optional however we recommend to always select a Mime Type.
+.. image:: /_static/UsageGuide/searchResults.png
 
-	* Include files in subdirectories ( Checkbox ) - This is optional and if checked includes files in the subdirectories of the S3 Bucket you specify. 
+Records in the table can be sorted by a particular attribute by clicking the down arrow next to the attribute name and selecting 'Sort ascending' or 'Sort descending'.
+Clicking on 'Pin Left' will pin the attribute and it's values for each record to the left side of the table.
+This can be done with multiple attributes to allow their values to be viewed side by side for each record.
 
-	* Import files with names matching regular expression - Specifying the name of the file(s) you want to import. 
+To see more results for a particular data set, click on the name of the data set in search results or click on the link below the table for a data set labeled 'Search in [data set name]'.
+This will take you to the data tab on the data set details page.
 
-	* Date 
-	
+Viewing Results from one Data Set
+---------------------------------
 
-Import Sources
-^^^^^^^^^^^^^^
+Search results from one data set can be seen by selecting a particular data set from a search of all data sets, or by clicking on a data set on the 'Data' page and checking the box labeled 'Limit search to [data set name]' before performing a search.
 
-	
-**All of Wikipedia Source**
+Search results for a single data set appear in the 'Data' tab of the data set detail page.
 
-Wikipedia offers free copies of all available content to interested users. Enabling this source will stream the Wikipedia Records into your target collection.
+The number of matches on attribute names and on records are shown.
 
-**Newsfeed Source**
+.. image:: /_static/UsageGuide/dataSetResults.png
 
-The Newsfeed source allows users to import information directly from RSS feeds. 
+Below this there is a link labeled 'View and search attributes'.
+Clicking on this link expands a section containing a list of attributes in these search results.
+Users can filter the list of attributes shown by typing a word into the box labeled 'search attributes'.
+Clicking on a particular attribute name will cause the record table below to scroll to that attribute.
 
-**Amazon S3**
+.. image:: /_static/UsageGuide/searchAttribute.png
 
-The Amazon S3 import source allows users to import files directly from Amazon's S3 service. 
+The set of records resulting from the search appear in a table.
+Users can scroll down to view more records, up to the first 50 records.
+To download the full set of search results, see `Downloading Search Results`_.
 
+Search Syntax
+-------------
+Koverse supports simple searches as well as some syntax to allow for more precise searches.
 
-**Apache Commons VFS**
-
-Commons VFS provides a single API for accessing various different file systems. It presents a uniform view of the files from various different sources, such as the files on local disk, on an HTTP server, or inside a Zip archive.
-
-**Email Account (IMAP)**
-
-IMAP is an Internet standard protocol used by email e-mail clients to retrieve e-mail messages from a mail server over TCP/IP connection. 
-
-
-**File Transfer Protocol (FTP)**
-
-The File Transfer Protocol is a standard network protocol used to transfer computer files from one host to another host over a TCP-based network, such as the internet. 
-
-
-**Hadoop Distributed File System (HDFS)**
-
-The Hadoop distributed file system (HDFS) is a distributed, scalable, and portable file-system written in Java for the Hadoop framework. A Hadoop cluster has nominally a single namenode plus a cluster of datanodes, although redundancy options are available for the namenode due to its criticality. Each datanode serves up blocks of data over the network using a block protocol specific to HDFS. 
-
-**Kafka 0.8 Source**
-
-Apache Kafka is an open-source message broker project developed by the Apache Software Foundation written in Scala. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds.
-
-**MS SQL Server (Microsoft SQL Server)**
-
-Microsoft SQL Server is a relational database management system developed by Microsoft. As a database server, it is a software product with the primary function of storing and retrieving data as requested by other software applications which may run either on the same computer or on another computer across a network (including the Internet).
-
-**MySQL**
-
-MySQL is a relational database management system (RDBMS), it was the world's second most widely used RDBMS, and the most widely used open-source RDBMS.
-
-
-**Oracle 11gR2**
-
-Oracle 11gR2 is the second and terminal release of the Oracle 11g database. 
-
-
-**Oracle RAC 11gR2**
-
-In database computing, Oracle Real Application Clusters (RAC) - provides software for clustering and high availability in Oracle database environments. 
-
-
-**PostgreSQL**
-
-PostgreSQL, often simply Postgres, is an object-relational database management system with an emphasis on extensibility and on standards-compliance. As a database server, its primary function is to store data securely, supporting best practices, and to allow for retrieval at the request of other software applications.
-
-**URL Source**
-
-URL source is our own custom source type that allows our users to select multiple comma separated list of URL's, the specifying file names, the date, and import them into your target collection.
-
-**Web Crawler**
-
-Web Crawler uses our Kafka streaming to allow you to specify the number of workers, the starting URL, the maximum levels to crawl, the broker list, and the zookeeper services to utilize. 
-
-**Wikipedia Page Sources**
-
-Wikipedia offers free copies of all available content to interested users. Enabling this source will stream a single page source from the Wikipedia Records into your target collection.
-	
-.. _NewTransform:
- 
-Adding a Transform
-^^^^^^^^^^^^^^^^^^^
-
-#. Click the "Add Transform" button.  If this button is not visible, you do not have permission to configure Transforms.
-
-#. Select the type of Transform you wish to add from the dropdown. (Note that the list of available Transforms will include all built-in Transforms, in addition to any custom Transforms that have been uploaded to Koverse as part of an Addon.  See the :ref:`Installing Addons` section for instructions on uploading Addons.)
-
-#. Assign a name to the Transform in the "Name" field.
-
-#. Fill out the Transform configuration fields.
-
-#. Click the "Add Transform" button.  Note that the Transform will not actually execute until it is run from the :ref:`TransformsTab`.
-
-Adding a Sink
-^^^^^^^^^^^^^^
-
-#. Click the "Add Export Sink" button.  If this button is not visible, you do not have permission to configure Sinks.
-
-#. Select the type of Sink you wish to add from the dropdown. (Note that the list of available Sinks will include all built-in Sinks, in addition to any custom Sinks that have been uploaded to Koverse as part of an Addon.  See the :ref:`Installing Addons` section for instructions on uploading Addons.)
-
-#. Fill out the Sink configuration fields.
-
-#. Click the "Add Sink" button.  Note that the Sink will not actually export any data until it is run from the :ref:`ExportsTab`.
-
-
-.. _usr-Imports-Tab:
-
-Imports Tab
-^^^^^^^^^^^
-
-Users will need permission to manage Sources in order to access all of the features in this tab.
-
-Configuring an Existing Data Source
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Locate the existing data source you wish to modify in the list on the main page and click on the link to be taken to the configuration page for that Source. The configuration page has several tabs:
-
-* **Configuration Tab:** Shows the existing configuration for this import Source.
-
-	* If the configuration looks good, you can choose to import data at this point by hitting the "Run Import Job" button.  See :ref:`ImportJobs` for details.
-	
-	* If the configuration needs to be modified, hit the "Edit Configuration" button and follow the instructions in the :ref:`NewSource` section.
-	
-	* If you wish to delete this Source, hit the "Delete Source" button.  Note that this will not delete any data that has already been imported, it will only delete the Source's definition.
-	
-* **Import Flows Tab:** Shows any imports flows for this Source. A source may have more than one flow. Flows connect sources to data collections, with specific import time transforms and schedules.
-
-	* If you wish to create an additional import flow for this source
-	
-		#. Click the "Add Import Flow" button. 
-		
-		#. Optionally add Import Time Transforms. 
-		
-		#. Select the output Data Collection. 
-		
-		#. Select the flow type - manual, periodic, or continuous. 
-		
-		#. Click "Add Import Flow"
-
-	* If you wish to edit an Import flow, click the "Edit" button on the desired import flow row. 
-		 
-	* Existing Import Flows can be removed by checking the flows to be deleted, and then clicking the "Delete Selected Import Flows" button. 
-	
-* **Permissions Tab:** Use the check boxes to assign import, edit and delete permissions to various user groups for a given Source.  Note that *import* permission will allow users to actually import data from the Source, *edit* permission will allow users to edit the configuration of the Source, and *delete* permission will allow users to delete the Source's definition.  These permissions do not relate to permissions to access, edit or delete any particular data Collection and only relate to configuring and executing the Source itself.
-
-* **Jobs Tab:** This tab displays a list of the historical import jobs that have run to import data from this Source.  In order to run a new import job, click the "Run Import Job" button and follow the instructions in the :ref:`ImportJobs` section
-
-	
-.. _ImportJobs:	
-
-Running an Import Job
-^^^^^^^^^^^^^^^^^^^^^^
-
-#. Click the "Run Import Job" button. If more than one Import Flow is present on a source, you will be presented with the option of which to run. If only one Import Flow is configured for the source, that Import Flow will be run - and you will be taken immediately to the import job progress page. 
-
-
-Deleting a Source
-^^^^^^^^^^^^^^^^^
-
-Check the box next to the Source(s) you wish to delete and hit the "Delete Selected Sources" button. Note that this will not delete any data from the Koverse data store, and will merely delete the Source definition(s).
-
-
-.. _TransformsTab:
-
-Transforms Tab
-^^^^^^^^^^^^^^
-
-Users will need permission to manage Transforms in order to access all of the features in this tab.
-
-Configuring/Running an Existing Transform
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Locate the existing Transform you wish to modify in the list on the main page and click on the link to be taken to the configuration page for that Transform. The configuration page has two tabs:
-
-* **Configuration Tab:** Shows the existing configuration for this Transform.
-
-	* If the configuration looks good, you can choose to transform data at this point by hitting the "Run Transform Job" button.  
-	
-	* If the configuration needs to be modified, hit the "Edit Configuration" button and follow the instructions in the :ref:`NewTransform` section.
-	
-	* If you wish to delete this Transform, hit the "Delete Transform" button.  Note that this will not delete any data that has already been processed, it will only delete the Transform's definition.
-	
-
-* **Jobs Tab:** This tab displays a list of the historical jobs that have run to execute this Transform.  In order to run a new Transform job, click the "Run Transform Job" button and observe the progress of the Transform as it runs to completion.
-
-Deleting a Transform
-^^^^^^^^^^^^^^^^^^^^^
-
-Check the box next to the Transform(s) you wish to delete and hit the "Delete Selected Transforms" button. Note that this will not delete any data from the Koverse data store, and will merely delete the Transform definition(s).
-
-.. _ExportsTab:
-
-Exports Tab
-^^^^^^^^^^^
-Users will need permission to manage Sinks in order to access all of the features in this tab.
-
-Configuring an Existing Export
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Locate the existing export you wish to modify in the list on the main page and click on the link to be taken to the configuration page for that export. The configuration page has two tabs:
-
-* **Configuration Tab:** Shows the existing configuration for this Sink.
-
-* **Import Jobs Tab:** This tab displays a list of the historical export jobs that have run to import data from this Source.  In order to run a new export job, click the "Run Export Job" button and follow the instructions in the :ref:`ExportJobs` section
-
-.. _ExportJobs:
-
-Running an Export Job
-^^^^^^^^^^^^^^^^^^^^^
-
-#. click the "Run Export Job" button.
-
-#. Select the Collection you wish to export data from.
-
-#. Select the Sink you wish to export data to.
-
-#. Optionally select any Export Transforms to apply to this particular Export job and fill out any parameters they might have.
-
-#. Click Run Export Job
-
-
-Deleting a Sink
-^^^^^^^^^^^^^^^
-
-Check the box next to the Sink(s) you wish to delete and hit the "Delete Selected Sinks" button. Note that this will not delete any data, and will merely delete the Sink definition(s).
-
-.. _kov-Jobs-Tab:
-
-Jobs Tab
-^^^^^^^^
-
-This tab displays a list of all the jobs that have run and are running on the system.  You may choose to stop a job that is currently running by selecting the box next to the job and then clicking the "Cancel Selected Jobs" button.  Choosing this option for a job that has already completed will do nothing.
-
-|
-
-.. image:: /_static/Data-Discovery-Group/Search-Icon.png
-		:height: 75 px
-		:width: 75 px
-                :align: left
-
-.. _usr-kov-Search:
-
-Search Application
-------------------
-
-The Search application provides users the ability to interactively query one or more Koverse Collections to find all Records that match their search criteria. While many end-user analytics will be custom in nature and rely heavily on data model semantics, the data discovery application allows users to search in a schema-free manner, or to use the schema as necessary. Within the data data discovery tab a user can:
-	
-	 * Search across all collections or specific collections
-	 * Search across any field or within specific fields
-	 * Combine search terms
-	 * Search for a range of values
-
-Initially, the Search application starts with nothing selected, and the application will return records containing search terms in any field of records from any collection. Users can start by typing search terms into the search bar. Koverse will auto-suggest terms to search based on the selected collections. The search bar will show terms from any field of any collection that match the prefix typed thus far, as well as any field names that can be searched.
-
-.. image:: /_static/SearchScreenshots/auto-complete.*
-	:height: 300 px
-	:width: 600 px
-
-The Search application returns results grouped by collection. 
-
-.. image:: /_static/SearchScreenshots/multi-coll-results.*
-	:height: 300 px
-	:width: 600 px
-	
-Users can then choose to show specific fields within those search results by expanding the set of field names for a collection and selecting fields to show on the left of the screen.
-
-.. image:: /_static/SearchScreenshots/show-fields.*
-	:height: 300 px
-	:width: 600 px
-
-Koverse Search also auto-suggests fields that appear in all or selected collections, and users can choose a field in which to search. Auto-suggest will then only suggest terms that appear within the selected field. 
-
-.. image:: /_static/SearchScreenshots/auto-complete-field.*
-	:height: 300 px
-	:width: 600 px
-
-Koverse handles search across structured (flat records), semi-structured, and unstructured (text) data. Fields containing large amounts of text are truncated to snippets. The full text can be viewed by clicking the 'more' link at the end of the snippet, and hidden again by clicking the 'close' link after expanding.
-
-.. image:: /_static/SearchScreenshots/unstructured.*
-	:height: 300 px
-	:width: 600 px
-
-Users can choose to only search within a certain collections by checking the collection boxes on the left side of the screen. Auto-suggest will then only suggest terms and fields from those selected collections and results will only come from those collections.
-
-.. image:: /_static/SearchScreenshots/collection-search.*
-	:height: 300 px
-	:width: 600 px
-
-A particular search can be bookmarked and shared with others by simply saving or sharing the URL from the address bar. However, if other users are not authorized to see any of the collections selected, they will simply not see those search results and will only see results from selected collections that they are authorized to see.
-
-.. _LuceneQuerySyntax:
-
-Query Syntax
-^^^^^^^^^^^^
-
-The Search App is designed to be somewhat like Google in design. Users can simply type in terms and retrieve results that match all the terms. This means the terms are 'ANDed' together, so that records containing term1 AND term2 .. and so on are returned. There is no need to type the word AND into the search box.
+Users can simply type in terms and retrieve results that match all the terms.
+This means the terms are 'ANDed' together, so that records containing term1 AND term2 and so on are returned.
+There is no need to type the word AND into the search box.
 
 Searching for records that contain a term in any field::
 
 	mary
-	
+
 To search for terms that contain spaces, use quotes around the terms::
 
 	"mary had a"
 
-Searching for records that contain a term in a particular field::
+Searching for records that contain a term in a particular field, for example, to find records with the term 'mary' in the 'name' field::
 
 	name: mary
 
 Combining Terms
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
-Searching for records that contain a term in one field and another term in another field. This is like requesting records that match the first clause, AND the second::
-	
+Searching for records that contain a term in one field and another term in another field.
+This is like requesting records that match the first clause, AND the second::
+
 	name: mary occupation: shepherd
 
-Two or more terms may be combined this way. Some terms can be field specific and others not. For example::
+Two or more terms may be combined this way.
+Some terms can be field specific and others not.
+For example::
 
 	name: mary shepherd
-	
+
 Would return any records where the value "mary" appeared in the name field, and where the value "shepherd" appeared in any other field, including the name field.
 
-Note that the difference between querying for a two-word phrase with containing a space and searching for one word within a field and one word in any field requires quotes. To search for a two-word phrase within a single field, use quotes around the two-word phrase::
+Note that the difference between querying for a two-word phrase with containing a space and searching for one word within a field and one word in any field requires quotes.
+To search for a two-word phrase within a single field, use quotes around the two-word phrase::
 
 	name: "jane doe" shepherd
 
 The preceding query would search for the entire string "jane doe" in the name field and the word "shepherd" in any field.
 
-Range queries
-^^^^^^^^^^^^^
+Searching Ranges
+~~~~~~~~~~~~~~~~
 
 To search for records that contain a value within a range, use square brackets and word 'TO'::
-	
+
 	height: [60 TO 70]
 
-For an open-ended search, use an asterisk, * , to indicate positive or negative infinity. The following means return records with a value for the height field that is greater than or equal to 60::
-	
+For an open-ended search, use an asterisk, * , to indicate positive or negative infinity.
+The following means return records with a value for the height field that is greater than or equal to 60::
+
 	height: [60 TO *]
 
 The following returns all records with a value in the height field less than or equal to 60::
-	
+
 	height: [* TO 60]
 
-Searches can also be done across ranges of text values using wildcard syntax. Only trailing wildcards are supported. The following returns records with a value beginning with the letters 'ma' in any field::
-	
+Searches can also be done across ranges of text values using wildcard syntax.
+Only trailing wildcards are supported.
+The following returns records with a value beginning with the letters 'ma' in any field::
+
 	ma*
 
 Koverse understands the ordering of several types of values including numbers, text strings, URLs, dates, and IP addresses::
-	
+
 	[192.168.1.0 TO 192.168.34.0]
 
 To query a range of dates, the following formats are recognized::
@@ -1065,7 +351,7 @@ To query a range of dates, the following formats are recognized::
 	"yyyy/MM/dd HH:mm:ss.SSS"
 	"MM/dd/yyyy HH:mm"
 	"ddHHmm'Z' MMM yy"
-	
+
 	yyyy - four digit year
 	yy - two digit year
 	MM - two digit month
@@ -1088,418 +374,1065 @@ Another example date range is::
 
 Note that a date format such as "20140211" is indistinguishable from a simple number, so dashes should be used if a date is meant.
 
-Searching for records that contain a geographical point value.::
+Searching for records that contain a geographical point value::
 
 	coordinate: [-60,-40 TO 30,35]
 
-Searching a single range does not require that a composite index be built. To query multiple ranges at once or a range and other terms, a composite index must be built. These types of queries are described in the following section.
+Searching a single range does not require that a composite index be built.
+To query multiple ranges at once or a range and other terms, a composite index must be built.
+These types of queries are described in the following section.
 
 For additional information on Composite Indexes, please refer to: :ref:`CompositeIndexes`
 
 Combining Ranges
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
-Koverse supports querying for multiple ranges or ranges and single terms simultaneously but requires that composite indexes be built first before such queries can be executed. This is because composite indexes reduce the work done at query time to just a few short scans without having to do any set operations so queries with multiple ranges can return quickly, without impacting other users of the system.
+Koverse supports querying for multiple ranges or ranges and single terms simultaneously but requires that composite indexes be built first before such queries can be executed.
+This is because composite indexes reduce the work done at query time to just a few short scans without having to do any set operations so queries with multiple ranges can return quickly, without impacting other users of the system.
 
-An example of a query that combines a range with a single term. To perform this query, a composite index of the height and name field is required. See :ref:`CompositeIndexes` for how to build this type of index.::
-	
+An example of a query that combines a range with a single term.
+To perform this query, a composite index of the height and name field is required.
+See :ref:`CompositeIndexes` for how to build this type of index::
+
 	height: [* TO 10] name: mary
 
-An example of a query that combines multiple ranges. To perform this query, a composite index of the height and weight field is required.::
-	
+An example of a query that combines multiple ranges.
+To perform this query, a composite index of the height and weight field is required::
+
 	height: [* TO 10] weight: [70 TO 80]
 
-To query across a range of geos and time simultaneously, do the following. To perform this query, a composite index on the geo field and time field is required.::
+To query across a range of geos and time simultaneously, do the following.
+To perform this query, a composite index on the geo field and time field is required::
 
 	geo: [-60,-40 TO 30,35] time: ["20140211 11:28:08" TO "20140211 13:30:08"]
 
 
-.. image:: /_static/Admin-Monitor-Group/System-Admin-Icon.png
-		:height: 75 px
-		:width: 75 px
-		:align: left
 
-.. _usr-kov-System-Admin:
+Downloading Search Results
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-System Administration Application
----------------------------------
-	
-The System Administration application provides a graphical user interface for system administration activities, such as system configuration, user accounts, user groups, etc.  Only users with administration privileges will be able to access this App.  The default administrator username and password are admin and admin, respectively. Be sure to change the default admin password. 
+When viewing search results for a single data set, the full set of results can be downloaded using the 'Download Results' button, as either a CSV file or a JSON file.
 
-.. need to update screenshot
+CSV files can be loaded into many other tools such as Microsoft Excel and Tableau, and is a good choice when records consist of simple values and don't have nested lists or other structures.
+JSON is a good choice for records that have complex values such as lists and lists of field-value pairs.
 
-	.. image:: /_static/SystemAdminScreenshots/MainPage.*
-		:height: 300 px
-		:width: 600 px
+.. image:: /_static/UsageGuide/downloadSearchResults.png
 
-Note that only a subset of the links shown above will be present if the current user does not have permission to perform all administrative actions.
+Changing Data Set Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Users
-^^^^^
+To change settings for a data set, click on 'Data' in the primary navigation menu on the left and then click on the 'Settings' tab.
+The settings tab allows the data set details to be viewed and changed.
 
-The links described below will only be present if the current user is a member of a group that has 'Manage Users & Groups' permissions.
+The first section allows the name of the data set to be changed.
+To edit the data set name, click the gear icon to the right of the 'Data Set' title.
+Enter a new name in the input labeled 'Name' and click Save to save the new name, or Cancel to discard the change.
 
-**Add User:** Create a new user account.
+.. image:: /_static/UsageGuide/dataSetSettings.png
 
-Koverse uses email addresses as primary user IDs.  To create a new user,
+Data Set Source
+---------------
 
-#. Click the Add User link.
-#. Enter the new users email address. 
-#. Click the Add User button.
+The Source section shows information about the data source that was used to populate this data set.
+The details of the source can be changed by clicking the gear icon next to the 'Source' title.
+Changes can be saved by clicking Save or discarded by clicking Cancel.
 
-**Edit User:** Change a user's ID and/or manage the groups a user is in.
+The source can be deleted by clicking the trash can icon.
 
-#. Click the Edit User link.
-#. Select the target user from the drop down.
-#. Enter the user's new email address, if applicable.
-#. Check and uncheck the boxes next to the group names to add and remove the user from the groups.
-#. Click Save when finished.
+.. image:: /_static/UsageGuide/editSource.png
 
-**Set User Password:** Initially set a new user's password, or reset the password of an existing user.
+To re-run an import process to load data from this source, click the icon of two circular arrows.
+This will start a new import job.
+The status for the new import job will be shown in the History table lower down on this page.
 
-#. Click the Set User Password link.
-#. Select the target user from the drop down.
-#. Enter the user's new password once, and then again for confirmation.
-#. Click Save when finished.
+.. image:: /_static/UsageGuide/historyTable.png
 
-**Delete User:** Remove a specific user account and re-assigns responsibilities to another user who will assume all data collections, sources, jobs, and permissions management of the deleted user.
-
-#. Click the Delete User link.
-#. Select the user to be deleted from the drop down.
-#. Select the user that will assume the responsibilities of the user to be deleted.
-#. Click Delete User
-#. Click Yes to confirm the deletion of the user.
-
-Group/Roles
-^^^^^^^^^^^
-
-Koverse provides groups as a way to manage privileges for multiple users. Users are members of one or more group.
-
-**Add Group:** Create a new group.
- 
-#. Click the Add Group link.
-#. Enter the new groups name.
-#. Click the Add Group button.
-
-
-**Edit Group Permissions:** Provision system-wide permissions for the selected group.  Note that if the "Add to All New Users" box is checked for a group, all new users to the system will automatically be assigned to the group and hence inherit all of the group's permissions.  Also note that permissions for specific data collections are granted on the data collections themselves, and not in the System Administration App.
-
-#. Click the Edit Group link.
-* Select a Group to edit from the drop down.
-* Check and uncheck the boxes next to the desired permissions group.
-* Click the Save button when finished.
-
-**Delete Group:** Remove a group.  It does not remove any users or data collections.
-
-#. Click the Delete Group link.
-#. Select the Group to be deleted from the drop down.
-#. Click Delete Group.
-
-System
-^^^^^^
-
-**System Configuration:** Configure the system properties for Koverse, Hadoop, Accumulo, and SMTP.  These properties will need to be configured correctly for Koverse to be fully functional.  
-
-In most cases, the fields are self-explanatory and the pre-populated defaults can be used.  The main exception to this are the **Data Store** properties:
-
-.. figure:: /_static/Admin-Monitor-Group/System-Tab.png
-	:height: 300 px
-	:width: 600 px
-
-        Figure: System Configuration Tab
-
-* Data Store Type should be "Accumulo".
-* Instance Name should be the name of the Accumulo instance that is configured in Accumulo.
-* ZooKeeper Servers should be a comma separated list of ZooKeeper servers in the form <hostname>:<port>.   *Example: zoo1:2181,zoo2:2181,zoo3:2181*
-* Username is the Accumulo username that will be used to connect to Accumulo.
-* Password is the corresponding password for the Accumulo user listed under Username.
-
-When finished entering all System settings, hit the "Save" button.  If there are any problems with the given settings, an error will pop up.
-
-**Lock Down:** Lock down mode is used to disable all data interactions in this system. While lock down mode is enabled, only accounts with permissions to manage users, groups, view the audit log, and manage lock down mode will be able to interact with this system. If you choose to enter lock down mode, click in the "Lock Down" link and hit the "Enable Lock Down Mode" button. The same link is used to disable lock down mode.
-
-**Resources:** Manage Auto-Running Transforms.  Normally, transforms will run periodically on scheduled intervals.  If you wish to disable this feature and only run transforms manually, 
-
-#. Select the "Resources" link.
-#. Check the "Disable Auto-Running Transform" box.
-#. Hit "Save".
-
-Auto-Running Transforms can be re-enabled by un-checking the "Disable Auto-Running Transform" box.
-
-.. _Installing Addons:
-
-Addons
-^^^^^^
-
-**Manage Addons:** Install external jar files to extend Koverse.
-
-#. Click the "Manage Addons" link.
-#. Hit the "Choose File" button to browse files in your local file system.
-#. Select a file with the .jar extension and hit "Upload".
-
-Applications
-^^^^^^^^^^^^
-
-**Manage Applications:** is used to configure permissions and parameters for Koverse Applications.
-
-#. Click the "Manage Applications" link.
-#. Click the Name of the Application you wish to configure.
-#. Under the "Permissions" tab, check the boxes that correspond to the group permissions you wish to assign to this Application.
-#. Hit "Save Permissions".
-#. Under the  "Parameters" tab, configure any parameter values you wish to set/change. 
-
-**Deploy Application from Template:** Deploy instances of Applications whose templates have been uploaded to Koverse as part of an Addon.
-
-#. Click the "Deploy Application from Template" link.
-#. Select an Application template to use from the dropdown.
-#. Enter the Name of the Application.  This will be the string displayed to the user under the application's icon on the Applications Dashboard.
-#. Enter the Category Name for the Application.  This is the string displayed for the category.  Multiple Applications probably share the same string.
-#. Enter the URL ID.  This is the portion of the url path used to access the Application directly, as in /Koverse/apps/<url_id>/.
-#. Hit "Deploy Application Template".
-
-
-API
-^^^
-
-The Koverse REST API and SDK allow:
-
-* Transform: data into specialized indexes, analytic summaries, and algorithmic processing of data within the system, from external systems and 3rd party plugins
-* Data Discovery: indexing and query calls to quickly search and explore data.
-* Data Collection Management: administer access permissions, data models, view provenance, and purge data. 
-* Import: import data into Koverse from a range of sources
-* Data Export: download to external systems
-* Direct access: to the data within the system, from external systems
-* Auditing: access query activity of all users of the system.
-* Advanced Data Discovery: apply high level analytic query logic to the data; entity chaining and disambiguation, classification etc.
-* Authentication: an internal user registration and authentication service.
-* Authorization: an internal authorization service.
-
-These links are used to manage API tokens.
-
-**Add API Token:** Create a new API token.
-
-Enter a name for the new API token and click "Create API Token"
-
-**Edit API Token:** Edit properties of an already existing API token.
-
-#. Click the "Edit API Token" link.
-#. Choose the token you wish to edit from the dropdown.
-#. Optionally change the Token Name.
-#. Optionally change the Responsible User by selecting a new user from the dropdown.
-#. Optionally edit the group permissions you wish to assign to the token under "API Toke Group Membership".
-#. Click "Update Token" when finished.
-
-**Delete API Token**
-
-Select the API token you wish to delete from the dropdown and click "Delete API Token".
-
-.. _SystemMonitoringApp:
-
-System Monitoring App
----------------------
-
-The System Monitoring App gives a view into the health and status of the distributed cluster on which Koverse is running.  There are several different sections of the monitoring view:
-
-**Control Nodes**
-
-.. image:: /_static/SystemMonitorScreenshots/ControlNodes.*
-	:height: 338 px
-	:width: 1018 px
-
-This displays a status of whether or not key processes are reachable.
-
-* A **green** icon indicates that the process is up and reachable.
-
-* A **red** icon indicates the the process is not reachable.  In this case,
-	
-	#. Make sure the server that hosts the process is reachable over the network.
-	
-	#. Check to see that the process in question is still running on the control node.
-	
-	#. If it is verified that there are no hardware or network problems affecting the host, please see the :ref:`Troubleshooting` section, which has process-specific tips.
-	
-
-**Worker Nodes**
-
-.. image:: /_static/SystemMonitorScreenshots/WorkerNode.*
-	:height: 654 px
-	:width: 1014 px
-
-This displays the current workload of the worker nodes in the cluster.  The shade of blue reflects the operating system load, with a lighter shade representing a higher load.  Mousing over the individual nodes will display further details.
-
-**Ingest and Query Timelines**
-
-<insert screenshot of timelines>
-These timelines show the current ingest and query activity that the Koverse data store is handling.  Large peaks are collapsed onto themselves and render as a darker shade of green in order to display high dynamic range in a small space.
-
-**Data Processing**
-
-.. image:: /_static/SystemMonitorScreenshots/DataProcessing.*
-	:height: 170 px
-	:width: 1010 px
-	
-This section shows the progress of any jobs that are currently running, organized by job type.  All Koverse jobs run in the Hadoop MapReduce framework, so if you desire more detailed information about specific jobs, please see the :ref:`CheckingMapreduce` instructions.
-
-**Distributed Storage**
-
-.. image:: /_static/SystemMonitorScreenshots/DistributedStorage.*
-	:height: 494 px
-	:width: 322 px
-	
-This section gives information about the state of the distributed storage system.  
-
-* This same information can be seen by :ref:`CheckingNamenode`.  
-
-* In general, safemode should be set to "false". If it is not, see the :ref:`Safemode` section of the troubleshooting guide.
-
-**MapReduce**
-
-.. image:: /_static/SystemMonitorScreenshots/MapReduce.*
-	:height: 506 px
-	:width: 324 px
-	
-This section of the monitoring page shows the current state and configuration of the Hadoop MapReduce cluster.
-
-* For more detailed information, see the :ref:`CheckingJobtracker` and :ref:`CheckingTasktracker` sections of the troubleshooting guide.
-
-**Data Store**
-
-.. image:: /_static/SystemMonitorScreenshots/DataStore.*
-	:height: 762 px
-	:width: 322 px
-	
-This portion of the monitoring page displays information about the configuration and state of the Apache Accumulo instance that hosts Koverse's data store.
-
-* More information can be found in the :ref:`CheckingAccumulo` and :ref:`CheckingZookeeper` sections of the troubleshooting guide.
-
-
-Uploading Addons
+Input Transforms
 ----------------
 
-See the :ref:`Installing Addons` section for instructions on managing Addons.
+The Inputs section shows any transforms that are currently feeding data into this data set.
+Usually, if a data set is populated from an external source, then it won't have any transforms feeding data to it, and vice versa.
+An input transform takes data from one or more other data sets currently managed by Koverse, processes their records, and stores output records in this data set.
+The Inputs table allows a user to run a transform again on-demand by clicking the right arrow icon for a transform under the 'Run' column.
+
+To edit the configuration of an input transform, click the gear icon for a transform under the 'Edit' column.
+This will take you to the transform page where the configuration can be viewed and changed.
+See the documentation on transforms at `Analyzing and Transforming a Data Set`_ for details.
+
+.. image:: /_static/UsageGuide/inputsOutputs.png
+
+Output Transforms
+-----------------
+
+The Outputs section shows a list of transforms that receive data from this data set.
+Users can run and edit transforms from this table as described in the previous section.
+See the documentation on transforms at `Analyzing and Transforming a Data Set`_ for details on configuring transforms.
+
+Data Set Exports
+----------------
+
+Any external data storage systems to which this data set has been exported are listed here.
+For details on exporting data sets see `Exporting a Data Set`_.
 
 
-File Import Controls
+Data Set Permissions
 --------------------
 
-Koverse now supports a new feature to import files with names matching a regular expression, filter files by date, mime-type to parser mapping, and a new recursive feature to include or exclude files in sub directories.
-
-.. image:: /_static/FileImportControls/ImportMimeType.*
-	:height: 300 px
-	:width: 500 px
-
-This screen snapshot displays the options in the `dataflow` portion of the Koverse user interface that filters import file names (please click on image to enlarge).
-
-Details on the Mime-Type Parser Features
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Koverse automatically detect the file format of each file in a file-based import, which is identified as a mime type.
-
-Each of these files are then parsed by a specific mime-type parser. New mime-type parsers can be easily added by developers by writing a Java class that extends the ``FileBasedRecordsProvider Class`` (Please Note: Additional details on how to implement this feature will be documented in the Developers Guide)
-
-It is not uncommon that there are multiple mime-type parsers that can handle a particular mime type. For example, **Plain Text** files (identified as the mime type 'text/plain') that often end in can the .txt extension may in fact contain comma-separated structured records. So rather than use the default Apache Tika parser to import the file as one record containing all the text contents of the file, users can choose to use the Separated Values Parser instead to break out the CSV lines into separate Koverse records.
-
-Users may choose to use a specific parser for a mime-type when setting up import flow options.
-
-Please Note: Koverse's automatic file format detection chooses the 'most reliable solution' during mime-type detection, but it is not perfect so the user must analyze the results after parsing to validate the correct mime-type was used during parsing.
-
-For Example, sometimes a file such as CSV file is misidentified as text/plain during data ingest.
-
-The users can use the mime-type parser User Interface Control to tell Koverse to override the default parser in these cases so the file is parsed correctly
+This section shows a list of groups and the specific permissions those groups have for this data set.
+See `Data Set Security and Access Control`_ for details on controlling access to a data set.
 
 
-**Example Usage:**
+Viewing audit information
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Date Filtering
---------------
+All actions performed that involve a particular data set can be viewed on the Audit tab of the data set detail page.
+These audit log entries are shown in reverse chronological order so the most recent events appear first in the table.
 
-* If you enter a date before, or after, or equal to the Date Field; this value is used during a date comparison on the file's `Modified-Date`.
+.. image:: /_static/UsageGuide/dataSetAudit.png
 
-.. image:: /_static/FileImportControls/DatePicker.*
-	:height: 100 px
-	:width: 300 px
+Downloading an Entire Data Set
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To download all the records in a data set, click on the circular download button in the upper right corner of the data set detail page.
 
+Records can be downloaded to your browser as a CSV file or a JSON file.
 
-Regular Expression Matching on File Name
-----------------------------------------
+Note that if a data set may contain more records than can be stored on a single disk drive.
+For data sets with more than about a hundred million records or so it may not be possible to download the entire set to a desktop or laptop machine.
 
-* If you enter any regular expression to match file names.
+.. image:: /_static/UsageGuide/download.png
 
-.. image:: /_static/FileImportControls/ImportFileName.*
-	:height: 80 px
-	:width: 300 px
-
-Recursive File Selection
-------------------------
-
-* The user can select `**Include files in subdirectories**` which allows recursive navigation through the directory structure of the file system to retrieve files for ingest.
-* Filtering matches are on an **OR** basis, so either date, or regular expression is used during the file matching process. 
-* Then that file is included in Map-Reduce import job....
-
-.. image:: /_static/FileImportControls/FileFilterRecursion.*
-	:height: 80 px
-	:width: 300 px
-
-Mime Type Override
-------------------
-
-* The user can select various ``mime-type override`` options to supersede the default parser used for a particular type of file. 
-
-.. image:: /_static/FileImportControls/MimeTypeOverride.*
-	:height: 80 px
-	:width: 300 px
-
-Technical Workarounds
+Adding a New Data Set
 ^^^^^^^^^^^^^^^^^^^^^
 
-Converting Outlook .pst email messages to mbox-compatible format
-----------------------------------------------------------------
+Koverse allows data to be imported from a variety of external data sources.
+To import data into Koverse, click the 'Add' button on the primary navigation menu on the left.
 
-Koverse currently does not support the direct import of Outlook .pst email messages but by following these instructions, a user with an Outlook .pst file can convert the email messages to .mbox format which Koverse 'does' support.
-Here is the process for converting the .pst email messages:
+Data can be imported from a number of source types, which are listed on the Add Data Set page.
+Alternatively, data can be uploaded from your browser.
 
-* The first step is to to take the .pst email messages file and convert it to mbox-compatible format. 
-* The conversion can be done by using the libpst.0.6.44 package utility. (note link below)
-* The Libpst utilities includes a **readpst** command which can be used to convert .pst email messages to mailbox .mbox format.
-* Run the following command to perform the conversion:  **'readpst -r <outlook.pst file>'**
-* The -r option changes the output format to Recursive. This will create folders as named in the PST file, and will put all emails in a file called "mbox" inside each folder. These files are then compatible with all mbox-compatible email clients.
+Loading data into Koverse is a three-step process.
 
-Install libpst on Linux: 
+1. Select and define an external source or upload files from your browser into a staging area managed by Koverse.
+2. View a preview of the records to be imported and make any corrections to parser settings. You can also apply additional processing rules to your records at this step called 'Normalizations'.
+3. Enter a name for the new data set and optionally create a schedule for importing data.
 
-* **Download site for libpst**:   http://rpm.pbone.net/index.php3/stat/4/idpl/30517395/dir/scientific_linux_6/com/libpst-0.6.44-3.el6.x86_64.rpm.html
-* **Install rpm file**:  rpm -i libpst-0.6.44-3.el6.x86_64.rpm
-* **Run command**: readpst -r <outlook.pst file>
+Step 1. Selecting a source type
+--------------------------------
 
-Install libpst on Mac OSX:
+To import data from an external data source (versus via uploading files from your browser) ensure that 'Connect Source' is selected at the top of the Add Data Set page.
+Choose a source type from the list shown.
 
-* **Run command**: ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+.. image:: /_static/UsageGuide/add.png
 
-* **Run command**: brew install libpst
+After a source type is selected you will see a list of parameters used to identify and connect to that data source.
+Fill out the access information and click Next.
+To change the type of source selected, click Back.
+Clicking Cancel will allow you to start over from the beginning.
 
-* **Run command**: readpst -r <outlook.pst file>
 
-**Man Page for readpst usage**:    http://linux.die.net/man/1/readpst
 
-After the .pst messages have been converted to mbox-compatible format, the user can import the .mbox file into a Koverse collection. It appears that the 'File Import App' does not successfully process 'text/m-mailbox' properly. You must use the 'Data Flow App' and create a source with the mime type of 'text/m-mailbox'.
+After clicking next you will see a preview of the records to be imported.
+See the section `Step 2. View a Preview of the Data`_ to proceed.
 
-Glossary of Koverse Terminology
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Step 1. Uploading files from desktop
+-------------------------------------
 
-.. glossary::
+Instead of connecting to an external data source, you can upload files directly from your browser into a data set in Koverse.
+To do this, click on 'Upload Files' on the Add Data Set page.
 
-   Data Collection
-      Data Collections are the basic container for data in Koverse. 
-      You can think of them like tables - but every record in a data collection can be completely unique in structure.
+You can drag and drop files from your desktop into the grey rectangular section on this page or click the 'Browse Files' button to select files to upload.
+These files will be staged and listed on the right.
+If you wish to remove some staged files before importing, click the minus icon next to the file you wish to remove.
+To clear all the files currently staged, click on the minus icon at the top of the list of staged files.
 
-   Configuration Manager
-      The Configuration Manager application gives users the ability to upload and download configuration for Data Collections, Sinks, Sources, and Transforms.
+.. image:: /_static/UsageGuide/fileUpload.png
 
-   Data Collection
-      The Data Collections App gives users the ability to manage and explore Data Collections. A Data Collection is simply a named collection of records. 
-      Collections are the primary mechanism by which data is tracked and managed in Koverse.
+Note that typically files loaded into a single data set will have the same 'schema' or structure.
+For example, you may have several CSV files you wish to load.
+Each CSV file may have a header that identifies the names of fields contained in the CSV records.
+If the fields in each file are not the same it may make working with the data set more inconvenient later on.
 
-   Data Flow
-      Visualize, configure, and execute the movement of data within the Koverse system.
+However, Koverse makes no restrictions on the fields that records in a data set can have, and it is often the case that not all records have exactly the same fields.
+Koverse also does not require that all the values in a particular field be of the same size or type.
 
-   File Upload
-      Upload one or more files from the browser and import it into a collection.
+If the set of files you want to load are of the same schema (have the same set of fields) but for some reason are of differing formats, e.g. some fields are CSV and others are XML, you should load the files of each format into separate data sets and combine them into one data set later using a transform.
+This is because Koverse will use one parser per import job, so you can use a CSV parser to import the CSV files in one import, and an XML parser to import XML files in another import job.
+
+When you are satisfied with the list of files staged, click Next.
+You will be taken to a preview of records to be imported on the next page.
+
+Step 2. View a Preview of the Data
+-----------------------------------
+
+After selecting an external source or uploading files you will be able to view a preview of records to be imported.
+It may take a few seconds to connect to the external data source or open uploaded files.
+
+.. image:: /_static/UsageGuide/importPreviewGrid.png
+
+Once the preview of records is ready it will be displayed as either a table of records, or as a 'tree' view of records with nested values, depending on the structure of data imported.
+You can change the type of view by clicking the buttons on the upper right of the list of records.
+
+.. image:: /_static/UsageGuide/importPreviewNested.png
+
+On the right there are settings for changing the type of parser used for this import, as well as a set of optional normalization rules you can apply to records as they are imported.
+If for some reason the records being displayed to not look right, for example, records from a file containing CSV records, but ending in .txt may have been imported all into one field called 'body', you can change the parser used to process raw records by clicking the drop-down menu at the top of the darkened section on the right to select a new parser to try.
+
+Sometimes the correct parser was used but it's options may need to be adjusted.
+For example, the records from a CSV file may have all their values concatenated into one value because the CSV parser used the wrong delimiter character.
+In this case you may need to change some of the options specific to the parser, such as the delimiter character used to separate individual values within records.
+
+After making a change to a parser or its options, click Apply to re-run the import preview and verify that records look correct.
+
+One common situation is importing XML data.
+Koverse requires that an XSLT script be provided to let Koverse know how the XML file should be broken into individual records, since there isn't enough information in XML files to do this reliably automatically.
+See the section on `Providing an XML Transform (XSLT) to import XML data`_ for details.
+
+We can choose to apply optional normalization rules next, or simply click next to go to step 3.
+
+Applying Normalization Rules
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to correctly configuring a parser for an import, users can apply one or more optional normalization rules to modify records being imported.
+On the right below the parser settings on the records preview page there is a list of available normalization rules to apply.
+
+.. image:: /_static/UsageGuide/normalization.png
+
+For example, you may choose to only import a subset of fields available in records.
+Choose the 'Select Fields' normalization from the list by clicking on it.
+This will display a section at the top of the right hand section where you can enter in a comma-separated list of fields that you wish to import.
+Any other fields will not be imported.
+
+Click 'Apply' and the records preview will change to reflect our new settings.
+
+Once you are satisfied with the view of the records, click Next to go to step 3.
+
+
+Step 3. Choose a Destination Data Set
+-------------------------------------
+
+After a source has been selected or files uploaded, and after verifying that our parser settings are correct and applying any optional normalization rules, records are ready to be imported into a destination data set.
+
+.. image:: /_static/UsageGuide/importStepThree.png
+
+Enter a name for this new data set.
+If records are being imported from uploaded files, this import will be a one-time process.
+If records are being imported from an external source, you will see the option to do this import once, continuously, or to run the import periodically, 'On a set schedule'.
+
+Choosing 'continuous' means that the import will start now and will run indefinitely until it is stopped by a user.
+This is appropriate for streaming sources such as when importing from the Twitter API or from a message queue that pushes data to Koverse.
+
+Selecting 'On a set schedule' will allow you to specify one or more schedules that define when import jobs will run.
+
+
+
+Configuring a Schedule
+~~~~~~~~~~~~~~~~~~~~~~
+
+To add a schedule, choose 'On a schedule' and specify the date that the schedule starts, how often to repeat, and an optional end date.
+Click 'Add Schedule' to add the schedule.
+
+You can add additional schedules if necessary.
+
+When the settings for when to import are complete, click 'Finish'.
+If running this import only one time, or continuously the import will begin immediately, otherwise it will start according to the schedules specified.
+
+Viewing Import Progress
+-----------------------
+
+After adding a new data set, you will be navigated to the overview page for the new data set.
+If the import is one-time or continuous, within a short time you begin to see progress information for the initial import job.
+There are a few follow-on jobs that run after the import completes or after a continuous job has been running for a while, including indexing the data, gathering statistics, and sampling the data.
+Progress for these jobs will display until they complete.
+
+.. image:: /_static/UsageGuide/importProgress.png
+
+Once complete, the view will update to show an overview of the attributes contained within the data set.
+You can now explore and search the data set as described in the sections `Exploring a Data Set`_ and `Search`_.
+
+Any newly created data set is viewable only by the user that created it.
+To grant access to other groups of users, see the section `Data Set Security and Access Control`_.
+
+
+Analyzing and Transforming a Data Set
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Beyond storing and securing data sets, and making the information within them available via search, Koverse also supports performing bulk processing and analysis on data sets via a feature called 'Transforms'.
+Transforms allow users to clean up a data set, summarize or aggregate the information in a data set, or combine two or more data sets to produce a new data set.
+Data sets created this way are also managed by Koverse and can be searched and explored like other data sets.
+
+To use a transform to process a data set, click on the 'Transforms' button on the primary navigation menu on the left.
+Note that your user account must be a member of at least one group with the permission to 'manage transforms' in order to use the transforms feature.
+
+.. image:: /_static/UsageGuide/transforms.png
+
+Once on the Add Transform page, you will see a drop-down menu for selecting one or more data sets that will provide input records to this transform, an input for specifying a new data set or selecting an existing data set that will store the output records from this transform, and a list of available transform types.
+
+Selecting Data Sets
+-------------------
+
+Select one or more data sets to provide input records to this transform.
+Note that not all transforms are designed to operate on more than one input data set.
+If two or more data sets have the same schema (i.e. set of attributes) then a transform designed for one input data set can process their records as if they were one data set.
+This makes it easy to combine data sets with information of the same general type together.
+
+Some transforms, like the Spark SQL Transform, are capable of joining two data sets that have differing schemas.
+
+Configure Transform Parameters
+------------------------------
+Selecting a transform type will show a description of what this transform does as well as a list of parameters used to configure this transform.
+Read the transform description to determine how a transforms is designed to work and what if any expectations it may have for the data sets used as input.
+
+.. image:: /_static/UsageGuide/configureTransform.png
+
+Fill out the transform parameters.
+In some cases, transform parameters expect the names of attributes from input data sets.
+In this case you will see a drop-down that allows you to select the attributes you want from a list.
+
+After the transform is configured, choose whether this transform will run 'Automatically' or 'Periodically on a schedule'.
+Choosing 'Automatically' means that the transform will execute whenever one of the input data sets is updated with new data.
+Choosing 'Periodically on a schedule' will allow you to add one or more specific schedules that define when a transform will run.
+
+After choosing when a transform should run, select how much input data this transform should process each time it is run.
+Choosing 'All data' means that a transform will read all of the data available in all input data sets every time it runs.
+This is appropriate if the transform computes some properties of an entire data set that cannot be updated incrementally.
+In this case you may want to leave the checkbox labeled 'Replace Output Data' checked, but this is not always the case.
+
+Choosing 'Only new data' will allow a transform to process only the data that is newly written to input data sets since the last time the transform ran.
+This is appropriate if a transform is able to produce useful information from a subset of the input data.
+In this case you may want to uncheck the box labeled 'Replace Output Data' so that a transform appends newly transformed data to the output of previous runs, but this is not always the case.
+
+Choosing 'Data within a sliding window' allows a transform to process data within a window of time.
+
+Once the transform is configured, click Save.
+You will be navigated to the data set detail page, on the settings tab, of the output data set of the transform.
+The new transform will be listed in the list of inputs to this data set.
+You can run or edit a transform from this table.
+
+Running a Transform
+-------------------
+
+If a transform is set to run on a schedule, it will be automatically started according to the schedule.
+If a transform is set to run automatically, and there is already data in the input data sets, you can run it once manually to process existing data.
+
+To run a transform manually, click on the 'Data' button on the primary navigation menu on the left.
+Select the output data set of the transform (if you just created the transform you will be navigated to this page).
+Click on the settings tab to see the Inputs list of transforms for this data set.
+
+.. image:: /_static/UsageGuide/runTransform.png
+
+Next to the transform type desired, click the right arrow icon for that transform under the 'Run' column.
+This will start a new transform job.
+The job will appear in the History table of this settings page.
+
+You can view the status of this running transform job and optionally stop a running job by clicking the X next to the progress bar of a running job.
+
+If there are any errors encountered in the process of running the transform they will appear in the History table next to the transform job.
+
+Troubleshooting a Transform
+---------------------------
+Sometimes a transform is simply misconfigured.
+In this case you may see an error message associated with a job for a transform to the effect that there is a misconfiguration or in some cases a syntax error.
+To fix a misconfiguration, click the gear icon under the 'Edit' column for a transform listed in the Inputs or Outputs section of a data set's transforms.
+
+You will be taken to the configuration page for the transform where you can make changes to the parameters.
+Once the changes are complete, click Save.
+
+You can run the transform again by clicking the right-arrow icon under the 'Run' column in either the Inputs or Outputs table where your transform appears.
+
+Other times a transform may fail because of a hardware failure from which the underlying execution engine, such as Hadoop MapReduce or Apache Spark, may not have automatically recovered.
+In these cases a transform may simply need to be re-run.
+This can be done by clicking the right-arrow icon under the 'Run' column in either the Inputs or Outputs table where your transform appears.
+
+Viewing Transform Output
+------------------------
+Once a transform job has completed successfully, as indicated by the success status of a transform job in the History table on the settings tab of the output data set details page, a few background jobs will run to index and profile the new data in this data set.
+
+You can then search the data in this data set and explore attribute information as described in the `Exploring a Data Set`_ and `Search`_ sections.
+
+By default only the creator of a data set acting as the output of a transform can view the information in that data set.
+To grant more permissions so other users can view this data, see the section, `Data Set Security and Access Control`_.
+
+Interactive Analytics
+^^^^^^^^^^^^^^^^^^^^^
+
+In addition to running transforms to process data sets at scale, Koverse also enables users to perform interactive analysis of data sets at scale via popular tools such as Apache Spark and Jupyter Notebook.
+
+Using Python with Koverse
+-------------------------
+Python is a popular interpreted programming language.
+
+Koverse ships with a Python client to allow Python scripts to access the Koverse API.
+The Koverse Python client uses Apache Thrift to communicate with the Koverse server. It is possible to generate clients for other languages as well.
+
+To use the Koverse Python client, do the following::
+
+ sudo pip install koverse
+ Downloading/unpacking koverse
+  Downloading koverse-X.X.X-py2.py3-none-any.whl (144kB): 144kB downloaded
+ Requirement already satisfied (use --upgrade to upgrade): thrift in /Library/Python/2.7/site-packages (from koverse)
+ Requirement already satisfied (use --upgrade to upgrade): kafka-python in /Library/Python/2.7/site-packages (from koverse)
+ Requirement already satisfied (use --upgrade to upgrade): six in /Library/Python/2.7/site-packages (from kafka-python->koverse)
+ Installing collected packages: koverse
+ Successfully installed koverse
+ Cleaning up...
+
+The Koverse Python client can then be used in Python scripts by importing the koverse module::
+
+ $ python
+ Python 2.7.6 (default, Sep  9 2014, 15:04:36)
+ [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+ Type "help", "copyright", "credits" or "license" for more information.
+ >>> from koverse import client
+
+Connecting to the Koverse Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Python client can connect to the hostname of the Koverse Server (note: this is not the address of the Koverse Web App)::
+
+ >>> client.connect('localhost')
+
+If for some reason the client loses the connection to the Koverse Server, such as when the Koverse Server is restarted, the client can reconnect simply by calling client.connect() again.
+
+Users can authenticate themselves to the Koverse server using their username and base-64 encoded passwords::
+
+ >>> import base64
+ >>> client.authenticateUser('myusername', base64.b64encode('mypassword'))
+ >>>
+
+If the authentication is unsuccessful an exception is raised::
+
+ Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Library/Python/2.7/site-packages/koverse/client.py", line 93, in authenticateUser
+    tUser = ugClient.authenticateUser(auth, None, parameters)
+  File "/Library/Python/2.7/site-packages/koverse/thriftgen/usergroup/UserGroupService.py", line 782, in authenticateUser
+    return self.recv_authenticateUser()
+  File "/Library/Python/2.7/site-packages/koverse/thriftgen/usergroup/UserGroupService.py", line 807, in recv_authenticateUser
+    raise result.ke
+ koverse.thriftgen.ttypes.TKoverseException: TKoverseException(_message='No authenticated user found')
+
+Querying Koverse Data Sets
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Koverse Python client can be used to interactively query data sets, fetch samples, create data sets and run transforms.
+
+To query one or more data sets, use the client's query() method. In this example, we'll query Koverse for any data set that has a value above 100 in a field named 'Close'.::
+
+ >>> results = client.query({'Close': {'$gt': 100.0}})
+ >>> len(results)
+ 736
+
+Results are returned as a list of Python dicts, each representing a record from a Koverse data set::
+
+ >>> import pprint
+ >>> pprint.pprint(results[0])
+ {'AdjClose': 34.9,
+  'Close': 256.88,
+  'Date': time.struct_time(tm_year=42304, tm_mon=11, tm_mday=6, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=6, tm_yday=311, tm_isdst=0),
+  'High': 267.88,
+  'Low': 199.25,
+  'Open': 263.84,
+  'Volume': 236228300}
+
+Koverse records contain fields and values. Values may be of a simple type such as int and date, but may also contain lists or dicts.
+
+To query a specific set of data sets, specify an optional parameter with a list of data set names to query::
+
+ >>> client.query({'Close': {'$gt': 100.0}}, ['stocks'])
+
+or, by using the name parameter 'datasets'::
+
+ >>> client.query({'Close': {'$gt': 100.0}}, datasets=['stocks'])
+
+Clients can also request that the results be limited to a set number, and can request that the Koverse server deliver results beginning at a specified offset. For example::
+
+ >>> client.query({'Close': {'$gt': 100.0}}, datasets=['stocks'], limit=10, offset=100)
+
+Clients can also request that the Koverse Server return only a subset of the fields in each record by specifying a list of field names to include::
+
+ >>> pprint.pprint(client.query({'Close': {'$gt': 100.0}}, data sets=['stocks'], limit=10, offset=100, fields=['Close']))
+ [{'Close': 110.88},
+  {'Close': 111.56},
+  {'Close': 111.25},
+  {'Close': 110.75},
+  {'Close': 111.63},
+  {'Close': 111.25},
+  {'Close': 111.5},
+  {'Close': 111.25},
+  {'Close': 111.5},
+  {'Close': 111.5}]
+
+Fetching Data Set Samples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Because Python runs on a single machine, and because Koverse data sets may contain a large volume of records, it can be useful to
+work with a sample of a data set's records, especially when building statistical models designed to be trained on a representative sample.
+
+Koverse maintains representative samples for all data sets by default. These samples can be retrieved by the client using the getSamples() method::
+
+ >>> samples = client.getSamples('stocks')
+ >>> len(samples)
+ 1000
+
+
+
+Uploading resource files
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+One advantage of Python is that is has a number of well supported libraries for doing
+sophisticated data analysis , such as numpy (http://www.numpy.org), scipy (http://www.scipy.org),
+nltk for natural language processing (http://nltk.org),
+pandas for data manipulation and analysis http://pandas.pydata.org,
+scikit-learn for machine learning (http://scikit-learn.org/stable/), etc.
+
+For this simple example, we'll model the distribution of day to day changes in stock prices so we can identify anomalous jumps or dips in price.
+We can pull a sample of the stock prices from Koverse using the getSamples() method::
+
+ >>> samples = client.getSamples('stocks')
+
+We'll model the day-to-day changes in price as a gaussian random walk (https://en.wikipedia.org/wiki/Random_walk#Gaussian_random_walk).::
+
+ >>> differences = [r['Close'] - r['Open'] for r in samples]
+ >>> import numpy
+ >>> mean = numpy.mean(differences)
+ >>> mean
+ -0.085472972972972849
+ >>> stddev = numpy.std(differences)
+ >>> stddev
+ 8.6134268092274517
+
+Now we'll store our model, which just consists of these two numbers, the mean and standard deviation, in a file that we can upload and use in a transform.
+Typically we wouldn't do this for such a simple model, we could pass those numbers as parameters to a transform.
+But for more complicated models using a file is much more convenient.
+The storeResourceFile() method will upload the model data to a file in HDFS so that it can be accessed by workers in parallel::
+
+ >>> import cPickle
+ >>> modelData = base64.b64encode(cPickle.dumps((mean, stddev)))
+ >>> modelFilename = client.storeResourceFile('model1',modelData)
+ >>> modelFilename
+ '1438664105966model1'
+
+Note: we used the numpy package to obtain these parameters, which means numpy must also be installed on our MapReduce worker nodes.
+
+The storeResourceFile() method returns a unique filename that Transform scripts can reference.
+Now we can use it to score all the daily changes in price to look for anomalous changes, for example: changes that are greater than two standard deviations from the mean.
+We'll do that in the next section.
+
+Running a Python Script as a Transform
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Koverse supports running Python scripts in Transforms. These transforms are simple map-only transforms.
+
+
+We'll write our Python script for scoring daily stock changes based on our model.
+The list of any resource files included will be passed in as an argument to our script.
+In our case, we have one model filename. If there are multiple resource files, they will be separated by commas::
+
+ >>> script = '''
+ #/usr/bin/python
+
+ import numpy
+ import cPickle
+ import base64
+ import sys
+ import json
+
+ # load our model
+ modelFile = sys.argv[1]
+ f = open('/tmp/' + modelFile)
+ mean, stddev = cPickle.loads(base64.b64decode(f.read()))
+ f.close()
+
+ # records from input data sets are delivered as JSON objects via stdin
+ for line in sys.stdin:
+
+	record = json.loads(line.strip())
+
+	# calculate price change
+	change = record['Close'] - record['Open']
+
+	# if change is more than two standard deviations from the mean
+	# consider it anomalous and output the record
+	if abs(change - mean) / stddev > 2.0:
+		print json.dumps(record)
+		sys.stdout.flush()
+
+ '''
+
+Be sure to call sys.stdout.flush() after outputting a new record.
+
+Any libraries our script needs to use should be installed on all the MapReduce worker nodes before hand.
+Care should be taken to ensure the proper versions of libraries are installed.
+See instructions on this site https://www.digitalocean.com/community/tutorials/how-to-set-up-python-2-7-6-and-3-3-3-on-centos-6-4 for tips on installing python 2.7 packages on CentOS.
+
+In our example, workers will need the popular numpy package, which can be installed via::
+
+ sudo /usr/local/bin/pip install numpy
+
+once Python 2.7 and pip are installed.
+
+To get a description of a Transform use the getTransformDescription() method. This will tell us the parameters we need to fill out to create a transform.
+We're using the Python script Transform that ships with Koverse, identified by the name 'python-transform'::
+
+ >>> desc = client.getTransformDescription('python-transform')
+ >>> for param in desc.parameters:
+ ...     print param.parameterName + ': ' + param.displayName
+ ...
+ inputDataSet: Input Data Set(s)
+ outputDataSet: Output Data Set
+ pythonPathParam: Path to Python Executable
+ scriptParam: Python script
+ resourceFiles: Comma separated resource file paths
+
+The pythonPathParam should reference the path to the Python executable on MapReduce workers. This allows us
+to use a particular version of the Python interpreter if necessary.
+
+Define the options we'll pass to our Transform, which includes the Python script and the model filename we stored in the previous section.
+We don't need to specify the input and output data sets here, we'll do that later in the call to create the transform.::
+
+ >>> options = {
+	'pythonPathParam': '/usr/local/bin/python2.7',
+	'scriptParam': script,
+	'resourceFiles': modelFilename
+ }
+
+Create a data set to store the output::
+
+ >>> client.createDataSet('anomalous changes')
+
+To setup a transform, use the createTransform() method.::
+
+ >>> transform = client.createTransform(
+		'python-transform',
+		'score daily changes',
+		['stocks'],
+		'anomalous changes',
+		options)
+
+This returns a Transform object.
+To obtain a list of Transforms that have already been created, use the listTransforms() method.
+
+To run the transform we'll use its run() method::
+
+ >>> job = transform.run()
+
+This will instantiate a MapReduce job that executes our Python script on all of the MapReduce worker nodes in parallel.
+This way we can process a large amount of data efficiently.
+
+The output will be stored in the output data set we specified.
+We can examine a sample of the output to verify our results::
+
+ >>> sampleOutput = client.getSamples('anomalous changes')
+ >>> first = sampleOutput[0]
+ >>> print first['Close'] - first['Open']
+ -22.44
+
+This shows an example of a day when a stock dropped by 22.44 points, which is more than two standard deviations from the typical daily change.
+
+The Python client can also be used in the context of Python tools such as iPython Notebook (http://ipython.org/notebook.html).
+Simply use the same methods described above in iPython Notebooks.
+
+
+Analyzing Data Sets with the PySpark Shell
+------------------------------------------
+
+PySpark is the name of Apache Spark's Python API and it includes an interactive shell for analyzing large amounts of data with Python and Spark.
+
+Koverse supports processing data from Koverse data sets using PySpark and storing Resilient Distributed Datasets (RDDs) into Koverse data sets.
+
+To use Koverse with PySpark, follow these steps.
+
+Set the following environment variables::
+
+ export SPARK_HOME=[your Spark installation directory]
+ export ACCUMULO_HOME=[your Accumulo installation directory]
+ export KOVERSE_HOME=[your Koverse installation directory]
+ export PYSPARK_PYTHON=/usr/local/bin/python2.7
+
+Copy the following JAR files into a the Spark installation directory::
+
+ cd $SPARK_HOME
+
+ cp $ACCUMULO_HOME/lib/accumulo-core.jar .
+ cp $ACCUMULO_HOME/lib/accumulo-fate.jar .
+ cp $ACCUMULO_HOME/lib/accumulo-tracer.jar .
+ cp $ACCUMULO_HOME/lib/accumulo-trace.jar .
+ cp $ACCUMULO_HOME/lib/guava.jar .
+
+ cp $KOVERSE_HOME/lib/koverse-sdk-xml*.jar koverse-sdk-xml.jar
+ cp $KOVERSE_HOME/lib/koverse-sdk*.jar koverse-sdk.jar
+ cp $KOVERSE_HOME/lib/koverse-server-base*.jar koverse-server-base.jar
+ cp $KOVERSE_HOME/lib/koverse-shaded-deps*.jar koverse-shaded-deps.jar
+ cp $KOVERSE_HOME/lib/koverse-thrift*.jar koverse-thrift.jar
+
+
+Install Koverse python files.
+As described above, the Koverse Python client can be installed using::
+
+ pip install koverse
+
+Start PySpark::
+
+ bin/pyspark --deploy-mode client \
+ --jars koverse-sdk.jar,koverse-sdk-xml.jar,koverse-thrift.jar, \
+ accumulo-core.jar,guava.jar,accumulo-fate.jar,accumulo-trace.jar, \
+ koverse-server-base.jar,koverse-shaded-deps.jar
+
+ Python 2.7.6 (default, Sep  9 2014, 15:04:36)
+ [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+ Type "help", "copyright", "credits" or "license" for more information.
+ Spark assembly has been built with Hive, including Datanucleus jars on classpath
+ Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+ Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /__ / .__/\_,_/_/ /_/\_\   version 1.3.0
+      /_/
+
+ Using Python version 2.7.6 (default, Sep  9 2014 15:04:36)
+ SparkContext available as sc, HiveContext available as sqlCtx.
+
+To access Koverse's Spark functionality import the following::
+
+ >>> from koverse.spark import *
+
+A KoverseSparkContext object is used to obtain Spark RDDs for specified Koverse data sets.
+Simply pass in the pre-created SparkContext object, the hostname of the Koverse Server, and your username and password::
+
+ >>> import base64
+ >>> ksc = KoverseSparkContext(sc, 'localhost', 'username', base64.b64encode('password'))
+
+To get an RDD for a Koverse data set, call the koverseDataSet() method::
+
+ >>> rdd = ksc.koverseDataSet('stocks')
+
+This rdd can be used like other RDDs.
+
+ >>> rdd.take(1)
+ [{u'Volume': 26765000, u'High': 25.42, u'AdjClose': 25.17, u'Low': 24.46, u'Date': datetime.datetime(2014, 9, 1, 20, 0), u'Close': 25.17, u'Open': 24.94}]
+
+If, for example, we wanted to repeat our previous analysis of this example data set, we could build a model using a few simple functions::
+
+ >>> differences = rdd.map(lambda r: {'Date': r['Date'], 'Change': r['Close'] - r['Open']})
+
+ >>> sum  = differences.map(lambda r: r['Change']).reduce(lambda a, b: a + b)
+ >>> mean = sum / differences.count()
+ >>> mean
+ -0.08547297297297289
+
+ >>> ssq = differences.map(lambda r: (r['Change'] - mean) ** 2).reduce(lambda a, b: a + b)
+ >>> var = ssq / differences.count()
+ >>> import math
+ >>> stddev = math.sqrt(var)
+ >>> stddev
+ 8.613426809227452
+
+Now we can apply our model directly to our differences RDD.
+
+ >>> anomalies = differences.flatMap(lambda r: [r] if (abs(r['Change']) - mean) / stddev > 2.0 else [])
+ >>> anomalies.count()
+ 12
+ >>> anomalies.first()
+ {'Date': datetime.datetime(1998, 8, 31, 20, 0), 'Change': -22.439999999999998}
+
+Note that, unlike the previous example, here we are not setting up a Koverse Transform which means this analysis workflow will only exist during this PySpark session.
+We can persist the output, but if we want to repeat this process we'll need to run these commands again.
+
+If we wish to persist these anomalies in a Koverse data set to that applications and users can access and search these results we can use the saveAsKoverseDataSet() method.
+
+ >>> ksc.saveAsKoverseDataSet(anomalies, 'anomalies')
+
+This will create a data set called 'anomalies' and store the information from our RDD into it.
+
+If the data set already exists and we wish to simply add new data to it, we can specify append=True
+
+ >>> ksc.saveAsKoverseDataSet(anomalies, 'anomalies', append=True)
+
+
+
+Analyzing Data Sets with Jupyter Notebook
+-----------------------------------------
+
+Jupyter is a development tool that allows users to create notebooks containing comments and code, like iPython Notebook.
+Jupyter supports other languages via the use of 'kernels'.
+
+To use Jupyter with Koverse and PySpark, first create a kernel.json file in a folder called 'koverse'
+
+Configure the kernel.json file as follows by setting the right value for SPARK_HOME::
+
+ {
+  "display_name": "Koverse PySpark",
+  "language": "python",
+  "argv": [
+   "/usr/bin/python",
+   "-m",
+   "ipykernel",
+   "-f",
+   "{connection_file}"
+  ],
+  "env": {
+   "SPARK_HOME": "",
+   "PYTHONPATH": “$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.8.2.1-src.zip",
+   "PYTHONSTARTUP": “$SPARK_HOME/bin/pyspark",
+   "PYSPARK_SUBMIT_ARGS": "--deploy-mode client --jars koverse-sdk.jar,koverse-sdk-xml.jar,koverse-thrift.jar,koverse-server-base.jar,koverse-shaded-deps.jar,accumulo-core.jar,accumulo-fate.jar,accumulo-trace.jar,accumulo-tracer.jar,guava.jar,commons-validator-1.4.0.jar pyspark-shell"
+  }
+ }
+
+
+Install the kernel file via the command::
+
+ ipython kernelspec install koverse/
+
+Place the following jars into the $SPARK_HOME folder::
+
+ accumulo-core.jar
+ accumulo-trace.jar
+ commons-validator-1.4.0.jar
+ koverse-sdk-xml.jar
+ koverse-server-base.jar
+ koverse-thrift.jar
+ accumulo-fate.jar
+ accumulo-tracer.jar
+ guava.jar
+ koverse-sdk.jar
+ koverse-shaded-deps.jar
+
+
+Install the Koverse python module via::
+
+ pip install koverse
+
+Then you can fire up Jupyter and create a new notebook using the newly installed Koverse kernel.
+
+In that notebook, you can connect to a Koverse instance via::
+
+ import pyspark
+ from koverse.spark import *
+ import base64
+ sc = SparkContext()
+ ksc = KoverseSparkContext(sc, 'localhost', ‘your-username', base64.b64encode(‘your-password’))
+
+You can create an RDD from a Koverse instance as follows, for example::
+
+ rentals = ksc.koverseDataSet('Customer Rentals')
+ rentals.take(1)
+
+ [{u'email': u'DIANNE.SHELTON@sakilacustomer.org',
+   u'first_name': u'DIANNE',
+   u'title': u'ACADEMY DINOSAUR'}]
+
+You can process the RDD the same as other Spark RDDs::
+
+ pairs = rentals.map(lambda r: (r['first_name'].lower(), 1))
+ nameCount = pairs.reduceByKey(lambda a, b: a + b)
+ nameCount.count()
+ 591
+ nameCount.take(1)
+ [(u'sheila', 18)]
+
+When you want to write an RDD to Koverse, convert it to be a set of Python dicts and save::
+
+ ncRecords = nameCount.map(lambda nc: {'name': nc[0], 'count': nc[1]})
+ ksc.saveAsKoverseDataSet(ncRecords, 'name count', append=True)
+
+
+
+Analyzing Data Sets with iPython Notebook
+-----------------------------------------
+
+iPython Notebook is a popular tool for creating Python scripts that can display results and be shared with others.
+
+PySpark can be used in the context of iPython Notebook to create repeatable workflows.
+
+First, follow the steps to configure PySpark to work with Koverse as described in the previous section.
+
+To use Koverse with PySpark and iPython Notebook, create a new iPython profile::
+
+  ipython profile create pyspark
+
+This will create a profile in ~/.ipython/profile_pyspark. In that directory, create a file called ipython_config.py with the following contents::
+
+ c = get_config()
+
+ c.NotebookApp.ip = '*'
+ c.NotebookApp.open_browser = False
+ c.NotebookApp.port = 8880
+
+Next, in ~/.ipython/profile_pyspark/startup create a file called 00-pyspark-setup.py with the following contents::
+
+ import os
+ import sys
+
+ spark_home = os.environ.get('SPARK_HOME', None)
+ if not spark_home:
+    raise ValueError('SPARK_HOME environment variable is not set')
+ sys.path.insert(0, os.path.join(spark_home, 'python'))
+ sys.path.insert(0, os.path.join(spark_home, 'python/lib/py4j-0.8.2.1-src.zip'))
+
+ execfile(os.path.join(spark_home, 'python/pyspark/shell.py'))
+
+ from koverse.spark import *
+
+
+Export the following env vars::
+
+ export SPARK_HOME=[path to your spark installation]
+ export PYSPARK_PYTHON=/usr/local/bin/python2.7
+ export PYSPARK_SUBMIT_ARGS="--deploy-mode client --jars koverse-sdk.jar,koverse-sdk-xml.jar, \
+    koverse-thrift.jar,accumulo-core.jar,guava.jar,accumulo-fate.jar,accumulo-trace.jar, \
+    koverse-server-base.jar,koverse-shaded-deps.jar"
+ export KOVERSE_HOME=[path to your Koverse installation]
+
+
+Now iPython Notebook can be started from the Spark installation directory::
+
+ ipython notebook --profile=pyspark
+
+Visit http://localhost:8880 in a web browser to access iPython Notebook and create a new notebook.
+In this new notebook, everything should be imported and initialized for us to start using PySpark with Koverse.
+
+Use the same methods described in the previous section on PySpark in iPython notebooks to obtain RDDs from Koverse data sets, process them, and persist RDDs to Koverse data sets.
+
+.. image:: /_static/PySpark_Notebook.png
+	:height: 550 px
+	:width: 800 px
+
+
+
+Exporting a Data Set
+^^^^^^^^^^^^^^^^^^^^
+
+Koverse can export data sets to external data storage systems.
+
+To export a data set, click the 'Data' button in the primary navigation menu on the left.
+Select the data set you wish to export from the list.
+Click on the Settings tab and scroll down to the Exports section.
+
+Click the 'Create Export' button.
+Select the type of storage system to which data will be exported from the list.
+
+.. image:: /_static/UsageGuide/export.png
+
+You will see a set of parameters to configure that identify the storage system as well as parameters to control the maximum records to output per file, a prefix for naming files, and an output directory in the case of file-based storage systems.
+If outputting to a file-based system you can choose the file format to use as well as whether and what type of compression to apply.
+
+.. image:: /_static/UsageGuide/configureExport.png
+
+Choose whether to run this export 'Automatically', meaning whenever there is new data written to this data set, or 'Periodically on a schedule'.
+If choosing to export on a schedule, you will have the option to add a specific schedule by specifying the start date and time, how often to repeat, and when the schedule ends if ever.
+
+Choose whether to export all data every time or only new data that has not yet been exported since the last export job ran.
+
+Once the settings are all configured, click Save.
+Once you click save you will see the newly configured export in a table under the Exports section.
+
+Running an Export
+-----------------
+
+If the export is configured to run on a schedule it will automatically start according to the schedule.
+To run an export manually, you can click on the right-arrow icon for an export under the 'Run' column.
+This will kick off an export job.
+
+.. image:: /_static/UsageGuide/runExport.png
+
+Export jobs will appear in the History table for a data set in the Settings tab.
+You can view progress information and view any errors associated with the export job.
+
+To edit an export, click on the gear icon under the 'Edit' column for an export.
+This will show you the original form used to setup the export.
+Make any changes required and click Save.
+
+Data Set Security and Access Control
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Koverse provides fine-grained access control to data sets and even individual records within data sets.
+
+Organizations can define groups, associate users to groups, and grant permissions to groups for system actions or data set-specific actions.
+
+In some cases the mapping of users to groups is defined by an external system such as Active Directory, LDAP, or another single-sign on system.
+If not, Koverse provides a built-in method of defining users and groups.
+
+Regardless of how users and groups are managed, Koverse will manage the permissions granted to groups for Koverse-specific system actions and for access to data sets.
+
+In this section we outline how to carry out common data set access tasks.
+For details on how to control access to system actions, see the Administrator's Guide.
+
+All data set specific permissions are controlled via the Settings tab for a specific data set's details.
+To work with the permissions for a data set click on the 'Data' button in the primary navigation menu on the left.
+Select the data set of interest from the list, and click on the Settings tab.
+
+Making a Data Set Private
+-------------------------
+
+A newly created data set is controlled by the user who created it, known as the 'responsible user'.
+By default this user is the only user that can see that this data set exists, and this user can perform all actions on the data set.
+
+To ensure that a data set is private and accessible only by the responsible user, remove all groups from the permissions list on the data sets Settings tab.
+Do this by clicking the X icon under the 'Remove' column in the permissions list for all groups.
+
+.. image:: /_static/UsageGuide/setPermissions.png
+
+Making a Data Set Available to a Limited Group of Users
+-------------------------------------------------------
+
+To grant specific access to a limited group of users, first add the group that you wish to allow access to by typing in the name of the group in the input box labeled 'Add Group', if the group does not already appear in the permissions list.
+
+.. image:: /_static/UsageGuide/addGroup.png
+
+Even though the group is now added to the permissions list, the users that belong to this group still won't be able to perform any actions on this data set until specific actions are granted.
+Select the specific actions to grant to this group from the list, which includes:
+
+Read
+  This allows members of the group to query this data set.
+Download
+  This allows members of the group to download the entire data set.
+Write & Delete
+  Members of the group can import new data to this data set and can delete existing data.
+Manage Permissions
+  Members of the group can grant permissions to other groups.
+Manage Configuration
+  Members of the group can change the name, indexing options, and other settings for this data set.
+
+
+Making a Data Set Available to Everyone
+----------------------------------------
+
+Koverse ships by default with a group called 'Everyone', which all new users are added to when they are created.
+
+To make a data set available to everyone, simply add the 'Everyone' group to the permissions table and grant the actions desired to this group.
+
+
+Appendix
+^^^^^^^^
+
+Providing an XML Transform (XSLT) to import XML data
+----------------------------------------------------
+
+XML can be imported into Koverse as any file can.
+To parse XML data into proper Koverse records, an XSLT must be used to convert XML into Koverse Record XML.
+
+For example, let's say you have the following XML file which you wish to import:
+
+.. literalinclude:: /_static/xslt-examples/books-example.xml
+	:language: xml
+
+For this example, this XML file would conform to your XML schema (XSD):
+
+.. literalinclude:: /_static/xslt-examples/books-example.xsd
+	:language: xml
+
+Now, to transform this XML into XML that represents Koverse records, the following XSLT would be used:
+
+.. literalinclude:: /_static/xslt-examples/books-example.xsl
+	:language: xml
+
+Which would produce the following XML file that conforms to the Koverse Record XML Schema:
+
+.. literalinclude:: /_static/xslt-examples/books-example-transformed.xml
+	:language: xml
+
+Finally, for your reference, here is the complete Koverse XML Schema:
+
+.. literalinclude:: /_static/xslt-examples/koverse-records.xsd
+	:language: xml

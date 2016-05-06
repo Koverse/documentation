@@ -43,7 +43,11 @@ The following sections provide a basic introduction to the basic abstract concep
 Data Model
 ^^^^^^^^^^
 
-The Koverse data model has two main conceptual components: **Records**, and **Data Collections**. Logically, each Data Collection contains a set of Records.
+The Koverse data model has two main conceptual components: **Records**, and **Data Collections**.
+Logically, each Data Collection contains a set of Records.
+
+In this version of Koverse, we may refer to Data Collections as 'Data Sets'.
+They are equivalent.
 
 For those familiar with relational database management systems such as Oracle or MySQL, the analogy is that a Data Collection is similar to a Table, a Record is similar to a Row, and the fields of a Record are similar to the Columns.
 However, unlike traditional relational databases, Records in a single Collection in Koverse do not have to all have the same fields, and fields can contain complex values, like lists and mappings of fields to values.
@@ -248,7 +252,7 @@ an `Addon` that can be uploaded. Simply alter the Java and HTML/JS code in this 
 
 GitHub Koverse SDK Project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Visit `Koverse SDK Project <https://github.com/Koverse/koverse-sdk-project/tree/1.4/>`_ to fork or download the latest koverse-sdk-project for your version of Koverse. 
+Visit `Koverse SDK Project <https://github.com/Koverse/koverse-sdk-project/tree/1.4/>`_ to fork or download the latest koverse-sdk-project for your version of Koverse.
 
 
 Koverse SDK Project Maven Archetype
@@ -527,7 +531,7 @@ Source Types
 
 **SimpleSource.java**
 
-The SimpleSource class should be extended when users would like the ability to import one or more records or files from a single external server. 
+The SimpleSource class should be extended when users would like the ability to import one or more records or files from a single external server.
 The see `Koverse SDK Project <https://github.com/Koverse/koverse-sdk-project/tree/1.4/>`_ contains an example MyCustomSource that extends SimpleSource.
 
 
@@ -1004,7 +1008,7 @@ To implement an authentication and authorization module, a developer will extend
 Full examples of these classes can be found in the `Koverse SDK Project <https://github.com/Koverse/koverse-sdk-project/tree/1.4/>`_ .
 
 **Application Server Configuration**
-The module and implementations described above need to be built into a JAR file which is placed in the classpath of the Koverse Webapp. This could be done through a mechanism like a JBoss Module or by simply putting the JAR into the WEB-INF/lib directory of the Koverse Webapp.
+The module and implementations described above need to be built into a JAR file which is placed in the classpath of the Koverse Webapp. This can be done by simply putting the JAR into the *lib* directory of the Koverse Web App.
 
 **Koverse Webapp Configuration**
 To update the active authentication and authorization modules used by the Koverse Webapp, set the ``com.koverse.webapp.auth.modules`` property in koverse-webapp.properties to a comma separated list of Guice modules.
@@ -2396,7 +2400,7 @@ We'll do that in the next section.
 Developing an XML Transform (XSLT) to import your XML data as Koverse Records
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-XML can be imported into Koverse as any file can.  However, the format of the imported records in the collection may not be what you are expecting, as it is more of a 
+XML can be imported into Koverse as any file can.  However, the format of the imported records in the collection may not be what you are expecting, as it is more of a
 raw import of generic XML data.  To enable the import of your XML data into proper Koverse records, an XSLT must be used to convert
 your XML into proper Koverse Record XML.
 
@@ -2818,6 +2822,4 @@ Glossary of Koverse Terminology
 * Data Flow - Visualize, configure, and execute the movement of data within the Koverse system.
 * File Upload - Upload one or more files from the browser and import it into a collection.
 
-:ref:`kov-Introduction` 
-
-
+:ref:`kov-Introduction`

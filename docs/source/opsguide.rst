@@ -11,9 +11,9 @@ Starting and Stopping
 As mentioned in the :ref:`InstallGuide`, the two Koverse software components can be stopped and started using the scripts installed into */etc/init.d* by the RPMs::
 
 	service koverse-server stop|start|status
-	service jboss stop|start|status
+	service koverse-webapp stop|start|status
 
-Both the koverse-server process and JBoss are configured to run as the 'koverse' user.
+Both the koverse-server and koverse-webapp processes are configured to run as the 'koverse' user.
 
 Logging
 ^^^^^^^
@@ -35,14 +35,14 @@ Additional logs may be found in */opt/koverse-server/logs/server.err* and */opt/
 Koverse Web App Logging
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Logs for the Koverse Web App go to the JBoss logs at */opt/jboss/standalone/log/server.log*.
+Logs for the Koverse Web App go to */var/log/koverse-webapp/koverse-webapp.log*.
 
 By default, logging levels are set to "INFO".  If logging levels need to be changed,
 
-#. SSH to the jboss server(s)
-#. vi */opt/jboss/standalone/configuration/standalone.xml*
-#. Change the Log4J configuration under the section "<subsystem xmlns="urn:jboss:domain:logging:1.1">"
-#. Restart JBoss (If you do not restart JBoss the new log level properties will not take effect.)
+#. SSH to the Koverse Web App host
+#. vi */opt/koverse-webapp/conf/log4j.xml*
+#. Change the Log4J configuration as needed.
+#. Restart Koverse Web App (If you do not restart, the new log level property will not take effect.)
 
 
 Backup and Recovery
