@@ -92,23 +92,38 @@ The buttons on the left allow you to navigate between major sections of Koverse.
 Some of these may not be viewable if your user account does not have permission to perform certain actions.
 The major sections are :
 
+.. image:: /_static/UsageGuide/dataButton.png
+  :width: 80px
+
 Data
 ~~~~
 Explore data sets that are currently managed by Koverse, via search and viewing summary information. Settings for data sets and audit events can also be seen and changed here.
+
+.. image:: /_static/UsageGuide/addButton.png
+  :width: 80px
 
 Add
 ~~~
 Add a new data set to Koverse from an existing data source.
 If you do not have permission to add a new data set to Koverse you will not see this button.
 
+.. image:: /_static/UsageGuide/transformsButton.png
+  :width: 80px
+
 Transforms
 ~~~~~~~~~~
 Transform are distributed processing jobs that can be used to clean up records in a data set, summarize or aggregate information in a data set, or combine two or more data sets to create a new data set.
 If you don't have permissions to create or run transforms you will not see this tab.
 
+.. image:: /_static/UsageGuide/accountButton.png
+  :width: 80px
+
 Account
 ~~~~~~~
 Access your user information, and make changes such as setting a new password.
+
+.. image:: /_static/UsageGuide/adminButton.png
+  :width: 80px
 
 Admin
 ~~~~~
