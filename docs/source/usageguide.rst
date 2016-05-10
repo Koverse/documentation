@@ -168,6 +168,7 @@ To the right, there is a circular button that allows the entire data set to be d
 
 Finally we have some 'metadata' about this data set, including the total number of records, the date the data set was created, and the last time data was imported into this data set.
 
+
 Data Tabs
 ---------
 
@@ -187,6 +188,20 @@ Audit
 
 We discuss each of these tab pages next.
 
+Example
+~~~~~~~
+
+If you are using a new installation of Koverse, there will be no data sets listed in the list on the left.
+
+To load some example data sets, see the `Adding a New Data Set`_ section and return here.
+
+Once example data sets are loaded you will see five data sets in the list on the left:
+
+- Bank Departments
+- Bank Employee Timesheets
+- Bank Employees
+- Bank Security Incidents
+- Bank Trade Transactions
 
 Exploring a Data Set
 ^^^^^^^^^^^^^^^^^^^^
@@ -216,6 +231,31 @@ Or I may be interested in finding out what fields contain customer IDs so I can 
 If I see that a field isn't present in all the records, or of not 100% of the values are of the same time, it may be because there are data quality or consistency issues, or it may be another feature of the data that may need to be considered.
 For example, not all Twitter messages contain hashtags, and I can get a sense for what proportion do from the information in this overview.
 
+Example
+-------
+
+After loading the first example data set as described in the `Adding a New Data Set`_ section, you should be able to select the 'Bank Security Incidents' data set to see a list of attributes.
+
+We may not know much about the information contained in a data set and this view helps us figure out what the likely meaning of each attribute is.
+
+For example, the first attribute is called 'causeType'.
+In the context of 'Bank Security Incidents' we may infer that this contains some information about the cause of each incident.
+
+The presence count for this attribute should be 49,894 out of 49,894 records, so this attribute is present in every record.
+
+The estimated number of unique values for this attribute is 7, so out of almost 50 thousand records we've only ever seen 7 unique values.
+
+The data type is 100% Text, which means in every record the type of the value for the 'causeType' attribute is that of 'Text'.
+Sometimes an attribute will not always have the same data type in every record.
+
+Clicking on the down arrow by the 'Visual' column will show us a visualization of the top most frequent values for this attribute.
+In this case Koverse automatically selected a bar chart to display a histogram of the most frequent values.
+For example, the 'Infrastructure' value showed up in this attribute 3,857 times.
+Placing your mouse over a column will display the exact number of records for each value.
+
+Clicking on the up arrow at the top of the visualization will collapse this view again.
+Scrolling down allows us to see other attributes.
+
 Search
 ^^^^^^
 
@@ -242,6 +282,23 @@ Clicking on a suggested search term will execute a search for that term.
 
 .. image:: /_static/UsageGuide/autocomplete.png
 
+Example
+~~~~~~~
+
+We'll start typing in the search bar to explore some of the example bank data we have loaded.
+
+In this example we want to quickly find everything we have that relates to a particular bank trader.
+To search across all data sets, make sure that the check box labeled 'Limit search to ...' is unchecked.
+
+Start typing the word::
+
+  Velm
+
+in the search box.
+You should see some suggested search terms, one of which is 'Velma Huber'.
+Click on 'Velma Huber' and you will be taken to the page listing all search results for that term.
+
+
 Viewing Results from All Data Sets
 ----------------------------------
 To search across all data sets, type in one or more search terms in the search bar and hit enter.
@@ -264,6 +321,22 @@ This can be done with multiple attributes to allow their values to be viewed sid
 To see more results for a particular data set, click on the name of the data set in search results or click on the link below the table for a data set labeled 'Search in [data set name]'.
 This will take you to the data tab on the data set details page.
 
+Example
+~~~~~~~
+
+We searched for 'Velma Huber' and we see results from three data sets: 'Bank Employee Timesheets' showing Velma's timesheets, 'Bank Employees' showing HR information about Velma, and 'Bank Security Incidents' which show instances where Velma appears as in the 'manager' attribute or in some cases as the 'submitter'.
+
+Velma's trader ID is listed in the 'Bank Employees' results under the column labeled 'traderId'.
+We might decide to expand this search by adding Velma's trader ID to see if there are additional records in which her trader ID appears.
+In the search box at the top type in::
+
+  "Velma Huber" OR TRD0050350
+
+and hit enter.
+
+Now we see some additional results from the 'Bank Trade Transactions' data set representing trades that Velma executed.
+
+
 Viewing Results from one Data Set
 ---------------------------------
 
@@ -285,6 +358,17 @@ Clicking on a particular attribute name will cause the record table below to scr
 The set of records resulting from the search appear in a table.
 Users can scroll down to view more records, up to the first 50 records.
 To download the full set of search results, see `Downloading Search Results`_.
+
+Example
+~~~~~~~
+
+Continuing from our search above of data relating to Velma, we saw that there were 2744 records matching Velma's trader ID in the 'Bank Trade Transactions' data set.
+To see more of these results we can click on the title of the data set in the results, or click on the link to the lower right of those results labeled 'Show in Bank Trade Transactions'.
+
+This will take us to the data set detail view for the 'Bank Trade Transactions' data set.
+Our previous search has been repeated here and now we can see more of the search results, up to the first 50.
+
+To get all of the results we can click the 'Download Search Results' button as described in the `Downloading Search Results`_ section.
 
 Search Syntax
 -------------
@@ -433,6 +517,18 @@ JSON is a good choice for records that have complex values such as lists and lis
 
 .. image:: /_static/UsageGuide/downloadSearchResults.png
 
+Example
+-------
+
+By clicking the 'Download Results' button on our search of Velma's trade transactions we can choose to download all the results as either a CSV file or a JSON file.
+Choose CSV and click 'Download'.
+
+Your browser will start downloading a file that starts with the phrase 'bank_trade_transactions' and ends in ''.csv'.
+
+Once this is downloaded you can open it in a 3rd party application such as Microsoft Excel.
+
+For more examples in working with this bank data, see the section titled `Analyzing and Transforming a Data Set`_.
+
 Changing Data Set Settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -549,6 +645,39 @@ Clicking Cancel will allow you to start over from the beginning.
 After clicking next you will see a preview of the records to be imported.
 See the section `Step 2. View a Preview of the Data`_ to proceed.
 
+Example
+~~~~~~~
+
+Koverse hosts some example data files for use in these examples.
+This data is synthetic and is designed to illustrate how Koverse can be used to explore data sets with the goal of identifying potentially risky internal behavior.
+There are 5 different files that we'll load into 5 new Koverse data sets.
+The files are hosted at the following URLs:
+
+Bank Security Incidents
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/all-incidents.csv
+
+Bank Transactions
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/all-transactions.csv
+
+Bank Employee Timesheets
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/employeeHours.csv
+
+Bank Employees
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/employees.csv
+
+Bank Departments
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/orgs.csv
+
+We'll load these one at a time into individual data sets.
+To load the first of these we'll choose 'URL Source' from the list.
+In the parameter labeled 'Comma-separated list of URLs' paste in the following URL:
+
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/all-incidents.csv
+
+And click 'Next'.
+
+Then go to `Step 2. View a Preview of the Data`_.
+
 Step 1. Uploading files from desktop
 -------------------------------------
 
@@ -573,7 +702,7 @@ Koverse also does not require that all the values in a particular field be of th
 If the set of files you want to load are of the same schema (have the same set of fields) but for some reason are of differing formats, e.g. some fields are CSV and others are XML, you should load the files of each format into separate data sets and combine them into one data set later using a transform.
 This is because Koverse will use one parser per import job, so you can use a CSV parser to import the CSV files in one import, and an XML parser to import XML files in another import job.
 
-When you are satisfied with the list of files staged, click Next.
+When you are satisfied with the list of files staged, click 'Next'.
 You will be taken to a preview of records to be imported on the next page.
 
 Step 2. View a Preview of the Data
@@ -602,7 +731,19 @@ One common situation is importing XML data.
 Koverse requires that an XSLT script be provided to let Koverse know how the XML file should be broken into individual records, since there isn't enough information in XML files to do this reliably automatically.
 See the section on `Providing an XML Transform (XSLT) to import XML data`_ for details.
 
-We can choose to apply optional normalization rules next, or simply click next to go to step 3.
+We can choose to apply optional normalization rules next, or simply click 'Next' to go to step 3.
+
+Example
+~~~~~~~
+
+In our example we're loading a CSV (comma-separated values) file from a URL.
+
+On the preview page you should see a list of the first 100 records from this file in the record grid.
+Koverse tries to determine the file format automatically and should select the 'Excel-style CSV' parser.
+If so, the records should look correct in the grid, where there are 100 separate records, and each record has 21 fields (even though some values are null).
+
+If some other parser was used, the records should not appear correctly in the grid, and you can choose 'Excel-style CSV' from the list of parsers on the right and click 'Apply' to see a corrected set of records.
+When the records look correct, click 'Next' and go to `Step 3. Choose a Destination Data Set`_.
 
 Applying Normalization Rules
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -638,7 +779,17 @@ This is appropriate for streaming sources such as when importing from the Twitte
 
 Selecting 'On a set schedule' will allow you to specify one or more schedules that define when import jobs will run.
 
+Example
+~~~~~~~
 
+We'll store our example data in a data set called 'Bank Security Incidents'.
+Type that name into the form for the data set name.
+
+Leave the option for 'How often should this collection be updated?' set to 'Only one time'.
+
+Click 'Finish'.
+This will start an import of all the records from that file.
+Go to `Viewing Import Progress`_ for more details.
 
 Configuring a Schedule
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -667,6 +818,14 @@ You can now explore and search the data set as described in the sections `Explor
 Any newly created data set is viewable only by the user that created it.
 To grant access to other groups of users, see the section `Data Set Security and Access Control`_.
 
+Example
+~~~~~~~
+
+When our import of bank security incidents is done, you will see an overview of each attribute, including 'causeType', 'impact', etc.
+
+Once this is done we can load the other four files into four additional data sets, giving each data set the name listed in the `Step 1. Selecting a source type`_ section.
+
+Go to `Exploring a Data Set`_ for details on exploring these attributes.
 
 Analyzing and Transforming a Data Set
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -723,6 +882,38 @@ You will be navigated to the data set detail page, on the settings tab, of the o
 The new transform will be listed in the list of inputs to this data set.
 You can run or edit a transform from this table.
 
+Example
+~~~~~~~
+
+We'll combine some of our synthetic bank data to create a weak 'Key Risk Indicator' or KRI for short.
+
+Let's suppose that our traders are supposed to do trades while under the supervision of a manager.
+We may decide that it might be interesting to see if any traders are at risk for having done trades while a manager is not around, say after hours after the manager has left.
+
+Working after hours alone might not be a good indicator of any wrong doing, and it's likely that most traders will have worked after hours at one time or another, but what we want to find out is if anyone is doing it regularly.
+If we can create a ranked list of the traders who work after hours most frequently we can use that list to prioritize which traders we may want to take a close look at.
+
+To create our list of traders who most frequently work after hours we will create a simple Spark SQL-based transform.
+
+Click on the Transforms button on the left navigation menu.
+
+Select 'Bank Employee Timesheets' in the drop down menu labeled 'Input data sets'.
+
+For the output data set, type in 'Bank After Hours Working'.
+
+Select the 'Spark SQL Transform' from the list labeled 'Select a Transform'.
+
+In the input parameter labeled 'SQL select Statement', enter the following SQL statement::
+
+  SELECT ?1.name, COUNT(?1.name) as daysWorkedLate FROM ?1 WHERE ?1.date > "2016-01-20" AND ?1.stopTimeHours >= 18.5 GROUP BY ?1.name
+
+This statement will count how many days each trader left work after 6:30 pm.
+
+Click the 'Save' button.
+
+You will now be taken to the detail view for the output data set, 'Bank After Hours Working', on the settings tab.
+We'll walk through running this transform in the next section.
+
 Running a Transform
 -------------------
 
@@ -742,6 +933,42 @@ The job will appear in the History table of this settings page.
 You can view the status of this running transform job and optionally stop a running job by clicking the X next to the progress bar of a running job.
 
 If there are any errors encountered in the process of running the transform they will appear in the History table next to the transform job.
+
+Example
+~~~~~~~
+
+To run our example transform, scroll to the 'Inputs' table on the data set details page, on the Settings tab.
+You should see a single transform of type 'sparkSqlTransform'.
+
+Click on the right arrow under the 'Run' column to run this transform.
+In the 'History' table below wou will see job appear with a progress bar indicating how much of the processing has completed.
+After the job is complete you should see the status as 'Complete'.
+
+You can then navigate to the attributes for this data set by clicking on the 'Overview' tab.
+Initially some follow-on processing will take place to index and summarize this new data set.
+You will see a progress bar indicating the status of these jobs on the overview page until they are complete.
+
+When this is complete the overview will be displayed and will show two attributes, 'daysWorkedLate', and 'name'.
+Clicking on 'daysWorkedLate' will show us a visualization of the distribution of values for this attribute.
+It appears that most people. 88 of them, worked only one day late.
+
+Four people worked late twice.
+The next values we see are 29, 30, 31, 34, 35, 37 and 40.
+So there is a bit of a divide between folks who work late once or twice and the people who have done it 30 times or more.
+
+We can decide to take a closer look at who those people are using a search.
+Check the box at the top of the page labeled 'Limit search to Bank After Hours Working' then type in the search::
+
+  daysWorkedLate: [29 TO *]
+
+This is the syntax for searching for records where the 'daysWorkedLate' field contains a number from 20 to positive infinity.
+Hit enter to execute this search.
+
+You should get 11 results, listing the names of people who worked late 29 days or more, with the exact number of days they worked late.
+In previous search examples, we looked at the information for one of these people, 'Velma Huber', as an example of how we might get additional information on these individuals.
+
+This concludes the synthetic bank data examples.
+In the `Interactive Analytics`_ section we have a few more examples of working with data using some data science tools.
 
 Troubleshooting a Transform
 ---------------------------
@@ -766,6 +993,9 @@ You can then search the data in this data set and explore attribute information 
 
 By default only the creator of a data set acting as the output of a transform can view the information in that data set.
 To grant more permissions so other users can view this data, see the section, `Data Set Security and Access Control`_.
+
+Example
+~~~~~~~
 
 Interactive Analytics
 ^^^^^^^^^^^^^^^^^^^^^
