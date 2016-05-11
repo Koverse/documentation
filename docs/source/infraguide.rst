@@ -17,7 +17,7 @@ A Koverse cluster relies on the following software infrastructure
 +------------------+------------------+
 | Hadoop - YARN    | 2.6              |
 +------------------+------------------+
-| Spark            | 1.5              |
+| Spark            | 1.5 or 1.6       |
 +------------------+------------------+
 | ZooKeeper        | 3.4              |
 +------------------+------------------+
@@ -28,6 +28,7 @@ A Koverse cluster relies on the following software infrastructure
 | Oracle Java      | 1.7 or 1.8       |
 +------------------+------------------+
 
+Cloudera parcels are available for CDH versions 5.5 and later.
 
 Koverse leverages Hadoop MapReduce and Spark for data processing and analytics, but these components run as applications on YARN, so besides some very lightweight Job History servers, they don't require any running infrastructure besides YARN.
 
@@ -42,7 +43,6 @@ For production use cases where fault tolerance is required (a disk or server can
 
 * Multiple HDFS nodes for proper data replication
 * 3 or 5 Zookeeper process
-* 2+ Kafka brokers
 * RAIDed disk for RDBMS and HDFS/YARN master processes
 
 
@@ -68,7 +68,6 @@ Some processes, such as the YARN ResourceManager, have a single instance. Others
 * In-between processes (1+ process per cluster, depending on usage)
 
   * Zookeeper (1 is required, 3 is needed for fault tolerance)
-  * Kafka Broker (1 is required, 2 are needed for fault tolerance)
 
 Example Configurations
 ----------------------
