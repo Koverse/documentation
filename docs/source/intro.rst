@@ -13,14 +13,14 @@ Ubiquitous access to data
 -------------------------
 
 Koverse automatically indexes all data.
-The Apache Lucene library used for text tokenization.
+The Apache Lucene library is used for text tokenization.
 Indexes are stored in Apache Accumulo, a scalable NoSQL database that provides the same security controls over indexes as original records.
 
 Enable data science through bulk analysis with latest tools
 -----------------------------------------------------------
 
 Data scientists can develop analytics that run on data in-situ, that can be reused because analytic configuration can be matched to the schema information Koverse maintains.
-Developers can use spark, spark SQL, hadoop map reduce, python, apache pig, R, iPython notebook, Tableau, Excel.
+Developers can use tools such as Spark, Spark SQL, Hadoop MapReduce, Python, Apache Pig, Jupyter Notebook, Tableau, and Excel.
 
 Schema-free ingest
 ------------------
@@ -28,13 +28,13 @@ Schema-free ingest
 Users do not have to provide any information about the data schema.
 Data doesn’t have to be well understood or consistent.
 Store data from external systems once, in a flexible data model in accumulo.
-Discover data structure and address data quality issues via data profiling and sampling.
+Discover data structure and address data quality issues via automatic data profiling and sampling.
 
 Flexible access control
 -----------------------
 
-Koverse labels all data ingested, and protects it immediately.
-Koverse manages group-to-data set access and does additional record-level filtering.
+Koverse labels all data ingested and protects it immediately.
+Koverse manages data set access per group and does additional record-level filtering.
 
 
 Koverse Architecture
@@ -63,7 +63,7 @@ Import data from external sources
 
 * Amazon S3
 
-* Email Account (IMAP)
+* Email Accounts (IMAP)
 
 * File Transfer Protocol (FTP)
 
@@ -79,7 +79,7 @@ Import data from external sources
 
 * Postgres
 
-* Newsfeed Source (RSS)
+* Newsfeeds (RSS)
 
 * Twitter Streaming
 
@@ -144,15 +144,15 @@ Koverse automatically recognizes the following value types and will make them di
 
 * Numbers
 
+* Dates
+
+* Booleans
+
 * URLs
 
 * IP addresses
 
 * Geographical points
-
-* Dates
-
-* Email addresses
 
 
 Bulk Analysis via Transforms
