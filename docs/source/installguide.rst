@@ -193,16 +193,30 @@ More information on the operations of Koverse can be found in the :ref:`Ops Guid
 Cloudera Manager Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Koverse provides a Cloudera Manager Parcel and Custom Service Descriptor (CSD) for easy installation and management through Cloudera Manager. The following files are provided to support both online and offline installs.
+Koverse provides a Cloudera Manager Parcel and Custom Service Descriptor (CSD) for easy installation and management through Cloudera Manager.
+
+Prerequisites
+---------------
+- Cloudera Manager version 5.5 or greater
+- CDH installed via Parcel, not Packages
+- Accumulo Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
+
+Files
+-------
+The following files are provided to support both online and offline installs.
 
 KOVERSE-1.0.jar
   Custom Service Descriptor for Koverse
+  http://repo.koverse.com/KOVERSE-1.0.jar
 KOVERSE-2.0.2-el6.parcel
-  Parcel file
+  Parcel file (download for offline install)
+  http://repo.koverse.com/KOVERSE-2.0.2-el6.parcel
 KOVERSE-2.0.2-el6.parcel.sha
-  Parcel SHA file
+  Parcel SHA file (download for offline install)
+  http://repo.koverse.com/KOVERSE-2.0.2-el6.parcel
 manifest.json
-  Repository file for local parcel repository
+  Repository file for local parcel repository (download for offline install)
+  http://repo.koverse.com/manifest.json
 
 
 CSD Installation
@@ -238,14 +252,14 @@ The CSD automatically installs the parcel repository where Cloudera Manager can 
     chown cloudera-scm:cloudera-scm /opt/cloudera/parcel-repo/*
 
 
-Distribute and Active Parcel
+Distribute and Activate Parcel(s)
 ----------------------------------
 1. Click the Parcel icon in the menu bar of the Cloudera Manager UI. The Koverse parcel should be visible in the list. If not, click the *Check for new Parcels* button.
 2. Click the *Download* button. Once downloaded, the button becomes the *Distribute* button.
 3. Click the *Distribute* button. Once distribuetd, the button become the *Active* button.
 4. Click the *Activate* button.
-5. Use the button near Koverse to activate the parcel on the Cloudera cluster.
 
+As described in the :ref:`InfraGuide`, Koverse depends on Apache Accumulo 1.6 for data storage. If you do not have it installed already, you should now install the ACCUMULO 1.6.0 Parcel. Follow the above Download, Distribute, and Activate process and then install the Accumulo Service.
 
 Configuration
 -------------
