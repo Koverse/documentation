@@ -205,9 +205,9 @@ Files
 -------
 The following files are provided to support both online and offline installs.
 
-KOVERSE-1.0.jar
-  Custom Service Descriptor for Koverse
-  http://repo.koverse.com/KOVERSE-1.0.jar
+KOVERSE-2.0.jar
+  CSD for Koverse
+  http://repo.koverse.com/KOVERSE-2.0.jar
 KOVERSE-2.0.2-el6.parcel
   Parcel file (download for offline install)
   http://repo.koverse.com/KOVERSE-2.0.2-el6.parcel
@@ -292,7 +292,6 @@ Add the Koverse Service
   c. Zookeeper Servers: A comma separated list of host:port where ZooKeeper is running. The hosts can be seen in Cloudera Manager under the ZooKeeper Service on the Instances tab.
   d. PostgreSQL Password: this can be left blank if you are using the Cloudera Manager PostgreSQL database as the installation process will automatically retrieve the login credentials.
   e. Accumulo Password: The password for the root user in Accumulo. Accumulo's default is "secret".
-  f. Webserver port: The port the Koverse webserver will listen on.
 
 
 Verify that everything has installed and started properly:
