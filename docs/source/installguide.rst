@@ -205,9 +205,9 @@ Files
 -------
 The following files are provided to support both online and offline installs.
 
-KOVERSE-1.0.jar
-  Custom Service Descriptor for Koverse
-  http://repo.koverse.com/KOVERSE-1.0.jar
+KOVERSE-2.0.jar
+  CSD for Koverse
+  http://repo.koverse.com/KOVERSE-2.0.jar
 KOVERSE-2.0.2-el6.parcel
   Parcel file (download for offline install)
   http://repo.koverse.com/KOVERSE-2.0.2-el6.parcel
