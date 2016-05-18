@@ -195,8 +195,8 @@ Cloudera Manager Installation
 
 Koverse provides a Cloudera Manager Parcel and Custom Service Descriptor (CSD) for easy installation and management through Cloudera Manager. The following files are provided to support both online and offline installs.
 
-KOVERSE-1.0.jar
-  Custom Service Descriptor for Koverse
+KOVERSE-2.0.jar
+  CSD for Koverse
 KOVERSE-2.0.2-el6.parcel
   Parcel file
 KOVERSE-2.0.2-el6.parcel.sha
