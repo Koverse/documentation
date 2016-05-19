@@ -20,8 +20,10 @@ Choose whether to download the RPM, for installation using the Red Hat Package M
 Installation and Configuration
 ------------------------------
 
+
 To install Koverse, see detailed installation instructions for the RPM at :ref:`RpmInstallation`.
 For the Cloudera parcel, see :ref:`ClouderaParcelInstallation`.
+
 
 Using Koverse
 ^^^^^^^^^^^^^

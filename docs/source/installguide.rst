@@ -99,6 +99,18 @@ Then grant the 'koverse' Accumulo user the required permissions to manage its ta
  root@accumulo> grant -s System.ALTER_TABLE -u koverse
  root@accumulo> grant -s System.SYSTEM -u koverse
 
+Accumulo Configuration
+----------------------
+
+If SSL is enabled for Accumulo clients, ensure that the user Koverse runs as has the following settings in $HOME/.accumulo/config::
+
+  instance.rpc.ssl.enabled	true
+
+If a custom CA is used for Accumulo's server certificate, a copy of the trust store must be copied to a location the client can access and the following additional settings should be added::
+
+  rpc.javax.net.ssl.trustStore	[Path to trust store JKS file]
+  rpc.javax.net.ssl.trustStorePassword	[trust store password]
+
 Koverse Server Install
 ----------------------
 
@@ -205,18 +217,14 @@ Files
 -------
 The following files are provided to support both online and offline installs.
 
-KOVERSE-2.0.jar
+KOVERSE-<VERSION>.jar
   CSD for Koverse
-  http://repo.koverse.com/KOVERSE-2.0.jar
-KOVERSE-2.0.2-el6.parcel
+KOVERSE-<VERSION>-<ARCHITECTURE>.parcel
   Parcel file (download for offline install)
-  http://repo.koverse.com/KOVERSE-2.0.2-el6.parcel
-KOVERSE-2.0.2-el6.parcel.sha
+KOVERSE-<VERSION>-<ARCHITECTURE>.parcel.sha
   Parcel SHA file (download for offline install)
-  http://repo.koverse.com/KOVERSE-2.0.2-el6.parcel
 manifest.json
   Repository file for local parcel repository (download for offline install)
-  http://repo.koverse.com/manifest.json
 
 
 CSD Installation
@@ -226,12 +234,12 @@ CSD Installation
 - Change the permissions on the CSD file
   ::
 
-    chmod 644 /opt/cloudera/csd/KOVERSE-1.0.jar
+    chmod 644 /opt/cloudera/csd/KOVERSE-2.0.jar
 
 - Change the owner of the CSD file to *cloudera-scm*
   ::
 
-    chown cloudera-scm:cloudera-scm /opt/cloudera/csd/KOVERSE-1.0.jar
+    chown cloudera-scm:cloudera-scm /opt/cloudera/csd/KOVERSE-2.0.jar
 
 - Restart Cloudera Manager to pick up the new Koverse Service from the Cloudera Service Descriptor
   ::
