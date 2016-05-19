@@ -98,6 +98,18 @@ Then grant the 'koverse' Accumulo user the required permissions to manage its ta
  root@accumulo> grant -s System.ALTER_TABLE -u koverse
  root@accumulo> grant -s System.SYSTEM -u koverse
 
+Accumulo Configuration
+----------------------
+
+If SSL is enabled for Accumulo clients, ensure that the user Koverse runs as has the following settings in $HOME/.accumulo/config::
+
+  instance.rpc.ssl.enabled	true
+
+If a custom CA is used for Accumulo's server certificate, a copy of the trust store must be copied to a location the client can access and the following additional settings should be added::
+
+  rpc.javax.net.ssl.trustStore	[Path to trust store JKS file]
+  rpc.javax.net.ssl.trustStorePassword	[trust store password]
+
 Koverse Server Install
 ^^^^^^^^^^^^^^^^^^^^^^
 
