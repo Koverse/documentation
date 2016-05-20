@@ -211,7 +211,8 @@ Prerequisites
 ---------------
 - Cloudera Manager version 5.5 or greater
 - CDH installed via Parcel, not Packages
-- Accumulo Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
+- RHEL 6 is highly recommended.  The Accumulo Parcel installation is not officially supported on RHEL 7 by Cloudera.  If you require Cloudera on RHEL 7, please contact Koverse technical support for more information about the installation process.
+- Accumulo 1.6 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
 
 Files
 -------
@@ -223,8 +224,6 @@ KOVERSE-<VERSION>-<ARCHITECTURE>.parcel
   Parcel file (download for offline install)
 KOVERSE-<VERSION>-<ARCHITECTURE>.parcel.sha
   Parcel SHA file (download for offline install)
-manifest.json
-  Repository file for local parcel repository (download for offline install)
 
 
 CSD Installation
@@ -252,8 +251,8 @@ Manual Parcel Installation (Optional)
 -----------------------------------------
 The CSD automatically installs the parcel repository where Cloudera Manager can download the Koverse Parcel from. If you are installing on a cluster without Internet connectivity though, you will need to manually install the Koverse parcel and checksum to the local parcel respository.
 
+- Ensure that the CSD file is installed.
 - Copy the parcel file and SHA file to */opt/cloudera/parcel-repo*
-- Copy over manifest.repo to */opt/cloudera/parcel-repo*
 - Change ownership of all files *cloudera-scm*
   ::
 
@@ -264,7 +263,7 @@ Distribute and Activate Parcel(s)
 ----------------------------------
 1. Click the Parcel icon in the menu bar of the Cloudera Manager UI. The Koverse parcel should be visible in the list. If not, click the *Check for new Parcels* button.
 2. Click the *Download* button. Once downloaded, the button becomes the *Distribute* button.
-3. Click the *Distribute* button. Once distribuetd, the button become the *Active* button.
+3. Click the *Distribute* button. Once distributed, the button become the *Active* button.
 4. Click the *Activate* button.
 
 As described in the :ref:`InfraGuide`, Koverse depends on Apache Accumulo 1.6 for data storage. If you do not have it installed already, you should now install the ACCUMULO 1.6.0 Parcel. Follow the above Download, Distribute, and Activate process and then install the Accumulo Service.
@@ -273,7 +272,7 @@ Configuration
 -------------
 Currently there are a few manual configuration steps that need to occur before adding and starting the Koverse Service in Cloudera Manager. In the future, these will be automated as part of the parcel install. All of these should be performed on the host where you will install the Koverse Service.
 
-- Ensure that *dfs.permissions.superusergroup* is set to an existing Unix group. You can check the value of this property in Cloudera Manger by navigating to the HDFS Service and then selecting the Configuration tab and searching for this property. On the host you can view */etc/group* to confirm this group exists. A *dfs.permissions.superusergroup* value of "hadoop" is used in the examples below.
+- Ensure that *dfs.permissions.superusergroup* is set to an existing Unix group. You can check the value of this property in Cloudera Manger by navigating to the HDFS Service and then selecting the Configuration tab and searching for this property. On the host you can view */etc/group* to confirm this group exists.  By default, the value of this property is "supergroup", if you see this value, we recommend changing it to "hadoop" in the Clouder Manager console.  A *dfs.permissions.superusergroup* value of "hadoop" is used in the examples below.
 - Add koverse and accumulo users to the superusergroup
   ::
 
