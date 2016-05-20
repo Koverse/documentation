@@ -1,9 +1,9 @@
 
 .. _InstallGuide:
 
-==============
+=============
 Install Guide
-==============
+=============
 
 This section describes the prerequisites and process for installing Koverse software on your cluster.
 
@@ -203,19 +203,19 @@ More information on the operations of Koverse can be found in the :ref:`Ops Guid
 .. _ClouderaParcelInstallation:
 
 Cloudera Manager Installation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Koverse provides a Cloudera Manager Parcel and Custom Service Descriptor (CSD) for easy installation and management through Cloudera Manager.
 
 Prerequisites
----------------
+-------------
 - Cloudera Manager version 5.5 or greater
 - CDH installed via Parcel, not Packages
 - RHEL 6 is highly recommended.  The Accumulo Parcel installation is not officially supported on RHEL 7 by Cloudera.  If you require Cloudera on RHEL 7, please contact Koverse technical support for more information about the installation process.
 - Accumulo 1.6 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
 
 Files
--------
+-----
 The following files are provided to support both online and offline installs.
 
 KOVERSE-<VERSION>.jar
@@ -227,7 +227,7 @@ KOVERSE-<VERSION>-<ARCHITECTURE>.parcel.sha
 
 
 CSD Installation
--------------------
+----------------
 
 - Copy the CSD file onto the Cloudera Manager server and place it in */opt/cloudera/csd*
 - Change the permissions on the CSD file
@@ -248,7 +248,7 @@ CSD Installation
 - For further reference: http://www.cloudera.com/documentation/enterprise/5-5-x/topics/cm_mc_addon_services.html
 
 Manual Parcel Installation (Optional)
------------------------------------------
+-------------------------------------
 The CSD automatically installs the parcel repository where Cloudera Manager can download the Koverse Parcel from. If you are installing on a cluster without Internet connectivity though, you will need to manually install the Koverse parcel and checksum to the local parcel respository.
 
 - Ensure that the CSD file is installed.
@@ -260,7 +260,7 @@ The CSD automatically installs the parcel repository where Cloudera Manager can 
 
 
 Distribute and Activate Parcel(s)
-----------------------------------
+---------------------------------
 1. Click the Parcel icon in the menu bar of the Cloudera Manager UI. The Koverse parcel should be visible in the list. If not, click the *Check for new Parcels* button.
 2. Click the *Download* button. Once downloaded, the button becomes the *Distribute* button.
 3. Click the *Distribute* button. Once distributed, the button become the *Active* button.
@@ -288,7 +288,7 @@ Currently there are a few manual configuration steps that need to occur before a
 
 
 Add the Koverse Service
--------------------------
+-----------------------
 1. In Cloudera Manager, click the dropdown menu for your cluster and click *Add a Service*.
 2. Select the Koverse Service and click the *Continue* button.
 3. Select the host where you want to install the Koverse Server and Koverse Web Server Roles. The same server should be selected for both Roles. Click the *Continue* button.
@@ -302,6 +302,12 @@ Add the Koverse Service
 
 
 Verify that everything has installed and started properly:
+
+Once both processes have started up, you can access the Koverse user interface from a web browser at
+
+``http://<hostname>:8080``
+
+The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
 
 
 Koverse Configuration
