@@ -1,9 +1,9 @@
 
 .. _InstallGuide:
 
-==============
+=============
 Install Guide
-==============
+=============
 
 This section describes the prerequisites and process for installing Koverse software on your cluster.
 
@@ -57,22 +57,22 @@ Users
 
 The *koverse-server* and *koverse-webapp* processes run as the user 'koverse'. To create this user, as root run::
 
-  useradd koverse
+  sudo useradd koverse
 
 HDFS Configuration
 ------------------
 
 The 'koverse' user added above needs to be in the HDFS Superuser Group. This group is defined in the HDFS configuration property of *dfs.permissions.superusergroup*. Additionally, the value of that property must be a UNIX group on the server. For instance, if *dfs.permissions.superusergroup* was 'hadoop', ensure this group exists, and if not::
 
-  groupadd hadoop
+  sudo groupadd hadoop
 
 And then add 'koverse' to this group::
 
-  usermod -a -G hadoop koverse
+  sudo usermod -a -G hadoop koverse
 
 It is also currently required to have the 'accumulo' user in this same group, so also run::
 
-  usermod -a -G hadoop accumulo
+  sudo usermod -a -G hadoop accumulo
 
 Now we need to create a directory in HDFS for Koverse to use. Assuming the typical 'hdfs' user exists for your Hadoop install, run::
 
@@ -116,7 +116,7 @@ Koverse Server Install
 
 To install the Koverse Server from RPM, simply run::
 
-  yum localinstall koverse-server-<VERSION>.rpm
+  sudo yum localinstall koverse-server-<VERSION>.rpm
 
 This will install into */opt/koverse-server/* as well as create a script at */etc/init.d/koverse-server* for starting and stopping the process.
 
@@ -125,7 +125,7 @@ Koverse Web App Install
 
 To install the Koverse Web App from RPM, simply run::
 
-  yum localinstall koverse-webapp-<VERSION>.rpm
+  sudo yum localinstall koverse-webapp-<VERSION>.rpm
 
 This will install into */opt/koverse-webapp/* as well as create a script at */etc/init.d/koverse-webapp* for starting and stopping the process.
 
@@ -180,11 +180,11 @@ Running Koverse
 
 As discussed, Koverse software runs as two processes. To start the Koverse Server, as root run::
 
-  service koverse-server start
+  sudo service koverse-server start
 
 And for the Web App, run::
 
-  service koverse-webapp start
+  sudo service koverse-webapp start
 
 Once both processes have started up, you can access the Koverse user interface from a web browser at
 
@@ -203,18 +203,19 @@ More information on the operations of Koverse can be found in the :ref:`Ops Guid
 .. _ClouderaParcelInstallation:
 
 Cloudera Manager Installation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Koverse provides a Cloudera Manager Parcel and Custom Service Descriptor (CSD) for easy installation and management through Cloudera Manager.
 
 Prerequisites
----------------
+-------------
 - Cloudera Manager version 5.5 or greater
 - CDH installed via Parcel, not Packages
-- Accumulo Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
+- RHEL 6 is highly recommended.  The Accumulo Parcel installation is not officially supported on RHEL 7 by Cloudera.  If you require Cloudera on RHEL 7, please contact Koverse technical support for more information about the installation process.
+- Accumulo 1.6 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
 
 Files
--------
+-----
 The following files are provided to support both online and offline installs.
 
 KOVERSE-<VERSION>.jar
@@ -223,11 +224,17 @@ KOVERSE-<VERSION>-<ARCHITECTURE>.parcel
   Parcel file (download for offline install)
 KOVERSE-<VERSION>-<ARCHITECTURE>.parcel.sha
   Parcel SHA file (download for offline install)
-manifest.json
-  Repository file for local parcel repository (download for offline install)
+
 
 
 .. include:: /snippets/csdinstall.rst
+
+
+Once both processes have started up, you can access the Koverse user interface from a web browser at
+
+``http://<hostname>:8080``
+
+The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
 
 
 Koverse Configuration
