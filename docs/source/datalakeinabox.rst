@@ -1,4 +1,6 @@
 
+.. _datalakeinabox:
+
 Koverse Quick Start: Data Lake in a Box
 =======================================
 

@@ -8,8 +8,4 @@ Koverse
 .. toctree::
    :maxdepth: 3
 
-   intro
-   quickstart
-   usageguide
-   adminguide
-   devguide
+   datalakeinabox
