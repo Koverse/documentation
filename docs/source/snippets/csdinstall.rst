@@ -76,4 +76,4 @@ Add the Koverse Service
   e. Accumulo Password: The password for the root user in Accumulo. Accumulo's default is "secret".
 
 
-Verify that everything has installed and started properly:
+Verify that everything has installed and started properly.
