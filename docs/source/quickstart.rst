@@ -15,6 +15,8 @@ Infrastructure and Software
 
 Koverse and the open source software it leverages must be run on a system with no less than 10 GB of memory.  For workloads beyond simple examples and testing we recommend a properly specified Hadoop cluster with five or more nodes.
 
+Using the Cloudera QuickStart VM is not recommended. See http://www.koverse.com/question/using-the-cloudera-quick-start-vim-and-the-koverse-parcel for more information.
+
 An amazon r3.xlarge EC2 instance is a good option for a single node AWS deployment.
 
 Recommended Operating System:
