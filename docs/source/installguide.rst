@@ -229,7 +229,8 @@ Once both processes have started up, you can access the Koverse user interface f
 
 ``http://<hostname>:8080``
 
-The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
+The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.  It is recommended that you also change the e-mail address of the admin user to a real e-mail address, 
+so that in the event that the password is lost, you are able to reset the password.  It is also recommended to change the e-mail settings in koverse-server.properties to support automated password resets. 
 
 Logs
 ----
@@ -273,7 +274,8 @@ Once both processes have started up, you can access the Koverse user interface f
 
 ``http://<hostname>:8080``
 
-The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
+The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.  It is recommended that you also change the e-mail address of the admin user to a real e-mail address, 
+so that in the event that the password is lost, you are able to reset the password.  It is also recommended to change the e-mail settings in koverse-server.properties to support automated password resets.
 
 
 Koverse Configuration
@@ -345,6 +347,36 @@ This is used in environments where Kerberos is not enabled.
 **dataStoreSetting.zookeeperServers**
 
 This is a comma-separated list of ZooKeeper servers in the form of <HOSTNAME>:<PORT>. The default ZooKeeper port is 2181.
+
+**koverseBaseURL**
+
+The URL that will be sent out in password reset e-mails, this should be the same URL that you are using to access the Koverse user interface, for example http://demo.koverse.com
+
+**smtpServerHostName**
+
+The e-mail server that the Koverse software will use to send e-mail, needs to be enabled for automated password resets to work.  Should be a hostname, for example: smtp.example.com   
+
+**smtpServerPort**
+
+The network port that Koverse will use to send e-mail via SMTP, the default is 25.
+
+**smtpUsername**
+
+If authentication is required for Koverse to send e-mail, this should be set to the username to use when authenticating to the SMTP server.
+
+**smtpPassword**
+
+If authentication is required for Koverse to send e-mail, this should be set to the password to use when authenticating to the SMTP server.
+
+**smtpFromEmailAddress**
+
+When Koverse sends e-mails, it will use this setting to determine what address to use as a sending address.  For example, no-reply@example.com
+
+**smtpConnectionType**
+
+The type of network security to use when connecting to the SMTP server.  Can be one of plain,TLS or SSL.  TLS is strongly recommended unless it is not supported by your SMTP server.
+
+
 
 koverse-webapp.properties
 -------------------------
