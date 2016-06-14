@@ -173,7 +173,10 @@ This will install into */opt/koverse-webapp/* as well as create a script at */et
 PostgreSQL Setup
 ----------------
 
-Koverse stores metadata about Data Collections, Users, Transforms, etc in an RDBMS such as PostgreSQL. These instructions assume PostgreSQL has already been installed. In an environment where Cloudera Manager is used, Koverse can leverage the PostgreSQL database that is installed via Cloudera Manager. If you wish to use a different password than the default 'koverse1234', you will need to follow the procedure in :ref:`AppendixA` for encoding this password before putting it into the *koverse-server.properties* file.
+Koverse stores metadata about Data Collections, Users, Transforms, etc in an RDBMS such as PostgreSQL.
+These instructions assume PostgreSQL has already been installed.
+In an environment where Cloudera Manager is used, Koverse can leverage the PostgreSQL database that is installed via Cloudera Manager.
+If you wish to use a different password than the default 'koverse1234', you will need to follow the procedure in :ref:`AppendixA` for encoding this password before putting it into the *koverse-server.properties* file.
 
 Cloudera Manager Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -229,8 +232,10 @@ Once both processes have started up, you can access the Koverse user interface f
 
 ``http://<hostname>:8080``
 
-The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.  It is recommended that you also change the e-mail address of the admin user to a real e-mail address, 
-so that in the event that the password is lost, you are able to reset the password.  It is also recommended to change the e-mail settings in koverse-server.properties to support automated password resets. 
+The default username and password are 'admin' and 'admin'.
+The password can be changed immediately after logging in.
+It is recommended that you also change the e-mail address of the admin user to a real e-mail address, so that in the event that the password is lost, you are able to reset the password.
+It is also recommended to change the e-mail settings in koverse-server.properties to support automated password resets. 
 
 Logs
 ----
@@ -274,7 +279,7 @@ Once both processes have started up, you can access the Koverse user interface f
 
 ``http://<hostname>:8080``
 
-The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.  It is recommended that you also change the e-mail address of the admin user to a real e-mail address, 
+The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.  It is recommended that you also change the e-mail address of the admin user to a real e-mail address,
 so that in the event that the password is lost, you are able to reset the password.  It is also recommended to change the e-mail settings in koverse-server.properties to support automated password resets.
 
 
@@ -283,7 +288,8 @@ Koverse Configuration
 
 Environment
 -----------
-The 'koverse' user needs to have the 'java' command in their path for the Koverse startup scripts to execute correctly. This needs to be Oracle Java 1.7 or 1.8.
+The 'koverse' user needs to have the 'java' command in their path for the Koverse startup scripts to execute correctly.
+This needs to be Oracle Java 1.7 or 1.8.
 
 The environment variable *HADOOP_CONF_DIR* needs to be set for the 'koverse' user so Koverse can take advantage of the Hadoop client configuration.
 The startup script */opt/koverse-server/bin/startup.sh* will default this environment variable to */etc/hadoop/conf* if it is not already set.
@@ -354,7 +360,8 @@ The URL that will be sent out in password reset e-mails, this should be the same
 
 **smtpServerHostName**
 
-The e-mail server that the Koverse software will use to send e-mail, needs to be enabled for automated password resets to work.  Should be a hostname, for example: smtp.example.com   
+The e-mail server that the Koverse software will use to send e-mail, needs to be enabled for automated password resets to work.
+Should be a hostname, for example: smtp.example.com
 
 **smtpServerPort**
 
@@ -370,11 +377,14 @@ If authentication is required for Koverse to send e-mail, this should be set to 
 
 **smtpFromEmailAddress**
 
-When Koverse sends e-mails, it will use this setting to determine what address to use as a sending address.  For example, no-reply@example.com
+When Koverse sends e-mails, it will use this setting to determine what address to use as a sending address.
+For example, no-reply@example.com
 
 **smtpConnectionType**
 
-The type of network security to use when connecting to the SMTP server.  Can be one of plain,TLS or SSL.  TLS is strongly recommended unless it is not supported by your SMTP server.
+The type of network security to use when connecting to the SMTP server.
+Can be one of plain,TLS or SSL.
+TLS is strongly recommended unless it is not supported by your SMTP server.
 
 
 
@@ -420,10 +430,13 @@ Appendix A: Changing Encoded Passwords
 
 If you are changing a password from its default you will need to run the koverse-squirrel utility to encode the password and store it in koverse-server.properties.
 
-When Koverse runs, it uses the value in the *com.koverse.license.verification* property as a symmetric key to encode and decode the value of passwords. This is not intended to be a cryptographically secure solution, but simply to provide some level of obfuscation versus plaintext passwords.
+When Koverse runs, it uses the value in the *com.koverse.license.verification* property as a symmetric key to encode and decode the value of passwords.
+This is not intended to be a cryptographically secure solution, but simply to provide some level of obfuscation versus plaintext passwords.
 
 To generate a new encoded password, run::
 
   sh /opt/koverse-server/bin/licensetool.sh -m encrypt
 
-First enter the *com.koverse.license.verification* value from *koverse-server.properties* when prompted. Then you will be prompted to enter the password that you wish to encoded. Copy and paste the encoded password into the properties file, for example to change the value for *com.koverse.server.jdbc.password*
+First enter the *com.koverse.license.verification* value from *koverse-server.properties* when prompted.
+Then you will be prompted to enter the password that you wish to encoded.
+Copy and paste the encoded password into the properties file, for example to change the value for *com.koverse.server.jdbc.password*
