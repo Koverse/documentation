@@ -104,6 +104,7 @@ keep_warnings = True
 
 html_theme = "sphinx_koverse_theme"
 html_theme_path = ["_themes", ]
+html_style = 'css/theme.css'
 
 #if not on_rtd:  # only import and set the theme if we're building docs locally
 #    html_theme = "sphinx_koverse_theme"
