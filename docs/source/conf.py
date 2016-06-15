@@ -100,35 +100,33 @@ keep_warnings = True
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
 #on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-html_theme = "sphinx_rtd_theme"
-html_theme_path = ["_themes",]
+#html_theme = "sphinx_rtd_theme"
+#html_theme_path = ["_themes",]
 
-html_context = {
-    "display_github": False, # Add 'Edit on Github' link instead of 'View page source'
-    "last_updated": True,
-    "commit": False,
-}
+#html_context = {
+#    "display_github": False, # Add 'Edit on Github' link instead of 'View page source'
+#    "last_updated": True,
+#    "commit": False,
+#}
 
 #if not on_rtd:  # only import and set the theme if we're building docs locally
 #    import sphinx_rtd_theme
 #    html_theme = 'sphinx_rtd_theme'
 #    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
-#if not on_rtd:  # only import and set the theme if we're building docs locally
-#    html_theme = "sphinx_koverse_theme"
-#    html_theme_path = ["_themes", ]
-#else:
-#    import sphinx_rtd_theme
-#    html_theme = 'sphinx_rtd_theme'
-#    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-#    html_context = {
-#            "display_github": False, # Add 'Edit on Github' link instead of 'View page source' "last_updated": True, "commit": False,
-#            'css_files': [
-#            'https://media.readthedocs.org/css/sphinx_rtd_theme.css',
-#            'https://media.readthedocs.org/css/readthedocs-doc-embed.css',
-#            '_static/css/theme.css',
-#        ],
-#    }
+if not on_rtd:  # only import and set the theme if we're building docs locally
+    html_theme = 'sphinx_rtd_theme'
+    html_theme_path = ['_themes', ]
+else:
+    import sphinx_rtd_theme
+    html_theme = 'sphinx_rtd_theme'
+    html_theme_path = ['_themes', ]
+    html_context = {
+            'display_github': False,
+            'css_files': [
+            '_static/css/theme.css',
+        ],
+    }
 
 
 # Theme options are theme-specific and customize the look and feel of a theme
