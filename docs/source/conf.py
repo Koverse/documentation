@@ -102,9 +102,10 @@ keep_warnings = True
 #html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 #on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-html_theme = "sphinx_koverse_theme"
-html_theme_path = ["_themes", ]
-html_style = 'css/theme.css'
+html_theme = 'sphinx_koverse_theme'
+html_theme_path = ['_themes', ]
+#html_style = 'css/theme.css'
+
 
 #if not on_rtd:  # only import and set the theme if we're building docs locally
 #    html_theme = "sphinx_koverse_theme"
@@ -128,22 +129,6 @@ html_style = 'css/theme.css'
 # further.  For a list of options available for each theme, see the
 # documentation.
 
-# Commented out these options with the switch to the RTD theme
-#html_theme_options = {
-#	"stickysidebar": "true",
-#	"footerbgcolor": "#000000",
-#	"sidebarbgcolor": "#000000",
-#	"sidebarlinkcolor": "#0088cc",
-#	"relbarbgcolor": "#000000",
-#	"bodyfont": "helvetica",
-#	"headfont": "helvetica",
-#	"headbgcolor": "#ffffff",
-#	"headtextcolor": "#000000",
-#	"codebgcolor": "#f0f0f0",
-#	"linkcolor": "#0088cc",
-#}
-
-#"sidebarlinkcolor": "#E6E6E6",
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = ['_theme']
