@@ -98,9 +98,8 @@ keep_warnings = True
 # a list of builtin themes.
 
 # on_rtd is whether we are on readthedocs.org, this line of code grabbed from docs.readthedocs.org
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+#on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-import sphinx_rtd_theme
 html_theme = "sphinx_rtd_theme"
 html_theme_path = ["_themes",]
 
