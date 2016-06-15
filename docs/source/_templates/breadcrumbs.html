@@ -6,13 +6,8 @@
 {% set suffix = source_suffix %}
 {% endif %}
 
-{% if meta is defined and 'github_url' in meta %}
-{% set display_github = True %}
-{% endif %}
 
-{% if meta is defined and 'bitbucket_url' in meta %}
-{% set display_bitbucket = True %}
-{% endif %}
+
 
 <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
@@ -24,12 +19,12 @@
     <li class="wy-breadcrumbs-aside">
       {% if pagename != "search" %}
           {% if display_github %}
-          {% if meta is defined and 'github_url' in meta %}
+          <!--{% if meta is defined and 'github_url' in meta %} -->
             <!-- User defined GitHub URL -->
-            <a href="{{ meta['github_url'] }}" class="fa fa-github"> Edit on GitHub</a>
-          {% else %}
-            <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" class="fa fa-github"> Edit on GitHub</a>
-          {% endif %}
+            <!-- <a href="{{ meta['github_url'] }}" class="fa fa-github"> Edit on GitHub</a>
+          {% else %} -->
+            <!-- <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" class="fa fa-github"> Edit on GitHub</a>
+          {% endif %} -->
         {% elif display_bitbucket %}
           {% if meta is defined and 'bitbucket_url' in meta %}
             <!-- User defined Bitbucket URL -->
