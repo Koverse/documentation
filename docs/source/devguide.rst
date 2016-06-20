@@ -462,32 +462,6 @@ Developers should consider that customers upgrading from one version to the next
 
 
 
-
-HTML/JS Apps
-^^^^^^^^^^^^^
-
-The ability to quickly build new applications to address specific mission and business needs is a primary objective of Koverse. Applications built on Koverse can take advantage of the powerful data management, indexing, and query capabilities Koverse provides. In conjunction with custom Transforms, Koverse applications can achieve a large breadth of functionality.
-
-Apps are built using HTML and Javascript and interact with Koverse via the Javascript SDK found in the koverse.js file.
-
-
-Koverse Javascript SDK
-^^^^^^^^^^^^^^^^^^^^^^
-
-Koverse ships with a few .js files that should be included in your custom apps. Open and inspect them each for a list of their properties. The list below describes these files in detail.
-
-`/Koverse/js/koverse.js <javascript/symbols/Koverse.html>`_
-
-The koverse.js file contains all of the AJAX functions for calling Koverse REST API methods. Use these methods to manipulate services, perform CRUD operations on components, and query for data in koverse. This file requires that JQuery is also included in your project.
-
-**/Koverse/js/apps/apps-common.js**
-
-The apps-common.js file contains all of the logic for the Koverse common look-and-feel - including the top navigation bar and menu. Use this file in your native app so that it is well integrated with the koverse JS UI framework. This file requires the /Koverse/css/apps-common.css style sheet.
-
-**/Koverse/js/koverse-util.js**
-
-The koverse-util.js file contains many helper functions for common uses cases in Koverse apps - like number formatting, date parsing, and URL hash/anchor value manipulation, etc. Including this file in your app is optional, but you will likely find it very helpful.
-
 Defining Custom Apps in Addons
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -849,7 +823,7 @@ REST API
 
 Koverse provides an HTTP REST API for providing access to third party tools and integrations. This documentation explains how to access the REST API, and provide third party integrations such as widgets and data management. All responses, and HTTP payload requests are encoded in JSON.
 
-See the REST API generated documentation for a complete list of methods and their signatures. The REST API documentation is hosted in koverse itself open \https://{yourKoverseInstance}/Koverse/docs/rest/
+See the REST API generated documentation for a complete list of methods and their signatures. The REST API documentation is hosted in koverse itself open \https://<host:port>/docs/rest/
 
 Response Messages
 ^^^^^^^^^^^^^^^^^
@@ -884,14 +858,14 @@ Koverse Administrators can create API Tokens, which are used by outside systems 
 
 All REST API methods can be called using an API token to authenticate. The API Token takes precedence over any other method of authentication. Here is an example of using an API token to authenticate::
 
-	``http://<host:port>/Koverse/api/system/status?apiToken=API-TOKEN-HERE``
+	``http://<host:port>/api/system/status?apiToken=API-TOKEN-HERE``
 
 Example REST API Methods
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Ping**
 
- ``http://<host:port>/Koverse/api/ping``
+ ``http://<host:port>/api/ping``
 
 A ping request shows that the Koverse HTTP REST API is available, and responsive. Use the ping response method to monitor basic system availability.
 
@@ -900,7 +874,7 @@ Example Ping Request
 
 The following URL shows a ping request, for a Koverse server running on localhost.
 
- ``http://localhost:8080/Koverse/api/ping``
+ ``http://<host:port>/api/ping``
 
 Example Ping Response
 
@@ -908,19 +882,19 @@ Example Ping Response
 
 **System Status**
 
- ``http://<host:port>/Koverse/api/status``
+ ``http://<host:port>/api/status``
 
 The system status method provides basic system status information. Use this method to integrate against system feature availability. For example, while in lock down mode, Koverse will not provide accesss to requests for data. Therefore it is important to know the basic status of the Koverse system to provide reasonable requests.
 
 Example Status Request
- ``http://localhost:8080/Koverse/api/status``
+ ``http://<host:port>/api/status``
 
 Example Status Response
  ``{"success":true,"systemStatus":{"lockDown":false}}``
 
 Session Authentication (Login)
 
- ``http://<host:port>/Koverse/api/login/<name>/<password>``
+ ``http://<host:port>/api/login/<name>/<password>``
 
 Example login failure response::
 
@@ -940,19 +914,19 @@ Before using other REST API methods, an HTTP session must be established. Below 
 
 The following would retrieve an HTTP response with a JSESSIONID token for the default administrative user and password.
 
- ``http://localhost:8080/Koverse/api/login/admin/admin``
+ ``http://<host:port>/api/login/admin/admin``
 
 **Querying for data**
 
 The most basic feature of the Koverse REST API is to provide query/search access to data collections. Below is an example of querying all data collections for a logged-in user.
 
- ``http://<host:port>/Koverse/api/query/<queryHere>``
+ ``http://<host:port>/api/query/<queryHere>``
 
 **Example Query**
 
 The following would query a Koverse instance running on localhost, port 8080, for the term test.
 
- ``http://localhost:8080/Koverse/api/query/test``
+ ``http://<host:port>/api/query/test``
 
  **Additional Methods**
 
