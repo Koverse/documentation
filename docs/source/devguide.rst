@@ -211,7 +211,7 @@ Whether developing a Koverse App or building a custom source, Koverse queries co
 Lucene-like Query Syntax
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-These queries are represented as strings and passed as such into query methods. The Lucene query syntax is described in the Usage Guide at :ref:`LuceneQuerySyntax`.
+These queries are represented as strings and passed as such into query methods. The Lucene query syntax is described on `Apache Lucene <https://lucene.apache.org/core/3_6_2/queryparsersyntax.html>`_ 
 
 
 Object-based Queries
