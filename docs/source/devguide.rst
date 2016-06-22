@@ -267,6 +267,7 @@ GitHub Koverse SDK Project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Visit `Koverse SDK Project <https://github.com/Koverse/koverse-sdk-project/tree/1.4/>`_ to fork or download the latest koverse-sdk-project for your version of Koverse.
 
+.. _koverse-archetype-project:
 
 Koverse SDK Project Maven Archetype
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -418,7 +419,7 @@ Example Addon JAR directory structure::
 Uploading an Addon to Koverse
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See the :ref:`Installing Addons` section.
+See the :ref:`Addons` section.
 
 Applications may be auto deployed, and immediately ready for use - if so defined by the developer of the application. Sources, Transforms, and Sinks are also now ready for immediate use as well.
 
@@ -707,7 +708,7 @@ custom Sinks to support specific destination data stores.
 
 Sinks are executed as MapReduce jobs with only a map phase. The sinks API provides an interface that allows the developer to open a connection to an outside system, deliver records, and then close that connection.
 
-See the `Koverse SDK Project <https://github.com/Koverse/koverse-sdk-project/tree/1.4/>`_ section for details about a ready made project for creating custom sinks.
+See the :ref:`koverse-archetype-project` section for details about a ready made project for creating custom sinks.
 
 
 Export File Formats API
@@ -1205,7 +1206,7 @@ Introduction
 
 Koverse now supports the Apache Spark cluster computing framework through a set of native Koverse APIs that leverage much of the Spark primitives. The Koverse Spark APIs allow a developer of Koverse a set of routines, protocols, and tools for building software applications based upon the Koverse technology.
 
-See the :ref:`Installing Addons` section for information about building an addon that contains a class that uses the Koverse Spark API.
+See the :ref:`Addons` section for information about building an addon that contains a class that uses the Koverse Spark API.
 
 The following is a high-level outline of the Koverse Spark API framework:
 
@@ -1356,7 +1357,7 @@ Spark SQL Transform API
 
 Koverse now supports the Apache Spark SQL via a set of native Koverse Spark SQL APIs that let the user query structured data as a distributed dataset (RDD). This makes it easy to run SQL queries.
 
-See the :ref:`Installing Addons` section for information about building an addon that contains a class that uses the Koverse Spark SQL API.
+See the :ref:`Addons` section for information about building an addon that contains a class that uses the Koverse Spark SQL API.
 
 The following is a high-level outline of the Koverse Spark SQL API framework:
 
@@ -1948,189 +1949,6 @@ Custom Transform Example::
     }
   }
 
-Aggregations
-------------
-Aggregations are configured on a Data Collection so that custom statistics on Records in the Collection can be maintained over time. Aggregations are pre-computed on the Records
-in a Data Collection so that they can be queried with sub-second response time, regardless of the number of Records in a collection.
-Unlike Transforms which output new immutable Records, Aggregations can update previous values as they run, for instance updating the count of some event in a period of time.
-This characteristic makes Aggregations a perfect solution for use cases like analytics dashboards. The sections below will go into more detail of how Aggregations are configured
-and then queried, in the context of a web log analytics use case.
-
-Example Aggregations Use Case
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-While certainly not required, Aggregations are often used in conjunction with streaming Imports to maintain near real-time statistics on a constant stream of Records.
-In this example, assume web log events are streaming into Koverse via a Kafka Source. These web log event Records look like the following JSON::
-
-  {
-    timestamp: 1440785470000
-    userId: 4581
-    location: "Denver, CO, USA"
-    url: "/docs/index.html"
-  }
-
-The fields in these Records are:
-  * timestamp: UNIX timestamp in milliseconds
-  * userId: unique integer id field for the logged in user
-  * location: string denoting the city, state, and country of the user
-  * url: the page requested
-
-The questions we want to answer are:
-  #. How many requests per minute is the web site receiving?
-  #. How many unique users are visiting the site each day?
-  #. How many unique users are visiting the site each day by country?
-
-Creating Aggregations
-^^^^^^^^^^^^^^^^^^^^^^
-Aggregations can be created in two ways:
- #. Using the Aggregation Workbench App at /Koverse/apps/aggregationworkbench
- #. Creating a JSON configuration file that is automatically loaded from *$KOVERSE_SERVER_HOME/conf/load-every-time*
-
-The image below shows how to create an Aggregation using the Aggregation Workbench App.
-
-.. image:: /_static/AggregationsScreenshots/aggregation-workbench.png
-	:height: 408 px
-	:width: 800 px
-
-The steps to using the app are:
- #. Select the Data Collection you want to create an Aggregation on
- #. Set a Display Name that describes the Aggregation
- #. Write your Aggregation Script. The Aggregation script is a Scala DSL that defines how Aggregations are built on the Records in the Data Collection. More detail is provided below.
- #. Click the Add Aggregation button. This will save the Aggregation and create an Aggregation job to process any existing Records in the Data Collection.
-
-The alternative way of creating Aggregations is through a JSON configuration file that is loaded by Koverse Server. The Aggregation seen in the screenshot above
-would look like the following JSON::
-
-  {
-    "aggregates": [
-      {
-        "dataCollection" : {
-          "name": "web logs"
-        },
-        "configurationOptions": {},
-        "displayName": "timeseries",
-        "tags":[""],
-        "definition":"import com.koverse.aggregation.dsl._\nimport com.koverse.aggregation.dsl.AggregateUtil._\nimport scala.collection.JavaConversions\n\nAggregate()\n  .prepare(FieldPreparer(\"timestamp\", \"1mBin\", BinTimestampByMinuteTimestamp()))\n  .onKeys((\"1mBin\"))\n  .producing(Count())"
-      }
-    ]
-  }
-
-The most important part is the Aggregation Script/definition. It is described in sections below.
-
-These imports should be at the beginning of every script. The Aggregation Script is compiled on the server when it is saved, so add additional imports that would be required for the Scala code to compile as needed.
-Currently Aggergations don't support the use of 3rd party libraries, so only imports from standard Java and Scala packages are supported::
-
-  import com.koverse.aggregation.dsl._
-  import com.koverse.aggregation.dsl.AggregateUtil._
-  import scala.collection.JavaConversions
-
-The creation and configuration of a *com.koverse.aggregation.dsl.Aggregate* object forms the body of the code::
-
-  Aggregate()
-  .prepare(FieldPreparer("timestamp", "1mBin", BinTimestampByMinuteTimestamp()))
-  .onKeys(("1mBin"))
-  .producing(Count())
-
-The *prepare* method allows you to create new fields in your Records for the purpose of using them as dimensions in the following *onKeys* method. This doesn't actually add new fields to your Records stored in Koverse, but creates temporary fields just for the Aggregation.
-The *prepare* method takes 0 or more *FieldPreparers* which map an existing field from the Records, in this case "timestamp", to a new field, in this case "1mBin", by applying the Function found in the final argument, in this case *BinTimestampByMinuteTimestamp()*::
-
-  .prepare(FieldPreparer("timestamp", "1mBin", BinTimestampByMinuteTimestamp()))
-
-The *onKeys* method provides the dimensions to build the Aggregation on. This is similar to a GROUP BY in SQL. There can be more than one field name listed as dimensions as seen in additional examples below::
-
-  .onKeys(("1mBin"))
-
-The *producing* method lists the Aggregation function(s) to apply to each Record::
-
-  .producing(Count())
-
-To summarize this example, the UNIX timestamp of each Record is mapped into 1-minute bins, and then the number of Records within each 1-minute bin is counted::
-
-FieldPreparer
-^^^^^^^^^^^^^
-As seen in the example above, the *prepare* method takes 0 or more *FieldPreparers*. The definition of the *FieldPreparer* class looks like::
-
-  class FieldPreparer[I: ClassTag, O](inputFieldName: String, outputFieldName: String, function: Function1[I, Option[O]]) extends Preparer
-
-The first two parameters are straightforward, the name of the existing field in the Record and the name of the new field that will be created, respectively. The last argument is a function that does the projection
-from the value of inputFieldName to the value for outputFieldName. The system uses the type information to only apply the function if the input value is of type **I**. For example, if you pass in the function::
-
-  .prepare(FieldPreparer("text", "textLength", { text: java.lang.String => Some(text.length()) })
-
-then the FieldPreparer will only operate on input values of type *java.lang.String*. This is helpful if your Records have different typed values for the same inputFieldName.
-
-There are several off-the-shelf functions you can drop into FieldPreparers, for example the *BinTimestampByMinuteTimestamp()* is an off-the-shelf function for taking an input UNIX timestamp and rounding it down to the minute and returning that UNIX timestamp. This function, as well as others like *BinTimestampByHourTimestamp()*, are useful for binning events for timeseries analysis.
-Below is a table documenting the existing functions that may be dropped into a *FieldPreparer*
-
-==========================================================                   ==================  ==================================   ========================
-Object Name                                                                   Input Type          Output Type                         Description
-==========================================================                   ==================  ==================================   ========================
-BinTimestampByMinuteTimestamp()                                               java.lang.Long      java.lang.Long                      Rounds UNIX timestamp down to the minute
-BinTimestampByNMinuteTimestamp(n: Long)                                       java.lang.Long      java.lang.Long                      Rounds UNIX timestamp down to the Nth minute
-BinTimestampByHourTimestamp()                                                 java.lang.Long      java.lang.Long                      Rounds UNIX timestamp down to the hour
-BinTimestampByDayTimestamp(tz: Option[TimeZone] = None)                       java.lang.Long      java.lang.Long                      Rounds UNIX timestamp down to the day. TimeZone is optional. Default to GMT
-BinTimestampByMonthTimestamp(tz: Option[TimeZone] = None)                     java.lang.Long      java.lang.Long                      Rounds UNIX timestamp down to the month. TimeZone is optional. Default to GMT
-BinDateByMinute(tz: Option[TimeZone] = None)                                  java.util.Date      java.lang.String                    Formats date into yyyy_MM_dd_HH_mm. TimeZone is optional. Default to GMT
-BinDateByHour(tz: Option[TimeZone] = None)                                    java.util.Date      java.lang.String                    Formats date into yyyy_MM_dd_HH. TimeZone is optional. Default to GMT
-BinDateByDay(tz: Option[TimeZone] = None)                                     java.util.Date      java.lang.String                    Formats date into yyyy_MM_dd. TimeZone is optional. Default to GMT
-BinDateByMonth(tz: Option[TimeZone] = None)                                   java.util.Date      java.lang.String                    Formats date into yyyy_MM. TimeZone is optional. Default to GMT
-BinDateByYear(tz: Option[TimeZone] = None)                                    java.util.Date      java.lang.String                    Formats date into yyyy. TimeZone is optional. Default to GMT
-Tokenize(regex: String)                                                       java.lang.String    java.util.List[java.lang.String]    Splits input String by the supplied regex
-==========================================================                   ==================  ==================================   ========================
-
-You can also write your own and pass it in as an anonymous function as was seen in the String length example above. Remember the return value of the function is an *Option* which can be used in case your function can't or doesn't want to return a value.
-The input and output types of these functions must be ones that are supported by Koverse Records.
-
-Aggregation Functions
-^^^^^^^^^^^^^^^^^^^^^
-
-In the example above, we saw the aggregation function *Count()*. Counting, while the most popular, is certainly not the only aggregation function. The table below describes each of the available aggregation functions. Currently there is no means for supplying User Defined Aggregation Functions (UDAF).
-
-===================================   =============================
-Function                              Description
-===================================   =============================
-Count()                               Counts the number of Records
-CountMap(field: String)               Builds a Map[String, Long] with keys being the Record's value (as a String) for the given field, and the value being the count. For example, we could have CountMap("url") which would maintain a single aggregate value with the counts for each URL instead of maintaining seperate counts for each URL. The benefit is that all the counts are kept together and all of the keys are enumerated. The drawback is that if you have too many distinct keys (>1000s), this Map will grow too large.
-TopK(field: String)                   Similar to CountMap, but an approximate Top-K, so it won't store all keys and counts so it is safe to use when the number of keys is very large. It will return the top-25.
-SumInteger(field: String)             Sums the integer values for the given field.
-SumDecimal(field: String)             Sums the decimal values for the given field.
-Min(field: String)                    Maintains the minimum numeric value for the given field
-Max(field: String)                    Maintains the maximum numeric value for the given field
-Average(field: String)                Calculates the average over the numeric values for the given field
-StringSet(field: String)              Maintains a Set of the distinct values for the given field
-CardinalityEstimate(field: String)    Estimates the cardinality of the values for the given field. This uses the HyperLogLog+ algorithm internally.
-QuantileEstimate(field: String)       Estimates the distribution of the values for the given field. Returns the follow percentiles: .01%, .1%, 1%, 2%, 5%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 95%, 98%, 99%, 99.9%, 99.99%
-===================================   =============================
-
-Additional Examples
-^^^^^^^^^^^^^^^^^^^
-The first example answered the question, "How many requests per minute is the web site receiving?" by counting events in 1-minute bins. Below you can find the Aggregations for the second and third questions we wanted to answer in this web log analytic use case.
-
-"How many unique users are visiting the site each day?"::
-
-  import com.koverse.aggregation.dsl._
-  import com.koverse.aggregation.dsl.AggregateUtil._
-  import scala.collection.JavaConversions
-
-  Aggregate()
-    .prepare(FieldPreparer("timestamp", "1dBin", BinTimestampByDayTimestamp(java.util.TimeZone.getTimeZone("EST"))))
-    .onKeys(("1dBin"))
-    .producing(CardinalityEstimate("userId"))
-
-In the example above, we round the timestamp down to the day, based on the EST timezone. This will group all of the events that happened on the same day, and then use the CardinalityEstimate to get the approximate number of distinct users.
-
-"How many unique users are visiting the site each day by country?"::
-
-  import com.koverse.aggregation.dsl._
-  import com.koverse.aggregation.dsl.AggregateUtil._
-  import scala.collection.JavaConversions
-
-  Aggregate()
-    .prepare(FieldPreparer("timestamp", "1dBin", BinTimestampByDayTimestamp(java.util.TimeZone.getTimeZone("EST")),
-             FieldPreparer("location", "country", { location: String => location.split(raw"\s")(2) })))
-    .onKeys(("1dBin", "country"))
-    .producing(CardinalityEstimate("userId"))
-
-In the example above, we create the same 1-day bins, but also add second dimension which is the Country, parsed from the Record's location field. The parsing here is simplified and has no error handling for brevity.
 
 Aggregation Query API
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -2138,7 +1956,7 @@ The sections above have gone into detail about how to configure Aggregations on 
 Aggregations is to maintain precomputed statistics over time to support interactive (sub-second) queries from applications such as analytic dashboards. This section
 will provide detail on the query API. The REST API will be discussed, but a Thrift API is also available and is very similar.
 
-Queries are submitted via HTTP POST requests to /Koverse/api/query/aggregate. The Content-Type header should be set to "application/json". An example query for the first example above might look like::
+Queries are submitted via HTTP POST requests to http://<host:port>/api/query/aggregate. The Content-Type header should be set to "application/json". An example query for the first example above might look like::
 
   {
     "collectionId":"web_logs_20150828_212035_291",
@@ -2803,9 +2621,7 @@ When you want to write an RDD to Koverse, convert it to be a set of Python dicts
 Glossary of Koverse Terminology
 -------------------------------
 
-* Data Collection - Data Collections are the basic container for data in Koverse. You can think of them like tables - but every record in a data collection can be completely unique in structure.
-* Configuration Manager App - The Configuration Manager App gives users the ability to upload and download configuration for Data Collections, Sinks, Sources, and Transforms.
-* Data Collections App - The Data Collections App gives users the ability to manage and explore Data Collections. A Data Collection is simply a named collection of records. Collections are the primary mechanism by which data is tracked and managed in Koverse.
+* Data Set - Data Sets are the basic container for data in Koverse. You can think of them like tables - but every record in a data collection can be completely unique in structure.
 * Data Flow - Visualize, configure, and execute the movement of data within the Koverse system.
 * File Upload - Upload one or more files from the browser and import it into a collection.
 
