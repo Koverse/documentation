@@ -212,6 +212,15 @@ Extend Koverse Capabilities
 
 * Custom Applications
 
+* Java SDK for Custom Sources, Transforms, and Sinks
+
+* REST API
+
+* Javascript REST API Library
+
+* Java Thrift API Library
+
+* Javascript App API
 	|
 
 .. figure:: /_static/KoverseIntegrationArchitecture.*
@@ -223,38 +232,3 @@ Extend Koverse Capabilities
 
 	|
 	|
-
-
-* Java SDK for Custom Sources, Transforms, and Sinks
-
-* REST API
-
-* Javascript REST API Library
-
-* Java Thrift API Library
-
-* Javascript App API
-
-
-
-Contacting Koverse
-^^^^^^^^^^^^^^^^^^
-
-1-855-403-1399
-
-info@koverse.com
-
-
-Sales
-
-1-855-403-1399
-
-sales@koverse.com
-
-
-
-Support
-
-1-855-403-1399
-
-support@koverse.com
