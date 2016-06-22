@@ -28,7 +28,7 @@ Customizations Types
 
 Developers can customize and extend Koverse in several ways, such as:
 
-* Koverse Apps - Web Applications that are hosted by Koverse leverage the Javascript SDK to support interaction with Koverse for a large number of users. Apps may also include custom Transforms to help get Data Collections into a structure that the App expects.
+* Koverse Apps - Web Applications that are hosted by Koverse leverage the Javascript SDK to support interaction with Koverse for a large number of users. Apps may also include custom Transforms to help get Data Sets into a structure that the App expects.
 
 * AddOns - these are packages that extend Koverse with custom Sources, Transforms, and Sinks.
 
@@ -43,13 +43,10 @@ The following sections provide a basic introduction to the basic abstract concep
 Data Model
 ^^^^^^^^^^
 
-The Koverse data model has two main conceptual components: **Records**, and **Data Collections**.
-Logically, each Data Collection contains a set of Records.
+The Koverse data model has two main conceptual components: **Records**, and **Data Sets**.
+Logically, each Data Set contains a set of Records.
 
-In this version of Koverse, we may refer to Data Collections as 'Data Sets'.
-They are equivalent.
-
-For those familiar with relational database management systems such as Oracle or MySQL, the analogy is that a Data Collection is similar to a Table, a Record is similar to a Row, and the fields of a Record are similar to the Columns.
+For those familiar with relational database management systems such as Oracle or MySQL, the analogy is that a Data Set is similar to a Table, a Record is similar to a Row, and the fields of a Record are similar to the Columns.
 However, unlike traditional relational databases, Records in a single Collection in Koverse do not have to all have the same fields, and fields can contain complex values, like lists and mappings of fields to values.
 
 Records
@@ -57,13 +54,13 @@ Records
 
 The Koverse canonical unit of data is a Record. A Record is a map of keys/values, or fields, similar to a JSON document. Like a JSON document, a Record can have embedded lists or nested maps.
 
-A Record belongs to a single Data Collection. Different Records within the same Data Collection do not have to have the same fields or structure. The values in a Record can be of many different types, including Strings, Doubles, geospatial points, and Dates.
+A Record belongs to a single Data Set. Different Records within the same Data Set do not have to have the same fields or structure. The values in a Record can be of many different types, including Strings, Doubles, geospatial points, and Dates.
 A Record also has an optional security label which can be used to provide Record-level access control.
 
 
 Some key points to remember about Records are:
 
-* Each record is present in one and only one Data Collection.
+* Each record is present in one and only one Data Set.
 * Records are maps of key/value pairs, similar to JSON
     * Example: {key1: valueA, key2: valueB}
 * Value types may vary across records with matching keys
@@ -130,19 +127,19 @@ Some key points to remember about Records are:
 |                                      | original bytes of a file                         |
 +--------------------------------------+--------------------------------------------------+
 
-Data Collection
+Data Set
 ---------------
 
-Data Collections are the basic container for data in Koverse.
-You can think of them like tables - but every record in a data collection can be completely unique in structure.
+Data Sets are the basic container for data in Koverse.
+You can think of them like tables - but every record in a Data Set can be completely unique in structure.
 
-A Koverse Data Collection is a named set of Records. A Data Collection has:
+A Koverse Data Set is a named set of Records. A Data Set has:
 
 * Configurable indexes to enable queries to quickly and efficiently find Records.
 
-* Permissions to control access to Records in the Data Collection.
+* Permissions to control access to Records in the Data Set.
 
-* Automatically discovered statistics and samples to provide insight into the Records contained in the Data Collection.
+* Automatically discovered statistics and samples to provide insight into the Records contained in the Data Set.
 
 
 Data Sources
@@ -156,7 +153,7 @@ Custom sources are only necessary when talking to a new type of server, often us
 Transforms
 ^^^^^^^^^^
 
-In Koverse, transforms are a process by which one or more data collections leverage re-usable, configurable, multi-stage MapReduce jobs for data manipulation. These are highly scalable and customizable analytics that are reusable across all of your data.
+In Koverse, transforms are a process by which one or more Data Sets leverage re-usable, configurable, multi-stage MapReduce jobs for data manipulation. These are highly scalable and customizable analytics that are reusable across all of your data.
 
 Built-In Example Transforms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -204,7 +201,7 @@ Export File Formats define how Records are written to file-based Sinks such as F
 Sinks
 ^^^^^
 
-Sinks represent external destinations to which Records from Data Collections may be sent. For example, one can write out Records as JSON objects to a remote file system.
+Sinks represent external destinations to which Records from Data Sets may be sent. For example, one can write out Records as JSON objects to a remote file system.
 
 Queries
 ^^^^^^^
@@ -252,7 +249,7 @@ Note that queries that combine a range with any other criteria, and queries that
 
 Aggregations
 ^^^^^^^^^^^^^
-Aggregations allow you to easily maintain near real-time statistics on the Records in a Data Collection. Aggregations run incrementally on new Records to maintain pre-computed, up-to-date results so that they can always be queried with sub-second latency.
+Aggregations allow you to easily maintain near real-time statistics on the Records in a Data Set. Aggregations run incrementally on new Records to maintain pre-computed, up-to-date results so that they can always be queried with sub-second latency.
 
 
 .. _quick-start-java-project:
@@ -546,15 +543,15 @@ The methods to implement are the following::
 Transforms API
 --------------
 
-Koverse Transforms can operate over one or more data collections to perform advanced algorithmic processing or create analytic summaries.  Koverse tracks all transform relationships between input and output Data Collections so the provenance of any given Data Collection is traceable to its derivative Data Collections or Import Sources.
+Koverse Transforms can operate over one or more data collections to perform advanced algorithmic processing or create analytic summaries.  Koverse tracks all transform relationships between input and output Data Sets so the provenance of any given Data Set is traceable to its derivative Data Sets or Import Sources.
 
-Koverse uses Apache Hadoop MapReduce to execute Transforms over data collections and handles all the details of scheduling, running, stopping, and monitoring the individual Hadoop jobs. To transform a data set, users implement a simplified MapReduce API that allows for reading records from one or more input Data Collections, potentially filtered according to user authorizations and writes output to a new Data Collection, applying security labels appropriately.
+Koverse uses Apache Hadoop MapReduce to execute Transforms over data collections and handles all the details of scheduling, running, stopping, and monitoring the individual Hadoop jobs. To transform a data set, users implement a simplified MapReduce API that allows for reading records from one or more input Data Sets, potentially filtered according to user authorizations and writes output to a new Data Set, applying security labels appropriately.
 
 Using the Koverse Transform API his has several advantages over using Hadoop directly:
 
 * Developers can focus on the details of their algorithm, rather than worrying about the details of handling many different input and output data formats and managing multiple jobs.
 
-* Transforms are parameterized so that, once a Transform is written, it can be configured and run by non-developers on the Data Collections they are authorized to read.
+* Transforms are parameterized so that, once a Transform is written, it can be configured and run by non-developers on the Data Sets they are authorized to read.
 
 * The details of how a transformed result data set is stored and labeled are handled by the Transform framework.  This ensures that result sets will be automatically queryable and  that access control policies are maintained.
 
@@ -578,7 +575,7 @@ For example, if the first stage of a Transform is a reduce stage, the framework 
 The only restriction on the order in which stages are run is that Combine stages must be followed by a Reduce stage.
 
 
-Another item to note is that the first Map stage of a transform receives Record objects from the input Koverse Data Collections. Subsequent stages receive whatever objects are emitted by previous stages.
+Another item to note is that the first Map stage of a transform receives Record objects from the input Koverse Data Sets. Subsequent stages receive whatever objects are emitted by previous stages.
 
 
 If a stage fails, the errors are reported to the User Interface and subsequent stages are cancelled.
@@ -590,7 +587,7 @@ Stages are defined by subclassing one of the Stage types described below.
 RecordMapStage
 ^^^^^^^^^^^^^^
 
-This type of stage operates on Records from the input Data Collections specified when the Transform was configured.
+This type of stage operates on Records from the input Data Sets specified when the Transform was configured.
 
 
  ``public void map(Record record)``
@@ -814,7 +811,7 @@ There are additional Parameter types used primarily by the system:
 * TYPE_SECURITY_LABEL_PARSER - presents the user with a list of Security Label parser options. Security label parsers are responsible for translating from a source security label to a Koverse record security label.
 
 
-Transforms are pre-configured with parameters for input and output Data Collections. Sources and Sinks are pre-configured with output or input collections, respectively.
+Transforms are pre-configured with parameters for input and output Data Sets. Sources and Sinks are pre-configured with output or input collections, respectively.
 
 
 REST API
@@ -841,7 +838,7 @@ Commonly used methods
 Almost all applications will require the following functionality
 
 * User Authentication and Authorization
-* Fetching Data Collections
+* Fetching Data Sets
 * Performing Queries
 
 Additional Methods
@@ -944,9 +941,9 @@ Koverse supports using `Pig <http://pig.apache.org>` as a transform. Pig transfo
 #. Choose Input and Output collections.
 #. Write the Pig script in provided text area.
 
-Koverse automatically provides the "load" and "store" functions. You'll simply need to write a Pig script that references the input collections by name, and assigns a value to the output collection by name. Pig variables are case sensitive, and have some restrictions. Therefore Koverse transforms Data Collection names to use only case sensitive alphanumeric and underscore characters. Also, Pig table names cannot start with a non Alpha character (A-Z or a-z) - therefore Koverse prepends the character A when a data collection name starts with a non alpha character. Here are some example data collection name conversions.
+Koverse automatically provides the "load" and "store" functions. You'll simply need to write a Pig script that references the input collections by name, and assigns a value to the output collection by name. Pig variables are case sensitive, and have some restrictions. Therefore Koverse transforms Data Set names to use only case sensitive alphanumeric and underscore characters. Also, Pig table names cannot start with a non Alpha character (A-Z or a-z) - therefore Koverse prepends the character A when a data collection name starts with a non alpha character. Here are some example data collection name conversions.
 
-* "My 1st Data Collection" = My_1st_Data_Collection
+* "My 1st Data Set" = My_1st_Data_Collection
 * "P*22" = P_22
 * "cAsE sEnSiTiVe" = cAsE_sEnSiTiVe
 * "9Items" = "A9Items"
@@ -1952,7 +1949,7 @@ Custom Transform Example::
 
 Aggregation Query API
 ^^^^^^^^^^^^^^^^^^^^^^
-The sections above have gone into detail about how to configure Aggregations on the Records in a Data Collection. As originally stated, the primary use case for
+The sections above have gone into detail about how to configure Aggregations on the Records in a Data Set. As originally stated, the primary use case for
 Aggregations is to maintain precomputed statistics over time to support interactive (sub-second) queries from applications such as analytic dashboards. This section
 will provide detail on the query API. The REST API will be discussed, but a Thrift API is also available and is very similar.
 
@@ -1969,7 +1966,7 @@ Queries are submitted via HTTP POST requests to http://<host:port>/api/query/agg
     "generateTotal":true,
   }
 
-This will query the web log Data Collection for the event count in the 1-min bin of 1440785460000. This would have been the events that occured between 18:11:00 and 18:12:00 GMT on Fri, 28 Aug 2015.
+This will query the web log Data Set for the event count in the 1-min bin of 1440785460000. This would have been the events that occured between 18:11:00 and 18:12:00 GMT on Fri, 28 Aug 2015.
 The dimensionValuesPairs property is an array so a single query may contain many dimensionValues which enables you to batch requests which can be useful when pulling the data for a timeseries graph for example.
 There currently is no range query, so instead you would batch together all of the 1mBin values that you need to render your graph. The requests are also batched on the server so this ends up being fast even if your
 query has 100s of dimensionValues.
