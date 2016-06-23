@@ -2,9 +2,9 @@
 
 .. _DeveloperDocumentation:
 
-===============================
+=======================
 Developer Documentation
-===============================
+=======================
 
 
 .. _kov-Introduction:
@@ -81,54 +81,54 @@ Some key points to remember about Records are:
 
 * Records can contain the following native value types:
 
-+--------------------------------------+--------------------------------------------------+
-| Native Value Type                    | Examples and support string formats              |
-+======================================+==================================================+
-| String                               | "A string of text characters"                    |
-+--------------------------------------+--------------------------------------------------+
-| Integer                              | 15                                               |
-+--------------------------------------+--------------------------------------------------+
-| Long                                 | 10000000000L                                     |
-+--------------------------------------+--------------------------------------------------+
-| Float                                | 44.26                                            |
-+--------------------------------------+--------------------------------------------------+
-| Double                               | 200.05                                           |
-+--------------------------------------+--------------------------------------------------+
-| Date                                 | Unix Timestamp:  1371277293 UTC (GMT)            |
-|                                      |                                                  |
-|                                      | Epoch Timestamp: 1371277293                      |
-|                                      |                                                  |
-|                                      | DTG:   271545ZFEB13                              |
-|                                      |                                                  |
-|                                      | Other various date formats supported:            |
-|                                      |                                                  |
-|                                      | * yyyyMMdd hh:mm:ss                              |
-|                                      | * EEE MMM d HH:mm:ss Z yyyy                      |
-|                                      | * EEE MMM d HH:mm:ss zzz yyyy                    |
-|                                      | * yyyy-MM-dd                                     |
-|                                      | * yyyy/MM/dd                                     |
-|                                      | * yyyy-MM                                        |
-|                                      | * yyyy/MM/dd HH:mm:ss                            |
-|                                      | * yyyy-MM-dd HH:mm:ss                            |
-|                                      | * yyyy/MM/dd HH:mm:ss.SSS                        |
-|                                      | * yyyy-MM-dd HH:mm:ss.SSS                        |
-|                                      | * MM/dd/yyyy HH:mm                               |
-|                                      | * MM-dd-yyyy HH:mm                               |
-|                                      | * ddHHmm'Z' MMM yy                               |
-+--------------------------------------+--------------------------------------------------+
-| KoverseGeoPoint                      | Well Known Text String Format: Point 1.23 60.423 |
-|                                      |                                                  |
-|                                      | Comma separated decimal lat,long: 1.23,60.423    |
-+--------------------------------------+--------------------------------------------------+
-| Inet4Address                         | 192.168.1.1                                      |
-+--------------------------------------+--------------------------------------------------+
-| URL                                  | http://www.koverse.com                           |
-+--------------------------------------+--------------------------------------------------+
-| Boolean                              | true                                             |
-+--------------------------------------+--------------------------------------------------+
-| byte[]                               | An array of binary bytes such as the             |
-|                                      | original bytes of a file                         |
-+--------------------------------------+--------------------------------------------------+
++-------------------+--------------------------------------------------+
+| Native Value Type | Examples and support string formats              |
++===================+==================================================+
+| String            | "A string of text characters"                    |
++-------------------+--------------------------------------------------+
+| Integer           | 15                                               |
++-------------------+--------------------------------------------------+
+| Long              | 10000000000L                                     |
++-------------------+--------------------------------------------------+
+| Float             | 44.26                                            |
++-------------------+--------------------------------------------------+
+| Double            | 200.05                                           |
++-------------------+--------------------------------------------------+
+| Date              | Unix Timestamp:  1371277293 UTC (GMT)            |
+|                   |                                                  |
+|                   | Epoch Timestamp: 1371277293                      |
+|                   |                                                  |
+|                   | DTG:   271545ZFEB13                              |
+|                   |                                                  |
+|                   | Other various date formats supported:            |
+|                   |                                                  |
+|                   | * yyyyMMdd hh:mm:ss                              |
+|                   | * EEE MMM d HH:mm:ss Z yyyy                      |
+|                   | * EEE MMM d HH:mm:ss zzz yyyy                    |
+|                   | * yyyy-MM-dd                                     |
+|                   | * yyyy/MM/dd                                     |
+|                   | * yyyy-MM                                        |
+|                   | * yyyy/MM/dd HH:mm:ss                            |
+|                   | * yyyy-MM-dd HH:mm:ss                            |
+|                   | * yyyy/MM/dd HH:mm:ss.SSS                        |
+|                   | * yyyy-MM-dd HH:mm:ss.SSS                        |
+|                   | * MM/dd/yyyy HH:mm                               |
+|                   | * MM-dd-yyyy HH:mm                               |
+|                   | * ddHHmm'Z' MMM yy                               |
++-------------------+--------------------------------------------------+
+| KoverseGeoPoint   | Well Known Text String Format: Point 1.23 60.423 |
+|                   |                                                  |
+|                   | Comma separated decimal lat,long: 1.23,60.423    |
++-------------------+--------------------------------------------------+
+| Inet4Address      | 192.168.1.1                                      |
++-------------------+--------------------------------------------------+
+| URL               | http://www.koverse.com                           |
++-------------------+--------------------------------------------------+
+| Boolean           | true                                             |
++-------------------+--------------------------------------------------+
+| byte[]            | An array of binary bytes such as the             |
+|                   | original bytes of a file                         |
++-------------------+--------------------------------------------------+
 
 Data Collection
 ---------------
@@ -220,38 +220,38 @@ These queries are represented as strings and passed as such into query methods. 
 Object-based Queries
 ^^^^^^^^^^^^^^^^^^^^
 
-+-----------------------------------+-------------------------------------+
-|Search Criteria                    | Query Syntax                        |
-+===================================+=====================================+
-| Searching 'any' field for a value | {$any: fmv}                         |
-+-----------------------------------+-------------------------------------+
-| Search specific field for a value | {field.name: fmv}                   |
-+-----------------------------------+-------------------------------------+
-| Search AND                        + {$and: [{$any: fmv}, {$any: blue}]} |
-+-----------------------------------+-------------------------------------+
-| Search OR                         | {$or: [{$any: fmv}, {$any: blue}]}  |
-+-----------------------------------+-------------------------------------+
++-------------------------------------------------------------------------+------------------------------------+
+| Search Criteria                                                         | Query Syntax                       |
++=========================================================================+====================================+
+| Searching 'any' field for a value                                       | {$any: fmv}                        |
++-------------------------------------------------------------------------+------------------------------------+
+| Search specific field for a value                                       | {field.name: fmv}                  |
++-------------------------------------------------------------------------+------------------------------------+
+| Search AND                        + {$and: [{$any: fmv}, {$any: blue}]} |                                    |
++-------------------------------------------------------------------------+------------------------------------+
+| Search OR                                                               | {$or: [{$any: fmv}, {$any: blue}]} |
++-------------------------------------------------------------------------+------------------------------------+
 
 
 Range Queries
 ^^^^^^^^^^^^^
 
-+----------------------------------------+------------------------------------------------------------+
-|Search Criteria                         | Query Syntax                                               |
-+========================================+============================================================+
-| Any value greater than or equal to 160 | {$any: {$gte:160}}                                         |
-+----------------------------------------+------------------------------------------------------------+
-| Date field less than a specific date   | {date_created: {$lt: "1980-01-01T00:00:00.000Z}}           |
-+----------------------------------------+------------------------------------------------------------+
-| Geo Range                              + {fieldName: {$box: [[sw-lat, sw-long],[ne-lat, ne-long]]}} |
-|                                        |                                                            |
-|                                        | {fieldName: {$box :[[39.5, -104.9],[40, -104.5]]}}         |
-+----------------------------------------+------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------+----------------------------------------------------+
+| Search Criteria                                                                                     | Query Syntax                                       |
++=====================================================================================================+====================================================+
+| Any value greater than or equal to 160                                                              | {$any: {$gte:160}}                                 |
++-----------------------------------------------------------------------------------------------------+----------------------------------------------------+
+| Date field less than a specific date                                                                | {date_created: {$lt: "1980-01-01T00:00:00.000Z}}   |
++-----------------------------------------------------------------------------------------------------+----------------------------------------------------+
+| Geo Range                              + {fieldName: {$box: [[sw-lat, sw-long],[ne-lat, ne-long]]}} |                                                    |
+|                                                                                                     |                                                    |
+|                                                                                                     | {fieldName: {$box :[[39.5, -104.9],[40, -104.5]]}} |
++-----------------------------------------------------------------------------------------------------+----------------------------------------------------+
 
 Note that queries that combine a range with any other criteria, and queries that combine multiple ranges require Composite Indexes on the fields involved. See _CompositeIndexes for information on building these.
 
 Aggregations
-^^^^^^^^^^^^^
+^^^^^^^^^^^^
 Aggregations allow you to easily maintain near real-time statistics on the Records in a Data Collection. Aggregations run incrementally on new Records to maintain pre-computed, up-to-date results so that they can always be queried with sub-second latency.
 
 
@@ -264,12 +264,12 @@ Koverse ships with a koverse-sdk-project-<version>.zip file that contains an exa
 an `Addon` that can be uploaded. Simply alter the Java and HTML/JS code in this project, then build and deploy the addon to Koverse.
 
 GitHub Koverse SDK Project
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 Visit `Koverse SDK Project <https://github.com/Koverse/koverse-sdk-project/tree/1.4/>`_ to fork or download the latest koverse-sdk-project for your version of Koverse.
 
 
 Koverse SDK Project Maven Archetype
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A `Maven Archetype <https://maven.apache.org/guides/introduction/introduction-to-archetypes.html>`_ project is available for easy deployment. Modify the version number (KOVERSE-VERSION-HERE) in the command below to configure and create a new instance of a Koverse project::
 
@@ -364,7 +364,7 @@ Web interface Addon Deployment
 .. _Addons:
 
 Addons
----------------------
+------
 
 Any custom code, whether it be one or more applications, transforms, or custom sources or sinks, can be packaged up into a simple JAR -  referred to in Koverse as an Addon. Addons are uploaded to Koverse, via the System Administration app, for deployment.
 
@@ -464,7 +464,7 @@ Developers should consider that customers upgrading from one version to the next
 
 
 HTML/JS Apps
-^^^^^^^^^^^^^
+^^^^^^^^^^^^
 
 The ability to quickly build new applications to address specific mission and business needs is a primary objective of Koverse. Applications built on Koverse can take advantage of the powerful data management, indexing, and query capabilities Koverse provides. In conjunction with custom Transforms, Koverse applications can achieve a large breadth of functionality.
 
@@ -503,7 +503,7 @@ See the `Creating an Addon` section for the structure of an HTML/JS app in side 
 
 
 Sources API
-------------
+-----------
 
 Koverse Sources are designed to read data from a specific type of data source, such as a relational database or a remote file system.
 
@@ -891,7 +891,7 @@ Example REST API Methods
 
 **Ping**
 
- ``http://<host:port>/Koverse/api/ping``
+ ``http://<host:port>/api/ping``
 
 A ping request shows that the Koverse HTTP REST API is available, and responsive. Use the ping response method to monitor basic system availability.
 
@@ -900,27 +900,18 @@ Example Ping Request
 
 The following URL shows a ping request, for a Koverse server running on localhost.
 
- ``http://localhost:8080/Koverse/api/ping``
+ ``http://localhost:8080/api/ping``
 
 Example Ping Response
 
- ``{"success":true}``
+ ``{"recordCountEstimate":0,"responseTime":0,"success":true,"recordsWritten":0,"bytesWritten":0,"importSampleReady":false}``
 
-**System Status**
+**Session Authentication (Login)**
 
- ``http://<host:port>/Koverse/api/status``
-
-The system status method provides basic system status information. Use this method to integrate against system feature availability. For example, while in lock down mode, Koverse will not provide accesss to requests for data. Therefore it is important to know the basic status of the Koverse system to provide reasonable requests.
-
-Example Status Request
- ``http://localhost:8080/Koverse/api/status``
-
-Example Status Response
- ``{"success":true,"systemStatus":{"lockDown":false}}``
-
-Session Authentication (Login)
-
- ``http://<host:port>/Koverse/api/login/<name>/<password>``
+ ``http://<host:port>/api/login``
+ 
+ POST data:
+ ``{"email":"username@example.com","password":"password"}``
 
 Example login failure response::
 
@@ -938,21 +929,37 @@ Before using other REST API methods, an HTTP session must be established. Below 
 
 **Example Login URL**
 
-The following would retrieve an HTTP response with a JSESSIONID token for the default administrative user and password.
+The following cURL command would retrieve an HTTP response with a JSESSIONID token for the default administrative user and password.
 
- ``http://localhost:8080/Koverse/api/login/admin/admin``
+ ``curl 'http://localhost:8080/api/login' -i -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*'  --data-binary '{"email":"admin","password":"admin"}'``
+
+Example login response::
+
+   HTTP/1.1 200 OK
+   Access-Control-Allow-Origin: *
+   Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+   Set-Cookie: JSESSIONID=1e0absgbti8151fn0ip59b3kj4;Path=/
+   Expires: Thu, 01 Jan 1970 00:00:00 GMT
+   Content-Type: application/json
+   Transfer-Encoding: chunked
+   Server: Jetty(8.1.18.v20150929)
+  
+   {"id":4,"firstName":"admiral","lastName":"admin","email":"admin","groups":[],"externalGroups":[],
+   "groupIds":[],"tokens":[],"disabled":false,"creationDate":null,"passwordResetHash":null,
+   "authenticatorUserId":"koverseDefault_admin","authenticatorTypeId":"koverseDefault",
+   "newPassword":null,"newPasswordConfirm":null}
 
 **Querying for data**
 
 The most basic feature of the Koverse REST API is to provide query/search access to data collections. Below is an example of querying all data collections for a logged-in user.
 
- ``http://<host:port>/Koverse/api/query/<queryHere>``
+ ``http://<host:port>/api/search/results?query=<queryHere>``
 
 **Example Query**
 
 The following would query a Koverse instance running on localhost, port 8080, for the term test.
 
- ``http://localhost:8080/Koverse/api/query/test``
+ ``http://localhost:8080/api/search/results?query=test``
 
  **Additional Methods**
 
@@ -1011,7 +1018,7 @@ Pig transforms are executed as multiple stage map reduce jobs. They're considere
 
 
 3rd Party Authentication and Authorization
--------------------------------------------
+------------------------------------------
 
 Koverse can be extended to integrate with existing enterprise authentication and authorization systems that may be required for a given production environment. While an extensible component that is built against the Koverse SDK, these authentication and authorization modules are not like other extensible components like Sources and Transform and packaged into a Koverse AddOn. Instead, these modules need to be built into a JAR and placed in the classpath of the Koverse Webapp. Additionally, the koverse-webapp.properties needs to be modified to identify the module(s) that Koverse should use for authentication and authorization.
 
@@ -1249,23 +1256,23 @@ Interface SparkTransform
     The following methods, when executed in order, obtain information on how to execute the transform: *getName(), getVersion() and getParameters()*.
     These methods are used to configure the transform before performing execution using ``execute(com.koverse.sdk.transform.spark.SparkTransformContext)`` which is passed a **SparkTransformContext** to give it the information needed to run the spark transform.
 
-+------------------------------------------+---------------------------------+------------------------------------------------------+
-| Modifier and Type                        | Method                          | Description                                          |
-|                                          |                                 |                                                      |
-+==========================================+=================================+======================================================+
-| org.apache.spark.rdd.RDD                 | getName()                       | Koverse calls this method to execute your transform. |
-| <SimpleRecord>                           |                                 |                                                      |
-+------------------------------------------+---------------------------------+------------------------------------------------------+
-| String                                   | getName()                       | Get the name of this transform.                      |
-+------------------------------------------+---------------------------------+------------------------------------------------------+
-| Iterable<Parameter>                      | getParameters()                 | Get the parameters of this transform.                |
-+------------------------------------------+---------------------------------+------------------------------------------------------+
-| String                                   | getTypeId()                     | Get a programmatic identifier for this transform.    |
-+------------------------------------------+---------------------------------+------------------------------------------------------+
-| Version                                  | getVersion()                    | Get the version of this transform.                   |
-+------------------------------------------+---------------------------------+------------------------------------------------------+
-| boolean                                  | supportsIncrementalProcessing() | Whether the transform supports incremental output.   |
-+------------------------------------------+---------------------------------+------------------------------------------------------+
++--------------------------+---------------------------------+------------------------------------------------------+
+| Modifier and Type        | Method                          | Description                                          |
+|                          |                                 |                                                      |
++==========================+=================================+======================================================+
+| org.apache.spark.rdd.RDD | getName()                       | Koverse calls this method to execute your transform. |
+| <SimpleRecord>           |                                 |                                                      |
++--------------------------+---------------------------------+------------------------------------------------------+
+| String                   | getName()                       | Get the name of this transform.                      |
++--------------------------+---------------------------------+------------------------------------------------------+
+| Iterable<Parameter>      | getParameters()                 | Get the parameters of this transform.                |
++--------------------------+---------------------------------+------------------------------------------------------+
+| String                   | getTypeId()                     | Get a programmatic identifier for this transform.    |
++--------------------------+---------------------------------+------------------------------------------------------+
+| Version                  | getVersion()                    | Get the version of this transform.                   |
++--------------------------+---------------------------------+------------------------------------------------------+
+| boolean                  | supportsIncrementalProcessing() | Whether the transform supports incremental output.   |
++--------------------------+---------------------------------+------------------------------------------------------+
 
 **Example**
     ``final RDD<SimpleRecord> actual; actual = se.execute(sparkTransformContext);``
@@ -1284,23 +1291,23 @@ Interface SparkTransformContext
     **Description:**
     Given to a SparkTransform when it is executed. Provides context information to assist in the execution.
 
-+----------------------------------------------------+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Modifier and Type                                  | Method                          | Description                                                                                                                                                                       |
-|                                                    |                                 |                                                                                                                                                                                   |
-+====================================================+=================================+===================================================================================================================================================================================+
-| Map<String,org.apache.spark.rdd.RDD                | getInputCollectionRDDs()        | Get all Koverse input collection RDDs from the parameters that were input by the user.                                                                                            |
-| <SimpleRecord>>                                    |                                 |                                                                                                                                                                                   |
-+----------------------------------------------------+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Map<String,Collection                              | getInputCollectionSchemas()     | Get the schemas for all input collections.                                                                                                                                        |
-| Schema>                                            |                                 |                                                                                                                                                                                   |
-+----------------------------------------------------+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Map<String,String>                                 | getInputCollectionSchemas()     | Get all parameters that is input by the user, with the exception of collection parameters (which are given as RDDs). None of the keys or values in the returned map will be null. |
-+----------------------------------------------------+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| org.apache.spark.SparkContext                      | getSparkContext()               | Get the spark context to use during execution                                                                                                                                     |
-+----------------------------------------------------+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Modifier and Type                   | Method                      | Description                                                                                                                                                                       |
+|                                     |                             |                                                                                                                                                                                   |
++=====================================+=============================+===================================================================================================================================================================================+
+| Map<String,org.apache.spark.rdd.RDD | getInputCollectionRDDs()    | Get all Koverse input collection RDDs from the parameters that were input by the user.                                                                                            |
+| <SimpleRecord>>                     |                             |                                                                                                                                                                                   |
++-------------------------------------+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Map<String,Collection               | getInputCollectionSchemas() | Get the schemas for all input collections.                                                                                                                                        |
+| Schema>                             |                             |                                                                                                                                                                                   |
++-------------------------------------+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Map<String,String>                  | getInputCollectionSchemas() | Get all parameters that is input by the user, with the exception of collection parameters (which are given as RDDs). None of the keys or values in the returned map will be null. |
++-------------------------------------+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| org.apache.spark.SparkContext       | getSparkContext()           | Get the spark context to use during execution                                                                                                                                     |
++-------------------------------------+-----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Class JavaSparkTransform
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^
     **com.koverse.sdk.transform.spark**
 
     `@ThreadSafe`
@@ -1312,21 +1319,21 @@ Class JavaSparkTransform
     **Description:**
     A version of of spark transforms that are easier to work with when the spark code is written in Java.
 
-+--------------------------------------------------------------------+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| Modifier and Type                                                  | Method                                                   | Description                                                                                                                                     |
-|                                                                    |                                                          |                                                                                                                                                 |
-+====================================================================+==========================================================+=================================================================================================================================================+
-| protected abstract org.apache.spa                                  | execute(JavaSparkTransformContext sparkTransformContext) | Koverse calls this method to execute your transform                                                                                             |
-| rk.api.java.JavaRDD<SimpleRecord>                                  |                                                          |                                                                                                                                                 |
-+--------------------------------------------------------------------+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| org.apache.spark.rdd.RDD                                           | execute(SparkTransformContext sparkTransformContext)     | Invokes execute(com.koverse.sdk.transform.spark.JavaSparkTransformContext) after wrapping up the Scala specific types into Java friendly types. |
-| <SimpleRecord>                                                     |                                                          |                                                                                                                                                 |
-+--------------------------------------------------------------------+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
-| boolean                                                            | supportsIncrementalProcessing()                          | Override this method if transform supports incremental processing - i.e.                                                                        |
-+--------------------------------------------------------------------+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| Modifier and Type                 | Method                                                   | Description                                                                                                                                     |
+|                                   |                                                          |                                                                                                                                                 |
++===================================+==========================================================+=================================================================================================================================================+
+| protected abstract org.apache.spa | execute(JavaSparkTransformContext sparkTransformContext) | Koverse calls this method to execute your transform                                                                                             |
+| rk.api.java.JavaRDD<SimpleRecord> |                                                          |                                                                                                                                                 |
++-----------------------------------+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| org.apache.spark.rdd.RDD          | execute(SparkTransformContext sparkTransformContext)     | Invokes execute(com.koverse.sdk.transform.spark.JavaSparkTransformContext) after wrapping up the Scala specific types into Java friendly types. |
+| <SimpleRecord>                    |                                                          |                                                                                                                                                 |
++-----------------------------------+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+| boolean                           | supportsIncrementalProcessing()                          | Override this method if transform supports incremental processing - i.e.                                                                        |
++-----------------------------------+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Class JavaSparkTransformContext
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     **com.koverse.sdk.transform.spark**
 
@@ -1339,25 +1346,25 @@ Class JavaSparkTransformContext
     **Description:**
     A version of the Spark Transform Context more tailored for use with pure Java Spark code.
 
-+----------------------------------------------------------------+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Modifier and Type                                              | Method                      | Description                                                                                                                                                                   |
-|                                                                |                             |                                                                                                                                                                               |
-+================================================================+=============================+===============================================================================================================================================================================+
-| Map<String,org.apache.spark.                                   | getInputCollectionRDDs()    | Get all Koverse input collection RDDs from the parameters that were input by the user.                                                                                        |
-| api.java.JavaRDD<SimpleRecord>>                                |                             |                                                                                                                                                                               |
-+----------------------------------------------------------------+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Map<String,CollectionSchema>                                   | getInputCollectionSchemas() | Get the schemas for all input collections.                                                                                                                                    |
-+----------------------------------------------------------------+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Map<String,String>                                             | getParameters()             | Get all parameters that is input by the user, with the exception of collection parameters (which are given as RDDs)                                                           |
-|                                                                |                             | None of the keys or values in the returned map will be null.                                                                                                                  |
-+----------------------------------------------------------------+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| org.apache.spark.api.java.                                     | getSparkContext()           | Get the spark context to use during execution.                                                                                                                                |
-| JavaSparkContext                                               |                             |                                                                                                                                                                               |
-+----------------------------------------------------------------+-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------+-----------------------------+---------------------------------------------------------------------------------------------------------------------+
+| Modifier and Type               | Method                      | Description                                                                                                         |
+|                                 |                             |                                                                                                                     |
++=================================+=============================+=====================================================================================================================+
+| Map<String,org.apache.spark.    | getInputCollectionRDDs()    | Get all Koverse input collection RDDs from the parameters that were input by the user.                              |
+| api.java.JavaRDD<SimpleRecord>> |                             |                                                                                                                     |
++---------------------------------+-----------------------------+---------------------------------------------------------------------------------------------------------------------+
+| Map<String,CollectionSchema>    | getInputCollectionSchemas() | Get the schemas for all input collections.                                                                          |
++---------------------------------+-----------------------------+---------------------------------------------------------------------------------------------------------------------+
+| Map<String,String>              | getParameters()             | Get all parameters that is input by the user, with the exception of collection parameters (which are given as RDDs) |
+|                                 |                             | None of the keys or values in the returned map will be null.                                                        |
++---------------------------------+-----------------------------+---------------------------------------------------------------------------------------------------------------------+
+| org.apache.spark.api.java.      | getSparkContext()           | Get the spark context to use during execution.                                                                      |
+| JavaSparkContext                |                             |                                                                                                                     |
++---------------------------------+-----------------------------+---------------------------------------------------------------------------------------------------------------------+
 
 
 Class SparkTransformLoader
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
     **com.koverse.sdk.transform.spark**
 
     **public class SparkTransformLoader extends Object**
@@ -1387,7 +1394,7 @@ See the :ref:`Installing Addons` section for information about building an addon
 The following is a high-level outline of the Koverse Spark SQL API framework:
 
 Class JavaSparkSqlTransform
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     **com.koverse.sdk.transform.spark.JavaSparkTransform**
 
@@ -1400,17 +1407,17 @@ Class JavaSparkSqlTransform
     **Description:**
     A transform for executing Spark SQL query transforms
 
-+------------------------------------------------------------+----------------------------------------------------------+-----------------------------------------------------+
-| Modifier and Type                                          | Method                                                   | Description                                         |
-|                                                            |                                                          |                                                     |
-+============================================================+==========================================================+=====================================================+
-| protected abstract org.apache.spark.sql.DataFrame          | execute(JavaSparkSqlTransformContext context)            | Execute the Spark SQL query.                        |
-+------------------------------------------------------------+----------------------------------------------------------+-----------------------------------------------------+
-| protected org.apache.spark.api.java.JavaRDD<SimpleRecord>  | execute(JavaSparkTransformContext sparkTransformContext) | Koverse calls this method to execute your transform |
-+------------------------------------------------------------+----------------------------------------------------------+-----------------------------------------------------+
++-----------------------------------------------------------+----------------------------------------------------------+-----------------------------------------------------+
+| Modifier and Type                                         | Method                                                   | Description                                         |
+|                                                           |                                                          |                                                     |
++===========================================================+==========================================================+=====================================================+
+| protected abstract org.apache.spark.sql.DataFrame         | execute(JavaSparkSqlTransformContext context)            | Execute the Spark SQL query.                        |
++-----------------------------------------------------------+----------------------------------------------------------+-----------------------------------------------------+
+| protected org.apache.spark.api.java.JavaRDD<SimpleRecord> | execute(JavaSparkTransformContext sparkTransformContext) | Koverse calls this method to execute your transform |
++-----------------------------------------------------------+----------------------------------------------------------+-----------------------------------------------------+
 
 Class JavaSparkSqlTransformContext
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     **com.koverse.sdk.transform.spark.JavaSparkTransform**
 
     `@NotThreadSafe`
@@ -1431,27 +1438,27 @@ Class JavaSparkSqlTransformContext
 
 
 Class KoverseSparkSql
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
     **com.koverse.sdk.transform.spark.sql**
 
     **public class KoverseSparkSql extends Object**
 
     **Description:**
 
-+--------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Modifier and Type                                                  | Method                                                                                                                                                                                   | Description                                                                                                                                           |
-|                                                                    |                                                                                                                                                                                          |                                                                                                                                                       |
-+====================================================================+==========================================================================================================================================================================================+=======================================================================================================================================================+
-| static org.apache.spark.sql.DataFrame                              | createDataFrame(org.apache.spark.api.java.JavaRDD<org.apache.spark.sql.Row> rowdRdd, org.apache.spark.sql.SQLContext sqlContext, org.apache.spark.sql.types.StructType schema)           | Create a new Data Frame from an RDD of rows, a SQL Context, and a struct type (the Spark SQL schema)                                                  |
-+--------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-| static org.apache.spark.sql.DataFrame | getSqlContext()            | createDataFrame(org.apache.spark.api.java.JavaRDD<SimpleRecord> recorddRdd, org.apache.spark.sql.SQLContext sqlContext, FlatCollectionSchema collectionSchema)                           | Create a new Data Frame from an RDD of records, a SQL Context, and a flat collection schema                                                           |
-+--------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-| static org.apache.spark.api.java.JavaRDD<org.apache.spark.sql.Row> | createRowRdd(org.apache.spark.api.java.JavaRDD<SimpleRecord> recordRdd, FlatCollectionSchema collectionSchema)                                                                           | Converts a RDD of records and a flat collection schema into a RDD of rows.                                                                            |
-+--------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-| static org.apache.spark.sql.SQLContext| getSqlContext()            | createSqlContext(org.apache.spark.SparkContext sparkContext, Map<String,org.apache.spark.api.java.JavaRDD<SimpleRecord>> recordRdds, Map<String,FlatCollectionSchema> collectionSchemas) | Converts two maps keyed by collection name, one containing record RDDs and the other containing collection schema, into a SQLContext ready for query. |
-+--------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
-| static org.apache.spark.sql.types.StructType                       | createSqlSchema(FlatCollectionSchema collectionSchema)                                                                                                                                   | cGiven a flat collection schema, create s Spark SQL Struct type, which the SQL schema.                                                                |
-+--------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Modifier and Type                                                  | Method                                                                                                                                                                         | Description                                                                                                                                                                              |                                                                                                                                                       |
+|                                                                    |                                                                                                                                                                                |                                                                                                                                                                                          |                                                                                                                                                       |
++====================================================================+================================================================================================================================================================================+==========================================================================================================================================================================================+=======================================================================================================================================================+
+| static org.apache.spark.sql.DataFrame                              | createDataFrame(org.apache.spark.api.java.JavaRDD<org.apache.spark.sql.Row> rowdRdd, org.apache.spark.sql.SQLContext sqlContext, org.apache.spark.sql.types.StructType schema) | Create a new Data Frame from an RDD of rows, a SQL Context, and a struct type (the Spark SQL schema)                                                                                     |                                                                                                                                                       |
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| static org.apache.spark.sql.DataFrame                              | getSqlContext()                                                                                                                                                                | createDataFrame(org.apache.spark.api.java.JavaRDD<SimpleRecord> recorddRdd, org.apache.spark.sql.SQLContext sqlContext, FlatCollectionSchema collectionSchema)                           | Create a new Data Frame from an RDD of records, a SQL Context, and a flat collection schema                                                           |
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| static org.apache.spark.api.java.JavaRDD<org.apache.spark.sql.Row> | createRowRdd(org.apache.spark.api.java.JavaRDD<SimpleRecord> recordRdd, FlatCollectionSchema collectionSchema)                                                                 | Converts a RDD of records and a flat collection schema into a RDD of rows.                                                                                                               |                                                                                                                                                       |
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| static org.apache.spark.sql.SQLContext                             | getSqlContext()                                                                                                                                                                | createSqlContext(org.apache.spark.SparkContext sparkContext, Map<String,org.apache.spark.api.java.JavaRDD<SimpleRecord>> recordRdds, Map<String,FlatCollectionSchema> collectionSchemas) | Converts two maps keyed by collection name, one containing record RDDs and the other containing collection schema, into a SQLContext ready for query. |
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| static org.apache.spark.sql.types.StructType                       | createSqlSchema(FlatCollectionSchema collectionSchema)                                                                                                                         | cGiven a flat collection schema, create s Spark SQL Struct type, which the SQL schema.                                                                                                   |                                                                                                                                                       |
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 **For a reference of the supported query syntax in the Spark Java SQL see:**
@@ -1983,7 +1990,7 @@ This characteristic makes Aggregations a perfect solution for use cases like ana
 and then queried, in the context of a web log analytics use case.
 
 Example Aggregations Use Case
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 While certainly not required, Aggregations are often used in conjunction with streaming Imports to maintain near real-time statistics on a constant stream of Records.
 In this example, assume web log events are streaming into Koverse via a Kafka Source. These web log event Records look like the following JSON::
 
@@ -2006,7 +2013,7 @@ The questions we want to answer are:
   #. How many unique users are visiting the site each day by country?
 
 Creating Aggregations
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 Aggregations can be created in two ways:
  #. Using the Aggregation Workbench App at /Koverse/apps/aggregationworkbench
  #. Creating a JSON configuration file that is automatically loaded from *$KOVERSE_SERVER_HOME/conf/load-every-time*
@@ -2159,7 +2166,7 @@ In the example above, we round the timestamp down to the day, based on the EST t
 In the example above, we create the same 1-day bins, but also add second dimension which is the Country, parsed from the Record's location field. The parsing here is simplified and has no error handling for brevity.
 
 Aggregation Query API
-^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
 The sections above have gone into detail about how to configure Aggregations on the Records in a Data Collection. As originally stated, the primary use case for
 Aggregations is to maintain precomputed statistics over time to support interactive (sub-second) queries from applications such as analytic dashboards. This section
 will provide detail on the query API. The REST API will be discussed, but a Thrift API is also available and is very similar.
@@ -2740,7 +2747,7 @@ Use the same methods described in the previous section on PySpark in iPython not
 
 
 Using PySpark and Jupyter with Koverse
------------------------------------------------
+--------------------------------------
 
 Jupyter is a development tool that allows users to create notebooks containing comments and code, like iPython Notebook. Jupyter supports other languages via the use of 'kernels'.
 
