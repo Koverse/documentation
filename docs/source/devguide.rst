@@ -882,7 +882,7 @@ API Tokens
 
 Koverse Administrators can create API Tokens, which are used by outside systems to authenticate. These are generally unused outside of the context of a direct users request. For example, a server that periodically updates it's own cache using a Koverse query.
 
-All REST API methods can be called using an API token to authenticate. The API Token takes precedence over any other method of authentication. Here is an example of using an API token to authenticate::
+All REST API methods can be called using an API token to authenticate. The API Token takes precedence over any other method of authentication. Here is an example of using an API token to authenticate:
 
 	``http://<host:port>/Koverse/api/system/status?apiToken=API-TOKEN-HERE``
 
@@ -911,6 +911,7 @@ Example Ping Response
  ``http://<host:port>/api/login``
  
  POST data:
+ 
  ``{"email":"username@example.com","password":"password"}``
 
 Example login failure response::
