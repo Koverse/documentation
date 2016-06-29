@@ -25,10 +25,14 @@ The Koverse Data Lake is able to hold heterogeneous data in its raw form in a si
 •	Koverse can simultaneously consume data in a variety of data formats from
 JSON, XML, CSV and can pull from a range of systems enabling a complete
 operational view.
-•	The Koverse internal data structure is schema free, allowing the system to tag, 		track, govern, and index the data while retaining the data’s native schema.  
+
+•	The Koverse internal data structure is schema free, allowing the system to tag, 		track, govern, and index the data while retaining the data’s native schema. 
+
 •	The Koverse SDK allows custom data formats and systems to be quickly and 	reliably ingested. 
+
 •	Koverse can ingest data in both streaming and bulk scenarios supporting both
 real time and bulk use cases.
+
 •	Koverse supports automatic data profiling and sampling enabling quick
 assessment of data quality and value.
 
@@ -39,8 +43,11 @@ The Koverse Data Lake can transform data in-situ using a variety of well known a
 
 •	Koverse transforms data at scale and in-situ using well known MapReduce or
 Spark engines.
+
 •	Transformations are deployed via an SDK or UI and are executed by the Koverse 	server to ensure that data lineage, auditing and access controls are maintained.
+
 •	Transformations are semantically flexible and can be reused without code 	changes.
+
 •	Analytic output is re-usable such that it can be leveraged for multiple use cases.
 
 
@@ -49,9 +56,13 @@ Interrogation and Search
 The Koverse Data Lake is able to serve thousands of users simultaneously with interactive responsiveness.
 
 •	Koverse provides an internet-scale query capability on all the data and content it 	holds by implementing an efficient and proven secure and scalable indexing 	technology.
+
 •	Queries are executed via API or REST calls using the well-known Lucene syntax.
+
 •	Different use cases can apply different semantic models at query time.
+
 •	Data can be searchable within seconds of ingest allowing for real time 	applications.
+
 •	API enables integration with a range of existing tools and applications.
 
 
@@ -61,6 +72,9 @@ The Koverse Data Lake has best in breed multi-level security mechanisms allowing
 
 
 •	Koverse enables individual access control on every record and every collection.
+
 •	Maintains audit information of all system interactions by all users.
+
 •	Tracks the analytic lineage of all data in the system.
+
 •	Integrates with existing access control systems via LDAP, Kerberos and AD.
