@@ -2,233 +2,65 @@
 
 
 Introduction
-============
-
-Koverse is the only demand-driven platform for big data that, from day one, enables users to easily run advanced analytics against any data source and develop result driven applications.
-
-Key Benefits
 ^^^^^^^^^^^^
 
-Ubiquitous access to data
--------------------------
+The Koverse Data Lake gives organizations ubiquitous access to their data across the enterprise in a pre-packaged, ready to deploy platform that runs on well known, and usually pre-existing IT infrastructure.  Data scientists, analysts and business users can easily work together, quickly and iteratively to finally deliver to the organization the key data capabilities it needs.  
 
-Koverse automatically indexes all data.
-The Apache Lucene library is used for text tokenization.
-Indexes are stored in Apache Accumulo, a scalable NoSQL database that provides the same security controls over indexes as original records.
+One of the fundamental issues with big data technology deployments - those projects that require complex integration of multiple datasets to address a specific business case - is that they are too complex, take too long, and require risky technology integrations and when aggregated across the many solutions that an enterprise can require, are very expensive. 
+The data lake is a powerful concept in enterprise IT infrastructure because it offers a solution to all of these issues.  First, a data lake allows enterprises to store huge amounts of data in its raw form.  Second, a data lake gives organizations the ability to quickly leverage that data against a given use case from within the system.  The result is that solutions can be delivered in days or weeks that previously took months or years.  Delivering a solution requires no additional infrastructure or architecture design because the entire use case can be hosted within the data lake. And finally, the reuse of infrastructure and data to support multiple use cases with a single data lake results in a huge reduction in overall cost, allowing organizations to shed their costly and ridged stove-piped solutions.
+Data Lakes allow this shift because they achieve economies of scale in the re-use of architecture, data, system resources, and analytics.  The Koverse Data Lake in a Box gives organizations all the benefits of a data lake, without the technical risk or significant up front investment.  
 
-Enable data science through bulk analysis with latest tools
------------------------------------------------------------
 
-Data scientists can develop analytics that run on data in-situ, that can be reused because analytic configuration can be matched to the schema information Koverse maintains.
-Developers can use tools such as Spark, Spark SQL, Hadoop MapReduce, Python, Apache Pig, Jupyter Notebook, Tableau, and Excel.
+How The Koverse Works 
+^^^^^^^^^^^^^^^^^^^^^
+The biggest challenge of building a data lake is the huge integration associated with leveraging a range of complex infrastructure systems to generically address a range of use cases or leveraging these same technologies to hand craft specific solutions, making it difficult and expensive to operationalize multiple use cases.  Koverse has solved this problem in a mature and mission proven platform, building on an open source core including Spark, Accumulo and Hadoop.
+Koverse integrates data storage, tranformation, interrogation and security features to create a complete solution that finally allows organizations to see big successes with big data.
 
-Schema-free ingest
-------------------
 
-Users do not have to provide any information about the data schema.
-Data doesn’t have to be well understood or consistent.
-Store data from external systems once, in a flexible data model in accumulo.
-Discover data structure and address data quality issues via automatic data profiling and sampling.
 
-Flexible access control
------------------------
+Holds data at scale and in its raw form  
+=======================================
+The Koverse Data Lake is able to hold heterogeneous data in its raw form in a single system at any scale, enabling quick application to any use case.  
 
-Koverse labels all data ingested and protects it immediately.
-Koverse manages data set access per group and does additional record-level filtering.
+•	Koverse can simultaneously consume data in a variety of data formats from
+JSON, XML, CSV and can pull from a range of systems enabling a complete
+operational view.
+•	The Koverse internal data structure is schema free, allowing the system to tag, 		track, govern, and index the data while retaining the data’s native schema.  
+•	The Koverse SDK allows custom data formats and systems to be quickly and 	reliably ingested. 
+•	Koverse can ingest data in both streaming and bulk scenarios supporting both
+real time and bulk use cases.
+•	Koverse supports automatic data profiling and sampling enabling quick
+assessment of data quality and value.
 
 
-Koverse Architecture
-^^^^^^^^^^^^^^^^^^^^
+Transforms the data at scale 
+============================
+The Koverse Data Lake can transform data in-situ using a variety of well known analytic frameworks and stores the output of these transforms in the exact same manner that it stores raw data, allowing analytic output to inherit all the functionality of the raw data.
 
-.. figure:: /_static/KoverseLogicalArchitecture.*
-	:height: 350 px
-	:width: 600 px
-	:align: center
+•	Koverse transforms data at scale and in-situ using well known MapReduce or
+Spark engines.
+•	Transformations are deployed via an SDK or UI and are executed by the Koverse 	server to ensure that data lineage, auditing and access controls are maintained.
+•	Transformations are semantically flexible and can be reused without code 	changes.
+•	Analytic output is re-usable such that it can be leveraged for multiple use cases.
 
 
+Interrogation and Search  
+========================
+The Koverse Data Lake is able to serve thousands of users simultaneously with interactive responsiveness.
 
-	Koverse Logical Architecture
+•	Koverse provides an internet-scale query capability on all the data and content it 	holds by implementing an efficient and proven secure and scalable indexing 	technology.
+•	Queries are executed via API or REST calls using the well-known Lucene syntax.
+•	Different use cases can apply different semantic models at query time.
+•	Data can be searchable within seconds of ingest allowing for real time 	applications.
+•	API enables integration with a range of existing tools and applications.
 
-	|
-	|
 
-The :ref:`Extensibility` section offers more details about extending built-in Koverse capabilities to meet operational needs.
+Security and Governance
+=======================
+The Koverse Data Lake has best in breed multi-level security mechanisms allowing the use of sensitive data and multiple use cases of a single system, which enables the re-use of data, analytics and infrastructure
 
 
-Features
-^^^^^^^^
-
-Import data from external sources
----------------------------------
-
-* Amazon S3
-
-* Email Accounts (IMAP)
-
-* File Transfer Protocol (FTP)
-
-* Hadoop File System (HDFS)
-
-* Apache Kafka
-
-* MS SQL Server
-
-* MySQL
-
-* Oracle
-
-* Postgres
-
-* Newsfeeds (RSS)
-
-* Twitter Streaming
-
-* Twitter Timeline
-
-* Wikipedia
-
-* URL
-
-* Custom
-
-
-
-Parse File Formats
-------------------
-
-* XML
-
-* JSON
-
-* CSV
-
-* Text
-
-* RTF
-
-* HTML
-
-* Microsoft Word
-
-* Microsoft Power Point
-
-* Microsoft Excel
-
-* Email files
-
-* PDF
-
-* ePub
-
-
-Search
-------
-
-* Users can query one data set, or all data sets they are authorized to read.
-
-* Queries can be field-specific or can look for values appearing in any field.
-
-* Users can search for a range of values.
-
-* Users can search multiple ranges simultaneously.
-
-* Users can start typing and see suggested query terms.
-
-* Download search results as CSV or JSON files.
-
-
-Koverse automatically recognizes the following value types and will make them discoverable:
-
-
-* Text
-
-* Numbers
-
-* Dates
-
-* Booleans
-
-* URLs
-
-* IP addresses
-
-* Geographical points
-
-
-Bulk Analysis via Transforms
-----------------------------
-
-* Clean up and normalize data
-
-* Combine or join data sets
-
-* Summarize and aggregate
-
-* Build descriptive or predictive statistical and machine learning models
-
-* Analytical output is stored in a new data set which is also searchable
-
-
-
-Export Data
------------
-
-Export data sets to external systems:
-
-* FTP
-
-* HDFS
-
-* Amazon S3
-
-* Kafka
-
-Export to the following file formats:
-
-* CSV
-
-* JSON
-
-* XML
-
-Perform Interactive Analysis
-----------------------------
-
-Using Spark shells or Jupyter
-
-Build Custom Applications
--------------------------
-
-Extend Koverse Capabilities
----------------------------
-
-* Custom Import Sources
-
-* Custom Transforms
-
-* Custom Export Destinations
-
-* Custom Export File Formats
-
-* Custom Applications
-
-* Java SDK for Custom Sources, Transforms, and Sinks
-
-* REST API
-
-* Javascript REST API Library
-
-* Java Thrift API Library
-
-* Javascript App API
-	|
-
-.. figure:: /_static/KoverseIntegrationArchitecture.*
-	:height: 350 px
-	:width: 750 px
-	:align: center
-
-	Koverse Integration Architecture
-
-	|
-	|
+•	Koverse enables individual access control on every record and every collection.
+•	Maintains audit information of all system interactions by all users.
+•	Tracks the analytic lineage of all data in the system.
+•	Integrates with existing access control systems via LDAP, Kerberos and AD.
