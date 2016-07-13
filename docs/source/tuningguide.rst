@@ -18,7 +18,7 @@ Focusing on our workers, we need to split these resources among the following
 * YARN NodeManager
 * YARN applications (MR and Spark jobs)
 
-A good rule of thumb would be, for an 8 CPU node, to give 3 CPUs for the OS, Accumulo Tablet Server, DataNode, and NodeManager (Accumulo Tablet Server being the only process that is going to demand significant CPU resources). Then we have 5 CPUs left for YARN apps.
+A good rule of thumb would be, for an 8 CPU node, to give 3 CPUs for the OS, Accumulo Tablet Server, DataNode, and NodeManager (Accumulo Tablet Server being the only process that is going to demand significant CPU resources). Then we have 5 CPUs left for YARN apps. 
 
 Memory-wise, 1G should work well for both the DataNode and NodeManager. Accumulo should have more than the defaults, 4-8GB is a good start. Leaving a few GB for the OS and the rest we can allocate to YARN apps, in this case 40G which gives us approximately 8GB per CPU core for YARN apps.
 
@@ -44,8 +44,6 @@ These would go in /etc/spark/conf/spark-defaults.conf:
 * spark.executor.instances: 1                    // 1 executor per worker
 * spark.executor.cores: 2                        // each executor can use 2 CPU cores
 * spark.executor.memory: 7G                      // leave room for overhead between this and container
-
-.. note::  Although Spark can be configured to use a serialization method other than Java Serialization (such as Kryo serialization), Koverse managed Spark jobs will always use Java Serialization.
 
 MapReduce
 ---------
