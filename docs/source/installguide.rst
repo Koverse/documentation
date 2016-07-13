@@ -70,7 +70,7 @@ HDFS Configuration
 
 The 'koverse' user added above needs to be in the HDFS Superuser Group.
 This group is defined in the HDFS configuration property of *dfs.permissions.superusergroup*.
-Additionally, the value of that property must be a UNIX group on the server.
+Additionally, the value of that property must be a UNIX group on the server where the HDFS Name Node resides.
 For instance, if *dfs.permissions.superusergroup* was 'hadoop', ensure this group exists, and if not::
 
   sudo groupadd hadoop

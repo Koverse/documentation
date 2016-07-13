@@ -872,27 +872,19 @@ Example Ping Request
 
 The following URL shows a ping request, for a Koverse server running on localhost.
 
- ``http://<host:port>/api/ping``
+ ``http://localhost:8080/api/ping``
 
 Example Ping Response
 
- ``{"success":true}``
+ ``{"recordCountEstimate":0,"responseTime":0,"success":true,"recordsWritten":0,"bytesWritten":0,"importSampleReady":false}``
 
-**System Status**
+**Session Authentication (Login)**
 
- ``http://<host:port>/api/status``
-
-The system status method provides basic system status information. Use this method to integrate against system feature availability. For example, while in lock down mode, Koverse will not provide accesss to requests for data. Therefore it is important to know the basic status of the Koverse system to provide reasonable requests.
-
-Example Status Request
- ``http://<host:port>/api/status``
-
-Example Status Response
- ``{"success":true,"systemStatus":{"lockDown":false}}``
-
-Session Authentication (Login)
-
- ``http://<host:port>/api/login/<name>/<password>``
+ ``http://<host:port>/api/login``
+ 
+ POST data:
+ 
+ ``{"email":"username@example.com","password":"password"}``
 
 Example login failure response::
 
@@ -910,21 +902,37 @@ Before using other REST API methods, an HTTP session must be established. Below 
 
 **Example Login URL**
 
-The following would retrieve an HTTP response with a JSESSIONID token for the default administrative user and password.
+The following cURL command would retrieve an HTTP response with a JSESSIONID token for the default administrative user and password.
 
- ``http://<host:port>/api/login/admin/admin``
+ ``curl 'http://localhost:8080/api/login' -i -H 'Content-Type: application/json;charset=UTF-8' -H 'Accept: application/json, text/plain, */*'  --data-binary '{"email":"admin","password":"admin"}'``
+
+Example login response::
+
+   HTTP/1.1 200 OK
+   Access-Control-Allow-Origin: *
+   Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+   Set-Cookie: JSESSIONID=1e0absgbti8151fn0ip59b3kj4;Path=/
+   Expires: Thu, 01 Jan 1970 00:00:00 GMT
+   Content-Type: application/json
+   Transfer-Encoding: chunked
+   Server: Jetty(8.1.18.v20150929)
+  
+   {"id":4,"firstName":"admiral","lastName":"admin","email":"admin","groups":[],"externalGroups":[],
+   "groupIds":[],"tokens":[],"disabled":false,"creationDate":null,"passwordResetHash":null,
+   "authenticatorUserId":"koverseDefault_admin","authenticatorTypeId":"koverseDefault",
+   "newPassword":null,"newPasswordConfirm":null}
 
 **Querying for data**
 
 The most basic feature of the Koverse REST API is to provide query/search access to data collections. Below is an example of querying all data collections for a logged-in user.
 
- ``http://<host:port>/api/query/<queryHere>``
+ ``http://<host:port>/api/search/results?query=<queryHere>``
 
 **Example Query**
 
 The following would query a Koverse instance running on localhost, port 8080, for the term test.
 
- ``http://<host:port>/api/query/test``
+ ``http://localhost:8080/api/search/results?query=test``
 
  **Additional Methods**
 
