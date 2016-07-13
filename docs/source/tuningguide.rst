@@ -13,7 +13,7 @@ YARN
 
 Spark
 -----
-.. note::  Although Spark can be configured to use a serialization method other than Java Serialization (such as Kryo serialization), Koverse managed Spark jobs will always Java Serialization.
+.. note::  Although Spark can be configured to use a serialization method other than Java Serialization (such as Kryo serialization), Koverse managed Spark jobs will always use Java Serialization.
 
 MapReduce
 ---------
