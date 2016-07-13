@@ -62,11 +62,12 @@ For example, if the Koverse web application is running on a server called 'kover
 
 Supported browsers include:
 
-- Internet Explorer 10+
-- Microsoft Edge
-- Chrome
+- Chrome (recommended)
 - Firefox
 - Safari
+- Microsoft Edge
+- Internet Explorer 10+
+
 
 .. include:: /snippets/loggingin.rst
 
@@ -169,8 +170,11 @@ Overview
 Data
   Search results from this data set will appear here.
 
+Data Flow
+  View data flowing into or out of a data set, import more data, setup transforms and exports.
+
 Settings
-  Change data set settings such as the name, import more data, view processing events, and other actions.
+  Change data set settings such as the name, view processing events, and other actions.
 
 Audit
   View the audit log of events that have taken place involving this data set, such as searches, imports, etc.
@@ -211,7 +215,7 @@ Information about each of these attributes is displayed here including:
 
 To see the associated visualization for an attribute, click the down arrow at the right of the attribute information.
 
-.. image:: /_static/UsageGuide/attributes.png
+.. image:: /_static/UsageGuide/attributeVisualization.png
 
 This information can help you get a sense for what kind of information a particular data set contains, and can help identify potential opportunities for answering questions using this information either in searches or in analytics, as well as any data quality issues that might exist.
 For example, as a data scientist I might be interested to find out which attributes in a data set contain text that I can process to extract a sentiment score.
@@ -244,6 +248,15 @@ Placing your mouse over a column will display the exact number of records for ea
 
 Clicking on the up arrow at the top of the visualization will collapse this view again.
 Scrolling down allows us to see other attributes.
+
+Viewing Records
+^^^^^^^^^^^^^^^
+
+To view records of a data set, click on the 'Data' tab.
+Initially, you will see a representative sample of the records in this data set.
+This sample is maintained as new data is added so that it represents a subset of records sampled uniformly at random.
+
+You can also perform a search to see records matching specific criteria.
 
 .. include:: /snippets/search.rst
 
@@ -410,62 +423,74 @@ Once this is downloaded you can open it in a 3rd party application such as Micro
 
 For more examples in working with this bank data, see the section titled `Analyzing and Transforming a Data Set`_.
 
+Controlling Data Flow
+^^^^^^^^^^^^^^^^^^^^^
+
+To configure which source or transforms flow into a data set and which transforms and exports are fed from a data set, click on the 'Data Flow' tab.
+This tab shows a diagram illustrating the sources of incoming data as well as any destination data sets storing transform results or external systems to which data has been exported.
+
+.. image:: /_static/UsageGuide/dataFlowDiagram.png
+
+Data sets that hold data imported from an external source will display the external source on the left.
+In the case of the 'Bank Incidents' data set shown, the source is a URL source.
+
+.. image:: /_static/UsageGuide/dataFlowSource.png
+
+To edit the details of the import click on the pen icon.
+Make any necessary changes and click 'Update' to save.
+
+.. image:: /_static/UsageGuide/editSource.png
+
+To re-run the import process click on the circular arrow icon.
+This will start the import process and fetch additional data into this data set from the source according to the import settings.
+
+Data sets that have been created via a transform will show the upstream data set from which the transform read data on the left.
+In the case of the 'Wikipedia Entities' data set shown, the upstream data set is 'Wikipedia Articles' and transform being applied is 'Document Entities'.
+The 'Document Entities' transform reads from the 'Wikipedia Articles' data set and extracts Named Entities such as persons, places, and organizations from unstructured text and writes out the list of entities found in each article to the 'Wikipedia Entities' data set.
+Upstream transforms can be re-run by clicking on the circular arrow icon and can be edited by clicking on the pen icon.
+
+.. image:: /_static/UsageGuide/dataFlowDiagram.png
+
+Downstream data sets are shown on the left along with the name of the transform reading from this data set to create a new data set.
+In the case of the 'Wikipedia Entities' data set shown, the downstream data set is 'Wikipedia Entity Graph'.
+To re-run the downstream transform, click on the circular arrow and to edit the transform settings click on the pen icon.
+
+Any external systems to which a data set has been exported will also appear on the left and can be re-run and edited the same way as sources and transforms.
+
+New downstream transforms and exports can be added to a data set by clicking 'Create Transform' and 'Create Export' buttons respectively.
+For details on creating a transform see `Analyzing and Transforming a Data Set`_.
+For details on exporting data sets see `Exporting a Data Set`_.
+
+Any import, transform, or export jobs can be seen in the History table under the Settings tab for this data set.
+
 Changing Data Set Settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To change settings for a data set, click on 'Data' in the primary navigation menu on the left and then click on the 'Settings' tab.
 The settings tab allows the data set details to be viewed and changed.
 
-The first section allows the name of the data set to be changed.
-To edit the data set name, click the gear icon to the right of the 'Data Set' title.
-Enter a new name in the input labeled 'Name' and click Save to save the new name, or Cancel to discard the change.
+The first section allows the name and description of the data set to be changed.
+To edit the data set name or description, simply enter new information into the form inputs and click the 'Update' button.
 
 .. image:: /_static/UsageGuide/dataSetSettings.png
 
-Data Set Source
----------------
+On this tab, you can also repair a data set by clicking the 'Repair Data Set' button, which will re-index records, recalculate statistics about attributes, and resample the data set.
 
-The Source section shows information about the data source that was used to populate this data set.
-The details of the source can be changed by clicking the gear icon next to the 'Source' title.
-Changes can be saved by clicking Save or discarded by clicking Cancel.
+To clear a data set, removing all records from it but leaving the settings, sources, transforms, and exports configured intact, click the 'Clear Data Set' button.
 
-The source can be deleted by clicking the trash can icon.
+To delete a data set, removing it completely from the system, click the 'Delete Data Set' button.
 
-.. image:: /_static/UsageGuide/editSource.png
 
-To re-run an import process to load data from this source, click the icon of two circular arrows.
-This will start a new import job.
-The status for the new import job will be shown in the History table lower down on this page.
+Data Set History
+----------------
+
+A history of the processing jobs that have been applied to this data set can be seen by clicking on the History tab on the Settings page.
 
 .. image:: /_static/UsageGuide/historyTable.png
 
-Input Transforms
-----------------
+If jobs are currently running they can be stopped if necessary by clicking the red X icon next to the job.
 
-The Inputs section shows any transforms that are currently feeding data into this data set.
-Usually, if a data set is populated from an external source, then it won't have any transforms feeding data to it, and vice versa.
-An input transform takes data from one or more other data sets currently managed by Koverse, processes their records, and stores output records in this data set.
-The Inputs table allows a user to run a transform again on-demand by clicking the right arrow icon for a transform under the 'Run' column.
-
-To edit the configuration of an input transform, click the gear icon for a transform under the 'Edit' column.
-This will take you to the transform page where the configuration can be viewed and changed.
-See the documentation on transforms at `Analyzing and Transforming a Data Set`_ for details.
-
-.. image:: /_static/UsageGuide/inputsOutputs.png
-
-Output Transforms
------------------
-
-The Outputs section shows a list of transforms that receive data from this data set.
-Users can run and edit transforms from this table as described in the previous section.
-See the documentation on transforms at `Analyzing and Transforming a Data Set`_ for details on configuring transforms.
-
-Data Set Exports
-----------------
-
-Any external data storage systems to which this data set has been exported are listed here.
-For details on exporting data sets see `Exporting a Data Set`_.
-
+Any errors encountered during the job will also be shown in this table.
 
 Data Set Permissions
 --------------------
@@ -473,6 +498,29 @@ Data Set Permissions
 This section shows a list of groups and the specific permissions those groups have for this data set.
 See `Data Set Security and Access Control`_ for details on controlling access to a data set.
 
+Indexing Settings
+-----------------
+
+The indexing settings tab makes it easy to configure which attributes of a data set are searchable.
+By default, Koverse indexes all attributes found.
+Any new attributes showing up in newly imported data will also be automatically indexed.
+
+.. image:: /_static/UsageGuide/indexAll.png
+
+To prevent a particular attribute from being indexed, and therefore being searchable, click the radio button labeled 'Index Specific Fields'.
+This will allow you to select whether to index attributes by checking or unchecking the box next to each attribute.
+Once the set attributes to be indexed is selected, click the 'Save' button at the bottom of the page.
+
+.. image:: /_static/UsageGuide/indexSpecific.png
+
+Changing the set of attributes indexed will cause a background re-indexing job to be started.
+When this job is complete the index will have been updated to reflect these settings and any newly imported data will be indexed according to these settings.
+
+Masking Settings
+----------------
+
+This section shows a list of attributes within this data set, whether each attribute is masked, and any groups that are allowed to see the original values of a masked attribute.
+See `Data Set Security and Access Control`_ for details on controlling masking settings.
 
 Viewing audit information
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -481,6 +529,8 @@ All actions performed that involve a particular data set can be viewed on the Au
 These audit log entries are shown in reverse chronological order so the most recent events appear first in the table.
 
 .. image:: /_static/UsageGuide/dataSetAudit.png
+
+The details of each particular audit log entry can be seen by clicking the 'Show Details' button next to an audit log entry in the table.
 
 Downloading an Entire Data Set
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -649,15 +699,14 @@ Running a Transform
 If a transform is set to run on a schedule, it will be automatically started according to the schedule.
 If a transform is set to run automatically, and there is already data in the input data sets, you can run it once manually to process existing data.
 
-To run a transform manually, click on the 'Data' button on the primary navigation menu on the left.
+To run a transform manually, click on the 'Data' button on the primary navigation menu on the left, and then the 'Data Flow' tab.
 Select the output data set of the transform (if you just created the transform you will be navigated to this page).
-Click on the settings tab to see the Inputs list of transforms for this data set.
 
 .. image:: /_static/UsageGuide/runTransform.png
 
-Next to the transform type desired, click the right arrow icon for that transform under the 'Run' column.
+Next to the transform type desired, click the circular arrow icon for that transform.
 This will start a new transform job.
-The job will appear in the History table of this settings page.
+The job will appear in the History table under the Settings tab.
 
 You can view the status of this running transform job and optionally stop a running job by clicking the X next to the progress bar of a running job.
 
@@ -669,8 +718,8 @@ Example
 To run our example transform, scroll to the 'Inputs' table on the data set details page, on the Settings tab.
 You should see a single transform of type 'sparkSqlTransform'.
 
-Click on the right arrow under the 'Run' column to run this transform.
-In the 'History' table below wou will see job appear with a progress bar indicating how much of the processing has completed.
+Click on the circular arrow to run this transform.
+Click on the Settings tab, and then the History tab see the job appear with a progress bar indicating how much of the processing has completed.
 After the job is complete you should see the status as 'Complete'.
 
 You can then navigate to the attributes for this data set by clicking on the 'Overview' tab.
@@ -703,28 +752,26 @@ Troubleshooting a Transform
 ---------------------------
 Sometimes a transform is simply misconfigured.
 In this case you may see an error message associated with a job for a transform to the effect that there is a misconfiguration or in some cases a syntax error.
-To fix a misconfiguration, click the gear icon under the 'Edit' column for a transform listed in the Inputs or Outputs section of a data set's transforms.
+To fix a misconfiguration, click on the Data Flow tab for a data set and click the pen icon next to the transform you wish to edit.
 
 You will be taken to the configuration page for the transform where you can make changes to the parameters.
 Once the changes are complete, click Save.
 
-You can run the transform again by clicking the right-arrow icon under the 'Run' column in either the Inputs or Outputs table where your transform appears.
+You can run the transform again by clicking the circular arrow icon next to the transform in the Data Flow tab.
 
 Other times a transform may fail because of a hardware failure from which the underlying execution engine, such as Hadoop MapReduce or Apache Spark, may not have automatically recovered.
 In these cases a transform may simply need to be re-run.
-This can be done by clicking the right-arrow icon under the 'Run' column in either the Inputs or Outputs table where your transform appears.
+This can be done by clicking the circular arrow icon next to a transform in the Data Flow tab.
 
 Viewing Transform Output
 ------------------------
-Once a transform job has completed successfully, as indicated by the success status of a transform job in the History table on the settings tab of the output data set details page, a few background jobs will run to index and profile the new data in this data set.
+Once a transform job has completed successfully, as indicated by the success status of a transform job in the History table on the Settings tab of the output data set details page, a few background jobs will run to index and profile the new data in this data set.
 
 You can then search the data in this data set and explore attribute information as described in the `Exploring a Data Set`_ and `Search`_ sections.
 
-By default only the creator of a data set acting as the output of a transform can view the information in that data set.
+By default only the creator of a output data set of a transform can view the information in that data set.
 To grant more permissions so other users can view this data, see the section, `Data Set Security and Access Control`_.
 
-Example
-~~~~~~~
 
 Interactive Analytics
 ^^^^^^^^^^^^^^^^^^^^^
@@ -1281,9 +1328,8 @@ Koverse can export data sets to external data storage systems.
 
 To export a data set, click the 'Data' button in the primary navigation menu on the left.
 Select the data set you wish to export from the list.
-Click on the Settings tab and scroll down to the Exports section.
+Click on the Data Flow tab and click the 'Create Export' button.
 
-Click the 'Create Export' button.
 Select the type of storage system to which data will be exported from the list.
 
 .. image:: /_static/UsageGuide/export.png
@@ -1299,13 +1345,13 @@ If choosing to export on a schedule, you will have the option to add a specific 
 Choose whether to export all data every time or only new data that has not yet been exported since the last export job ran.
 
 Once the settings are all configured, click Save.
-Once you click save you will see the newly configured export in a table under the Exports section.
+Once you click save you will see the newly configured export on the right in the data flow diagram.
 
 Running an Export
 -----------------
 
 If the export is configured to run on a schedule it will automatically start according to the schedule.
-To run an export manually, you can click on the right-arrow icon for an export under the 'Run' column.
+To run an export manually, you can click on the circular arrow icon next to an export.
 This will kick off an export job.
 
 .. image:: /_static/UsageGuide/runExport.png
@@ -1313,14 +1359,14 @@ This will kick off an export job.
 Export jobs will appear in the History table for a data set in the Settings tab.
 You can view progress information and view any errors associated with the export job.
 
-To edit an export, click on the gear icon under the 'Edit' column for an export.
+To edit an export, click on the pen icon next to the export in the Data Flow tab.
 This will show you the original form used to setup the export.
 Make any changes required and click Save.
 
 Data Set Security and Access Control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Koverse provides fine-grained access control to data sets and even individual records within data sets.
+Koverse provides fine-grained access control to data sets and even individual records and attributes within data sets.
 
 Organizations can define groups, associate users to groups, and grant permissions to groups for system actions or data set-specific actions.
 
@@ -1332,9 +1378,9 @@ Regardless of how users and groups are managed, Koverse will manage the permissi
 In this section we outline how to carry out common data set access tasks.
 For details on how to control access to system actions, see the Administrator's Guide.
 
-All data set specific permissions are controlled via the Settings tab for a specific data set's details.
+All data set specific permissions are controlled via the Permissions tab for a specific data set's details.
 To work with the permissions for a data set click on the 'Data' button in the primary navigation menu on the left.
-Select the data set of interest from the list, and click on the Settings tab.
+Select the data set of interest from the list, click on the Settings tab and then click the Permissions tab.
 
 Making a Data Set Private
 -------------------------
@@ -1342,8 +1388,8 @@ Making a Data Set Private
 A newly created data set is controlled by the user who created it, known as the 'responsible user'.
 By default this user is the only user that can see that this data set exists, and this user can perform all actions on the data set.
 
-To ensure that a data set is private and accessible only by the responsible user, remove all groups from the permissions list on the data sets Settings tab.
-Do this by clicking the X icon under the 'Remove' column in the permissions list for all groups.
+To ensure that a data set is private and accessible only by the responsible user, remove all groups from the list on the data sets Permissions tab.
+Do this by clicking the red minus icon under the 'Remove' column in the permissions list for all groups.
 
 .. image:: /_static/UsageGuide/setPermissions.png
 
@@ -1354,7 +1400,7 @@ To grant specific access to a limited group of users, first add the group that y
 
 .. image:: /_static/UsageGuide/addGroup.png
 
-Even though the group is now added to the permissions list, the users that belong to this group still won't be able to perform any actions on this data set until specific actions are granted.
+Even though the group is now added to the permissions list, the users that belong to this will only be able to know of its existence until specific actions are granted.
 Select the specific actions to grant to this group from the list, which includes:
 
 Read
@@ -1368,13 +1414,41 @@ Manage Permissions
 Manage Configuration
   Members of the group can change the name, indexing options, and other settings for this data set.
 
-
 Making a Data Set Available to Everyone
 ----------------------------------------
 
 Koverse ships by default with a group called 'Everyone', which all new users are added to when they are created.
 
 To make a data set available to everyone, simply add the 'Everyone' group to the permissions table and grant the actions desired to this group.
+
+Masking Specific Data Set Attributes
+------------------------------------
+
+Koverse allows data set owners to mask specific attributes so that their values are not visible in search results or downloads.
+
+To edit a data set's masking settings click on the Data tab on the left navigation menu and select the data set you want.
+Click on the Settings tab and then the Masking tab.
+
+.. image:: /_static/UsageGuide/masking.png
+
+This will show a list of all the attributes within this data set.
+By default all attributes are visible to users that can query this data set.
+
+To mask specific attributes, click on the check box next to each attribute to mask.
+Selected attributes will be masked for all users unless specific groups are excepted.
+To allow specific groups to see the values of a masked attribute, click the 'Add Excepted Group' button and select a group.
+To remove a group from the list of excepted groups for an attribute, click the minus icon next to the group name.
+
+.. image:: /_static/UsageGuide/exceptGroup.png
+
+When finished making changes to masking settings, click the 'Save' button at the bottom of the page.
+
+Masked attributes will display the value '[masked]' in search results and downloaded files for all users except users in at least one excepted group.
+
+.. image:: /_static/UsageGuide/maskedResults.png
+
+Values of masked attributes are not masked when the data set is processed in transforms or exported to external systems.
+If an attribute needs to be completely removed, a new data set should be created via a transform to create a new data set without particular attributes.
 
 
 Appendix

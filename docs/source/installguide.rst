@@ -19,17 +19,23 @@ Koverse requires all servers in a cluster to have clocks synchronized within a f
 
 Software
 --------
-As described in the :ref:`InfraGuide`, Koverse runs atop several distributed systems. All of these dependent systems need to be properly installed and configured for Koverse to execute successfully. The proper installation of Hadoop and associated software infrastructure is not within the scope of this document, nor is it a trivial undertaking. If your organization does not have well established provisioning tools and/or experience installing Hadoop ecosystem software, we highly recommend tools like `Cloudera Manager`_ or `Apache Ambari`_ to help automate and manage the installation of the required software infrastructure.
+As described in the :ref:`InfraGuide`, Koverse runs atop several distributed systems.
+All of these dependent systems need to be properly installed and configured for Koverse to execute successfully.
+The proper installation of Hadoop and associated software infrastructure is not within the scope of this document, nor is it a trivial undertaking.
+If your organization does not have well established provisioning tools and/or experience installing Hadoop ecosystem software, we highly recommend tools like `Cloudera Manager`_ or `Apache Ambari`_ to help automate and manage the installation of the required software infrastructure.
 
 .. _Cloudera Manager: https://cloudera.com/products/cloudera-manager.html
 .. _Apache Ambari: http://hortonworks.com/hadoop/ambari/
 
-Koverse is supported on the latest distributions from Cloudera, Hortonworks, and MapR. Koverse also requires the Hadoop client binaries and configuration to be installed on the server.
+Koverse is supported on the latest distributions from Cloudera, Hortonworks, and MapR.
+Koverse also requires the Hadoop client binaries and configuration to be installed on the server.
 
 
 Hardware
 --------
-Koverse runs on off-the-shelf commodity hardware. The two Koverse software components, koverse-server and koverse-webapp, require minimum HW resources as shown below. As the number of concurrent users of Koverse grows, these resource requirements would also increase.
+Koverse runs on off-the-shelf commodity hardware.
+The two Koverse software components, koverse-server and koverse-webapp, require minimum HW resources as shown below.
+As the number of concurrent users of Koverse grows, these resource requirements would also increase.
 
 +----------------+--------------------+--------------------+
 | Process        | Minimum CPU(cores) | Minimum Memory(GB) |
@@ -62,7 +68,10 @@ The *koverse-server* and *koverse-webapp* processes run as the user 'koverse'. T
 HDFS Configuration
 ------------------
 
-The 'koverse' user added above needs to be in the HDFS Superuser Group. This group is defined in the HDFS configuration property of *dfs.permissions.superusergroup*. Additionally, the value of that property must be a UNIX group on the server. For instance, if *dfs.permissions.superusergroup* was 'hadoop', ensure this group exists, and if not::
+The 'koverse' user added above needs to be in the HDFS Superuser Group.
+This group is defined in the HDFS configuration property of *dfs.permissions.superusergroup*.
+Additionally, the value of that property must be a UNIX group on the server where the HDFS Name Node resides.
+For instance, if *dfs.permissions.superusergroup* was 'hadoop', ensure this group exists, and if not::
 
   sudo groupadd hadoop
 
@@ -74,7 +83,8 @@ It is also currently required to have the 'accumulo' user in this same group, so
 
   sudo usermod -a -G hadoop accumulo
 
-Now we need to create a directory in HDFS for Koverse to use. Assuming the typical 'hdfs' user exists for your Hadoop install, run::
+Now we need to create a directory in HDFS for Koverse to use.
+Assuming the typical 'hdfs' user exists for your Hadoop install, run::
 
  sudo -u hdfs hdfs dfs -mkdir /koverse
  sudo -u hdfs hdfs dfs -chown koverse:hadoop /koverse
@@ -84,7 +94,10 @@ Now we need to create a directory in HDFS for Koverse to use. Assuming the typic
 Accumulo Initialization
 -----------------------
 
-Koverse will authenticate to Accumulo using its own username and password. Initially Accumulo has a single user 'root' with a default password of 'secret'. You may have changed the password for 'root' during your install of Accumulo. To create a 'koverse' user in Accumulo, start the Accumulo shell::
+Koverse will authenticate to Accumulo using its own username and password.
+Initially Accumulo has a single user 'root' with a default password of 'secret'.
+You may have changed the password for 'root' during your install of Accumulo.
+To create a 'koverse' user in Accumulo, start the Accumulo shell::
 
   accumulo shell -u root
 
@@ -98,6 +111,32 @@ Then grant the 'koverse' Accumulo user the required permissions to manage its ta
  root@accumulo> grant -s System.DROP_TABLE -u koverse
  root@accumulo> grant -s System.ALTER_TABLE -u koverse
  root@accumulo> grant -s System.SYSTEM -u koverse
+
+If using Kerberos with Accumulo you can do this via the following commands.
+Creating a koverse user in the Accumulo shell is not required, but a Kerberos principal for Koverse should have been created.
+To create this principal do::
+
+ kadmin.local -q "addprinc -randkey koverse/my.hostname.com"
+ kadmin.local -q "xst -k koverse.service.keytab koverse/my.hostname.com"
+
+And ensure the koverse.service.keytab file is placed in /etc/security/keytabs owned by the koverse user with permissions r--------
+
+Authenticate as the Kerberos principal that acts as Accumulo root::
+
+ su accumulo
+ kinit -kt /etc/security/keytabs/accumulo.headless.keytab accumulo-Hostname@MY.HOSTNAME.COM
+
+Then grant permissions in the shell::
+
+ accumulo shell
+
+ accumulo-Hostname@MY.HOSTNAME.COM@accumulo> grant -s System.CREATE_TABLE -u koverse/my.hostname.com@MY.HOSTNAME.COM
+ accumulo-Hostname@MY.HOSTNAME.COM@accumulo> grant -s System.DROP_TABLE -u koverse/my.hostname.com@MY.HOSTNAME.COM
+ accumulo-Hostname@MY.HOSTNAME.COM@accumulo> grant -s System.ALTER_TABLE -u koverse/my.hostname.com@MY.HOSTNAME.COM
+ accumulo-Hostname@MY.HOSTNAME.COM@accumulo> grant -s System.SYSTEM -u koverse/my.hostname.com@MY.HOSTNAME.COM
+ accumulo-Hostname@MY.HOSTNAME.COM@accumulo> grant -s System.OBTAIN_DELEGATION_TOKEN -u koverse/my.hostname.com@MY.HOSTNAME.COM
+
+Note that an additional permission, System.OBTAIN_DELEGATION_TOKEN, is required.
 
 Accumulo Configuration
 ----------------------
@@ -134,7 +173,10 @@ This will install into */opt/koverse-webapp/* as well as create a script at */et
 PostgreSQL Setup
 ----------------
 
-Koverse stores metadata about Data Collections, Users, Transforms, etc in an RDBMS such as PostgreSQL. These instructions assume PostgreSQL has already been installed. In an environment where Cloudera Manager is used, Koverse can leverage the PostgreSQL database that is installed via Cloudera Manager. If you wish to use a different password than the default 'koverse1234', you will need to follow the procedure in :ref:`AppendixA` for encoding this password before putting it into the *koverse-server.properties* file.
+Koverse stores metadata about Data Collections, Users, Transforms, etc in an RDBMS such as PostgreSQL.
+These instructions assume PostgreSQL has already been installed.
+In an environment where Cloudera Manager is used, Koverse can leverage the PostgreSQL database that is installed via Cloudera Manager.
+If you wish to use a different password than the default 'koverse1234', you will need to follow the procedure in :ref:`AppendixA` for encoding this password before putting it into the *koverse-server.properties* file.
 
 Cloudera Manager Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -190,7 +232,10 @@ Once both processes have started up, you can access the Koverse user interface f
 
 ``http://<hostname>:8080``
 
-The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
+The default username and password are 'admin' and 'admin'.
+The password can be changed immediately after logging in.
+It is recommended that you also change the e-mail address of the admin user to a real e-mail address, so that in the event that the password is lost, you are able to reset the password.
+It is also recommended to change the e-mail settings in koverse-server.properties to support automated password resets. 
 
 Logs
 ----
@@ -233,7 +278,8 @@ Once both processes have started up, you can access the Koverse user interface f
 
 ``http://<hostname>:8080``
 
-The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
+The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.  It is recommended that you also change the e-mail address of the admin user to a real e-mail address,
+so that in the event that the password is lost, you are able to reset the password.  It is also recommended to change the e-mail settings in koverse-server.properties to support automated password resets.
 
 
 Koverse Configuration
@@ -241,20 +287,25 @@ Koverse Configuration
 
 Environment
 -----------
-The 'koverse' user needs to have the 'java' command in their path for the Koverse startup scripts to execute correctly. Again, this needs to be Oracle Java 1.7 or 1.8.
+The 'koverse' user needs to have the 'java' command in their path for the Koverse startup scripts to execute correctly.
+This needs to be Oracle Java 1.7 or 1.8.
 
-The environment variable *HADOOP_CONF_DIR* needs to be set for the 'koverse' user so Koverse can take advantage of the Hadoop client configuration. The startup script */opt/koverse-server/bin/startup.sh* will default this environment variable to */etc/hadoop/conf* if it is not already set.
+The environment variable *HADOOP_CONF_DIR* needs to be set for the 'koverse' user so Koverse can take advantage of the Hadoop client configuration.
+The startup script */opt/koverse-server/bin/startup.sh* will default this environment variable to */etc/hadoop/conf* if it is not already set.
 
 koverse-server.properties
 -------------------------
 
-Many of the available configuration properties for Koverse can be left to their default values. Please see the :ref:`ConfigurationGuide` for the complete list of properties. */opt/koverse-server/conf/koverse-server.properties* is where required properties can be set or defaults overriden. A few of these commonly set user properties are discussed below.
+Many of the available configuration properties for Koverse can be left to their default values.
+Please see the :ref:`ConfigurationGuide` for the complete list of properties. */opt/koverse-server/conf/koverse-server.properties* is where required properties can be set or defaults overridden.
+A few of these commonly set user properties are discussed below.
 
 **com.koverse.server.jdbc.user**
 
 **com.koverse.server.jdbc.password**
 
-These two properties control how Koverse is authenticated to PostgreSQL and need to follow the username and password from :ref:`PostgreSQLSetup`. The password value is encoded to avoid plaintext passwords, so again if the password choosen was different from the default of 'koverse1234', you will need to follow the process in :ref:`AppendixA` for generating the encoded value for this property.
+These two properties control how Koverse is authenticated to PostgreSQL and need to follow the username and password from :ref:`PostgreSQLSetup`.
+The password value is encoded to avoid plaintext passwords, so again if the password chosen was different from the default of 'koverse1234', you will need to follow the process in :ref:`AppendixA` for generating the encoded value for this property.
 
 **com.koverse.server.jdbc.url**
 
@@ -262,22 +313,25 @@ The value of this property needs to be updated to the correct hostname and port 
 
 **com.koverse.server.spark.mode**
 
-If you are running Spark-on-YARN, the value of this property should be 'yarn'. If you are running Spark standalone, set the value to 'master'.
+If you are running Spark-on-YARN, the value of this property should be 'yarn'.
+If you are running Spark standalone, set the value to 'master'.
 
 **com.koverse.server.spark.dir**
 
-This needs to be set to the directory where Spark is installed locally. Koverse uses the 'spark-submit' script and therefore needs to know where it is located.
+This needs to be set to the directory where Spark is installed locally.
+Koverse uses the 'spark-submit' script and therefore needs to know where it is located.
 
 **dataStoreSetting.instanceName**
 
-The Accumulo instance name can be seen when logging into the Accumulo shell. For instance, the instance name seen below is 'accumulo'::
+The Accumulo instance name can be seen when logging into the Accumulo shell.
+For instance, the instance name seen below is 'accumulo'::
 
  -bash-4.1$ accumulo shell -u koverse
   Password: ******
 
   Shell - Apache Accumulo Interactive Shell
   -
-  - version: 1.6.0-cdh5.1.4
+  - version: 1.6.0
   - instance name: accumulo
   - instance id: 3056fcc7-edbd-463b-9bab-5def770d79e0
   -
@@ -287,27 +341,84 @@ The Accumulo instance name can be seen when logging into the Accumulo shell. For
 
 **dataStoreSetting.username**
 
-This is the Accumulo user, likely 'koverse', that was created in :ref:`AccumuloInit`
+This is the Accumulo user, likely 'koverse', that was created in :ref:`AccumuloInit`.
+This is used in environments where Kerberos is not enabled.
 
 **dataStoreSetting.password**
 
 This is the password for the Accumulo user created in :ref:`AccumuloInit`
+This is used in environments where Kerberos is not enabled.
 
 **dataStoreSetting.zookeeperServers**
 
 This is a comma-separated list of ZooKeeper servers in the form of <HOSTNAME>:<PORT>. The default ZooKeeper port is 2181.
 
+**koverseBaseURL**
+
+The URL that will be sent out in password reset e-mails, this should be the same URL that you are using to access the Koverse user interface, for example http://demo.koverse.com
+
+**smtpServerHostName**
+
+The e-mail server that the Koverse software will use to send e-mail, needs to be enabled for automated password resets to work.
+Should be a hostname, for example: smtp.example.com
+
+**smtpServerPort**
+
+The network port that Koverse will use to send e-mail via SMTP, the default is 25.
+
+**smtpUsername**
+
+If authentication is required for Koverse to send e-mail, this should be set to the username to use when authenticating to the SMTP server.
+
+**smtpPassword**
+
+If authentication is required for Koverse to send e-mail, this should be set to the password to use when authenticating to the SMTP server.
+
+**smtpFromEmailAddress**
+
+When Koverse sends e-mails, it will use this setting to determine what address to use as a sending address.
+For example, no-reply@example.com
+
+**smtpConnectionType**
+
+The type of network security to use when connecting to the SMTP server.
+Can be one of plain,TLS or SSL.
+TLS is strongly recommended unless it is not supported by your SMTP server.
+
+
+
 koverse-webapp.properties
 -------------------------
 
-Again, please see the :ref:`ConfigurationGuide` for the complete list of properties that can be set for the Koverse Web App. */opt/koverse-webapp/conf/koverse-webapp.properties* is where required properties can be set or defaults overriden, for example to change the ports for the web server or to enable and configure HTTPS.
+Please see the :ref:`ConfigurationGuide` for the complete list of properties that can be set for the Koverse Web App. */opt/koverse-webapp/conf/koverse-webapp.properties* is where required properties can be set or defaults overriden, for example to change the ports for the web server or to enable and configure HTTPS.
+
+
+Kerberos Configuration
+^^^^^^^^^^^^^^^^^^^^^^
+
+To configure Koverse to authenticate with a cluster with Kerberos enabled follow these steps.
+
+Create a principal for Koverse
+
+  kadmin.local -q "addprinc -randkey koverse/your.koverseserver.com"
+
+Create a keytab file in /etc/security/keytabs
+
+  kadmin.local -q "xst -k koverse.service.keytab koverse/your.koverseserver.com"
+
+Set the following properties in koverse-server.properties with the appropriate kerberos realm and keytab location::
+
+  com.koverse.server.kerberos.user=koverse@MY.HOSTNAME.COM
+  com.koverse.server.kerberos.keytab.path=/etc/security/keytabs/koverse.service.keytab
+  com.koverse.server.kerberos.delay=3600
+
 
 Koverse Aggregation Library Distribution
 ----------------------------------------
 
-In order to utilize the :ref:`aggregation <AggregationIntro>` functions of Koverse, the koverse-aggregation-<VERSION>.jar needs to be deployed to a location where Accumulo can load it. The default location would be in $ACCUMULO_HOME/lib/ext on all Accumulo tablet servers. This JAR file can be found on the Koverse Server in */opt/koverse-server/lib/koverse-aggregation-<VERSION>.jar*
-
-
+In order to utilize the :ref:`aggregation <AggregationIntro>` functions of Koverse, the koverse-aggregation-<VERSION>.jar needs to be deployed to a location where Accumulo can load it.
+The default location would be in $ACCUMULO_HOME/lib/ext on all Accumulo tablet servers.
+This JAR file can be found on the Koverse Server in */opt/koverse-server/lib/koverse-aggregation-<VERSION>.jar*
 
 
 
@@ -318,10 +429,13 @@ Appendix A: Changing Encoded Passwords
 
 If you are changing a password from its default you will need to run the koverse-squirrel utility to encode the password and store it in koverse-server.properties.
 
-When Koverse runs, it uses the value in the *com.koverse.license.verification* property as a symmetric key to encode and decode the value of passwords. This is not intended to be a cryptographically secure solution, but simply to provide some level of obfuscation versus plaintext passwords.
+When Koverse runs, it uses the value in the *com.koverse.license.verification* property as a symmetric key to encode and decode the value of passwords.
+This is not intended to be a cryptographically secure solution, but simply to provide some level of obfuscation versus plaintext passwords.
 
 To generate a new encoded password, run::
 
   sh /opt/koverse-server/bin/licensetool.sh -m encrypt
 
-First enter the *com.koverse.license.verification* value from *koverse-server.properties* when prompted. Then you will be prompted to enter the password that you wish to encoded. Copy and paste the encoded password into the properties file, for example to change the value for *com.koverse.server.jdbc.password*
+First enter the *com.koverse.license.verification* value from *koverse-server.properties* when prompted.
+Then you will be prompted to enter the password that you wish to encoded.
+Copy and paste the encoded password into the properties file, for example to change the value for *com.koverse.server.jdbc.password*
