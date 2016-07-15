@@ -211,7 +211,7 @@ Whether developing a Koverse App or building a custom source, Koverse queries co
 Lucene-like Query Syntax
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-These queries are represented as strings and passed as such into query methods. The Lucene query syntax is described on `Apache Lucene <https://lucene.apache.org/core/3_6_2/queryparsersyntax.html>`_ 
+These queries are represented as strings and passed as such into query methods. The Lucene query syntax is described on `Apache Lucene <https://lucene.apache.org/core/3_6_2/queryparsersyntax.html>`_
 
 
 Object-based Queries
@@ -881,9 +881,9 @@ Example Ping Response
 **Session Authentication (Login)**
 
  ``http://<host:port>/api/login``
- 
+
  POST data:
- 
+
  ``{"email":"username@example.com","password":"password"}``
 
 Example login failure response::
@@ -916,7 +916,7 @@ Example login response::
    Content-Type: application/json
    Transfer-Encoding: chunked
    Server: Jetty(8.1.18.v20150929)
-  
+
    {"id":4,"firstName":"admiral","lastName":"admin","email":"admin","groups":[],"externalGroups":[],
    "groupIds":[],"tokens":[],"disabled":false,"creationDate":null,"passwordResetHash":null,
    "authenticatorUserId":"koverseDefault_admin","authenticatorTypeId":"koverseDefault",
@@ -936,7 +936,7 @@ The following would query a Koverse instance running on localhost, port 8080, fo
 
  **Additional Methods**
 
- See the `Koverse REST API Generated Docs <rest/>`_ for details about the many other methods available.
+ See the `Koverse REST API Generated Docs </api-docs>`_ for details about the many other methods available.
 
 Pig Scripts
 -----------
