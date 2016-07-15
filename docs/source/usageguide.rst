@@ -200,7 +200,7 @@ Exploring a Data Set
 ^^^^^^^^^^^^^^^^^^^^
 
 To explore summary information about a data set, click on the 'Data' button on the primary navigation menu on the left and select a data set from the list to the right of the navigation menu.
-The information in the 'Overview' tab is shown first, which displays a summary of all the attributes in this data set.
+The information in the 'Overview' tab is shown first, which displays a summary of all the attributes in this data set. If the Data Set has a job that is currently running, that information will be displayed here as well.
 
 .. image:: /_static/UsageGuide/datasets.png
 
