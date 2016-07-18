@@ -33,3 +33,4 @@ Developer Documentation
 .. include:: dev/ipython.rst
 .. include:: dev/jupyter.rst
 .. include:: dev/glossary.rst
+.. include:: dev/index.rst
