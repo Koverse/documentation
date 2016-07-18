@@ -16,6 +16,7 @@ Developer Documentation
 .. include:: dev/transforms.rst
 .. include:: dev/import.rst
 .. include:: dev/export.rst
+.. include:: dev/export_file_format.rst
 .. include:: dev/sinks.rst
 .. include:: dev/rest_api.rst
 .. include:: dev/pig_scripts.rst
