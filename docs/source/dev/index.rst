@@ -3,4 +3,4 @@
 Index
 -----
 
-.. index:: Developer Documentation Index
+:ref:`Index <genindex>`
