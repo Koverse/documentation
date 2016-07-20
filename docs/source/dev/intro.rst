@@ -10,6 +10,10 @@ Each organization could have potentially some combination of unique data sets, m
 
 With this in mind, Koverse provides this developer documentation describing how to programmatically extend Koverse with additional functionality, and how to deploy that functionality into an operational Koverse instance.
 
+.. tip:: The Javadocs for the Koverse SDK are available from the Koverse UI.
+  From the UI, just navigate to the Info panel by clicking on the Info panel icon at bottom left of the screen.
+  The Info panel will provide links to the Javadocs.
+
 References
 ^^^^^^^^^^
 :ref:`kov-Glossary`
