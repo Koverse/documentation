@@ -17,7 +17,7 @@ A Koverse cluster relies on the following software infrastructure
 +------------------+------------------+
 | Hadoop - YARN    | 2.6              |
 +------------------+------------------+
-| Spark            | 1.5 or 1.6       |
+| Spark            | 1.5              |
 +------------------+------------------+
 | ZooKeeper        | 3.4              |
 +------------------+------------------+
