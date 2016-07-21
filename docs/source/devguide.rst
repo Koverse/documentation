@@ -821,7 +821,6 @@ REST API
 
 Koverse provides an HTTP REST API for providing access to third party tools and integrations. This documentation explains how to access the REST API, and provide third party integrations such as widgets and data management. All responses, and HTTP payload requests are encoded in JSON.
 
-See the REST API generated documentation for a complete list of methods and their signatures. The REST API documentation is hosted in koverse itself open \https://<host:port>/docs/rest/
 
 Response Messages
 ^^^^^^^^^^^^^^^^^
@@ -856,7 +855,7 @@ Koverse Administrators can create API Tokens, which are used by outside systems 
 
 All REST API methods can be called using an API token to authenticate. The API Token takes precedence over any other method of authentication. Here is an example of using an API token to authenticate::
 
-	``http://<host:port>/api/system/status?apiToken=API-TOKEN-HERE``
+	http://<host:port>/api/system/status?apiToken=API-TOKEN-HERE
 
 Example REST API Methods
 ^^^^^^^^^^^^^^^^^^^^^^^^
