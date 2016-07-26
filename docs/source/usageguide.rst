@@ -1450,6 +1450,19 @@ Masked attributes will display the value '[masked]' in search results and downlo
 Values of masked attributes are not masked when the data set is processed in transforms or exported to external systems.
 If an attribute needs to be completely removed, a new data set should be created via a transform to create a new data set without particular attributes.
 
+Connecting Data to Tableau via the Web Data Connector
+-----------------------------------------------------
+
+Koverse can easily send data to the Tableau Desktop Application via the Koverse Web Data Connector.
+
+Follow the steps below to connect Koverse to Tableau
+
+- Open the Tablau Desktop Application
+- Under the Connect Pane on the left, select the Web Data Connector option
+- Enter http://<hostname>:8080/#/tableau-connector as the url when prompted
+- Tableau will launch a web browser showing the Web Data Connector interface
+- After logging in you will be able to choose a data set and select a subset of records from that data set via an SQL select statement
+- Once you've selected and previewed the records, click "Send to Tableau" to import the data into Tableau
 
 Appendix
 ^^^^^^^^
