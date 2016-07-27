@@ -235,7 +235,7 @@ Once both processes have started up, you can access the Koverse user interface f
 The default username and password are 'admin' and 'admin'.
 The password can be changed immediately after logging in.
 It is recommended that you also change the e-mail address of the admin user to a real e-mail address, so that in the event that the password is lost, you are able to reset the password.
-It is also recommended to change the e-mail settings in koverse-server.properties to support automated password resets. 
+It is also recommended to change the e-mail settings in koverse-server.properties to support automated password resets.
 
 Logs
 ----
@@ -280,6 +280,58 @@ Once both processes have started up, you can access the Koverse user interface f
 
 The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.  It is recommended that you also change the e-mail address of the admin user to a real e-mail address,
 so that in the event that the password is lost, you are able to reset the password.  It is also recommended to change the e-mail settings in koverse-server.properties to support automated password resets.
+
+
+.. _AmbariStackInstallation:
+
+Apache Ambari Installation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Ambari control panel allows for custom services to be integrated into its management interface.  The method for this integration is known as a Stack, which contains all the information necessary for Ambari to configure, control and monitor the Service.  Koverse provides a Stack that Ambari users can use to easily install and manage Koverse.
+
+Prerequisites
+-------------
+- Apache Ambari version 1.7 or greater
+- Linux distribution that uses yum for software package management.  RHEL 6 is recommended.
+- Accumulo Service Installed
+
+Files
+-----
+The following files are provided.
+
+koverse-server-<VERSION>.rpm
+  RPM installation package for the Koverse Server
+
+koverse-webapp-<VERSION>.rpm
+  RPM installation package for the Koverse Web User Interface
+
+koverse-ambari-stack-<VERSION>.tar.gz
+  The Stack files for Koverse, note that the version of this may not match the RPM version
+
+Stack Installation
+--------------------
+Install the koverse-server and koverse-webapp RPMs, see the RPM Installation section for more information::
+
+  sudo yum localinstall koverse-server-<VERSION>.rpm
+  sudo yum localinstall koverse-webapp-<VERSION>.rpm
+
+Extract the koverse-ambari-stack-<VERSION>.tar.gz to the appropriate place on the file system::
+
+  mkdir -p /var/lib/ambari-server/resources/stacks/HDP/2.4/services/KOVERSE
+  tar xzf koverse-ambari-stack-<VERSION>.tar.gz  -C /var/lib/ambari-server/resources/stacks/HDP/2.4/services/KOVERSE
+  chown -R root:root /var/lib/ambari-server/resources/stacks/HDP/2.4/services/KOVERSE
+
+Restart Ambari Server to make the Koverse Service accessible
+
+``service ambari-server restart``
+
+The Koverse Service can now be added through the Ambari User interface.  During installation, the stack attempts to use default settings appropriate to most installations; however, they should be verified against your environment.  Of especial interest is the Advanced koverse-server.properties section.  You can find full details of these configuration options below.
+
+Once both processes have started up, you can access the Koverse user interface from a web browser at
+
+``http://<hostname>:7080``
+
+The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
 
 
 Koverse Configuration
