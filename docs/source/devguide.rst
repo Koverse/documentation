@@ -821,7 +821,6 @@ REST API
 
 Koverse provides an HTTP REST API for providing access to third party tools and integrations. This documentation explains how to access the REST API, and provide third party integrations such as widgets and data management. All responses, and HTTP payload requests are encoded in JSON.
 
-
 Response Messages
 ^^^^^^^^^^^^^^^^^
 

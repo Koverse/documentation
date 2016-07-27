@@ -569,6 +569,10 @@ Koverse also does not require that all the values in a particular field be of th
 If the set of files you want to load are of the same schema (have the same set of fields) but for some reason are of differing formats, e.g. some fields are CSV and others are XML, you should load the files of each format into separate data sets and combine them into one data set later using a transform.
 This is because Koverse will use one parser per import job, so you can use a CSV parser to import the CSV files in one import, and an XML parser to import XML files in another import job.
 
+.. note:: Microsoft Word Files
+
+   Very large Word files above 1,000 pages in size may cause a failure during import.
+
 When you are satisfied with the list of files staged, click 'Next'.
 You will be taken to a preview of records to be imported on the next page.
 
