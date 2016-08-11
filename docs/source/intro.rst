@@ -11,7 +11,7 @@ The data lake is a powerful concept in enterprise IT infrastructure because it o
 Data Lakes allow this shift because they achieve economies of scale in the re-use of architecture, data, system resources, and analytics.  The Koverse Data Lake in a Box gives organizations all the benefits of a data lake, without the technical risk or significant up front investment.  
 
 
-How The Koverse Works 
+How Koverse Works 
 ^^^^^^^^^^^^^^^^^^^^^
 The biggest challenge of building a data lake is the huge integration associated with leveraging a range of complex infrastructure systems to generically address a range of use cases or leveraging these same technologies to hand craft specific solutions, making it difficult and expensive to operationalize multiple use cases.  Koverse has solved this problem in a mature and mission proven platform, building on an open source core including Spark, Accumulo and Hadoop.
 Koverse integrates data storage, tranformation, interrogation and security features to create a complete solution that finally allows organizations to see big successes with big data.
