@@ -329,7 +329,7 @@ The following returns records with a value beginning with the letters 'ma' in an
 
 	ma*
 
-Koverse understands the ordering of several types of values including numbers, text strings, URLs, dates, and IP addresses::
+Koverse understands the ordering of several types of values including numbers, text strings, dates, and IP addresses::
 
 	[192.168.1.0 TO 192.168.34.0]
 
