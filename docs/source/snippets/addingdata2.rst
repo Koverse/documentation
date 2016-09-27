@@ -15,14 +15,6 @@ You can change the type of view by clicking the buttons on the upper right of th
 On the right there are settings for changing the type of parser used for this import, as well as a set of optional normalization rules you can apply to records as they are imported.
 If for some reason the records being displayed to not look right, for example, records from a file containing CSV records, but ending in .txt may have been imported all into one field called 'body', you can change the parser used to process raw records by clicking the drop-down menu at the top of the darkened section on the right to select a new parser to try.
 
-Also note the automatic normalization of field names. Koverse supports nearly all 1,114,112 UTF-8 characters except for 2,097 that are problematic for JSON parsing and/or query syntax. These problematic UTF-8 characters or codepoints are generally grouped into three categories: 
-
-- control, 
-- punctuation, and 
-- emoticon codepoints. 
-
-These UTF-8 codepoints are regularly referred to as **illegal characters**. The UTF-8 illegal characters that are control codepoints are in decimal range [0, 31]. The UTF-8 illegal characters that are punctuation control codepoints are not in a contiguous decimal range, but include (and is not limited to) characters such as left/right parenthesis, exclamation mark, colon, left/right square bracket, and reverse solidus (backslash). The UTF-8 illegal characters that are emoticon codepoints are in the decimal range [55296, 57343]. All UTF-8 illegal characters are simply removed from the original field names before being stored. As field names are normalized by disallowing illegal characters, this normalization impacts downstream querying as user may expect querying against the orignal field names but some (or all) field names may have changed.
-
 Sometimes the correct parser was used but it's options may need to be adjusted.
 For example, the records from a CSV file may have all their values concatenated into one value because the CSV parser used the wrong delimiter character.
 In this case you may need to change some of the options specific to the parser, such as the delimiter character used to separate individual values within records.
@@ -30,6 +22,14 @@ In this case you may need to change some of the options specific to the parser, 
 After making a change to a parser or its options, click Apply to re-run the import preview and verify that records look correct.
 
 We can choose to apply optional normalization rules next, or simply click 'Next' to go to step 3.
+
+Also note the automatic normalization of field names. Koverse supports nearly all 1,114,112 UTF-8 characters except for 2,097 that are problematic for JSON parsing and/or query syntax. These problematic UTF-8 characters or codepoints are generally grouped into three categories: 
+
+- control, 
+- punctuation, and 
+- emoticon codepoints. 
+
+These UTF-8 codepoints are regularly referred to as **illegal characters**. The UTF-8 illegal characters that are control codepoints are in decimal range [0, 31]. The UTF-8 illegal characters that are punctuation control codepoints are not in a contiguous decimal range, but include (and is not limited to) characters such as left/right parenthesis, exclamation mark, colon, left/right square bracket, and reverse solidus (backslash). The UTF-8 illegal characters that are emoticon codepoints are in the decimal range [55296, 57343]. All UTF-8 illegal characters are simply removed from the original field names before being stored. As field names are normalized by disallowing illegal characters, this normalization impacts downstream querying as user may expect querying against the orignal field names but some (or all) field names may have changed.
 
 Example
 ~~~~~~~
