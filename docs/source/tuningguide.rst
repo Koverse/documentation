@@ -57,7 +57,7 @@ These would go in koverse-server settings.xml:
 * mapreduce.reduce.cpu.vcores: 1
 
 Max Files, Processes
-
+--------------------
 Another key set of configurations, which must be cluster wide, are the max number of processes and files a user can have open.  These two configs: "open files" and "max user processes" - can be seen by running:
 
 ulimit -a
