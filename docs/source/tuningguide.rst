@@ -64,15 +64,14 @@ ulimit -a
 
 It seems Cloudera often takes care of these, per user, in /etc/security/limit.d/<koverse-user>.conf.  However if checking as the koverse user shows defaults of 1024 for each, create a /etc/security/limit.d/<koverse-user>.conf (in this case koverse-user is koverse) with:
 
-koverse        hard    memlock unlimited
-koverse        soft    memlock unlimited
-koverse        hard    nofile  1048576
-koverse        soft    nofile  32768
-koverse        soft    nproc   65536
-koverse        hard    nproc   unlimited
+* koverse        hard    memlock unlimited
+* koverse        soft    memlock unlimited
+* koverse        hard    nofile  1048576
+* koverse        soft    nofile  32768
+* koverse        soft    nproc   65536
+* koverse        hard    nproc   unlimited
 
 Install this file on all nodes in the cluster.  No reboots needed to take effect.
-
 
 
 Additional information on cluster tuning can be found here:
