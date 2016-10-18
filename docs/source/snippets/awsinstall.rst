@@ -1,5 +1,5 @@
 Using Koverse with AWS Marketplace
-----------------
+----------------------------------
 
 The paid AMI available in the AWS marketplace is an easy way to get a Koverse instance
 up and running if you do not need to install on existing infrastructure.  The instructions
