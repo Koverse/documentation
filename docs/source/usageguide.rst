@@ -329,7 +329,7 @@ The following returns records with a value beginning with the letters 'ma' in an
 
 	ma*
 
-Koverse understands the ordering of several types of values including numbers, text strings, URLs, dates, and IP addresses::
+Koverse understands the ordering of several types of values including numbers, text strings, dates, and IP addresses::
 
 	[192.168.1.0 TO 192.168.34.0]
 
@@ -568,6 +568,10 @@ Koverse also does not require that all the values in a particular field be of th
 
 If the set of files you want to load are of the same schema (have the same set of fields) but for some reason are of differing formats, e.g. some fields are CSV and others are XML, you should load the files of each format into separate data sets and combine them into one data set later using a transform.
 This is because Koverse will use one parser per import job, so you can use a CSV parser to import the CSV files in one import, and an XML parser to import XML files in another import job.
+
+.. note:: Microsoft Word Files
+
+   Very large Word files above 1,000 pages in size may cause a failure during import.
 
 When you are satisfied with the list of files staged, click 'Next'.
 You will be taken to a preview of records to be imported on the next page.
@@ -1450,6 +1454,19 @@ Masked attributes will display the value '[masked]' in search results and downlo
 Values of masked attributes are not masked when the data set is processed in transforms or exported to external systems.
 If an attribute needs to be completely removed, a new data set should be created via a transform to create a new data set without particular attributes.
 
+Connecting Data to Tableau via the Web Data Connector
+-----------------------------------------------------
+
+Koverse can easily send data to the Tableau Desktop Application via the Koverse Web Data Connector.
+
+Follow the steps below to connect Koverse to Tableau
+
+- Open the Tablau Desktop Application
+- Under the Connect Pane on the left, select the Web Data Connector option
+- Enter http://<hostname>:8080/#/tableau-connector as the url when prompted
+- Tableau will launch a web browser showing the Web Data Connector interface
+- After logging in you will be able to choose a data set and select a subset of records from that data set via an SQL select statement
+- Once you've selected and previewed the records, click "Send to Tableau" to import the data into Tableau
 
 Appendix
 ^^^^^^^^
