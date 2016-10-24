@@ -38,11 +38,13 @@ Koverse Parcel  http://repo.koverse.com/latest/csd
 Installation
 ^^^^^^^^^^^^
 
+.. include:: /snippets/awsinstall.rst
+
 .. include:: /snippets/csdinstall.rst
 
 
 Once both processes have started up, you can access the Koverse user interface from a web browser at
-http://<hostname>:8080/Koverse
+http://<hostname>:8080/
 The default username and password are ‘admin’ and ‘admin’. The password can be changed immediately after logging in.
 
 
