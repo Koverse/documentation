@@ -382,6 +382,16 @@ A subject can only enable or disable lock down if:
 
 Sources
 -------
+
+The UI does not allow the editing of source permissions. This is to
+make the Koverse System easier to use and understand. As long as a user has
+access to a data set, the user will see that data set's sources in the data
+flow view. However, the user will not be able to edit or delete the source
+if they did not create it.
+
+.. NOTE::
+   The permissions can be set programatically through the REST API if desired.
+
 View
 ^^^^
 A subject can only view a source if:
@@ -441,6 +451,11 @@ Write & Delete access to.
 
 Sinks
 -----
+
+The UI does not allow the editing of sink permissions. This is to
+make the Koverse System easier to use and understand. However, the permissions
+can be set programatically through the REST API if desired.
+
 View
 ^^^^
 A subject can only view a sink if:
@@ -503,6 +518,16 @@ to view or execute a transform is solely determined by the subject’s access to
 the input and output collections.  Specifically, a subject must have the Read
 permission on all input collections and have Write & Delete permission on the
 output collection.
+
+The UI does not allow the editing of transform permissions. This is to
+make the Koverse System easier to use and understand. As long as a user has
+access to a data set, the user will see that data set's transforms in the data
+flow view. However, the user will not be able to edit or delete the transform
+if they did not create it.
+
+.. NOTE::
+   The permissions can be set programatically through the REST API if desired.
+
 
 View
 ^^^^
