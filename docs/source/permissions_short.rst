@@ -5,7 +5,7 @@
 =========================
 Permissions Guide (Short)
 =========================
-.. contents:: 
+.. contents::
 
 Overview
 --------
@@ -197,7 +197,7 @@ Users in a group with this permission are able to:
 * View the existence of the Data Collection
 * Download the contents of the Data Collection
 
-Write & Delete
+Write
 ^^^^^^^^^^^^^^
 Users in a group with this permission are able to:
 
@@ -234,6 +234,15 @@ Permissions allow a Source owner to control what access other Users have to
 the Source. Users must have the Manage Sources System Permission to create new
 Sources.
 
+The UI does not allow the editing of source permissions. This is to
+make the Koverse System easier to use and understand. As long as a user has
+access to a data set, the user will see that data set's sources in the data
+flow view. However, the user will not be able to edit or delete the source
+if they did not create it.
+
+.. NOTE::
+   The permissions can be set programatically through the REST API if desired.
+
 Import
 ^^^^^^
 Users in a group with this permission are able to:
@@ -260,6 +269,15 @@ Sink Permissions
 By default, only the User who creates a Sink has access to it. Sink
 Permissions allow a Sink owner to control what access other Users have to the
 Sink. Users must have the Manage Sinks System Permission to create new Sinks.
+
+The UI does not allow the editing of sink permissions. This is to
+make the Koverse System easier to use and understand. As long as a user has
+access to a data set, the user will see that data set's sinks in the data
+flow view. However, the user will not be able to edit or delete the sink
+if they did not create it.
+
+.. NOTE::
+   The permissions can be set programatically through the REST API if desired.
 
 Export
 ^^^^^^
