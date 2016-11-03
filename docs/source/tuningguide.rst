@@ -3,7 +3,7 @@
 Tuning Guide
 ============
 
-In order to tune the cluster infrastructure, we first need to enumerate the resources that are available. For example, with d2.2xlarge instances we have
+In order to tune the cluster infrastructure, we first need to enumerate the resources that are available. For example, with d2.2xlarge instances we have  
 
 * 8 CPU cores
 * 1 EBS mounted root partition (50G)
