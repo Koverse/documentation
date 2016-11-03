@@ -1,5 +1,26 @@
 .. _Tuning Guide:
 
+Tuning Guide
+============
+
+In order to tune the cluster infrastructure, we first need to enumerate the resources that are available. For example, with d2.2xlarge instances we have
+
+* 8 CPU cores
+* 1 EBS mounted root partition (50G)
+* 6 x 2T spinning disks
+* 60GB of memory
+
+Focusing on our workers, we need to split these resources among the following
+
+* Linux OS
+* Accumulo Tablet Server
+* HDFS DataNode
+* YARN NodeManager
+* YARN applications (MR and Spark jobs)
+
+A good rule of thumb would be, for an 8 CPU node, to give 3 CPUs for the OS, Accumulo Tablet Server, DataNode, and NodeManager (Accumulo Tablet Server being the only process that is going to demand significant CPU resources). Then we have 5 CPUs left for YARN apps. 
+
+Memory-wise, 1G should work well for both the DataNode and NodeManager. Accumulo should have more than the defaults, 4-8GB is a good start. Leaving a few GB for the OS and the rest we can allocate to YARN apps, in this case 40G which gives us approximately 8GB per CPU core for YARN apps.
 
 Based on this example, the following configurations would apply.
 
