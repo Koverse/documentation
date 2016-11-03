@@ -19,21 +19,33 @@ For workloads beyond simple examples and testing we recommend a properly provisi
 Using the Cloudera QuickStart VM is not recommended.
 See http://www.koverse.com/question/using-the-cloudera-quick-start-vim-and-the-koverse-parcel for more information.
 
-An amazon r3.xlarge EC2 instance is a good option for a single-node AWS deployment.
+Minimum Hardware Requirements
+-----------------------------
+Note these are requirements for a dedicated Koverse server supporting a mulit-node cluster.
+- Amazon r3.xlarge EC2 instance
+    - 31 GB memory
+    - 4 CPUs
+- Local disk
+    - 40 GB for /tmp
+        - tmpwatch must be configured to clear /tmp every 3 days
+    - 50 GB for /var/log
+- tmpwatch must be configured to clear /tmp every 3 days
+    
+Software Requirements
+---------------------
+- Recommended Operating System: 
+    - RHEL 6.x or Centos 6.x
+- Recommended Hadoop Release: Cloudera Manager 5.5 with the following:
+    - CDH 5.5 Parcel installed
+    - Accumulo 1.6 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
+- Recommended Koverse Release:
+    - Koverse Parcel - see http://repo.koverse.com/latest/csd
+    
+TG
 
-Recommended Operating System:
+.. include:: /tuningguide.rst
 
-RHEL 6.x or Centos 6.x
-
-Recommended Hadoop Release:
-
-Cloudera Manager 5.5
-CDH 5.5 Parcel installed
-Accumulo 1.6 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
-
-Recommended Koverse Release:
-
-Koverse Parcel  http://repo.koverse.com/latest/csd
+TG
 
 Installation
 ^^^^^^^^^^^^
