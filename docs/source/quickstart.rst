@@ -42,9 +42,6 @@ Software Requirements
     - Koverse Parcel - see http://repo.koverse.com/latest/csd
 
 
-.. include:: /tuningguide.rst
-
-
 Installation
 ^^^^^^^^^^^^
 
