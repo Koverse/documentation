@@ -11,3 +11,4 @@ Administration Guide
    infraguide
    installguide
    opsguide
+   tuningguide

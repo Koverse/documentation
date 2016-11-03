@@ -17,6 +17,11 @@ Koverse requires a Linux operating system. Installation packages (RPMs) are prov
 
 Koverse requires all servers in a cluster to have clocks synchronized within a few seconds of each other, so it is recommended to use ntpd for this purpose.
 
+Here are the recommended operating system for a Cloudera installation:
+
+- RHEL 6.x or Centos 6.x
+- Accumulo 1.6 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
+
 Software
 --------
 As described in the :ref:`InfraGuide`, Koverse runs atop several distributed systems.
@@ -29,6 +34,10 @@ If your organization does not have well established provisioning tools and/or ex
 
 Koverse is supported on the latest distributions from Cloudera, Hortonworks, and MapR.
 Koverse also requires the Hadoop client binaries and configuration to be installed on the server.
+
+The latest Koverse parcel can be found here:
+
+- http://repo.koverse.com/latest/csd
 
 
 Hardware
@@ -45,6 +54,15 @@ As the number of concurrent users of Koverse grows, these resource requirements 
 | koverse-webapp | 1                  | 4                  |
 +----------------+--------------------+--------------------+
 
+Here are recommended hardware specifications for a decicated Koverse installation running the koverse-server and koverse-webapp:
+
+- 31 GB memory
+- 4 CPUs
+- 40 GB disk space for /tmp
+- 50 GB disk space for /var/log
+- tmpwatch configured to clear /tmp every three days
+
+The above specs are based on an AWS d3.xlarge instance.  The disk space for logging that goes in /var/log is for the rolling koverse-server and koverse-webapp logs, and can be tuned via the log4j configuration to use less than 50 GB.  However 50 GB is a safe starting point.  Also note Koverse uses /tmp for small temporary data for each job run on the cluster by Koverse - these are small artifacts, and certianly does not fill up 40 GB in three days even on a very busy cluster, however this is again a safe starting point to accomodate for other processes (with the Centos tmpwatch clearing it every three days).
 
 .. _RpmInstallation:
 

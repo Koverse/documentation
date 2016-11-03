@@ -1,7 +1,7 @@
 .. _Tuning Guide:
 
 Tuning Guide
-============
+^^^^^^^^^^^^
 
 In order to tune the cluster infrastructure, we first need to enumerate the resources that are available. For example, with d2.2xlarge instances we have
 
@@ -76,7 +76,6 @@ It seems Cloudera often takes care of these, per user, in /etc/security/limit.d/
 * koverse        hard    nproc   unlimited
 
 Install this file on all nodes in the cluster.  No reboots needed to take effect.
-
 
 Additional information on cluster tuning can be found here:
 
