@@ -9,6 +9,11 @@ This Quick Start guide for Koverse is intended for users who want to get up and 
 
 Recommendations
 ^^^^^^^^^^^^^^^
+The recommended Operating System is RHEL 6.x or Centos 6.x.
+
+Recommended Hadoop Release is Cloudera Manager 5.5 with Accumulo 1.6 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
+
+Recommended Koverse release can be found at http://repo.koverse.com/latest/csd
 
 Infrastructure and Software
 ---------------------------
@@ -18,28 +23,6 @@ For workloads beyond simple examples and testing we recommend a properly provisi
 
 Using the Cloudera QuickStart VM is not recommended.
 See http://www.koverse.com/question/using-the-cloudera-quick-start-vim-and-the-koverse-parcel for more information.
-
-Minimum Hardware Requirements
------------------------------
-Note these are requirements for a dedicated Koverse server supporting a mulit-node cluster
-
-* Amazon r3.xlarge EC2 instance
-    - 31 GB memory
-    - 4 CPUs
-* Local disk
-    - 40 GB for /tmp
-    - 50 GB for /var/log
-* tmpwatch must be configured to clear /tmp every 3 days
-    
-Software Requirements
----------------------
-* Recommended Operating System: 
-    - RHEL 6.x or Centos 6.x
-* Recommended Hadoop Release: Cloudera Manager 5.5 with the following:
-    - CDH 5.5 Parcel installed
-    - Accumulo 1.6 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
-* Recommended Koverse Release:
-    - Koverse Parcel - see http://repo.koverse.com/latest/csd
 
 
 Installation
