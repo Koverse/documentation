@@ -40,8 +40,6 @@ Software Requirements
     - Accumulo 1.6 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
 * Recommended Koverse Release:
     - Koverse Parcel - see http://repo.koverse.com/latest/csd
-    
-TG
 
 .. include:: /tuningguide.rst
 
