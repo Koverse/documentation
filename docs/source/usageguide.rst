@@ -1057,6 +1057,41 @@ This shows an example of a day when a stock dropped by 22.44 points, which is mo
 The Python client can also be used in the context of Python tools such as iPython Notebook (http://ipython.org/notebook.html).
 Simply use the same methods described above in iPython Notebooks.
 
+Using the Koverse Spark DataSource with Interative Tools
+--------------------------------------------------------
+
+The Koverse Spark DataSource provides a flexible means of connecting to various Spark interactive shells, including python, scala spark shell, or R.  This DataSource also streamlined the process of getting a Koverse data set to a Spark Dataframe.
+
+The DataSource will be referenced below in each tool section
+
+# pyspark #
+To load the spark data source, from pyspark, just reference the koverse-spark-datasource as follows when starting the pyspark or spark shell:
+
+$ pyspark --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.0.0-SNAPSHOT
+
+Note that at this point the SparkContext (sc) and the SQLContext (sqlContext) are initialized.  
+Now, to push a collection to a Dataframe:
+
+>>> df = sqlContext.read.format('com.koverse.spark').options(hostname='localhost', apiToken='e8e3d751-8f3c-405c-8727-4d020b8ebc63').load('<your collection name>')
+
+Once the collection is imported as a DataFrame, various SQL queries can be applied via the DataFrame API.
+
+>>> newDF = df.where($"colA" > 20).select($"colA", $"colB")
+  or
+>>> sqlContext.registerDataFrameAsTable(df, "orgs")
+>>> sqlContext.sql("SELECT count(*) from orgs").collect()
+>>> var newDF = df.where($"colA" > 20).select($"colA", $"colB")
+
+# Spark Shell (scala) #
+Similiar to the python shell, the context is initiated at shell startup:
+
+$ spark-shell --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.0.0-SNAPSHOT
+
+And then the commands are very similar to the pyspark shell for initiating and working with a Dataframe:
+
+scala> val df = sqlContext.read.format("com.koverse.spark").option("hostname", "localhost").option("apiToken", "e8e3d751-8f3c-405c-8727-4d020b8ebc63").load("<your collection>")
+
+
 
 Analyzing Data Sets with the PySpark Shell
 ------------------------------------------
@@ -1098,39 +1133,28 @@ As described above, the Koverse Python client can be installed using::
 
 Start PySpark::
 
- bin/pyspark --deploy-mode client \
- --jars koverse-sdk.jar,koverse-sdk-xml.jar,koverse-thrift.jar, \
- accumulo-core.jar,guava.jar,accumulo-fate.jar,accumulo-trace.jar, \
- koverse-server-base.jar,koverse-shaded-deps.jar
+ To load the spark data source, from pyspark, just reference the koverse-spark-datasource as follows when starting the pyspark or spark shell (note your data source version should be same as the Koverse version you are running):
 
- Python 2.7.6 (default, Sep  9 2014, 15:04:36)
- [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
- Type "help", "copyright", "credits" or "license" for more information.
- Spark assembly has been built with Hive, including Datanucleus jars on classpath
- Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
- Welcome to
-      ____              __
-     / __/__  ___ _____/ /__
-    _\ \/ _ \/ _ `/ __/  '_/
-   /__ / .__/\_,_/_/ /_/\_\   version 1.3.0
-      /_/
+$ pyspark --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.2.0-SNAPSHOT
 
- Using Python version 2.7.6 (default, Sep  9 2014 15:04:36)
- SparkContext available as sc, HiveContext available as sqlCtx.
+Note that at this point the SparkContext (sc) and the SQLContext (sqlContext) are initialized.
 
-To access Koverse's Spark functionality import the following::
+Now, to push a Kpoverse data set to a Spark Dataframe:
 
- >>> from koverse.spark import *
+>>> df = sqlContext.read.format('com.koverse.spark').options(hostname='localhost', apiToken='e8e3d751-8f3c-405c-8727-4d020b8ebc63').load('<your collection name>')
 
-A KoverseSparkContext object is used to obtain Spark RDDs for specified Koverse data sets.
-Simply pass in the pre-created SparkContext object, the hostname of the Koverse Server, and your username and password::
+Once the collection is imported as a DataFrame, various SQL queries can be applied via the DataFrame API.
 
- >>> import base64
- >>> ksc = KoverseSparkContext(sc, 'localhost', 'username', base64.b64encode('password'))
+>>> newDF = df.where($"colA" > 20).select($"colA", $"colB")
+  or
+>>> sqlContext.registerDataFrameAsTable(df, "orgs")
+>>> sqlContext.sql("SELECT count(*) from orgs").collect()
+>>> var newDF = df.where($"colA" > 20).select($"colA", $"colB")
 
-To get an RDD for a Koverse data set, call the koverseDataSet() method::
-
- >>> rdd = ksc.koverseDataSet('stocks')
+If you want to use Spark RDD functionality instead of Dataframe, call the koverseDataSet() method::
+ >>> from koverse import spark
+ >>> 
+ >>> rdd = sc.koverseDataSet('stocks')
 
 This rdd can be used like other RDDs.
 
@@ -1322,6 +1346,23 @@ Use the same methods described in the previous section on PySpark in iPython not
 .. image:: /_static/PySpark_Notebook.png
 	:height: 550 px
 	:width: 800 px
+
+Analyzing Data Sets in R
+------------------------
+
+For R - use the SparkR installation included with Spark 1.5 and later.  See this for details: https://spark.apache.org/docs/latest/sparkr.html#from-data-sources
+
+  Start sparkR, and load the SparkR library:
+    ./sparkR
+    > Sys.setenv('SPARKR_SUBMIT_ARGS'='"--packages" "com.koverse:koverse-spark-datasource:2.0.0-SNAPSHOT", "sparkr-shell"')
+    > library(SparkR)
+  Load the data source, initialize SQLContext:
+    > sc <- sparkR.init()
+    > sqlContext <- sparkRSQL.init(sc)
+  Load collection into DataFrame:
+    > df <- read.df(sqlContext, 'com.koverse.spark', hostname='localhost', apiToken='e8e3d751-8f3c-405c-8727-4d020b8ebc63').load('<your collection name>')
+    > registerTempTable(df, 'df')
+    > sql(sqlcontext, "SELECT * from df")
 
 
 
