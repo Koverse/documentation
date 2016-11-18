@@ -1057,314 +1057,88 @@ This shows an example of a day when a stock dropped by 22.44 points, which is mo
 The Python client can also be used in the context of Python tools such as iPython Notebook (http://ipython.org/notebook.html).
 Simply use the same methods described above in iPython Notebooks.
 
-Using the Koverse Spark DataSource with Interative Tools
---------------------------------------------------------
+Using the Koverse Spark Data Source with Interative Tools
+---------------------------------------------------------
 
-The Koverse Spark DataSource provides a flexible means of connecting to various Spark interactive shells, including python, scala spark shell, or R.  This DataSource also streamlined the process of getting a Koverse data set to a Spark Dataframe.
+The Koverse Spark Data Source provides an easy way to load a Koverse Data Set as a Spark DataFrame for interative analysis in Spark shells, including pyspark, spark-shell, and sparkR. To reference the Koverse Spark Data Source package, use the following coordinates::
 
-The DataSource will be referenced below in each tool section
+ group: com.koverse
+ artifactId: koverse-spark-datasource
+ version: 2.1.8
 
-# pyspark #
-To load the spark data source, from pyspark, just reference the koverse-spark-datasource as follows when starting the pyspark or spark shell:
+This package can be added to Spark using the :code:`--packages` command line option when also referencing the Koverse Maven repository. For example, to include it when starting the spark shell::
 
-$ pyspark --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.0.0-SNAPSHOT
+  $ spark-shell --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
 
-Note that at this point the SparkContext (sc) and the SQLContext (sqlContext) are initialized.  
-Now, to push a collection to a Dataframe:
+Alternatively you can download the koverse-spark-datasource JAR file from the Maven repository and reference it with the :code:`--jars` option.
 
->>> df = sqlContext.read.format('com.koverse.spark').options(hostname='localhost', apiToken='e8e3d751-8f3c-405c-8727-4d020b8ebc63').load('<your collection name>')
+Options
+~~~~~~~
 
-Once the collection is imported as a DataFrame, various SQL queries can be applied via the DataFrame API.
+- :code:`hostname`: The FQDN of the server running the koverse-server process
+- :code:`apiToken`: A Koverse API Token that will have the required access to the Data Set being loaded. You can create API Tokens via the Koverse Admin UI. Use the API Token UUID, not its name.
 
->>> newDF = df.where($"colA" > 20).select($"colA", $"colB")
-  or
->>> sqlContext.registerDataFrameAsTable(df, "orgs")
->>> sqlContext.sql("SELECT count(*) from orgs").collect()
->>> var newDF = df.where($"colA" > 20).select($"colA", $"colB")
+PySpark
+~~~~~~~
+An example of starting the Python Spark shell is seen below::
 
-# Spark Shell (scala) #
-Similiar to the python shell, the context is initiated at shell startup:
+  $ pyspark --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
 
-$ spark-shell --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.0.0-SNAPSHOT
+Note that at this point the SparkContext :code:`sc` and the SQLContext :code:`sqlContext` are initialized. To load a Koverse Data Set into a DataFrame::
 
-And then the commands are very similar to the pyspark shell for initiating and working with a Dataframe:
+  >>> df = sqlContext.read.format('com.koverse.spark').options(hostname='<your koverse fqdn>', apiToken='<your api token>').load('<your data set name>')
 
-scala> val df = sqlContext.read.format("com.koverse.spark").option("hostname", "localhost").option("apiToken", "e8e3d751-8f3c-405c-8727-4d020b8ebc63").load("<your collection>")
+Now you have access to the Koverse Data Set via the Spark DataFrame API.
 
+Spark Shell (Scala)
+~~~~~~~~~~~~~~~~~~~~~
+An example of starting the Scala Spark shell is seen below::
 
+ $ spark-shell --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
 
-Analyzing Data Sets with the PySpark Shell
-------------------------------------------
+Like with the PySpark shell, at this point the SparkContext :code:`sc` and the SQLContext :code:`sqlContext` are initialized. To load a Koverse Data Set into a DataFrame::
 
-PySpark is the name of Apache Spark's Python API and it includes an interactive shell for analyzing large amounts of data with Python and Spark.
+ scala> val df = sqlContext.read.format("com.koverse.spark").option("hostname", "<your koverse fqdn>").option("apiToken", "<your api token>").load("<your data set name>")
 
-Koverse supports processing data from Koverse data sets using PySpark and storing Resilient Distributed Datasets (RDDs) into Koverse data sets.
+SparkR
+~~~~~~
+An example of starting the R Spark shell is seen below. Note, this has the prerequisite of the R runtime already being installed::
 
-To use Koverse with PySpark, follow these steps.
+  $ sparkR --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
 
-Set the following environment variables::
+To load a Koverse Data Set into a DataFrame::
 
- export SPARK_HOME=[your Spark installation directory]
- export ACCUMULO_HOME=[your Accumulo installation directory]
- export KOVERSE_HOME=[your Koverse installation directory]
- export PYSPARK_PYTHON=/usr/local/bin/python2.7
-
-Copy the following JAR files into a the Spark installation directory::
-
- cd $SPARK_HOME
-
- cp $ACCUMULO_HOME/lib/accumulo-core.jar .
- cp $ACCUMULO_HOME/lib/accumulo-fate.jar .
- cp $ACCUMULO_HOME/lib/accumulo-tracer.jar .
- cp $ACCUMULO_HOME/lib/accumulo-trace.jar .
- cp $ACCUMULO_HOME/lib/guava.jar .
-
- cp $KOVERSE_HOME/lib/koverse-sdk-xml*.jar koverse-sdk-xml.jar
- cp $KOVERSE_HOME/lib/koverse-sdk*.jar koverse-sdk.jar
- cp $KOVERSE_HOME/lib/koverse-server-base*.jar koverse-server-base.jar
- cp $KOVERSE_HOME/lib/koverse-shaded-deps*.jar koverse-shaded-deps.jar
- cp $KOVERSE_HOME/lib/koverse-thrift*.jar koverse-thrift.jar
-
-
-Install Koverse python files.
-As described above, the Koverse Python client can be installed using::
-
- pip install koverse
-
-Start PySpark::
-
- To load the spark data source, from pyspark, just reference the koverse-spark-datasource as follows when starting the pyspark or spark shell (note your data source version should be same as the Koverse version you are running):
-
-$ pyspark --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.2.0-SNAPSHOT
-
-Note that at this point the SparkContext (sc) and the SQLContext (sqlContext) are initialized.
-
-Now, to push a Kpoverse data set to a Spark Dataframe:
-
->>> df = sqlContext.read.format('com.koverse.spark').options(hostname='localhost', apiToken='e8e3d751-8f3c-405c-8727-4d020b8ebc63').load('<your collection name>')
-
-Once the collection is imported as a DataFrame, various SQL queries can be applied via the DataFrame API.
-
->>> newDF = df.where($"colA" > 20).select($"colA", $"colB")
-  or
->>> sqlContext.registerDataFrameAsTable(df, "orgs")
->>> sqlContext.sql("SELECT count(*) from orgs").collect()
->>> var newDF = df.where($"colA" > 20).select($"colA", $"colB")
-
-If you want to use Spark RDD functionality instead of Dataframe, call the koverseDataSet() method::
- >>> from koverse import spark
- >>> 
- >>> rdd = sc.koverseDataSet('stocks')
-
-This rdd can be used like other RDDs.
-
- >>> rdd.take(1)
- [{u'Volume': 26765000, u'High': 25.42, u'AdjClose': 25.17, u'Low': 24.46, u'Date': datetime.datetime(2014, 9, 1, 20, 0), u'Close': 25.17, u'Open': 24.94}]
-
-If, for example, we wanted to repeat our previous analysis of this example data set, we could build a model using a few simple functions::
-
- >>> differences = rdd.map(lambda r: {'Date': r['Date'], 'Change': r['Close'] - r['Open']})
-
- >>> sum  = differences.map(lambda r: r['Change']).reduce(lambda a, b: a + b)
- >>> mean = sum / differences.count()
- >>> mean
- -0.08547297297297289
-
- >>> ssq = differences.map(lambda r: (r['Change'] - mean) ** 2).reduce(lambda a, b: a + b)
- >>> var = ssq / differences.count()
- >>> import math
- >>> stddev = math.sqrt(var)
- >>> stddev
- 8.613426809227452
-
-Now we can apply our model directly to our differences RDD.
-
- >>> anomalies = differences.flatMap(lambda r: [r] if (abs(r['Change']) - mean) / stddev > 2.0 else [])
- >>> anomalies.count()
- 12
- >>> anomalies.first()
- {'Date': datetime.datetime(1998, 8, 31, 20, 0), 'Change': -22.439999999999998}
-
-Note that, unlike the previous example, here we are not setting up a Koverse Transform which means this analysis workflow will only exist during this PySpark session.
-We can persist the output, but if we want to repeat this process we'll need to run these commands again.
-
-If we wish to persist these anomalies in a Koverse data set to that applications and users can access and search these results we can use the saveAsKoverseDataSet() method.
-
- >>> ksc.saveAsKoverseDataSet(anomalies, 'anomalies')
-
-This will create a data set called 'anomalies' and store the information from our RDD into it.
-
-If the data set already exists and we wish to simply add new data to it, we can specify append=True
-
- >>> ksc.saveAsKoverseDataSet(anomalies, 'anomalies', append=True)
-
-
+  df <- read.df(sqlContext, "com.koverse.spark", hostname="<your koverse fqdn>", apiToken="<your api token>", path="<your data set name")
 
 Analyzing Data Sets with Jupyter Notebook
 -----------------------------------------
 
-Jupyter is a development tool that allows users to create notebooks containing comments and code, like iPython Notebook.
-Jupyter supports other languages via the use of 'kernels'.
+`Jupyter <http://jupyter.org/>`_ is a development tool that allows users to create notebooks containing comments and code using different programming languages/environments call kernels. This example will show how to use a Jupyter notebook that leverages the Koverse Spark Data Source in Python. Juypter requires Python 2.7 or Python 3.3+. For simplicity, this example shows how to install the required Python runtime and Jupyter via `Anaconda <https://www.continuum.io/downloads>`_ on a single node. For multi-node clusters, the required Python runtime must be available throughout your cluster so Spark can use it when executing your code.
 
-To use Jupyter with Koverse and PySpark, first create a kernel.json file in a folder called 'koverse'
+Setup
+~~~~~
 
-Configure the kernel.json file as follows by setting the right value for SPARK_HOME::
+* Download the Anaconda installer for Python 2.7 https://repo.continuum.io/archive/Anaconda2-4.2.0-Linux-x86_64.sh
+* Run the installer. This does not need to be done by the root user :code:`bash Anaconda2-4.2.0-Linux-x86_64.sh` Follow the prompts and choose the location of the install
 
- {
-  "display_name": "Koverse PySpark",
-  "language": "python",
-  "argv": [
-   "/usr/bin/python",
-   "-m",
-   "ipykernel",
-   "-f",
-   "{connection_file}"
-  ],
-  "env": {
-   "SPARK_HOME": "",
-   "PYTHONPATH": “$SPARK_HOME/python/:$SPARK_HOME/python/lib/py4j-0.8.2.1-src.zip",
-   "PYTHONSTARTUP": “$SPARK_HOME/bin/pyspark",
-   "PYSPARK_SUBMIT_ARGS": "--deploy-mode client --jars koverse-sdk.jar,koverse-sdk-xml.jar,koverse-thrift.jar,koverse-server-base.jar,koverse-shaded-deps.jar,accumulo-core.jar,accumulo-fate.jar,accumulo-trace.jar,accumulo-tracer.jar,guava.jar,commons-validator-1.4.0.jar pyspark-shell"
-  }
- }
+* Set the following environment variables based on the Anaconda home directory chosen in the previous step::
 
+  $ export PYSPARK_DRIVER_PYTHON=$ANACONDA_HOME/bin/jupyter
+  $ export PYSPARK_DRIVER_PYTHON_OPTS="notebook --NotebookApp.open_browser=False --NotebookApp.ip='*' --NotebookApp.port=8880"
+  $ export PYSPARK_PYTHON=$ANACONDA_HOME/bin/python
 
-Install the kernel file via the command::
+* Create a directory where you want to save your Jupyter notebook files and change into this notebook directory.
+* Run the following command to start Jupyter::
 
- ipython kernelspec install koverse/
+  $ pyspark --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
 
-Place the following jars into the $SPARK_HOME folder::
+* Go to http://notebook-server:8880 and from the *New* dropdown, select *Python [default]*. This will launch the Spark driver and just like in the PySpark shell the SparkContext :code:`sc` and the SQLContext :code:`sqlContext` are initialized and available in your notebok. You can now access Koverse Data Sets using the Spark Data Source as seen in the screenshot below.
 
- accumulo-core.jar
- accumulo-trace.jar
- commons-validator-1.4.0.jar
- koverse-sdk-xml.jar
- koverse-server-base.jar
- koverse-thrift.jar
- accumulo-fate.jar
- accumulo-tracer.jar
- guava.jar
- koverse-sdk.jar
- koverse-shaded-deps.jar
+.. image:: /_static/UsageGuide/jupyterPySpark.png
 
-
-Install the Koverse python module via::
-
- pip install koverse
-
-Then you can fire up Jupyter and create a new notebook using the newly installed Koverse kernel.
-
-In that notebook, you can connect to a Koverse instance via::
-
- import pyspark
- from koverse.spark import *
- import base64
- sc = SparkContext()
- ksc = KoverseSparkContext(sc, 'localhost', ‘your-username', base64.b64encode(‘your-password’))
-
-You can create an RDD from a Koverse instance as follows, for example::
-
- rentals = ksc.koverseDataSet('Customer Rentals')
- rentals.take(1)
-
- [{u'email': u'DIANNE.SHELTON@sakilacustomer.org',
-   u'first_name': u'DIANNE',
-   u'title': u'ACADEMY DINOSAUR'}]
-
-You can process the RDD the same as other Spark RDDs::
-
- pairs = rentals.map(lambda r: (r['first_name'].lower(), 1))
- nameCount = pairs.reduceByKey(lambda a, b: a + b)
- nameCount.count()
- 591
- nameCount.take(1)
- [(u'sheila', 18)]
-
-When you want to write an RDD to Koverse, convert it to be a set of Python dicts and save::
-
- ncRecords = nameCount.map(lambda nc: {'name': nc[0], 'count': nc[1]})
- ksc.saveAsKoverseDataSet(ncRecords, 'name count', append=True)
-
-
-
-Analyzing Data Sets with iPython Notebook
+Analyzing Data Sets with Apache Zeppelin
 -----------------------------------------
-
-iPython Notebook is a popular tool for creating Python scripts that can display results and be shared with others.
-
-PySpark can be used in the context of iPython Notebook to create repeatable workflows.
-
-First, follow the steps to configure PySpark to work with Koverse as described in the previous section.
-
-To use Koverse with PySpark and iPython Notebook, create a new iPython profile::
-
-  ipython profile create pyspark
-
-This will create a profile in ~/.ipython/profile_pyspark. In that directory, create a file called ipython_config.py with the following contents::
-
- c = get_config()
-
- c.NotebookApp.ip = '*'
- c.NotebookApp.open_browser = False
- c.NotebookApp.port = 8880
-
-Next, in ~/.ipython/profile_pyspark/startup create a file called 00-pyspark-setup.py with the following contents::
-
- import os
- import sys
-
- spark_home = os.environ.get('SPARK_HOME', None)
- if not spark_home:
-    raise ValueError('SPARK_HOME environment variable is not set')
- sys.path.insert(0, os.path.join(spark_home, 'python'))
- sys.path.insert(0, os.path.join(spark_home, 'python/lib/py4j-0.8.2.1-src.zip'))
-
- execfile(os.path.join(spark_home, 'python/pyspark/shell.py'))
-
- from koverse.spark import *
-
-
-Export the following env vars::
-
- export SPARK_HOME=[path to your spark installation]
- export PYSPARK_PYTHON=/usr/local/bin/python2.7
- export PYSPARK_SUBMIT_ARGS="--deploy-mode client --jars koverse-sdk.jar,koverse-sdk-xml.jar, \
-    koverse-thrift.jar,accumulo-core.jar,guava.jar,accumulo-fate.jar,accumulo-trace.jar, \
-    koverse-server-base.jar,koverse-shaded-deps.jar"
- export KOVERSE_HOME=[path to your Koverse installation]
-
-
-Now iPython Notebook can be started from the Spark installation directory::
-
- ipython notebook --profile=pyspark
-
-Visit http://localhost:8880 in a web browser to access iPython Notebook and create a new notebook.
-In this new notebook, everything should be imported and initialized for us to start using PySpark with Koverse.
-
-Use the same methods described in the previous section on PySpark in iPython notebooks to obtain RDDs from Koverse data sets, process them, and persist RDDs to Koverse data sets.
-
-.. image:: /_static/PySpark_Notebook.png
-	:height: 550 px
-	:width: 800 px
-
-Analyzing Data Sets in R
-------------------------
-
-For R - use the SparkR installation included with Spark 1.5 and later.  See this for details: https://spark.apache.org/docs/latest/sparkr.html#from-data-sources
-
-  Start sparkR, and load the SparkR library:
-    ./sparkR
-    > Sys.setenv('SPARKR_SUBMIT_ARGS'='"--packages" "com.koverse:koverse-spark-datasource:2.0.0-SNAPSHOT", "sparkr-shell"')
-    > library(SparkR)
-  Load the data source, initialize SQLContext:
-    > sc <- sparkR.init()
-    > sqlContext <- sparkRSQL.init(sc)
-  Load collection into DataFrame:
-    > df <- read.df(sqlContext, 'com.koverse.spark', hostname='localhost', apiToken='e8e3d751-8f3c-405c-8727-4d020b8ebc63').load('<your collection name>')
-    > registerTempTable(df, 'df')
-    > sql(sqlcontext, "SELECT * from df")
-
-
+TODO
 
 Exporting a Data Set
 ^^^^^^^^^^^^^^^^^^^^
