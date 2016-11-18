@@ -28,10 +28,5 @@ Developer Documentation
 .. include:: dev/spark_scala_transform.rst
 .. include:: dev/spark_java.rst
 .. include:: dev/custom_transform.rst
-.. include:: dev/python.rst
-.. include:: dev/pyspark.rst
-.. include:: dev/ipython.rst
-.. include:: dev/jupyter.rst
 .. include:: dev/glossary.rst
 .. include:: dev/index.rst
-
