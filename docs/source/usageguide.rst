@@ -1172,7 +1172,7 @@ Setup
 
   .. image:: /_static/UsageGuide/zeppelinAPIToken1.png
 
-  .. image:: /_static/UsageGuide/zeppelinAPIToken1.png
+  .. image:: /_static/UsageGuide/zeppelinAPIToken2.png
 
 * You can now proceed with creating Zeppelin notebooks that access Koverse.  Simply create a new notebook and then
   create a new data frame using the Koverse Spark Data Source as follows::
