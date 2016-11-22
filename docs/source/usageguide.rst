@@ -1156,9 +1156,9 @@ Setup
     chown zeppelin:zeppelin /home/zeppelin/koverse-spark-datasource-2.1.10.jar
 
 * Zeppelin an Ambari stack available in HDP 2.5 and later to allow for easy integration into these common control panels.  There
-  are instructions `here <https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_zeppelin-component-guide/content/ch_installation.html>`_ for installing Zeppelin using on HDP 2.5 and later.
+  are instructions [here](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_zeppelin-component-guide/content/ch_installation.html) for installing Zeppelin using on HDP 2.5 and later.
 
-* If you need to install Zeppelin manually, you can follow the instructions `here <https://zeppelin.apache.org/docs/0.6.2/install/install.html>`_ to install it from source:
+* If you need to install Zeppelin manually, you can follow the instructions [here](https://zeppelin.apache.org/docs/0.6.2/install/install.html) to install it from source:
 
 * Once Zeppelin is installed, you will need to configure Zeppelin to connect to the Koverse data source.
   Edit the zeppelin-env.sh file and add the location of the Koverse Spark Data Source JAR to the SPARK_SUBMIT_OPTIONS variable,
@@ -1181,7 +1181,7 @@ Setup
     val df = sqlContext.read.format("com.koverse.spark").option("hostname", "localhost").option("apiToken", "99ff62de-42ac-4b8b-b7dd-79b02bb50da2").load("employees")
 
 * The data in the data frame can now be manipulated as any other data in Spark.  For example, see below for a full example
-  using the sample bank employee data available `here <https://s3.amazonaws.com/koverse-datasets/financial+demo/employees.csv>`_
+  using the sample bank employee data available [here](https://s3.amazonaws.com/koverse-datasets/financial+demo/employees.csv)
 
   .. image:: /_static/UsageGuide/zeppelinNotebook.png
 
