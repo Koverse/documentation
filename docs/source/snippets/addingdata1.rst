@@ -31,6 +31,9 @@ Clicking Cancel will allow you to start over from the beginning.
 After clicking next you will see a preview of the records to be imported.
 See the section `Step 2. View a Preview of the Data`_ to proceed.
 
+If there was an error generating the preview (e.g. caused by source invalid parameters), a message
+describing the nature of the error and diagnostic information will be shown.
+
 Example
 ~~~~~~~
 
