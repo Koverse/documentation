@@ -491,6 +491,10 @@ A history of the processing jobs that have been applied to this data set can be 
 If jobs are currently running they can be stopped if necessary by clicking the red X icon next to the job.
 
 Any errors encountered during the job will also be shown in this table.
+If available, a complete diagnostic for the cause of the error will be shown as well, in the form of a exception stack trace.
+
+This stack trace can help you diagnose what caused the error so you can resolve any problems that caused it.
+It can also be sent to Koverse Support for help diagnosing and fixing the error.
 
 Data Set Permissions
 --------------------
@@ -715,6 +719,11 @@ The job will appear in the History table under the Settings tab.
 You can view the status of this running transform job and optionally stop a running job by clicking the X next to the progress bar of a running job.
 
 If there are any errors encountered in the process of running the transform they will appear in the History table next to the transform job.
+
+If available, a complete diagnostic for the cause of the error will be shown as well, in the form of a exception stack trace.
+
+This stack trace can help you diagnose what caused the error so you can resolve any problems that caused it.
+It can also be sent to Koverse Support for help diagnosing and fixing the error.
 
 Example
 ~~~~~~~
