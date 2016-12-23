@@ -697,6 +697,7 @@ In the input parameter labeled 'SQL select Statement', enter the following SQL s
 This statement will count how many days each trader left work after 6:30 pm.
 
 Click the 'Save' button.
+If the transform was configured to run automatically, it will then be started.
 
 You will now be taken to the detail view for the output data set, 'Bank After Hours Working', on the settings tab.
 We'll walk through running this transform in the next section.
@@ -705,7 +706,8 @@ Running a Transform
 -------------------
 
 If a transform is set to run on a schedule, it will be automatically started according to the schedule.
-If a transform is set to run automatically, and there is already data in the input data sets, you can run it once manually to process existing data.
+If a transform is set to run automatically, and there is already data in the input data sets, it will automatically run after saving it.
+After saving, the transform can also be run manually at a later time.
 
 To run a transform manually, click on the 'Data' button on the primary navigation menu on the left, and then the 'Data Flow' tab.
 Select the output data set of the transform (if you just created the transform you will be navigated to this page).
