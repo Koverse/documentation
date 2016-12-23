@@ -764,7 +764,7 @@ In the `Interactive Analytics`_ section we have a few more examples of working w
 Troubleshooting a Transform
 ---------------------------
 Sometimes a transform is simply misconfigured.
-In this case you may see an error message associated with a job for a transform to the effect that there is a misconfiguration or in some cases a syntax error.
+In this case you may see an error message and diagnostic information associated with a job for a transform to the effect that there is a misconfiguration or in some cases a syntax error.
 To fix a misconfiguration, click on the Data Flow tab for a data set and click the pen icon next to the transform you wish to edit.
 
 You will be taken to the configuration page for the transform where you can make changes to the parameters.
