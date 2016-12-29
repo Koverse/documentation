@@ -92,13 +92,6 @@ The number of matches on attribute names and on records are shown.
 
 .. image:: /_static/UsageGuide/dataSetResults.png
 
-Below this there is a link labeled 'View and search attributes'.
-Clicking on this link expands a section containing a list of attributes in these search results.
-Users can filter the list of attributes shown by typing a word into the box labeled 'search attributes'.
-Clicking on a particular attribute name will cause the record table below to scroll to that attribute.
-
-.. image:: /_static/UsageGuide/searchAttribute.png
-
 The set of records resulting from the search appear in a table.
 Users can scroll down to view more records, up to the first 50 records.
 
