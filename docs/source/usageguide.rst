@@ -664,6 +664,10 @@ In this case you may want to uncheck the box labeled 'Replace Output Data' so th
 
 Choosing 'Data within a sliding window' allows a transform to process data within a window of time.
 
+Finally, select whether to write output to a new data set, or an existing data set.
+For a new data set, provide a name for this new data set.
+For an existing data set choose the existing data set by clicking on the drop down menu and selecting the data set from the list.
+
 Once the transform is configured, click Save.
 You will be navigated to the data set detail page, on the settings tab, of the output data set of the transform.
 The new transform will be listed in the list of inputs to this data set.
