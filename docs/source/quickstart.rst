@@ -50,3 +50,5 @@ Upon successful login you will see the Koverse user interface.
 .. include:: /snippets/addingdata3.rst
 
 .. include:: /snippets/search.rst
+
+Continue on to the Usage Guide for further information on using Koverse.
