@@ -27,6 +27,7 @@ When disabling type conversion by the parser for this purpose, types can be dete
 
 One example of this process is using the normalization titled 'Prepend text to a field value' which can be used to add some text such as 'ID' to the beginning of number values so that they are interpreted and searched as textual identifiers rather than numbers.
 In this case the 'Determine Types' option of the parser should be unchecked, then the 'Prepend text to a field value' normalization added, and finally the 'Interpret all string values' normalization added.
+See the next section on using normalizations for more detail.
 
 After making a change to a parser or its options, the import preview will automatically update so that the changes can be verified.
 
@@ -65,7 +66,7 @@ Choose the 'Select Fields' normalization from the list by clicking on it.
 This will display a section at the top of the right hand section where you can enter in a comma-separated list of fields that you wish to import.
 Any other fields will not be imported.
 
-Click 'Apply' and the records preview will change to reflect our new settings.
+Click 'Save' and the records preview will change to reflect our new settings.
 
 Once you are satisfied with the view of the records, click Next to go to step 3.
 

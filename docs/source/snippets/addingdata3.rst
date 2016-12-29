@@ -12,3 +12,5 @@ Progress for these jobs will display until they complete.
 Once complete, the view will update to show an overview of the attributes contained within the data set.
 
 Any newly created data set is viewable only by the user that created it.
+In this case an icon of an eye with a line through it and the label "Not shared" will be shown along with other information about a data set.
+When a data set is shared with one or more groups, the number of groups with whom the data set is shared will be shown instead.

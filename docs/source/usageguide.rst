@@ -156,7 +156,7 @@ Clicking on a data set in the list on the left will show the detail view for tha
 When viewing details for a data set the name of the data set appears on the right, and below the name is a list of optional labels that have been applied to this data set.
 To the right, there is a circular button that allows the entire data set to be downloaded, either as a CSV file or a JSON file.
 
-Finally we have some 'metadata' about this data set, including the total number of records, the date the data set was created, and the last time data was imported into this data set.
+Finally we have some 'metadata' about this data set, including the total number of records, the date the data set was created, the last time data was imported, and the number of groups with whom the data set is shared.
 
 
 Data Tabs
