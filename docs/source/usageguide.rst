@@ -1161,36 +1161,31 @@ Setup
 ~~~~~
 
 * Apache Spark 1.6 is required by Zeppelin to work with the Koverse Spark Data Source, so this will need to be available on your cluster.
-* The Koverse Spark Data Source is not distributed as part of the core product, so you will need to download the
-  correct JAR file for your version of Koverse from http://nexus.koverse.com/nexus/content/repositories/releases/com/koverse/koverse-spark-datasource/
-  This JAR file will need to be placed on the system where Zeppelin will run and the operating system user running Zeppelin will
-  need to be able to access it.  For example, this shows downloading the file for Koverse 2.1.10 and placing it in the /home/zeppelin directory::
+* The Koverse Spark Data Source is not distributed as part of the core product, so you will need to download the correct JAR file for your version of Koverse from http://nexus.koverse.com/nexus/content/repositories/releases/com/koverse/koverse-spark-datasource/
+  This JAR file will need to be placed on the system where Zeppelin will run and the operating system user running Zeppelin will need to be able to access it.  For example, this shows downloading the file for Koverse 2.1.10 and placing it in the /home/zeppelin directory::
 
     cd /home/zeppelin
     wget http://nexus.koverse.com/nexus/content/repositories/releases/com/koverse/koverse-spark-datasource/2.1.10/koverse-spark-datasource-2.1.10.jar
     chown zeppelin:zeppelin /home/zeppelin/koverse-spark-datasource-2.1.10.jar
 
-* Zeppelin an Ambari stack available in HDP 2.5 and later to allow for easy integration into these common control panels.  There
-  are instructions at https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_zeppelin-component-guide/content/ch_installation.html for installing Zeppelin using on HDP 2.5 and later.
+* Zeppelin an Ambari stack available in HDP 2.5 and later to allow for easy integration into these common control panels.  There are instructions at https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_zeppelin-component-guide/content/ch_installation.html for installing Zeppelin using on HDP 2.5 and later.
 
 * If you need to install Zeppelin manually, you can follow the instructions at https://zeppelin.apache.org/docs/0.6.2/install/install.html to install it from source:
 
-* Once Zeppelin is installed, you will need to configure Zeppelin to connect to the Koverse data source.
-  Edit the zeppelin-env.sh file and add the location of the Koverse Spark Data Source JAR to the SPARK_SUBMIT_OPTIONS variable,
-  for example::
+* Once Zeppelin is installed, you will need to configure Zeppelin to connect to the Koverse data source. Edit the zeppelin-env.sh file and add the location of the Koverse Spark Data Source JAR to the SPARK_SUBMIT_OPTIONS variable, for example::
 
     export SPARK_SUBMIT_OPTIONS="--jars /home/zeppelin/koverse-spark-datasource-2.1.10.jar"
 
   Restart Zeppelin to make these configuration changes active.
-* To authenticate from Zeppelin to Koverse, you will need to create an API token in Koverse and assign it a group with permissions
-  to the data sets you wish to access from Zeppelin.
+* To authenticate from Zeppelin to Koverse, you will need to create an API token in Koverse and assign it a group with permissions to the data sets you wish to access from Zeppelin.
 
   .. image:: /_static/UsageGuide/zeppelinAPIToken1.png
 
+Once the API token is created, click on it to see the token string to use.
+
   .. image:: /_static/UsageGuide/zeppelinAPIToken2.png
 
-* You can now proceed with creating Zeppelin notebooks that access Koverse.  Simply create a new notebook and then
-  create a new data frame using the Koverse Spark Data Source as follows::
+* You can now proceed with creating Zeppelin notebooks that access Koverse. Simply create a new notebook and then create a new data frame using the Koverse Spark Data Source as follows::
 
     // Connect to the Koverse Spark Data Source on localhost and create a data frame using the data set named "employees"
     val df = sqlContext.read.format("com.koverse.spark").option("hostname", "localhost").option("apiToken", "99ff62de-42ac-4b8b-b7dd-79b02bb50da2").load("employees")
@@ -1349,8 +1344,16 @@ Follow the steps below to connect Koverse to Tableau
 - Under the Connect Pane on the left, select the Web Data Connector option
 - Enter http://<hostname>:8080/#/tableau-connector as the url when prompted
 - Tableau will launch a web browser showing the Web Data Connector interface
+
+  .. image:: /_static/UsageGuide/tableauLogin.png
+
 - After logging in you will be able to choose a data set and select a subset of records from that data set via an SQL select statement
+
+  .. image:: /_static/UsageGuide/tableauSelect.png
+
 - Once you've selected and previewed the records, click "Send to Tableau" to import the data into Tableau
+
+  .. image:: /_static/UsageGuide/tableauPreview.png
 
 Appendix
 ^^^^^^^^
