@@ -19,7 +19,16 @@ Sometimes the correct parser was used but it's options may need to be adjusted.
 For example, the records from a CSV file may have all their values concatenated into one value because the CSV parser used the wrong delimiter character.
 In this case you may need to change some of the options specific to the parser, such as the delimiter character used to separate individual values within records.
 
-After making a change to a parser or its options, click Apply to re-run the import preview and verify that records look correct.
+Text file formats such as CSV represent all values as text, including numbers and dates.
+Koverse parsers for text file formats can automatically interpret these values as their proper type so that they can be passed to analytics properly and searched using ranges, for example.
+This behavior can be enabled or disabled by checking the 'Determine Types' option.
+Disabling it will result in some values being unsearchable, but can be useful for applying normalizations to the original text values before interpreting their types. 
+When disabling type conversion by the parser for this purpose, types can be determined again after original values are modified by applying the normalization titled 'Interpret all string values'. 
+
+One example of this process is using the normalization titled 'Prepend text to a field value' which can be used to add some text such as 'ID' to the beginning of number values so that they are interpreted and searched as textual identifiers rather than numbers.
+In this case the 'Determine Types' option of the parser should be unchecked, then the 'Prepend text to a field value' normalization added, and finally the 'Interpret all string values' normalization added.
+
+After making a change to a parser or its options, the import preview will automatically update so that the changes can be verified.
 
 We can choose to apply optional normalization rules next, or simply click 'Next' to go to step 3.
 
