@@ -17,6 +17,8 @@ Auto-complete
 Typing a word in the search bar will show suggested search terms which will match values in any attribute in any record of any data set you have permission to read.
 Search term suggestions matching data set records have a magnifying glass icon next to them.
 
+When the checkbox labeled 'Limit search to ..' followed by the data set name is checked, only auto-complete suggestions that apply to the data set selected will be suggested.
+
 In addition to suggested search terms, the names of labels and data sets that match the word typed will also appear.
 Label suggestions have a small label or tag icon next to them.
 Data set suggestions have a small page with writing icon next to them.
