@@ -12,3 +12,4 @@ Administration Guide
    installguide
    opsguide
    tuningguide
+   configurationguide
