@@ -120,8 +120,7 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
     html_theme = 'sphinx_rtd_theme'
     html_theme_path = ['_themes', ]
     html_context = {
-            'display_github': False,
-            # Add 'Edit on Github' link instead of 'View page source'
+            'display_github': False, # Add 'Edit on Github' link instead of 'View page source'
             "last_updated": True,
             "commit": False,
             'css_files': [
@@ -133,8 +132,7 @@ else:
     html_theme = 'sphinx_rtd_theme'
     html_theme_path = ['_themes', ]
     html_context = {
-            'display_github': False,
-            # Add 'Edit on Github' link instead of 'View page source'
+            'display_github': False, # Add 'Edit on Github' link instead of 'View page source'
             "last_updated": True,
             "commit": False,
             'css_files': [
