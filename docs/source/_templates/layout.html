@@ -24,6 +24,11 @@
   {% endif %}
 
   {# CSS #}
+  
+  {% extends "!layout.html" %}
+  {% block extrahead %}
+      <link href="{{ pathto("_static/css/theme.css", True) }}" rel="stylesheet" type="text/css">
+  {% endblock %}
 
   {# OPENSEARCH #}
   {% if not embedded %}
