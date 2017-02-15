@@ -1,15 +1,13 @@
-.. _Admin Guide:
+.. _adminguide:
 
-:tocdepth: 2
-
+====================
 Administration Guide
 ====================
 
 .. toctree::
-   :maxdepth: 2
 
-   infraguide
-   installguide
-   opsguide
-   tuningguide
-   configurationguide
+   admin/infraguide.rst
+   admin/installguide.rst
+   admin/opsguide.rst
+   admin/tuningguide.rst
+   admin/configurationguide.rst
