@@ -18,34 +18,36 @@ Core Properties
 
 The properties control the core of the server operation.
 
-=======================================================  ==================================================  ===============
-  property name                                            default value                                       description
-=======================================================  ==================================================  ===============
-com.koverse.addons.dir                                   addons                                              The directory, relative to the server install directory, where addons can be loaded from
-com.koverse.server.password.hash.salt                    JKB//GmLoy8PpNCrt79PPg==                            The obfuscated salt to use for user passwords
-com.koverse.license.verification                         5631524b62324648536e526152336856566a46564f513d3d    An obfuscated key used to verify and encrypt sensitive property values
-com.koverse.server.logging.externalProcess.port          12400                                               The TCP/IP port used to route logging data from processes created by the server
-com.koverse.lib.jar.path                                 lib                                                 The directory, relative to the server install directory, where server library files are stored
-com.koverse.server.security.auth.modules                                                                     Comma-separated list of java classes that define 3rd party authentication and authorization modules
-com.koverse.server.authorizations.autoadd                true                                                Whether to automatically add a data store authorizations when a user tries to use one
-com.koverse.server.import.withoutsecfield                true                                                Whether to import records without a security field or not
-com.koverse.server.auth.useKoversePermission.required    false                                               Whether users need a special permission to use Koverse at all
-com.koverse.server.query.allowTableScan                  true                                                Allow inneficient queries to run that would normally require a composite index to be created
-com.koverse.server.purgeJobsDate                         30d                                                 Jobs older than this time will be deleted from the server, may also use "h" or "m" for hours or minutes (e.g. 12h)
-instancePrefix                                           kv                                                  In a multi-tenant setup, this prefix identifies each tenant
-settingsSavedOnce                                        true                                                Deprecated setting, just always leave it as "true"
-disableAutomaticSupportReport                            true                                                Koverse can send support reports through email, it is disabled by default
-defaultDataCollectionFieldStatsMinimumExecutionPeriod    0                                                   The minimum number of milliseconds required between executions of data collection field stats
-defaultDataCollectionSamplingMinimumExecutionPeriod      0                                                   The minimum number of milliseconds required between executions of data collection sampling jobs
-defaultDataCollectionSchemaMinimumExecutionPeriod        0                                                   The minimum number of milliseconds required between executions of data collection schema jobs
-logoffDisabled                                           false                                               Deprecated property, has no effect
-accountMenuDisabled                                      false                                               Deprecated property, has no effect
-usersCanChangePassword                                   true                                                Whether to allow a user ot change his or her own password. In PKI environments, it makes no sense for the user to change their password
-usersCanEditAccountDetails                               true                                                Deprecated property, has no effect
-temporaryWorkingDirectory                                /var/tmp                                            Deprecated property, has no effect
-serializationMaxBufferSize                               104857600                                           Buffer size in bytes to use for Kryo serialization
-com.koverse.server.jmx.client.url                                                                            Deprecated property, has no effect
-=======================================================  ==================================================  ===============
+=============================================================  ==================================================  ===============
+  property name                                                 default value                                       description
+=============================================================  ==================================================  ===============
+com.koverse.addons.dir                                         addons                                              The directory, relative to the server install directory, where addons can be loaded from
+com.koverse.server.password.hash.salt                          JKB//GmLoy8PpNCrt79PPg==                            The obfuscated salt to use for user passwords
+com.koverse.license.verification                               5631524b62324648536e526152336856566a46564f513d3d    An obfuscated key used to verify and encrypt sensitive property values
+com.koverse.server.logging.externalProcess.port                12400                                               The TCP/IP port used to route logging data from processes created by the server
+com.koverse.lib.jar.path                                       lib                                                 The directory, relative to the server install directory, where server library files are stored
+com.koverse.server.security.auth.modules                                                                           Comma-separated list of java classes that define 3rd party authentication and authorization modules
+com.koverse.server.authorizations.autoadd                      true                                                Whether to automatically add a data store authorizations when a user tries to use one
+com.koverse.server.import.withoutsecfield                      true                                                Whether to import records without a security field or not
+com.koverse.server.auth.useKoversePermission.required          false                                               Whether users need a special permission to use Koverse at all
+com.koverse.server.query.allowTableScan                        true                                                Allow inneficient queries to run that would normally require a composite index to be created
+com.koverse.server.purgeJobsDate                               30d                                                 Jobs older than this time will be deleted from the server, may also use "h" or "m" for hours or minutes (e.g. 12h)
+instancePrefix                                                 kv                                                  In a multi-tenant setup, this prefix identifies each tenant
+settingsSavedOnce                                              true                                                Deprecated setting, just always leave it as "true"
+disableAutomaticSupportReport                                  true                                                Koverse can send support reports through email, it is disabled by default
+defaultDataCollectionFieldStatsMinimumExecutionPeriod          0                                                   The minimum number of milliseconds required between executions of data collection field stats
+defaultDataCollectionSamplingMinimumExecutionPeriod            0                                                   The minimum number of milliseconds required between executions of data collection sampling jobs
+defaultDataCollectionSchemaMinimumExecutionPeriod              0                                                   The minimum number of milliseconds required between executions of data collection schema jobs
+logoffDisabled                                                 false                                               Deprecated property, has no effect
+accountMenuDisabled                                            false                                               Deprecated property, has no effect
+usersCanChangePassword                                         true                                                Whether to allow a user ot change his or her own password. In PKI environments, it makes no sense for the user to change their password
+usersCanEditAccountDetails                                     true                                                Deprecated property, has no effect
+temporaryWorkingDirectory                                      /var/tmp                                            Deprecated property, has no effect
+serializationMaxBufferSize                                     104857600                                           Buffer size in bytes to use for Kryo serialization
+com.koverse.server.jmx.client.url                                                                                  Deprecated property, has no effect
+com.koverse.server.manager.notifications.intervalInSeconds     60                                                  How often (in seconds) notifications that haven't been retrieved are checked for expiration
+com.koverse.server.manager.notifications.expirationInSeconds   600                                                 How long (in seconds) a notification can go unretrieved until it expires
+=============================================================  ==================================================  ===============
 
 Database Properties
 ~~~~~~~~~~~~~~~~~~~
@@ -111,6 +113,8 @@ com.koverse.server.thrift.admin.port                12325              The TCP/I
 com.koverse.server.thrift.resource.port             12327              The TCP/IP port for the thrift resource service
 com.koverse.server.thrift.addon.port                12328              The TCP/IP port for the thrift addon service
 com.koverse.server.thrift.basic.addon.port          12330              The TCP/IP port for the thrift basic addon service
+com.koverse.server.thrift.internal.port             12331              The TCP/IP port for the thrift Koverse internal service
+com.koverse.server.thrift.notification.port         12331              The TCP/IP port for the thrift notification service
 ==================================================  =================  ===============
 
 Metrics Properties
@@ -267,8 +271,9 @@ com.koverse.server.thrift.admin.port          12325                       The TC
 com.koverse.server.thrift.backup.port         12326                       The TCP/IP port for the koverse server's backup service
 com.koverse.server.thrift.resource.port       12327                       The TCP/IP port for the koverse server's resource service
 com.koverse.server.thrift.addon.port          12328                       The TCP/IP port for the koverse server's add on service
-com.koverse.server.thrift.basic.addon.port    12330                       The TCP/IP port for the koverse server's basic add on service
 com.koverse.server.thrift.application.port    12329                       The TCP/IP port for the koverse server's application service
+com.koverse.server.thrift.basic.addon.port    12330                       The TCP/IP port for the koverse server's basic add on service
+com.koverse.server.thrift.notification.port   12332                       The TCP/IP port for the koverse server's notification service
 ============================================  ==========================  ===============
 
 Metrics Properties
