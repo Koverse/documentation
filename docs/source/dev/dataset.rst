@@ -116,7 +116,65 @@ Range Queries
 |                                        | {fieldName: {$box :[[39.5, -104.9],[40, -104.5]]}}         |
 +----------------------------------------+------------------------------------------------------------+
 
-Note that queries that combine a range with any other criteria, and queries that combine multiple ranges require Composite Indexes on the fields involved. See _CompositeIndexes for information on building these.
+Note that queries that combine a range with any other criteria, and queries that combine multiple ranges require Composite Indexes on the fields involved. See :ref:`CompositeIndexes` for information on building these.
+
+.. _CompositeIndexes:
+
+Indexing Policy and Composite Indexes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+By default, all fields in the Records of Koverse Data Sets are indexed. This allows data to easily be discovered by searching
+across all fields and values. There are times when you may want to change this default indexing policy. You may want to add
+composite indexes when your searches use more than one search term as they can greatly improve search performance. There also
+may be times when you want to disable fields from being indexed as they never will be used in searches. While Koverse is designed
+to efficiently ingest and index data, indexes still aren't free in terms of disk usage and ingest throughput, and the impact of
+these costs can sometimes be seen in high volume ingest environments.
+
+To change the current indexing policy, including adding composite indexes, use the Koverse REST API with the resource
+
+``/api/dataSets/<dataSetId>/indexingPolicy``
+
+An HTTP GET will return the currently configured indexing policy for the Data Set. An HTTP PUT will update the indexing policy
+based on the body of the request. Several example JSON bodies are seen below. Using a tool like Postman in Google Chrome is an
+easy way to make REST API calls to Koverse as it will reuse your existing session if you are already logged into the Koverse UI.
+
+**Add two composite indexes**
+
+This example shows adding two composite indexes. One on the 'eventType' and 'timestamp' fields, and one on the 'location'
+and 'timestamp' fields::
+
+	{
+	  "id":557,
+	  "fieldsInclusive": false,
+	  "fields": [],
+	  "compositeIndexes": [[{"fieldName":"eventType", "fieldType":"java.lang.String"},{"fieldName":"timestamp","fieldType":"java.lang.Number"}],
+		    [{"fieldName":"location", "fieldType":"com.koverse.sdk.data.KoverseGeoPoint"},{"fieldName":"timestamp","fieldType":"java.lang.Number"}]],
+		"createValueOnlyIndices": true,
+		"dataSetId": "my_dataset_20170308_234200_037"
+	}
+
+**Disable indexing on a field**
+
+In this example we turn off indexing on the field 'version'::
+
+	{
+		"id":557,
+		"fieldsInclusive": false,
+		"fields": ["version"],
+		"compositeIndexes": [],
+		"createValueOnlyIndices": true,
+		"dataSetId": "my_dataset_20170308_234200_037"
+	}
+
+When creating composite indexes, a "fieldType" is required. This specifies the type of values which the index applies to.
+Internally Koverse is using Java types for the values in Records and that is why Java class names are seen in the "fieldType"
+values in the examples. The following types are supported for composite indexes
+
+- java.lang.String
+- java.lang.Number
+- java.util.Date
+- com.koverse.sdk.data.KoverseGeoPoint
+
+Other Record value types like IP addresses or URLs are not currently supported in composite indexes.
 
 Aggregations
 ^^^^^^^^^^^^^

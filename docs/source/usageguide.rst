@@ -355,7 +355,7 @@ Searching a single range does not require that a composite index be built.
 To query multiple ranges at once or a range and other terms, a composite index must be built.
 These types of queries are described in the following section.
 
-For additional information on Composite Indexes, please refer to: :ref:`CompositeIndexes`
+For additional information on Composite Indexes, please refer to :ref:`CompositeIndexes`
 
 Combining Ranges
 ^^^^^^^^^^^^^^^^
