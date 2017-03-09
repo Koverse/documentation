@@ -4,8 +4,6 @@
 Configuration Guide
 ====================
 
-.. contents:: Table of Contents
-  :local:
 
 Koverse Server Configuration
 ----------------------------
@@ -14,7 +12,7 @@ The following subsections list the koverse server properties along with their
 default value and a description.
 
 Core Properties
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 The properties control the core of the server operation.
 
@@ -50,7 +48,7 @@ com.koverse.server.manager.notifications.expirationInSeconds   600              
 =============================================================  ==================================================  ===============
 
 Database Properties
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 These properties control how the server uses the backend RDBMS.
 
@@ -60,7 +58,7 @@ These properties control how the server uses the backend RDBMS.
 com.koverse.server.jdbc.user                            koverse                     The database user
 com.koverse.server.jdbc.password                        dMvU/kr0e8muMC2fwpWukw==    The encrypted data password
 com.koverse.server.jdbc.url                                                         The JDBC URL used to connect to the database
-com.koverse.server.jdbc.acquireIncrement                3                           How many connections to acquire for the connection pool at a time when one is needed        
+com.koverse.server.jdbc.acquireIncrement                3                           How many connections to acquire for the connection pool at a time when one is needed
 com.koverse.server.jdbc.initialPoolSize                 3                           The initial size of the connection pool
 com.koverse.server.jdbc.maxPoolSize                     15                          The maximum size of the connection pool
 com.koverse.server.jdbc.maxIdleTime                     0                           How long a connection stations in the connection pool before being discarded
@@ -70,7 +68,7 @@ com.koverse.server.jdbc.maxIdleTimeExcessConnections    0                       
 ======================================================  ==========================  ===============
 
 Hibernate Properties
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 These properties adjust how koverse uses the Hibernate Object-Relational framework
 
@@ -94,7 +92,7 @@ hibernate.dialect                      org.hibernate.dialect.PostgreSQLDialect  
 =====================================  =========================================  ===============
 
 Thrift Properties
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 These properties control how the server uses its Thrift services
 
@@ -118,9 +116,9 @@ com.koverse.server.thrift.notification.port         12331              The TCP/I
 ==================================================  =================  ===============
 
 Metrics Properties
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
-These properties control how the server reports metrics, both locally to a log 
+These properties control how the server reports metrics, both locally to a log
 and to external systems like Ganglia
 
 ====================================================================  =================  ===============
@@ -138,7 +136,7 @@ com.koverse.server.metrics.ganglia.reporter.metricsWhiteList                    
 ====================================================================  =================  ===============
 
 Spark Properties
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 These properties control how the server interacts with Spark.
 
@@ -152,11 +150,11 @@ If the mode is set to 'yarn', the following MUST be done for it to work properly
 =================================  =================  ===============
 com.koverse.server.spark.mode      master             Can be one of 'master' and 'yarn'.
 com.koverse.server.spark.master    local              If mode is 'master', specify what kind of master
-com.koverse.server.spark.dir       /opt/spark         The directory where spark is installed    
+com.koverse.server.spark.dir       /opt/spark         The directory where spark is installed
 =================================  =================  ===============
 
 Data Store Properties
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 These properties control how the server uses the backend Data Store. At
 this time, the only type of data store supported is Accumulo.
@@ -169,16 +167,16 @@ dataStoreSetting.instanceName           koverse            The Accumulo instance
 dataStoreSetting.username               koverse            The Accumulo user name
 dataStoreSetting.password               secret             The Accumulo password
 dataStoreSetting.zookeeperServers                          The ZooKeepers used for Accumulo
-dataStoreSetting.stringDelimiter        _                  Deprecated property, has no effect                        
+dataStoreSetting.stringDelimiter        _                  Deprecated property, has no effect
 dataStoreSetting.numberOfBuckets        4                  Deprecated property, has no effect
 dataStoreSetting.batchDurationSec       10                 Deprecated property, has no effect
 dataStoreSetting.clockDeltaBufferSec    5                  Deprecated property, has no effect
 ======================================  =================  ===============
 
 Email Sending Properties
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-These properties control how the server sends email. 
+These properties control how the server sends email.
 Note that this capability is diabled by default.
 
 =======================  ================================  ===============
@@ -195,12 +193,12 @@ smtpConnectionType       SSL                               The SMTP connection t
 =======================  ================================  ===============
 
 Kerberos Properties
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^
 
 These properties control the server's integration with Kerberos. Note that this
 integration is disabled by default.
 
-If you wish to integrate with Kerberos, be sure to use the following guidelines 
+If you wish to integrate with Kerberos, be sure to use the following guidelines
 to define the Kerberos user and keytab path.
 
 If the HADOOP_CONF_DIR environment variable is NOT set, these values will have no effect.
@@ -213,7 +211,7 @@ If you are NOT running in a Kerberized environment, still, do NOT leave these va
 com.koverse.server.kerberos.accumulo.disable    true                                    Disables Kerberos integration
 com.koverse.server.kerberos.user                koverse@TEST.KOVERSE.COM                The Kerberos user name/principal
 com.koverse.server.kerberos.keytab.path         /home/koverse/koverse.service.keytab    The path for the Kerberos keytab file
-com.koverse.server.kerberos.delay               3600                                    How often to run the kinit command, in seconds   
+com.koverse.server.kerberos.delay               3600                                    How often to run the kinit command, in seconds
 ==============================================  ======================================  ===============
 
 Koverse Web App Configuration
@@ -223,7 +221,7 @@ The following subsections list the koverse webapp properties along with their
 default value and a description.
 
 Core Properties
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 The properties control the core of the webapp operation.
 
@@ -250,7 +248,7 @@ com.koverse.webapp.jetty.tls.validateCerts          false                       
 
 
 Thrift Properties
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 The properties control the thrift-based communications of the webapp to the server.
 
@@ -277,9 +275,9 @@ com.koverse.server.thrift.notification.port   12332                       The TC
 ============================================  ==========================  ===============
 
 Metrics Properties
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
-These properties control how the webapp reports metrics, both locally to a log 
+These properties control how the webapp reports metrics, both locally to a log
 and to external systems like Ganglia
 
 ====================================================================  ===================  ===============
@@ -295,12 +293,12 @@ com.koverse.webapp.metrics.ganglia.reporter.clientHostnameOverride    koverse1:k
 ====================================================================  ===================  ===============
 
 Kerberos Properties
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 These properties control the webapp's integration with Kerberos. Note that this
 integration is disabled by default.
 
-If you wish to integrate with Kerberos, be sure to use the following guidelines 
+If you wish to integrate with Kerberos, be sure to use the following guidelines
 to define the Kerberos user and keytab path.
 
 If the HADOOP_CONF_DIR environment variable is NOT set, these values will have no effect.
@@ -312,5 +310,5 @@ If you are NOT running in a Kerberized environment, still, do NOT leave these va
 ==============================================  ======================================  ===============
 com.koverse.server.kerberos.user                koverse@TEST.KOVERSE.COM                The Kerberos user name/principal
 com.koverse.server.kerberos.keytab.path         /home/koverse/koverse.service.keytab    The path for the Kerberos keytab file
-com.koverse.server.kerberos.delay               3                                       How often to run the kinit command, in seconds   
+com.koverse.server.kerberos.delay               3                                       How often to run the kinit command, in seconds
 ==============================================  ======================================  ===============

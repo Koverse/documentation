@@ -1,8 +1,7 @@
-:tocdepth: 2
+.. _introduction:
 
-
-Introduction
-^^^^^^^^^^^^
+How Koverse Works
+=================
 
 The Koverse Data Lake gives organizations ubiquitous access to their data across the enterprise in a pre-packaged, ready to deploy platform that runs on well known, and usually pre-existing IT infrastructure.  Data scientists, analysts and business users can easily work together, quickly and iteratively to finally deliver to the organization the key data capabilities it needs.
 
@@ -11,15 +10,17 @@ The data lake is a powerful concept in enterprise IT infrastructure because it o
 Data Lakes allow this shift because they achieve economies of scale in the re-use of architecture, data, system resources, and analytics.  The Koverse Data Lake in a Box gives organizations all the benefits of a data lake, without the technical risk or significant up front investment.
 
 
-How Koverse Works
-^^^^^^^^^^^^^^^^^
+The Challenge
+-------------
+
 The biggest challenge of building a data lake is the huge integration associated with leveraging a range of complex infrastructure systems to generically address a range of use cases or leveraging these same technologies to hand craft specific solutions, making it difficult and expensive to operationalize multiple use cases.  Koverse has solved this problem in a mature and mission proven platform, building on an open source core including Spark, Accumulo and Hadoop.
 Koverse integrates data storage, tranformation, interrogation and security features to create a complete solution that finally allows organizations to see big successes with big data.
 
 
 
 Hold data at scale and in its raw form
-=======================================
+--------------------------------------
+
 The Koverse Data Lake is able to hold heterogeneous data in its raw form in a single system at any scale, enabling quick application to any use case.
 
 •	Koverse can simultaneously consume data in a variety of data formats from JSON, XML, CSV and can pull from a range of systems enabling a complete operational view.
@@ -34,7 +35,8 @@ The Koverse Data Lake is able to hold heterogeneous data in its raw form in a si
 
 
 Transforms the data at scale
-============================
+----------------------------
+
 The Koverse Data Lake can transform data in-situ using a variety of well known analytic frameworks and stores the output of these transforms in the exact same manner that it stores raw data, allowing analytic output to inherit all the functionality of the raw data.
 
 •	Koverse transforms data at scale and in-situ using well known MapReduce or Spark engines.
@@ -47,7 +49,8 @@ The Koverse Data Lake can transform data in-situ using a variety of well known a
 
 
 Interrogation and Search
-========================
+------------------------
+
 The Koverse Data Lake is able to serve thousands of users simultaneously with interactive responsiveness.
 
 •	Koverse provides an internet-scale query capability on all the data and content it 	holds by implementing an efficient and proven secure and scalable indexing technology.
@@ -62,7 +65,8 @@ The Koverse Data Lake is able to serve thousands of users simultaneously with in
 
 
 Security and Governance
-=======================
+-----------------------
+
 The Koverse Data Lake has best in breed multi-level security mechanisms allowing the use of sensitive data and multiple use cases of a single system, which enables the re-use of data, analytics and infrastructure
 
 
