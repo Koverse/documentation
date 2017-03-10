@@ -11,4 +11,4 @@ This guide covers:
 - Ingesting Data
 - Querying Data
 
-.. include:: /quickstart.rst
+.. include:: quickstart.rst

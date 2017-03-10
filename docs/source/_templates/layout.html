@@ -24,7 +24,6 @@
   {% endif %}
 
   {# CSS #}
-
   {# OPENSEARCH #}
   {% if not embedded %}
     {% if use_opensearch %}
@@ -72,7 +71,12 @@
         <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}"/>
     {%- endif %}
   {%- endblock %}
-  {%- block extrahead %} {% endblock %}
+
+  {% extends "!layout.html" %}
+  {% block extrahead %}
+      <link href="{{ pathto("_static/style.css", True) }}" rel="stylesheet" type="text/css">
+  {% endblock %}
+
 
   {# Keep modernizr in head - http://modernizr.com/docs/#installing #}
   <script src="{{ pathto('_static/js/modernizr.min.js', 1) }}"></script>
@@ -151,7 +155,7 @@
             {% block body %}{% endblock %}
            </div>
           </div>
-          {% include "footer.html" %}
+      
         </div>
       </div>
 

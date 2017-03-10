@@ -1,4 +1,3 @@
-:tocdepth: 2
 
 .. _usage-guide:
 
@@ -6,29 +5,6 @@
 Usage Guide
 ===========
 
-Obtaining Koverse
-^^^^^^^^^^^^^^^^^
-
-Downloading
------------
-
-A free evaluation version of Koverse can be downloaded from the Koverse website.
-Visit http://www.koverse.com
-
-Choose whether to download the RPM, for installation using the Red Hat Package Manager, or a Cloudera parcel for installation on CDH, the Cloudera Distribution for Hadoop.
-
-Installation and Configuration
-------------------------------
-
-
-To install Koverse, see detailed installation instructions for the RPM at :ref:`RpmInstallation`.
-For the Cloudera parcel, see :ref:`ClouderaParcelInstallation`.
-
-
-Using Koverse
-^^^^^^^^^^^^^
-
-Koverse is a server process and a web application that provides users with an interface for managing diverse, complex, and large data sets effectively.
 
 Key Terms and Concepts
 ----------------------
@@ -76,7 +52,7 @@ Once logged in successfully, you will now see elements of the Koverse user inter
 .. image:: /_static/UsageGuide/ui.png
 
 Navigation
------------
+^^^^^^^^^^
 
 The buttons on the left allow you to navigate between major sections of Koverse.
 Some of these may not be viewable if your user account does not have permission to perform certain actions.
@@ -86,14 +62,16 @@ The major sections are :
   :width: 80px
 
 Data
-~~~~
+^^^^
+
 Explore data sets that are currently managed by Koverse, via search and viewing summary information. Settings for data sets and audit events can also be seen and changed here.
 
 .. image:: /_static/UsageGuide/addButton.png
   :width: 80px
 
 Add
-~~~
+^^^
+
 Add a new data set to Koverse from an existing data source.
 If you do not have permission to add a new data set to Koverse you will not see this button.
 
@@ -101,7 +79,8 @@ If you do not have permission to add a new data set to Koverse you will not see 
   :width: 80px
 
 Transforms
-~~~~~~~~~~
+^^^^^^^^^^
+
 Transform are distributed processing jobs that can be used to clean up records in a data set, summarize or aggregate information in a data set, or combine two or more data sets to create a new data set.
 If you don't have permissions to create or run transforms you will not see this tab.
 
@@ -109,21 +88,24 @@ If you don't have permissions to create or run transforms you will not see this 
   :width: 80px
 
 Account
-~~~~~~~
+^^^^^^^
+
 Access your user information, and make changes such as setting a new password.
 
 .. image:: /_static/UsageGuide/adminButton.png
   :width: 80px
 
 Admin
-~~~~~
+^^^^^
+
 Add new users and groups to the built-in Koverse user management database, upload extensions to Koverse called 'Add-ons', and view system wide audit logs.
 If you don't have permissions to manage users and groups, upload add-ons, or view audit logs you will not see this tab.
 
 Next we'll look at the elements of each of the sections we just described.
 
 Viewing Available Data Sets
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 The 'data view' the first view seen after logging into Koverse.
 On the left you will see a list of data sets in alphabetical order.
@@ -160,7 +142,7 @@ Finally we have some 'metadata' about this data set, including the total number 
 
 
 Data Tabs
----------
+^^^^^^^^^
 
 There are four tabs on the data set detail page:
 
@@ -181,10 +163,9 @@ Audit
 
 We discuss each of these tab pages next.
 
-Example
-~~~~~~~
 
-If you are using a new installation of Koverse, there will be no data sets listed in the list on the left.
+
+.. note:: If you are using a new installation of Koverse, there will be no data sets listed in the list on the left.
 
 To load some example data sets, see the `Adding a New Data Set`_ section and return here.
 
@@ -224,10 +205,8 @@ Or I may be interested in finding out what fields contain customer IDs so I can 
 If I see that a field isn't present in all the records, or of not 100% of the values are of the same time, it may be because there are data quality or consistency issues, or it may be another feature of the data that may need to be considered.
 For example, not all Twitter messages contain hashtags, and I can get a sense for what proportion do from the information in this overview.
 
-Example
--------
 
-After loading the first example data set as described in the `Adding a New Data Set`_ section, you should be able to select the 'Bank Security Incidents' data set to see a list of attributes.
+For example after loading the first example data set as described in the `Adding a New Data Set`_ section, you should be able to select the 'Bank Security Incidents' data set to see a list of attributes.
 
 We may not know much about the information contained in a data set and this view helps us figure out what the likely meaning of each attribute is.
 
@@ -265,7 +244,8 @@ For a description of valid search syntax, see the section `Search Syntax`_ for d
 To get all of the results we can click the 'Download Search Results' button as described in the `Downloading Search Results`_ section.
 
 Search Syntax
--------------
+^^^^^^^^^^^^^
+
 Koverse supports simple searches as well as some syntax to allow for more precise searches.
 
 Users can simply type in terms and retrieve results that match all the terms.
@@ -285,7 +265,7 @@ Searching for records that contain a term in a particular field, for example, to
 	name: mary
 
 Combining Terms
-~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^
 
 Searching for records that contain a term in one field and another term in another field.
 This is like requesting records that match the first clause, AND the second::
@@ -308,7 +288,7 @@ To search for a two-word phrase within a single field, use quotes around the two
 The preceding query would search for the entire string "jane doe" in the name field and the word "shepherd" in any field.
 
 Searching Ranges
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 To search for records that contain a value within a range, use square brackets and word 'TO'::
 
@@ -375,10 +355,10 @@ Searching a single range does not require that a composite index be built.
 To query multiple ranges at once or a range and other terms, a composite index must be built.
 These types of queries are described in the following section.
 
-For additional information on Composite Indexes, please refer to: :ref:`CompositeIndexes`
+For additional information on Composite Indexes, please refer to :ref:`CompositeIndexes`
 
 Combining Ranges
-~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^
 
 Koverse supports querying for multiple ranges or ranges and single terms simultaneously but requires that composite indexes be built first before such queries can be executed.
 This is because composite indexes reduce the work done at query time to just a few short scans without having to do any set operations so queries with multiple ranges can return quickly, without impacting other users of the system.
@@ -411,10 +391,8 @@ JSON is a good choice for records that have complex values such as lists and lis
 
 .. image:: /_static/UsageGuide/downloadSearchResults.png
 
-Example
--------
 
-By clicking the 'Download Results' button on our search of Velma's trade transactions we can choose to download all the results as either a CSV file or a JSON file.
+For example by clicking the 'Download Results' button on our search of Velma's trade transactions we can choose to download all the results as either a CSV file or a JSON file.
 Choose CSV and click 'Download'.
 
 Your browser will start downloading a file that starts with the phrase 'bank_trade_transactions' and ends in ''.csv'.
@@ -482,7 +460,7 @@ To delete a data set, removing it completely from the system, click the 'Delete 
 
 
 Data Set History
-----------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A history of the processing jobs that have been applied to this data set can be seen by clicking on the History tab on the Settings page.
 
@@ -497,13 +475,13 @@ This stack trace can help you diagnose what caused the error so you can resolve 
 It can also be sent to Koverse Support for help diagnosing and fixing the error.
 
 Data Set Permissions
---------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section shows a list of groups and the specific permissions those groups have for this data set.
 See `Data Set Security and Access Control`_ for details on controlling access to a data set.
 
 Indexing Settings
------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The indexing settings tab makes it easy to configure which attributes of a data set are searchable.
 By default, Koverse indexes all attributes found.
@@ -521,7 +499,7 @@ Changing the set of attributes indexed will cause a background re-indexing job t
 When this job is complete the index will have been updated to reflect these settings and any newly imported data will be indexed according to these settings.
 
 Masking Settings
-----------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section shows a list of attributes within this data set, whether each attribute is masked, and any groups that are allowed to see the original values of a masked attribute.
 See `Data Set Security and Access Control`_ for details on controlling masking settings.
@@ -549,8 +527,8 @@ For data sets with more than about a hundred million records or so it may not be
 
 .. include:: /snippets/addingdata1.rst
 
+
 Step 1 (alternative method). Uploading files from desktop
----------------------------------------------------------
 
 Instead of connecting to an external data source, you can upload files directly from your browser into a data set in Koverse.
 To do this, click on 'Upload Files' on the Add Data Set page.
@@ -589,7 +567,7 @@ See the section on `Providing an XML Transform (XSLT) to import XML data`_ for d
 Go to `Viewing Import Progress`_ for more details.
 
 Configuring a Schedule
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To add a schedule, choose 'On a schedule' and specify the date that the schedule starts, how often to repeat, and an optional end date.
 Click 'Add Schedule' to add the schedule.
@@ -605,10 +583,8 @@ You can now explore and search the data set as described in the sections `Explor
 
 To grant access to other groups of users, see the section `Data Set Security and Access Control`_.
 
-Example
-~~~~~~~
 
-When our import of bank security incidents is done, you will see an overview of each attribute, including 'causeType', 'impact', etc.
+For example when our import of bank security incidents is done, you will see an overview of each attribute, including 'causeType', 'impact', etc.
 
 Once this is done we can load the other four files into four additional data sets, giving each data set the name listed in the `Step 1. Selecting a source type`_ section.
 
@@ -629,7 +605,7 @@ Note that your user account must be a member of at least one group with the perm
 Once on the Add Transform page, you will see a drop-down menu for selecting one or more data sets that will provide input records to this transform, an input for specifying a new data set or selecting an existing data set that will store the output records from this transform, and a list of available transform types.
 
 Selecting Data Sets
--------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Select one or more data sets to provide input records to this transform.
 Note that not all transforms are designed to operate on more than one input data set.
@@ -639,7 +615,8 @@ This makes it easy to combine data sets with information of the same general typ
 Some transforms, like the Spark SQL Transform, are capable of joining two data sets that have differing schemas.
 
 Configure Transform Parameters
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Selecting a transform type will show a description of what this transform does as well as a list of parameters used to configure this transform.
 Read the transform description to determine how a transforms is designed to work and what if any expectations it may have for the data sets used as input.
 
@@ -673,10 +650,8 @@ You will be navigated to the data set detail page, on the settings tab, of the o
 The new transform will be listed in the list of inputs to this data set.
 You can run or edit a transform from this table.
 
-Example
-~~~~~~~
 
-We'll combine some of our synthetic bank data to create a weak 'Key Risk Indicator' or KRI for short.
+For example we'll combine some of our synthetic bank data to create a weak 'Key Risk Indicator' or KRI for short.
 
 Let's suppose that our traders are supposed to do trades while under the supervision of a manager.
 We may decide that it might be interesting to see if any traders are at risk for having done trades while a manager is not around, say after hours after the manager has left.
@@ -707,7 +682,7 @@ You will now be taken to the detail view for the output data set, 'Bank After Ho
 We'll walk through running this transform in the next section.
 
 Running a Transform
--------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If a transform is set to run on a schedule, it will be automatically started according to the schedule.
 If a transform is set to run automatically, and there is already data in the input data sets, it will automatically run after saving it.
@@ -731,10 +706,8 @@ If available, a complete diagnostic for the cause of the error will be shown as 
 This stack trace can help you diagnose what caused the error so you can resolve any problems that caused it.
 It can also be sent to Koverse Support for help diagnosing and fixing the error.
 
-Example
-~~~~~~~
 
-To run our example transform, scroll to the 'Inputs' table on the data set details page, on the Settings tab.
+For example to run our example transform, scroll to the 'Inputs' table on the data set details page, on the Settings tab.
 You should see a single transform of type 'sparkSqlTransform'.
 
 Click on the circular arrow to run this transform.
@@ -768,7 +741,8 @@ This concludes the synthetic bank data examples.
 In the `Interactive Analytics`_ section we have a few more examples of working with data using some data science tools.
 
 Troubleshooting a Transform
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Sometimes a transform is simply misconfigured.
 In this case you may see an error message and diagnostic information associated with a job for a transform to the effect that there is a misconfiguration or in some cases a syntax error.
 To fix a misconfiguration, click on the Data Flow tab for a data set and click the pen icon next to the transform you wish to edit.
@@ -783,7 +757,8 @@ In these cases a transform may simply need to be re-run.
 This can be done by clicking the circular arrow icon next to a transform in the Data Flow tab.
 
 Viewing Transform Output
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Once a transform job has completed successfully, as indicated by the success status of a transform job in the History table on the Settings tab of the output data set details page, a few background jobs will run to index and profile the new data in this data set.
 
 You can then search the data in this data set and explore attribute information as described in the `Exploring a Data Set`_ and `Search`_ sections.
@@ -793,12 +768,13 @@ To grant more permissions so other users can view this data, see the section, `D
 
 
 Interactive Analytics
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to running transforms to process data sets at scale, Koverse also enables users to perform interactive analysis of data sets at scale via popular tools such as Apache Spark and Jupyter Notebook.
 
 Using Python with Koverse
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Python is a popular interpreted programming language.
 
 Koverse ships with a Python client to allow Python scripts to access the Koverse API.
@@ -825,7 +801,7 @@ The Koverse Python client can then be used in Python scripts by importing the ko
  >>> from koverse import client
 
 Connecting to the Koverse Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Python client can connect to the hostname of the Koverse Server (note: this is not the address of the Koverse Web App)::
 
@@ -852,7 +828,7 @@ If the authentication is unsuccessful an exception is raised::
  koverse.thriftgen.ttypes.TKoverseException: TKoverseException(_message='No authenticated user found')
 
 Querying Koverse Data Sets
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Koverse Python client can be used to interactively query data sets, fetch samples, create data sets and run transforms.
 
@@ -903,7 +879,7 @@ Clients can also request that the Koverse Server return only a subset of the fie
   {'Close': 111.5}]
 
 Fetching Data Set Samples
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Because Python runs on a single machine, and because Koverse data sets may contain a large volume of records, it can be useful to
 work with a sample of a data set's records, especially when building statistical models designed to be trained on a representative sample.
@@ -917,7 +893,7 @@ Koverse maintains representative samples for all data sets by default. These sam
 
 
 Uploading resource files
-~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 One advantage of Python is that is has a number of well supported libraries for doing
 sophisticated data analysis , such as numpy (http://www.numpy.org), scipy (http://www.scipy.org),
@@ -959,7 +935,7 @@ Now we can use it to score all the daily changes in price to look for anomalous 
 We'll do that in the next section.
 
 Running a Python Script as a Transform
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Koverse supports running Python scripts in Transforms. These transforms are simple map-only transforms.
 
@@ -1073,7 +1049,7 @@ The Python client can also be used in the context of Python tools such as iPytho
 Simply use the same methods described above in iPython Notebooks.
 
 Using the Koverse Spark Data Source with Interative Tools
----------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Koverse Spark Data Source provides an easy way to load a Koverse Data Set as a Spark DataFrame for interative analysis in Spark shells, including pyspark, spark-shell, and sparkR. To reference the Koverse Spark Data Source package, use the following coordinates::
 
@@ -1088,13 +1064,13 @@ This package can be added to Spark using the :code:`--packages` command line opt
 Alternatively you can download the koverse-spark-datasource JAR file from the Maven repository and reference it with the :code:`--jars` option.
 
 Options
-~~~~~~~
 
 - :code:`hostname`: The FQDN of the server running the koverse-server process
 - :code:`apiToken`: A Koverse API Token that will have the required access to the Data Set being loaded. You can create API Tokens via the Koverse Admin UI. Use the API Token UUID, not its name.
 
 PySpark
-~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 An example of starting the Python Spark shell is seen below::
 
   $ pyspark --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
@@ -1106,7 +1082,8 @@ Note that at this point the SparkContext :code:`sc` and the SQLContext :code:`sq
 Now you have access to the Koverse Data Set via the Spark DataFrame API.
 
 Spark Shell (Scala)
-~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 An example of starting the Scala Spark shell is seen below::
 
  $ spark-shell --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
@@ -1116,7 +1093,8 @@ Like with the PySpark shell, at this point the SparkContext :code:`sc` and the S
  scala> val df = sqlContext.read.format("com.koverse.spark").option("hostname", "<your koverse fqdn>").option("apiToken", "<your api token>").load("<your data set name>")
 
 SparkR
-~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 An example of starting the R Spark shell is seen below. Note, this has the prerequisite of the R runtime already being installed::
 
   $ sparkR --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
@@ -1126,12 +1104,11 @@ To load a Koverse Data Set into a DataFrame::
   df <- read.df(sqlContext, "com.koverse.spark", hostname="<your koverse fqdn>", apiToken="<your api token>", path="<your data set name")
 
 Analyzing Data Sets with Jupyter Notebook
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 `Jupyter <http://jupyter.org/>`_ is a development tool that allows users to create notebooks containing comments and code using different programming languages/environments call kernels. This example will show how to use a Jupyter notebook that leverages the Koverse Spark Data Source in Python. Juypter requires Python 2.7 or Python 3.3+. For simplicity, this example shows how to install the required Python runtime and Jupyter via `Anaconda <https://www.continuum.io/downloads>`_ on a single node. For multi-node clusters, the required Python runtime must be available throughout your cluster so Spark can use it when executing your code.
 
 Setup
-~~~~~
 
 * Download the Anaconda installer for Python 2.7 https://repo.continuum.io/archive/Anaconda2-4.2.0-Linux-x86_64.sh
 * Run the installer. This does not need to be done by the root user :code:`bash Anaconda2-4.2.0-Linux-x86_64.sh` Follow the prompts and choose the location of the install
@@ -1152,13 +1129,13 @@ Setup
 .. image:: /_static/UsageGuide/jupyterPySpark.png
 
 Analyzing Data Sets with Apache Zeppelin
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Apache Zeppelin is a notebook tool that allows developers to create code and comments in an interactive manner without
 requiring a full development environment.  It supports a variety of interpreters for different programming languages.  This
 documentation will detail how to use Apache Zeppelin with Scala to analyze data in Koverse via the Koverse Spark Data Source.
 
 Setup
-~~~~~
 
 * Apache Spark 1.6 is required by Zeppelin to work with the Koverse Spark Data Source, so this will need to be available on your cluster.
 * The Koverse Spark Data Source is not distributed as part of the core product, so you will need to download the correct JAR file for your version of Koverse from http://nexus.koverse.com/nexus/content/repositories/releases/com/koverse/koverse-spark-datasource/
@@ -1221,7 +1198,7 @@ If exporting to a file system, you can choose if you want to export to a single 
 By default, "Export to a single file" is checked to fit with the most basic use case of requiring a single output file.
 If this checkbox is not checked, the distributed nature of the export process will cause multiple output files to be created, all within a single folder (one file for each Hadoop Mapper task).
 If the checkbox is checked, all Hadoop Mapper tasks will feed their output to a single Hadoop Reducer task, which writes the single output file.
-Because of this, exports will execute more quickly if "Export to a single file" is not checked. 
+Because of this, exports will execute more quickly if "Export to a single file" is not checked.
 So, it should be unchecked if performance is of more concern and having many output files fits your requirements.
 
 
@@ -1231,7 +1208,7 @@ Once the settings are all configured, click Save.
 Once you click save you will see the newly configured export on the right in the data flow diagram.
 
 Running an Export
------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If the export is configured to run on a schedule it will automatically start according to the schedule.
 To run an export manually, you can click on the circular arrow icon next to an export.
@@ -1266,7 +1243,7 @@ To work with the permissions for a data set click on the 'Data' button in the pr
 Select the data set of interest from the list, click on the Settings tab and then click the Permissions tab.
 
 Making a Data Set Private
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A newly created data set is controlled by the user who created it, known as the 'responsible user'.
 By default this user is the only user that can see that this data set exists, and this user can perform all actions on the data set.
@@ -1277,7 +1254,7 @@ Do this by clicking the red minus icon under the 'Remove' column in the permissi
 .. image:: /_static/UsageGuide/setPermissions.png
 
 Making a Data Set Available to a Limited Group of Users
--------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To grant specific access to a limited group of users, first add the group that you wish to allow access to by typing in the name of the group in the input box labeled 'Add Group', if the group does not already appear in the permissions list.
 
@@ -1298,14 +1275,14 @@ Manage Configuration
   Members of the group can change the name, indexing options, and other settings for this data set.
 
 Making a Data Set Available to Everyone
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Koverse ships by default with a group called 'Everyone', which all new users are added to when they are created.
 
 To make a data set available to everyone, simply add the 'Everyone' group to the permissions table and grant the actions desired to this group.
 
 Masking Specific Data Set Attributes
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Koverse allows data set owners to mask specific attributes so that their values are not visible in search results or downloads.
 
@@ -1334,7 +1311,7 @@ Values of masked attributes are not masked when the data set is processed in tra
 If an attribute needs to be completely removed, a new data set should be created via a transform to create a new data set without particular attributes.
 
 Connecting Data to Tableau via the Web Data Connector
------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Koverse can easily send data to the Tableau Desktop Application via the Koverse Web Data Connector.
 
@@ -1359,7 +1336,7 @@ Appendix
 ^^^^^^^^
 
 Providing an XML Transform (XSLT) to import XML data
-----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 XML can be imported into Koverse as any file can.
 To parse XML data into proper Koverse records, an XSLT must be used to convert XML into Koverse Record XML.
