@@ -129,6 +129,7 @@ Then grant the 'koverse' Accumulo user the required permissions to manage its ta
  root@accumulo> grant -s System.DROP_TABLE -u koverse
  root@accumulo> grant -s System.ALTER_TABLE -u koverse
  root@accumulo> grant -s System.SYSTEM -u koverse
+ root@accumulo> grant -s System.ALTER_USER -u koverse
 
 If using Kerberos with Accumulo you can do this via the following commands.
 Creating a koverse user in the Accumulo shell is not required, but a Kerberos principal for Koverse should have been created.
@@ -152,6 +153,7 @@ Then grant permissions in the shell::
  accumulo-Hostname@MY.HOSTNAME.COM@accumulo> grant -s System.DROP_TABLE -u koverse/my.hostname.com@MY.HOSTNAME.COM
  accumulo-Hostname@MY.HOSTNAME.COM@accumulo> grant -s System.ALTER_TABLE -u koverse/my.hostname.com@MY.HOSTNAME.COM
  accumulo-Hostname@MY.HOSTNAME.COM@accumulo> grant -s System.SYSTEM -u koverse/my.hostname.com@MY.HOSTNAME.COM
+ accumulo-Hostname@MY.HOSTNAME.COM@accumulo> grant -s System.ALTER_USER -u koverse/my.hostname.com@MY.HOSTNAME.COM
  accumulo-Hostname@MY.HOSTNAME.COM@accumulo> grant -s System.OBTAIN_DELEGATION_TOKEN -u koverse/my.hostname.com@MY.HOSTNAME.COM
 
 Note that an additional permission, System.OBTAIN_DELEGATION_TOKEN, is required.
