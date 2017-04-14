@@ -102,10 +102,10 @@ In this case, we return a list of SourceState objects, of which we have only one
 
 Other StateStringOperators can be used, with the following behaviors::
 
-    ALL - store all string values associated with a given key, including duplicates if any
-	UNIQUE - store only the unique set of values associated with a key, removing any duplicates
-	MAX - store only the one value that sorts last among all values associated with a key
-	MIN - store only the one value that sorts first among all values associated with a key
+ ALL - store all string values associated with a given key, including duplicates if any
+ UNIQUE - store only the unique set of values associated with a key, removing any duplicates
+ MAX - store only the one value that sorts last among all values associated with a key
+ MIN - store only the one value that sorts first among all values associated with a key
 
 Currently only String values are supported, but sources may be able to do what they need with dates by converting to a String format such as 'YYYYMMDD HH:mm:SS' so that the String representation of dates can be sorted in time order. This technique could be used for other non-String types as well.
 
