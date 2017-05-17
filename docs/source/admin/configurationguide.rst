@@ -43,6 +43,7 @@ usersCanEditAccountDetails                               true                   
 temporaryWorkingDirectory                                /var/tmp                                            Deprecated property, has no effect
 serializationMaxBufferSize                               104857600                                           Buffer size in bytes to use for Kryo serialization
 com.koverse.server.jmx.client.url                                                                            Deprecated property, has no effect
+com.koverse.server.dataset.attributes.values.hide        false                                               Hide the values for Data Set overviews/attributes or not
 =======================================================  ==================================================  ===============
 
 Database Properties
