@@ -45,6 +45,7 @@ serializationMaxBufferSize                                     104857600        
 com.koverse.server.jmx.client.url                                                                                  Deprecated property, has no effect
 com.koverse.server.manager.notifications.intervalInSeconds     60                                                  How often (in seconds) notifications that haven't been retrieved are checked for expiration
 com.koverse.server.manager.notifications.expirationInSeconds   600                                                 How long (in seconds) a notification can go unretrieved until it expires
+com.koverse.server.dataset.attributes.values.hide              false                                               Hide the values for Data Set overviews/attributes or not
 =============================================================  ==================================================  ===============
 
 Database Properties
