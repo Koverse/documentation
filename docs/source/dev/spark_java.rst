@@ -1,7 +1,7 @@
 Spark Java API with Examples
 ----------------------------
 
-Koverse 1.4 supports Transforms written using the Apache Spark API. Koverse APIs leverages much of the Spark primitive abilities that can be applied by writing a custom Transform or use an existing Transform provided by the Koverse API.
+Koverse now supports Transforms written using the Apache Spark API. Koverse APIs leverages much of the Spark primitive abilities that can be applied by writing a custom Transform or use an existing Transform provided by the Koverse API.
 
 ``public class MySparkSqlTransform extends JavaSparkSqlTransform {``
 

@@ -8,6 +8,16 @@ Koverse now supports the Apache Spark cluster computing framework through a set 
 
 See the :ref:`Addons` section for information about building an addon that contains a class that uses the Koverse Spark API.
 
+Note that by default, the RDDs that Koverse provides to your transform 
+may have a relatively small number of partitions. 
+This can result in decreased performance for anything but very simple processing algorithms.
+Specifically, the RDD will be partitioned by the number of record batches that your koverse server is configured to use.
+
+Therefore, you may want to repartition the RDDs that Koverse provides you in order to increase performance.
+Note that how many partitions to use is highly dependent on the algorithm that
+you are creating in your transform, you may need to experiment with the number of partitions
+you use to maximize performance.
+
 The following is a high-level outline of the Koverse Spark API framework:
 
 Interface SparkTransform
