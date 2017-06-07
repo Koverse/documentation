@@ -16,6 +16,7 @@ Developer Documentation
    dev/export.rst
    dev/export_file_format.rst
    dev/sinks.rst
+   dev/webapp-record-converters.rst
    dev/rest_api.rst
    dev/pig_scripts.rst
    dev/third_party_auth.rst
