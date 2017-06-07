@@ -487,7 +487,7 @@ Set the following properties in koverse-server.properties with the appropriate k
 Koverse Aggregation Library Distribution
 ----------------------------------------
 
-In order to utilize the :ref:`aggregation <AggregationIntro>` functions of Koverse, the koverse-aggregation-<VERSION>.jar needs to be deployed to a location where Accumulo can load it.
+In order to utilize the aggregation functions of Koverse, the koverse-aggregation-<VERSION>.jar needs to be deployed to a location where Accumulo can load it.
 The default location would be in $ACCUMULO_HOME/lib/ext on all Accumulo tablet servers.
 This JAR file can be found on the Koverse Server in */opt/koverse-server/lib/koverse-aggregation-<VERSION>.jar*
 
