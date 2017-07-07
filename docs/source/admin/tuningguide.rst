@@ -43,7 +43,7 @@ These would go in /etc/spark/conf/spark-defaults.conf:
 
 * spark.dynamicAllocation.enabled: true          // dynamically add/remove executors as needed by the job
 * spark.shuffle.service.enabled: true            // required by dynamicAllocation
-* spark.executor.cores: 1                        // each executor can use 2 CPU cores
+* spark.executor.cores: 4                        // each executor can use 4 CPU cores
 * spark.executor.memory: 32g                      // leave room for overhead between this and container
 * spark.driver.memory: 2g                        // increase from the default 512m
 
