@@ -81,37 +81,39 @@ The HA functionality may require a new version of the Koverse Cloudera Service D
 * Cloudera Manager should be restarted to activate the new CSD.
 * Once the new CSD is activated, you can now assign roles to the standby instance that will take over in case the active instance fails.  It is recommended that all of the standby roles be on the same instance to simplify the failover dependencies.
 * To assign these roles, navigate to the Koverse Service -> Instances screen in Cloudera Manager and click the “Add Role Instances” button:
-.. image:: /_static/OpsGuide/image1.png
+	.. image:: /_static/OpsGuide/image1.png
 * You now will be presented with the option to select which hosts to assign the standby roles to.  It is recommended that all of the standby roles be on the same instance to simplify the failover dependencies.
-.. image:: /_static/OpsGuide/image2.png
+	.. image:: /_static/OpsGuide/image2.png
 * Once roles are assigned, you will need to re-deploy client changes to the host and possibly restart the Koverse service.  Cloudera Manager should detect which changes need to be made and display the appropriate prompts.
-.. image:: /_static/OpsGuide/image3.png
+	.. image:: /_static/OpsGuide/image3.png
 * After you proceed through the re-deployment process, the Koverse Standby processes will need to be started.  This does not make the standby instance take over for the active Koverse service, but will indicate if the standby instance is available to be activated.
-.. image:: /_static/OpsGuide/image4.png
-.. image:: /_static/OpsGuide/image5.png
+	.. image:: /_static/OpsGuide/image4.png
+	.. image:: /_static/OpsGuide/image5.png
 * After the standby instances start, Koverse should now be running in a warm high-availability capacity and the standby instance can be manually activated as detailed below.
 
 **Failover Procedure**
 
 This procedure assumes that there is one Koverse node that is normally active and runs the Koverse Server and Koverse Web Server services.  It also assumes that there is a second node that runs the Koverse Server Standby and the Koverse Web Server Standby instances.
+
 * Ensure that the Koverse Server and Koverse Web Server are stopped.  To do this manually, navigate to the Koverse Service -> Instances and select both the Koverse Server and Koverse Web Server.  Then perform the Stop action.
-.. image:: /_static/OpsGuide/image6.png
-.. image:: /_static/OpsGuide/image7.png
+	.. image:: /_static/OpsGuide/image6.png
+	.. image:: /_static/OpsGuide/image7.png
 * Navigate back to Koverse Service -> Status and from the Actions drop down, select “Start Standby Server”
-.. image:: /_static/OpsGuide/image8.png
+	.. image:: /_static/OpsGuide/image8.png
 * From the Koverse Service -> Status screen, use the Actions drop down to select “Start Standby Web Server”
-.. image:: /_static/OpsGuide/image9.png
+	.. image:: /_static/OpsGuide/image9.png
 * The standby processes may take 5-10 minutes to start.  After they have finished starting, you should now be able to access the Koverse web application on the Standby Node.
 
 **Failback Procedure**
 
 Once the active node is available again, the following procedure can be followed to de-activate the standby instance and re-active the active instance.
+
 * Navigate to Koverse Service -> Status and use the Actions drop-down to select the “Stop Standby Web Server” command.
-.. image:: /_static/OpsGuide/image10.png
+	.. image:: /_static/OpsGuide/image10.png
 * From the Koverse Service -> Status screen, use the Actions drop-down to select the “Stop Standby Server” command.
-.. image:: /_static/OpsGuide/image11.png
+	.. image:: /_static/OpsGuide/image11.png
 * Navigate to the Koverse Service -> Instances screen and select the Koverse Server and Koverse Web Service instances.  Then use the Actions drop down to select “Start”
-.. image:: /_static/OpsGuide/image12.png
+	.. image:: /_static/OpsGuide/image12.png
 * It will take 5-10 minutes for the processes to restart on the Active node.  After this, the Koverse web interface will be available at the original URL again.
 
 **Notes**
