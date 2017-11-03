@@ -7,5 +7,5 @@
 
 [build]
   base    = "api-docs"
-  publish = "public"
+  publish = "api-docs/public"
   command = "npm run build"
