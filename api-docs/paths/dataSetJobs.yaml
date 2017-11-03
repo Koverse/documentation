@@ -1,0 +1,13 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+get:
+  summary: Returns all jobs for a data set
+  operationId: findDataSetJobs
+  tags: ["DataSets", "Jobs"]
+  responses:
+    default:
+      description: Returns the jobs for a data set
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSetJob"

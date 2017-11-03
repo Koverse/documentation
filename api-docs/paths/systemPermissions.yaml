@@ -1,0 +1,12 @@
+get:
+  description: Returns the available system permissions
+  operationId: systemPermissions
+  tags: ["System", "Permissions"]
+  responses:
+    default:
+      description: Returns the user data
+      schema:
+        type: array
+        items:
+          permission:
+            type: string

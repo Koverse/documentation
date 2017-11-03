@@ -1,0 +1,16 @@
+post:
+  summary: Logs in the user
+  operationId: loginUser
+  tags: ["System"]
+  parameters:
+    - name: login
+      in: body
+      description: login object
+      required: true
+      schema:
+        $ref: '../api.yaml#/definitions/login'
+  responses:
+    default:
+      description: Returns the user data
+      schema:
+        $ref: "../api.yaml#/definitions/user"

@@ -1,0 +1,24 @@
+type: object
+required:
+  - displayName
+  - description
+  - typeId
+  - implementationClassName
+  - version
+  - disabled
+properties:
+  id:
+    type: integer
+    format: int64
+  displayName:
+    type: string
+  description:
+    type: string
+  typeId:
+    type: string
+  implementationClassName:
+    type: string
+  version:
+    type: string
+  disabled:
+    type: boolean

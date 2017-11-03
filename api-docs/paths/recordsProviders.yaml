@@ -1,0 +1,11 @@
+get:
+  summary: Returns all records providers
+  operationId: findRecordsProviders
+  tags: ["Record Providers"]
+  responses:
+    default:
+      description: Returns the matching records providers
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/recordsProvider"

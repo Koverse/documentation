@@ -1,0 +1,11 @@
+get:
+  summary: Returns all export file formats
+  operationId: findExportFileFormats
+  tags: ["Exports"]
+  responses:
+    default:
+      description: Returns the export file formats
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/exportFileFormat"

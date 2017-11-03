@@ -1,0 +1,9 @@
+get:
+  summary: Returns the usage metrics report
+  operationId: getUsageMetricsReport
+  tags: ["System"]
+  responses:
+    default:
+      description: Returns the usage metrics report
+      schema:
+        $ref: "../api.yaml#/definitions/usageMetricsReport"

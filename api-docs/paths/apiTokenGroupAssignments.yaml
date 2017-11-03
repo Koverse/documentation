@@ -1,0 +1,44 @@
+get:
+  description: Returns all group Assignments
+  operationId: findGroupAssignments
+  tags: ["API Tokens"]
+  responses:
+    default:
+      description: Returns the matching group Assignments
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/apiTokenGroupAssignment"
+
+delete:
+  description: Deletes all group Assignments
+  operationId: deleteGroupAssignments
+  tags: ["API Tokens"]
+  responses:
+    default:
+      description: Returns the group assignments that were deleted
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/apiTokenGroupAssignment"
+
+post:
+  description: Creates a new group assignment
+  operationId: addLabelAssignment
+  tags: ["API Tokens"]
+  parameters:
+    - name: apiTokenGroupAssignment
+      in: body
+      description: The group assignment to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/apiTokenGroupAssignment"
+  responses:
+    201:
+      description: Returns the newly-added group assignment
+      schema:
+        $ref: "../api.yaml#/definitions/apiTokenGroupAssignment"
+      headers:
+        Location:
+          type: string
+          description: The URL of the newly-added group Assignment

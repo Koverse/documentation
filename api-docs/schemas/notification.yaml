@@ -1,0 +1,19 @@
+type: object
+required:
+  - id
+  - type
+  - text
+  - createdAt
+properties:
+  id:
+    type: string
+  type:
+    type: string
+    enum:
+      - success
+      - warn
+  text:
+    type: string
+  createdAt:
+    type: integer
+    format: int64

@@ -1,0 +1,39 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/apiTokenGroupAssignmentId"
+
+get:
+  description: Returns a group assignment by id
+  operationId: findLabelById
+  responses:
+    default:
+      description: Returns the group assignment data
+      schema:
+        $ref: "../api.yaml#/definitions/apiTokenGroupAssignment"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that the group assignment was last modified
+
+delete:
+  description: Deletes a single group assignment based on the id supplied
+  operationId: deleteLabelAssignment
+  responses:
+    default:
+      description: Returns the group assignment that was deleted
+      schema:
+        $ref: "../api.yaml#/definitions/apiTokenGroupAssignment"
+
+put:
+  description: Updates a group assignment by id
+  parameters:
+    - name: apiTokenGroupAssignment
+      in: body
+      description: The updated group assignment info
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/apiTokenGroupAssignment"
+  responses:
+    default:
+      description: Returns the updated group assignment data
+      schema:
+        $ref: "../api.yaml#/definitions/apiTokenGroupAssignment"

@@ -1,0 +1,13 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+get:
+  summary: Returns all data set permissions
+  operationId: findDataSetAttributeNames
+  tags: ["DataSets", "Attributes"]
+  responses:
+    default:
+      description: Returns the matching data set attribute names
+      schema:
+        type: array
+        items:
+          type: string

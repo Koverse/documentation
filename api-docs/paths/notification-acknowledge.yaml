@@ -1,0 +1,10 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/notificationId"
+get:
+  description: Signifies the notifcation has been ackowledged
+  operationId: acknowledgeNotification
+  responses:
+    default:
+      description: Signifies the notifcation has been ackowledged
+      schema:
+        $ref: "../api.yaml#/definitions/notification"

@@ -1,0 +1,14 @@
+get:
+  summary: Query by using the common Syntax
+  operationId: queryCommon
+  tags: ["Query"]
+  parameters:
+    - queryString:
+        type: string
+  responses:
+    default:
+      description: Returns the query results
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSetResult"

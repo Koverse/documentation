@@ -1,0 +1,48 @@
+get:
+  summary: Returns all data sets
+  operationId: findDataSets
+  tags: ["DataSets"]
+  responses:
+    default:
+      description: Returns the matching data sets
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSet"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that a data set was last modified
+
+delete:
+  summary: Deletes all data sets
+  operationId: deleteDataSets
+  tags: ["NOT IMPLEMENTED YET", "DataSets"]
+  responses:
+    default:
+      description: Returns the data sets that were deleted
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSet"
+
+post:
+  summary: Creates a new data set
+  operationId: addDataSet
+  tags: ["DataSets"]
+  parameters:
+    - name: dataSet
+      in: body
+      description: The data set to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/dataSet"
+  responses:
+    201:
+      description: Returns the newly-added data set
+      schema:
+        $ref: "../api.yaml#/definitions/dataSet"
+      headers:
+        Location:
+          type: string
+          description: The URL of the newly-added data set

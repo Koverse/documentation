@@ -1,0 +1,46 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+get:
+  summary: Returns all data set permissions
+  operationId: findDataSetPermissions
+  tags: ["DataSets", "Permissions"]
+  responses:
+    default:
+      description: Returns the matching data set permissions
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSetPermission"
+
+delete:
+  summary: Deletes all data set permissions
+  operationId: deleteDataSetPermissions
+  tags: ["NOT IMPLEMENTED YET", "DataSets", "Permissions"]
+  responses:
+    default:
+      description: Returns the data set permissions that were deleted
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSetPermission"
+
+post:
+  summary: Creates a new data set permission
+  operationId: addDataSetPermission
+  tags: ["DataSets", "Permissions"]
+  parameters:
+    - name: dataSetPermission
+      in: body
+      description: The data set permission to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetPermission"
+  responses:
+    201:
+      description: Returns the newly-added data set permission
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetPermission"
+      headers:
+        Location:
+          type: string
+          description: The URL of the newly-added data set permission

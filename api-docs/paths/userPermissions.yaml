@@ -1,0 +1,12 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/userId"
+get:
+  description: Returns all user permissions
+  operationId: findUserPermissions
+  responses:
+    default:
+      description: Returns the matching user permissions
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/userPermission"

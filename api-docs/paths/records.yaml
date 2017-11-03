@@ -1,0 +1,16 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+get:
+  summary: Returns a sample of the records for a data set
+  operationId: findRecords
+  tags: ["DataSets", "Records"]
+  responses:
+    default:
+      description: Returns the sample records for a data set
+      schema:
+        properties:
+          flatSchema: boolean
+          records:
+            type: array
+            items:
+              $ref: "../api.yaml#/definitions/record"

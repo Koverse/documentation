@@ -1,0 +1,65 @@
+type: object
+required:
+  - type
+  - disabled
+  - installDate
+  - displayName
+  - crc32
+  - transformJobTypeDescriptions
+  - sinkTypeDescriptions
+  - applicationDescriptions
+  - securityLabelParserDescriptions
+  - importTransformDescriptions
+  - exportTransformDescriptions
+  - exportFileFormatDescriptions
+properties:
+  id:
+    type: integer
+    format: int64
+  type:
+    type: string
+  fileName:
+    type: string
+  disabled:
+    type: boolean
+  errorsDuringInspection:
+    type: string
+  installDate:
+    type: string
+    format: dateTime
+  disableDate:
+    type: string
+    format: dateTime
+  displayName:
+    type: string
+  crc32:
+    type: integer
+    format: int64
+  transformJobTypeDescriptions:
+    type: array
+    items:
+      $ref: "../api.yaml#/definitions/transformTypeStageDescription"
+  sinkTypeDescriptions:
+    type: array
+    items:
+      $ref: "../api.yaml#/definitions/sinkTypeDescription"
+  applicationDescriptions:
+    type: array
+    items:
+      $ref: "../api.yaml#/definitions/applicationTypeDescription"
+  securityLabelParserDescriptions:
+    type: array
+    items:
+      $ref: "../api.yaml#/definitions/securityLabelParserDescription"
+  importTransformDescriptions:
+    type: array
+    items:
+      $ref: "../api.yaml#/definitions/importTransformDescription"
+  exportTransformDescriptions:
+    type: array
+    items:
+      $ref: "../api.yaml#/definitions/exportTransformDescription"
+  exportFileFormatDescriptions:
+    type: array
+    items:
+      $ref: "../api.yaml#/definitions/exportFileFormat"

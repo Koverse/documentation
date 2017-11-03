@@ -1,0 +1,23 @@
+type: object
+required:
+  - transformTypeId
+  - configurationOptions
+properties:
+  id:
+    type: string
+  displayName:
+    type: string
+  configurationOptions:
+    type: object
+  transformTypeId:
+    type: string
+  scheduleType:
+    type: string
+  inputDataSetIds:
+    type: array
+  outputDataSetId:
+    type: string
+  replaceOutputData:
+    type: boolean
+  inputDataWindowType:
+    type: string

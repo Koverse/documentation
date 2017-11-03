@@ -1,0 +1,42 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/userId"
+
+get:
+  summary: Returns a user by id
+  operationId: findUserById
+  tags: ["Users"]
+  responses:
+    default:
+      description: Returns the user data
+      schema:
+        $ref: "../api.yaml#/definitions/user"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that the user was last modified
+
+delete:
+  summary: Deletes a single user based on the id supplied
+  operationId: deleteUser
+  tags: ["Users"]
+  responses:
+    default:
+      description: Returns the user that was deleted
+      schema:
+        $ref: "../api.yaml#/definitions/user"
+
+put:
+  summary: Updates a user by id
+  tags: ["Users"]
+  parameters:
+    - name: label
+      in: body
+      description: The updated user info
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/user"
+  responses:
+    default:
+      description: Returns the updated user data
+      schema:
+        $ref: "../api.yaml#/definitions/user"

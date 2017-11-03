@@ -1,0 +1,25 @@
+type: object
+required:
+  - id
+  - dataSetId
+properties:
+  id:
+    type: string
+  dataSetId:
+    type: string
+  status:
+    type: string
+  createdAt:
+    type: integer
+  startedAt:
+    type: integer
+  endedAt:
+    type: integer
+  error:
+    type: string
+  origin:
+    type: string
+  progress:
+    type: number
+  type:
+    type: string

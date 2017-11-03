@@ -1,0 +1,7 @@
+type: object
+properties:
+  attrs:
+    type: array
+    items:
+      type: 
+        $ref: "../api.yaml#/definitions/attribute"

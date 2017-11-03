@@ -1,0 +1,14 @@
+type: object
+properties:
+  id:
+    type: string
+  creationDate:
+    type: integer
+  userId:
+    type: integer
+  dataSetIds:
+    type: array
+  actionType:
+    type: string
+  actionDetails:
+    type: object

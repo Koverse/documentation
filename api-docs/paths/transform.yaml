@@ -1,0 +1,42 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+  - $ref: "../api.yaml#/parameters/dataSetTransformId"
+get:
+  summary: Returns a data set transform by id
+  operationId: findDataSetTransformById
+  tags: ["Transforms"]
+  responses:
+    default:
+      description: Returns the data set transform data
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetTransform"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that the data set transform was last modified
+
+delete:
+  summary: Deletes a single data set transform based on the id supplied
+  operationId: deleteDataSetTransform
+  tags: ["Transforms"]
+  responses:
+    default:
+      description: Returns the data set transform that was deleted
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetTransform"
+
+put:
+  summary: Updates a data set transform by id
+  tags: ["Transforms"]
+  parameters:
+    - name: dataSetTransform
+      in: body
+      description: The updated data set transform info
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetTransform"
+  responses:
+    default:
+      description: Returns the updated data set transform data
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetTransform"

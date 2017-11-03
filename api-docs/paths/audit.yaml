@@ -1,0 +1,10 @@
+get:
+  description: Returns audit logs
+  operationId: findAuditLogs
+  responses:
+    default:
+      description: Returns the audit logs
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/audit"

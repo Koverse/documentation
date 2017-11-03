@@ -1,0 +1,49 @@
+get:
+  summary: Returns all staged files
+  operationId: findFiles
+  tags: ["Staged Files"]
+  responses:
+    default:
+      description: Returns the matching files
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/file"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that a file was last modified
+
+delete:
+  summary: Deletes all staged files
+  operationId: deleteFiles
+  tags: ["Staged Files"]
+  responses:
+    default:
+      description: Returns the files that were deleted
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/file"
+
+post:
+  summary: Creates a new file
+  operationId: addFile
+  tags: ["Staged Files"]
+  consumes:
+    - multipart/form-data
+  parameters:
+    - name: file
+      in: formData
+      description: The file to add
+      required: true
+      type: file
+  responses:
+    201:
+      description: Returns the newly-added file
+      schema:
+        $ref: "../api.yaml#/definitions/file"
+      headers:
+        Location:
+          type: string
+          description: The URL of the newly-added file

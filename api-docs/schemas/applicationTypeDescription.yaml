@@ -1,0 +1,31 @@
+type: object
+required:
+  - applicationId
+  - version
+  - disabled
+  - displayName
+  - parameters
+properties:
+  id:
+    type: integer
+    format: int64
+  applicationId:
+    type: string
+  version:
+    type: string
+  disabled:
+    type: boolean
+  displayName:
+    type: string
+  responsibleUser:
+    $ref: "../api.yaml#/definitions/user"
+  autoDeploy:
+    type: boolean
+  parameters:
+    type: array
+    items :
+      $ref: "../api.yaml#/definitions/parameter"
+  defaultCategoryDisplayName:
+    type: string
+  userDeployable:
+    type: boolean

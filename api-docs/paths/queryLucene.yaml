@@ -1,0 +1,28 @@
+get:
+  summary: Query by using Lucene Syntax
+  operationId: queryLucene
+  tags: ["Query"]
+  parameters:
+    - query:
+        type: string
+    - dataSets:
+        type: string
+    - auths:
+        type: string
+    - numRecords:
+        type: integer
+        format: int32
+    - recordOffset:
+        type: integer
+        format: int64
+    - fieldsToReturn:
+        type: string
+    - returnValuesAsArraysWithType:
+        type: boolean
+  responses:
+    default:
+      description: Returns the query results
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSetResult"

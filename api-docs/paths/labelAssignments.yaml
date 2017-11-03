@@ -1,0 +1,44 @@
+get:
+  summary: Returns all label Assignments
+  operationId: findLabelAssignments
+  tags: ["Labels"]
+  responses:
+    default:
+      description: Returns the matching label Assignments
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/labelAssignment"
+
+delete:
+  summary: Deletes all label Assignments
+  operationId: deleteLabelAssignments
+  tags: ["NOT IMPLEMENTED YET", "Labels"]
+  responses:
+    default:
+      description: Returns the label assignments that were deleted
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/labelAssignment"
+
+post:
+  summary: Creates a new label assignment
+  operationId: addLabelAssignment
+  tags: ["Labels"]
+  parameters:
+    - name: labelAssignment
+      in: body
+      description: The label assignment to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/labelAssignment"
+  responses:
+    201:
+      description: Returns the newly-added label assignment
+      schema:
+        $ref: "../api.yaml#/definitions/labelAssignment"
+      headers:
+        Location:
+          type: string
+          description: The URL of the newly-added label Assignment

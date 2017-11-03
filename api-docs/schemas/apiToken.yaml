@@ -1,0 +1,16 @@
+type: object
+properties:
+  id:
+    type: string
+  displayName:
+    type: string
+  creationDate:
+    type: integer
+  userId:
+    type: integer
+  disabled:
+    type: boolean
+  disabledDate:
+    type: integer
+  groups:
+    type: array

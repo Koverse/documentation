@@ -1,0 +1,39 @@
+type: object
+required:
+  - sourceInstanceId
+properties:
+  id:
+    type: integer
+    format: int64
+  sourceInstanceId:
+    type: integer
+    format: int64
+  dataSetId:
+    type: string
+  disabled:
+    type: boolean
+  type:
+    type: string
+    enum:
+    - "manual"
+    - "continuous"
+    - "periodic"
+  updatedAt:
+    type: string
+    format: dateTime
+  executedAt:
+    type: string
+    format: dateTime
+  executionCount:
+    type: integer
+  normalizations:
+    type: array
+    items:
+      type: object
+      properties:
+        config:
+          type: object
+        typeId:
+          type: string
+  configurationOptions:
+    type: object

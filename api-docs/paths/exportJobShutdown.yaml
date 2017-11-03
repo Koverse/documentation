@@ -1,0 +1,7 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/exportJobId"
+
+get:
+  summary: Shutdown an export job
+  operationId: shutdownExportJob
+  tags: ["Exports", "Jobs"]

@@ -1,0 +1,10 @@
+get:
+  description: Returns all unacknowledged notifications for a user
+  operationId: findNotifications
+  responses:
+    default:
+      description: Returns the notifications for a user
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/notification"

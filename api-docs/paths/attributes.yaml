@@ -1,0 +1,25 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+get:
+  summary: Returns all attributes for a data set
+  operationId: findAttributes
+  tags: ["DataSets", "Attributes"]
+  responses:
+    default:
+      description: Returns the attributes for a data set
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/attribute"
+          
+put:
+  summary: Updates all attributes for a data set
+  operationId: updateAttributes
+  tags: ["DataSets", "Attributes"]
+  parameters:
+    - name: attributes
+      in: body
+      description: The attributes
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/attributes"

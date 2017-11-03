@@ -1,0 +1,18 @@
+type: object
+required:
+  - key
+  - value
+properties:
+  key:
+    type: string
+    enum:
+      - UserLogins
+      - Queries
+      - TransformsRun
+      - ImportsRun
+      - ExportsRun
+      - ApiCalls
+      - AuditEvents
+  value:
+    type: integer
+    format: int64
