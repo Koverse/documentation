@@ -1,0 +1,20 @@
+type: object
+required:
+  - description
+  - displayName
+  - typeId
+  - implementationClassName
+  - parameters
+properties:
+  description:
+    type: string
+  displayName:
+    type: string
+  typeId:
+    type: string
+  implementationClassName:
+    type: string
+  parameters:
+    type: array
+    items :
+      $ref: "../api.yaml#/definitions/parameter"

@@ -1,0 +1,31 @@
+get:
+  summary: Returns all users that the logged in user has read access to
+  operationId: findUsers
+  tags: ["Users"]
+  responses:
+    200:
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/user"
+
+post:
+  summary: Creates a new user
+  operationId: addUser
+  tags: ["Users"]
+  parameters:
+    - name: user
+      in: body
+      description: The user to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/user"
+  responses:
+    201:
+      description: Returns the newly-added user
+      schema:
+        $ref: "../api.yaml#/definitions/user"
+      headers:
+        Location:
+          type: string
+          description: The URL of the newly-added user

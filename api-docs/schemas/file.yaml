@@ -1,0 +1,12 @@
+type: object
+properties:
+  id:
+    type: string
+  sourceInstanceId:
+    type: string
+  importFlowId:
+    type: string
+  name:
+    type: string
+  bytes:
+    type: string

@@ -1,0 +1,18 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/jobId"
+
+put:
+  description: Update a job
+  operationId: updateJob
+  parameters:
+    - name: job
+      in: body
+      description: The updated job info
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/job"
+  responses:
+    default:
+      description: Returns the updated job data
+      schema:
+        $ref: "../api.yaml#/definitions/job"

@@ -1,0 +1,16 @@
+post:
+  summary: Query by using the object Syntax
+  operationId: queryObject
+  tags: ["Query"]
+  parameters:
+    - queryString:
+        type: string
+        in: body
+        required: true
+  responses:
+    default:
+      description: Returns the query results
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSetResult"

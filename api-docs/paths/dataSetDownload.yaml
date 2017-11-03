@@ -1,0 +1,17 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+  - $ref: "../api.yaml#/parameters/fileType"
+
+get:
+  summary: Returns a File of the data set
+  operationId: downloadDataSetById
+  tags: ["DataSets", "Records", "Download"]
+  responses:
+    default:
+      description: Returns the Data Set data
+      schema:
+        $ref: "../api.yaml#/definitions/dataSet"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that the label was last modified

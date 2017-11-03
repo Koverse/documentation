@@ -1,0 +1,8 @@
+type: object
+required:
+  - success
+properties:
+  success:
+    type: boolean
+  successMessage:
+    type: string

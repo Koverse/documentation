@@ -1,0 +1,47 @@
+type: object
+required:
+  - name
+properties:
+  id:
+    type: string
+  dataSet:
+    $ref: "../api.yaml#/definitions/dataSet"
+  name:
+    type: string
+  presence:
+    type: number
+  presenceCount:
+    type: integer
+  cardinality:
+    type: number
+  visualizationType:
+    $ref: "../api.yaml#/definitions/visualizationType"
+  types:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          displayName:
+            type: string
+          prevalence:
+            type: number
+  values:
+      type: array
+      items:
+        type: object
+        properties:
+          value:
+            type: string
+          occurrences:
+            type: integer
+          countryId:
+            type: string
+          coordinates:
+            type: object
+            properties:
+              lat:
+                type: number
+              long:
+                type: number

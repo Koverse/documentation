@@ -1,0 +1,16 @@
+get:
+  summary: Returns all possible data set permissions
+  operationId: findPossibleDataSetPermissions
+  tags: ["System", "Permissions"]
+  responses:
+    default:
+      description: Returns all possible data set permissions
+      schema:
+        type: array
+        items:
+          type: string
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that a file was last modified
+

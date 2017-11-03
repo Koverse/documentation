@@ -1,0 +1,24 @@
+type: object
+required:
+  - id
+  - typeId
+  - name
+properties:
+  id:
+    type: string
+  typeId:
+    type: string
+  name:
+    type: string
+  implementationClassName:
+    type: string
+  description:
+    type: string
+  disabled:
+    type: boolean
+  parameters:
+    type: array
+  priority:
+    type: integer
+  extensions:
+    type: array

@@ -1,0 +1,32 @@
+type: object
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  attributeMatchCount:
+    type: integer
+    format: int64
+  valueMatchCount:
+    type: integer
+    format: int64
+  recordMatchCount:
+    type: integer
+    format: int64
+  recordMatchCountLimited:
+    type: boolean
+  recordCount:
+    type: integer
+    format: int64
+  createdTimestamp:
+    type: integer
+    format: int64
+  updatedTimestamp:
+    type: integer
+    format: int64
+  flatSchema:
+    type: boolean
+  labels:
+    type: array
+    items:
+      $ref: "../api.yaml#/definitions/record"

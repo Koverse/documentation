@@ -1,0 +1,37 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Returns an Indexing Policy for a Data Set by id
+  operationId: findDataSetIndexingPolicyById
+  tags: 
+  - DataSets
+  - IndexingPolicy
+  responses:
+    default:
+      description: Returns the Indexing Policy data
+      schema:
+        $ref: "../api.yaml#/definitions/indexingPolicy"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that the label was last modified
+
+put:
+  summary: Updates an indexing policy for a data set by id
+  operationId: updateDataSetIndexingPolicyById
+  tags: 
+  - DataSets
+  - IndexingPolicy
+  parameters:
+    - name: indexingPolicy
+      in: body
+      description: The updated indexing policy data
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/indexingPolicy"
+  responses:
+    default:
+      description: Returns the updated indexing policy data
+      schema:
+        $ref: "../api.yaml#/definitions/indexingPolicy"

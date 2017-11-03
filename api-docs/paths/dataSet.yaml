@@ -1,0 +1,42 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Returns a Data Set by id, if a data set has a currently running job, that information will be returned with the data set
+  operationId: findDataSetById
+  tags: ["DataSets"]
+  responses:
+    default:
+      description: Returns the Data Set data
+      schema:
+        $ref: "../api.yaml#/definitions/dataSet"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that the label was last modified
+
+delete:
+  summary: Deletes a single data set based on the id supplied
+  operationId: deleteDataSet
+  tags: ["DataSets"]
+  responses:
+    default:
+      description: Returns the data set that was deleted
+      schema:
+        $ref: "../api.yaml#/definitions/dataSet"
+
+put:
+  summary: Updates a data set by id
+  tags: ["DataSets"]
+  parameters:
+    - name: dataSet
+      in: body
+      description: The updated data set info
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/dataSet"
+  responses:
+    default:
+      description: Returns the updated data set data
+      schema:
+        $ref: "../api.yaml#/definitions/dataSet"

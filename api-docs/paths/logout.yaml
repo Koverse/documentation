@@ -1,0 +1,9 @@
+get:
+  summary: logs out the user
+  operationId: logoutUser
+  tags: ["System"]
+  responses:
+    default:
+      description: Returns a confirmation of the logout
+      schema:
+        $ref: "../api.yaml#/definitions/logout"

@@ -1,0 +1,9 @@
+get:
+  summary: Returns config object for the koverse installation
+  operationId: findConfig
+  tags: ["System"]
+  responses:
+    default:
+      description: Returns config object for the koverse installation
+      schema:
+        $ref: "../api.yaml#/definitions/config"

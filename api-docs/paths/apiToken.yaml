@@ -1,0 +1,35 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/apiTokenId"
+
+get:
+  description: Returns an API Token by id
+  operationId: findApiTokenById
+  responses:
+    default:
+      description: Returns the API Token data
+      schema:
+        $ref: "../api.yaml#/definitions/apiToken"
+
+delete:
+  description: Deletes a single API Token based on the id supplied
+  operationId: deleteApiToken
+  responses:
+    default:
+      description: Returns the API Token that was deleted
+      schema:
+        $ref: "../api.yaml#/definitions/apiToken"
+
+put:
+  description: Updates an API Token by id
+  parameters:
+    - name: apiToken
+      in: body
+      description: The updated apiToken info
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/apiToken"
+  responses:
+    default:
+      description: Returns the updated API Token data
+      schema:
+        $ref: "../api.yaml#/definitions/apiToken"

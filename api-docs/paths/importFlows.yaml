@@ -1,0 +1,27 @@
+get:
+  summary: Returns all import flows
+  operationId: findImportFlows
+  tags: ["NOT IMPLEMENTED YET", "Import Flows"]
+  responses:
+    default:
+      description: Returns the matching import flows
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/importFlow"
+post:
+  summary: Creates an import flow
+  operationId: addImportFlow
+  tags: ["Import Flows"]
+  parameters:
+    - name: importFlow
+      in: body
+      description: The importFlow to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/importFlow"
+  responses:
+    201:
+      description: Returns the newly created import flow
+      schema:
+        $ref: "../api.yaml#/definitions/importFlow"

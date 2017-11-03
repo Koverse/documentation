@@ -1,0 +1,9 @@
+type: string
+enum:
+  - line
+  - bar
+  - pie
+  - chloropleth-countries
+  - heatmap
+  - list
+  - single-value

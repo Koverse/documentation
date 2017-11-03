@@ -1,0 +1,13 @@
+get:
+  summary: Returns Audit Log Entries for a data set
+  operationId: findAuditLogEntries
+  tags: ["Audit Logs"]
+  parameters:
+    - $ref: "../api.yaml#/parameters/dataSetId"
+  responses:
+    default:
+      description: Returns all Audit Log Entries
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/auditLogEntry"

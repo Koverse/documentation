@@ -1,0 +1,18 @@
+type: object
+required:
+  - name
+properties:
+  sourceTypeId:
+    type: string
+  name:
+    type: string
+  implementationClassName:
+    type: string
+  frequentlyUsed:
+    type: boolean
+  disabled:
+    type: boolean
+  parameters:
+    type: array
+  flowParameters:
+    type: array

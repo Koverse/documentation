@@ -1,0 +1,43 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+get:
+  description: Returns all data set transforms
+  operationId: findDataSetTransforms
+  responses:
+    default:
+      description: Returns the matching data set transforms
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSetTransform"
+
+delete:
+  description: Deletes all data set transforms
+  operationId: deleteDataSetTransforms
+  responses:
+    default:
+      description: Returns the data set transforms that were deleted
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSetTransform"
+
+post:
+  description: Creates a new data set transform
+  operationId: addDataSetTransform
+  parameters:
+    - name: dataSetTransform
+      in: body
+      description: The data set transform to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetTransform"
+  responses:
+    201:
+      description: Returns the newly-added data set transform
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetTransform"
+      headers:
+        Location:
+          type: string
+          description: The URL of the newly-added data set transform

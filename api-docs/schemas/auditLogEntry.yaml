@@ -1,0 +1,21 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+  creationDate:
+    type: string
+    format: dateTime
+  userId:
+    type: integer
+    format: int64
+  actionType:
+    type: string
+  actionDetails:
+    type: object
+  dataSetIds:
+    type: array
+    $ref: "../api.yaml#/parameters/dataSetId"  
+  dataSetId:
+    $ref: "../api.yaml#/parameters/dataSetId"
+  

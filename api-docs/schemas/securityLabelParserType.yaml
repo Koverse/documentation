@@ -1,0 +1,16 @@
+type: object
+required:
+  - name
+properties:
+  id:
+    type: string
+  displayName:
+    type: string
+  description:
+    type: string
+  typeId:
+    type: string
+  implementationClassName:
+    type: string
+  disabled:
+    type: boolean

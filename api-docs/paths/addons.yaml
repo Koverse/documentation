@@ -1,0 +1,30 @@
+get:
+  summary: Returns all addons
+  operationId: findAddons
+  tags: ["Addons"]
+  responses:
+    default:
+      description: Returns all addons
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/addon"
+post:
+  summary: Creates a new Addon
+  operationId: uploadAddon
+  tags: ["Addons"]
+  parameters:
+    - name: addonData
+      in: formData
+      description: "The Addon data to upload"
+      required: true
+      type: file
+  responses:
+    201:
+      description: Returns the newly-uploaded addon
+      schema:
+        $ref: "../api.yaml#/definitions/addon"
+      headers:
+        Location:
+          type: string
+          description: The URL of the newly-added addon

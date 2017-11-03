@@ -1,0 +1,14 @@
+type: object
+required:
+  - hadoopJobConfigurationOptions
+  - stageClassName
+properties:
+  hadoopJobConfigurationOptions:
+    type: object
+    properties:
+      key:
+        type: string
+      value:
+        type: string
+  stageClassName:
+    type: string

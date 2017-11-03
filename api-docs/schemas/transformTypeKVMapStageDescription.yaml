@@ -1,0 +1,16 @@
+type:
+  $ref: ./transformTypeStageDescription.yaml
+required:
+  - mapInputKeyClassName
+  - mapInputValueClassName
+  - mapOutputKeyClassName
+  - mapOutputValueClassName
+properties:
+  mapInputKeyClassName:
+    type: string
+  mapInputValueClassName:
+    type: string
+  mapOutputKeyClassName:
+    type: string
+  mapOutputValueClassName:
+    type: string

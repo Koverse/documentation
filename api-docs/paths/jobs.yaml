@@ -1,0 +1,10 @@
+get:
+  description: Returns all active jobs
+  operationId: findActiveJobs
+  responses:
+    default:
+      description: Returns the active jobs
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/job"

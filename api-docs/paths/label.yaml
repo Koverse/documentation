@@ -1,0 +1,42 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/labelId"
+
+get:
+  summary: Returns a label by id
+  operationId: findLabelById
+  tags: ["Labels"]
+  responses:
+    default:
+      description: Returns the label data
+      schema:
+        $ref: "../api.yaml#/definitions/label"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that the label was last modified
+
+delete:
+  summary: Deletes a single label based on the id supplied
+  operationId: deleteLabel
+  tags: ["Labels"]
+  responses:
+    default:
+      description: Returns the label that was deleted
+      schema:
+        $ref: "../api.yaml#/definitions/label"
+
+put:
+  summary: Updates a label by id
+  tags: ["Labels"]
+  parameters:
+    - name: label
+      in: body
+      description: The updated label info
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/label"
+  responses:
+    default:
+      description: Returns the updated label data
+      schema:
+        $ref: "../api.yaml#/definitions/label"

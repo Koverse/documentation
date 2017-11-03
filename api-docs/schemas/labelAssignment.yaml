@@ -1,0 +1,11 @@
+type: object
+required:
+  - labelId
+  - dataSetId
+properties:
+  id:
+    type: string
+  label:
+    $ref: "../api.yaml#/definitions/label"
+  dataSet:
+    $ref: "../api.yaml#/definitions/dataSet"
