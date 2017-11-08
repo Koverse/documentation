@@ -1,8 +1,11 @@
 swagger: "2.0"
 info:
-  version: 1.0.0
+  version: 2.4.0
   title: Koverse API
-  description: Koverse API Spec
+  description: >
+        Koverse Web API Specification
+
+
 
 host: koverse.swagger.io:8000
 
@@ -12,504 +15,72 @@ produces:
   - application/json
 
 definitions:
-  addon:
-    $ref: schemas/addon.yaml
-  apiToken:
-    $ref: schemas/apiToken.yaml
-  apiTokenGroupAssignment:
-    $ref: schemas/apiTokenGroupAssignment.yaml
-  applicationTypeDescription:
-    $ref: schemas/applicationTypeDescription.yaml
-  auditLogEntry:
-    $ref: schemas/auditLogEntry.yaml
-  attribute:
-    $ref: schemas/attribute.yaml
-  attributes:
-    $ref: schemas/attributes.yaml
-  audit:
-    $ref: schemas/audit.yaml
-  calendarEvent:
-    $ref: schemas/calendar-event.yaml
-  config:
-    $ref: schemas/config.yaml
-  dataSet:
-    $ref: schemas/dataSet.yaml
-  dataSetJob:
-    $ref: schemas/dataSetJob.yaml
-  dataSetPermission:
-    $ref: schemas/dataSetPermission.yaml
+  dataSetMetadata:
+    $ref: schemas/dataSetMetadata.yaml
   dataSetResult:
     $ref: schemas/dataSetResult.yaml
-  dataSetTransform:
-    $ref: schemas/dataSetTransform.yaml
-  error:
-    $ref: schemas/error.yaml
-  exportFileFormat:
-    $ref: schemas/exportFileFormat.yaml
-  exportSchedule:
-    $ref: schemas/exportSchedule.yaml
-  exportTransformDescription:
-    $ref: schemas/exportTransformDescription.yaml
-  fieldTypePair:
-    $ref: schemas/fieldTypePair.yaml
-  file:
-    $ref: schemas/file.yaml
-  forgotPassword:
-    $ref: schemas/forgot-password.yaml
-  group:
-    $ref: schemas/group.yaml
-  importFlow:
-    $ref: schemas/importFlow.yaml
-  importSchedule:
-    $ref: schemas/importSchedule.yaml
-  importTransformDescription:
-    $ref: schemas/importTransformDescription.yaml
-  indexingPolicy:
-    $ref: schemas/indexingPolicy.yaml
-  job:
-    $ref: schemas/job.yaml
-  label:
-    $ref: schemas/label.yaml
-  labelAssignment:
-    $ref: schemas/labelAssignment.yaml
   login:
     $ref: schemas/login.yaml
   logout:
     $ref: schemas/logout.yaml
-  normalization:
-    $ref: schemas/normalization.yaml
-  normalizationType:
-    $ref: schemas/normalizationType.yaml
-  notification:
-    $ref: schemas/notification.yaml
-  parameter:
-    $ref: schemas/parameter.yaml
   record:
     $ref: schemas/record.yaml
-  recordsProvider:
-    $ref: schemas/recordsProvider.yaml
-  recordFormat:
-    $ref: schemas/recordFormat.yaml
-  resetPassword:
-    $ref: schemas/resetPassword.yaml
-  sample:
-    $ref: schemas/sample.yaml
-  searchAutocomplete:
-    $ref: schemas/searchAutocomplete.yaml
-  searchRecent:
-    $ref: schemas/searchRecent.yaml
-  searchResult:
-    $ref: schemas/searchResult.yaml
-  securityLabelParserDescription:
-    $ref: schemas/securityLabelParserDescription.yaml
-  securityLabelParserType:
-    $ref: schemas/securityLabelParserType.yaml
-  sink:
-    $ref: schemas/sink.yaml
-  sinkSchedule:
-    $ref: schemas/sinkSchedule.yaml
-  sinkTransformConfiguration:
-    $ref: schemas/sinkTransformConfiguration.yaml
-  sinkTypeDescription:
-    $ref: schemas/sinkTypeDescription.yaml
-  sinkType:
-    $ref: schemas/sinkType.yaml
-  source:
-    $ref: schemas/source.yaml
-  sourceType:
-    $ref: schemas/sourceType.yaml
-  success:
-    $ref: schemas/success.yaml
-  systemPermission:
-    $ref: schemas/systemPermission.yaml
-  transform:
-    $ref: schemas/transform.yaml
-  transformJobTypeDescription:
-    $ref: schemas/transformJobTypeDescription.yaml
-  transformSchedule:
-    $ref: schemas/transformSchedule.yaml
-  transformType:
-    $ref: schemas/transformType.yaml
-  transformTypeStageDescription:
-    $ref: schemas/transformTypeStageDescription.yaml
-#   transformTypeCombineStageDescription:
-#     $ref: schemas/transformTypeCombineStageDescription.yaml
-#   transformTypeCompositeStageDescription:
-#     $ref: schemas/transformTypeCompositeStageDescription.yaml
-#   transformTypeKVMapStageDescription:
-#     $ref: schemas/transformTypeKVMapStageDescription.yaml
-#   transformTypeRecordMapStageDescription:
-#     $ref: schemas/transformTypeRecordMapStageDescription.yaml
-#   transformTypeReduceStageDescription:
-#     $ref: schemas/transformTypeReduceStageDescription.yaml
+  #searchAutocomplete:
+  #  $ref: schemas/searchAutocomplete.yaml
   user:
     $ref: schemas/user.yaml
-  userPermission:
-    $ref: schemas/userPermission.yaml
-  updatePassword:
-    $ref: schemas/updatePassword.yaml
-  usageMetricsReportTypeMap:
-    $ref: schemas/usageMetricsReportTypeMap.yaml
-  usageMetricsReport:
-    $ref: schemas/usageMetricsReport.yaml
-  visualizationType:
-    $ref: schemas/visualizationType.yaml
-  workflow:
-    $ref: schemas/workflow.yaml
 
 parameters:
-  addonId:
-    name: addonId
-    in: path
-    description: Id of the addon
-    required: true
-    type: integer
-    format: int64
-  apiTokenGroupAssignmentId:
-    name: apiTokenGroupAssignmentId
-    in: path
-    description: Id of the group Assignment
-    required: true
-    type: string
-  apiTokenId:
-    name: apiTokenId
-    in: path
-    description: Id of the API Token
-    required: true
-    type: string
-  auditLogEntryId:
-    name: auditLogEntryId
-    in: path
-    description: Id of the Audit Log Entry
-    required: true
-    type: integer
-    format: int64
   dataSetId:
     name: dataSetId
     in: path
-    description: Id of the data set
-    required: true
-    type: string
-  dataSetPermissionId:
-    name: dataSetPermissionId
-    in: path
-    description: Id of the data set permission
-    required: true
-    type: string
-  dataSetTransformId:
-    name: dataSetTransformId
-    in: path
-    description: Id of the data set transform
-    required: true
-    type: string
-  exportJobId:
-    name: exportJobId
-    in: path
-    description: Id of the export job
-    type: integer
-    format: int64
-  exportScheduleId:
-    name: exportScheduleId
-    in: path
-    description: Id of the export schedule
-    type: integer
-    format: int64
-  fileId:
-    name: fileId
-    in: path
-    description: Id of the file
+    description: Unique identifier of the data set
     required: true
     type: string
   fileType:
     name: fileType
     in: path
     description: fileType to download
-    required: true
+    required: false
     type: string
-  jobId:
-    name: jobId
-    in: path
-    description: Id of the job
-    required: true
+    enum: [json, csv]
+  recordStyle:
+    name: recordStyle
+    in: query
+    description: >
+          Requests a more efficient representation of records
+    required: false
     type: string
-  groupId:
-    name: groupId
-    in: path
-    description: Id of the group
+    enum: [2.2]
+  objectQuery:
+    name: query
+    in: body
     required: true
-    type: string
-  importFlowId:
-    name: importFlowId
-    in: path
-    description: Id of the import flow
-    required: true
-    type: string
-  importJobId:
-    name: importJobId
-    in: path
-    description: Id of the import job
-    type: integer
-    format: int64
-  importScheduleId:
-    name: importScheduleId
-    in: path
-    description: Id of the import schedule
-    required: true
-    type: string
-  labelId:
-    name: labelId
-    in: path
-    description: Id of the label
-    required: true
-    type: string
-  labelAssignmentId:
-    name: labelAssignmentId
-    in: path
-    description: Id of the label Assignment
-    required: true
-    type: string
-  normalizationId:
-    name: normalizationId
-    in: path
-    description: id of the normalization
-    required: true
-    type: string
-  notificationId:
-    name: notificationId
-    in: path
-    description: id of the notification
-    required: true
-    type: string
-  resetPasswordToken:
-    name: resetPasswordToken
-    in: path
-    description: Id of the import schedule
-    required: true
-    type: string
-  sinkId:
-    name: sinkId
-    in: path
-    description: Id of the sink
-    required: true
-  userId:
-    name: userId
-    in: path
-    description: Id of the user
-    required: true
-    type: string
-  sinkScheduleId:
-    name: sinkScheduleId
-    in: path
-    description: Id of the sink schedule
-    required: true
-    type: string
-  sinkTypeId:
-    name: sinkTypeId
-    in: path
-    description: Id of the sink type
-    required: true
-    type: integer
-    format: int64
-  transformId:
-    name: transformId
-  sourceInstanceId:
-    name: sourceInstanceId
-    in: path
-    description: Id of the source
-    required: true
-    type: string
-  transformJobId:
-    name: transformJobId
-    in: path
-    description: Id of the transform job
-    type: integer
-    format: int64
-  transformScheduleId:
-    name: transformScheduleId
-    in: path
-    description: Id of the transform schedule
-    type: integer
-    format: int64
-  workflowId:
-    name: workflowId
-    in: path
-    description: Id of the workflow
-    type: integer
-    format: int64
-
-
+    schema:
+      $ref: schemas/objectQuery.yaml
 paths:
-  /api/addons:
-    $ref: paths/addons.yaml
-  /api/addons/{addonId}:
-    $ref: paths/addon.yaml
-  /api/apiTokens:
-    $ref: paths/apiTokens.yaml
-  /api/apiTokenGroupAssignments:
-    $ref: paths/apiTokenGroupAssignments.yaml
-  /api/apiTokenGroupAssignments/{apiTokenGroupAssignmentId}:
-    $ref: paths/apiTokenGroupAssignment.yaml
-  /api/audit:
-    $ref: paths/audit.yaml
-  /api/auditLogEntries:
-    $ref: paths/auditLogEntries.yaml
-  /api/auditLogEntries/logsByCollection/{collectionId}/{startIndex}/{limit}/{query}:
-    $ref: paths/auditLogEntriesByDataSet.yaml
-  /api/auditLogEntries/searchLogs:
-    $ref: paths/auditLogEntriesSearchLogs.yaml
-  /api/config:
-    $ref: paths/config.yaml
   /api/dataSets:
     $ref: paths/dataSets.yaml
   /api/dataSets/{dataSetId}:
     $ref: paths/dataSet.yaml
-  /api/dataSets/{dataSetId}/attributes:
-    $ref: paths/attributes.yaml
-  /api/dataSets/{dataSetId}/indexingPolicy:
-    $ref: paths/dataSetIndexingPolicy.yaml
   /api/dataSets/{dataSetId}/attributeNames:
     $ref: paths/dataSetAttributeNames.yaml
-  /api/dataSets/{dataSetId}/clearDataSet:
-    $ref: paths/dataSetClear.yaml
-  /api/dataSets/{dataSetId}/download/{fileType}:
-    $ref: paths/dataSetDownload.yaml
-  /api/dataSets/{dataSetId}/jobs:
-    $ref: paths/dataSetJobs.yaml
-  /api/dataSets/{dataSetId}/permissions:
-    $ref: paths/dataSetPermissions.yaml
-  /api/dataSets/{dataSetId}/permissions/{dataSetPermissionId}:
-    $ref: paths/dataSetPermission.yaml
+
+# this may not belong in a web app API
+
+#  /api/dataSets/{dataSetId}/download/{fileType}:
+#    $ref: paths/dataSetDownload.yaml
   /api/dataSets/{dataSetId}/records:
     $ref: paths/records.yaml
-  /api/dataSets/{dataSetId}/repair:
-    $ref: paths/dataSetRepair.yaml
-  /api/exportFileFormats:
-    $ref: paths/exportFileFormats.yaml
-  /api/files:
-    $ref: paths/files.yaml
-  /api/files/{fileId}:
-    $ref: paths/file.yaml
-  /api/forgotPassword:
-    $ref: paths/forgot-password.yaml
-  /api/groups:
-    $ref: paths/groups.yaml
-  /api/groups/{groupId}:
-    $ref: paths/group.yaml
-  /api/importFlows:
-    $ref: paths/importFlows.yaml
-  /api/importFlows/{importFlowId}:
-    $ref: paths/importFlow.yaml
-  /api/importFlows/{importFlowId}/normalizations:
-    $ref: paths/normalizations.yaml
-  /api/importFlows/{importFlowId}/normalizations/{normalizationId}:
-    $ref: paths/normalization.yaml
-  /api/importFlows/{importFlowId}/sample:
-    $ref: paths/sample.yaml
-  /api/importFlows/{importFlowId}/run:
-    $ref: paths/importFlowRun.yaml
-  /api/importJobs/{importJobId}/shutdown:
-    $ref: paths/importJobShutdown.yaml
-  /api/importScheduleCalendar:
-    $ref: paths/importScheduleCalendar.yaml
-  /api/importSchedules/:
-    $ref: paths/importSchedules.yaml
-  /api/importSchedules/{importScheduleId}:
-    $ref: paths/importSchedule.yaml
-  /api/jobs:
-    $ref: paths/jobs.yaml
-  /api/labels:
-    $ref: paths/labels.yaml
-  /api/labels/{labelId}:
-    $ref: paths/label.yaml
-  /api/labelAssignments:
-    $ref: paths/labelAssignments.yaml
-  /api/labelAssignments/{labelAssignmentId}:
-    $ref: paths/labelAssignment.yaml
   /api/login:
     $ref: paths/login.yaml
-  /api/login/authenticators:
-    $ref: paths/loginAuthenticators.yaml
   /api/logout:
     $ref: paths/logout.yaml
-  /api/normalizationTypes:
-    $ref: paths/normalizationTypes.yaml
-  /api/notifications:
-    $ref: paths/notifications.yaml
-  /api/notifications/{notificationId}/acknowledge:
-    $ref: paths/notification-acknowledge.yaml
-  /api/permissions/dataset:
-    $ref: paths/possibleDataSetPermissions.yaml
-  /api/permissions/system:
-    $ref: paths/systemPermissions.yaml
   /api/query/:
     $ref: paths/queryLucene.yaml
-  /api/query/common:
-    $ref: paths/queryCommon.yaml
   /api/query/object:
     $ref: paths/queryObject.yaml
   /api/query/object/names:
-    $ref: paths/queryObject.yaml
-  /api/recordsProviders:
-    $ref: paths/recordsProviders.yaml
-  /api/recordFormats:
-    $ref: paths/recordFormats.yaml
-  /api/users/resetPassword/{resetPasswordToken}:
-    $ref: paths/reset-password.yaml
-  /api/search/autocomplete:
-    $ref: paths/searchAutocomplete.yaml
-  /api/search/datasetresult:
-    $ref: paths/dataSetSearchResults.yaml
-  /api/search/recent:
-    $ref: paths/searchRecent.yaml
-  /api/search/results:
-    $ref: paths/searchResults.yaml
-  /api/securityLabelParserTypes:
-    $ref: paths/securityLabelParserTypes.yaml
-  /api/sinks:
-    $ref: paths/sinks.yaml
-  /api/sinks/{sinkId}:
-    $ref: paths/sink.yaml
-  /api/sinkSchedules:
-    $ref: paths/sinkSchedules.yaml
-  /api/sinkSchedules/{exportScheduleId}:
-    $ref: paths/sinkSchedule.yaml
-  /api/sinkTypes:
-    $ref: paths/sinkTypes.yaml
-  /api/sinkTypes/{sinkTypeId}:
-    $ref: paths/sinkType.yaml
-  /api/sourceInstances:
-    $ref: paths/sources.yaml
-  /api/sourceInstances/{sourceInstanceId}:
-    $ref: paths/source.yaml
-  /api/sourceTypeDescriptions:
-    $ref: paths/sourceTypes.yaml
-  /api/transforms:
-    $ref: paths/transforms.yaml
-  /api/transforms/{dataSetTransformId}:
-    $ref: paths/transform.yaml
-  /api/transforms/{transformId}/transformSchedules:
-    $ref: paths/transformSchedules.yaml
-  /api/transformJobs/{transformJobId}:
-    $ref: paths/transformJob.yaml
-  /api/transformSchedules:
-    $ref: paths/transformSchedules.yaml
-  /api/transformSchedules/{transformScheduleId}:
-    $ref: paths/transformSchedule.yaml
-  /api/transformTypes:
-    $ref: paths/transformTypes.yaml
-  /api/transformType/{typeId}:
-    $ref: paths/transformType.yaml
-  /api/updatePassword:
-    $ref: paths/update-password.yaml
-  /api/usageMetricsReport:
-    $ref: paths/usageMetricsReport.yaml
-  /api/users:
-    $ref: paths/users.yaml
-  /api/users/{userId}:
-    $ref: paths/user.yaml
-  /api/users/{userId}/permissions:
-    $ref: paths/userPermissions.yaml
-  /api/workflows:
-    $ref: paths/workflows.yaml
-  /api/workflows/{workflowId}:
-    $ref: paths/workflow.yaml
+    $ref: paths/queryObjectNames.yaml
+  #/api/search/autocomplete:
+  #  $ref: paths/searchAutocomplete.yaml

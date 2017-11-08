@@ -1,9 +1,0 @@
-get:
-  summary: Returns the user object for the logged in user
-  operationId: findUser
-  tags: ["Users"]
-  responses:
-    default:
-      description: Returns the user data
-      schema:
-        $ref: "../api.yaml#/definitions/user"

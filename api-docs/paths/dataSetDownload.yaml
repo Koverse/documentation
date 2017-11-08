@@ -3,15 +3,13 @@ parameters:
   - $ref: "../api.yaml#/parameters/fileType"
 
 get:
-  summary: Returns a File of the data set
+  summary: Download all records
   operationId: downloadDataSetById
-  tags: ["DataSets", "Records", "Download"]
+  tags: ["DataSet"]
+  description: >
+        Starts a download process to deliver all the records in a data set
+        into a file. The fileType parameter allows users to choose what
+        in format records are represented.
   responses:
     default:
-      description: Returns the Data Set data
-      schema:
-        $ref: "../api.yaml#/definitions/dataSet"
-      headers:
-        last-modified:
-          type: string
-          description: The date/time that the label was last modified
+      description: Download proceeds

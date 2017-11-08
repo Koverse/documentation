@@ -1,9 +1,9 @@
 post:
-  summary: JSON and data set IDs
-  operationId: queryObject
+  summary: JSON and data set names
+  operationId: queryObjectNames
   tags: ["Query"]
   description: >
-        Query using a JSON document and data set IDs. Object-based Queries
+        Query using a JSON document and data set names.
   parameters:
     - $ref: "../api.yaml#/parameters/objectQuery"
   responses:

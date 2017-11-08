@@ -1,8 +1,0 @@
-type: object
-required:
-  - dataSetId
-properties:
-  id:
-    type: string
-  dataSet:
-    $ref: "../api.yaml#/definitions/dataSet"

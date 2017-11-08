@@ -4,18 +4,25 @@ required:
 properties:
   recordId:
     type: string
-  dataSet:
-    $ref: "../api.yaml#/definitions/dataSet"
-  fields:
-      type: array
-      items:
+  collectionId:
+    type: string
+  securityLabel:
+    type: string
+  value:
+    type: object
+    description: >
+          An object containing the fields and values within this record.
+          The structure of this object will vary from data set to data set.
+          Here we include 'fieldOne', 'fieldTwo', etc. just as an example.
+    properties:
+      fieldOne:
+        type: string
+      fieldTwo:
+        type: integer
+      fieldThree:
         type: object
         properties:
-          type:
+          subFieldOne:
             type: string
-          label:
-            type: string
-          value:
-            type: string
-          fields:
-            type: array
+          subfieldTwo:
+            type: integer

@@ -1,8 +1,0 @@
-type: object
-required:
-  - userId
-properties:
-  id:
-    type: string
-  user:
-    $ref: "../api.yaml#/definitions/user"

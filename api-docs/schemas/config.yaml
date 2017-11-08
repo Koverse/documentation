@@ -1,8 +1,0 @@
-type: object
-required:
-  - clientAuth
-properties:
-  clientAuth:
-    type: boolean
-  administratorEmail:
-    type: string

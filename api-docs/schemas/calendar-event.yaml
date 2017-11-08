@@ -1,9 +1,0 @@
-type: object
-required:
-  - title
-  - start
-properties:
-  title:
-    type: string
-  start:
-    type: string

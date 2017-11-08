@@ -1,4 +1,3 @@
-type: object
-properties:
-  success:
-    type: boolean
+type: boolean
+description: >
+      This indicates whether the logout was successful.

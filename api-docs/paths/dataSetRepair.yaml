@@ -1,7 +1,0 @@
-parameters:
-  - $ref: "../api.yaml#/parameters/dataSetId"
-
-get:
-  summary: Repair a Data Set by id
-  operationId: repairDataSetById
-  tags: ["DataSets"]

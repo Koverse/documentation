@@ -1,9 +1,12 @@
 post:
-  summary: Logs in the user
+  summary: User login
   operationId: loginUser
-  tags: ["System"]
+  tags: ["Authentication"]
+  description: >
+      Authenticate a user and create an authenticated web session. This must be
+      called before calling other methods.
   parameters:
-    - name: login
+    - name: loginParams
       in: body
       description: login object
       required: true

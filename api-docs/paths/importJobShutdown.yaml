@@ -1,7 +1,0 @@
-parameters:
-  - $ref: "../api.yaml#/parameters/importJobId"
-
-get:
-  summary: Shutdown an import job
-  operationId: shutdownImportJob
-  tags: ["Imports", "Jobs"]

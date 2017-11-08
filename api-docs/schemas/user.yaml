@@ -13,3 +13,4 @@ properties:
     type: string
   email:
     type: string
+    description: username or email used to login

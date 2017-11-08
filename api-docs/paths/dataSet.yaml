@@ -2,41 +2,61 @@ parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
 
 get:
-  summary: Returns a Data Set by id, if a data set has a currently running job, that information will be returned with the data set
+  summary: Get metadata
+  description: >
+        Get the name, description, record count, and other information
+        about the given data set. Does not return any records within the
+        data set.
   operationId: findDataSetById
-  tags: ["DataSets"]
+  tags: ["DataSet"]
   responses:
     default:
-      description: Returns the Data Set data
+      description: Returns the data set metadata
       schema:
-        $ref: "../api.yaml#/definitions/dataSet"
+        $ref: "../api.yaml#/definitions/dataSetMetadata"
       headers:
         last-modified:
           type: string
           description: The date/time that the label was last modified
 
-delete:
-  summary: Deletes a single data set based on the id supplied
-  operationId: deleteDataSet
-  tags: ["DataSets"]
-  responses:
-    default:
-      description: Returns the data set that was deleted
-      schema:
-        $ref: "../api.yaml#/definitions/dataSet"
+# commenting out until we have data set permissions documented
 
-put:
-  summary: Updates a data set by id
-  tags: ["DataSets"]
-  parameters:
-    - name: dataSet
-      in: body
-      description: The updated data set info
-      required: true
-      schema:
-        $ref: "../api.yaml#/definitions/dataSet"
-  responses:
-    default:
-      description: Returns the updated data set data
-      schema:
-        $ref: "../api.yaml#/definitions/dataSet"
+# delete:
+#   summary: Delete based on the ID supplied
+#   description: >
+#         This deletes the data set metadata and all records and index entries,
+#         etc. associated with the data set.
+#   operationId: deleteDataSet
+#   tags: ["DataSet"]
+#   responses:
+#     default:
+#       description: Returns the metadata of the data set that was deleted
+#       schema:
+#         $ref: "../api.yaml#/definitions/dataSetMetadata"
+
+# put:
+#   summary: Update metadata by ID
+#   description: >
+#         Use this method to change the name or description.
+#   tags: ["DataSet"]
+#   consumes:
+#     - applications/json
+#   parameters:
+#     - in: body
+#       name: dataSetMetadata
+#       description: New data set metadata
+#       required: true
+#       schema:
+#         type: object
+#         properties:
+#           name:
+#             type: string
+#             minLength: 4
+#             pattern: "^[a-zA-Z0-9- ]+$"
+#           description:
+#             type: string
+#   responses:
+#     default:
+#       description: Returns the updated data set metadata
+#       schema:
+#         $ref: "../api.yaml#/definitions/dataSetMetadata"

@@ -1,4 +1,0 @@
-type:
-  $ref: ./transformTypeStageDescription.yaml
-required:
-properties:

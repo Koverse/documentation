@@ -1,0 +1,26 @@
+type: object
+description: >
+      This object contains all the metadata associated with a data set.
+#required:
+#  - name
+properties:
+  id:
+    type: string
+  name:
+    type: string
+    minLength: 4
+    pattern: "^[a-zA-Z0-9- ]+$"
+  description:
+    type: string
+    description: A user-readable description of the data set.
+  createdTimestamp:
+    type: integer
+    description: Timestamp of when the data set was created.
+  updatedTimestamp:
+    type: integer
+    description: Timestamp of the last time records were added.
+  recordCountLastUpdate:
+    type: integer
+    description: Timestamp of the last time records were added.
+  recordCount:
+    type: integer
