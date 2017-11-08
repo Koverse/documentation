@@ -14,15 +14,5 @@ properties:
           An object containing the fields and values within this record.
           The structure of this object will vary from data set to data set.
           Here we include 'fieldOne', 'fieldTwo', etc. just as an example.
-    properties:
-      fieldOne:
-        type: string
-      fieldTwo:
-        type: integer
-      fieldThree:
-        type: object
-        properties:
-          subFieldOne:
-            type: string
-          subfieldTwo:
-            type: integer
+example:
+  $ref: "recordExample.yaml"

@@ -6,7 +6,6 @@ info:
         Koverse Web API Specification
 
 
-
 host: koverse.swagger.io:8000
 
 consumes:

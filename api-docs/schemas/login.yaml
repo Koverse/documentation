@@ -9,3 +9,6 @@ properties:
     type: string
   password:
     type: string
+example:
+  email: 'name@company.com'
+  password: 'supersecret'

@@ -14,3 +14,9 @@ properties:
   email:
     type: string
     description: username or email used to login
+example:
+  id: 1
+  firstName: joe
+  lastName: jones
+  email: joejones@company.com
+  

@@ -90,3 +90,13 @@ properties:
   offset:
     type: int64
     description: The number of records in the result set to skip
+example:
+  collectionIds:
+    - movies_20171107_172745_048
+  query:
+      title: jurassic
+  fieldsToReturn:
+    - movie_title
+    - title_year
+    - gross
+  limit: 100

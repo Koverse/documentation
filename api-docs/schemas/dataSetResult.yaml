@@ -44,3 +44,21 @@ properties:
     type: array
     items:
       $ref: "../api.yaml#/definitions/record"
+  successful:
+    type: boolean
+  errorMessage:
+    type: string
+example:
+  id: movies_20171107_172745_048
+  name: movies
+  attributeMatchCount: 0
+  recordMatchCount: 20
+  recordCount: 4159
+  createdTimestamp: 1510093665050
+  updatedTimestamp: 0
+  flatSchema: true
+  recordMatchCountLimited: false
+  records:
+    - $ref: recordExample.yaml
+  successful: true
+  errorMessage: ""

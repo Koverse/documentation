@@ -3,7 +3,7 @@ parameters:
 get:
   summary: Get attribute names
   operationId: findDataSetAttributeNames
-  tags: ["DataSet"]
+  tags: ["DataSets"]
   description: >
         Get a list of the names of fields or attributes within a data set.
         These can be used to inform users of what fields are available so
@@ -15,3 +15,17 @@ get:
         type: array
         items:
           type: string
+      example:
+        - aspect_ratio
+        - budget
+        - color
+        - content_rating
+        - country
+        - director_name
+        - duration
+        - genres
+        - gross
+        - language
+        - movie_title
+        - plot_keywords
+        - title_year

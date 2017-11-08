@@ -92,7 +92,7 @@ get:
         * "ddHHmm'Z' MMM yy"
 
         Date syntax
-        
+
         * yyyy - four digit year
         * yy - two digit year
         * MM - two digit month

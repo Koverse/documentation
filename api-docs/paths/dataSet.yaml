@@ -8,16 +8,16 @@ get:
         about the given data set. Does not return any records within the
         data set.
   operationId: findDataSetById
-  tags: ["DataSet"]
+  tags: ["DataSets"]
   responses:
     default:
       description: Returns the data set metadata
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
-      headers:
-        last-modified:
-          type: string
-          description: The date/time that the label was last modified
+      #headers:
+      #  last-modified:
+      #    type: string
+      #    description: The date/time that the label was last modified
 
 # commenting out until we have data set permissions documented
 

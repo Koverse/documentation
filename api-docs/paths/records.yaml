@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Get a sample of records
   operationId: getSampleRecords
-  tags: ["DataSet"]
+  tags: ["DataSets"]
   description: |
         Get a list of 100 sample records in a data set. Records are guaranteed
         to be selected uniformly at random. If there are less than 100 records
@@ -23,3 +23,7 @@ get:
             type: array
             items:
               $ref: "../api.yaml#/definitions/record"
+      example:
+        flatSchema: true
+        records:
+          - $ref: "../schemas/recordExample.yaml"

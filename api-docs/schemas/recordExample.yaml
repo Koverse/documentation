@@ -1,0 +1,33 @@
+recordId: null
+collectionId: movies_20171107_172745_048
+securityLabel: ""
+value:
+  plot_keywords: african american|code|dog|pigeon|samurai
+  country: France
+  aspect_ratio: 1.85
+  actor_3_facebook_likes: 116
+  num_critic_for_reviews: 167
+  color: Color
+  language: English
+  title_year: 1999
+  imdb_score: 7.5
+  duration: 116
+  genres: Action|Crime|Drama|Thriller
+  actor_1_name: Henry Silva
+  director_facebook_likes: 0
+  content_rating: R
+  num_voted_users: 70084
+  gross: 3300230
+  facenumber_in_poster: 1
+  actor_2_name: Gano Grills
+  num_user_for_reviews: 346
+  actor_1_facebook_likes: 251
+  movie_title: Ghost Dog - The Way of the Samurai
+  movie_facebook_likes: 0
+  actor_2_facebook_likes: 147
+  movie_imdb_link: http://www.imdb.com/title/tt0165798/?ref_=fn_tt_tt_1
+  director_name: Jim Jarmusch
+  cast_total_facebook_likes: 675
+  actor_3_name: Richard Portnow
+matchValues:
+isMatch: false
