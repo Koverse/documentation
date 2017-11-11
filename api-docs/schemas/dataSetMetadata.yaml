@@ -1,0 +1,45 @@
+type: object
+description: >
+      This object contains all the metadata associated with a data set.
+#required:
+#  - name
+properties:
+  id:
+    type: string
+  name:
+    type: string
+    minLength: 4
+    pattern: "^[a-zA-Z0-9- ]+$"
+  description:
+    type: string
+    description: A user-readable description of the data set.
+  useId:
+    type: int64
+    description: The user ID of the creator of this data set.
+  createdTimestamp:
+    type: integer
+    description: Timestamp of when the data set was created.
+  updatedTimestamp:
+    type: integer
+    description: Timestamp of the last time records were added.
+  recordCountLastUpdate:
+    type: integer
+    description: Timestamp of the last time records were added.
+  recordCount:
+    type: integer
+  importFlowIds:
+    type: array
+    items:
+      type: int64
+    description: A list of IDs of import flows writing data to this data set.
+example:
+  id: movies_20171107_172745_048
+  name: movies
+  description: null
+  userId: 4
+  createdTimestamp: 1510093665050
+  updatedTimestamp: 1510093711178
+  recordCountLastUpdated: 1510106324522
+  recordCount: 4159
+  importFlowIds:
+    - 338

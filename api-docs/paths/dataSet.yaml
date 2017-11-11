@@ -1,0 +1,62 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Get metadata
+  description: >
+        Get the name, description, record count, and other information
+        about the given data set. Does not return any records within the
+        data set.
+  operationId: findDataSetById
+  tags: ["DataSets"]
+  responses:
+    default:
+      description: Returns the data set metadata
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetMetadata"
+      #headers:
+      #  last-modified:
+      #    type: string
+      #    description: The date/time that the label was last modified
+
+# commenting out until we have data set permissions documented
+
+# delete:
+#   summary: Delete based on the ID supplied
+#   description: >
+#         This deletes the data set metadata and all records and index entries,
+#         etc. associated with the data set.
+#   operationId: deleteDataSet
+#   tags: ["DataSet"]
+#   responses:
+#     default:
+#       description: Returns the metadata of the data set that was deleted
+#       schema:
+#         $ref: "../api.yaml#/definitions/dataSetMetadata"
+
+# put:
+#   summary: Update metadata by ID
+#   description: >
+#         Use this method to change the name or description.
+#   tags: ["DataSet"]
+#   consumes:
+#     - applications/json
+#   parameters:
+#     - in: body
+#       name: dataSetMetadata
+#       description: New data set metadata
+#       required: true
+#       schema:
+#         type: object
+#         properties:
+#           name:
+#             type: string
+#             minLength: 4
+#             pattern: "^[a-zA-Z0-9- ]+$"
+#           description:
+#             type: string
+#   responses:
+#     default:
+#       description: Returns the updated data set metadata
+#       schema:
+#         $ref: "../api.yaml#/definitions/dataSetMetadata"

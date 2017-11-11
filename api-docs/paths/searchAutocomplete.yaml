@@ -1,0 +1,22 @@
+parameters:
+  dataSets:
+    name: dataSets
+    in: query
+    description: limits autocomplete results to specified data sets
+    type: string
+  labels:
+    name: labels
+    in: query
+    description: limits autocomplete results to specified labels
+    type: string
+get:
+  summary: Returns search autocomplete results
+  operationId: searchAutocomplete
+  tags: ["Search"]
+  responses:
+    default:
+      description: Returns the search autocomplete results
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/searchAutocomplete"

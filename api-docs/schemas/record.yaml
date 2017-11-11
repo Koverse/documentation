@@ -1,0 +1,18 @@
+type: object
+required:
+  - name
+properties:
+  recordId:
+    type: string
+  collectionId:
+    type: string
+  securityLabel:
+    type: string
+  value:
+    type: object
+    description: >
+          An object containing the fields and values within this record.
+          The structure of this object will vary from data set to data set.
+          Here we include 'fieldOne', 'fieldTwo', etc. just as an example.
+example:
+  $ref: "recordExample.yaml"
