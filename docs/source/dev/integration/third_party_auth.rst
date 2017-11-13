@@ -1,5 +1,5 @@
-3rd Party Authentication and Authorization
--------------------------------------------
+Authentication and Authorization
+--------------------------------
 
 Koverse can be extended to integrate with existing enterprise authentication and
 authorization systems that may be required for a given production environment.

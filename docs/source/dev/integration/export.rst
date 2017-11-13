@@ -1,5 +1,5 @@
-Export Transforms API
----------------------
+Export Transforms
+-----------------
 
 Koverse ExportTransforms can be used to transform Records as they are being written to a Koverse Sink.
 

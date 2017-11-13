@@ -1,5 +1,5 @@
-Using Koverse with PySpark
---------------------------
+PySpark Shell
+-------------
 
 PySpark is the name of Apache Spark's Python API and it includes an interactive shell for analyzing large amounts of data with Python and Spark.
 

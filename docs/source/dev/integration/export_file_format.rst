@@ -1,5 +1,5 @@
-Export File Formats API
------------------------
+Export File Formats
+----
 
 Developers can extend ExportFileFormat to easily create new ways to export Koverse Records to file-based Sinks. ExportFileFormats are parameterized like other classes.
 

@@ -1,5 +1,5 @@
-Using PySpark and iPython Notebook with Koverse
------------------------------------------------
+iPython Notebook
+----------------
 
 iPython Notebook is a popular tool for creating Python scripts that can display results and be shared with others.
 

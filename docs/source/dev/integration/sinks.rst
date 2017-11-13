@@ -1,5 +1,5 @@
-Sinks API
----------
+Sinks
+-----
 
 Koverse Sinks are designed to write Koverse Records to external data stores. For example, customers often want transformed data exported into HDFS for follow-on processing by down stream systems. Java developers can create
 custom Sinks to support specific destination data stores.

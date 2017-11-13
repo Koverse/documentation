@@ -1,5 +1,5 @@
-Using PySpark and Jupyter with Koverse
------------------------------------------------
+Jupyter Notebook
+----------------
 
 Jupyter is a development tool that allows users to create notebooks containing comments and code, like iPython Notebook. Jupyter supports other languages via the use of 'kernels'.
 

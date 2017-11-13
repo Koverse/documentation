@@ -1,9 +1,8 @@
-Spark SQL Transform API
------------------------
+Spark SQL
+---------
 
-Koverse now supports the Apache Spark SQL via a set of native Koverse Spark SQL APIs that let the user query structured data as a distributed dataset (RDD). This makes it easy to run SQL queries.
+Koverse supports Apache Spark SQL via a set of native Koverse Spark SQL APIs that let the user query structured data as a distributed dataset (RDD). This makes it easy to run SQL queries.
 
-See the :ref:`Addons` section for information about building an addon that contains a class that uses the Koverse Spark SQL API.
 
 The following is a high-level outline of the Koverse Spark SQL API framework:
 
@@ -73,6 +72,9 @@ Class KoverseSparkSql
 +--------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
 | static org.apache.spark.sql.types.StructType                       | createSqlSchema(FlatCollectionSchema collectionSchema)                                                                                                                                   | cGiven a flat collection schema, create s Spark SQL Struct type, which the SQL schema.                                                                |
 +--------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+See the :ref:`Addons` section for information about building an addon that contains a class that uses the Koverse Spark SQL API.
 
 
 **For a reference of the supported query syntax in the Spark Java SQL see:**
