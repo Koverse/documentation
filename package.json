@@ -1,0 +1,33 @@
+{
+  "name": "react-static-example-basic",
+  "version": "1.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "deref-api": "json-dereference -s api-spec/api.yaml -o api-spec/compiled.json",
+    "start": "npm run deref-api && react-static start",
+    "build": "npm run deref-api && react-static build",
+    "serve": "serve dist -p 3000"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "json-dereference-cli": "^0.1.2",
+    "material-design-icons": "^3.0.1",
+    "material-ui": "^1.0.0-beta.21",
+    "material-ui-icons": "^1.0.0-beta.17",
+    "normalize.css": "^7.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-helmet": "^5.2.0",
+    "react-highlight": "^0.10.0",
+    "react-router": "^4.2.0",
+    "react-static": "^4.1.0",
+    "typeface-roboto": "0.0.45",
+    "yaml-loader": "^0.5.0"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^3.0.0",
+    "eslint-config-react-tools": "1.x.x",
+    "serve": "^6.1.0"
+  }
+}
