@@ -26,11 +26,11 @@ export default {
           tags: apiTags,
         }),
         children: apiTags.map(tag => ({
-          path: `/${tag}`,
+          path: `/${tag.name}`,
           component: 'src/containers/ApiTag',
           getProps: () => ({
             tag,
-            paths: getPathsByTag(tag),
+            paths: getPathsByTag(tag.name),
           }),
         })),
       },

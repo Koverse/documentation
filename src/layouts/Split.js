@@ -15,6 +15,7 @@ const styles = theme => ({
   grid: {
     display: 'flex',
     flexGrow: 1,
+    overflow: 'scroll',
   },
   paper: {
     flexGrow: 1,

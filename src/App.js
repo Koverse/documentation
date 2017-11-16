@@ -5,7 +5,7 @@ import { MuiThemeProvider, withStyles } from 'material-ui/styles'
 import theme from 'theme'
 import Helmet from 'react-helmet'
 import 'normalize.css'
-import 'highlight.js/styles/gruvbox-dark.css'
+import 'highlight.js/styles/atelier-cave-dark.css'
 import Nav from 'components/Nav'
 
 const styles = theme => ({
@@ -18,10 +18,14 @@ const styles = theme => ({
     display: 'flex',
     width: '100%',
     height: '100%',
+    '& code': {
+      fontSize: '0.9em',
+    },
   },
   content: {
-    display: 'flex',
+    // display: 'flex',
     flexGrow: 1,
+    overflow: 'scroll',
   },
 })
 

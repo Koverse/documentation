@@ -6,12 +6,20 @@ info:
         Koverse Web API Specification
 
 
-host: koverse.swagger.io:8000
+host: http://demo.koverse.com
 
 consumes:
   - application/json
 produces:
   - application/json
+
+tags:
+  - name: DataSets
+    description: Everything about your datasets
+  - name: Authentication
+    description: Everything about authentication
+  - name: Query
+    description: Everything about your query
 
 definitions:
   dataSetMetadata:

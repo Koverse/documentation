@@ -3,15 +3,27 @@ import { getSiteProps, Link } from 'react-static'
 import { withStyles } from 'material-ui/styles'
 import Drawer from 'material-ui/Drawer'
 import Divider from 'material-ui/Divider'
-import List, { ListItem, ListItemText } from 'material-ui/List'
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 import Collapse from 'material-ui/transitions/Collapse'
+import ExpandLess from 'material-ui-icons/ExpandLess'
+import ExpandMore from 'material-ui-icons/ExpandMore'
+import logoImg from '../logo.png'
 
 const drawerWidth = 240
-const styles = () => ({
+const styles = theme => ({
   drawerPaper: {
+    background: theme.palette.background.contentFrame,
     position: 'relative',
     height: '100%',
     width: drawerWidth,
+  },
+  home: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginBottom: theme.spacing.unit,
+  },
+  logo: {
+    width: '80%',
   },
 })
 
@@ -43,18 +55,24 @@ class Nav extends Component {
             button
             to="/"
             component={Link}
+            className={classes.home}
           >
-            <ListItemText primary="Home" />
+            <img className={classes.logo} src={logoImg} alt="Koverse" />
           </ListItem>
           {navItems.map(item => (
             <li key={item.label}>
+              <Divider />
               <ListItem
                 button
                 to={item.to}
                 component={Link}
-                onClick={() => this.handleClick(item)}
               >
                 <ListItemText primary={item.label} />
+                {item.children && (
+                  <ListItemIcon onClick={() => this.handleClick(item)}>
+                    {this.state.expanded[item.label] ? <ExpandLess /> : <ExpandMore />}
+                  </ListItemIcon>
+                )}
               </ListItem>
               {item.children && (
                 <Collapse
@@ -79,7 +97,6 @@ class Nav extends Component {
             </li>
           ))}
         </List>
-        <Divider />
       </Drawer>
     )
   }

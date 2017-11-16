@@ -7,8 +7,12 @@ export const getNavItems = () => ([
     label: 'API',
     to: '/api',
     children: apiTags.map(tag => ({
-      label: tag,
-      to: `/api/${tag}`,
+      label: tag.name,
+      to: `/api/${tag.name}`,
     })),
+  },
+  {
+    label: 'SDK',
+    to: '/sdk',
   },
 ])
