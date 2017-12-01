@@ -1,15 +1,15 @@
 Spark Transform API
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 Introduction
-^^^^^^^^^^^^
+
 
 Koverse now supports the Apache Spark cluster computing framework through a set of native Koverse APIs that leverage much of the Spark primitives. The Koverse Spark APIs allow a developer of Koverse a set of routines, protocols, and tools for building software applications based upon the Koverse technology.
 
 See the :ref:`Addons` section for information about building an addon that contains a class that uses the Koverse Spark API.
 
-Note that by default, the RDDs that Koverse provides to your transform 
-may have a relatively small number of partitions. 
+Note that by default, the RDDs that Koverse provides to your transform
+may have a relatively small number of partitions.
 This can result in decreased performance for anything but very simple processing algorithms.
 Specifically, the RDD will be partitioned by the number of record batches that your koverse server is configured to use.
 
@@ -21,7 +21,7 @@ you use to maximize performance.
 The following is a high-level outline of the Koverse Spark API framework:
 
 Interface SparkTransform
-^^^^^^^^^^^^^^^^^^^^^^^^
+
     **com.koverse.sdk.transform.spark**
 
     `@ThreadSafe`
@@ -57,7 +57,7 @@ Interface SparkTransform
 
 
 Interface SparkTransformContext
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
     **com.koverse.sdk.transform.spark**
 
     `@NotThreadSafe`
@@ -85,7 +85,7 @@ Interface SparkTransformContext
 +----------------------------------------------------+---------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Class JavaSparkTransform
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
     **com.koverse.sdk.transform.spark**
 
     `@ThreadSafe`
@@ -111,7 +111,7 @@ Class JavaSparkTransform
 +--------------------------------------------------------------------+----------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Class JavaSparkTransformContext
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
     **com.koverse.sdk.transform.spark**
 
@@ -142,7 +142,7 @@ Class JavaSparkTransformContext
 
 
 Class SparkTransformLoader
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
     **com.koverse.sdk.transform.spark**
 
     **public class SparkTransformLoader extends Object**

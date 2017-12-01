@@ -1,11 +1,13 @@
 .. _Addons:
 
-Addons
----------------------
 
-Any custom code, whether it be one or more applications, transforms, or custom sources or sinks, can be packaged up into a simple JAR -  referred to in Koverse as an Addon. Addons are uploaded to Koverse, via the System Administration app, for deployment.
 
-Koverse reads the contents of the JAR file and extracts necessary metadata from any classes extending Koverse known types, such as Application, Transform, Source, and Sink.
+AddOns
+------
+
+Custom sources, sinks, authentication mechanisms, and analytics are plugged into Koverse via simple packages called AddOns.
+
+An AddOn can be uploaded by developers through the Koverse UI and from there, a wide variety of additional users can take advantage of them.
 
 
 Creating an Addon

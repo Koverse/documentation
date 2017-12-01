@@ -1,5 +1,5 @@
 Spark Scala
------------
+^^^^^^^^^^^
 
 These examples give a quick overview of the Koverse Spark Scala Transform API. Koverse 1.4 currently provides a single transform API in Scala.
 

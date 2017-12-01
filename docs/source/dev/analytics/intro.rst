@@ -3,11 +3,18 @@
 Analytics API
 -------------
 
-Koverse supports analytics written using following popular frameworks:
+Putting analytics into production is a phenomenal challenge for most organization building on newer scalable technologies. Koverse makes running analytics in production easy.
 
-Hadoop MapReduce
-Apache Pig
-Apache Spark (including Spark SQL)
+Koverse wraps an analytic in a Transform, which allows the analytic to be reused for multiple data sets via code-free configuration, and Transforms are also scheduled, monitored, and audited.
+
+Transforms allow data scientists to use the APIs they want to use, and adds to that the ability to manage the analytic deployment. Transforms can wrap analytics written for the following frameworks and APIs:
+
+* Spark
+* Spark SQL
+* MapReduce
+* Pig
+* Python
+
 
 Analytics written for Koverse are called 'Transforms' and can use all of the APIs and functions of these frameworks. What makes Koverse transforms different from “vanilla” analytics written for these frameworks is that:
 
