@@ -1,5 +1,6 @@
-Koverse Core Concepts
----------------------
+
+Core Concepts
+-------------
 The following sections provide a basic introduction to the basic abstract concepts which build a foundation of knowledge for a developer before working with Koverse API.
 
 .. _Data Model:
@@ -10,8 +11,8 @@ Data Model
 The Koverse data model has two main conceptual components: **Records**, and **Data Sets**.
 Logically, each Data Set contains a set of Records.
 
-For those familiar with relational database management systems such as Oracle or MySQL, the analogy is that a Data Set is similar to a Table, a Record is similar to a Row, and the fields of a Record are similar to the Columns.
-However, unlike traditional relational databases, Records in a single Collection in Koverse do not have to all have the same fields, and fields can contain complex values, like lists and mappings of fields to values.
+For those familiar with relational database management systems such as Oracle or MySQL, the analogy is that a Data Set is similar to a Table, a Record is similar to a Row, and the fields or attributes of a Record are similar to the Columns.
+However, unlike traditional relational databases, Records in a single Data Set in Koverse do not have to all have the same fields, and fields can contain complex values, like lists and mappings of fields to values.
 
 Records
 ^^^^^^^
@@ -32,10 +33,9 @@ Some key points to remember about Records are:
     * Example Record B: { key1: 234 }
 
 
-* Records do not have a user designated id field. It is up to the application to designate and populate an identifier field. The application can submit queries to look up records by any field, including a field to which it has assigned unique identifiers.
+* Records do not have a user designated id field. It is up to the application to designate and populate an identifier field. Applications can submit queries to look up records by any field, including a field to which it has assigned unique identifiers.
 
 * The optional security label on a record is set programmatically through the Java API and effects how the record is stored and retrieved.
-
 
 * Records can contain nested value objects:
   * Example: { name: parent, children: [ { name: child1} ] }
@@ -83,10 +83,17 @@ Some key points to remember about Records are:
 +--------------------------------------+--------------------------------------------------+
 | Inet4Address                         | 192.168.1.1                                      |
 +--------------------------------------+--------------------------------------------------+
-| URL                                  | http://www.koverse.com                           |
-+--------------------------------------+--------------------------------------------------+
 | Boolean                              | true                                             |
 +--------------------------------------+--------------------------------------------------+
 | byte[]                               | An array of binary bytes such as the             |
 |                                      | original bytes of a file                         |
 +--------------------------------------+--------------------------------------------------+
+
+Queries
+^^^^^^^
+
+Records in Data Sets can be queried interactively by applications. Koverse provides indexing of values in records automatically.
+
+Applications can query data using the popular Lucene syntax or by specifying queries as JSON documents.
+
+See the Applications API documentation for examples and details of using queries to deliver answers to applications.

@@ -1,5 +1,5 @@
-Sources API
-------------
+Sources
+-------
 
 Koverse Sources are designed to read data from a specific type of data source, such as a relational database or a remote file system.
 
@@ -88,12 +88,12 @@ As an example of saving state, when file based sources are done importing some s
 	@Override
 	public Iterable<SourceState> stateToSave() {
 	  ArrayList<SourceState> state = new ArrayList();
-      
+
 	  if (importOnlyNewFiles) {
 	    state.add(new SourceState(NovelFilenameFilter.IMPORTED_FILENAMES_KEY, importedFilenames, StateStringOperator.UNIQUE));
 	  }
-	  
-      
+
+
 	  return state;
 	}
 

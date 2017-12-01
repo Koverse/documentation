@@ -1,5 +1,5 @@
-Using Python with Koverse
--------------------------
+Python
+^^^^^^
 Python is a popular interpreted programming language.
 
 Koverse ships with a Python client to allow Python scripts to access the Koverse API.
@@ -27,7 +27,7 @@ The Koverse Python client can then be used in Python scripts by importing the ko
  >>> from koverse import client
 
 Connecting to the Koverse Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 The Python client can connect to the hostname of the Koverse Server (note: this is not the address of the Koverse Web App).::
 
@@ -54,7 +54,7 @@ If the authentication is unsuccessful an exception is raised::
  koverse.thriftgen.ttypes.TKoverseException: TKoverseException(_message='No authenticated user found')
 
 Querying Koverse Collections
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 The Koverse Python client can be used to interactively query collections, fetch samples, create collections and run transforms.
 
@@ -105,7 +105,7 @@ Clients can also request that the Koverse Server return only a subset of the fie
   {'Close': 111.5}]
 
 Fetching Collection Samples
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 Because Python runs on a single machine, and because Koverse collections may contain a large volume of records, it can be useful to
 work with a sample of a collection's records, especially when building statistical models designed to be trained on a representative sample.
@@ -119,7 +119,7 @@ Koverse maintains representative samples for all collections by default. These s
 
 
 Uploading resource files
-^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 One advantage of Python is that is has a number of well supported libraries for doing
 sophisticated data analysis , such as numpy (http://www.numpy.org), scipy (http://www.scipy.org),
@@ -159,41 +159,9 @@ The storeResourceFile() method returns a unique filename that Transform scripts 
 Now we can use it to score all the daily changes in price to look for anomalous changes, for example: changes that are greater than two standard deviations from the mean.
 We'll do that in the next section.
 
-Developing an XML Transform (XSLT) to import your XML data as Koverse Records
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-XML can be imported into Koverse as any file can.  However, the format of the imported records in the collection may not be what you are expecting, as it is more of a
-raw import of generic XML data.  To enable the import of your XML data into proper Koverse records, an XSLT must be used to convert
-your XML into proper Koverse Record XML.
-
-For example, let's say you have the following XML file which you wish to import:
-
-.. literalinclude:: /_static/xslt-examples/books-example.xml
-	:language: xml
-
-For this example, this XML file would conform to your XML schema (XSD):
-
-.. literalinclude:: /_static/xslt-examples/books-example.xsd
-	:language: xml
-
-Now, to transform this XML into XML that represents Koverse records, the following XSLT would be used:
-
-.. literalinclude:: /_static/xslt-examples/books-example.xsl
-	:language: xml
-
-Which would produce the following XML file that conforms to the Koverse Record XML Schema:
-
-.. literalinclude:: /_static/xslt-examples/books-example-transformed.xml
-	:language: xml
-
-Finally, for your reference, here is the complete Koverse XML Schema:
-
-.. literalinclude:: /_static/xslt-examples/koverse-records.xsd
-	:language: xml
-
 
 Running a Python Script as a Transform
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 Koverse supports running Python scripts in Transforms. These transforms are simple map-only transforms.
 
