@@ -1,9 +1,10 @@
+.. _CoreConcepts:
 
 Core Concepts
 -------------
 The following sections provide a basic introduction to the basic abstract concepts which build a foundation of knowledge for a developer before working with Koverse API.
 
-.. _Data Model:
+.. _DataModel:
 
 Data Model
 ^^^^^^^^^^

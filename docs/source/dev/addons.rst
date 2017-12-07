@@ -1,9 +1,7 @@
 .. _Addons:
 
-
-
-AddOns
-------
+AddOn Packaging
+---------------
 
 Custom sources, sinks, authentication mechanisms, and analytics are plugged into Koverse via simple packages called AddOns.
 
