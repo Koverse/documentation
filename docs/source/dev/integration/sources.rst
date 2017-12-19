@@ -257,69 +257,70 @@ Now we're ready to package up our Source into an AddOn file, which just just a J
 Database Sources
 ^^^^^^^^^^^^^^^^
 
-.. _custom sources:
+..
+  .. _custom sources:
 
-Other Custom Sources
-^^^^^^^^^^^^^^^^^^^^
+  Other Custom Sources
+  ^^^^^^^^^^^^^^^^^^^^
 
-.. _saving source state:
+  .. _saving source state:
 
-Saving State
-^^^^^^^^^^^^
+  Saving State
+  ^^^^^^^^^^^^
 
-Some sources can benefit from saving the state of the last completed import job.
-For example a source might want to record the date of the last time it ran so it can request data that is newer than the last time it retrieved data from the external data source.
+  Some sources can benefit from saving the state of the last completed import job.
+  For example a source might want to record the date of the last time it ran so it can request data that is newer than the last time it retrieved data from the external data source.
 
-For another example, some web based APIs support paging, and a source could record the last page read so that the next time data is imported the source begins reading at the page where it left off.
+  For another example, some web based APIs support paging, and a source could record the last page read so that the next time data is imported the source begins reading at the page where it left off.
 
-The source API allows developers to retrieve saved state and specify state to be saved when each import job is completed.
-Developers can store one or more String values associated with a particular String key. Because a source can be used in multiple import jobs and because import jobs may consist of multiple simultaneous workers importing data in parallel, the API allows developers the ability to specify how multiple values for a given key should be combined.
+  The source API allows developers to retrieve saved state and specify state to be saved when each import job is completed.
+  Developers can store one or more String values associated with a particular String key. Because a source can be used in multiple import jobs and because import jobs may consist of multiple simultaneous workers importing data in parallel, the API allows developers the ability to specify how multiple values for a given key should be combined.
 
-To read saved state, sources should use the method of the provided 'context' object::
+  To read saved state, sources should use the method of the provided 'context' object::
 
-	Iterable<String> getState(String key)
+  	Iterable<String> getState(String key)
 
-which returns an Iterable of String values associated with the given key.
+  which returns an Iterable of String values associated with the given key.
 
-For example, file based sources have the option to read the list of file names already imported, so that they can determine which files if any have not already been processed and import them::
+  For example, file based sources have the option to read the list of file names already imported, so that they can determine which files if any have not already been processed and import them::
 
-	if (importOnlyNewFiles) {
-	  importedFiles = newHashSet(context.getState(IMPORTED_FILENAMES_KEY));
-	}
-
-
-As an example of saving state, when file based sources are done importing some set of files, they can save the filenames by implementing the stateToSave() method of the ListMapReduceSource interface::
-
-	@Override
-	public Iterable<SourceState> stateToSave() {
-	  ArrayList<SourceState> state = new ArrayList();
-
-	  if (importOnlyNewFiles) {
-	    state.add(new SourceState(NovelFilenameFilter.IMPORTED_FILENAMES_KEY, importedFilenames, StateStringOperator.UNIQUE));
-	  }
+  	if (importOnlyNewFiles) {
+  	  importedFiles = newHashSet(context.getState(IMPORTED_FILENAMES_KEY));
+  	}
 
 
-	  return state;
-	}
+  As an example of saving state, when file based sources are done importing some set of files, they can save the filenames by implementing the stateToSave() method of the ListMapReduceSource interface::
+
+  	@Override
+  	public Iterable<SourceState> stateToSave() {
+  	  ArrayList<SourceState> state = new ArrayList();
+
+  	  if (importOnlyNewFiles) {
+  	    state.add(new SourceState(NovelFilenameFilter.IMPORTED_FILENAMES_KEY, importedFilenames, StateStringOperator.UNIQUE));
+  	  }
 
 
-In this case, we return a list of SourceState objects, of which we have only one.
-That SourceState object consists of a key under which we are requesting to store one or more filenames of files we just imported. The last component of the SourceState object is a StateStringOperator, in this case, the UNIQUE operator which requests that Koverse store only the unique set of filenames, and avoid storing duplicates.
+  	  return state;
+  	}
 
-Other StateStringOperators can be used, with the following behaviors:
 
-ALL
-  store all string values associated with a given key, including duplicates if any
-UNIQUE
-  store only the unique set of values associated with a key, removing any duplicates
-MAX
-  store only the one value that sorts last among all values associated with a key
-MIN
-  store only the one value that sorts first among all values associated with a key
+  In this case, we return a list of SourceState objects, of which we have only one.
+  That SourceState object consists of a key under which we are requesting to store one or more filenames of files we just imported. The last component of the SourceState object is a StateStringOperator, in this case, the UNIQUE operator which requests that Koverse store only the unique set of filenames, and avoid storing duplicates.
 
-Only String values are supported, but sources may be able to do what they need with dates by converting to a String format such as 'YYYYMMDD HH:mm:SS' so that the String representation of dates can be sorted in time order. This technique could be used for other non-String types as well.
+  Other StateStringOperators can be used, with the following behaviors:
 
-Note: when overriding the stateToSave() method, subclasses may consider to calling super.stateToSave() and combining the state from the super class with its own state to preserve the behavior of the super class.
+  ALL
+    store all string values associated with a given key, including duplicates if any
+  UNIQUE
+    store only the unique set of values associated with a key, removing any duplicates
+  MAX
+    store only the one value that sorts last among all values associated with a key
+  MIN
+    store only the one value that sorts first among all values associated with a key
 
-Handling Errors
-^^^^^^^^^^^^^^^
+  Only String values are supported, but sources may be able to do what they need with dates by converting to a String format such as 'YYYYMMDD HH:mm:SS' so that the String representation of dates can be sorted in time order. This technique could be used for other non-String types as well.
+
+  Note: when overriding the stateToSave() method, subclasses may consider to calling super.stateToSave() and combining the state from the super class with its own state to preserve the behavior of the super class.
+
+  Handling Errors
+  ^^^^^^^^^^^^^^^

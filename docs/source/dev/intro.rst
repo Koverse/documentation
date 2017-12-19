@@ -17,4 +17,4 @@ There are three main categories of custom development on Koverse:
 Example Code
 ^^^^^^^^^^^^
 
-Code to accompany examples in this documentation can be found at .. _a link: https://github.com/Koverse/koverse-sdk-project .
+Code to accompany examples in this documentation can be found at .. _Example Code: https://github.com/Koverse/koverse-sdk-project .
