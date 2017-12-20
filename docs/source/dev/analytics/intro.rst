@@ -16,7 +16,7 @@ Transforms allow data scientists to use the APIs they want to use, and adds to t
 * Python
 
 
-Analytics written for Koverse are called 'Transforms' and can use all of the APIs and functions of these frameworks. What makes Koverse transforms different from “vanilla” analytics written for these frameworks is that:
+What makes Koverse transforms different from “vanilla” analytics written for these frameworks is that:
 
 - Developers can avoid writing code to read the original format of data. Koverse provides a common format for all data whether structured, semi- or unstructured.
 - Developers do not have to specify the schema of the data. Koverse learns and provides this to the underlying frameworks. This makes using structured APIs like Pig and Spark’s SQL or Data Frames much easier.
@@ -51,5 +51,6 @@ After prototyping an analytic, learn how to package analytics in production Tran
 
    spark_java.rst
    spark_scala_transform.rst
+   spark_java_dataframe_transform.rst
    spark_sql.rst
    python.rst

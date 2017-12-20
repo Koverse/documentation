@@ -10,10 +10,23 @@ Data Model
 ^^^^^^^^^^
 
 The Koverse data model has two main conceptual components: **Records**, and **Data Sets**.
-Logically, each Data Set contains a set of Records.
+Data Sets are the basic container for data in Koverse. Each Data Set contains a set of Records.
+
+Data Sets
+^^^^^^^^^
 
 For those familiar with relational database management systems such as Oracle or MySQL, the analogy is that a Data Set is similar to a Table, a Record is similar to a Row, and the fields or attributes of a Record are similar to the Columns.
 However, unlike traditional relational databases, Records in a single Data Set in Koverse do not have to all have the same fields, and fields can contain complex values, like lists and mappings of fields to values.
+
+
+A Koverse Data Set is a named set of Records. A Data Set has:
+
+* Configurable indexes to enable queries to quickly and efficiently find Records.
+
+* Permissions to control access to Records in the Data Set.
+
+* Automatically discovered statistics and samples to provide insight into the Records contained in the Data Set.
+
 
 Records
 ^^^^^^^
