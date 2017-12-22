@@ -256,6 +256,97 @@ Now we're ready to package up our Source into an AddOn file, which just just a J
 
 Database Sources
 ^^^^^^^^^^^^^^^^
+For this example, we will write a custom Source designed to read records from a PostGreSQL database. We will handle connecting to a database server and importing all the records found in a given database using a specified SQL query.
+
+To implement a Database Source, create a Java class that extends JdbcSourceBase. We'll walk through how to write each of the methods that our subclass must implement::
+
+  package com.koverse.examples.dataflow;
+
+  import com.koverse.sdk.ingest.format.StatementModifier;
+  import com.koverse.sdk.source.JdbcSourceBase;
+
+  import java.sql.SQLException;
+  import java.sql.Statement;
+
+  public class CustomDatabaseSource extends JdbcSourceBase {
+    // methods to be implemented shortly
+  }
+
+The JdbcSourceBase super class does a lot of the work for developers.  In this case, it defines what Parameters our source needs in order to connect to a database server.  This includes the hostname and port of the server, a username and password, the name of the database, and an SQL query.
+
+Since our Source knows everything it needs to connect to a database server, we can construct the JDBC URL needed to connect to our PostGreSQL database::
+
+  @Override
+  protected String createJdbcUrl(final String host, final int port, final String database) {
+
+    final StringBuilder jdbcUrl = new StringBuilder();
+
+    jdbcUrl.append("jdbc:postgresql://");
+    jdbcUrl.append(host.trim());
+    jdbcUrl.append(":");
+    jdbcUrl.append(Integer.toString(port));
+    jdbcUrl.append("/");
+    jdbcUrl.append(database);
+
+    return jdbcUrl.toString();
+  }
+
+We need to define the default port for PostGres and the JDBC driver class name::
+
+  @Override
+  protected int getDefaultPort() {
+    return 5432;
+  }
+
+  @Override
+  protected String getJdbcDriverClassname() {
+   return "org.postgresql.Driver";
+  }
+
+In the getStatementModifier method we provide the opportunity to modify a statement before it is used.  In this case we disable the connections auto-commit state and set the fetch size::
+
+  @Override
+  protected StatementModifier getStatementModifier() {
+    return new StatementModifier() {
+
+      @Override
+      public void modify(final Statement stmt) throws SQLException {
+        stmt.getConnection().setAutoCommit(false);
+        stmt.setFetchSize(100);
+      }
+    };
+  }
+
+That's mostly all it takes to implement a new custom Database Source for Koverse. The only things left to do are to give our Source a name, version, and description information::
+
+  @Override
+  public String getName() {
+    return "CustomDatabaseSource";
+  }
+
+  @Override
+  public String getVersion() {
+    return "0.1.0";
+  }
+
+  @Override
+  public String getSourceTypeId() {
+    return "my-custom-database-source";
+  }
+
+  @Override
+  public String getDescription() {
+    return "Import data from a PostgreSQL database. All records returned from the specified query are imported.";
+  }
+
+There is one other method we can define::
+
+  @Override
+  public Boolean isContinuous() {
+    return false;
+  }
+
+Now we are ready to package up our Source into an AddOn file, which is just a Java JAR file that contains a descriptor file. If you're using the koverse-sdk-project example code, simply build the project using **mvn install**. This will produce a JAR file in the target/ directory that you can drop into the Koverse UI. See the section on :ref:`AddOns` for more details.
 
 ..
   .. _custom sources:
