@@ -217,7 +217,7 @@ The presence count for this attribute should be 49,894 out of 49,894 records, so
 
 The estimated number of unique values for this attribute is 7, so out of almost 50 thousand records we've only ever seen 7 unique values.
 
-The data type is 100% Text, which means in every record the type of the value for the 'causeType' attribute is that of 'Text'.
+The data type is 100% Text, which means in every record the type of the value for the 'causeType' attribute is 'Text'.
 Sometimes an attribute will not always have the same data type in every record.
 
 Clicking on the down arrow by the 'Visual' column will show us a visualization of the top most frequent values for this attribute.
@@ -1223,6 +1223,7 @@ To edit an export, click on the pen icon next to the export in the Data Flow tab
 This will show you the original form used to setup the export.
 Make any changes required and click Save.
 
+.. _DataSetSecurityAndAccessControl:
 Data Set Security and Access Control
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

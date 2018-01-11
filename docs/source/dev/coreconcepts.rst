@@ -103,6 +103,9 @@ Some key points to remember about Records are:
 |                                      | original bytes of a file                         |
 +--------------------------------------+--------------------------------------------------+
 
+Creating Records Programmatically
+
+
 Queries
 ^^^^^^^
 

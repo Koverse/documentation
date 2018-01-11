@@ -14,7 +14,7 @@ There are three main categories of custom development on Koverse:
 #. Building web applications to deliver analytical results throughout the organization.
 #. Integrating Koverse with data sources, authentication systems, and downstream data consumer services
 
-Example Code
-^^^^^^^^^^^^
+Accessing Example Code
+^^^^^^^^^^^^^^^^^^^^^^
 
 Code to accompany examples in this documentation can be found at .. _Example Code: https://github.com/Koverse/koverse-sdk-project .

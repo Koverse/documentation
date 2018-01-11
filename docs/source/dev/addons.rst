@@ -1,7 +1,7 @@
 .. _Addons:
 
 AddOn Packaging
----------------
+===============
 
 Custom sources, sinks, authentication mechanisms, and analytics are plugged into Koverse via simple packages called AddOns.
 
@@ -9,18 +9,16 @@ An AddOn can be uploaded by developers through the Koverse UI and from there, a 
 
 
 Creating an Addon
-^^^^^^^^^^^^^^^^^
+-----------------
 
-Addons are simply JAR files with some specific files and a well formed directory structure. The koverse-sdk-project provides a complete example maven project that builds an appropriately constructed Addon JAR. You may use any assembly framework you like to produce a JAR file with the following attributes
+AddOns are simply JAR files with some specific files and a well formed directory structure.
+The `koverse-sdk-project <https://github.com/Koverse/koverse-sdk-project/>`_ provides a complete example maven project that builds an appropriately constructed Addon JAR.
 
+You may use any assembly framework you like to produce a JAR file with the following attributes
 
 	 * Java binary .class files in the normal Java package directory structure.
 
-
-	 * Koverse Application HTML and JavaScript should be placed in the /apps/<applicationId> folder - where applicationId matches the string your CustomApplication.getApplicationId() method returns.
-
-
-	 * A file named classesToInspect can optionally be placed at the root level of the JAR. This file is a line separated list of all Applications, Transforms, Sources, and Sink Classes. Including this file causes Koverse to inspect only the classes listed in this file. This is useful when your Addon includes classes whose dependencies are not present in the JAR.
+	 * A plain text file named 'classesToInspect' must be placed in src/main/resources. This file is a line separated list of all Applications, Transforms, Sources, and Sink Classes. This file tells Koverse which classes to include when loading the Addon. Only classes that directly subclass one of the superclasses in the Koverse SDK need to be included.
 
 
 Example Addon JAR directory structure::
@@ -39,31 +37,39 @@ Example Addon JAR directory structure::
 	                        | -- OtherDependency.class
 
 
-	| -- apps
-	        | -- myApplicationId
-	                | -- index.html
-	                | -- css
-	                        |-- index.css
-	                | -- javascript
-	                        |-- index.js
-	        | -- mySecondApplicationId
-	                | -- index.html
-	                | -- someFolder
-	                        | -- some.file
-
-
 Uploading an Addon to Koverse
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------
 
-See the :ref:`Addons` section.
+Addons can be uploaded via the Koverse UI.
 
-Applications may be auto deployed, and immediately ready for use - if so defined by the developer of the application. Sources, Transforms, and Sinks are also now ready for immediate use as well.
+Uploading the Example Koverse SDK Project AddOn
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+For example, to upload the Addon built by the koverse-sdk-project, we'll first build the project::
+
+  cd koverse-sdk-project
+  mvn clean package
+
+Now in the target/ folder we'll find a JAR file named koverse-sdk-project-2.4.0.jar.
+
+In the Koverse UI, click on the Admin tab on the left menu.
+Click on the 'Add-Ons' tab.
+Drag and drop the newly created JAR file from the target folder into the large grey square or click on the 'Browse Files' button and navigate to and select the new JAR.
+
+Koverse will process the JAR file and notify us that the JAR has been uploaded.
+Now if we scroll to the bottom of the page we should see a new card showing our koverse-sdk-project AddOn along with a list of the items within that Addon, including our Analyze Sentiment transform, among others.
+
+Now if we navigate to other parts of the Koverse UI we'll see our custom Sources, Transforms, and Sinks throughout the UI.
+Other users of Koverse can start using these right away.
+
+For example if we click on the 'Add' button on the left menu we should now see our Custom File Based Source in the list of available Sources.
 
 Managing Versions for Custom Components
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------
 
-The applicationId, sourceTypeId, transformTypeId, and sinkTypeId property of the Applications, Sources, Transforms, and Sinks, are used by Koverse to identify these custom components across their versions. This means that, except in extreme cases, all versions of a custom component should share a single typeId string. This allows Koverse to identify when a newly installed custom component should override an exisisting custom component.
+The sourceTypeId, transformTypeId, and sinkTypeId property of the Sources, Transforms, and Sinks, are used by Koverse to identify these custom components across their versions.
+This means that, except in extreme cases, all versions of a custom component should share a single typeId string.
+This allows Koverse to identify when a newly installed custom component should override an existing custom component.
 
 
 Here is an example life cycle of a single Addon containing a single custom source.
@@ -96,18 +102,3 @@ Change Control Across Versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Developers should consider that customers upgrading from one version to the next, or down grading, may have already established Source, Transform, or Sink instances that have existing parameter values. This means the developer may need to handle outdated parameter configurations. The most appropriate method to handle changing parameter sets across versions is to inform the user that new configuration is needed, when simple error checking of parameters fails.
-
-
-
-Defining Custom Apps in Addons
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Addons enable developers to deliver custom "Apps" that are managed and deployed in Koverse installations. When a system administrator uploads an Addon JAR file, it is inspected for custom Application definitions. The custom application contents are included included in the JAR, so that it's contents can then be delivered to the end user.
-
-**Application Definition**
-
-See the koverse-sdk-project/src/main/com/koverse/foo/MyCustomApplication.java file for an example of defining a custom application. That file defines the presence of a custom application type.
-
-**HTML/JS code in Addons**
-
-See the `Creating an Addon` section for the structure of an HTML/JS app in side an addon. The top directory name of the app's html/js code should match the output of getApplication() method.

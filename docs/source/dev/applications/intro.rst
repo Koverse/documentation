@@ -11,8 +11,12 @@ Without all three of these solutions can stagnate in the development phase indef
 End-user facing applications built on Koverse can be written using a variety of web-based technologies that communicate to Koverse through a REST API.
 The Koverse REST API includes methods for issuing queries against any and all analytical results according to data access policies.
 
+This documentation will walk developers through the steps necessary to create web applications for Koverse. These web applications interact with Koverse via a REST API, a reference to which is available at `REST API methods
+<https://speaker-diagnostics-47224.netlify.com>`_.
 
-The `REST API methods
-<https://speaker-diagnostics-47224.netlify.com>`_. are documented individually.
+Continue to see how an application can be built on Koverse.
 
-Follow this example to see how an application can be built on Koverse.
+.. toctree::
+
+   webapp.rst
+   api_tokens.rst
