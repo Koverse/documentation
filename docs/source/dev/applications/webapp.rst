@@ -114,6 +114,8 @@ We will pass in our API token, the user-provided query string, the ID of the dat
     return allResults
   }
 
+The syntax supported by this call conforms with the Apache Lucene syntax and is described more fully `here <https://speaker-diagnostics-47224.netlify.com/#operation--api-query--get>`_.
+
 Note that the URL will need to be changed if using in production and not just for testing with the Developer Docker Image.
 
 Now just just need a way of getting queries from users that we can send to the Koverse REST API query method to fetch results.
