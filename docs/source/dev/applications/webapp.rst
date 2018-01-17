@@ -6,6 +6,9 @@ Example Web Application
 In this example we'll build a web application designed to allow users to explore the results of the example Sentiment Analysis analytic described in :ref:`SparkJavaDataFrameTransform`.
 We'll use some common technologies including `React <https://reactjs.org>`_ and `Node.js <https://nodejs.org>`_, but applications can be written using any technology that allows web applications to talk to the `Koverse REST API <https://speaker-diagnostics-47224.netlify.com>`_.
 
+A finished copy of the code for this application is included in the koverse-sdk-project repository, in the src/main/example-webapp directory.
+But this tutorial will show all the steps to create that app from the ground up.
+
 Initial Setup
 ^^^^^^^^^^^^^
 
@@ -55,7 +58,7 @@ The simplest scenario is where all users of our application are allowed to see t
 We can restrict what records our application sees, but we won't distinguish users of our application from each other. Other scenarios will be addressed in following tutorials.
 
 In our security scenario we just need an API token to authenticate to Koverse and query records.
-See the documentation on :ref:`ApiTokens` for steps to create an API token for this example and return here once you have your API token.
+Perform the steps of the example in the documentation on :ref:`ApiTokens` to create an API token for this example app and return here once you have your API token.
 
 
 Querying using the Koverse REST API
@@ -63,7 +66,7 @@ Querying using the Koverse REST API
 
 Koverse provides a REST API that allows web apps to interact with original data sets and analytical results.
 
-We'll use axios to talk to the Koverse REST API and query-string to help us construct queries::
+We'll use axios to talk to the Koverse REST API and query-string to help us construct queries. In your app directory, install the following NPM packages::
 
   npm install --save axios
   npm install --save query-string
@@ -111,6 +114,8 @@ We will pass in our API token, the user-provided query string, the ID of the dat
     return allResults
   }
 
+Note that the URL will need to be changed if using in production and not just for testing with the Developer Docker Image.
+
 Now just just need a way of getting queries from users that we can send to the Koverse REST API query method to fetch results.
 
 
@@ -118,7 +123,14 @@ Create a Search Form Component
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We'll create a search form component to allow users to search for specific records.
-Create a new folder in src/ called 'components' and a new file in src/components/ called 'SearchForm.js' and add the following code::
+We'll use `Material-UI <https://material-ui-next.com>`_ for our UI components like buttons and text boxes.
+( Note that in this example we're using the upcoming Material UI v1. )
+
+Also we'll install prop-types so our components can signal which properties they require::
+
+  npm install --save prop-types
+
+`Create a new folder in src/ called 'components' and a new file in src/components/ called 'SearchForm.js' and add the following skeleton code::
 
   import React, { Component } from 'react'
   import PropTypes from 'prop-types'
@@ -196,20 +208,21 @@ We can use this component wherever we want a Search form to appear.
 
 
 We'll add our SearchForm component to our web app by editing our App.js file.
-First we'll import the 'query' method we wrote in koverse.js and our SearchForm component::
+First we'll import the 'query' method we wrote in koverse.js and our SearchForm component.
+We can also delete the lines importing the logo.svg file and App.css so it looks like this::
 
   import React, { Component } from 'react';
   import { withStyles } from 'material-ui/styles'
+  import Typography from 'material-ui/Typography
   import 'typeface-roboto'
   import { query } from './koverse'
   import SearchForm from './components/SearchForm'
 
 ..
-
   import SearchResults from './components/SearchResults'
   import SentimentChart from './components/SentimentChart'
 
-Remove the boiler plate and replace it with::
+Add a styling directive after the set of imports::
 
   const styles = theme => ({
     root: {
@@ -217,12 +230,13 @@ Remove the boiler plate and replace it with::
     },
   })
 
+Add a constructor to the App class and remove the boiler plate in the App class's render() method::
+
   class App extends Component {
     constructor(props) {
       super(props);
       // todo
     }
-
 
     render() {
       const { classes } = this.props
@@ -233,6 +247,8 @@ Remove the boiler plate and replace it with::
       );
     }
   }
+
+Finally, add a call to withStyles() when we export::
 
   export default withStyles(styles)(App);
 
@@ -253,7 +269,7 @@ Also add a 'state' variable to which we can assign results from our query method
     this.setState({ results })
   }
 
-Let's modify the render() method to draw a simple title and our SearchForm component.
+Let's modify the render() method to draw a simple title using a Typography component and our SearchForm component.
 We'll tell the SearchForm to call our handleSubmit() method::
 
   render() {
@@ -277,18 +293,27 @@ Testing the SearchForm
 ^^^^^^^^^^^^^^^^^^^^^^
 
 At this point we have enough to test our SearchForm and see if we get any results in the developer console of our browser.
+If your app is not running, start it via::
+
+  npm start
+
 Navigate to your app at http://localhost:3000.
-Open the developer console of your browser.
+Open the developer console of your browser to view the console.
 You should see a screen similar to this.
 
 If we've copied in the API token and Data Set ID properly we should be able to type in a search term and see results in the developer console below.
 For example, searching for the word 'good' should show some results like the following.
 
+You can use the developer console within the browser to troubleshoot any API calls being made.
+If for example you're getting 401 unauthorized status codes back you can review the steps to authorize :ref:`ApiTokens` to access the sentiment analysis data set.
+
+As we are using React, it can be useful to have the `React Developer Tools <https://reactjs.org/blog/2015/09/02/new-react-developer-tools.html#installation>`_ installed.
+
 
 Displaying Results in a Table
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now that we're getting results back from our queries we can format them into a nice readable table for users.
+Now that we're getting results back from our queries we can format them into a nice, readable table for users.
 First we'll do a little formatting of the query results to make them more amenable to what a table component might expect.
 We're only interested in querying one data set at a time so we'll simply return the records contained in the first data set result, along with the extracted schema so the table knows what columns to draw.
 Modify koverse.js, replacing the code::
@@ -322,7 +347,7 @@ We'll also generate Javascript Date objects for date values, which will help us 
 Now we'll create a table component for displaying query results.
 This way, users can see the original text of each message, the date the message was created, and the associated sentiment score.
 
-To do this we'll create a SearchResults component.
+To do this we'll create a SearchResults component to show our results in a table.
 Create a new file called SearchResults.js under src/components and add the code::
 
   import React, { Component } from 'react'
@@ -342,90 +367,106 @@ Create a new file called SearchResults.js under src/components and add the code:
     },
   })
 
-  class SearchForm extends Component {
-  	static props = {
-  		results: PropTypes.array.isRequired,
-  	}
+  class SearchResults extends Component {
+    static props = {
+      results: PropTypes.array.isRequired,
+    }
 
-  	render () {
-  		const { classes, results } = this.props
-  		return (
-  			<Paper className={classes.root}>
-  	     // todo
-  	    </Paper>
-  		)
-  	}
+    render () {
+      const { classes, results } = this.props
+      return (
+        <Paper className={classes.root}>
+          // todo
+        </Paper>
+      )
+    }
   }
 
-  export default withStyles(styles)(SearchForm)
+  export default withStyles(styles)(SearchResults)
 
 In the render() method we'll draw a table::
 
-..
+  render () {
+    const { classes, results } = this.props
+    return (
+      <Paper className={classes.root}>
+        <Table className={classes.table}>
+          <TableHead>
 
-  import React, { Component } from 'react'
-  import PropTypes from 'prop-types'
-  import { withStyles } from 'material-ui/styles'
-  import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table'
-  import Paper from 'material-ui/Paper'
+          </TableHead>
+          <TableBody>
 
-  const styles = theme => ({
-  	root: {
-      width: '100%',
-      marginTop: theme.spacing.unit * 3,
-      overflowX: 'auto',
-    },
-    table: {
-      minWidth: 700,
-    },
-  })
-
-  class SearchForm extends Component {
-  	static props = {
-  		results: PropTypes.array.isRequired,
-  	}
-
-  	render () {
-  		const { classes, results } = this.props
-  		return (
-  			<Paper className={classes.root}>
-  	      <Table className={classes.table}>
-  	        <TableHead>
-  	          <TableRow>
-  							{results.schema.map(s => (
-  								<TableCell key={s}>{s}</TableCell>
-  							))}
-  	          </TableRow>
-  	        </TableHead>
-  	        <TableBody>
-  	          {results.records.map(rec => {
-  	            return (
-  	              <TableRow key={rec.recordId}>
-  									{results.schema.map(s => (
-  										<TableCell key={s}>{rec[s]}</TableCell>
-  									))}
-  	              </TableRow>
-  	            );
-  	          })}
-  	        </TableBody>
-  	      </Table>
-  	    </Paper>
-  		)
-  	}
+          </TableBody>
+        </Table>
+      </Paper>
+    )
   }
 
-  export default withStyles(styles)(SearchForm)
-  //  <SentimentChart records={this.state.results.records}/>
-    					//  <SearchResults results={this.state.results} />
+We'll define the table header as containing the three fields we specified from formatting our results in koverse.js.
+For each element of the schema we'll generate a TableCell in a single TableRow in the TableHead::
 
-Displaying Results in a Graph
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  <Table className={classes.table}>
+    <TableHead>
+      <TableRow>
+        {results.schema.map(s => (
+          <TableCell key={s}>{s}</TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
+    <TableBody>
+
+    </TableBody>
+  </Table>
+
+Then we'll define the TableBody as containing a TableRow for each record in our search results, and each TableRow will contain a TableCell for every value in that record::
+
+  <Table className={classes.table}>
+    <TableHead>
+      <TableRow>
+        {results.schema.map(s => (
+          <TableCell key={s}>{s}</TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {results.records.map(rec => {
+        return (
+          <TableRow key={rec.recordId}>
+            {results.schema.map(s => (
+              <TableCell key={s}>{rec[s]}</TableCell>
+            ))}
+          </TableRow>
+        );
+      })}
+    </TableBody>
+  </Table>
+
+With our SearchResults table component complete, we just need to add it to our App.js file.
+Add an import line::
+
+  import SearchResults from './components/SearchResults'
+
+and then add the SearchResults component to our main render method::
+
+  <SearchForm onSubmit={this.handleSubmit}/>
+    {this.state.results.records ? (
+      <div>
+        <SearchResults results={this.state.results} />
+      </div>
+    ) : null}
+  </div>
+
+Now when we search we should see a nice table like the following:
+
+
+Viewing Results in a Graph
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To help users understand changes in sentiment over time, we'll display the same query results in a line chart. We'll need to install react-vis to draw a simple scatter plot of sentiment scores over time::
 
   npm install --save react-vis
 
-To start, here is the skeleton of the chart code::
+To start, use the following skeleton of the chart code in a new file in src/components called SentimentChart.js::
 
   import React, { Component } from 'react'
   import PropTypes from 'prop-types'
@@ -485,7 +526,9 @@ Now we'll call our function to supply data to the chart::
     <YAxis />
   </XYPlot>
 
-In order to color each data point according to the sentiment score, we'll tell our chart to use a range of color and how our domain of scores relates to that range::
+In order to color each data point according to the sentiment score, we'll tell our chart to use a range of color and how our domain of scores relates to that range.
+We're using green for positive, white for neutral, and red for negative sentiment.
+Add the following additional attributes to the MarkSeries component to map the sentiment score to these colors::
 
   <MarkSeries
     data={extractXY(records)}
@@ -500,57 +543,72 @@ We'll also tell our chart to format our X-axis to display dates in a readable wa
     tickFormat={d => new Date(d).toLocaleString('en-US')}/>
 
 
-Tying It Together
-^^^^^^^^^^^^^^^^^
+Now we'll add our new charting component to our App.js.
+First, import it::
 
-Now we're ready to tie these components together in an application. Edit the App.js file in src/ to add a reference to our typeface and components::
-
-  import React, { Component } from 'react';
-  import { withStyles } from 'material-ui/styles'
-  import 'typeface-roboto'
-  import { query } from './koverse'
-  import SearchForm from './components/SearchForm'
-  import SearchResults from './components/SearchResults'
   import SentimentChart from './components/SentimentChart'
 
-Remove the boiler plate and replace it with::
+Then add it to our results pane, mapping the records member of our results object to the 'records' property of the chart component::
 
+  <div>
+    <SentimentChart records={this.state.results.records} />
+    <SearchResults results={this.state.results} />
+  </div>
 
-  const styles = theme => ({
-  	root: {
-  		padding: theme.spacing.unit * 4,
-  	},
+Your app should now look like this after executing a search:
+
+The white dots are hard to read on a white background so we'll change our app to use a dark theme to make our dots easy to see.
+
+Modify the line App.js that reads::
+
+  import { withStyles } from 'material-ui/styles'
+
+so that it looks like::
+
+  import { withStyles, createMuiTheme, MuiThemeProvider } from 'material-ui/styles'
+
+Farther down, add the following to App.js::
+
+  const theme = createMuiTheme({
+    palette: {
+      type: 'dark',
+      primary: cyan,
+      secondary: green,
+    }
   })
 
-  class App extends Component {
-  	constructor(props) {
-      super(props);
-      this.handleSubmit = this.handleSubmit.bind(this);
-    }
+And modify the 'styles' variable to look like this::
 
-  	state = {
-  		results: {},
-  	}
+  const styles = () => ({
+    root: {
+      padding: theme.spacing.unit * 4,
+      background: theme.palette.background.default
+    },
+  })
 
-  	async handleSubmit(values) {
-  		const results = await query(values.query)
-  		this.setState({ results })
-  	}
+Finally, in the render() method, surround the top level div tag with the tag::
 
-    render() {
-  		const { classes } = this.props
-      return (
-        <div className={classes.root}>
-          <SearchForm onSubmit={this.handleSubmit}/>
-  				{this.state.results.records ? (
-            <div>
-              <SentimentChart records={this.state.results.records}/>
-  					  <SearchResults results={this.state.results} />
-            </div>
-  				) : null}
-        </div>
-      );
-    }
-  }
+  <MuiThemeProvider theme={theme}>
+    <div>
+      ...
+    </div>
+  </MuiThemeProvider>
 
-  export default withStyles(styles)(App);
+Now our dots should be more visible:
+
+
+And that's our example of a first web application on Koverse!
+Unlike other toy examples of data-driven web applications, what's significant about what we've done here is that this application is ready to go into production, on potentially much more data with many more users, without any more modification than to point it at the URL of a production instance of Koverse.
+
+The application has been authorized to ready only the results we have authorized it to read.
+It can be deployed in a production environment on a cluster that potentially contains other data that this application is not allowed to see as the Koverse API takes care of authorized each method call this application makes.
+
+Further, all the data this application works with is indexed and exposed to users via a high-level query language.
+These queries return in less than a second and only use a fraction of cluster resources so literally hundreds to thousands of users can access this application simultaneously without experiencing a degradation in performance.
+
+This is the power of developing applications on Koverse.
+By requiring that apps pay little bit of attention to security up front, by virtue of having been built on scalable storage components such as Apache Accumulo, and by performing ubiquitous indexing on data, the Koverse platform makes it possible to get verified, correct, prototype applications into production with no rewriting of queries or rethinking to meet access control requirements.
+
+* Data owners can contribute data easily to Koverse as a common enterprise data lake
+* Data scientists and web developers can develop analytics and applications on precisely the data they need and are authorized to see
+* Data consumers can get the analytical results they require via interactive applications written with the latest and greatest web technologies to make decisions quickly
