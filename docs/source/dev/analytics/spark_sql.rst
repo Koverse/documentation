@@ -1,7 +1,12 @@
-Spark SQL
-^^^^^^^^^
+.. _SparkSQL:
 
-Koverse 1.4 supports Transforms written using the Apache Spark API, including Spark SQL. Spark SQL allows Koverse records to be processed using the popular SQL language, which is useful for many common operations such as reshaping data, filtering, combining, and aggregation.
+..
+  TODO: rewrite
+
+Spark SQL
+=========
+
+Koverse supports Transforms written using the Apache Spark API, including Spark SQL. Spark SQL allows Koverse records to be processed using the popular SQL language, which is useful for many common operations such as reshaping data, filtering, combining, and aggregation.
 
 Spark SQL can be used in two ways in Koverse Transforms: first, using the generic Spark SQL transform, developers can simply paste a SQL script into a new instance of a Spark SQL Transform in the Koverse UI.
 

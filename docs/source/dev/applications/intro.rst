@@ -1,7 +1,7 @@
 .. _ApplicationsAPI:
 
 Applications API
-----------------
+================
 
 Koverse is unique in bringing together access control, scalable analytics, and ubiquitous indexing into a single platform. These three things are all needed to put data-driven business solutions into production.
 

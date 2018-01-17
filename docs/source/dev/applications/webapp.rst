@@ -1,7 +1,7 @@
 .. _ExampleWebApp:
 
 Example Web Application
------------------------
+=======================
 
 In this example we'll build a web application designed to allow users to explore the results of the example Sentiment Analysis analytic described in :ref:`SparkJavaDataFrameTransform`.
 We'll use some common technologies including `React <https://reactjs.org>`_ and `Node.js <https://nodejs.org>`_, but applications can be written using any technology that allows web applications to talk to the `Koverse REST API <https://speaker-diagnostics-47224.netlify.com>`_.
@@ -10,7 +10,7 @@ A finished copy of the code for this application is included in the koverse-sdk-
 But this tutorial will show all the steps to create that app from the ground up.
 
 Initial Setup
-^^^^^^^^^^^^^
+-------------
 
 Make sure you're using a recent version of Node installed, such as later than 6. You can use `nvm <https://github.com/creationix/nvm>`_ or nvm-windows to switch node versions::
 
@@ -34,7 +34,7 @@ Start npm and go to localhost:3000 to verify the app is running::
   npm start
 
 Overall Design
-^^^^^^^^^^^^^^
+--------------
 
 Most Koverse apps consist of enabling users to query records in one or more data sets and displaying the results. Koverse queries are designed to return fast enough to support multiple users interacting with a single Koverse instance.
 In our example we'll create an app that allows users to interactively explore and visualize the results of a sentiment analysis algorithm.
@@ -49,7 +49,7 @@ This means our app will need a search form, a table for seeing the text and sent
 In this example we'll look at some typical tasks involved in building an app on Koverse, and we'll build it up in stages, testing as we go.
 
 Authorizing our App to talk to Koverse
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------
 
 Before we begin development, we'll want to enable our app to interact with a Koverse instance.
 
@@ -62,7 +62,7 @@ Perform the steps of the example in the documentation on :ref:`ApiTokens` to cre
 
 
 Querying using the Koverse REST API
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------
 
 Koverse provides a REST API that allows web apps to interact with original data sets and analytical results.
 
@@ -120,7 +120,7 @@ Now just just need a way of getting queries from users that we can send to the K
 
 
 Create a Search Form Component
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------
 
 We'll create a search form component to allow users to search for specific records.
 We'll use `Material-UI <https://material-ui-next.com>`_ for our UI components like buttons and text boxes.
@@ -290,7 +290,7 @@ We'll tell the SearchForm to call our handleSubmit() method::
   }
 
 Testing the SearchForm
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 At this point we have enough to test our SearchForm and see if we get any results in the developer console of our browser.
 If your app is not running, start it via::
@@ -311,7 +311,7 @@ As we are using React, it can be useful to have the `React Developer Tools <http
 
 
 Displaying Results in a Table
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------
 
 Now that we're getting results back from our queries we can format them into a nice, readable table for users.
 First we'll do a little formatting of the query results to make them more amenable to what a table component might expect.
@@ -460,7 +460,7 @@ Now when we search we should see a nice table like the following:
 
 
 Viewing Results in a Graph
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 To help users understand changes in sentiment over time, we'll display the same query results in a line chart. We'll need to install react-vis to draw a simple scatter plot of sentiment scores over time::
 

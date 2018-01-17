@@ -6,6 +6,9 @@ Spark Java DataFrame Transform
 Spark DataFrames provide functionality for working with structured data easily and allows SQL functions to be used.
 Koverse provides the records in user-selected data sets to Spark as DataFrames and automatically defines the schema of each DataFrame according to the structure of records in each Koverse data set.
 
+DataFrame Transform Example
+---------------------------
+
 In this example we'll generate sentiment analysis scores for records containing text and a date field using a Spark DataFrame and Java.
 This will allow us to see if sentiment is changing over time.
 

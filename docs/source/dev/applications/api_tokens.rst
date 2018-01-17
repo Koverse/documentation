@@ -1,7 +1,7 @@
 .. _ApiTokens:
 
 API Tokens
-----------
+==========
 
 API Tokens are used to authenticate and authorize web applications that are designed to allow all users of that particular web application to access certain Data Sets within Koverse.
 API Tokens are managed like individual users, so you can think of an API Token as representing an application as if an application were a Koverse user.
@@ -11,7 +11,7 @@ In many cases it's useful to create a specific Koverse user to represent your we
 Then this user can be assigned to a Group that is authorized to read all the Data Sets your application requires.
 
 Generating an API Token Example
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 
 To generate an API token, you must have permission to 'Create and remove API authentication tokens'.
 The 'admin' example user in the Koverse :ref:`DevImage` has this permission.

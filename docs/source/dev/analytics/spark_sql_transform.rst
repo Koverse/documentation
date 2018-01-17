@@ -1,5 +1,10 @@
-Spark SQL
-^^^^^^^^^
+.. _SparkSQLTransform:
+
+..
+  TODO: rewrite
+
+Spark SQL Transform
+===================
 
 Koverse supports Apache Spark SQL via a set of native Koverse Spark SQL APIs that let the user query structured data as a distributed dataset (RDD). This makes it easy to run SQL queries.
 

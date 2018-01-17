@@ -1,13 +1,15 @@
 .. _AnalyticsAPI:
 
 Analytics API
--------------
+=============
 
-Putting analytics into production is a phenomenal challenge for most organization building on newer scalable technologies. Koverse makes running analytics in production easy.
+Putting analytics into production is a phenomenal challenge for most organization building on newer scalable technologies.
+Koverse makes running analytics in production easy.
 
 Koverse wraps an analytic in a Transform, which allows the analytic to be reused for multiple data sets via code-free configuration, and Transforms are also scheduled, monitored, and audited.
 
-Transforms allow data scientists to use the APIs they want to use, and adds to that the ability to manage the analytic deployment. Transforms can wrap analytics written for the following frameworks and APIs:
+Transforms allow data scientists to use the APIs they want to use, and adds to that the ability to manage the analytic deployment.
+Transforms can wrap analytics written for the following frameworks and APIs:
 
 * Spark
 * Spark SQL
@@ -34,23 +36,29 @@ Koverse adds the following capabilities to make every analytic production-ready:
 
 Complete code examples from this section can be found at `Koverse SDK Project <https://github.com/Koverse/koverse-sdk-project/tree/2.4/>`_ section .
 
-Koverse supports prototyping analytics using interactive shells and Notebooks. For examples of prototyping analytics using specific technologies, see the following:
+Koverse supports prototyping analytics using interactive shells and Notebooks.
+For examples of prototyping analytics using specific technologies, see the following:
+
+..
+  spark_shell.rst
+  zeppelin.rst
 
 .. toctree::
 
-   spark_shell.rst
    pyspark_shell.rst
    ipython.rst
    jupyter.rst
-   zeppelin.rst
+
 
 
 After prototyping an analytic, learn how to package analytics in production Transforms:
 
+..
+  spark_java.rst
+  spark_scala_transform.rst
+  spark_sql.rst
+  python.rst
+
 .. toctree::
 
-   spark_java.rst
-   spark_scala_transform.rst
    spark_java_dataframe_transform.rst
-   spark_sql.rst
-   python.rst

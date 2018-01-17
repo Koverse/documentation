@@ -1,5 +1,7 @@
-Data Set
----------------
+.. _DevDataSets:
+
+Working with Data Sets
+======================
 
 Data Sets are the basic container for data in Koverse.
 You can think of them like tables - but every record in a Data Set can be completely unique in structure.
@@ -14,7 +16,7 @@ A Koverse Data Set is a named set of Records. A Data Set has:
 
 
 Data Sources
-^^^^^^^^^^^^
+------------
 A data source is simply the source of the data. It can be a file, a particular database on a DBMS, or even a live data feed. The data might be located on the same computer as the Koverse application, or on another computer somewhere on a network.
 
 Koverse establishes the connection to these data sources and provides the ability to import data in Koverse, breaking the data into records according to the external format of the data (i.e. JSON, XML, CSV, relational records, etc).
@@ -22,12 +24,12 @@ Koverse establishes the connection to these data sources and provides the abilit
 Custom sources are only necessary when talking to a new type of server, often using a new protocol. For example, Koverse ships with an FTP source, and and IMAP source. New sources are not necessary simply for new file types and certainly not for specific uses of known physical formats such as a particular type of XML file.
 
 Transforms
-^^^^^^^^^^
+----------
 
 In Koverse, transforms are a process by which one or more Data Sets leverage re-usable, configurable, multi-stage MapReduce jobs for data manipulation. These are highly scalable and customizable analytics that are reusable across all of your data.
 
 Built-In Example Transforms
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 The following list is an example of built-in Koverse transforms:
 
@@ -56,37 +58,37 @@ The following list is an example of built-in Koverse transforms:
 * Summarize Field Values
 
 Import-time Transforms
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 Import-time Transforms are one-stage transforms that operate like a single map() phase and are applied to Records as they are imported from a Source. Import-time Transforms can be chained together during a particular Import job.
 
 Export-time Transforms
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 Export-time Transforms are one-stage transforms that operate like a single map() phase and are applied to Records as they are exported to a Sink. Export-time Transforms can be chained together during a particular Export job.
 
 Export File Formats
-^^^^^^^^^^^^^^^^^^^
+-------------------
 Export File Formats define how Records are written to file-based Sinks such as FTP and HDFS Sinks.
 
 Sinks
-^^^^^
+-----
 
 Sinks represent external destinations to which Records from Data Sets may be sent. For example, one can write out Records as JSON objects to a remote file system.
 
 Queries
-^^^^^^^
+-------
 
 Whether developing a Koverse App or building a custom source, Koverse queries conform to a specific format. There are two types of syntax supported: a Lucene-like syntax and a more Object-based structure.
 
 Lucene-like Query Syntax
-^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------
 
 These queries are represented as strings and passed as such into query methods. The Lucene query syntax is described on `Apache Lucene <https://lucene.apache.org/core/3_6_2/queryparsersyntax.html>`_
 
 
 Object-based Queries
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 +-----------------------------------+-------------------------------------+
 |Search Criteria                    | Query Syntax                        |
@@ -102,7 +104,7 @@ Object-based Queries
 
 
 Range Queries
-^^^^^^^^^^^^^
+-------------
 
 +----------------------------------------+------------------------------------------------------------+
 |Search Criteria                         | Query Syntax                                               |
@@ -121,7 +123,7 @@ Note that queries that combine a range with any other criteria, and queries that
 .. _CompositeIndexes:
 
 Indexing Policy and Composite Indexes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 By default, all fields in the Records of Koverse Data Sets are indexed. This allows data to easily be discovered by searching
 across all fields and values. There are times when you may want to change this default indexing policy. You may want to add
 composite indexes when your searches use more than one search term as they can greatly improve search performance. There also
@@ -177,26 +179,26 @@ values in the examples. The following types are supported for composite indexes
 Other Record value types like IP addresses or URLs are not currently supported in composite indexes.
 
 Aggregations
-^^^^^^^^^^^^^
+------------
 Aggregations allow you to easily maintain near real-time statistics on the Records in a Data Set. Aggregations run incrementally on new Records to maintain pre-computed, up-to-date results so that they can always be queried with sub-second latency.
 
 
 .. _quick-start-java-project:
 
 Quick Start Java Project
-------------------------
+========================
 
 Koverse ships with a koverse-sdk-project-<version>.zip file that contains an example `Maven <http://maven.apache.org>`_ based Java project. This project defines some simple custom sources, sinks, transforms, and apps. The maven pom.xml file in this project builds
 an `Addon` that can be uploaded. Simply alter the Java and HTML/JS code in this project, then build and deploy the addon to Koverse.
 
 GitHub Koverse SDK Project
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 Visit `Koverse SDK Project <https://github.com/Koverse/koverse-sdk-project/tree/1.4/>`_ to fork or download the latest koverse-sdk-project for your version of Koverse.
 
 .. _koverse-archetype-project:
 
 Koverse SDK Project Maven Archetype
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------
 
 A `Maven Archetype <https://maven.apache.org/guides/introduction/introduction-to-archetypes.html>`_ project is available for easy deployment. Modify the version number (KOVERSE-VERSION-HERE) in the command below to configure and create a new instance of a Koverse project::
 
@@ -208,7 +210,7 @@ A `Maven Archetype <https://maven.apache.org/guides/introduction/introduction-to
 	  -DkoverseVersion=KOVERSE-VERSION-HERE
 
 Building the Koverse SDK Project
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 The koverse-sdk-project is a standard `Apache Maven <https://maven.apache.org>` file that produces a shaded JAR - which means that it collapses all of its runtime dependencies into a single JAR file. This is necessary for running jobs in Koverse.
 
@@ -219,7 +221,7 @@ Use the following command from the root directory of the unzipped koverse-sdk-pr
 After a successful build, the resulting Addon JAR file is in the koverse-sdk-project/target/ directory. By default it is named koverse-sdk-project-<version>.jar
 
 Modifying the Koverse SDK Project
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------
 
 You should modify the koverse-sdk-project to fit your needs. Here are some good starting points.
 
@@ -242,12 +244,12 @@ You should modify the koverse-sdk-project to fit your needs. Here are some good 
     #. Modify the LICENSE and README file
 
 Deploying the Addon to a Koverse Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------
 
 Addons can be deployed via a Maven command, or via the Koverse web interface.
 
 Maven Addon Deployment
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 	#. Login to your Koverse server
 
@@ -278,7 +280,7 @@ Maven Addon Deployment
 
 
 Web interface Addon Deployment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------
 
 	#. Navigate to the "System Administration App"
 

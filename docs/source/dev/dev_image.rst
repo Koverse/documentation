@@ -1,7 +1,7 @@
 .. _DevImage:
 
 Developer Docker Image
-----------------------
+======================
 
 To develop integration components, analytics, or web applications on Koverse APIs it can be useful to use a docker image designed to run on a developer machine. The Koverse Docker image includes the full software stack and Koverse processes so anything developed against it will work seamlessly on a production Koverse instance.
 

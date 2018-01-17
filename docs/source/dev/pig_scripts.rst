@@ -1,5 +1,7 @@
+.. _PigScripts:
+
 Pig Scripts
------------
+===========
 
 Koverse supports using `Pig <http://pig.apache.org>` as a transform. Pig transforms are simple pig scripts - where Koverse defines the load and store functions. To use Pig, follow these steps.
 
@@ -45,6 +47,6 @@ This more complex Pig script would perform a Group By operation on fieldA with a
 
 
 Pig Transforms Special Considerations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 
-Pig transforms are executed as multiple stage map reduce jobs. They're considered "non-incremental" transforms in Koverse. Never restart the koverse-server process while a Pig transform is executing - as the job's state will be lost and the job will never finish.
+Pig transforms are executed as multiple stage map reduce jobs. They're considered "non-incremental" transforms in Koverse.

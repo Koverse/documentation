@@ -1,3 +1,6 @@
+..
+  TODO: remove this from the SDK
+  
 Web App Record Converters
 -------------------------
 
@@ -6,7 +9,7 @@ as any type of file. By default, Koverse supports downloading the records
 as either a CSV or JSON file.
 
 However, the download formats can be extended by a developer using the Koverse
-SDK. The SDK has an abstract class named 
+SDK. The SDK has an abstract class named
 ``com.koverse.sdk.record.webapp.AbstractWebAppRecordConverterModule`` and an
 interface named ``com.koverse.sdk.record.webapp.WebAppRecordConverter``.
 Implementations of these can be placed inside of a JAR file and put in the
@@ -14,8 +17,8 @@ Koverse web application's lib directory. Then, after configuring the web
 application's configuration file, Koverse will present the user with different
 types of files that a data set's records can be downloaded as.
 
-First, create a class that implements the 
-``com.koverse.sdk.record.webapp.WebAppRecordConverter`` interface from the Koverse 
+First, create a class that implements the
+``com.koverse.sdk.record.webapp.WebAppRecordConverter`` interface from the Koverse
 SDK. Koverse will interact with this class to present the user options when
 downloading a data set. The main thing to consider is that the class must
 report what MIME type it is storing the data as and then must process
@@ -23,7 +26,7 @@ Record objects and place the data for the downloaded file into a binary
 output stream. A single Java jar can contain as many of these as you wish.
 However, you must register each into a module class, as described next.
 
-Second, extend the 
+Second, extend the
 ``com.koverse.sdk.record.webapp.AbstractWebAppRecordConverterModule`` class
 and in the overridden method "configure," bind your implementations of the
 WebAppRecordConverter interface. Here is an example:
@@ -42,7 +45,7 @@ the Koverse web application's lib directory.
 
 Lastly, modify the Koverse web application's configuration by editing the
 ``conf/koverse-webapp.properties`` file. To add your module to the existing
-download formats, add (or edit if it already exists) the property 
+download formats, add (or edit if it already exists) the property
 ``com.koverse.webapp.record.modules`` to be like this, where your module
 is named ``com.mycompany.MyWebAppRecordConverterModule``:
 

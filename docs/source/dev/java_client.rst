@@ -1,8 +1,7 @@
-Java Client
------------
+.. _JavaClient:
 
-Introduction
-^^^^^^^^^^^^
+Java Client
+===========
 
 The Java Client allows JVM based software to connect to and interact directly with Koverse through the REST API.
 It is capable of interacting with the REST API using plain HTTP connections, SSL, and SSL with client PKI certificates.
@@ -14,7 +13,7 @@ These instructions will focus on the REST based implementation because the Thrif
 
 
 Basics
-^^^^^^
+------
 
 To use the Java client in your software, modify your project's Maven pom.xml to include the koverse java client dependency.
 First, include a repositories section in your ``pom.xml`` file and add the koverse repository, for example::
@@ -51,7 +50,7 @@ In your Java code, you will be instantiating an instance of ``com.koverse.client
 You choose which implementation of KoverseConnection to use in order to specify whether to use plain un-encrypted HTTP or encrypted HTTP (e.g. HTTP over SSL, TLS).
 
 Unencrypted HTTP Connections
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 
 Begin by creating an instance of ``com.koverse.client.java.PlainKoverseConnector``.  Note that its constructor requires you to provide a valid Koverse API Token and the base URL of Koverse (e.g. http://www.myserver/Koverse).
 The, create an instance of KoverseConnection, supplying the PlainKoverseConnector you just created as the sole constructor argument.
@@ -68,7 +67,7 @@ Now, you may use the create KoverseConnection object to perform operations such 
 Please view the JavaDocs for the interface ``com.koverse.client.java.KoverseClient`` for further details on these operations.
 
 Encrypted HTTP Connections
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------
 
 Configuring the KoverseClient to use SSL is somewhat more involved.  IT can be further complicated by using client side certificate authentication.
 As such, let's being with just setting up a SSL connection for now.  Client side certificate authentication will be explained in the next section.
@@ -107,7 +106,7 @@ With this done, your software should be capable of interacting with a SSL enable
 
 
 Encrypted HTTP Connections with Client Side Certificates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------------------
 
 To use client side certificates, do the same as in the previous section, but also make sure the following system properties are set in your software as well:
 

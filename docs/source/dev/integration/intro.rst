@@ -1,7 +1,7 @@
 .. _IntegrationAPI:
 
 Integration API
----------------
+===============
 
 Koverse is designed to work with existing data sources and systems throughout the enterprise. There are three types of integration points:
 
@@ -40,11 +40,12 @@ The Koverse platform's Integration API is implemented in Java. Projects written 
     </repository>
   </repositories>
 
+..
+  file_format.rst
+  sinks.rst
+  export_file_format.rst
+  third_party_auth.rst
+
 .. toctree::
 
    sources.rst
-   file_format.rst
-   sinks.rst
-   export_file_format.rst
-   third_party_auth.rst
-   parameters.rst

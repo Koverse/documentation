@@ -1,4 +1,0 @@
-.. _parameters:
-
-Parameters
-----------

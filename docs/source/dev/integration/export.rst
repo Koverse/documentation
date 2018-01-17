@@ -1,9 +1,12 @@
+.. _ExportTransforms:
+
 Export Transforms
------------------
+=================
 
 Koverse ExportTransforms can be used to transform Records as they are being written to a Koverse Sink.
 
-ExportTransforms can be parameterized to allow users to configure the ExportTransform at runtime. Parameters can be accessed via the setup method thus:
+ExportTransforms can be parameterized to allow users to configure the ExportTransform at runtime.
+Parameters can be accessed via the setup method thus:
 
     ``public void setup(Map<String, Object> params) throws IOException``
 

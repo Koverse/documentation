@@ -1,7 +1,7 @@
-.. _kov-Introduction:
+.. _devGuideIntroduction:
 
 Introduction
-------------
+============
 
 Organizations often to require custom software development to address their own unique set of data analytics requirements.
 These custom software features will require their own unique sources and methods that provide strategic insight and competitive advantage.
@@ -15,6 +15,6 @@ There are three main categories of custom development on Koverse:
 #. Integrating Koverse with data sources, authentication systems, and downstream data consumer services
 
 Accessing Example Code
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
-Code to accompany examples in this documentation can be found at .. _Example Code: https://github.com/Koverse/koverse-sdk-project .
+Code to accompany examples in this documentation can be found at https://github.com/Koverse/koverse-sdk-project .

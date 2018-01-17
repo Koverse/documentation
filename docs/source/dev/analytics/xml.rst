@@ -1,6 +1,7 @@
+.. _WorkingWithXML:
 
-Developing an XML Transform (XSLT) to import your XML data as Koverse Records
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Working with XML
+================
 
 XML can be imported into Koverse as any file can.  However, the format of the imported records in the collection may not be what you are expecting, as it is more of a
 raw import of generic XML data.  To enable the import of your XML data into proper Koverse records, an XSLT must be used to convert
