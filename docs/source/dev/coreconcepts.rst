@@ -1,19 +1,20 @@
 .. _CoreConcepts:
 
 Core Concepts
--------------
+=============
+
 The following sections provide a basic introduction to the basic abstract concepts which build a foundation of knowledge for a developer before working with Koverse API.
 
 .. _DataModel:
 
 Data Model
-^^^^^^^^^^
+----------
 
 The Koverse data model has two main conceptual components: **Records**, and **Data Sets**.
 Data Sets are the basic container for data in Koverse. Each Data Set contains a set of Records.
 
 Data Sets
-^^^^^^^^^
+---------
 
 For those familiar with relational database management systems such as Oracle or MySQL, the analogy is that a Data Set is similar to a Table, a Record is similar to a Row, and the fields or attributes of a Record are similar to the Columns.
 However, unlike traditional relational databases, Records in a single Data Set in Koverse do not have to all have the same fields, and fields can contain complex values, like lists and mappings of fields to values.
@@ -29,7 +30,7 @@ A Koverse Data Set is a named set of Records. A Data Set has:
 
 
 Records
-^^^^^^^
+-------
 
 The Koverse canonical unit of data is a Record. A Record is a map of keys/values, or fields, similar to a JSON document. Like a JSON document, a Record can have embedded lists or nested maps.
 
@@ -103,14 +104,162 @@ Some key points to remember about Records are:
 |                                      | original bytes of a file                         |
 +--------------------------------------+--------------------------------------------------+
 
-Creating Records Programmatically
-
+..
+  TODO: make a separate 'working with records' document
+  Creating Records Programmatically
+  ---------------------------------
 
 Queries
-^^^^^^^
+-------
 
 Records in Data Sets can be queried interactively by applications. Koverse provides indexing of values in records automatically.
 
 Applications can query data using the popular Lucene syntax or by specifying queries as JSON documents.
 
 See the Applications API documentation for examples and details of using queries to deliver answers to applications.
+
+..
+  Transforms
+  ----------
+  Sources and Sinks
+  -----------------
+
+.. _Parameters:
+
+Parameters
+----------
+
+Koverse Transforms, Sources, and Sinks are all configured via Parameters.
+Parameters are defined by the developer and allow specific instances of Transforms, Sources, and Sinks to be configured and deployed into varying environments by authorized non-developer users.
+
+
+When creating a specific implementation of a Transform, Source, or Sink, developers provide a list of Parameters to present to the end-user via the User Interface.
+
+Parameters are created with the following fields:
+
+Required fields
+^^^^^^^^^^^^^^^
+
+String parameterName (required)
+  uniquely identifies the parameter within the class.
+
+String displayName (required)
+  the name of the parameter that is shown to the user.
+
+String type (required)
+  one of the possible types defined in Parameter (see below).
+
+Optional fields
+^^^^^^^^^^^^^^^
+
+String defaultValue
+  a value set as the default.
+
+String parameterGroup
+  the name of a group of Parameters. Grouped parameters will appear together under the name of the group within in the UI.
+
+String referencedParameterNames
+  any parameterName that should be referenced. For example, for Parameters of the type TYPE_COLLECTION_FIELD, the possible values presented to the user in the UI are taken from the parameter defined in the referencedParameterName.
+
+Boolean required
+  whether the parameter must be set by the user. The default is false.
+
+Boolean hideInput
+  whether the value of the parameter should be hidden in the UI. Used for sensitive parameters such as passwords.
+
+String hint
+  a string of text to be shown to the user as an additional hint for applying a value to the parameter.
+
+
+For example, a Source may define a parameter in its constructor as follows::
+
+  private static final String FTP_HOSTNAME = "ftpHostnameParam";
+  private static final String FTP_PORT = "ftpPortParam";
+
+  @Override
+  public List<Parameter> getParameters() {
+    List<Parameter> params = new ArrayList();
+
+    params.add(Parameter.newBuilder()
+            .parameterName(FTP_HOSTNAME)
+            .displayName("Host Name")
+            .type(Parameter.TYPE_STRING)
+            .parameterGroup("Access")
+            .required(Boolean.TRUE)
+            .build());
+    params.add(
+            Parameter.newBuilder()
+            .parameterName(FTP_PORT)
+            .displayName("Port")
+            .type(Parameter.TYPE_INTEGER)
+            .parameterGroup("Access")
+            .defaultValue("21")
+            .required(Boolean.TRUE)
+            .build());
+
+    return params;
+  }
+
+
+Parameters can be of the following types:
+
+TYPE_STRING
+  for passing in single line short strings such as a hostname or URL.
+
+TYPE_TEXT
+  for passing in longer multi-line strings, such as an entire script.
+
+TYPE_BOOLEAN
+  presents a checkbox to the user and is set to true or false.
+
+TYPE_INTEGER
+  allows the user to specify an integer value.
+
+TYPE_COLLECTION_FIELD
+  allows the user to select a single field from a collection. The referencedParameterName must be equal to the parameterName of an TYPE_INPUT_COLLECTION or TYPE_OUTPUT_COLLECTION parameterName. This is useful for informing classes of a specific field to use.
+
+TYPE_COLLECTION_MULTIPLE_FIELD
+  allows the user to choose a set of fields from a collection selected as an input or output collection parameter. This is useful for informing classes of a specific set of fields to use.
+
+..
+  TODO: verify this
+  TYPE_FILE
+  Allows the to user choose a file from the local file system. The file is uploaded, and its contents are made available as a stream at execution time to the custom component.
+
+There are additional Parameter types used primarily by the system:
+
+TYPE_INPUT_COLLECTION
+  an input collection parameter presents the user with a list of collections from which the user is authorized to read. The UI then fills in this parameter with the internal unique ID of the collection the user chose. This component generally allows the end-user to select multiple input collections. The contents of all input collections are read into transform and export jobs for example.
+
+TYPE_OUTPUT_COLLECTION
+  an output collection parameter presents the user with a list of collections to which the user is authorized to write. The UI then fills in this parameter the internal ID of the collection the user chose. This parameter generally only allows the user to select a single collection.
+
+TYPE_SECURITY_LABEL_PARSER
+  presents the user with a list of Security Label parser options. Security label parsers are responsible for translating from a source security label to a Koverse record security label.
+
+
+Transforms are pre-configured with parameters for input and output Data Sets.
+Sources and Sinks are pre-configured with output or input collections, respectively.
+
+Reading Parameter Values
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once users have configured a Transform, Source, or Sink via the UI, Koverse will execute the business logic to transform, import, or export data.
+Your code can grab the values set by the user via a context object.
+
+These may vary slightly, but for example, to read the parameters set by a user in the FTP Source example above, we might do the following::
+
+  private String hostname;
+  private int port;
+
+  @Override
+  public void configureFileBasedSource() throws IOException {
+
+    hostname = (String) getContext().getParameterValues().get(FTP_HOSTNAME);
+    port = Integer.parseInt((String) getContext().getParameterValues().get(FTP_PORT));
+  }
+
+Note that the parameter values are all delivered as String objects which may need to be converted to other types for your purposes.
+The UI will restrict the values to appropriate types in some cases but your code should check for valid values.
+
+See the examples for Transforms, Source, and Sinks for details.
