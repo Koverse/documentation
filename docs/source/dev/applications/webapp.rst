@@ -33,6 +33,7 @@ Start npm and go to localhost:3000 to verify the app is running::
 
   npm start
 
+
 Overall Design
 --------------
 
@@ -301,10 +302,14 @@ If your app is not running, start it via::
 
 Navigate to your app at http://localhost:3000.
 Open the developer console of your browser to view the console.
-You should see a screen similar to this.
+You should see a screen similar to the following:
+
+.. image:: /_static/DevGuide/applications/searchForm.png
 
 If we've copied in the API token and Data Set ID properly we should be able to type in a search term and see results in the developer console below.
-For example, searching for the word 'good' should show some results like the following.
+For example, searching for the word 'good' should show some results like the following:
+
+.. image:: /_static/DevGuide/applications/testSearchForm.png
 
 You can use the developer console within the browser to troubleshoot any API calls being made.
 If for example you're getting 401 unauthorized status codes back you can review the steps to authorize :ref:`ApiTokens` to access the sentiment analysis data set.
@@ -460,6 +465,8 @@ and then add the SearchResults component to our main render method::
 
 Now when we search we should see a nice table like the following:
 
+.. image:: /_static/DevGuide/applications/table.png
+
 
 Viewing Results in a Graph
 --------------------------
@@ -559,6 +566,8 @@ Then add it to our results pane, mapping the records member of our results objec
 
 Your app should now look like this after executing a search:
 
+.. image:: /_static/DevGuide/applications/lightChart.png
+
 The white dots are hard to read on a white background so we'll change our app to use a dark theme to make our dots easy to see.
 
 Modify the line App.js that reads::
@@ -598,6 +607,7 @@ Finally, in the render() method, surround the top level div tag with the tag::
 
 Now our dots should be more visible:
 
+.. image:: /_static/DevGuide/applications/darkChart.png
 
 And that's our example of a first web application on Koverse!
 Unlike other toy examples of data-driven web applications, what's significant about what we've done here is that this application is ready to go into production, on potentially much more data with many more users, without any more modification than to point it at the URL of a production instance of Koverse.
