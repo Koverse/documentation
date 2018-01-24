@@ -5,7 +5,7 @@ post:
   description: >
         Query using a JSON document and data set names.
   parameters:
-    - $ref: "../api.yaml#/parameters/objectQuery"
+    - $ref: "../api.yaml#/parameters/objectQueryNames"
   responses:
     default:
       description: Query results

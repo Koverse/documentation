@@ -1,14 +1,13 @@
 type: object
 description: >
-      This object contains the parameters used to issue a query against one or
-      more data sets. The query is defined as a JSON string
+      This object contains the parameters used to issue a query against one or more data sets. The query is defined as a JSON string
 properties:
-  collectionIds:
+  collectionNames:
     type: array
     items:
       type: string
     description: >
-          A list of data set IDs. Specifying an empty list will cause the query to be issued to all data sets the user is allowed to query.
+          A list of data set names. Specifying an empty list will cause the query to be issued to all data sets the user is allowed to query.
   query:
     type: string
     required: true
@@ -79,8 +78,8 @@ properties:
     type: int64
     description: The number of records in the result set to skip
 example:
-  collectionIds:
-    - movies_20171107_172745_048
+  collectionNames:
+    - movies
   query:
       title: jurassic
   fieldsToReturn:

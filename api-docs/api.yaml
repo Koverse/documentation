@@ -57,6 +57,12 @@ parameters:
     required: true
     schema:
       $ref: schemas/objectQuery.yaml
+  objectQueryNames:
+    name: query
+    in: body
+    required: true
+    schema:
+      $ref: schemas/objectQueryNames.yaml
 paths:
   /api/dataSets:
     $ref: paths/dataSets.yaml

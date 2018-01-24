@@ -3,7 +3,7 @@
 Analytics API
 =============
 
-Putting analytics into production is a phenomenal challenge for most organization building on newer scalable technologies.
+Putting analytics into production is a phenomenal challenge for most organizations building on newer scalable technologies.
 Koverse makes running analytics in production easy.
 
 Koverse wraps an analytic in a Transform, which allows the analytic to be reused for multiple data sets via code-free configuration, and Transforms are also scheduled, monitored, and audited.
