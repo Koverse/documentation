@@ -49,3 +49,4 @@ The Koverse platform's Integration API is implemented in Java. Projects written 
 .. toctree::
 
    sources.rst
+   third_party_auth.rst
