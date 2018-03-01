@@ -27,75 +27,123 @@ The only time that an authorizer must be used in the webapp and not the server i
 Example Webapp Authenticator
 ----------------------------
 
-For this example, we'll write an authenticator that allows any user to authenticate.
-A user record is created by combining the user's IP address and user-agent string 
-(e.g. the name of their web browser).
-
-This authenticator is thus very simple, but illustrates the fundamental concepts. An Authenticator
-is composed of two classes, one for the logic and one for describing the authenticator.
+For this example, we'll write an authenticator that uses LDAP and PKI to
+authenticate. In this scenario, the user needs to have X509 security
+certificates installed in their browser. Those certificates will be
+send to the koverse web app when the user visits the koverse web app.
+The certificates will then be used to attempt to login to an LDAP server. If
+more than one certificate is provided by the user's web browser, each will be
+tried and the first one to sucessfully authenticate with the LDAP server will
+authenticate the user. This authenticator is thus very simple, but illustrates the fundamental concepts.
 
 .. code-block:: java
 
-  package com.koverse.webapp.security.allowall;
+  package com.koverse.webapp.security.pki;
   
   import com.koverse.com.google.common.base.Optional;
   import com.koverse.sdk.security.webapp.HttpServletRequestAuthenticator;
   import com.koverse.sdk.security.webapp.HttpServletRequestAuthenticatorDescription;
   
   import com.google.inject.Inject;
-  import com.google.inject.Singleton;
+  import com.google.inject.name.Named;
+  import lombok.extern.slf4j.Slf4j;
   
+  import java.security.Principal;
+  import java.security.cert.X509Certificate;
+  import java.util.Hashtable;
+  
+  import javax.naming.AuthenticationException;
+  import javax.naming.Context;
+  import javax.naming.NamingException;
+  import javax.naming.directory.InitialDirContext;
   import javax.servlet.http.HttpServletRequest;
   
-  @Singleton
-  public class AllowAllAuthenticator implements HttpServletRequestAuthenticator {
+  @Slf4j
+  public class PkiAuthenticator implements HttpServletRequestAuthenticator {
   
-    private static final class Description implements HttpServletRequestAuthenticatorDescription {
-  
-      @Override
-      public Class<? extends HttpServletRequestAuthenticator> getAuthenticatorClass() {
-        return AllowAllAuthenticator.class;
-      }
-  
-      @Override
-      public String getTypeId() {
-        return "allowAll";
-      }
-  
-      @Override
-      public String getDisplayName() {
-        return "Allow All";
-      }
-    }
-  
-    private static final HttpServletRequestAuthenticatorDescription DESCRIPTION = new Description();
+    private final String ldapUrl;
+    private final String ldapInitialContextFactory;
   
     @Inject
-    AllowAllAuthenticator() {}
+    public PkiAuthenticator(
+          @Named("com.koverse.auth.ldap.url") final String ldapUrl,
+          @Named("com.koverse.auth.ldap.initial.context.factory") final String ldapInitialContextFactory) {
+  
+      this.ldapUrl = ldapUrl;
+      this.ldapInitialContextFactory = ldapInitialContextFactory;
+    }
   
     @Override
     public HttpServletRequestAuthenticatorDescription getDescription() {
-      return DESCRIPTION;
+      return new HttpServletRequestAuthenticatorDescription() {
+        @Override
+        public Class<? extends HttpServletRequestAuthenticator> getAuthenticatorClass() {
+          return PkiAuthenticator.class;
+        }
+  
+        @Override
+        public String getDisplayName() {
+          return "Example PKI LDAP Authentication";
+        }
+  
+        @Override
+        public String getTypeId() {
+          return "example-pki-ldap-auth";
+        }
+      };
     }
   
     @Override
     public Optional<String> authenticate(HttpServletRequest authenticationInfo) {
-      final String remoteAddress = authenticationInfo.getRemoteAddr();
-      final String agent = authenticationInfo.getHeader("User-Agent");
-      final String externalId = String.format("%s-%s", remoteAddress, agent);
   
-      return Optional.of(externalId);
+      final X509Certificate[] certificates = (X509Certificate[]) authenticationInfo.getAttribute("javax.servlet.request.X509Certificate");
+  
+      if (certificates == null || certificates.length == 0) {
+        log.warn("No X509 certificates found");
+        return Optional.absent();
+      } else {
+        log.info("Found {} X509 certificates", certificates.length);
+  
+        for (final X509Certificate certificate : certificates) {
+          final Principal principal = certificate.getSubjectDN();
+          final Hashtable<String, Object> environment = new Hashtable<>();
+  
+          log.info("Trying X509 certificate for principal: {}", principal.getName());
+  
+          environment.put(Context.INITIAL_CONTEXT_FACTORY, ldapInitialContextFactory);
+          environment.put(Context.PROVIDER_URL, ldapUrl);
+          environment.put(Context.SECURITY_PRINCIPAL, principal);
+          environment.put(Context.SECURITY_CREDENTIALS, certificate);
+
+          try {
+            final InitialDirContext initialDirContext = new InitialDirContext(environment);
+  
+            initialDirContext.close();
+            log.info("X509 certificate authentication suceeded for principal : {}", principal);
+            return Optional.of(principal.getName());
+          } catch (AuthenticationException e) {
+            log.warn("X509 certificate authentication failed for principal : {}", principal, e);
+          } catch (NamingException e) {
+            log.error("Could not contact LDAP server for X509 certificate principal : {}", principal, e);
+          }
+        }
+      
+        log.warn("No X509 certificates succeeded for login");
+        return Optional.absent();
+  
+      }
     }
   }
 
+This authenticator requires that two properties be specified in the **koverse-webapp.properties**
+file to specify the LDAP URL and which Java class to use to get the initial
+LDAP context. An example is below
 
-The logic is contained in the class above, with the description as an inner class.
-The description specifies the type id for the authenticator and any parameters
-that the authenticator uses. When the authenticator is invoked via the 
-``authenticate()`` method, it is given the details of the HTTP request.
-In this example, a user id string is created from that HTTP request.
-If your authenticator declines to authenticate a user, simply return 
-``Optional.empty()``.
+.. code-block:: properties
+
+  com.koverse.auth.ldap.initial.context.factory=com.sun.jndi.ldap.LdapCtxFactory
+  com.koverse.auth.ldap.url=ldap://localhost/
+
 
 Note that when a custom authenticator is used, any user id that is returned
 must belong to a koverse group that has the "useKoverse" system permission.
@@ -118,17 +166,16 @@ An auth module must be created in order to use a authenticator.
 
 .. code-block:: java
 
-  package com.koverse.webapp.security;
+  package com.koverse.webapp.security.pki;
   
   import com.koverse.sdk.security.webapp.AbstractWebAppAuthModule;
   import com.koverse.sdk.security.webapp.HttpServletRequestAuthenticator;
   import com.koverse.sdk.security.webapp.WebAppAuthorizer;
   import com.koverse.sdk.security.webapp.WebAppParameterAuthenticator;
-  import com.koverse.webapp.security.allowall.AllowAllAuthenticator;
   
   import com.google.inject.multibindings.Multibinder;
   
-  public class ExampleAuthModule extends AbstractWebAppAuthModule {
+  public class PkiAuthModule extends AbstractWebAppAuthModule {
   
     @Override
     protected void configure(
@@ -136,9 +183,10 @@ An auth module must be created in order to use a authenticator.
             Multibinder<HttpServletRequestAuthenticator> servletRequestAuthenticatorsBinder,
             Multibinder<WebAppParameterAuthenticator> parameterAuthenticatorsBinder) {
   
-      servletRequestAuthenticatorsBinder.addBinding().to(AllowAllAuthenticator.class);
+      servletRequestAuthenticatorsBinder.addBinding().to(PkiAuthenticator.class);
     }
   }
+
 
 
 In this example, the example authenticator. Simply put the jar(s) containing these classes
@@ -149,7 +197,7 @@ in the ``conf`` directory. All that has to be done is to set the property
 
 .. code-block:: properties
 
-  com.koverse.webapp.auth.modules=com.koverse.webapp.security.ExampleAuthModule
+  com.koverse.webapp.auth.modules=com.koverse.webapp.security.pki.PkiAuthModule
 
 Then, when Koverse starts up again, it will use this auth module instead of
 its default one.
