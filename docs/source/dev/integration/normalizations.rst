@@ -35,9 +35,9 @@ First we'll start off with our basic import and package declaration::
   import com.koverse.com.google.common.collect.Lists;
   import com.koverse.sdk.data.Parameter;
   import com.koverse.sdk.data.SimpleRecord;
-  import com.koverse.sdk.ingest.transform.Normalization;
+  import com.koverse.sdk.ingest.transform.ImportTransform;
 
-  public class CustomNormalization extends Normalization {
+  public class CustomNormalization extends ImportTransform {
 
   }
 
