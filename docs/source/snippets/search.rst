@@ -28,7 +28,7 @@ Clicking on a suggested search term will execute a search for that term.
 .. image:: /_static/UsageGuide/autocomplete.png
 
 Example
-~~~~~~~
+""""""""
 
 We'll start typing in the search bar to explore some of the example bank data we have loaded.
 
@@ -66,7 +66,7 @@ To see more results for a particular data set, click on the name of the data set
 This will take you to the data tab on the data set details page.
 
 Example
-~~~~~~~
+""""""""
 
 We searched for 'Velma Huber' and we see results from three data sets: 'Bank Employee Timesheets' showing Velma's timesheets, 'Bank Employees' showing HR information about Velma, and 'Bank Security Incidents' which show instances where Velma appears as in the 'manager' attribute or in some cases as the 'submitter'.
 
@@ -97,7 +97,7 @@ Users can scroll down to view more records, up to the first 50 records.
 
 
 Example
-~~~~~~~
+""""""""
 
 Continuing from our search above of data relating to Velma, we saw that there were 2744 records matching Velma's trader ID in the 'Bank Trade Transactions' data set.
 To see more of these results we can click on the title of the data set in the results, or click on the link to the lower right of those results labeled 'Show in Bank Trade Transactions'.

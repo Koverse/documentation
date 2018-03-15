@@ -741,7 +741,7 @@ This concludes the synthetic bank data examples.
 In the `Interactive Analytics`_ section we have a few more examples of working with data using some data science tools.
 
 Troubleshooting a Transform
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Sometimes a transform is simply misconfigured.
 In this case you may see an error message and diagnostic information associated with a job for a transform to the effect that there is a misconfiguration or in some cases a syntax error.
@@ -768,12 +768,12 @@ To grant more permissions so other users can view this data, see the section, `D
 
 
 Interactive Analytics
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to running transforms to process data sets at scale, Koverse also enables users to perform interactive analysis of data sets at scale via popular tools such as Apache Spark and Jupyter Notebook.
 
 Using Python with Koverse
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Python is a popular interpreted programming language.
 
