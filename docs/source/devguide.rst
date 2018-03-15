@@ -3,7 +3,6 @@
 Developer Documentation
 =======================
 
-.. toctree::
 
    dev/intro.rst
    dev/coreconcepts.rst

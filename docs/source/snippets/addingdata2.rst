@@ -22,8 +22,8 @@ In this case you may need to change some of the options specific to the parser, 
 Text file formats such as CSV represent all values as text, including numbers and dates.
 Koverse parsers for text file formats can automatically interpret these values as their proper type so that they can be passed to analytics properly and searched using ranges, for example.
 This behavior can be enabled or disabled by checking the 'Determine Types' option.
-Disabling it will result in some values being unsearchable, but can be useful for applying normalizations to the original text values before interpreting their types. 
-When disabling type conversion by the parser for this purpose, types can be determined again after original values are modified by applying the normalization titled 'Interpret all string values'. 
+Disabling it will result in some values being unsearchable, but can be useful for applying normalizations to the original text values before interpreting their types.
+When disabling type conversion by the parser for this purpose, types can be determined again after original values are modified by applying the normalization titled 'Interpret all string values'.
 
 One example of this process is using the normalization titled 'Prepend text to a field value' which can be used to add some text such as 'ID' to the beginning of number values so that they are interpreted and searched as textual identifiers rather than numbers.
 In this case the 'Determine Types' option of the parser should be unchecked, then the 'Prepend text to a field value' normalization added, and finally the 'Interpret all string values' normalization added.
@@ -33,16 +33,16 @@ After making a change to a parser or its options, the import preview will automa
 
 We can choose to apply optional normalization rules next, or simply click 'Next' to go to step 3.
 
-Also note the automatic normalization of field names. Koverse supports nearly all 1,114,112 UTF-8 characters except for 2,097 that are problematic for JSON parsing and/or query syntax. These problematic UTF-8 characters or codepoints are generally grouped into three categories: 
+Also note the automatic normalization of field names. Koverse supports nearly all 1,114,112 UTF-8 characters except for 2,097 that are problematic for JSON parsing and/or query syntax. These problematic UTF-8 characters or codepoints are generally grouped into three categories:
 
-- control, 
-- punctuation, and 
-- emoticon codepoints. 
+- control,
+- punctuation, and
+- emoticon codepoints.
 
 These UTF-8 codepoints are regularly referred to as **illegal characters**. The UTF-8 illegal characters that are control codepoints are in decimal range [0, 31]. The UTF-8 illegal characters that are punctuation control codepoints are not in a contiguous decimal range, but include (and is not limited to) characters such as left/right parenthesis, exclamation mark, colon, left/right square bracket, and reverse solidus (backslash). The UTF-8 illegal characters that are emoticon codepoints are in the decimal range [55296, 57343]. All UTF-8 illegal characters are simply removed from the original field names before being stored. As field names are normalized by disallowing illegal characters, this normalization impacts downstream querying as user may expect querying against the orignal field names but some (or all) field names may have changed.
 
 Example
-~~~~~~~
+"""""""
 
 In our example we're loading a CSV (comma-separated values) file from a URL.
 
@@ -54,7 +54,7 @@ If some other parser was used, the records should not appear correctly in the gr
 When the records look correct, click 'Next' and go to `Step 3. Choose a Destination Data Set`_.
 
 Applying Normalization Rules
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to correctly configuring a parser for an import, users can apply one or more optional normalization rules to modify records being imported.
 On the right below the parser settings on the records preview page there is a list of available normalization rules to apply.
@@ -88,7 +88,7 @@ This is appropriate for streaming sources such as when importing from the Twitte
 Selecting 'On a set schedule' will allow you to specify one or more schedules that define when import jobs will run.
 
 Example
-~~~~~~~
+"""""""
 
 We'll store our example data in a data set called 'Bank Security Incidents'.
 Type that name into the form for the data set name.
