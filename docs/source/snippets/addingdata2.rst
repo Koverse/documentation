@@ -42,7 +42,6 @@ Also note the automatic normalization of field names. Koverse supports nearly al
 These UTF-8 codepoints are regularly referred to as **illegal characters**. The UTF-8 illegal characters that are control codepoints are in decimal range [0, 31]. The UTF-8 illegal characters that are punctuation control codepoints are not in a contiguous decimal range, but include (and is not limited to) characters such as left/right parenthesis, exclamation mark, colon, left/right square bracket, and reverse solidus (backslash). The UTF-8 illegal characters that are emoticon codepoints are in the decimal range [55296, 57343]. All UTF-8 illegal characters are simply removed from the original field names before being stored. As field names are normalized by disallowing illegal characters, this normalization impacts downstream querying as user may expect querying against the orignal field names but some (or all) field names may have changed.
 
 Example
-"""""""
 
 In our example we're loading a CSV (comma-separated values) file from a URL.
 
@@ -88,7 +87,6 @@ This is appropriate for streaming sources such as when importing from the Twitte
 Selecting 'On a set schedule' will allow you to specify one or more schedules that define when import jobs will run.
 
 Example
-"""""""
 
 We'll store our example data in a data set called 'Bank Security Incidents'.
 Type that name into the form for the data set name.

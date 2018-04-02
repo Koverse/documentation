@@ -35,7 +35,6 @@ If there was an error generating the preview (e.g. caused by source invalid para
 describing the nature of the error and diagnostic information will be shown.
 
 Example
-"""""""
 
 Koverse hosts some example data files for use in these examples.
 This data is synthetic and is designed to illustrate how Koverse can be used to explore data sets with the goal of identifying potentially risky internal behavior.
