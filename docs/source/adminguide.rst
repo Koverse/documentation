@@ -4,6 +4,7 @@
 Administration Guide
 ====================
 
+.. toctree::
 
    admin/infraguide.rst
    admin/installguide.rst
