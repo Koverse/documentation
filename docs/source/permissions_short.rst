@@ -80,16 +80,6 @@ Users in a group with this permission are able to:
 * Delete Owned or Shared Sources
 * Run Owned or Shared Sources
 
-Manage Lockdown Mode
-^^^^^^^^^^^^^^^^^^^^
-Lockdown mode is used stop all inbound and outbound dataflows in the system,
-and to keep users from accessing data. Use lockdown mode when data leaks such
-as incorrect user and group permissions are discovered.
-
-Users in a group with this permission are able to:
-
-* View Lockdown Mode
-* Enable/Disable Lockdown Mode
 
 Manage Transform Jobs
 ^^^^^^^^^^^^^^^^^^^^^

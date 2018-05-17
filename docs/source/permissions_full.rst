@@ -50,13 +50,11 @@ Group Permissions
 * Manage System Settings
 * View Audit Logs
 * Manage Sources
-* Manage Lock Down Mode
 * Manage Transform Jobs
 * Manage Sinks
 * Manage AddOns
 * Manage API Tokens
 * Manage System Reset
-* Manage Application
 * Manage System Status
 
 Collection Permissions
@@ -98,11 +96,7 @@ Transform permissions are completely implicit, based upon access to the input
 collections and output collection. Transform schedules inherit the same
 permissions as their transform.
 
-System State
-^^^^^^^^^^^^
 
-* Locked Down
-* Not Locked Down
 
 Records
 ^^^^^^^
@@ -368,17 +362,6 @@ A subject can only view the System Status if:
 
 * The subject is in a group that the Manage System Status permission.
 
-Lock Down
----------
-View
-^^^^
-Any subject can view or generally be aware of the lockdown state.
-
-Enable, Disable
-^^^^^^^^^^^^^^^
-A subject can only enable or disable lock down if:
-
-* The subject is in a group that has the Manage Lock Down Mode permission.
 
 Sources
 -------
