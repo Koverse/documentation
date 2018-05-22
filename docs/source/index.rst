@@ -8,7 +8,6 @@ Koverse
 .. toctree::
    :maxdepth: 2
 
-   intro
    quickstart
    usageguide
    adminguide
