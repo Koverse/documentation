@@ -6,6 +6,9 @@ Spark Java DataFrame Transform
 Spark DataFrames provide functionality for working with structured data easily and allows SQL functions to be used.
 Koverse provides the records in user-selected data sets to Spark as DataFrames and automatically defines the schema of each DataFrame according to the structure of records in each Koverse data set.
 
+To start a project containing a custom Transform, we'll need to include the Koverse SDK.
+See :ref:`LinkingSDK` for details.
+
 DataFrame Transform Example
 ---------------------------
 
@@ -281,7 +284,7 @@ Drag and drop the JAR file in your target/ folder to the large gray space labele
 
 Koverse will process this file and you should see a new card appear in the list of loaded Addons named 'koverse-sdk-project'.
 Also listed on that card should be the name of our Transform.
-If that does not appear, double check that your Transform class was compiled in the JAR using 'jar -tf [your-jar]' and verify that the correct name of your Transform class appears in the 'classesToInspect' file.
+If that does not appear, double check that your Transform class was compiled in the JAR using 'jar -tf [your-jar]' and verify that the correct name of your Transform class appears in the 'classesToInspect' file in src/main/resources.
 
 See :ref:`Addons` for additional details on building and uploading Addons.
 

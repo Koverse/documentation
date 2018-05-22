@@ -13,6 +13,9 @@ There are three basic classes used to implement a custom Source: one for reading
 
 We'll cover how to implement each type of Source.
 
+To start the project, we'll need to include the Koverse SDK.
+See :ref:`LinkingSDK` for details.
+
 File System Based Sources
 -------------------------
 
@@ -223,7 +226,10 @@ There are a few other methods we can define::
     return Collections.EMPTY_LIST;
   }
 
-Now we're ready to package up our Source into an AddOn file, which just just a Java JAR file that contains a descriptor file. If you're using the koverse-sdk-project example code, simply build the project using **mvn install**. This will produce a JAR file in the target/ directory that you can drop into the Koverse UI. See the section on :ref:`AddOns` for more details.
+Now we're ready to package up our Source into an AddOn file, which just just a Java JAR file that contains a descriptor file.
+If you're using the koverse-sdk-project example code, simply build the project using **mvn install**.
+This will produce a JAR file in the target/ directory that you can drop into the Koverse UI.
+See the section on :ref:`AddOns` for more details.
 
 ..
   To upload your new AddOn, navigate to your Koverse instance in a web browser and click on the Admin section at the bottom of the left hand menu. Note that you must be logged into Koverse as a user that has permission to 'upload add-on extensions'.
@@ -349,13 +355,16 @@ There is one other method we can define::
     return false;
   }
 
-Now we are ready to package up our Source into an AddOn file, which is just a Java JAR file that contains a descriptor file. If you're using the koverse-sdk-project example code, simply build the project using **mvn install**. This will produce a JAR file in the target/ directory that you can drop into the Koverse UI. See the section on :ref:`AddOns` for more details.
+Now we are ready to package up our Source into an AddOn file, which is just a Java JAR file that contains a descriptor file.
+If you're using the koverse-sdk-project example code, simply build the project using **mvn install**.
+This will produce a JAR file in the target/ directory that you can drop into the Koverse UI.
+See the section on :ref:`AddOns` for more details.
 
 ..
   .. _custom sources:
 
   TODO: document the SyntheticMessagesSource
-  
+
   Other Custom Sources
   ^^^^^^^^^^^^^^^^^^^^
 
@@ -401,7 +410,8 @@ As an example of saving state, when file based sources are done importing some s
 
 
 In this case, we return a list of SourceState objects, of which we have only one.
-That SourceState object consists of a key under which we are requesting to store one or more filenames of files we just imported. The last component of the SourceState object is a StateStringOperator, in this case, the UNIQUE operator which requests that Koverse store only the unique set of filenames, and avoid storing duplicates.
+That SourceState object consists of a key under which we are requesting to store one or more filenames of files we just imported.
+The last component of the SourceState object is a StateStringOperator, in this case, the UNIQUE operator which requests that Koverse store only the unique set of filenames, and avoid storing duplicates.
 
 Other StateStringOperators can be used, with the following behaviors:
 
@@ -414,7 +424,8 @@ MAX
 MIN
   store only the one value that sorts first among all values associated with a key
 
-Only String values are supported, but sources may be able to do what they need with dates by converting to a String format such as 'YYYYMMDD HH:mm:SS' so that the String representation of dates can be sorted in time order. This technique could be used for other non-String types as well.
+Only String values are supported, but sources may be able to do what they need with dates by converting to a String format such as 'YYYYMMDD HH:mm:SS' so that the String representation of dates can be sorted in time order.
+This technique could be used for other non-String types as well.
 
 Note: when overriding the stateToSave() method, subclasses may consider to calling super.stateToSave() and combining the state from the super class with its own state to preserve the behavior of the super class.
 

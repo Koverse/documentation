@@ -23,22 +23,6 @@ Similarly, Sinks that write to a file system can produce files in custom formats
 
 Finally, 3rd party Authenticators and Authorizers can allow Koverse to integrate with existing user management systems so that data access can be granted to specific roles and groups already defined for an organization.
 
-Linking to the Koverse Integration API
-
-The Koverse platform's Integration API is implemented in Java. Projects written on this API can pull in the Koverse SDK as a dependency adding the following to a pom.xml file for use with Maven::
-
-  <dependency>
-    <groupId>com.koverse</groupId>
-    <artifactId>koverse-sdk</artifactId>
-  <dependency>
-  <repositories>
-    <repository>
-      <id>koverse</id>
-      <name>Koverse Public Repo</name>
-      <url>http://nexus.koverse.com/nexus/content/groups/public/</url>
-      <layout>default</layout>
-    </repository>
-  </repositories>
 
 ..
   file_format.rst
@@ -49,3 +33,4 @@ The Koverse platform's Integration API is implemented in Java. Projects written 
 .. toctree::
 
    sources.rst
+   normalizations.rst
