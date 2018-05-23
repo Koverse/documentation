@@ -3,7 +3,7 @@ Access Control
 ==============
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
 
    permissions_short
    permissions_full

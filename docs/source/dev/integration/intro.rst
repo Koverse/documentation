@@ -31,6 +31,7 @@ Finally, 3rd party Authenticators and Authorizers can allow Koverse to integrate
   third_party_auth.rst
 
 .. toctree::
-
-   sources.rst
-   normalizations.rst
+  :maxdepth: 1
+  
+  sources.rst
+  normalizations.rst
