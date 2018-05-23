@@ -34,3 +34,4 @@ Finally, 3rd party Authenticators and Authorizers can allow Koverse to integrate
 
    sources.rst
    normalizations.rst
+   field_maskers.rst

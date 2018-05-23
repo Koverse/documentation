@@ -1,10 +1,10 @@
 ..
   TODO: remove this from the SDK
-  
+
 Web App Record Converters
 -------------------------
 
-Koverse can be extended to enable downoading of data set records
+Koverse can be extended to enable downloading of data set records
 as any type of file. By default, Koverse supports downloading the records
 as either a CSV or JSON file.
 
