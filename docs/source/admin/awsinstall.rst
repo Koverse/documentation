@@ -1,3 +1,8 @@
+.. _awsInstallation:
+
+Amazon Web Services Installation
+================================
+
 Using Koverse with AWS Marketplace
 ----------------------------------
 
