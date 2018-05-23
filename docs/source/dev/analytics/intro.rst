@@ -14,7 +14,6 @@ Transforms can wrap analytics written for the following frameworks and APIs:
 * Spark
 * Spark SQL
 * MapReduce
-* Pig
 * Python
 
 
