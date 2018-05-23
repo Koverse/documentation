@@ -59,9 +59,9 @@ Koverse ships by default with a group called 'Everyone', which all new users are
 To make a data set available to everyone, simply add the 'Everyone' group to the permissions table and grant the actions desired to this group.
 
 Masking Specific Data Set Attributes
-------------------------------------
+-------------------------------------
 
-Koverse allows data set owners to mask specific attributes so that their values are not visible in search results or downloads. This enables organizations to protect sensitive values, such as personally identifiable information, in order to comply with privacy policies and regulations such as HIPAA and GDPR.
+Koverse allows data set owners to mask specific attributes so that their values are not visible in search results or downloads.
 
 To edit a data set's masking settings click on the Data tab on the left navigation menu and select the data set you want.
 Click on the Settings tab and then the Masking tab.
@@ -71,32 +71,18 @@ Click on the Settings tab and then the Masking tab.
 This will show a list of all the attributes within this data set.
 By default all attributes are visible to users that can query this data set.
 
-To mask an attribute, select the attribute name from the drop down menu and click the 'Add Masker' button. As an example, let's say we want to protect employee information in a field called 'name'. We'll choose the 'Completely Mask Values' option, which is the default. As of now, the 'name' field is masked for all users.
-
-.. image:: /_static/UsageGuide/oneMasker.png
-
-Instead of seeing employee names, all users will now see the text '[masked]'. This also applies to the data if we now download it.
-
-.. image:: /_static/UsageGuide/maskedResults1.png
-
-But if we want to apply different masking logic for a specific group of users, we can exclude a specific group so that he masker no longer applies to users belonging to that group. For example, we can choose to except the 'Administrators' group from the first masker we applied, the 'Completely Mask Values' masker. To exclude a group, click the plus icon next to the masker you wish to modify, click on the drop down menu labeled 'Excepted Groups' and check the boxes next to the groups to be excluded.
+To mask specific attributes, click on the check box next to each attribute to mask.
+Selected attributes will be masked for all users unless specific groups are excepted.
+To allow specific groups to see the values of a masked attribute, click the 'Add Excepted Group' button and select a group.
+To remove a group from the list of excepted groups for an attribute, click the minus icon next to the group name.
 
 .. image:: /_static/UsageGuide/exceptGroup.png
 
-Now the 'Completely Mask Values' masker no longer applies to our example 'admin' user since that user belongs to the 'Administrators' group. The 'name' field will still continue to be masked for everyone else.
+When finished making changes to masking settings, click the 'Save' button at the bottom of the page.
 
-We can now apply a second masker that will take effect for all groups excluded from the first masker. Simply select the 'name' field again and click 'Add Masker'. This time we'll apply the 'SHA Hasher' masker.
+Masked attributes will display the value '[masked]' in search results and downloaded files for all users except users in at least one excepted group.
 
-.. image:: /_static/UsageGuide/twoMaskers.png
+.. image:: /_static/UsageGuide/maskedResults.png
 
-Now, users in the 'Administrators' group will see hashed values instead of employee names, while all other users see the text '[masked]'.
-
-.. image:: /_static/UsageGuide/maskedResults2.png
-
-If we were to add 'Administrators' to the list of excepted groups for this second 'SHA hasher' masker we would again see the unprotected employee names. When there are one or more maskers applied to an field, the first masker that a user is not excluded from will take effect. This way data can be masked differently for different user groups, allowing for a wide variety of data protection policies to be enforced.
-
-It is important to note that while values are masked in search results and downloads from the Koverse UI and REST API, values of masked attributes are not masked when the data set is processed in transforms or exported to external systems via a Koverse export. For this reason, the ability to export and transform data should be restricted when using masking.
-
-Also note that users who are not able to see masked values may still perform searches for a value that is masked and get results, albeit with the masked values still masked in results. If searches should not be performed on values of a masked field the field can be excluded from being indexed, thereby preventing searching on masked values.
-
+Values of masked attributes are not masked when the data set is processed in transforms or exported to external systems.
 If an attribute needs to be completely removed, a new data set should be created via a transform to create a new data set without particular attributes.
