@@ -24,15 +24,15 @@ Similarly, Sinks that write to a file system can produce files in custom formats
 Finally, 3rd party Authenticators and Authorizers can allow Koverse to integrate with existing user management systems so that data access can be granted to specific roles and groups already defined for an organization.
 
 
-.. toctree::
-   :maxdepth: 1
-
-   sources.rst
-   normalizations.rst
-   field_maskers.rst
-
 ..
- file_format.rst
- sinks.rst
- export_file_format.rst
- third_party_auth.rst
+  file_format.rst
+  sinks.rst
+  export_file_format.rst
+
+.. toctree::
+  :maxdepth: 1
+
+  sources.rst
+  normalizations.rst
+  field_maskers.rst
+  third_party_auth.rst

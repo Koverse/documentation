@@ -43,10 +43,11 @@ For examples of prototyping analytics using specific technologies, see the follo
   zeppelin.rst
 
 .. toctree::
-
-   pyspark_shell.rst
-   ipython.rst
-   jupyter.rst
+  :maxdepth: 1
+  
+  pyspark_shell.rst
+  ipython.rst
+  jupyter.rst
 
 
 
@@ -59,5 +60,6 @@ After prototyping an analytic, learn how to package analytics in production Tran
   python.rst
 
 .. toctree::
+  :maxdepth: 1
 
-   spark_java_dataframe_transform.rst
+  spark_java_dataframe_transform.rst
