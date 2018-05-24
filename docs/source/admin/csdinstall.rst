@@ -1,6 +1,7 @@
+.. _csdInstallation:
 
 CSD Installation
-----------------
+================
 
 - Copy the CSD file onto the Cloudera Manager server and place it in */opt/cloudera/csd*
 - Change the permissions on the CSD file
@@ -75,3 +76,7 @@ Add the Koverse Service
 
 
 Verify that everything has installed and started properly.
+
+Once both processes have started up, you can access the Koverse user interface from a web browser at
+http://<hostname>:8080/
+The default username and password are ‘admin’ and ‘admin’. The password can be changed immediately after logging in.

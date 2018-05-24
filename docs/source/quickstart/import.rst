@@ -1,3 +1,87 @@
+.. _quickImport:
+
+Adding a Data Set
+=================
+
+Koverse allows data to be imported from a variety of external data sources.
+
+Logging in
+----------
+
+In some production instances of Koverse, authentication is handled automatically by a public key infrastructure or other integrated single-sign on system.
+If so, when you first visit the Koverse URL in a browser you will automatically be logged in.
+On a system that is using built-in Koverse user and group management, you will see the following login screen:
+
+.. image:: /_static/UsageGuide/login.png
+
+To login to a newly installed Koverse instance, type in 'admin' for the user name and 'admin' for the password.
+Otherwise, login using the username (often your email address) and password that have been provided to you by your administrator.
+
+If your password is incorrect you will see an error.
+
+
+To import data into Koverse, click the 'Add' button on the primary navigation menu on the left.
+
+Data can be imported from a number of source types, which are listed on the Add Data Set page.
+Alternatively, data can be uploaded from your browser.
+
+Loading data into Koverse is a three-step process.
+
+1. Select and define an external source or upload files from your browser into a staging area managed by Koverse.
+2. View a preview of the records to be imported and make any corrections to parser settings. You can also apply additional processing rules to your records at this step called 'Normalizations'.
+3. Enter a name for the new data set and optionally create a schedule for importing data.
+
+Step 1. Selecting a source type
+--------------------------------
+
+To import data from an external data source (versus via uploading files from your browser) ensure that 'Connect Source' is selected at the top of the Add Data Set page.
+Choose a source type from the list shown.
+
+.. image:: /_static/UsageGuide/add.png
+
+After a source type is selected you will see a list of parameters used to identify and connect to that data source.
+Fill out the access information and click Next.
+To change the type of source selected, click Back.
+Clicking Cancel will allow you to start over from the beginning.
+
+
+After clicking next you will see a preview of the records to be imported.
+See the section `Step 2. View a Preview of the Data`_ to proceed.
+
+If there was an error generating the preview (e.g. caused by source invalid parameters), a message
+describing the nature of the error and diagnostic information will be shown.
+
+Example
+^^^^^^^
+
+Koverse hosts some example data files for use in these examples.
+This data is synthetic and is designed to illustrate how Koverse can be used to explore data sets with the goal of identifying potentially risky internal behavior.
+There are 5 different files that we'll load into 5 new Koverse data sets.
+The files are hosted at the following URLs:
+
+Bank Security Incidents
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/all-incidents.csv
+
+Bank Transactions
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/all-transactions.csv
+
+Bank Employee Timesheets
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/employeeHours.csv
+
+Bank Employees
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/employees.csv
+
+Bank Departments
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/orgs.csv
+
+We'll load these one at a time into individual data sets.
+To load the first of these we'll choose 'URL Source' from the list.
+In the parameter labeled 'Comma-separated list of URLs' paste in the following URL:
+
+  https://s3.amazonaws.com/koverse-datasets/financial+demo/all-incidents.csv
+
+And click 'Next'.
+
 
 Step 2. View a Preview of the Data
 -----------------------------------
@@ -22,8 +106,8 @@ In this case you may need to change some of the options specific to the parser, 
 Text file formats such as CSV represent all values as text, including numbers and dates.
 Koverse parsers for text file formats can automatically interpret these values as their proper type so that they can be passed to analytics properly and searched using ranges, for example.
 This behavior can be enabled or disabled by checking the 'Determine Types' option.
-Disabling it will result in some values being unsearchable, but can be useful for applying normalizations to the original text values before interpreting their types. 
-When disabling type conversion by the parser for this purpose, types can be determined again after original values are modified by applying the normalization titled 'Interpret all string values'. 
+Disabling it will result in some values being unsearchable, but can be useful for applying normalizations to the original text values before interpreting their types.
+When disabling type conversion by the parser for this purpose, types can be determined again after original values are modified by applying the normalization titled 'Interpret all string values'.
 
 One example of this process is using the normalization titled 'Prepend text to a field value' which can be used to add some text such as 'ID' to the beginning of number values so that they are interpreted and searched as textual identifiers rather than numbers.
 In this case the 'Determine Types' option of the parser should be unchecked, then the 'Prepend text to a field value' normalization added, and finally the 'Interpret all string values' normalization added.
@@ -33,16 +117,16 @@ After making a change to a parser or its options, the import preview will automa
 
 We can choose to apply optional normalization rules next, or simply click 'Next' to go to step 3.
 
-Also note the automatic normalization of field names. Koverse supports nearly all 1,114,112 UTF-8 characters except for 2,097 that are problematic for JSON parsing and/or query syntax. These problematic UTF-8 characters or codepoints are generally grouped into three categories: 
+Also note the automatic normalization of field names. Koverse supports nearly all 1,114,112 UTF-8 characters except for 2,097 that are problematic for JSON parsing and/or query syntax. These problematic UTF-8 characters or code-points are generally grouped into three categories:
 
-- control, 
-- punctuation, and 
-- emoticon codepoints. 
+- control,
+- punctuation, and
+- emoticon codepoints.
 
 These UTF-8 codepoints are regularly referred to as **illegal characters**. The UTF-8 illegal characters that are control codepoints are in decimal range [0, 31]. The UTF-8 illegal characters that are punctuation control codepoints are not in a contiguous decimal range, but include (and is not limited to) characters such as left/right parenthesis, exclamation mark, colon, left/right square bracket, and reverse solidus (backslash). The UTF-8 illegal characters that are emoticon codepoints are in the decimal range [55296, 57343]. All UTF-8 illegal characters are simply removed from the original field names before being stored. As field names are normalized by disallowing illegal characters, this normalization impacts downstream querying as user may expect querying against the orignal field names but some (or all) field names may have changed.
 
 Example
-~~~~~~~
+^^^^^^^
 
 In our example we're loading a CSV (comma-separated values) file from a URL.
 
@@ -54,7 +138,7 @@ If some other parser was used, the records should not appear correctly in the gr
 When the records look correct, click 'Next' and go to `Step 3. Choose a Destination Data Set`_.
 
 Applying Normalization Rules
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In addition to correctly configuring a parser for an import, users can apply one or more optional normalization rules to modify records being imported.
 On the right below the parser settings on the records preview page there is a list of available normalization rules to apply.
@@ -88,7 +172,7 @@ This is appropriate for streaming sources such as when importing from the Twitte
 Selecting 'On a set schedule' will allow you to specify one or more schedules that define when import jobs will run.
 
 Example
-~~~~~~~
+^^^^^^^
 
 We'll store our example data in a data set called 'Bank Security Incidents'.
 Type that name into the form for the data set name.
@@ -97,3 +181,21 @@ Leave the option for 'How often should this collection be updated?' set to 'Only
 
 Click 'Finish'.
 This will start an import of all the records from that file.
+
+
+Viewing Import Progress
+-----------------------
+
+After adding a new data set, you will be navigated to the overview page for the new data set.
+If the import is one-time or continuous, within a short time you begin to see progress information for the initial import job.
+There are a few follow-on jobs that run after the import completes or after a continuous job has been running for a while, including indexing the data, gathering statistics, and sampling the data.
+Progress for these jobs will display until they complete.
+The data set will not be searchable until these jobs are done.
+
+.. image:: /_static/UsageGuide/importProgress.png
+
+Once complete, the view will update to show an overview of the attributes contained within the data set.
+
+Any newly created data set is viewable only by the user that created it.
+In this case an icon of an eye with a line through it and the label "Not shared" will be shown along with other information about a data set.
+When a data set is shared with one or more groups, the number of groups with whom the data set is shared will be shown instead.

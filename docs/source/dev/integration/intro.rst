@@ -28,10 +28,10 @@ Finally, 3rd party Authenticators and Authorizers can allow Koverse to integrate
   file_format.rst
   sinks.rst
   export_file_format.rst
-  third_party_auth.rst
 
 .. toctree::
+  :maxdepth: 1
 
-   sources.rst
-   third_party_auth.rst
-   normalizations.rst
+  sources.rst
+  normalizations.rst
+  third_party_auth.rst

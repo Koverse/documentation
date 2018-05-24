@@ -17,6 +17,7 @@ This documentation will walk developers through the steps necessary to create we
 Continue to see how an application can be built on Koverse.
 
 .. toctree::
-
-   webapp.rst
-   api_tokens.rst
+  :maxdepth: 1
+  
+  webapp.rst
+  api_tokens.rst
