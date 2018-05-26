@@ -119,4 +119,4 @@ Now we'll need to make a manifest file so the Koverse server finds and loads our
 
 Now our project is ready to be built. Compile the project into a JAR file and place it on the CLASSPATH of the Koverse Server, such as in the /lib folder, and restart the Koverse Server.
 
-Next we'll apply our new masker to a field in a data set via the Koverse UI.
+Next we'll apply our new masker to a field in a data set via the Koverse UI. See :ref:`usageMasking` for details.

@@ -58,6 +58,8 @@ Koverse ships by default with a group called 'Everyone', which all new users are
 
 To make a data set available to everyone, simply add the 'Everyone' group to the permissions table and grant the actions desired to this group.
 
+.. _usageMasking:
+
 Masking Specific Data Set Attributes
 ------------------------------------
 
