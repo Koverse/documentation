@@ -104,6 +104,16 @@ Some key points to remember about Records are:
 |                                      | original bytes of a file                         |
 +--------------------------------------+--------------------------------------------------+
 
+Note that NULL values are not allowed in Records.
+An attempt to put a NULL value into a field in a Record will result in an Exception.
+It is possible to have the Koverse API automatically search for and remove NULL values when calling put() or putAll() on the SimpleRecord class by passing in 'true' as the last parameter::
+
+  SimpleRecord simpleRecord = new SimpleRecord();
+
+  simpleRecord.put("field", null, true);
+
+This check will also remove NULLs at any any level within complex values such as Lists and Maps, and since this check must be done recursively it is relatively expensive.
+
 ..
   TODO: make a separate 'working with records' document
   Creating Records Programmatically
