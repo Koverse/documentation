@@ -106,6 +106,33 @@ Masking Settings
 This section shows a list of attributes within this data set, whether each attribute is masked, and any groups that are allowed to see the original values of a masked attribute.
 See :ref:`DataSetSecurityAndAccessControl` for details on controlling masking settings.
 
+Auto Age Off Settings
+---------------------
+
+The Auto Age Off settings allow data to be automatically removed from a data set when it reaches a certain age.
+Records aged-off this way are removed according to the time that has elapsed since the records were ingested, and not by any particular value within the record.
+
+When a record is aged-off its index entries are also removed.
+It is possible to remove index entries before a record is removed.
+This allows storage space to be saved in the case when an application no longer needs to be able to search records, but a Transform may want to process the older records or in order keep them available for download.
+
+By default Koverse does not age off any data.
+To configure records and index entries to be aged off at a certain age, click on the Auto Age Off tab in the Data Set Settings tab and click the check box labeled 'Automatically remove records older than the given age'.
+
+This will then display two slider controls, one for the age at which records will be aged off and one for the age at which index entries will be aged off.
+Enter a value for the number of days after which records and index entries will be aged off and click the Update button.
+
+Note that index entries can be aged off earlier than records but not later.
+
+.. image:: /_static/UsageGuide/ageOff.png
+
+The Auto Age Off occurs once per day by default, at midnight.
+This can be change to occur less frequently or at a different hour of the day by setting the configuration settings in koverse-server.properties::
+
+ com.koverse.server.dataset.compactfrequencydays=1
+ com.koverse.server.dataset.compacthourofday=0
+
+
 Viewing Audit Information
 -------------------------
 
