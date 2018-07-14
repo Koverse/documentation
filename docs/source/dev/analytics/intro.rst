@@ -15,6 +15,7 @@ Transforms can wrap analytics written for the following frameworks and APIs:
 * Spark SQL
 * MapReduce
 * Python
+* PySpark
 
 
 What makes Koverse transforms different from “vanilla” analytics written for these frameworks is that:
@@ -44,7 +45,7 @@ For examples of prototyping analytics using specific technologies, see the follo
 
 .. toctree::
   :maxdepth: 1
-  
+
   pyspark_shell.rst
   ipython.rst
   jupyter.rst
@@ -59,7 +60,9 @@ After prototyping an analytic, learn how to package analytics in production Tran
   spark_sql.rst
   python.rst
 
+
 .. toctree::
   :maxdepth: 1
 
   spark_java_dataframe_transform.rst
+  pyspark_transform.rst
