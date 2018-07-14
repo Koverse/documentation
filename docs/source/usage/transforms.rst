@@ -91,6 +91,28 @@ If the transform was configured to run automatically, it will then be started.
 You will now be taken to the detail view for the output data set, 'Bank After Hours Working', on the settings tab.
 We'll walk through running this transform in the next section.
 
+Configuring Transform Sliding Time Windows
+------------------------------------------
+
+Transform sliding time windows allow the transform to only process data that was created within a specific time window.
+For example, transforms can be configured to only operate over the last 24 hours of data.
+Because sliding time windows have both a starting and ending time window, it is also possible to operate over an interval of data.
+For example, transforms can be configured to only operate over data that is between 2 to 4 hours old.
+
+Both the starting and ending values for the time window can be configured using a variety of time unit specifications.
+Those time units are: minutes, hours, days, weeks, and years.
+When the transform is run, the data that it is given as input will be limited to that which has been added during the configured interval.
+
+.. image:: /_static/UsageGuide/transformSlidingTimeWindow.png
+
+To use sliding time windows for a transform, select "Sliding Window" in the transform's configuration page.
+Next, select a time interval, such as hours.
+The "Window start time" slider component specifies how far in the past to start the time window.
+The "Window duration" slider specifies the duration of the time window.
+
+For example, to process all data in the past two hours, set both sliders to two hours.
+To specify all data that is older than one hour but newer than two hours, make the start time to two hours and the duration to one hour.
+
 Running a Transform
 -------------------
 
