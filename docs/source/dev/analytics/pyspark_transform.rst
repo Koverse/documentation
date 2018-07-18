@@ -116,7 +116,7 @@ Next we'll fill in the functions we declared above in our PySparkTransform class
  def __init__(self, params):
    self.textField = params['textField']
 
-Here, were simply saving off the value of the 'textField' parameter we declared in our description.yaml file. The id of the parameter must match what we write here.
+Here, we're simply saving off the value of the 'textField' parameter we declared in our description.yaml file. The id of the parameter must match what we write here.
 
 Next we'll write our execute() function. First we'll simply grab the first data set passed in via the context object::
 
@@ -209,7 +209,7 @@ We can run this test by running spark-submit on our test.py file::
 
   $SPARK_HOME/bin/spark-submit test.py
 
-If all goes we'll our test passes. We can correct any errors in our Transform and keep running our test until it passes.
+If all goes well our test passes. We can correct any errors in our Transform and keep running our test until it passes.
 
 Now our Transform is ready to be deployed to a Koverse instance so everyone can use it in production pipelines. We'll simply zip up the description.yaml and transform.py files into a zip file. (We can also zip up our test.py file and it shouldn't cause any problems.) We should name our zip file SubjectSentimentAddon.zip.
 
