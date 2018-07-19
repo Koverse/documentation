@@ -123,7 +123,7 @@ Next we'll write our execute() function. First we'll simply grab the first data 
   def execute(self, context):
     inputRdd = context.inputRdds.items()[0][1]
 
-Instead of grabbing the RDD we can instead grab a DataFrame. To grab a Data Frame instead we could have written::
+Instead of using the RDD we can grab a DataFrame. To use a Data Frame we could have written::
 
   def execute(self, context):
     inputDF = context.inputDataFrames.items()[0][1]
