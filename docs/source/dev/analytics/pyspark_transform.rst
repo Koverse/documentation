@@ -169,9 +169,11 @@ Note that Transform should return either an RDD of Python dicts or a DataFrame.
 
 We can write a simple test program to try out our code on some example data. We'll create a file called test.py with the following::
 
-  from koverse.transformTest import PySparkTransformTestRunner
-  from transform import PySparkTransform
   import unittest
+
+  from koverse.transformTest import PySparkTransformTestRunner
+
+  from transform import PySparkTransform
 
   text = '''
   I can't stand writing test cases, I really hate it.
