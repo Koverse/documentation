@@ -30,8 +30,8 @@ You are now ready to start the Jupyter notebook using pyspark which is part of t
 
 An example of reading a Koverse data set in a Jupyter Python 3 notebook is shown below::
 
-  .. image:: /_static/Jupyter_Notebook.png
-  	:height: 550 px
-  	:width: 800 px
+.. image:: /_static/Jupyter_Notebook.png
+  :height: 550 px
+  :width: 800 px
 
-Note that there is currently a limitation requiring Koverse data sets to be written as the user 'Koverse'.
+Note that there is currently a limitation requiring Koverse data sets to be written as the user ``Koverse``.
