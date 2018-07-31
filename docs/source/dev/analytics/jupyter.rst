@@ -9,24 +9,26 @@ to allow access to Koverse data sets.
 
 The prerequisites for accessing Koverse data sets in a Jupyter Python 3 notebook are::
 
-  Spark 1.6 installed as /opt/spark
+  Spark 1.6
   Python 3.5
   Jupyter
 
-Once the prerequisites are met, download the Koverse Spark datasource jar from::
+Once the prerequisites are met, you will need to download a koverse-spark-datasource JAR file.  The version you download should
+match your installed Koverse.  You can find the JAR files here::
 
- https://s3.amazonaws.com/share.koverse.com/merck/koverse-spark-datasource-2.5.3-SNAPSHOT.jar
+ https://nexus.koverse.com/nexus/content/groups/public/com/koverse/koverse-spark-datasource/
 
-Add the following to your shell start up script::
+Next, you will make additions and changes to your environment variables, as follows.  Be sure to replace ``/opt/spark``
+with the location of your installed Spark 1.6::
 
   export SPARK_HOME=/opt/spark
   export PATH=$SPARK_HOME/bin:$PATH
   export PYSPARK_DRIVER_PYTHON=jupyter
   export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
-You are now ready to start the Jupyter notebook using pyspark which is part of the Spark installation::
+You are now ready to start the Jupyter notebook using ``pyspark`` which is part of the Spark installation::
 
-  pyspark --jars <location of Koverse Spark datasource jar downloaded, above>
+  pyspark --jars <location of koverse-spark-datasource JAR file downloaded, above>
 
 An example of reading a Koverse data set in a Jupyter Python 3 notebook is shown below.
 
