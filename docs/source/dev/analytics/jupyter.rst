@@ -28,7 +28,7 @@ You are now ready to start the Jupyter notebook using pyspark which is part of t
 
   pyspark --jars <location of Koverse Spark datasource jar downloaded, above>
 
-An example of reading a Koverse data set in a Jupyter Python 3 notebook is shown below::
+An example of reading a Koverse data set in a Jupyter Python 3 notebook is shown below.
 
 .. image:: /_static/Jupyter_Notebook.png
   :height: 550 px
