@@ -142,7 +142,7 @@ Next we'll write a function to extract noun_phrase and sentiment pairs from a bl
         sentiment = sent.sentiment.polarity
         # pair the sentence sentiment with each noun phrase in it
         for phrase in sent.noun_phrases:
-          tuples.append((phrase, sentiment))
+          tuples.append((phrase.string, sentiment))
       return tuples
 
     def average(l):
