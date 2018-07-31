@@ -116,14 +116,14 @@ Next we'll fill in the functions we declared above in our PySparkTransform class
  def __init__(self, params):
    self.textField = params['textField']
 
-Here, were simply saving off the value of the 'textField' parameter we declared in our description.yaml file. The id of the parameter must match what we write here.
+Here, we're simply saving off the value of the 'textField' parameter we declared in our description.yaml file. The id of the parameter must match what we write here.
 
 Next we'll write our execute() function. First we'll simply grab the first data set passed in via the context object::
 
   def execute(self, context):
     inputRdd = context.inputRdds.items()[0][1]
 
-Instead of grabbing the RDD we can instead grab a DataFrame. To grab a Data Frame instead we could have written::
+Instead of using the RDD we can grab a DataFrame. To use a Data Frame we could have written::
 
   def execute(self, context):
     inputDF = context.inputDataFrames.items()[0][1]
@@ -169,9 +169,11 @@ Note that Transform should return either an RDD of Python dicts or a DataFrame.
 
 We can write a simple test program to try out our code on some example data. We'll create a file called test.py with the following::
 
-  from koverse.transformTest import PySparkTransformTestRunner
-  from transform import PySparkTransform
   import unittest
+
+  from koverse.transformTest import PySparkTransformTestRunner
+
+  from transform import PySparkTransform
 
   text = '''
   I can't stand writing test cases, I really hate it.
@@ -209,7 +211,7 @@ We can run this test by running spark-submit on our test.py file::
 
   $SPARK_HOME/bin/spark-submit test.py
 
-If all goes we'll our test passes. We can correct any errors in our Transform and keep running our test until it passes.
+If all goes well our test passes. We can correct any errors in our Transform and keep running our test until it passes.
 
 Now our Transform is ready to be deployed to a Koverse instance so everyone can use it in production pipelines. We'll simply zip up the description.yaml and transform.py files into a zip file. (We can also zip up our test.py file and it shouldn't cause any problems.) We should name our zip file SubjectSentimentAddon.zip.
 
