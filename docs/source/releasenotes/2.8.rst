@@ -1,0 +1,24 @@
+.. _Version28ReleaseNotes:
+
+2.8 Release Notes
+=================
+
+2.8 adds a number of usability improvements and expansions in functionality.
+
+New Features
+------------
+
+- Transforms can now be written using the PySpark API. See :ref:`PySparkTransform` for details.
+
+Additional Improvements
+-----------------------
+
+- Users can disable indexing to support querying in a case-specific way
+- Applications can write a single record at a time to a dataset via an API call
+- Users can include IP Addresses in Composite Indexes
+- Users can control tokenization
+- Applications can do autocomplete for values found in a specific field
+- Updated Koverse Python client
+- Ability to turn indexing off before Transforms write to the output data set
+- Email alerting for import, transform, export success / failure
+- Support for nested OR operators in queries
