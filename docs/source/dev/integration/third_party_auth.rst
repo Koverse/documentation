@@ -23,6 +23,8 @@ To create one, implement the interface ``ServerAuthorizer`` in your own class.
 The Server authorizer can do many of the same things that the Web App authorizer can do, so you may decide to create a Server authorizer instead of a Web App authorizer.
 The only time that an authorizer must be used in the webapp and not the server is when some information avaialble from the HTTP call is required to do the authorization.
 
+.. _ExampleWebappAuthenticator:
+
 Example Webapp Authenticator
 ----------------------------
 
@@ -39,15 +41,15 @@ First, create a class that implements ``HttpServletRequestAuthenticator``:
 
   @Slf4j
   public class PkiAuthenticator implements HttpServletRequestAuthenticator {
-  
+
     private final String ldapUrl;
     private final String ldapInitialContextFactory;
-  
+
     @Inject
     public PkiAuthenticator(
           @Named("com.koverse.auth.ldap.url") final String ldapUrl,
           @Named("com.koverse.auth.ldap.initial.context.factory") final String ldapInitialContextFactory) {
-  
+
       this.ldapUrl = ldapUrl;
       this.ldapInitialContextFactory = ldapInitialContextFactory;
     }
@@ -67,7 +69,7 @@ If the properties file does not contain values for the named properties, the kov
 Next, a method is added to return a description of this authenticator:
 
 .. code-block:: java
-  
+
 
   @Override
   public HttpServletRequestAuthenticatorDescription getDescription() {
@@ -76,12 +78,12 @@ Next, a method is added to return a description of this authenticator:
       public Class<? extends HttpServletRequestAuthenticator> getAuthenticatorClass() {
         return PkiAuthenticator.class;
       }
-  
+
       @Override
       public String getDisplayName() {
         return "Example PKI LDAP Authentication";
       }
-  
+
       @Override
       public String getTypeId() {
         return "example-pki-ldap-auth";
@@ -120,10 +122,10 @@ Next is the logic to perform the authentication:
         environment.put(Context.PROVIDER_URL, ldapUrl);
         environment.put(Context.SECURITY_PRINCIPAL, principal);
         environment.put(Context.SECURITY_CREDENTIALS, certificate);
-  
+
         try {
           final InitialDirContext initialDirContext = new InitialDirContext(environment);
-    
+
           initialDirContext.close();
           log.info("X509 certificate authentication suceeded for principal : {}", principal);
           return Optional.of(principal.getName());
@@ -133,13 +135,13 @@ Next is the logic to perform the authentication:
           log.error("Could not contact LDAP server for X509 certificate principal : {}", principal, e);
         }
       }
-    
+
       log.warn("No X509 certificates succeeded for login");
       return Optional.absent();
-  
+
     }
   }
-  
+
 The authentication logic works by getting the X509 certificates from the Java Servlet API.
 These are the certificates that the user's web browser sent.
 Each certificate is then used to attempt to authenticate with the LDAP server.
@@ -151,40 +153,40 @@ Here is the authenticator source code in its entirety:
 .. code-block:: java
 
   package com.koverse.webapp.security.pki;
-  
+
   import com.koverse.com.google.common.base.Optional;
   import com.koverse.sdk.security.webapp.HttpServletRequestAuthenticator;
   import com.koverse.sdk.security.webapp.HttpServletRequestAuthenticatorDescription;
-  
+
   import com.google.inject.Inject;
   import com.google.inject.name.Named;
   import lombok.extern.slf4j.Slf4j;
-  
+
   import java.security.Principal;
   import java.security.cert.X509Certificate;
   import java.util.Hashtable;
-  
+
   import javax.naming.AuthenticationException;
   import javax.naming.Context;
   import javax.naming.NamingException;
   import javax.naming.directory.InitialDirContext;
   import javax.servlet.http.HttpServletRequest;
-  
+
   @Slf4j
   public class PkiAuthenticator implements HttpServletRequestAuthenticator {
-  
+
     private final String ldapUrl;
     private final String ldapInitialContextFactory;
-  
+
     @Inject
     public PkiAuthenticator(
           @Named("com.koverse.auth.ldap.url") final String ldapUrl,
           @Named("com.koverse.auth.ldap.initial.context.factory") final String ldapInitialContextFactory) {
-  
+
       this.ldapUrl = ldapUrl;
       this.ldapInitialContextFactory = ldapInitialContextFactory;
     }
-  
+
     @Override
     public HttpServletRequestAuthenticatorDescription getDescription() {
       return new HttpServletRequestAuthenticatorDescription() {
@@ -192,36 +194,36 @@ Here is the authenticator source code in its entirety:
         public Class<? extends HttpServletRequestAuthenticator> getAuthenticatorClass() {
           return PkiAuthenticator.class;
         }
-  
+
         @Override
         public String getDisplayName() {
           return "Example PKI LDAP Authentication";
         }
-  
+
         @Override
         public String getTypeId() {
           return "example-pki-ldap-auth";
         }
       };
     }
-  
+
     @Override
     public Optional<String> authenticate(HttpServletRequest authenticationInfo) {
-  
+
       final X509Certificate[] certificates = (X509Certificate[]) authenticationInfo.getAttribute("javax.servlet.request.X509Certificate");
-  
+
       if (certificates == null || certificates.length == 0) {
         log.warn("No X509 certificates found");
         return Optional.absent();
       } else {
         log.info("Found {} X509 certificates", certificates.length);
-  
+
         for (final X509Certificate certificate : certificates) {
           final Principal principal = certificate.getSubjectDN();
           final Hashtable<String, Object> environment = new Hashtable<>();
-  
+
           log.info("Trying X509 certificate for principal: {}", principal.getName());
-  
+
           environment.put(Context.INITIAL_CONTEXT_FACTORY, ldapInitialContextFactory);
           environment.put(Context.PROVIDER_URL, ldapUrl);
           environment.put(Context.SECURITY_PRINCIPAL, principal);
@@ -229,7 +231,7 @@ Here is the authenticator source code in its entirety:
 
           try {
             final InitialDirContext initialDirContext = new InitialDirContext(environment);
-  
+
             initialDirContext.close();
             log.info("X509 certificate authentication suceeded for principal : {}", principal);
             return Optional.of(principal.getName());
@@ -239,10 +241,10 @@ Here is the authenticator source code in its entirety:
             log.error("Could not contact LDAP server for X509 certificate principal : {}", principal, e);
           }
         }
-      
+
         log.warn("No X509 certificates succeeded for login");
         return Optional.absent();
-  
+
       }
     }
   }
@@ -264,22 +266,22 @@ This module wires the authenticator to the Koverse Web app authentication proces
 .. code-block:: java
 
   package com.koverse.webapp.security.pki;
-  
+
   import com.koverse.sdk.security.webapp.AbstractWebAppAuthModule;
   import com.koverse.sdk.security.webapp.HttpServletRequestAuthenticator;
   import com.koverse.sdk.security.webapp.WebAppAuthorizer;
   import com.koverse.sdk.security.webapp.WebAppParameterAuthenticator;
-  
+
   import com.google.inject.multibindings.Multibinder;
-  
+
   public class PkiAuthModule extends AbstractWebAppAuthModule {
-  
+
     @Override
     protected void configure(
             Multibinder<WebAppAuthorizer> authorizersBinder,
             Multibinder<HttpServletRequestAuthenticator> servletRequestAuthenticatorsBinder,
             Multibinder<WebAppParameterAuthenticator> parameterAuthenticatorsBinder) {
-  
+
       servletRequestAuthenticatorsBinder.addBinding().to(PkiAuthenticator.class);
     }
   }

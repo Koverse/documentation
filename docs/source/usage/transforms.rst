@@ -24,6 +24,8 @@ This makes it easy to combine data sets with information of the same general typ
 
 Some transforms, like the Spark SQL Transform, are capable of joining two data sets that have differing schemas.
 
+.. _ConfigureTransforms:
+
 Configure Transform Parameters
 ------------------------------
 
@@ -49,7 +51,7 @@ Choosing 'Only new data' will allow a transform to process only the data that is
 This is appropriate if a transform is able to produce useful information from a subset of the input data.
 In this case you may want to uncheck the box labeled 'Replace Output Data' so that a transform appends newly transformed data to the output of previous runs, but this is not always the case.
 
-Choosing 'Data within a sliding window' allows a transform to process data within a window of time.
+Choosing 'Data within a sliding window' allows a transform to process data within a window of time. See :ref:`ConfigureTransformWindows` for more detail.
 
 Finally, select whether to write output to a new data set, or an existing data set.
 For a new data set, provide a name for this new data set.
@@ -91,7 +93,9 @@ If the transform was configured to run automatically, it will then be started.
 You will now be taken to the detail view for the output data set, 'Bank After Hours Working', on the settings tab.
 We'll walk through running this transform in the next section.
 
-Configuring Transform Sliding Time Windows
+.. _ConfigureTransformWindows:
+
+Configure Transform Sliding Time Windows
 ------------------------------------------
 
 Transform sliding time windows allow the transform to only process data that was created within a specific time window.

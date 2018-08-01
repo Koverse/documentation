@@ -1,0 +1,20 @@
+.. _Version26ReleaseNotes:
+
+2.6 Release Notes
+=================
+
+New Features
+------------
+
+- Records and index entries can be automatically aged off. See :ref:`AgeOff`
+- Transforms can be configured to operate over a specific time window. See :ref:`ConfigureTransformWindows`
+
+Additional Improvements
+-----------------------
+
+- Normalization for reversing timestamps during ingest
+- Normalization to make text lowercase
+- Improved information in Job History Table for Transform Jobs
+- Better indexing of non-text types found in text blobs
+- Minor UI updates
+- Custom Authentication Example. See :ref:`ExampleWebappAuthenticator`
