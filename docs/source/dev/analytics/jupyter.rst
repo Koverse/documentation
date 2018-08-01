@@ -19,10 +19,11 @@ match your installed Koverse.  You can find the JAR files here::
  https://nexus.koverse.com/nexus/content/groups/public/com/koverse/koverse-spark-datasource/
 
 Next, you will make additions and changes to your environment variables, as follows.  Be sure to replace ``/opt/spark``
-with the location of your installed Spark 1.6::
+with the location of your installed Spark 1.6 and ``/usr/local/bin/python`` with the location of your Python 3 binary executable::
 
   export SPARK_HOME=/opt/spark
   export PATH=$SPARK_HOME/bin:$PATH
+  export PYSPARK_PYTHON=/usr/local/bin/python
   export PYSPARK_DRIVER_PYTHON=jupyter
   export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
