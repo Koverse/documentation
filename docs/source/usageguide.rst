@@ -15,6 +15,7 @@ Usage Guide
    usage/exploring.rst
    usage/configure.rst
    usage/transforms.rst
+   usage/export.rst
    usage/interactive.rst
    usage/access_control.rst
    usage/additional.rst

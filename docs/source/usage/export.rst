@@ -18,6 +18,9 @@ If outputting to a file-based system you can choose the file format to use as we
 
 .. image:: /_static/UsageGuide/configureExport.png
 
+Email notifications are also available for when the export completes. The work in the same way as they do for imports and transforms.
+See :ref:`EmailNotifications` for more infomation.
+
 Choose whether to run this export 'Automatically', meaning whenever there is new data written to this data set, or 'Periodically on a schedule'.
 If choosing to export on a schedule, you will have the option to add a specific schedule by specifying the start date and time, how often to repeat, and when the schedule ends if ever.
 
