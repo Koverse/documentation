@@ -18,7 +18,7 @@ This file should contain a class called PySparkTransform and should start out wi
 
 The init() function is where the parameters object is delivered, that contains the values users have specified in the Koverse UI for this Transform.
 
-The execute() function is passed a context object that contains the input data sets users have specified using the Koverse UI. Each input data set is available as both an RDD of Python dicts, and as a DataFrame, and are retrieve from the inputRdds and inputDataFrames fields respectively. The context object also contains a reference to the SparkContext and SQLContext.
+The execute() function is passed a context object that contains the input data sets users have specified using the Koverse UI. Each input data set is available as both an RDD of Python dicts, and as a DataFrame, and are retrieved from the inputRdds and inputDataFrames fields respectively. The context object also contains a reference to the SparkContext and SQLContext.
 
 The structure of the context object passed is as follows::
 
