@@ -35,6 +35,26 @@ See the section `Step 2. View a Preview of the Data`_ to proceed.
 If there was an error generating the preview (e.g. caused by source invalid parameters), a message
 describing the nature of the error and diagnostic information will be shown.
 
+.. _EmailNotifications:
+
+Email Notifications
+^^^^^^^^^^^^^^^^^^^
+
+You will also see an option to configure email notifications for the source.
+Email notifications will send email messages to notify the recipient when a source completes successfully or fails.
+To enable email notifications, click the slider as shown below.
+
+.. image:: /_static/UsageGuide/enableEmailNotifications.png
+
+After clicking the slider, the interface expands to allow configuration.
+One or more email addresses to receive notifications can be specified, separated by commas.
+Check one or more boxes to specify the conditions under which emails should be sent.
+
+.. image:: /_static/UsageGuide/configureEmailNotifications.png
+
+Transforms and exports can also be configured to send email notifications.
+
+
 Example
 ^^^^^^^
 
