@@ -38,8 +38,9 @@ Fill out the transform parameters.
 In some cases, transform parameters expect the names of attributes from input data sets.
 In this case you will see a drop-down that allows you to select the attributes you want from a list.
 
-Email notifications are also available for when the transform completes. The work in the same way as they do for imports and exports.
-See :ref:`EmailNotifications` for more infomation.
+Email notifications are also available for when the transform completes.
+They work in the same way as they do for imports and exports.
+See :ref:`EmailNotifications` for more information.
 
 After the transform is configured, choose whether this transform will run 'Automatically' or 'Periodically on a schedule'.
 Choosing 'Automatically' means that the transform will execute whenever one of the input data sets is updated with new data.

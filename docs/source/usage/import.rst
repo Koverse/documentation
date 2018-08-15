@@ -41,13 +41,14 @@ Email Notifications
 ^^^^^^^^^^^^^^^^^^^
 
 You will also see an option to configure email notifications for the source.
-Email notifications will send emails when a source completes successfully or fails.
-To enable email notifications, click the slider, as shown below.
+Email notifications will send email messages to notify the recipient when a source completes successfully or fails.
+To enable email notifications, click the slider as shown below.
 
 .. image:: /_static/UsageGuide/enableEmailNotifications.png
 
 After clicking the slider, the interface expands to allow configuration.
-The email addresses can be entered as well as when to send the email.
+One or more email addresses to receive notifications can be specified, separated by commas.
+Check one or more boxes to specify the conditions under which emails should be sent.
 
 .. image:: /_static/UsageGuide/configureEmailNotifications.png
 
