@@ -49,7 +49,7 @@ These would go in /etc/spark/conf/spark-defaults.conf:
 
 MapReduce
 ---------
-These would go in koverse-server settings.xml:
+These would go in mapred-site.xml:
 
 * mapreduce.map.memory.mb: 8G
 * mapreduce.map.java.opts.max.heap: 8/1.2 = 6.66G
