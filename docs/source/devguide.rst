@@ -13,3 +13,4 @@ Developer Documentation
   dev/analytics/intro.rst
   dev/applications/intro.rst
   dev/addons.rst
+  dev/thrift_client.rst
