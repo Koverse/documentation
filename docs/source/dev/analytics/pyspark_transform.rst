@@ -18,7 +18,8 @@ This file should contain a class called PySparkTransform and should start out wi
 
 The init() function is where the parameters object is delivered, that contains the values users have specified in the Koverse UI for this Transform.
 
-The execute() function is passed a context object that contains the input data sets users have specified using the Koverse UI. Each input data set is available as both an RDD of Python dicts, and as a DataFrame, and are retrieved from the inputRdds and inputDataFrames fields respectively. The context object also contains a reference to the SparkContext and SQLContext.
+The execute() function is passed a context object that contains the input data sets users have specified using the Koverse UI. Each input data set is available as both an RDD of Python dicts, and as a Spark DataFrame, and are retrieved from the inputRdds and inputDataFrames fields respectively. The context object also contains a reference to the SparkContext and SQLContext.
+The RDD of python dicts is a list of python dicts, with one item per record of the Koverse Data Set.
 
 The structure of the context object passed is as follows::
 
@@ -121,19 +122,19 @@ Here, we're simply saving off the value of the 'textField' parameter we declared
 Next we'll write our execute() function. First we'll simply grab the first data set passed in via the context object::
 
   def execute(self, context):
-    inputRdd = context.inputRdds.items()[0][1]
+    inputRdd = list(context.inputRdds.values())[0]
 
-Instead of using the RDD we can grab a DataFrame. To use a Data Frame we could have written::
+Instead of using the RDD we can grab a Spark DataFrame. To use a Data Frame we could have written::
 
   def execute(self, context):
-    inputDF = context.inputDataFrames.items()[0][1]
+    inputDF = list(context.inputDataFrames.values())[0]
 
 For the rest of this example we'll stick with an RDD.
 
 Next we'll write a function to extract noun_phrase and sentiment pairs from a blob of text using the TextBlob library. We'll also write a simple function to average a list of numbers::
 
   def execute(self, context):
-    inputRdd = context.inputRdds.items()[0][1]
+    inputRdd = list(context.inputRdds.values())[0]
 
     def extractSentimentPerPhrase(doc):
       blob = TextBlob(doc)
@@ -152,7 +153,7 @@ Now we'll apply these functions to our data::
 
     textField = self.textField
 
-    rdd = context.inputRdds.items()[0][1]
+    rdd = list(context.inputRdds.values())[0]
 
     # get only the records that have some text
     textRecords = rdd.filter(lambda r: textField in r and len(r[textField]) > 0)
@@ -202,9 +203,6 @@ We can write a simple test program to try out our code on some example data. We'
 
   if __name__ == '__main__':
       unittest.main()
-
-    def execute(self, context):
-      inputDF = context.inputDataFrames.items()[0][1]
 
 
 We can run this test by running spark-submit on our test.py file::
