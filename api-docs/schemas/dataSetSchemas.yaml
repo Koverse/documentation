@@ -1,0 +1,13 @@
+type: object
+description: >
+  Array of metadata of the schema of a dataset.
+required:
+  - type
+  - fieldTypeCounts
+properties:
+  type:
+    type: string
+    description:
+  fieldTypeCounts:
+    type: array
+      description:

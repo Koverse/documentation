@@ -1,0 +1,70 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Get permissions metadata.
+  operationId: findDataSetPermissions
+  tags: ["DataSets", "Permissions"]
+  description: >
+    Get permissions metadata of a data set by data set id.
+  responses:
+    default:
+      description: Returns an array of metadata of the permissions of a data set.
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetPermission"
+        type: array
+      #example:
+      #  [
+      #    {
+      #      "id": 844,
+      #      "dataSetId": "bank_employees_20180919_180216_724",
+      #      "groupId": 1,
+      #      "all": false,
+      #      "read": false,
+      #      "download": false,
+      #      "write": false,
+      #      "delete": false,
+      #      "managePermissions": false,
+      #      "manageConfiguration": false,
+      #      "audit": false,
+      #      "authorizerTypeId": null,
+      #      "authorizerGroupId": null,
+      #      "permissionsTypes": []
+      #    }
+      #  ]
+
+post:
+  summary: Create data set permission
+  operationId: createDataSetPermission
+  tags: ["DataSets", "Permissions"]
+  parameters:
+    - name: dataSetPermission
+      in: body
+      description: The data set permission to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetPermission"
+  description: >
+    Assigns group permissions to the specified data set.
+  responses:
+    default:
+      description: Returns an array of metadata of the permissions of a data set.
+      schema:
+        type: array
+      #example:
+        # {
+        #  "id": 895,
+        #  "dataSetId": "bank_employees_20180919_180216_724",
+        #  "groupId": 1,
+        #  "all": false,
+        #  "read": false,
+        #  "download": false,
+        #  "write": false,
+        #  "delete": false,
+        #  "managePermissions": false,
+        #  "manageConfiguration": false,
+        #  "audit": false,
+        #  "authorizerTypeId": null,
+        #  "authorizerGroupId": null,
+        #  "permissionsTypes": []
+        # }

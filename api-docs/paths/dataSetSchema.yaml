@@ -1,0 +1,121 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Get full data set schema metadata.
+  operationId: findDataSetSchema
+  tags: ["DataSets"]
+  description: >
+    Get schema metadata of a data set.
+  responses:
+    default:
+      description: Returns an array of the metadata of the schema for a data set.
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetSchemas"
+        type: array
+      #example:
+        # {
+        #   "root": {
+        #     "type": "STRUCTURE",
+        #     "fieldTypeCounts": {
+        #       "orgCategory": [
+        #         {
+        #           "fieldType": {
+        #             "type": "SCALAR",
+        #             "fieldValueTypeCounts": [
+        #               {
+        #                 "fieldValueType": "STRING",
+        #                 "count": 1
+        #               }
+        #             ]
+        #           },
+        #           "count": 100
+        #         }
+        #       ],
+        #       "orgCategoryDescription": [
+        #         {
+        #           "fieldType": {
+        #             "type": "SCALAR",
+        #             "fieldValueTypeCounts": [
+        #               {
+        #                 "fieldValueType": "STRING",
+        #                 "count": 1
+        #               }
+        #             ]
+        #           },
+        #           "count": 100
+        #         }
+        #       ],
+        #       "hireDate": [
+        #         {
+        #           "fieldType": {
+        #             "type": "SCALAR",
+        #             "fieldValueTypeCounts": [
+        #               {
+        #                 "fieldValueType": "DATE",
+        #                 "count": 1
+        #               }
+        #             ]
+        #           },
+        #           "count": 100
+        #         }
+        #       ],
+        #       "businessUnit": [
+        #         {
+        #           "fieldType": {
+        #             "type": "SCALAR",
+        #             "fieldValueTypeCounts": [
+        #               {
+        #                 "fieldValueType": "STRING",
+        #                 "count": 1
+        #               }
+        #             ]
+        #           },
+        #           "count": 100
+        #         }
+        #       ],
+        #       "orgCode": [
+        #         {
+        #           "fieldType": {
+        #             "type": "SCALAR",
+        #             "fieldValueTypeCounts": [
+        #               {
+        #                 "fieldValueType": "STRING",
+        #                 "count": 1
+        #               }
+        #             ]
+        #           },
+        #           "count": 100
+        #         }
+        #       ],
+        #       "name": [
+        #         {
+        #           "fieldType": {
+        #             "type": "SCALAR",
+        #             "fieldValueTypeCounts": [
+        #               {
+        #                 "fieldValueType": "STRING",
+        #                 "count": 1
+        #               }
+        #             ]
+        #           },
+        #           "count": 100
+        #         }
+        #       ],
+        #       "traderId": [
+        #         {
+        #           "fieldType": {
+        #             "type": "SCALAR",
+        #             "fieldValueTypeCounts": [
+        #               {
+        #                 "fieldValueType": "STRING",
+        #                 "count": 1
+        #               }
+        #             ]
+        #           },
+        #           "count": 100
+        #         }
+        #       ]
+        #     }
+        #   }
+        # }

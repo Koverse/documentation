@@ -1,0 +1,14 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+get:
+  summary: Get attribute metadata
+  operationId: findDataSetAttributes
+  tags: ["DataSets"]
+  description: >
+        Get the metadata of all attributes of a data set.
+  responses:
+    default:
+      description: Returns an array of metadata of each attribute of a data set.
+      schema:
+        type: array
+      example:

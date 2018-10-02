@@ -1,0 +1,39 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Get jobs metadata
+  operationId:
+  tags: ["DataSets", "Jobs"]
+  description: >
+    Get the metadata of the jobs run on a data set by data set id.
+  responses:
+    default:
+      description: Returns an array of metadata for all jobs run on a data set.
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetJob"
+        type: array
+        example:
+          # [
+          #   {
+          #     "id": 720,
+          #     "userId": 4,
+          #     "creationDate": 1537394536892,
+          #     "startedDate": 1537394546221,
+          #     "endedDate": 1537394584108,
+          #     "status": "success",
+          #     "errorDetail": null,
+          #     "statusMessage": null,
+          #     "userAcknowledged": false,
+          #     "origin": "UNSPECIFIED",
+          #     "overrideBlockedStatus": false,
+          #     "progress": 1,
+          #     "type": "REINDEXING",
+          #     "dataSetId": "bank_employees_20180919_180216_724",
+          #     "errors": [],
+          #     "outputDataSetId": null,
+          #     "inputDataSetIds": null,
+          #     "backendUserInterfaceUrl": "http://387f7d8b0b24:19888/jobhistory/job/job_1537390527696_0002",
+          #     "recordCount": 0
+          #   },
+          # ]

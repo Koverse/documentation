@@ -1,4 +1,3 @@
-
 get:
   summary: List all data sets
   operationId: findDataSets
@@ -19,6 +18,31 @@ get:
       #    description: The date/time that a data set was last modified
 
 # commenting this out until we have data set permission methods documented.
+
+post:
+  summary: Create a new data set
+  operationId: createDataSet
+  tags: ["DataSets"]
+  desctiption: >
+    Creates a new empty data set.
+
+    Note: This call will fail if there is already a data set with the same name as the requested new data set.
+  parameters:
+    -name: dataSet
+     in: body
+     description: The name of the new data set.
+     required: true
+    -indexingPolicy:
+     in: body
+     description: The indexing policy of the new data set.
+     required: false
+  responses:
+    default:
+      description: Returns the data set metadata
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSetMetadata"
 
 #post:
 #  summary: Create a new data set

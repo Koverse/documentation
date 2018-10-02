@@ -1,0 +1,17 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+  - $ref: "../api.yaml#/definitions/dataSetAttributeUpdateList"
+
+put:
+  summary: Update attributes masking
+  operationId: updateDataSetAttributesMaskingByID
+  tags: ["DataSets", "Masking"]
+  description: >
+    Updates the masked attributes of a data set.
+  responses:
+    default:
+      description: Returns the updated list of data set attributes for the specified data set.
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetAttributes"
+        type:
+        example:

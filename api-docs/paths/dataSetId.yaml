@@ -19,6 +19,57 @@ get:
       #    type: string
       #    description: The date/time that the label was last modified
 
+put:
+  summary: Update data set metadata
+  description: >
+    Update the data set metadata.
+  operationId: updateDataSetById
+  tags: ["DataSets"]
+  responses:
+    default:
+      description: Returns the updated data set metadata.
+      schema:
+        $ref: "..api.yaml#/definitions/dataSetMetadata"
+
+delete:
+  summary: Delete data set by dataSetId
+  description: >
+    Delete the data set specified by dataSetId.
+  operationId: deleteDataSetById
+  tags: ["DataSets"]
+  responses:
+    default:
+      desctiption: Returns the data set metadata with an updated DELETED dataset name.
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetMetadata"
+      # example:
+        # {
+            #"id": "best_retail_20180912_162918_485",
+            #"name": "best retail_!DELETED__20180919_165948_938_!",
+            #"description": null,
+            #"deleted": true,
+            #"groupPermissionIds": [],
+            #"indexingPolicyId": 417,
+            #"indexingPolicy": null,
+            #"tags": null,
+            #"userId": 4,
+            #"createdTimestamp": 1536784158486,
+            #"updatedTimestamp": 1537390793137,
+            #"recordCountLastUpdated": 1537390888439,
+            #"recordCount": 0,
+            #"sizeBytes": 0,
+            #"disableFieldStats": false,
+            #"disableSampling": false,
+            #"status": "Ready",
+            #"hadoopDeleteJobIds": [],
+            #"dataStoreAuthRemoved": false,
+            #"version": 2,
+            #"importFlowId": null,
+            #"importFlowIds": [
+              #342
+            #]
+        # }
+
 # commenting out until we have data set permissions documented
 
 # delete:

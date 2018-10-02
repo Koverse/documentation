@@ -1,0 +1,23 @@
+type: object
+required:
+  - attrs
+properties:
+  attrs:
+    type: array
+    properties:
+      id:
+        type: string
+      indexed:
+        type: boolean
+      maskers:
+        type: array
+        properties:
+          descriptionId:
+            type: string
+          exceptedGroupIds:
+            type: array
+          parameters:
+            type: object
+            properties:
+              setting:
+                type: string

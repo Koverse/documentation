@@ -1,0 +1,51 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Get flat schema metadata.
+  operationId: findDataSetFlatSchemaById
+  tags: ["DataSets"]
+  description: >
+    Get flat schema metadata of a data set by data set id.
+  responses:
+    default:
+      description: Returns an array of the metadata of the flat schema of a data set.
+      schema:
+        $ref: $ref: "../api.yaml#/definitions/dataSetSchemas
+        type: array
+      example:
+      # {
+      #     "root": {
+      #         "type": "STRUCTURE",
+      #         "fieldTypes": {
+      #             "orgCategory": {
+      #                 "type": "SCALAR",
+      #                 "fieldValueType": "STRING"
+      #             },
+      #             "orgCategoryDescription": {
+      #                 "type": "SCALAR",
+      #                 "fieldValueType": "STRING"
+      #             },
+      #             "hireDate": {
+      #                 "type": "SCALAR",
+      #                 "fieldValueType": "DATE"
+      #             },
+      #             "businessUnit": {
+      #                 "type": "SCALAR",
+      #                 "fieldValueType": "STRING"
+      #             },
+      #             "orgCode": {
+      #                 "type": "SCALAR",
+      #                 "fieldValueType": "STRING"
+      #             },
+      #             "name": {
+      #                 "type": "SCALAR",
+      #                 "fieldValueType": "STRING"
+      #             },
+      #             "traderId": {
+      #                 "type": "SCALAR",
+      #                 "fieldValueType": "STRING"
+      #             }
+      #         }
+      #     }
+      # }

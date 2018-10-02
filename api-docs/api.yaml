@@ -14,10 +14,24 @@ produces:
   - application/json
 
 definitions:
+  dataSet:
+    $ref: schemas/dataSet.yaml
+  dataSetAttributes:
+    $ref: schemas/dataSetAttributes.yaml
+  dataSetAttributeUpdateList:
+    $ref: schemas/dataSetAttributeUpdateList.yaml
+  dataSetIndexingPolicy:
+    $ref: schemas/dataSetIndexingPolicy.yaml
+  dataSetJob:
+    $ref: schemas/dataSetJob.yaml
   dataSetMetadata:
     $ref: schemas/dataSetMetadata.yaml
+  dataSetPermission:
+    $ref: schemas/dataSetPermission.yaml
   dataSetResult:
     $ref: schemas/dataSetResult.yaml
+  dataSetSchemas:
+    $ref: schemas/dataSetSchemas.yaml
   login:
     $ref: schemas/login.yaml
   logout:
@@ -30,6 +44,13 @@ definitions:
     $ref: schemas/user.yaml
 
 parameters:
+  dataSetAttributeUpdateList:
+    name: dataSetAttributeUpdateList
+    in: body
+    description: Attribute update list for masking attributes
+    required: true
+    schema:
+      $ref: schemas/dataSetAttributeUpdateList.yaml
   dataSetId:
     name: dataSetId
     in: path
@@ -43,14 +64,6 @@ parameters:
     required: false
     type: string
     enum: [json, csv]
-  recordStyle:
-    name: recordStyle
-    in: query
-    description: >
-          Requests a more efficient representation of records
-    required: false
-    type: string
-    enum: [2.2]
   objectQuery:
     name: query
     in: body
@@ -63,20 +76,57 @@ parameters:
     required: true
     schema:
       $ref: schemas/objectQueryNames.yaml
+  permissionId:
+    name: permissionId
+    in: path
+    description: Unique identifier of the permission
+    required: true
+    type: string
+  recordStyle:
+    name: recordStyle
+    in: query
+    description: >
+          Requests a more efficient representation of records
+    required: false
+    type: string
+    enum: [2.2]
+
 paths:
   /api/dataSets:
     $ref: paths/dataSets.yaml
   /api/dataSets/{dataSetId}:
-    $ref: paths/dataSet.yaml
+    $ref: paths/dataSetId.yaml
   /api/dataSets/{dataSetId}/attributeNames:
     $ref: paths/dataSetAttributeNames.yaml
+  /api/dataSets/{dataSetId}/attributes:
+    $ref: paths/dataSetAttributes.yaml
+  /api/dataSets/{dataSetId}/clearDataSet:
+    $ref: paths/dataSetClearDataSet.yaml
+  /api/dataSets/{dataSetId}/flatSchema:
+    $ref: paths/dataSetFlatSchema.yaml
+  /api/dataSets/{dataSetId}/indexingPolicy:
+    $ref: paths/dataSetIndexingPolicies.yaml
+  /api/dataSets/{dataSetId}/permissions:
+    $ref: paths/dataSetPermissions.yaml
+  /api/dataSets/{dataSetId}/permissions/{permissionId}:
+    $ref: paths/datasetPermissionId.yaml
+  /api/dataSets/{dataSetId}/jobs:
+    $ref: paths/dataSetJobs.yaml
+  /api/dataSets/{dataSetId}/records:
+    $ref: paths/dataSetRecords.yaml
+  /api/dataSets/{dataSetId}/schema:
+    $ref: paths/dataSetSchema.yaml
+  /api/dataSets/{dataSetId}/repair:
+    $ref: paths/dataSetRepair.yaml
+  /api/dataSets/{dataSetId}/attributes/masking:
+    $ref: paths/dataSetAttributesMasking.yaml
 
 # this may not belong in a web app API
 
 #  /api/dataSets/{dataSetId}/download/{fileType}:
 #    $ref: paths/dataSetDownload.yaml
-  /api/dataSets/{dataSetId}/records:
-    $ref: paths/records.yaml
+#  /api/dataSets/{dataSetId}/records:
+#    $ref: paths/records.yaml
   /api/login:
     $ref: paths/login.yaml
   /api/logout:
