@@ -1,0 +1,34 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+  - name: where
+    in: query
+    type: object
+
+get:
+  summary: Returns all sinks by data set id
+  operationId: findSinks
+  tags: ["Sinks"]
+  responses:
+    default:
+      description: Returns the matching sinks
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/sink"
+
+post:
+  summary: Creates a sink
+  operationId: createSink
+  tags: ["Sinks"]
+  parameters:
+    name: sink
+    type: array
+      items:
+        $ref: "..api.yaml#/definitions/sink"
+  responses:
+    default:
+      description: Returns the new sink data
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/sink"

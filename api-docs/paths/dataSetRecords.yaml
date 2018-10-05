@@ -1,5 +1,6 @@
 parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
+  - $ref: "../api.yaml#/parameters/recordStyle"
 
 get:
   summary: Get a sample of record data

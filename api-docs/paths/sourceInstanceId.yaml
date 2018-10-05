@@ -1,0 +1,43 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/sourceInstanceId"
+
+get:
+  summary: Returns a source by id
+  operationId: findSourceById
+  tags: ["Sources"]
+  responses:
+    default:
+      description: Returns the source data
+      schema:
+        $ref: "../api.yaml#/definitions/source"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that the source was last modified
+
+delete:
+  summary: Deletes a single source based on the id supplied
+  operationId: deleteSourceById
+  tags: ["Sources"]
+  responses:
+    default:
+      description: Returns the source that was deleted
+      schema:
+        $ref: "../api.yaml#/definitions/source"
+
+put:
+  summary: Updates a source by id
+  operationId: updateSourceById
+  tags: ["Sources"]
+  parameters:
+    - name: sourceInstance
+      in: body
+      description: The source to update
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/sourceInstance"
+  responses:
+    default:
+      description: Returns the updated source data
+      schema:
+        $ref: "../api.yaml#/definitions/sourceInstance"

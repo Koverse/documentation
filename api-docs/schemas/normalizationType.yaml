@@ -1,0 +1,15 @@
+type: object
+required:
+  - displayName
+  - typeId
+properties:
+  typeId:
+    type: string
+  displayName:
+    type: string
+  description:
+    type: string
+  implementationClassName:
+    type: string
+  parameters:
+    type: array

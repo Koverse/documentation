@@ -13,6 +13,18 @@ properties:
   description:
     type: string
     description: A user-readable description of the data set.
+  deleted:
+    type: boolean
+  groupPermissionsIds:
+    type: array
+  indexingPolicyId:
+    type: integer
+  indexingPolicy:
+    type: string
+  tags:
+    type: string
+  userId:
+    type: integer
   useId:
     type: int64
     description: The user ID of the creator of this data set.
@@ -27,11 +39,41 @@ properties:
     description: Timestamp of the last time records were added.
   recordCount:
     type: integer
+  sizeBytes:
+    type: integer
+  disableFieldStats:
+    type: boolean
+  disableSampling:
+    type: boolean
+  status:
+    type: string
+  hadoopDeleteJobIds:
+    type: array
+  dataStoreAuthRemoved:
+    type: boolean
+  version:
+    type: integer
+  importFlowId:
+    type: string
   importFlowIds:
     type: array
     items:
       type: int64
     description: A list of IDs of import flows writing data to this data set.
+  ageOffEnabled:
+    type: boolean
+  ageOffIndexDays:
+    type: integer
+  fieldStatsMinimumExecutionPeriod:
+    type: integer
+  samplingMinimumExecutionPeriod:
+    type: integer
+  aggregationMinimumExecutionPeriod:
+    type: integer
+  schemaMinimumExecutionPeriod:
+    type: integer
+  indexMinimumExecutionPeriod:
+    type: integer
 example:
   id: movies_20171107_172745_048
   name: movies

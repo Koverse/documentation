@@ -1,0 +1,21 @@
+get:
+  description: Returns the available data set permissions
+  operationId: dataSetPermissions
+  tags: ["DataSets", "Permissions"]
+  responses:
+    default:
+      description: Returns the users data set permissions metadata.
+      schema:
+        type: array
+        items:
+          permission:
+            type: string
+      # example:
+      #   [
+      #     "readData",
+      #     "manageDataCollectionConfiguration",
+      #     "manageDataCollectionPermissions",
+      #     "writeDeleteData",
+      #     "bulkDownloadData",
+      #     "viewAuditEvents"
+      #   ]

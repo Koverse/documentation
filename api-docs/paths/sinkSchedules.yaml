@@ -1,0 +1,32 @@
+get:
+  description: Returns a list Sink Schedules
+  operationId: findSinkSchedules
+  tags: ["Export Schedules"]
+  responses:
+    default:
+      description: Returns the matching sink schedules
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/exportSchedule"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that a schedule was last modified
+
+post:
+  description: Creates a new sink schedule
+  operationId: createSinkSchedule
+  tags: ["Export Schedules"]
+  parameters:
+    - name: exportSchedule
+      in: body
+      description: The sink schedule to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/exportSchedule"
+  responses:
+    201:
+      description: Returns the newly-added sink schedule
+      schema:
+        $ref: "../api.yaml#/definitions/exportSchedule"

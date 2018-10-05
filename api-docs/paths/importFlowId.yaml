@@ -1,0 +1,42 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/importFlowId"
+
+get:
+  summary: Returns an import flow by id
+  operationId: findImportFlowById
+  tags: ["Import Flows"]
+  responses:
+    default:
+      description: Returns the import flow data
+      schema:
+        $ref: "../api.yaml#/definitions/importFlow"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that the import flow was last modified
+
+delete:
+  summary: Deletes an import flow by id
+  operationId: deleteImportFlowById
+  tags: ["Import Flows"]
+  responses:
+    default:
+      description: Returns the deleted import flow data
+      schema:
+        $ref: "../api.yaml#/definitions/importFlow"
+
+put:
+  summary: Updates an import flow by id
+  tags: ["Import Flows"]
+  parameters:
+    - name: importFlow
+      in: body
+      description: The updated import flow info
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/importFlow"
+  responses:
+    default:
+      description: Returns the updated import flow data
+      schema:
+        $ref: "../api.yaml#/definitions/importFlow"

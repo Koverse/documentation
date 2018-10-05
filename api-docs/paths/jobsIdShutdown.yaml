@@ -1,0 +1,10 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/jobId"
+
+get:
+  summary: Shutdown a job by job id.
+  operationId: shutdownImportJobById
+  tags: ["Imports", "Jobs"]
+  responses:
+    default:
+      desctiption: '200' ok

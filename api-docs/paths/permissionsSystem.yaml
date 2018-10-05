@@ -1,0 +1,27 @@
+get:
+  description: Returns the available system permissions
+  operationId: systemPermissions
+  tags: ["System", "Permissions"]
+  responses:
+    default:
+      description: Returns the users system permissions metadata.
+      schema:
+        type: array
+        items:
+          permission:
+            type: string
+        # example:
+          # [
+          #   {
+          #       "name": "manageUsersAndGroups",
+          #       "description": "Create and remove users and groups"
+          #   },
+          #   {
+          #       "name": "manageDataCollections",
+          #       "description": "Create and remove data sets"
+          #   },
+          #   {
+          #       "name": "manageSystemSettings",
+          #       "description": "Manage system settings"
+          #   }
+          # ]

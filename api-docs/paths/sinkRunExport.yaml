@@ -1,0 +1,15 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/sinkId"
+
+get:
+  summary: Run export by sink id
+  operationId: exportBySinkId
+  tags: ["Sinks", "Exports"]
+  description: Run an export by the specified sink id.
+  responses:
+    default:
+      description: Returns the export job data
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/job"

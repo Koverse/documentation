@@ -1,0 +1,35 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/transformId"
+  
+get:
+  description: Returns all Transform Schedules
+  operationId: findTransformSchedules
+  tags: ["Transform Schedules"]
+  responses:
+    default:
+      description: Returns the matching transform schedules
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/transformSchedule"
+      headers:
+        last-modified:
+          type: string
+          description: The date/time that a schedule was last modified
+
+post:
+  description: Creates a new transform schedule
+  operationId: addTransformSchedule
+  tags: ["Transform Schedules"]
+  parameters:
+    - name: transformSchedule
+      in: body
+      description: The transform schedule to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/transformSchedule"
+  responses:
+    201:
+      description: Returns the newly-added transform schedule
+      schema:
+        $ref: "../api.yaml#/definitions/transformSchedule"

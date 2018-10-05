@@ -1,0 +1,12 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/transformScheduleId"
+
+delete:
+  summary: Deletes a single transform schedule based on the id supplied
+  operationId: deleteTransformScheduleById
+  tags: ["Transform Schedules"]
+  responses:
+    default:
+      description: Returns the transform schedule that was deleted
+      schema:
+        $ref: "../api.yaml#/definitions/transformSchedule"
