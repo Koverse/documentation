@@ -21,10 +21,12 @@ post:
   operationId: createSink
   tags: ["Sinks"]
   parameters:
-    name: sink
-    type: array
-    items:
-      $ref: "../api.yaml#/definitions/sink"
+    - name: sink
+      in: body
+      description: The sink to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/sink"
   responses:
     default:
       description: Returns the new sink data
