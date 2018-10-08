@@ -1,6 +1,7 @@
 get:
   description: Returns all active jobs
   operationId: findActiveJobs
+  tags: ["Jobs"]
   responses:
     default:
       description: Returns the active jobs

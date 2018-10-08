@@ -1,10 +1,10 @@
 parameters:
   - $ref: "../api.yaml#/parameters/transformId"
-  
+
 get:
   description: Returns all Transform Schedules
   operationId: findTransformSchedules
-  tags: ["Transform Schedules"]
+  tags: ["Transforms", "Transform Schedules"]
   responses:
     default:
       description: Returns the matching transform schedules
@@ -20,7 +20,7 @@ get:
 post:
   description: Creates a new transform schedule
   operationId: addTransformSchedule
-  tags: ["Transform Schedules"]
+  tags: ["Transforms", "Transform Schedules"]
   parameters:
     - name: transformSchedule
       in: body

@@ -4,7 +4,7 @@ parameters:
 get:
   description: Returns a sink schedule by id
   operationId: findSinkScheduleById
-  tags: ["Export Schedules", "Sink Schedules"]
+  tags: ["Sinks", "Export Schedules", "Sink Schedules"]
   responses:
     default:
       description: Returns the sink schedule data
@@ -18,7 +18,7 @@ get:
 delete:
   description: Deletes a single sink schedule based on the id supplied
   operationId: deleteSinkScheduleById
-  tags: ["Export Schedules", "Sink Schedules"]
+  tags: ["Sinks", "Export Schedules", "Sink Schedules"]
   responses:
     default:
       description: Returns the sink schedule that was deleted

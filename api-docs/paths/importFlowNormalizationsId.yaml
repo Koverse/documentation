@@ -5,6 +5,7 @@ parameters:
 get:
   description: Returns a normalization by id
   operationId: findNormalizationById
+  tags: ["Import Flows"]
   responses:
     default:
       description: Returns the normalization data
@@ -13,6 +14,7 @@ get:
 
 put:
   description: Updates a normalization by id
+  tags: ["Import Flows"]
   parameters:
     - name: normalization
       in: body
@@ -29,6 +31,7 @@ put:
 delete:
   description: Deletes a single normalization based on the id supplied
   operationId: deleteNormalization
+  tags: ["Import Flows"]
   responses:
     default:
       description: Returns the normalization that was deleted

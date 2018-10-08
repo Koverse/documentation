@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/importFlowId"
 get:
   description: Returns all normalizations for an importFlow
+  tags: ["Import Flows"]
   operationId: findNormalizations
   responses:
     default:
@@ -13,6 +14,7 @@ get:
 
 post:
   description: Creates a new normalizations
+  tags: ["Import Flows"]
   operationId: addNormalization
   parameters:
     - name: normalization
