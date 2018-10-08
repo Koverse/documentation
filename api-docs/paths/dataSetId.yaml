@@ -29,7 +29,7 @@ put:
     default:
       description: Returns the updated data set metadata.
       schema:
-        $ref: "..api.yaml#/definitions/dataSetMetadata"
+        $ref: "../api.yaml#/definitions/dataSetMetadata"
 
 delete:
   summary: Delete data set by dataSetId

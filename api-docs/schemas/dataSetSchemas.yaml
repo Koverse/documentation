@@ -10,4 +10,4 @@ properties:
     description:
   fieldTypeCounts:
     type: array
-      description:
+    description:

@@ -9,4 +9,4 @@ get:
     Clears a data set of all data.
   responses:
     default:
-      desctiption: '200' ok
+      description: '200 OK'

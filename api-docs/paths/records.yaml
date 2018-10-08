@@ -48,4 +48,4 @@ post:
       example:
         flatSchema: true
         records:
-          - $ref: "../schema/recordExample.yaml"
+          - $ref: "../schemas/recordExample.yaml"

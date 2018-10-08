@@ -23,8 +23,8 @@ post:
   parameters:
     name: sink
     type: array
-      items:
-        $ref: "..api.yaml#/definitions/sink"
+    items:
+      $ref: "../api.yaml#/definitions/sink"
   responses:
     default:
       description: Returns the new sink data

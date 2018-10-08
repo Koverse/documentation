@@ -34,6 +34,8 @@ definitions:
     $ref: schemas/dataSetSchemas.yaml
   exportSchedule:
     $ref: schemas/exportSchedule.yaml
+  fieldTypePair:
+    $ref: schemas/fieldTypePair.yaml
   importFlow:
     $ref: schemas/importFlow.yaml
   importSchedule:
@@ -48,6 +50,8 @@ definitions:
     $ref: schemas/normalization.yaml
   normalizationType:
     $ref: schemas/normalizationType.yaml
+  parameter:
+    $ref: schemas/parameter.yaml
   record:
     $ref: schemas/record.yaml
   sink:
@@ -56,6 +60,10 @@ definitions:
     $ref: schemas/sinkType.yaml
   sinkTypeDescription:
     $ref: schemas/sinkTypeDescription.yaml
+  sinkTransformConfiguration:
+    $ref: schemas/sinkTransformConfiguration.yaml
+  source:
+    $ref: schemas/source.yaml
   sourceInstance:
     $ref: schemas/sourceInstance.yaml
   sourceTypeDescription:
@@ -72,6 +80,8 @@ definitions:
   #  $ref: schemas/searchAutocomplete.yaml
   user:
     $ref: schemas/user.yaml
+  visualizationType:
+    $ref: schemas/visualizationType.yaml
 
 parameters:
   dataSetAttributeUpdateList:
@@ -174,6 +184,11 @@ parameters:
     required: true
     schema:
       $ref: "schemas/sink.yaml"
+  sinkId:
+    name: sinkId
+    in: path
+    description: Id of the sink
+    required: true
   sinkTypeId:
     name: sinkTypeId
     in: path
@@ -297,8 +312,6 @@ paths:
     $ref: paths/sourceInstanceId.yaml
   /api/sourceTypeDescriptions:
     $ref: paths/sourceTypeDescriptions.yaml
-  /api/transformJobs:
-    $ref: paths/transformJobs.yaml
   /api/transformJobs/{transformJobId}/shutdown:
     $ref: paths/transformJobsShutdown.yaml
   /api/transforms:
@@ -306,7 +319,7 @@ paths:
   /api/transforms/{transformId}:
     $ref: paths/transformId.yaml
   /api/transforms/{transformId}/runTransform:
-    $ref: transformIdRunTransform.yaml
+    $ref: paths/transformIdRunTransform.yaml
   /api/transforms/{transformId}/transformSchedules:
     $ref: paths/transformIdSchedules.yaml
   /api/transforms/{transformId}/transformSchedules/{transformScheduleId:

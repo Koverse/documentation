@@ -1,0 +1,25 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+  name:
+    type: string
+  configurationOptions:
+    type: object
+  disabled:
+    type: boolean  
+  sinkTypeId:
+    type: string  
+  scheduleType:
+    type: string
+  responsibleUser:
+    $ref: "../api.yaml#/definitions/user"
+  transforms:
+    type: array
+    items:
+      $ref: "../api.yaml#/definitions/sinkTransformConfiguration"
+  inputDataWindowType:
+    type: string
+  dataSetId:
+    type: string

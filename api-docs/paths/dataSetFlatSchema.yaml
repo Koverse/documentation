@@ -11,7 +11,7 @@ get:
     default:
       description: Returns an array of the metadata of the flat schema of a data set.
       schema:
-        $ref: $ref: "../api.yaml#/definitions/dataSetSchemas
+        $ref: "../api.yaml#/definitions/dataSetSchemas"
         type: array
       example:
       # {

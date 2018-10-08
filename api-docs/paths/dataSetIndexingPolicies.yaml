@@ -24,7 +24,7 @@ put:
       description: The updated data set indexing policy
       required: true
       schema:
-        $ref: "../api.yaml#/schema/dataSetIndexingPolicy"
+        $ref: "../api.yaml#/definitions/dataSetIndexingPolicy"
   description: >
     Updates the indexing policy for a data set by data set id.
   responses:

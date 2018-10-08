@@ -7,4 +7,4 @@ get:
   tags: ["Transforms", "Jobs"]
   responses:
     default:
-      desctiption: '200' ok
+      desctiption: '200 OK'

@@ -28,14 +28,14 @@ post:
 
     Note: This call will fail if there is already a data set with the same name as the requested new data set.
   parameters:
-    -name: dataSet
-     in: body
-     description: The name of the new data set.
-     required: true
-    -indexingPolicy:
-     in: body
-     description: The indexing policy of the new data set.
-     required: false
+    - name: dataSet
+      in: body
+      description: The name of the new data set.
+      required: true
+    - indexingPolicy:
+      in: body
+      description: The indexing policy of the new data set.
+      required: false
   responses:
     default:
       description: Returns the data set metadata
