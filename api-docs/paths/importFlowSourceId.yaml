@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Returns all import flows for a given source by id
   operationId: findImportFlowBySourceId
-  tags: ["importFlow","Sources"]
+  tags: ["Import Flows", "Sources"]
   responses:
     default:
       description: Returns the import flow data

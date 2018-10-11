@@ -5,7 +5,7 @@ parameters:
 get:
   summary: Download all records
   operationId: downloadDataSetById
-  tags: ["DataSet"]
+  tags: ["DataSets"]
   description: >
         Starts a download process to deliver all the records in a data set
         into a file. The fileType parameter allows users to choose what

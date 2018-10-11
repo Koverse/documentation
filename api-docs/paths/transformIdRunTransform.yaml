@@ -4,6 +4,7 @@ parameters:
 get:
   description: Runs the specified transform
   operationId: runTransform
+  tags: ["Transforms"]
   responses:
     200:
       description: Returns the success data
