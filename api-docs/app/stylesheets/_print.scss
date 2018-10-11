@@ -1,0 +1,44 @@
+@media print {
+	#sidebar {
+		display: none;
+	}
+	#docs.expanded.drawer {
+		margin-left: 0;
+	}
+
+	#docs .example-box, article .doc-examples {
+		background-color: #fff;
+	}
+	.doc-content, article .doc-examples, article .doc-copy {
+		float: none;
+		width: 100%;
+	}
+	article .doc-examples code {
+		border-top: 1px solid #404040;
+		border-bottom: 1px solid #404040;
+		border-left: 1px solid #404040;
+		border-right: 1px solid #404040;
+	}
+	#introduction, .operation {
+		page-break-after: always;
+	}
+	article .operation .operation-tags {
+		right: 0 !important;
+	}
+	.label {
+		border: 1px solid #404040;
+		text-decoration: none;
+	}
+	.swagger-operation-description:before,
+	.swagger-operation-path:before,
+	.swagger-request-body:before,
+	.swagger-request-params:before,
+	.swagger-responses:before {
+		color: #000;
+		font-weight: bold;
+	}
+	pre {
+		border: none;
+	}
+
+}
