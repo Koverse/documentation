@@ -1,20 +1,21 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 import { Router, Link } from 'react-static'
 import { hot } from 'react-hot-loader'
-//
 import Routes from 'react-static-routes'
-
 import CssBaseline from '@material-ui/core/CssBaseline'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import { withStyles } from '@material-ui/core/styles'
 
-// Custom styles
-const styles = {
+const styles = theme => ({
   '@global': {
     img: {
       maxWidth: '100%',
+    },
+    body: {
+      ...theme.typography.body1,
     },
   },
   appBar: {
@@ -26,18 +27,22 @@ const styles = {
   content: {
     padding: '1rem',
   },
-}
+})
 
 class App extends PureComponent {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+  }
+
   // Remove the server-side injected CSS.
-  componentDidMount () {
+  componentDidMount() {
     const jssStyles = document.getElementById('jss-server-side')
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles)
     }
   }
 
-  render () {
+  render() {
     const { classes } = this.props
 
     return (
