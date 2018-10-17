@@ -4,6 +4,7 @@ parameters:
 get:
   description: Returns all Transform Schedules
   operationId: findTransformSchedules
+  summary: Get transform schedules
   tags: ["Transforms", "Transform Schedules"]
   responses:
     default:
@@ -19,6 +20,7 @@ get:
 
 post:
   description: Creates a new transform schedule
+  summary: Create transform schedule
   operationId: addTransformSchedule
   tags: ["Transforms", "Transform Schedules"]
   parameters:

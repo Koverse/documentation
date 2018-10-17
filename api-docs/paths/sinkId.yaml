@@ -3,6 +3,7 @@ parameters:
 
 get:
   description: Returns a sink by id
+  summary: Get sink by id
   operationId: findSinkById
   tags: ["Sinks"]
   responses:
@@ -17,6 +18,7 @@ get:
 
 delete:
   description: Disables a single sink based on the id supplied. Sinks are not deleted for auditing purposes.
+  summary: Delete sink by id
   operationId: deleteSinkById
   tags: ["Sinks"]
   responses:
@@ -27,6 +29,7 @@ delete:
 
 put:
   description: Updates a sink by id
+  summary: Update sink by id
   operationId: updateSinkById
   tags: ["Sinks"]
   parameters:

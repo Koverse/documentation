@@ -1,5 +1,6 @@
 get:
   description: Returns a list Sink Schedules
+  summary: Get sink schedules
   operationId: findSinkSchedules
   tags: ["Sinks", "Export Schedules"]
   responses:
@@ -16,6 +17,7 @@ get:
 
 post:
   description: Creates a new sink schedule
+  summary: Create sink schedules
   operationId: createSinkSchedule
   tags: ["Sinks", "Export Schedules"]
   parameters:

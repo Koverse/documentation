@@ -1,5 +1,6 @@
 get:
   description: Returns the available system permissions
+  summary: Get system permissions
   operationId: systemPermissions
   tags: ["System", "Permissions"]
   responses:

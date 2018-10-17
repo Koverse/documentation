@@ -27,6 +27,7 @@ delete:
 
 put:
   summary: Updates an import flow by id
+  operationId: updateImportFlowById
   tags: ["Import Flows"]
   parameters:
     - name: importFlow

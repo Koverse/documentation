@@ -29,6 +29,7 @@ delete:
 put:
   summary: Updates a transform by id
   tags: ["Transforms"]
+  operationId: updateTransformById
   parameters:
     - name: transform
       in: body

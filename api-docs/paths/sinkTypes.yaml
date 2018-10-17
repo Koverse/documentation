@@ -1,5 +1,6 @@
 get:
   description: Returns all sink types
+  summary: Get sink types
   operationId: findSinksTypes
   tags: ["Sinks"]
   responses:

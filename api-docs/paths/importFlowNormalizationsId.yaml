@@ -4,6 +4,7 @@ parameters:
 
 get:
   description: Returns a normalization by id
+  summary: Get import flow normalization by id
   operationId: findNormalizationById
   tags: ["Import Flows"]
   responses:
@@ -14,6 +15,8 @@ get:
 
 put:
   description: Updates a normalization by id
+  summary: Update import flow normalization by id
+  operationId: updateNormalizationById
   tags: ["Import Flows"]
   parameters:
     - name: normalization
@@ -30,6 +33,7 @@ put:
 
 delete:
   description: Deletes a single normalization based on the id supplied
+  summary: Delete import flow normalization by id
   operationId: deleteNormalization
   tags: ["Import Flows"]
   responses:
