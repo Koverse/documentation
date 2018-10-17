@@ -3,11 +3,14 @@ import PropTypes from 'prop-types'
 import { Router, Link } from 'react-static'
 import { hot } from 'react-hot-loader'
 import Routes from 'react-static-routes'
+import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import AppBar from '@material-ui/core/AppBar'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
-import { withStyles } from '@material-ui/core/styles'
+import theme from './theme'
+
+const muiTheme = createMuiTheme(theme)
 
 const styles = theme => ({
   '@global': {
@@ -46,23 +49,25 @@ class App extends PureComponent {
     const { classes } = this.props
 
     return (
-      <Router>
-        <div className={classes.container}>
-          <CssBaseline />
-          <AppBar className={classes.appBar} color="default" position="static">
-            <nav>
-              <Tabs className={classes.tabs} value={false}>
-                <Tab component={Link} to="/" label="Home" />
-                <Tab component={Link} to="/about" label="About" />
-                <Tab component={Link} to="/blog" label="Blog" />
-              </Tabs>
-            </nav>
-          </AppBar>
-          <div className={classes.content}>
-            <Routes />
+      <MuiThemeProvider theme={muiTheme}>
+        <Router>
+          <div className={classes.container}>
+            <CssBaseline />
+            <AppBar className={classes.appBar} color="default" position="static">
+              <nav>
+                <Tabs className={classes.tabs} value={false}>
+                  <Tab component={Link} to="/" label="Home" />
+                  <Tab component={Link} to="/about" label="About" />
+                  <Tab component={Link} to="/blog" label="Blog" />
+                </Tabs>
+              </nav>
+            </AppBar>
+            <div className={classes.content}>
+              <Routes />
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </MuiThemeProvider>
     )
   }
 }

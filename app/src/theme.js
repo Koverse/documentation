@@ -14,4 +14,7 @@ export default {
       width: 240,
     },
   },
+  typography: {
+    useNextVariants: true,
+  },
 }
