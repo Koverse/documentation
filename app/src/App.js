@@ -6,13 +6,20 @@ import Routes from 'react-static-routes'
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import AppBar from '@material-ui/core/AppBar'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import theme from './theme'
+import Typography from '@material-ui/core/Typography'
+import { Logo } from '@koverse/components'
+import baseTheme from './theme'
 
-const muiTheme = createMuiTheme(theme)
+const theme = createMuiTheme(baseTheme)
+const darkTheme = createMuiTheme({
+  ...baseTheme,
+  palette: {
+    ...baseTheme.palette,
+    type: 'dark',
+  },
+})
 
-const styles = theme => ({
+const styles = {
   '@global': {
     img: {
       maxWidth: '100%',
@@ -22,7 +29,21 @@ const styles = theme => ({
     },
   },
   appBar: {
-    flexWrap: 'wrap',
+    background: theme.palette.grey[900],
+    display: 'flex',
+    flexDirection: 'row',
+    height: theme.app.header.height,
+    alignItems: 'center',
+    padding: theme.spacing.unit * 2,
+  },
+  logoLink: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: theme.spacing.unit * 2,
+  },
+  logo: {
+    width: 150,
   },
   tabs: {
     width: '100%',
@@ -30,7 +51,7 @@ const styles = theme => ({
   content: {
     padding: '1rem',
   },
-})
+}
 
 class App extends PureComponent {
   static propTypes = {
@@ -47,21 +68,21 @@ class App extends PureComponent {
 
   render() {
     const { classes } = this.props
-
     return (
-      <MuiThemeProvider theme={muiTheme}>
+      <MuiThemeProvider theme={theme}>
         <Router>
-          <div className={classes.container}>
+          <div>
             <CssBaseline />
-            <AppBar className={classes.appBar} color="default" position="static">
-              <nav>
-                <Tabs className={classes.tabs} value={false}>
-                  <Tab component={Link} to="/" label="Home" />
-                  <Tab component={Link} to="/about" label="About" />
-                  <Tab component={Link} to="/blog" label="Blog" />
-                </Tabs>
-              </nav>
-            </AppBar>
+            <MuiThemeProvider theme={darkTheme}>
+              <AppBar className={classes.appBar} position="fixed" color="default">
+                <Link to="/" className={classes.logoLink}>
+                  <Logo className={classes.logo} />
+                </Link>
+                <Typography variant="h6" color="textSecondary">
+                  Documentation
+                </Typography>
+              </AppBar>
+            </MuiThemeProvider>
             <div className={classes.content}>
               <Routes />
             </div>
