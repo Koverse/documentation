@@ -6,7 +6,11 @@ export const getApiNavigation = (api) => {
   Object.keys(api.paths).forEach((path) => {
     Object.keys(api.paths[path]).forEach((method) => {
       arrify(api.paths[path][method].tags).forEach((tag) => {
-        navigation[tag] = arrify(navigation[tag]).concat(get(api.paths, `${path}.${method}`))
+        navigation[tag] = arrify(navigation[tag]).concat({
+          ...get(api.paths, `${path}.${method}`),
+          path,
+          method,
+        })
       })
     })
   })

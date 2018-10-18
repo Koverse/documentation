@@ -27,14 +27,14 @@ export default {
         getData: () => ({
           api,
         }),
-        children: flatten(Object.keys(apiNavigation).map(tag => apiNavigation[tag].map(method => ({
-          path: `/${tag}/${method.operationId}`,
-          component: 'src/containers/ApiPath',
-          // getData: () => ({
-          //   methods: api.paths[path],
-          //   path,
-          //   api,
-          // })
+        children: flatten(Object.keys(apiNavigation).map(tag => apiNavigation[tag].map(operation => ({
+          path: `/${slugify(tag)}/${slugify(operation.operationId)}`,
+          component: 'src/containers/ApiOperation',
+          getData: () => ({
+            operation,
+            tag,
+            api,
+          })
         }))))
       },
       {

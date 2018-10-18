@@ -14,29 +14,32 @@ const styles = theme => ({
   content: {
     display: 'flex',
     flexDirection: 'column',
+    paddingTop: theme.spacing.unit * 3,
   },
   navigation: {
     marginRight: theme.spacing.unit * 3,
   },
 })
 
-const ApiReference = ({
-  api, classes, path, methods,
+const ApiOperation = ({
+  api, classes, operation,
 }) => (
   <div className={classes.root}>
     <ApiNavigation api={api} className={classes.navigation} />
-    <div className={classes.root}>
-      <Typography variant="h4">{path}</Typography>
+    <div className={classes.content}>
+      {console.log(operation)}
+      <Typography variant="h4">{operation.summary}</Typography>
+      <Typography variant="subtitle1">{operation.method.toUpperCase()}: {operation.path}</Typography>
     </div>
   </div>
 )
 
 
-ApiReference.propTypes = {
+ApiOperation.propTypes = {
   api: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
-  path: PropTypes.string.isRequired,
-  methods: PropTypes.object.isRequired,
+  tag: PropTypes.string.isRequired,
+  operation: PropTypes.object.isRequired,
 }
 
-export default compose(withRouteData, withStyles(styles))(ApiReference)
+export default compose(withRouteData, withStyles(styles))(ApiOperation)

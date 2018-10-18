@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import slugify from 'slugify'
 import { withRouteData, Link } from 'react-static'
 import { withStateHandlers, compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
@@ -15,6 +16,7 @@ import { getApiNavigation } from '../utils'
 const styles = theme => ({
   drawerPaper: {
     position: 'relative',
+    width: 320,
     zIndex: theme.zIndex.appBar - 1,
   },
 })
@@ -62,7 +64,7 @@ const ApiReference = ({
                   key={method.operationId}
                   button
                   component={Link}
-                  to={`/api-reference/${tag}/${method.operationId}`}
+                  to={`/api-reference/${slugify(tag)}/${slugify(method.operationId)}`}
                 >
                   <ListItemText
                     secondary={method.summary}
