@@ -26,7 +26,7 @@ const Home = ({ classes }) => (
       wrap="wrap"
       className={classes.root}
     >
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} sm={4}>
         <Card className={classes.card}>
           <CardHeader title="User Guide" />
           <CardContent>
@@ -39,7 +39,7 @@ const Home = ({ classes }) => (
           </CardActions>
         </Card>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} sm={4}>
         <Card className={classes.card}>
           <CardHeader title="API Reference" />
           <CardContent>
@@ -59,20 +59,7 @@ const Home = ({ classes }) => (
           </CardActions>
         </Card>
       </Grid>
-      <Grid item xs={12} md={4}>
-        <Card className={classes.card}>
-          <CardHeader title="Tutorials" />
-          <CardContent>
-            <Typography className={classes.title} color="textSecondary" gutterBottom>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat lacus laoreet non curabitur gravida arcu ac tortor dignissim. Aliquet porttitor lacus luctus accumsan tortor posuere ac.
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small" color="primary">View Tutorials</Button>
-          </CardActions>
-        </Card>
-      </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} sm={4}>
         <Card className={classes.card}>
           <CardHeader title="Developer Resources" />
           <CardContent>

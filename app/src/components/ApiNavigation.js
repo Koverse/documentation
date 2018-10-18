@@ -47,7 +47,7 @@ const ApiReference = ({
       className={className}
     >
       <List dense>
-        {Object.keys(navigation).map(tag => (
+        {Object.keys(navigation).sort().map(tag => (
           <div key={tag}>
             <ListItem button onClick={() => toggle(tag)}>
               <ListItemText

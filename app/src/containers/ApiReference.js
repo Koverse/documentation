@@ -10,6 +10,8 @@ const styles = theme => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
+    height: `calc(100vh - ${theme.app.header.height}px)`,
+    overflow: 'hidden',
   },
   content: {
     display: 'flex',
