@@ -9,8 +9,6 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Collapse from '@material-ui/core/Collapse'
-import ExpandLess from '@material-ui/icons/ExpandLess'
-import ExpandMore from '@material-ui/icons/ExpandMore'
 import { getApiNavigation } from '../utils'
 
 const styles = theme => ({
@@ -48,15 +46,16 @@ const ApiReference = ({
       }}
       className={className}
     >
-
       <List dense>
         {Object.keys(navigation).map(tag => (
           <div key={tag}>
             <ListItem button onClick={() => toggle(tag)}>
               <ListItemText
                 primary={tag}
+                primaryTypographyProps={{
+                  variant: 'subtitle2',
+                }}
               />
-              {expanded[tag] ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
             <Collapse in={expanded[tag]} timeout="auto" unmountOnExit>
               {navigation[tag].map(method => (

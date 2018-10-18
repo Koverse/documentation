@@ -1,9 +1,9 @@
 swagger: "2.0"
 info:
   version: 2.4.0
-  title: Koverse API
+  title: Koverse REST API
   description: >
-        Koverse Web API Specification
+        Specification for interacting with the Koverse Rest API
 
 
 host: demo.koverse.com
