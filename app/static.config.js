@@ -1,40 +1,41 @@
 import axios from 'axios'
 import React, { Component } from 'react'
+import { flatten } from 'lodash'
 import { SheetsRegistry } from 'react-jss/lib/jss'
+import slugify from 'slugify'
 import JssProvider from 'react-jss/lib/JssProvider'
 import { MuiThemeProvider, createMuiTheme, createGenerateClassName } from '@material-ui/core/styles'
-
-// Your Material UI Custom theme
+import { getApiNavigation } from './src/utils'
+import api from './public/api.json'
 import theme from './src/theme'
+
+const apiNavigation = getApiNavigation(api)
 
 export default {
   getSiteData: () => ({
     title: 'React Static',
   }),
   getRoutes: async () => {
-    const { data: posts } = await axios.get('https://jsonplaceholder.typicode.com/posts')
     return [
       {
         path: '/',
         component: 'src/containers/Home',
       },
       {
-        path: '/about',
-        component: 'src/containers/About',
-      },
-      {
-        path: '/blog',
-        component: 'src/containers/Blog',
+        path: '/api-reference',
+        component: 'src/containers/ApiReference',
         getData: () => ({
-          posts,
+          api,
         }),
-        children: posts.map(post => ({
-          path: `/post/${post.id}`,
-          component: 'src/containers/Post',
-          getData: () => ({
-            post,
-          }),
-        })),
+        children: flatten(Object.keys(apiNavigation).map(tag => apiNavigation[tag].map(method => ({
+          path: `/${tag}/${method.operationId}`,
+          component: 'src/containers/ApiPath',
+          // getData: () => ({
+          //   methods: api.paths[path],
+          //   path,
+          //   api,
+          // })
+        }))))
       },
       {
         is404: true,

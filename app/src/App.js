@@ -49,7 +49,7 @@ const styles = {
     width: '100%',
   },
   content: {
-    padding: '1rem',
+    marginTop: theme.app.header.height,
   },
 }
 

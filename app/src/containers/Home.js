@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withRouteData, withSiteData } from 'react-static'
+import { withRouteData, withSiteData, Link } from 'react-static'
 import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -24,14 +24,14 @@ const Home = ({ classes }) => (
   <Grid container spacing={16} justify="center" className={classes.root}>
     <Grid item xs={12} md={3}>
       <Card className={classes.card}>
-        <CardHeader title="Documentation" />
+        <CardHeader title="User Guide" />
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat lacus laoreet non curabitur gravida arcu ac tortor dignissim. Aliquet porttitor lacus luctus accumsan tortor posuere ac.
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">View Documentation</Button>
+          <Button size="small" color="primary">View User Guide</Button>
         </CardActions>
       </Card>
     </Grid>
@@ -44,7 +44,14 @@ const Home = ({ classes }) => (
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" color="primary">View API Reference</Button>
+          <Button
+            size="small"
+            color="primary"
+            component={Link}
+            to="/api-reference"
+          >
+            View API Reference
+          </Button>
         </CardActions>
       </Card>
     </Grid>
