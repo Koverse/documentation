@@ -39,6 +39,9 @@ const extractExample = (schema) => {
     })
     example = [item]
   }
+  if (schema.type === 'boolean') {
+    return schema.example || false
+  }
   return example
 }
 
