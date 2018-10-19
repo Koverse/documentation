@@ -8,5 +8,6 @@ get:
   responses:
     default:
       description: Returns a confirmation of the logout
+      code: 200
       schema:
         $ref: "../api.yaml#/definitions/logout"

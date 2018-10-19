@@ -7,10 +7,20 @@ put:
   tags: ["DataSets", "Masking"]
   description: >
     Updates the masked attributes of a data set.
+  parameters:
+    - name: attrs
+      in: body
+      description: Attribute objects
+      required: true
+      schema:
+        type: array
+        items:
+          $ref: '../api.yaml#/definitions/dataSetAttributes'
   responses:
     default:
       description: Returns the updated list of data set attributes for the specified data set.
+      code: 200
       schema:
-        $ref: "../api.yaml#/definitions/dataSetAttributes"
-        type:
-        example:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/dataSetAttributes"

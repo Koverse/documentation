@@ -18,6 +18,7 @@ put:
   responses:
     default:
       description: Returns the updated data set permission data
+      code: 200
       schema:
         $ref: "../api.yaml#/definitions/dataSetPermission"
 
@@ -30,5 +31,6 @@ delete:
   responses:
     default:
       description: Returns the data set permission that was deleted
+      code: 200
       schema:
         $ref: "../api.yaml#/definitions/dataSetPermission"

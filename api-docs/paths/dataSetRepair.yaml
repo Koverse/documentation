@@ -9,6 +9,5 @@ get:
     Repairs a data set by dataSetId.
   responses:
     default:
+      code: 200
       description: '200 OK'
-      schema:
-        $ref:

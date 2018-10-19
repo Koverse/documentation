@@ -10,28 +10,11 @@ get:
   responses:
     default:
       description: Returns an array of metadata of the permissions of a data set.
+      code: 200
       schema:
-        $ref: "../api.yaml#/definitions/dataSetPermission"
         type: array
-      #example:
-      #  [
-      #    {
-      #      "id": 844,
-      #      "dataSetId": "bank_employees_20180919_180216_724",
-      #      "groupId": 1,
-      #      "all": false,
-      #      "read": false,
-      #      "download": false,
-      #      "write": false,
-      #      "delete": false,
-      #      "managePermissions": false,
-      #      "manageConfiguration": false,
-      #      "audit": false,
-      #      "authorizerTypeId": null,
-      #      "authorizerGroupId": null,
-      #      "permissionsTypes": []
-      #    }
-      #  ]
+        items:
+          $ref: "../api.yaml#/definitions/dataSetPermission"
 
 post:
   summary: Create data set permission
@@ -49,22 +32,6 @@ post:
   responses:
     default:
       description: Returns an array of metadata of the permissions of a data set.
+      code: 201
       schema:
-        type: array
-      #example:
-        # {
-        #  "id": 895,
-        #  "dataSetId": "bank_employees_20180919_180216_724",
-        #  "groupId": 1,
-        #  "all": false,
-        #  "read": false,
-        #  "download": false,
-        #  "write": false,
-        #  "delete": false,
-        #  "managePermissions": false,
-        #  "manageConfiguration": false,
-        #  "audit": false,
-        #  "authorizerTypeId": null,
-        #  "authorizerGroupId": null,
-        #  "permissionsTypes": []
-        # }
+        $ref: "../api.yaml#/definitions/dataSetPermission"

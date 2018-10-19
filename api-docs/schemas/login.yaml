@@ -10,5 +10,5 @@ properties:
   password:
     type: string
 example:
-  email: 'name@company.com'
+  email: zerocool@example.com
   password: 'supersecret'

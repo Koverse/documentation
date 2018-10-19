@@ -21,3 +21,22 @@ properties:
     type: number
   type:
     type: string
+example:
+  id: 720
+  userId: 4
+  creationDate: 1537394536892
+  startedDate: 1537394546221
+  endedDate: 1537394584108
+  status: "success"
+  errorDetail: null
+  statusMessage: null
+  userAcknowledged: false
+  origin: "UNSPECIFIED"
+  overrideBlockedStatus: false
+  progress: 1
+  type: "REINDEXING"
+  dataSetId: "movie_metadata_clean_20180817_180504_927"
+  errors: []
+  outputDataSetId: null
+  inputDataSetIds: null
+  recordCount: 0

@@ -8,6 +8,11 @@ properties:
   type:
     type: string
     description:
+    example: SCALAR
   fieldTypeCounts:
     type: array
     description:
+  fieldValueType:
+    type: string
+    description:
+    example: DATE

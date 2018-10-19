@@ -13,28 +13,24 @@ get:
   responses:
     default:
       description: Return a sample of records for a data set.
+      code: 200
       schema:
-        $ref: "../api.yaml#/definitions/record"
-        type: array
-        example:
-          # {
-          #     "flatSchema": true,
-          #     "records": [
-          #         {
-          #             "recordId": null,
-          #             "collectionId": "bank_employees_20180919_180216_724",
-          #             "securityLabel": "",
-          #             "value": {
-          #                 "orgCategory": "PBCS",
-          #                 "orgCategoryDescription": "Private Banking - Client Services",
-          #                 "hireDate": "2007-05-07T21:30:25.000-04:00",
-          #                 "businessUnit": "PB",
-          #                 "orgCode": "PBCS-45",
-          #                 "name": "Belle Acosta",
-          #                 "traderId": "TRD0050060"
-          #             },
-          #             "matchValues": [],
-          #             "isMatch": false
-          #         }
-          #     ]
-          # }
+        type: object
+        properties:
+          flatSchema:
+            type: boolean
+          records:
+            type: array
+            items:
+              $ref: "../api.yaml#/definitions/record"
+      example:
+        flatSchema: true,
+        records:
+          - recordId: movies_20171107_172745_048_record_354809
+            collectionId: movies_20171107_172745_048
+            securityLabel: ''
+            value:
+              movie_title: Titanic
+              actor_1_name: Leonardo DiCaprio
+              actor_2_name: Kate Winslet
+              title_year: 1997
