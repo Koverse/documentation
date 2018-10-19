@@ -39,7 +39,7 @@ delete:
   tags: ["DataSets"]
   responses:
     default:
-      desctiption: Returns the data set metadata with an updated DELETED dataset name.
+      description: Returns the data set metadata with an updated DELETED dataset name.
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
       # example:

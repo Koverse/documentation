@@ -5,7 +5,7 @@ get:
   summary: Repair a Data Set by id
   operationId: repairDataSetById
   tags: ["DataSets"]
-  desctiption:
+  description:
     Repairs a data set by dataSetId.
   responses:
     default:

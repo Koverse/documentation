@@ -5,7 +5,7 @@ get:
   summary: Clear a Data Set by id
   operationId: clearDataSetById
   tags: ["DataSets"]
-  desctiption:
+  description:
     Clears a data set of all data.
   responses:
     default:
