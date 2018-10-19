@@ -29,13 +29,7 @@ post:
       description: The name of the new data set.
       required: true
       schema:
-        $ref: "../api.yaml#/definitions/dataSetMetadata"
-    - name: indexingPolicy
-      in: body
-      description: The indexing policy of the new data set.
-      required: false
-      schema:
-        $ref: "../api.yaml#/definitions/dataSetIndexingPolicy"    
+        $ref: "../api.yaml#/definitions/dataSetMetadata"   
   description: >
     Creates a new empty data set.
 
