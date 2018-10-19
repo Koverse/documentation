@@ -23,7 +23,7 @@ post:
   summary: Create a new data set
   operationId: createDataSet
   tags: ["DataSets"]
-  desctiption: >
+  description: >
     Creates a new empty data set.
 
     Note: This call will fail if there is already a data set with the same name as the requested new data set.
