@@ -60,13 +60,15 @@ const styles = theme => ({
   section: {
     marginBottom: theme.spacing.unit * 3,
   },
+  table: {
+    border: `1px solid ${theme.palette.divider}`,
+  }
 })
 
 const ApiOperationPanel = ({
   classes, operation,
 }) => (
   <ExpansionPanel>
-    {(operation.operationId === 'findDataSetById') && console.log(operation)}
     <ExpansionPanelSummary
       expandIcon={<ExpandMoreIcon />}
       classes={{ content: classes.summaryContent }}
@@ -96,8 +98,8 @@ const ApiOperationPanel = ({
       </section>
       {!!operation.parameters.length && (
         <section className={classes.section}>
-          <Typography variant="button" color="textSecondary">Parameters</Typography>
-          <Table>
+          <Typography variant="button" color="textSecondary" gutterBottom>Parameters</Typography>
+          <Table className={classes.table}>
             <TableHead>
               <TableRow>
                 <TableCell>
@@ -148,8 +150,8 @@ const ApiOperationPanel = ({
       )}
       {!!operation.responses && (
         <section className={classes.section}>
-          <Typography variant="button" color="textSecondary">Responses</Typography>
-          <Table>
+          <Typography variant="button" color="textSecondary" gutterBottom>Responses</Typography>
+          <Table className={classes.table}>
             <TableHead>
               <TableRow>
                 <TableCell>
@@ -177,7 +179,10 @@ const ApiOperationPanel = ({
                         <Typography variant="caption" color="textSecondary">
                           Example:
                         </Typography>
-                        <ExampleSchema schema={operation.responses[key].schema} />
+                        <ExampleSchema
+                          example={operation.responses[key].example}
+                          schema={operation.responses[key].schema}
+                        />
                       </div>
                     )}
 

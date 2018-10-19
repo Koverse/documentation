@@ -15,5 +15,6 @@ post:
   responses:
     default:
       description: Returns the user data
+      code: 200
       schema:
         $ref: "../api.yaml#/definitions/user"

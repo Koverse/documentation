@@ -22,7 +22,7 @@ const styles = theme => ({
 const extractExample = (schema) => {
   let example
   if (schema.type === 'object') {
-    example = {}
+    example = get(schema, 'example', {})
     Object.keys(schema.properties).forEach((prop) => {
       if (schema.properties[prop].example) {
         example[prop] = schema.properties[prop].example
@@ -30,29 +30,26 @@ const extractExample = (schema) => {
     })
   }
   if (schema.type === 'array') {
-    if (get(schema, 'items.example')) {
-      example = [schema.items.example]
-    } else {
-      const item = {}
-      const itemProperties = get(schema, 'items.properties', {})
-      Object.keys(itemProperties).forEach((prop) => {
-        if (itemProperties[prop].example) {
-          item[prop] = itemProperties[prop].example
-        }
-      })
-      example = [item]
-    }
+    const item = get(schema, 'items.example', {})
+    const itemProperties = get(schema, 'items.properties', {})
+    Object.keys(itemProperties).forEach((prop) => {
+      if (itemProperties[prop].example) {
+        item[prop] = itemProperties[prop].example
+      }
+    })
+    example = [item]
   }
   return example
 }
 
 const ExampleSchema = ({
-  schema,
+  schema, example,
 }) => {
-  return (
+  const text = JSON.stringify(example || extractExample(schema), null, '\t')
+  return !!text && (
     <Markdown
       text={`\`\`\`javascript
-${JSON.stringify(extractExample(schema), null, '\t')}
+${text}
 \`\`\``}
     />
   )
@@ -61,6 +58,11 @@ ${JSON.stringify(extractExample(schema), null, '\t')}
 ExampleSchema.propTypes = {
   classes: PropTypes.object.isRequired,
   schema: PropTypes.object.isRequired,
+  example: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+    PropTypes.string,
+  ]),
 }
 
 export default compose(withStyles(styles))(ExampleSchema)

@@ -4,16 +4,22 @@ required:
 properties:
   id:
     type: string
+    example: actor_1_name
   dataSetId:
     type: string
+    example: movies_20171107_172745_048
   name:
     type: string
+    example: actor_1_name
   presenceCount:
     type: integer
+    example: 4155
   uniqueValueCount:
     type: integer
+    example: 3982
   valueCount:
     type: integer
+    example: 4155
   visualizationType:
     $ref: "../api.yaml#/definitions/visualizationType"
   types:

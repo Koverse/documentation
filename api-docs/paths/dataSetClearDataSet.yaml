@@ -9,4 +9,5 @@ get:
     Clears a data set of all data.
   responses:
     default:
+      code: 200
       description: '200 OK'

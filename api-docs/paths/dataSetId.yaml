@@ -12,6 +12,7 @@ get:
   responses:
     default:
       description: Returns the data set metadata
+      code: 200
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
       #headers:
@@ -28,6 +29,7 @@ put:
   responses:
     default:
       description: Returns the updated data set metadata.
+      code: 200
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
 
@@ -40,6 +42,7 @@ delete:
   responses:
     default:
       description: Returns the data set metadata with an updated DELETED dataset name.
+      code: 200
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
       # example:
