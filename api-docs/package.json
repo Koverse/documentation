@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "deref": "json-dereference -s api.yaml -o api-compiled.yaml",
-    "build": "npm run deref && spectacle api-compiled.yaml",
-    "start": "npm run deref && spectacle -d api-compiled.yaml",
+    "build": "npm run deref && spectacle -a app api-compiled.yaml",
+    "start": "npm run deref && spectacle -a app -d api-compiled.yaml",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
