@@ -8,6 +8,7 @@ get:
   responses:
     default:
       description: Returns metadata for all data sets the user is authorized to see
+      code: 200
       schema:
         type: array
         items:
@@ -40,7 +41,8 @@ post:
     #   required: false
   responses:
     default:
-      description: Returns the data set metadata
+      description: Returns the newly created Data Set metadata
+      code: 201
       schema:
         type: array
         items:

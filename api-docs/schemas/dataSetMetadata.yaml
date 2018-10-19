@@ -76,8 +76,8 @@ properties:
     type: integer
 example:
   id: movies_20171107_172745_048
-  name: movies
-  description: null
+  name: Movies
+  description: List of Movies
   userId: 4
   createdTimestamp: 1510093665050
   updatedTimestamp: 1510093711178

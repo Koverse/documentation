@@ -128,8 +128,59 @@ const ApiOperationPanel = ({
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    {param.description}
-                    {param.schema && <ExampleSchema schema={param.schema} />}
+                    <Typography variant="body2" gutterBottom>
+                      {param.description}
+                    </Typography>
+                    {param.schema && (
+                      <div>
+                        <Typography variant="caption" color="textSecondary">
+                          Example:
+                        </Typography>
+                        <ExampleSchema schema={param.schema} />
+                      </div>
+                    )}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </section>
+      )}
+      {!!operation.responses && (
+        <section className={classes.section}>
+          <Typography variant="button" color="textSecondary">Responses</Typography>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>
+                  Code
+                </TableCell>
+                <TableCell>
+                  Description
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {Object.keys(operation.responses).map(key => (
+                <TableRow key={key}>
+                  <TableCell>
+                    <Typography variant="body2">
+                      {operation.responses[key].code}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body2" gutterBottom>
+                      {operation.responses[key].description}
+                    </Typography>
+                    {operation.responses[key].schema && (
+                      <div>
+                        <Typography variant="caption" color="textSecondary">
+                          Example:
+                        </Typography>
+                        <ExampleSchema schema={operation.responses[key].schema} />
+                      </div>
+                    )}
+
                   </TableCell>
                 </TableRow>
               ))}

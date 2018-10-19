@@ -12,6 +12,10 @@ properties:
   description:
     type: string
     example: "List of Movies"
+  importFlowIds:
+    type: array
+    example:
+      - 338
   createdTimestamp:
     type: integer
   updatedTimestamp:

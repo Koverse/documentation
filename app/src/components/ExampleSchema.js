@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { get } from 'lodash'
 import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
 import Markdown from './Markdown'
@@ -19,12 +20,29 @@ const styles = theme => ({
 })
 
 const extractExample = (schema) => {
-  const example = {}
-  Object.keys(schema.properties).forEach((prop) => {
-    if (schema.properties[prop].example) {
-      example[prop] = schema.properties[prop].example
+  let example
+  if (schema.type === 'object') {
+    example = {}
+    Object.keys(schema.properties).forEach((prop) => {
+      if (schema.properties[prop].example) {
+        example[prop] = schema.properties[prop].example
+      }
+    })
+  }
+  if (schema.type === 'array') {
+    if (get(schema, 'items.example')) {
+      example = [schema.items.example]
+    } else {
+      const item = {}
+      const itemProperties = get(schema, 'items.properties', {})
+      Object.keys(itemProperties).forEach((prop) => {
+        if (itemProperties[prop].example) {
+          item[prop] = itemProperties[prop].example
+        }
+      })
+      example = [item]
     }
-  })
+  }
   return example
 }
 
