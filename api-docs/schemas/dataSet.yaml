@@ -8,8 +8,10 @@ properties:
     type: string
     minLength: 4
     pattern: "^[a-zA-Z0-9- ]+$"
+    example: "Movies"
   description:
     type: string
+    example: "List of Movies"
   createdTimestamp:
     type: integer
   updatedTimestamp:

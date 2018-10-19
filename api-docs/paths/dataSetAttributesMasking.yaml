@@ -1,6 +1,5 @@
 parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
-  - $ref: "../api.yaml#/definitions/dataSetAttributeUpdateList"
 
 put:
   summary: Update attributes masking

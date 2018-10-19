@@ -120,6 +120,10 @@ const styles = theme => ({
       borderRadius: theme.shape.borderRadius,
       fontSize: 14,
     },
+    '& pre code': {
+      border: 'none',
+      padding: 0,
+    },
     '& p code, & ul code, & pre code': {
       fontSize: 14,
       lineHeight: 1.6,

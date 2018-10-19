@@ -136,19 +136,19 @@ parameters:
   dataSetId:
     name: dataSetId
     in: path
-    description: Unique identifier of the data set
+    description: ID of the data set
     required: true
     type: string
   exportJobId:
     name: exportJobId
     in: path
-    description: Unique identifier of the export job
+    description: ID of the export job
     required: true
     type: string
   exportScheduleId:
     name: exportScheduleId
     in: path
-    description: Unique identifier of an export schedule
+    description: ID of an export schedule
     required: true
     type: string
   fileType:
@@ -161,31 +161,31 @@ parameters:
   importFlowId:
     name: importFlowId
     in: query
-    description: Id of the import flow
+    description: ID of the import flow
     required: true
     type: string
   importJobId:
     name: importJobId
     in: path
-    description: Id of the import job
+    description: ID of the import job
     type: integer
     format: int64
   importScheduleId:
     name: importScheduleId
     in: path
-    description: Id of the import schedule
+    description: ID of the import schedule
     required: true
     type: string
   jobId:
     name: jobId
     in: path
-    description: Id of the job
+    description: ID of the job
     required: true
     type: string
   normalizationId:
     name: normalizationId
     in: path
-    description: id of the normalization
+    description: ID of the normalization
     required: true
     type: string
   objectQuery:
@@ -203,13 +203,13 @@ parameters:
   permissionId:
     name: permissionId
     in: path
-    description: Unique identifier of the permission
+    description: ID of the permission
     required: true
     type: string
   recordId:
     name: recordId
     in: query
-    description: Unique identifier of the record
+    description: ID of the record
     required: true
     type: string
   recordStyle:
@@ -229,43 +229,43 @@ parameters:
   sinkId:
     name: sinkId
     in: path
-    description: Id of the sink
+    description: ID of the sink
     required: true
   sinkTypeId:
     name: sinkTypeId
     in: path
-    description: Id of the sink type
+    description: ID of the sink type
     required: true
     type: integer
     format: int64
   sourceId:
     name: sourceId
     in: path
-    description: Id of the source
+    description: ID of the source
     required: true
     type: string
   sourceInstanceId:
     name: sourceInstanceId
     in: path
-    description: Id of the source
+    description: ID of the source
     required: true
     type: string
   transformId:
     name: transformId
     in: path
-    description: Unique identifier of a transform
+    description: ID of a transform
     type: integer
     format: int64
   transformJobId:
     name: transformJobId
     in: path
-    description: Id of the transform job
+    description: ID of the transform job
     type: integer
     format: int64
   transformScheduleId:
     name: transformScheduleId
     in: path
-    description: Id of the transform schedule
+    description: ID of the transform schedule
     type: integer
     format: int64
 

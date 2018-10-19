@@ -28,9 +28,9 @@ post:
 
     Note: This call will fail if there is already a data set with the same name as the requested new data set.
   parameters:
-    - name: dataSet
+    - name: body
       in: body
-      description: Data Set object
+      description: Data Set object to create
       required: true
       schema:
         $ref: '../api.yaml#/definitions/dataSet'

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import slugify from 'slugify'
-import { withRouteData, Link } from 'react-static'
+import { withRouteData, NavLink } from 'react-static'
 import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
@@ -14,6 +14,12 @@ const styles = theme => ({
     position: 'relative',
     width: 320,
     zIndex: theme.zIndex.appBar - 1,
+  },
+  active: {
+    background: theme.palette.grey[100],
+    '& .tag': {
+      color: theme.palette.text.primary,
+    },
   },
 })
 
@@ -34,12 +40,17 @@ const ApiNavigation = ({
           <ListItem
             key={tag.name}
             button
-            component={Link}
+            component={NavLink}
             to={`/api-reference/${slugify(tag.name)}`}
+            activeClassName={classes.active}
           >
             <ListItemText
               primary={tag.name}
-              primaryTypographyProps={{ variant: 'h6' }}
+              primaryTypographyProps={{
+                classes: { root: 'tag' },
+                color: 'textSecondary',
+                variant: 'h6',
+              }}
             />
           </ListItem>
         ))}

@@ -8,14 +8,22 @@ import Typography from '@material-ui/core/Typography'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel'
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TablePagination from '@material-ui/core/TablePagination'
+import TableRow from '@material-ui/core/TableRow'
+import TableSortLabel from '@material-ui/core/TableSortLabel'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
-import Markdown from '../components/Markdown'
+import ExampleSchema from './ExampleSchema'
+import Markdown from './Markdown'
 
 const styles = theme => ({
   root: {},
   summaryContent: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   location: {
     display: 'flex',
@@ -45,12 +53,20 @@ const styles = theme => ({
       border: `1px solid ${red[100]}`,
     },
   },
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  section: {
+    marginBottom: theme.spacing.unit * 3,
+  },
 })
 
 const ApiOperationPanel = ({
   classes, operation,
 }) => (
   <ExpansionPanel>
+    {(operation.operationId === 'findDataSetById') && console.log(operation)}
     <ExpansionPanelSummary
       expandIcon={<ExpandMoreIcon />}
       classes={{ content: classes.summaryContent }}
@@ -71,13 +87,56 @@ const ApiOperationPanel = ({
         {operation.summary}
       </Typography>
     </ExpansionPanelSummary>
-    <ExpansionPanelDetails>
+    <ExpansionPanelDetails className={classes.details}>
       <section className={classes.section}>
         <Typography variant="button" color="textSecondary">Description</Typography>
         <Markdown
           text={operation.description || '--'}
         />
       </section>
+      {!!operation.parameters.length && (
+        <section className={classes.section}>
+          <Typography variant="button" color="textSecondary">Parameters</Typography>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>
+                  Name
+                </TableCell>
+                <TableCell>
+                  Description
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {operation.parameters.map(param => (
+                <TableRow key={param.name}>
+                  <TableCell>
+                    <Typography variant="body2">
+                      {param.name}
+                    </Typography>
+                    {param.required && (
+                      <Typography variant="caption" color="error">
+                        Required
+                      </Typography>
+                    )}
+                    <Typography variant="caption">
+                      {param.type}
+                    </Typography>
+                    <Typography variant="caption" color="textSecondary">
+                      ({param.in})
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    {param.description}
+                    {param.schema && <ExampleSchema schema={param.schema} />}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </section>
+      )}
     </ExpansionPanelDetails>
   </ExpansionPanel>
 
