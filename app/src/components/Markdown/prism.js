@@ -5,6 +5,6 @@ import 'prismjs/components/prism-javascript'
 import 'prismjs/components/prism-jsx'
 import 'prismjs/components/prism-markup'
 import 'prismjs/components/prism-typescript'
-import 'prismjs/themes/prism.css'
+import 'prismjs/themes/prism-solarizedlight.css'
 
 export default prism
