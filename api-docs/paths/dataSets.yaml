@@ -32,6 +32,9 @@ post:
       in: body
       description: The name of the new data set.
       required: true
+      schema:
+        items:
+          $ref: "../api.yaml#/definitions/dataSetMetadata"
     - indexingPolicy:
       in: body
       description: The indexing policy of the new data set.
