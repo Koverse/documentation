@@ -10,8 +10,8 @@ import Typography from '@material-ui/core/Typography'
 import { Logo } from '@koverse/components'
 import baseTheme from './theme'
 
-const theme = createMuiTheme(baseTheme)
-const darkTheme = createMuiTheme({
+const muiTheme = createMuiTheme(baseTheme)
+const muiDarkTheme = createMuiTheme({
   ...baseTheme,
   palette: {
     ...baseTheme.palette,
@@ -25,22 +25,22 @@ const styles = {
       maxWidth: '100%',
     },
     body: {
-      ...theme.typography.body1,
+      ...muiTheme.typography.body2,
     },
   },
   appBar: {
-    background: theme.palette.grey[900],
+    background: muiTheme.palette.grey[900],
     display: 'flex',
     flexDirection: 'row',
-    height: theme.app.header.height,
+    height: muiTheme.app.header.height,
     alignItems: 'center',
-    padding: theme.spacing.unit * 2,
+    padding: muiTheme.spacing.unit * 2,
   },
   logoLink: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: theme.spacing.unit * 2,
+    marginRight: muiTheme.spacing.unit * 2,
   },
   logo: {
     width: 150,
@@ -49,7 +49,7 @@ const styles = {
     width: '100%',
   },
   content: {
-    marginTop: theme.app.header.height,
+    marginTop: muiTheme.app.header.height,
   },
 }
 
@@ -69,11 +69,11 @@ class App extends PureComponent {
   render() {
     const { classes } = this.props
     return (
-      <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider theme={muiTheme}>
         <Router>
           <div>
             <CssBaseline />
-            <MuiThemeProvider theme={darkTheme}>
+            <MuiThemeProvider theme={muiDarkTheme}>
               <AppBar className={classes.appBar} position="fixed" color="default">
                 <Link to="/" className={classes.logoLink}>
                   <Logo className={classes.logo} />

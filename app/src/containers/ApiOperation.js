@@ -5,6 +5,7 @@ import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import ApiNavigation from '../components/ApiNavigation'
+import Markdown from '../components/Markdown'
 
 const styles = theme => ({
   root: {
@@ -16,11 +17,19 @@ const styles = theme => ({
   content: {
     display: 'flex',
     flexDirection: 'column',
+    flexGrow: 1,
     paddingTop: theme.spacing.unit * 3,
+    overflow: 'scroll',
   },
   navigation: {
     marginRight: theme.spacing.unit * 3,
   },
+  title: {
+    marginBottom: theme.spacing.unit * 3,
+  },
+  section: {
+    marginBottom: theme.spacing.unit,
+  }
 })
 
 const ApiOperation = ({
@@ -29,13 +38,31 @@ const ApiOperation = ({
   <div className={classes.root}>
     <ApiNavigation api={api} className={classes.navigation} />
     <div className={classes.content}>
+      {console.log(api)}
       {console.log(operation)}
-      <Typography variant="h4">{operation.summary}</Typography>
-      <Typography variant="subtitle1">{operation.method.toUpperCase()}: {operation.path}</Typography>
+      <Typography variant="h4" className={classes.title}>
+        {operation.summary}
+      </Typography>
+      <section className={classes.section}>
+        <Typography variant="button" color="textSecondary">Description</Typography>
+        <Typography variant="subtitle1" gutterBottom>{operation.description || '--'}</Typography>
+      </section>
+      <section className={classes.section}>
+        <Typography variant="button" color="textSecondary">Path</Typography>
+        <Markdown
+          text={`<code>${operation.path}</code>`}
+        />
+      </section>
+      <section className={classes.section}>
+        <Typography variant="button" color="textSecondary">HTTP Method</Typography>
+        <Markdown
+          text={`<code>${operation.method.toUpperCase()}</code>`}
+        />
+      </section>
+
     </div>
   </div>
 )
-
 
 ApiOperation.propTypes = {
   api: PropTypes.object.isRequired,
