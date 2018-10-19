@@ -1,8 +1,8 @@
 type: object
 description: >
       This object contains all the metadata associated with a data set.
-#required:
-#  - name
+required:
+  - name
 properties:
   id:
     type: string

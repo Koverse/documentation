@@ -10,5 +10,6 @@ get:
     default:
       description: Returns an array of metadata of each attribute of a data set.
       schema:
+        $ref: "../api.yaml#/definitions/dataSetMetadata"
         type: array
       example:
