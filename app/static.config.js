@@ -1,15 +1,14 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { flatten } from 'lodash'
 import { SheetsRegistry } from 'react-jss/lib/jss'
 import slugify from 'slugify'
 import JssProvider from 'react-jss/lib/JssProvider'
 import { MuiThemeProvider, createMuiTheme, createGenerateClassName } from '@material-ui/core/styles'
-import { getApiNavigation } from './src/utils'
+import { getApiOperationsByTagName } from './src/utils'
 import api from './public/api.json'
 import theme from './src/theme'
 
-const apiNavigation = getApiNavigation(api)
+const apiOperationsByTagName = getApiOperationsByTagName(api)
 
 export default {
   getSiteData: () => ({
@@ -27,15 +26,15 @@ export default {
         getData: () => ({
           api,
         }),
-        children: flatten(Object.keys(apiNavigation).map(tag => apiNavigation[tag].map(operation => ({
-          path: `/${slugify(tag)}/${slugify(operation.operationId)}`,
-          component: 'src/containers/ApiOperation',
+        children: api.tags.map(tag => ({
+          path: `/${slugify(tag.name)}`,
+          component: 'src/containers/ApiReference',
           getData: () => ({
-            operation,
             tag,
+            operations: apiOperationsByTagName[tag.name],
             api,
           })
-        }))))
+        }))
       },
       {
         is404: true,

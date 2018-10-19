@@ -2,14 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import slugify from 'slugify'
 import { withRouteData, Link } from 'react-static'
-import { withStateHandlers, compose } from 'recompose'
+import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import Collapse from '@material-ui/core/Collapse'
-import { getApiNavigation } from '../utils'
 
 const styles = theme => ({
   drawerPaper: {
@@ -19,24 +17,9 @@ const styles = theme => ({
   },
 })
 
-const withToggle = withStateHandlers(
-  {
-    expanded: {},
-  },
-  {
-    toggle: ({ expanded }) => tag => ({
-      expanded: {
-        ...expanded,
-        [tag]: !expanded[tag],
-      },
-    }),
-  }
-)
-
-const ApiReference = ({
-  api, classes, className, toggle, expanded,
+const ApiNavigation = ({
+  api, classes, className,
 }) => {
-  const navigation = getApiNavigation(api)
   return (
     <Drawer
       variant="permanent"
@@ -47,44 +30,28 @@ const ApiReference = ({
       className={className}
     >
       <List dense>
-        {Object.keys(navigation).sort().map(tag => (
-          <div key={tag}>
-            <ListItem button onClick={() => toggle(tag)}>
-              <ListItemText
-                primary={tag}
-                primaryTypographyProps={{
-                  variant: 'subtitle2',
-                }}
-              />
-            </ListItem>
-            <Collapse in={expanded[tag]} timeout="auto" unmountOnExit>
-              {navigation[tag].map(method => (
-                <ListItem
-                  key={method.operationId}
-                  button
-                  component={Link}
-                  to={`/api-reference/${slugify(tag)}/${slugify(method.operationId)}`}
-                >
-                  <ListItemText
-                    secondary={method.summary}
-                  />
-                </ListItem>
-              ))}
-            </Collapse>
-          </div>
+        {api.tags.map(tag => (
+          <ListItem
+            key={tag.name}
+            button
+            component={Link}
+            to={`/api-reference/${slugify(tag.name)}`}
+          >
+            <ListItemText
+              primary={tag.name}
+              primaryTypographyProps={{ variant: 'h6' }}
+            />
+          </ListItem>
         ))}
       </List>
     </Drawer>
   )
 }
 
-
-ApiReference.propTypes = {
+ApiNavigation.propTypes = {
   api: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  expanded: PropTypes.object.isRequired,
-  toggle: PropTypes.func.isRequired,
 }
 
-export default compose(withRouteData, withStyles(styles), withToggle)(ApiReference)
+export default compose(withRouteData, withStyles(styles))(ApiNavigation)

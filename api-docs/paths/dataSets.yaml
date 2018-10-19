@@ -30,12 +30,14 @@ post:
   parameters:
     - name: dataSet
       in: body
-      description: The name of the new data set.
+      description: Data Set object
       required: true
-    - indexingPolicy:
-      in: body
-      description: The indexing policy of the new data set.
-      required: false
+      schema:
+        $ref: '../api.yaml#/definitions/dataSet'
+    # - indexingPolicy:
+    #   in: body
+    #   description: The indexing policy of the new data set.
+    #   required: false
   responses:
     default:
       description: Returns the data set metadata

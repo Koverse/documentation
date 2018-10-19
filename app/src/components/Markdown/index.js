@@ -144,6 +144,10 @@ const styles = theme => ({
       ...theme.typography.h6,
       margin: '24px 0 16px',
     },
+    '& p': {
+      ...theme.typography.body2,
+      lineHeight: 1.6,
+    },
     '& p, & ul, & ol': {
       lineHeight: 1.6,
     },
