@@ -18,10 +18,10 @@ tags:
     description: Manage User Authentication
   - name: DataSets
     description: Manage Data Sets
-  - name: Export Schedules
-    description: Manage Export Schedules
   - name: Exports
     description: Manage Exports
+  - name: Export Schedules
+    description: Manage Export Schedules
   - name: Import Flows
     description: Manage Import Flows
   - name: Import Schedules

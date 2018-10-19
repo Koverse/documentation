@@ -9,7 +9,6 @@ get:
   responses:
     default:
       description: Returns the export job data
+      code: 200
       schema:
-        type: array
-        items:
-          $ref: "../api.yaml#/definitions/job"
+        $ref: "../api.yaml#/definitions/job"
