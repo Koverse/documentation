@@ -23,10 +23,6 @@ post:
   summary: Create a new data set
   operationId: createDataSet
   tags: ["DataSets"]
-  description: >
-    Creates a new empty data set.
-
-    Note: This call will fail if there is already a data set with the same name as the requested new data set.
   parameters:
     - name: dataSet
       in: body
@@ -34,10 +30,16 @@ post:
       required: true
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
-    - indexingPolicy:
+    - name: indexingPolicy
       in: body
       description: The indexing policy of the new data set.
       required: false
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetIndexingPolicy"
+  description: >
+    Creates a new empty data set.
+
+    Note: This call will fail if there is already a data set with the same name as the requested new data set.
   responses:
     default:
       description: Returns the data set metadata
