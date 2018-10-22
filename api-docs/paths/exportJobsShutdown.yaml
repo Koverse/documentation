@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Shutdown an export job
   operationId: exportJobShutdownById
-  tags: ["Exports", "Jobs"]
+  tags: ["Sinks", "Jobs"]
   description: >
     Shuts down an existing export job.
   responses:

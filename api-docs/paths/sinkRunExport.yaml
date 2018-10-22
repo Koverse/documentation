@@ -2,10 +2,10 @@ parameters:
   - $ref: "../api.yaml#/parameters/sinkId"
 
 get:
-  summary: Run export by sink id
+  summary: Run export by id
   operationId: exportBySinkId
-  tags: ["Sinks", "Exports"]
-  description: Run an export by the specified sink id.
+  tags: ["Sinks"]
+  description: Run an export by the specified id.
   responses:
     default:
       description: Returns the export job data

@@ -18,8 +18,6 @@ tags:
     description: Manage User Authentication
   - name: Data Sets
     description: Manage Data Sets
-  - name: Exports
-    description: Manage Exports
   - name: Import Flows
     description: Manage Import Flows
   - name: Indexing
