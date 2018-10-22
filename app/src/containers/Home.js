@@ -35,7 +35,14 @@ const Home = ({ classes }) => (
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" color="primary">View User Guide</Button>
+            <Button
+              size="small"
+              color="primary"
+              component={Link}
+              to="/user-guide"
+            >
+              View User Guide
+            </Button>
           </CardActions>
         </Card>
       </Grid>

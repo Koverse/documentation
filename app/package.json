@@ -19,6 +19,7 @@
     "arrify": "^1.0.1",
     "axios": "^0.16.2",
     "classnames": "^2.2.6",
+    "jdown": "^0.6.5",
     "json-dereference-cli": "^0.1.2",
     "marked": "^0.5.1",
     "prismjs": "^1.15.0",

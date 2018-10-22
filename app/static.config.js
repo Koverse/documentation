@@ -1,12 +1,20 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { SheetsRegistry } from 'react-jss/lib/jss'
+import { reloadRoutes } from 'react-static/node'
 import slugify from 'slugify'
+import jdown from 'jdown'
+import chokidar from 'chokidar'
 import JssProvider from 'react-jss/lib/JssProvider'
 import { MuiThemeProvider, createMuiTheme, createGenerateClassName } from '@material-ui/core/styles'
 import { getApiOperationsByTagName } from './src/utils'
 import api from './public/api.json'
 import theme from './src/theme'
+
+const markdownDir = '../markdown'
+const apiDir = '../api-docs'
+
+// chokidar.watch([markdownDir, apiDir]).on('all', () => reloadRoutes())
 
 const apiOperationsByTagName = getApiOperationsByTagName(api)
 
@@ -15,6 +23,9 @@ export default {
     title: 'React Static',
   }),
   getRoutes: async () => {
+    const content = await jdown(markdownDir, { parseMd: false })
+    console.log(content)
+    const userGuide = content['user-guide']
     return [
       {
         path: '/',
@@ -33,6 +44,23 @@ export default {
             tag,
             operations: apiOperationsByTagName[tag.name],
             api,
+          })
+        }))
+      },
+      {
+        path: '/user-guide',
+        component: 'src/containers/UserGuide',
+        getData: () => ({
+          api,
+          userGuide,
+        }),
+        children: Object.keys(userGuide).map(key => ({
+          path: `/${slugify(userGuide[key].slug)}`,
+          component: 'src/containers/UserGuide',
+          getData: () => ({
+            api,
+            page: userGuide[key],
+            userGuide,
           })
         }))
       },
