@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Get flat schema metadata.
   operationId: findDataSetFlatSchemaById
-  tags: ["DataSets"]
+  tags: ["Data Sets"]
   description: >
     Get flat schema metadata of a data set by data set id.
   responses:

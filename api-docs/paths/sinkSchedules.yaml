@@ -2,7 +2,7 @@ get:
   description: Returns a list Sink Schedules
   summary: Get sink schedules
   operationId: findSinkSchedules
-  tags: ["Sinks", "Export Schedules"]
+  tags: ["Sinks", "Schedules"]
   responses:
     default:
       description: Returns the matching sink schedules
@@ -19,7 +19,7 @@ post:
   description: Creates a new sink schedule
   summary: Create sink schedules
   operationId: createSinkSchedule
-  tags: ["Sinks", "Export Schedules"]
+  tags: ["Sinks", "Schedules"]
   parameters:
     - name: exportSchedule
       in: body
@@ -28,7 +28,8 @@ post:
       schema:
         $ref: "../api.yaml#/definitions/exportSchedule"
   responses:
-    201:
+    default:
       description: Returns the newly-added sink schedule
+      code: 201
       schema:
         $ref: "../api.yaml#/definitions/exportSchedule"

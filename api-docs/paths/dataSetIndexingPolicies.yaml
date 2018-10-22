@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Get indexing policy metadata
   operationId: findDataSetIndexingPolicyById
-  tags: ["DataSets", "Indexing"]
+  tags: ["Data Sets", "Indexing"]
   description: >
     Get data set indexing policy metadata including indexed fields, composite indexes and foreign language indexing by data set id.
   responses:
@@ -18,7 +18,7 @@ get:
 put:
   summary: Update indexing policy
   operationId: updateDataSetIndexingPolicyById
-  tags: ["DataSets", "Indexing"]
+  tags: ["Data Sets", "Indexing"]
   parameters:
     - name: dataSetIndexingPolicy
       in: body

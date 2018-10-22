@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Returns all Import Schedules by data flow id
   operationId: findImportSchedulesById
-  tags: ["Import Schedules"]
+  tags: ["Schedules"]
   responses:
     default:
       description: Returns the matching import schedules
@@ -20,7 +20,7 @@ get:
 post:
   summary: Creates a new import schedule
   operationId: addImportSchedule
-  tags: ["Import Schedules"]
+  tags: ["Schedules"]
   parameters:
     - name: importSchedule
       in: body

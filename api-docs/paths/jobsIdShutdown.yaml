@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Shutdown a job by job id.
   operationId: shutdownJobById
-  tags: ["Imports", "Jobs"]
+  tags: ["Jobs"]
   responses:
     default:
       description: '200 OK'

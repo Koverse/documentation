@@ -5,7 +5,7 @@ parameters:
 put:
   summary: Updates a data set permission by id
   operationId: updateDataSetPermissionsById
-  tags: ["DataSets", "Permissions"]
+  tags: ["Data Sets", "Permissions"]
   parameters:
     - name: dataSetPermission
       in: body
@@ -25,7 +25,7 @@ put:
 delete:
   summary: Deletes a single data set permission based on the id supplied
   operationId: deleteDataSetPermissionsById
-  tags: ["DataSets", "Permissions"]
+  tags: ["Data Sets", "Permissions"]
   description: >
     Deletes a data set permission based on the supplied permission id
   responses:

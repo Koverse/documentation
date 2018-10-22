@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Get permissions metadata.
   operationId: findDataSetPermissions
-  tags: ["DataSets", "Permissions"]
+  tags: ["Data Sets", "Permissions"]
   description: >
     Get permissions metadata of a data set by data set id.
   responses:
@@ -19,7 +19,7 @@ get:
 post:
   summary: Create data set permission
   operationId: createDataSetPermission
-  tags: ["DataSets", "Permissions"]
+  tags: ["Data Sets", "Permissions"]
   parameters:
     - name: dataSetPermission
       in: body

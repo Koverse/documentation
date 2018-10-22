@@ -5,7 +5,7 @@ get:
   description: Returns all Transform Schedules
   operationId: findTransformSchedules
   summary: Get transform schedules
-  tags: ["Transforms", "Transform Schedules"]
+  tags: ["Transforms", "Schedules"]
   responses:
     default:
       description: Returns the matching transform schedules
@@ -22,7 +22,7 @@ post:
   description: Creates a new transform schedule
   summary: Create transform schedule
   operationId: addTransformSchedule
-  tags: ["Transforms", "Transform Schedules"]
+  tags: ["Transforms", "Schedules"]
   parameters:
     - name: transformSchedule
       in: body

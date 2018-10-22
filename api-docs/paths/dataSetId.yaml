@@ -8,7 +8,7 @@ get:
         about the given data set. Does not return any records within the
         data set.
   operationId: findDataSetById
-  tags: ["DataSets"]
+  tags: ["Data Sets"]
   responses:
     default:
       description: Returns the data set metadata
@@ -25,7 +25,7 @@ put:
   description: >
     Update the data set metadata.
   operationId: updateDataSetById
-  tags: ["DataSets"]
+  tags: ["Data Sets"]
   responses:
     default:
       description: Returns the updated data set metadata.
@@ -38,7 +38,7 @@ delete:
   description: >
     Delete the data set specified by dataSetId.
   operationId: deleteDataSetById
-  tags: ["DataSets"]
+  tags: ["Data Sets"]
   responses:
     default:
       description: Returns the data set metadata with an updated DELETED dataset name.

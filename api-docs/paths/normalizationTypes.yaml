@@ -1,7 +1,7 @@
 get:
   summary: Returns all normalization types
   operationId: findNormalizationTypes
-  tags: ["Normalization"]
+  tags: ["Normalizations"]
   responses:
     default:
       description: Returns the matching normalization types

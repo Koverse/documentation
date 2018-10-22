@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Get full data set schema metadata.
   operationId: findDataSetSchema
-  tags: ["DataSets"]
+  tags: ["Data Sets"]
   description: >
     Get schema metadata of a data set.
   responses:

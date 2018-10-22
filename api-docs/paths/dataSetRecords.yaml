@@ -5,7 +5,7 @@ parameters:
 get:
   summary: Get a sample of record data
   operationId: findDataSetRecordsById
-  tags: ["DataSets", "Records"]
+  tags: ["Data Sets", "Records"]
   description: >
     Returns all the fields and values for a sample of records by data set id.
 

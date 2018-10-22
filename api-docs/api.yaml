@@ -16,25 +16,19 @@ produces:
 tags:
   - name: Authentication
     description: Manage User Authentication
-  - name: DataSets
+  - name: Data Sets
     description: Manage Data Sets
   - name: Exports
     description: Manage Exports
-  - name: Export Schedules
-    description: Manage Export Schedules
   - name: Import Flows
     description: Manage Import Flows
-  - name: Import Schedules
-    description: Manage Import Schedules
-  - name: Imports
-    description: Manage Imports
   - name: Indexing
     description: Manage Indexing
   - name: Jobs
     description: Manage Jobs
   - name: Masking
     description: Manage Column Masking
-  - name: Normalization
+  - name: Normalizations
     description: Manage Normalizations
   - name: Permissions
     description: Manage Permissions
@@ -42,16 +36,14 @@ tags:
     description: Query Data Sets
   - name: Records
     description: Manage Records
-  - name: Sink Schedules
-    description: Manage Sink Schedules
+  - name: Schedules
+    description: Manage Schedules for Sinks, Transforms, and Import Flows
   - name: Sinks
     description: Manage Sinks
   - name: Sources
     description: Manage Sources
   - name: System
     description: System Information
-  - name: Transform Schedules
-    description: Manage Transform Schedules
   - name: Transforms
     description: Manage Transforms
 

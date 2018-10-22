@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Shutdown an import job
   operationId: shutdownImportJobById
-  tags: ["Imports", "Jobs"]
+  tags: ["Jobs"]
   responses:
     default:
       description: Returns an updated job

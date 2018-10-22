@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Unblocks a job by job id.
   operationId: shutdownImportJob
-  tags: ["Imports", "Jobs"]
+  tags: ["Jobs"]
   responses:
     default:
       description: '200 OK'

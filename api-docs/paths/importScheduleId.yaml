@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Returns an import schedule by id
   operationId: findImportScheduleById
-  tags: ["Import Schedules"]
+  tags: ["Schedules"]
   responses:
     default:
       description: Returns the import schedule data
@@ -18,7 +18,7 @@ get:
 delete:
   summary: Deletes a single import schedule based on the id supplied
   operationId: deleteImportSchedule
-  tags: ["Import Schedules"]
+  tags: ["Schedules"]
   responses:
     default:
       description: Returns the import schedule that was deleted

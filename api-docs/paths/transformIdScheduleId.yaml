@@ -4,7 +4,7 @@ parameters:
 delete:
   summary: Deletes a single transform schedule based on the id supplied
   operationId: deleteTransformScheduleById
-  tags: ["Transforms", "Transform Schedules"]
+  tags: ["Transforms", "Schedules"]
   responses:
     default:
       description: Returns the transform schedule that was deleted

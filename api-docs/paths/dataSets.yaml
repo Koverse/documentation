@@ -1,7 +1,7 @@
 get:
   summary: List all data sets
   operationId: findDataSets
-  tags: ["DataSets"]
+  tags: ["Data Sets"]
   description: >
         Get a list of data set metadata objects for all data sets the user is
         authorized to see.
@@ -23,7 +23,7 @@ get:
 post:
   summary: Create a new data set
   operationId: createDataSet
-  tags: ["DataSets"]
+  tags: ["Data Sets"]
   description: >
     Creates a new empty data set.
 
@@ -51,7 +51,7 @@ post:
 #post:
 #  summary: Create a new data set
 #  operationId: addDataSet
-#  tags: ["DataSets"]
+#  tags: ["Data Sets"]
 #  description: >
 #        Creates a new empty data set. By default the user who created a data set
 #        is the only user that is allowed to see it. The creator must explicitly
