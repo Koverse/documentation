@@ -118,6 +118,13 @@ definitions:
     $ref: schemas/visualizationType.yaml
 
 parameters:
+  dataSet:
+    name: dataSet
+    in: body
+    description: Dataset attributes
+    required: true
+    schema:
+      $ref: schemas/dataSet.yaml
   dataSetAttributeUpdateList:
     name: dataSetAttributeUpdateList
     in: body
@@ -131,6 +138,14 @@ parameters:
     description: ID of the data set
     required: true
     type: string
+  dataSetMetadata:
+    name: dataSetMetadata
+    in: body
+    description: Metadata of a dataset
+    required: true
+    type: object
+    schema:
+      $ref: schemas/dataSetMetadata.yaml
   exportJobId:
     name: exportJobId
     in: path
