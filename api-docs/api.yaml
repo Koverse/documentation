@@ -303,8 +303,7 @@ paths:
     $ref: paths/dataSetRepair.yaml
   /api/dataSets/{dataSetId}/attributes/masking:
     $ref: paths/dataSetAttributesMasking.yaml
-  /api/exportJobs/{exportJobId}/shutdown:
-    $ref: paths/exportJobsShutdown.yaml
+
   /api/importFlows:
     $ref: paths/importFlows.yaml
   /api/importFlows/{importFlowId}:
@@ -353,6 +352,8 @@ paths:
     $ref: paths/sinkTypes.yaml
   /api/sinkTypes/{sinkTypeId}:
     $ref: paths/sinkTypeId.yaml
+  /api/exportJobs/{exportJobId}/shutdown:
+    $ref: paths/exportJobsShutdown.yaml
   /api/sourceInstances:
     $ref: paths/sourceInstances.yaml
   /api/sourceInstances/{sourceInstanceId}:
