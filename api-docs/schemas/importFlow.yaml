@@ -37,3 +37,19 @@ properties:
           type: string
   configurationOptions:
     type: object
+example:
+  id: 50596
+  responsibleUserId: 1
+  disabled: false
+  type: manual
+  creationDate: 1534541944533
+  lastUpdatedDate: 1534541944533
+  lastExecutionDate: 1534529105371
+  disabledDate: null
+  executionCount: 1
+  normalizations: []
+  schedules: []
+  configurationOptions: {}
+  ingestState: {}
+  sourceInstanceId: 50594
+  outputDataSetId: movies_20171107_172745_048

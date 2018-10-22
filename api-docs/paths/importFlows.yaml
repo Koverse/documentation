@@ -10,7 +10,8 @@ post:
       schema:
         $ref: "../api.yaml#/definitions/importFlow"
   responses:
-    201:
+    default:
       description: Returns the newly created import flow
+      code: 201
       schema:
         $ref: "../api.yaml#/definitions/importFlow"

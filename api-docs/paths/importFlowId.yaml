@@ -8,6 +8,7 @@ get:
   responses:
     default:
       description: Returns the import flow data
+      code: 200
       schema:
         $ref: "../api.yaml#/definitions/importFlow"
       headers:
@@ -22,6 +23,7 @@ delete:
   responses:
     default:
       description: Returns the deleted import flow data
+      code: 200
       schema:
         $ref: "../api.yaml#/definitions/importFlow"
 
