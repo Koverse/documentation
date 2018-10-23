@@ -12,5 +12,6 @@ Koverse
    quickstart
    usageguide
    adminguide
+   indexqueryguide
    devguide
    accesscontrol
