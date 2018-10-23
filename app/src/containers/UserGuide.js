@@ -31,7 +31,6 @@ const styles = theme => ({
 
 const UserGuide = ({ api, classes, page, userGuideSections }) => (
   <div className={classes.root}>
-    {console.log('expandedSection', page.sectionTitle)}
     <UserGuideNavigation
       api={api}
       sections={userGuideSections}
@@ -43,9 +42,6 @@ const UserGuide = ({ api, classes, page, userGuideSections }) => (
       )}
       {page && (
         <section className={classes.tagHeader}>
-          <Typography variant="h4" gutterBottom>
-            {page.title}
-          </Typography>
           <Markdown text={page.contents} />
         </section>
       )}

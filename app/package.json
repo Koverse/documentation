@@ -5,9 +5,10 @@
   "license": "MIT",
   "scripts": {
     "deref": "json-dereference -s ../api-docs/api.yaml -o public/api.json",
+    "pdf": "node ./scripts/pdf",
     "start": "npm run deref && react-static start",
     "stage": "npm run deref && react-static build --staging",
-    "build": "npm run deref && react-static build",
+    "build": "npm run deref && npm run pdf && react-static build",
     "bundle": "npm run deref && react-static bundle",
     "export": "npm run deref && react-static export",
     "serve": "serve dist -p 3000"
@@ -21,6 +22,7 @@
     "classnames": "^2.2.6",
     "jdown": "^0.6.5",
     "json-dereference-cli": "^0.1.2",
+    "markdown-pdf": "^9.0.0",
     "marked": "^0.5.1",
     "prismjs": "^1.15.0",
     "react": "^16.0.0",
