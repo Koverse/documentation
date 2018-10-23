@@ -35,6 +35,8 @@ const styles = {
     height: muiTheme.app.header.height,
     alignItems: 'center',
     padding: muiTheme.spacing.unit * 2,
+    paddingLeft: muiTheme.spacing.unit * 4,
+    paddingRight: muiTheme.spacing.unit * 4,
   },
   logoLink: {
     display: 'flex',

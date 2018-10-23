@@ -18,7 +18,7 @@ const styles = theme => ({
   card: {},
 })
 
-const Home = ({ classes, userGuidePages }) => (
+const Resources = ({ classes, userGuidePages }) => (
   <div className={classes.root}>
     <Grid
       container
@@ -85,7 +85,7 @@ const Home = ({ classes, userGuidePages }) => (
   </div>
 )
 
-Home.propTypes = {
+Resources.propTypes = {
   classes: PropTypes.object.isRequired,
   userGuidePages: PropTypes.array.isRequired,
 }
@@ -94,4 +94,4 @@ export default compose(
   withStyles(styles),
   withSiteData,
   withRouteData,
-)(Home)
+)(Resources)
