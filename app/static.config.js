@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { SheetsRegistry } from 'react-jss/lib/jss'
 import { reloadRoutes } from 'react-static/node'
+import { flatten, sortBy, startCase } from 'lodash'
 import slugify from 'slugify'
 import jdown from 'jdown'
 import chokidar from 'chokidar'
@@ -11,11 +12,6 @@ import { getApiOperationsByTagName } from './src/utils'
 import api from './public/api.json'
 import theme from './src/theme'
 
-const markdownDir = '../markdown'
-const apiDir = '../api-docs'
-
-// chokidar.watch([markdownDir, apiDir]).on('all', () => reloadRoutes())
-
 const apiOperationsByTagName = getApiOperationsByTagName(api)
 
 export default {
@@ -23,13 +19,28 @@ export default {
     title: 'React Static',
   }),
   getRoutes: async () => {
-    const content = await jdown(markdownDir, { parseMd: false })
-    console.log(content)
-    const userGuide = content['user-guide']
+    const userGuide = await jdown('../user-guide', { parseMd: false })
+    const userGuideSections = Object.keys(userGuide).sort().map(key => {
+      const section = userGuide[key]
+      const sectionTitle = startCase(key)
+      const pages = sortBy(Object.keys(section).map(page => ({
+        slug: `/${slugify(key)}/${slugify(page)}`,
+        sectionTitle,
+        ...section[page]
+      })), ['sortBy', 'title'])
+      return {
+        title: sectionTitle,
+        pages,
+      }
+    })
+    const userGuidePages = flatten(userGuideSections.map(section => section.pages))
     return [
       {
         path: '/',
         component: 'src/containers/Home',
+        getData: () => ({
+          userGuidePages,
+        }),
       },
       {
         path: '/api-reference',
@@ -49,18 +60,17 @@ export default {
       },
       {
         path: '/user-guide',
-        component: 'src/containers/UserGuide',
         getData: () => ({
           api,
           userGuide,
         }),
-        children: Object.keys(userGuide).map(key => ({
-          path: `/${slugify(userGuide[key].slug)}`,
+        children: userGuidePages.map(page => ({
+          path: page.slug,
           component: 'src/containers/UserGuide',
           getData: () => ({
             api,
-            page: userGuide[key],
-            userGuide,
+            page,
+            userGuideSections,
           })
         }))
       },

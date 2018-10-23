@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import slugify from 'slugify'
 import { withRouteData, NavLink, Link } from 'react-static'
-import { compose } from 'recompose'
+import { compose, withStateHandlers } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
+import Collapse from '@material-ui/core/Collapse'
 import Drawer from '@material-ui/core/Drawer'
 import Divider from '@material-ui/core/Divider'
 import List from '@material-ui/core/List'
@@ -16,16 +16,32 @@ const styles = theme => ({
     width: 320,
     zIndex: theme.zIndex.appBar - 1,
   },
+  nested: {
+    paddingLeft: theme.spacing.unit * 4,
+  },
   active: {
-    background: theme.palette.grey[100],
-    '& .tag': {
-      color: theme.palette.text.primary,
+    '& .pageTitle': {
+      color: theme.palette.primary[500],
     },
   },
 })
-
+const withToggle = withStateHandlers(
+  ({ expandedSection }) => ({
+    expanded: expandedSection ? {
+      [expandedSection]: true,
+    } : {},
+  }),
+  {
+    toggle: ({ expanded }) => section => ({
+      expanded: {
+        ...expanded,
+        [section]: !expanded[section],
+      },
+    }),
+  }
+)
 const UserGuideNavigation = ({
-  userGuide, api, classes, className,
+  sections, api, classes, className, toggle, expanded,
 }) => {
   return (
     <Drawer
@@ -40,7 +56,7 @@ const UserGuideNavigation = ({
         <ListItem
           button
           component={Link}
-          to="/user-guide"
+          to={`/user-guide${sections[0].pages[0].slug}`}
         >
           <ListItemText
             primary="User Guide"
@@ -50,23 +66,40 @@ const UserGuideNavigation = ({
       </List>
       <Divider />
       <List dense>
-        {Object.keys(userGuide).map(key => (
-          <ListItem
-            key={key}
-            button
-            component={NavLink}
-            to={`/user-guide/${userGuide[key].slug}`}
-            activeClassName={classes.active}
-          >
-            <ListItemText
-              primary={userGuide[key].title}
-              primaryTypographyProps={{
-                classes: { root: 'tag' },
-                color: 'textSecondary',
-                variant: 'h6',
-              }}
-            />
-          </ListItem>
+        {sections.map(section => (
+          <React.Fragment key={section.title}>
+            <ListItem button onClick={() => toggle(section.title)}>
+              <ListItemText
+                primary={section.title}
+                primaryTypographyProps={{
+                  variant: 'h6',
+                }}
+              />
+            </ListItem>
+            <Collapse in={expanded[section.title]} timeout="auto" unmountOnExit>
+              <List dense>
+                {section.pages.map(page => (
+                  <ListItem
+                    button
+                    component={NavLink}
+                    key={page.slug}
+                    to={`/user-guide${page.slug}`}
+                    activeClassName={classes.active}
+                    className={classes.nested}
+                  >
+                    <ListItemText
+                      primary={page.title}
+                      primaryTypographyProps={{
+                        classes: { root: 'pageTitle' },
+                        color: 'textSecondary',
+                        variant: 'subtitle2',
+                      }}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Collapse>
+          </React.Fragment>
         ))}
       </List>
     </Drawer>
@@ -77,7 +110,9 @@ UserGuideNavigation.propTypes = {
   api: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  userGuide: PropTypes.object.isRequired,
+  sections: PropTypes.array.isRequired,
+  expanded: PropTypes.object.isRequired,
+  toggle: PropTypes.func.isRequired,
 }
 
-export default compose(withRouteData, withStyles(styles))(UserGuideNavigation)
+export default compose(withRouteData, withStyles(styles), withToggle)(UserGuideNavigation)

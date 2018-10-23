@@ -29,9 +29,14 @@ const styles = theme => ({
   }
 })
 
-const UserGuide = ({ api, classes, page, userGuide }) => (
+const UserGuide = ({ api, classes, page, userGuideSections }) => (
   <div className={classes.root}>
-    <UserGuideNavigation api={api} userGuide={userGuide} />
+    {console.log('expandedSection', page.sectionTitle)}
+    <UserGuideNavigation
+      api={api}
+      sections={userGuideSections}
+      expandedSection={page.sectionTitle}
+    />
     <div className={classes.content}>
       {!page && (
         <Redirect to="user-guide/introduction" />
@@ -52,7 +57,7 @@ UserGuide.propTypes = {
   api: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
   page: PropTypes.object,
-  userGuide: PropTypes.object.isRequired,
+  userGuideSections: PropTypes.array.isRequired,
 }
 
 export default compose(withRouteData, withStyles(styles))(UserGuide)

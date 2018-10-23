@@ -16,7 +16,7 @@ const styles = {
   card: {},
 }
 
-const Home = ({ classes }) => (
+const Home = ({ classes, userGuidePages }) => (
   <div style={{ padding: 16 }}>
     <Grid
       container
@@ -39,7 +39,7 @@ const Home = ({ classes }) => (
               size="small"
               color="primary"
               component={Link}
-              to="/user-guide"
+              to={`/user-guide${userGuidePages[0].slug}`}
             >
               View User Guide
             </Button>
@@ -85,6 +85,7 @@ const Home = ({ classes }) => (
 
 Home.propTypes = {
   classes: PropTypes.object.isRequired,
+  userGuidePages: PropTypes.array.isRequired,
 }
 
 export default compose(
