@@ -22,12 +22,12 @@ export default {
     const userGuide = await jdown('../user-guide', { parseMd: false })
     const userGuideSections = Object.keys(userGuide).sort().map(key => {
       const section = userGuide[key]
-      const sectionTitle = startCase(key)
-      const pages = sortBy(Object.keys(section).map(page => ({
-        slug: `/${slugify(key)}/${slugify(page)}`,
+      const sectionTitle = startCase(key.replace(/^[1-9]*\./gi, ''))
+      const pages = Object.keys(section).sort().map(page => ({
+        slug: `/${slugify(sectionTitle)}/${slugify(section[page].title)}`,
         sectionTitle,
         ...section[page]
-      })), ['sortBy', 'title'])
+      }))
       return {
         title: sectionTitle,
         pages,
