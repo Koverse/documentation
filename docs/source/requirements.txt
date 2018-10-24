@@ -2,4 +2,4 @@
 #pip uninstall setuptools
 #pip install 'setuptools<20.2'
 #pip install sphinxcontrib-openapi
-Sphinx<=1.4.9
+#Sphinx<=1.4.9
