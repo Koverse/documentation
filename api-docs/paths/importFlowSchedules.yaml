@@ -12,7 +12,7 @@ get:
         type: array
         items:
           $ref: "../api.yaml#/definitions/importSchedule"
-      headers:
-        last-modified:
-          type: string
-          description: The date/time that a schedule was last modified
+      # headers:
+      #   last-modified:
+      #     type: string
+      #     description: The date/time that a schedule was last modified

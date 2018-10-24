@@ -10,10 +10,10 @@ get:
       description: Returns the transform data
       schema:
         $ref: "../api.yaml#/definitions/transform"
-      headers:
-        last-modified:
-          type: string
-          description: The date/time that the transform was last modified
+      # headers:
+      #   last-modified:
+      #     type: string
+      #     description: The date/time that the transform was last modified
 
 delete:
   summary: Deletes a transform based on the id supplied

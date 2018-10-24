@@ -10,7 +10,7 @@ get:
       description: Returns the import flow data
       schema:
         $ref: "../api.yaml#/definitions/importFlow"
-      headers:
-        last-modified:
-          type: string
-          description: The date/time that the import flow was last modified
+      # headers:
+      #   last-modified:
+      #     type: string
+      #     description: The date/time that the import flow was last modified

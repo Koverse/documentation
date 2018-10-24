@@ -13,10 +13,10 @@ get:
         type: array
         items:
           $ref: "../api.yaml#/definitions/transformSchedule"
-      headers:
-        last-modified:
-          type: string
-          description: The date/time that a schedule was last modified
+      # headers:
+      #   last-modified:
+      #     type: string
+      #     description: The date/time that a schedule was last modified
 
 post:
   description: Creates a new transform schedule

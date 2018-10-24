@@ -10,10 +10,10 @@ get:
         type: array
         items:
           $ref: "../api.yaml#/definitions/exportSchedule"
-      headers:
-        last-modified:
-          type: string
-          description: The date/time that a schedule was last modified
+      # headers:
+      #   last-modified:
+      #     type: string
+      #     description: The date/time that a schedule was last modified
 
 post:
   description: Creates a new sink schedule

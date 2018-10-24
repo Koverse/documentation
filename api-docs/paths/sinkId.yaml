@@ -11,10 +11,10 @@ get:
       description: Returns the sink data
       schema:
         $ref: "../api.yaml#/definitions/sink"
-      headers:
-        last-modified:
-          type: string
-          description: The date/time that the sink was last modified
+      # headers:
+      #   last-modified:
+      #     type: string
+      #     description: The date/time that the sink was last modified
 
 delete:
   description: Disables a single sink based on the id supplied. Sinks are not deleted for auditing purposes.

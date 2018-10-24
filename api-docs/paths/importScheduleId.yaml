@@ -10,10 +10,10 @@ get:
       description: Returns the import schedule data
       schema:
         $ref: "../api.yaml#/definitions/importSchedule"
-      headers:
-        last-modified:
-          type: string
-          description: The date/time that the import schedule was last modified
+      # headers:
+      #   last-modified:
+      #     type: string
+      #     description: The date/time that the import schedule was last modified
 
 delete:
   summary: Deletes a single import schedule based on the id supplied
