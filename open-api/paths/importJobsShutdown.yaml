@@ -1,0 +1,12 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/importJobId"
+
+get:
+  summary: Shutdown an import job
+  operationId: shutdownImportJobById
+  tags: ["Jobs"]
+  responses:
+    200:
+      description: Returns an updated job
+      schema:
+          $ref: "../api.yaml#/definitions/dataSetJob"

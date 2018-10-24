@@ -1,0 +1,16 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/sinkTypeId"
+
+get:
+  summary: Returns a sink type by id
+  operationId: findSinkTypeById
+  tags: ["Sinks"]
+  responses:
+    200:
+      description: Returns the sink type data
+      schema:
+        $ref: "../api.yaml#/definitions/sinkTypeDescription"
+      # headers:
+      #   last-modified:
+      #     type: string
+      #     description: The date/time that the sink type was last modified

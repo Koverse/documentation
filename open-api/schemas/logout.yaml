@@ -1,0 +1,4 @@
+type: boolean
+example: true
+description: >
+      This indicates whether the logout was successful.

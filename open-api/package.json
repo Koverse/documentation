@@ -1,0 +1,14 @@
+{
+  "name": "koverse-open-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "scripts": {
+    "build": "swagger-cli bundle api.yaml -t yaml -o ../docs/source/api.yaml && swagger-cli validate -d ../docs/source/api.yaml"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "swagger-cli": "^2.1.3"
+  }
+}

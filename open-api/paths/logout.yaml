@@ -1,0 +1,12 @@
+get:
+  summary: User log out
+  operationId: logoutUser
+  tags: ["Authentication"]
+  description: >
+      Closes the authenticated web session. Subsequent API calls will fail with
+      code 401 Unauthorized until a new session is created via login.
+  responses:
+    200:
+      description: Returns a confirmation of the logout
+      schema:
+        $ref: "../api.yaml#/definitions/logout"

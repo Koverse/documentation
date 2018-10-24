@@ -1,0 +1,40 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Get metadata
+  description: >
+        Get the name, description, record count, and other information
+        about the given data set. Does not return any records within the
+        data set.
+  operationId: findDataSetById
+  tags: ["Data Sets"]
+  responses:
+    200:
+      description: Returns the data set metadata
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetMetadata"
+
+put:
+  summary: Update data set metadata
+  description: >
+    Update the data set metadata.
+  operationId: updateDataSetById
+  tags: ["Data Sets"]
+  responses:
+    200:
+      description: Returns the updated data set metadata.
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetMetadata"
+
+delete:
+  summary: Delete data set by dataSetId
+  description: >
+    Delete the data set specified by dataSetId.
+  operationId: deleteDataSetById
+  tags: ["Data Sets"]
+  responses:
+    200:
+      description: Returns the data set metadata with an updated DELETED dataset name.
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetMetadata"

@@ -1,0 +1,45 @@
+parameters:
+  - name: inputDataSetId
+    description: "dataSet id to use when filtering transforms by inputs"
+    required: false
+    type: string
+    in: query
+  - name: outputDataSetId
+    description: "dataSet id to use when filtering transforms by outputs"
+    required: false
+    type: string
+    in: query
+
+get:
+  summary: Returns all transforms for matching data sets.
+  description: Returns all transforms for matching data sets. One of the query parameters must be specified
+  operationId: findTransforms
+  tags: ["Transforms"]
+  responses:
+    200:
+      description: Returns the matching transforms
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/transform"
+
+post:
+  summary: Creates a new transform
+  operationId: addTransform
+  tags: ["Transforms"]
+  parameters:
+    - name: transform
+      in: body
+      description: The transform to add
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/transform"
+  responses:
+    201:
+      description: Returns the newly-added transform
+      schema:
+        $ref: "../api.yaml#/definitions/transform"
+      headers:
+        Location:
+          type: string
+          description: The URL of the newly-added transform

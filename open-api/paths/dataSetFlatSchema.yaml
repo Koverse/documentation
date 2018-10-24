@@ -1,0 +1,27 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Get flat schema metadata.
+  operationId: findDataSetFlatSchemaById
+  tags: ["Data Sets"]
+  description: >
+    Get flat schema metadata of a data set by data set id.
+  responses:
+    200:
+      description: Returns an array of the metadata of the flat schema of a data set.
+      schema:
+        type: object
+        properties:
+          root:
+            type: object
+      # example:
+      #   root:
+      #     type: STRUCTURE
+      #     fieldTypes:
+      #       actor_1_name:
+      #         type: SCALAR
+      #         fieldValueType: STRING
+      #       release_date:
+      #         type: SCALAR
+      #         fieldValueType: DATE

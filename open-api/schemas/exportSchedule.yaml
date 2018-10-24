@@ -1,0 +1,7 @@
+type: object
+properties:
+  sinkId:
+    type: integer
+    format: int64
+  sinkDisplayName:
+    type: string

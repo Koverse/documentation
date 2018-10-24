@@ -1,0 +1,19 @@
+post:
+  summary: User login
+  operationId: loginUser
+  tags: ["Authentication"]
+  description: >
+      Authenticate a user and create an authenticated web session. This must be
+      called before calling other methods.
+  parameters:
+    - name: loginParams
+      in: body
+      description: login object
+      required: true
+      schema:
+        $ref: '../api.yaml#/definitions/login'
+  responses:
+    200:
+      description: Returns the user data
+      schema:
+        $ref: "../api.yaml#/definitions/user"

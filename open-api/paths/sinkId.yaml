@@ -1,0 +1,46 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/sinkId"
+
+get:
+  description: Returns a sink by id
+  summary: Get sink by id
+  operationId: findSinkById
+  tags: ["Sinks"]
+  responses:
+    200:
+      description: Returns the sink data
+      schema:
+        $ref: "../api.yaml#/definitions/sink"
+      # headers:
+      #   last-modified:
+      #     type: string
+      #     description: The date/time that the sink was last modified
+
+delete:
+  description: Disables a single sink based on the id supplied. Sinks are not deleted for auditing purposes.
+  summary: Delete sink by id
+  operationId: deleteSinkById
+  tags: ["Sinks"]
+  responses:
+    200:
+      description: Returns the sink that was disabled
+      schema:
+        $ref: "../api.yaml#/definitions/sink"
+
+put:
+  description: Updates a sink by id
+  summary: Update sink by id
+  operationId: updateSinkById
+  tags: ["Sinks"]
+  parameters:
+    - name: sink
+      in: body
+      description: The updated sink info
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/sink"
+  responses:
+    200:
+      description: Returns the updated sink data
+      schema:
+        $ref: "../api.yaml#/definitions/sink"

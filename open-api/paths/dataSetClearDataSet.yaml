@@ -1,0 +1,12 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Clear a Data Set by id
+  operationId: clearDataSetById
+  tags: ["Data Sets"]
+  description:
+    Clears a data set of all data.
+  responses:
+    200:
+      description: '200 OK'
