@@ -13,4 +13,5 @@ Koverse
    usageguide
    adminguide
    devguide
+   automationguide
    accesscontrol
