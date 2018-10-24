@@ -7,7 +7,7 @@ get:
   summary: Get transform schedules
   tags: ["Transforms", "Schedules"]
   responses:
-    default:
+    200:
       description: Returns the matching transform schedules
       schema:
         type: array

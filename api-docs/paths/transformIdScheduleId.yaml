@@ -1,4 +1,5 @@
 parameters:
+  - $ref: "../api.yaml#/parameters/transformId"
   - $ref: "../api.yaml#/parameters/transformScheduleId"
 
 delete:
@@ -6,7 +7,7 @@ delete:
   operationId: deleteTransformScheduleById
   tags: ["Transforms", "Schedules"]
   responses:
-    default:
+    200:
       description: Returns the transform schedule that was deleted
       schema:
         $ref: "../api.yaml#/definitions/transformSchedule"

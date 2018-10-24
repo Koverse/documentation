@@ -1,5 +1,4 @@
 parameters:
-  - $ref: "../api.yaml#/parameters/dataSetId"
   - $ref: "../api.yaml#/parameters/transformId"
 
 get:
@@ -7,7 +6,7 @@ get:
   operationId: findTransformById
   tags: ["Transforms"]
   responses:
-    default:
+    200:
       description: Returns the transform data
       schema:
         $ref: "../api.yaml#/definitions/transform"
@@ -21,7 +20,7 @@ delete:
   operationId: deleteTransformById
   tags: ["Transforms"]
   responses:
-    default:
+    200:
       description: Returns the transform that was deleted
       schema:
         $ref: "../api.yaml#/definitions/transform"
@@ -38,7 +37,7 @@ put:
       schema:
         $ref: "../api.yaml#/definitions/transform"
   responses:
-    default:
+    200:
       description: Returns the updated transform data
       schema:
         $ref: "../api.yaml#/definitions/transform"

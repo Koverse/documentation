@@ -1,15 +1,15 @@
 parameters:
   - name: typeId
+    type: string
+    in: path
     description: The transform type id
     required: true
-    schema:
-      type: string
 get:
   summary: Returns a data set transform by id
   operationId: findDataSetTransformById
   tags: ["Transforms"]
   responses:
-    default:
+    200:
       description: Returns the transform type
       schema:
         $ref: "../api.yaml#/definitions/transformType"

@@ -13,8 +13,7 @@ post:
       schema:
         $ref: '../api.yaml#/definitions/login'
   responses:
-    default:
+    200:
       description: Returns the user data
-      code: 200
       schema:
         $ref: "../api.yaml#/definitions/user"

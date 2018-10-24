@@ -164,9 +164,9 @@ get:
       required: true
       description: >
             Lucene syntax query string. See above description for details on syntax.
-      externalDocs:
-        url: http://koverse.readthedocs.io/en/2.3/usageguide.html#search-syntax
-        description: Details on the Lucene syntax supported.
+      # externalDocs:
+      #   url: http://koverse.readthedocs.io/en/2.3/usageguide.html#search-syntax
+      #   description: Details on the Lucene syntax supported.
     - in: query
       name: dataSets
       type: string
@@ -206,7 +206,7 @@ get:
         A comma separated list of field names which can be used to restrict the
         fields included in the response records returned.
   responses:
-    default:
+    200:
       description: Query results
       schema:
         type: array

@@ -372,32 +372,30 @@ paths:
     $ref: paths/sourceTypeDescriptions.yaml
   /api/transformJobs/{transformJobId}/shutdown:
     $ref: paths/transformJobsShutdown.yaml
-  # /api/transforms:
-  #   $ref: paths/transforms.yaml
-  # /api/transforms/{transformId}:
-  #   $ref: paths/transformId.yaml
-  # /api/transforms/{transformId}/runTransform:
-  #   $ref: paths/transformIdRunTransform.yaml
-  # /api/transforms/{transformId}/transformSchedules:
-  #   $ref: paths/transformIdSchedules.yaml
-  # /api/transforms/{transformId}/transformSchedules/{transformScheduleId:
-  #   $ref: paths/transformIdScheduleId.yaml
-  # /api/transformTypes:
-  #   $ref: paths/transformTypes.yaml
-  # /api/transformTypes/{typeId:
-  #   $ref: paths/transformTypeId.yaml
-  #
-  #
-  # /api/login:
-  #   $ref: paths/login.yaml
-  # /api/logout:
-  #   $ref: paths/logout.yaml
-  # /api/query/:
-  #   $ref: paths/queryLucene.yaml
-  # /api/query/object:
-  #   $ref: paths/queryObject.yaml
-  # /api/query/object/names:
-  #   $ref: paths/queryObjectNames.yaml
+  /api/transforms:
+    $ref: paths/transforms.yaml
+  /api/transforms/{transformId}:
+    $ref: paths/transformId.yaml
+  /api/transforms/{transformId}/runTransform:
+    $ref: paths/transformIdRunTransform.yaml
+  /api/transforms/{transformId}/transformSchedules:
+    $ref: paths/transformIdSchedules.yaml
+  /api/transforms/{transformId}/transformSchedules/{transformScheduleId}:
+    $ref: paths/transformIdScheduleId.yaml
+  /api/transformTypes:
+    $ref: paths/transformTypes.yaml
+  /api/transformTypes/{typeId}:
+    $ref: paths/transformTypeId.yaml
+  /api/login:
+    $ref: paths/login.yaml
+  /api/logout:
+    $ref: paths/logout.yaml
+  /api/query/:
+    $ref: paths/queryLucene.yaml
+  /api/query/object:
+    $ref: paths/queryObject.yaml
+  /api/query/object/names:
+    $ref: paths/queryObjectNames.yaml
 
 
   # this may not belong in a web app API

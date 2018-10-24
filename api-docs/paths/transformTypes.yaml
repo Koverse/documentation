@@ -3,7 +3,7 @@ get:
   operationId: findTransformTypes
   tags: ["Transforms"]
   responses:
-    default:
+    200:
       description: Returns the matching transform types
       schema:
         type: array

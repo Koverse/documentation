@@ -7,7 +7,7 @@ post:
   parameters:
     - $ref: "../api.yaml#/parameters/objectQuery"
   responses:
-    default:
+    200:
       description: Query results
       schema:
         type: array
