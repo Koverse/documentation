@@ -1,2 +1,0 @@
-# Base packages
-pip==18.1
