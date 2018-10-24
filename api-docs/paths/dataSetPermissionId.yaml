@@ -17,10 +17,9 @@ put:
     Updates the permissions of a data set speicified by a data set ID.
   responses:
     200:
-      default:
-        description: Returns the updated data set permission data
-        schema:
-          $ref: "../api.yaml#/definitions/dataSetPermission"
+      description: Returns the updated data set permission data
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetPermission"
 
 delete:
   summary: Deletes a single data set permission based on the id supplied

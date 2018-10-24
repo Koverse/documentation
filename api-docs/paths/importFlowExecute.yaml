@@ -1,5 +1,5 @@
 parameters:
-  - $ref: "../api.yaml#/parameters/importFlowId"
+  - $ref: "../api.yaml#/parameters/importFlowIdPath"
 
 post:
   summary: Runs an import flow by id
@@ -11,11 +11,13 @@ post:
       schema:
         type: object
         properties:
-          success: boolean
+          success:
+            type: boolean
 
     400:
       description: Returns the success or failure of running the import flow
       schema:
         type: object
         properties:
-          failureMessage: string
+          failureMessage:
+            type: string

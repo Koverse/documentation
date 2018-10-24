@@ -168,6 +168,12 @@ parameters:
     description: ID of the import flow
     required: true
     type: string
+  importFlowIdPath:
+    name: importFlowId
+    in: path
+    description: ID of the import flow
+    required: true
+    type: string
   importJobId:
     name: importJobId
     in: path
@@ -295,77 +301,77 @@ paths:
     $ref: paths/dataSetIndexingPolicies.yaml
   /api/dataSets/{dataSetId}/permissions:
     $ref: paths/dataSetPermissions.yaml
-  # /api/dataSets/{dataSetId}/permissions/{permissionId}:
-  #   $ref: paths/datasetPermissionId.yaml
-  # /api/dataSets/{dataSetId}/jobs:
-  #   $ref: paths/dataSetJobs.yaml
-  # /api/dataSets/{dataSetId}/records:
-  #   $ref: paths/dataSetRecords.yaml
-  # /api/dataSets/{dataSetId}/schema:
-  #   $ref: paths/dataSetSchema.yaml
-  # /api/dataSets/{dataSetId}/repair:
-  #   $ref: paths/dataSetRepair.yaml
-  # /api/dataSets/{dataSetId}/attributes/masking:
-  #   $ref: paths/dataSetAttributesMasking.yaml
-  #
-  # /api/importFlows:
-  #   $ref: paths/importFlows.yaml
-  # /api/importFlows/{importFlowId}:
-  #   $ref: paths/importFlowId.yaml
-  # /api/importFlows/{importFlowId}/execute:
-  #   $ref: paths/importFlowExecute.yaml
-  # /api/importFlows/{importFlowId}/normalizations:
-  #   $ref: paths/importFlowNormalizations.yaml
-  # /api/importFlows/{importFlowId}/normalizations/{normalizationId}:
-  #   $ref: paths/importFlowNormalizationsId.yaml
-  # /api/importFlows/{importFlowId}/schedules:
-  #   $ref: paths/importFlowSchedules.yaml
-  # /api/importFlows/source/{sourceId}:
-  #   $ref: paths/importFlowSourceId.yaml
-  # /api/importJobs/{importJobId}/shutdown:
-  #   $ref: paths/importJobsShutdown.yaml
-  # /api/importSchedules:
-  #   $ref: paths/importSchedules.yaml
-  # /api/importSchedules/{importScheduleId}:
-  #   $ref: paths/importScheduleId.yaml
-  # /api/jobs:
-  #   $ref: paths/jobs.yaml
-  # /api/jobs/{jobId}/shutdown:
-  #   $ref: paths/jobsIdShutdown.yaml
-  # /api/jobs/{jobId}/unblock:
-  #   $ref: paths/jobsIdUnblock.yaml
-  # /api/normalizationTypes:
-  #   $ref: paths/normalizationTypes.yaml
-  # /api/permissions/dataset:
-  #   $ref: paths/permissionsDataSet.yaml
-  # /api/permissions/system:
-  #   $ref: paths/permissionsSystem.yaml
-  # /api/records:
-  #   $ref: paths/records.yaml
-  # /api/sinks:
-  #   $ref: paths/sinks.yaml
-  # /api/sinks/{sinkId}:
-  #   $ref: paths/sinkId.yaml
-  # /api/sink/{sinkId}/runExport:
-  #   $ref: paths/sinkRunExport.yaml
-  # /api/sinkSchedules:
-  #   $ref: paths/sinkSchedules.yaml
-  # /api/sinkSchedules/{exportScheduleId}:
-  #   $ref: paths/sinkScheduleId.yaml
-  # /api/sinkTypes:
-  #   $ref: paths/sinkTypes.yaml
-  # /api/sinkTypes/{sinkTypeId}:
-  #   $ref: paths/sinkTypeId.yaml
-  # /api/exportJobs/{exportJobId}/shutdown:
-  #   $ref: paths/exportJobsShutdown.yaml
-  # /api/sourceInstances:
-  #   $ref: paths/sourceInstances.yaml
-  # /api/sourceInstances/{sourceInstanceId}:
-  #   $ref: paths/sourceInstanceId.yaml
-  # /api/sourceTypeDescriptions:
-  #   $ref: paths/sourceTypeDescriptions.yaml
-  # /api/transformJobs/{transformJobId}/shutdown:
-  #   $ref: paths/transformJobsShutdown.yaml
+  /api/dataSets/{dataSetId}/permissions/{permissionId}:
+    $ref: paths/datasetPermissionId.yaml
+  /api/dataSets/{dataSetId}/jobs:
+    $ref: paths/dataSetJobs.yaml
+  /api/dataSets/{dataSetId}/records:
+    $ref: paths/dataSetRecords.yaml
+  /api/dataSets/{dataSetId}/schema:
+    $ref: paths/dataSetSchema.yaml
+  /api/dataSets/{dataSetId}/repair:
+    $ref: paths/dataSetRepair.yaml
+  /api/dataSets/{dataSetId}/attributes/masking:
+    $ref: paths/dataSetAttributesMasking.yaml
+
+  /api/importFlows:
+    $ref: paths/importFlows.yaml
+  /api/importFlows/{importFlowId}:
+    $ref: paths/importFlowId.yaml
+  /api/importFlows/{importFlowId}/execute:
+    $ref: paths/importFlowExecute.yaml
+  /api/importFlows/{importFlowId}/normalizations:
+    $ref: paths/importFlowNormalizations.yaml
+  /api/importFlows/{importFlowId}/normalizations/{normalizationId}:
+    $ref: paths/importFlowNormalizationsId.yaml
+  /api/importFlows/{importFlowId}/schedules:
+    $ref: paths/importFlowSchedules.yaml
+  /api/importFlows/source/{sourceId}:
+    $ref: paths/importFlowSourceId.yaml
+  /api/importJobs/{importJobId}/shutdown:
+    $ref: paths/importJobsShutdown.yaml
+  /api/importSchedules:
+    $ref: paths/importSchedules.yaml
+  /api/importSchedules/{importScheduleId}:
+    $ref: paths/importScheduleId.yaml
+  /api/jobs:
+    $ref: paths/jobs.yaml
+  /api/jobs/{jobId}/shutdown:
+    $ref: paths/jobsIdShutdown.yaml
+  /api/jobs/{jobId}/unblock:
+    $ref: paths/jobsIdUnblock.yaml
+  /api/normalizationTypes:
+    $ref: paths/normalizationTypes.yaml
+  /api/permissions/dataset:
+    $ref: paths/permissionsDataSet.yaml
+  /api/permissions/system:
+    $ref: paths/permissionsSystem.yaml
+  /api/records:
+    $ref: paths/records.yaml
+  /api/sinks:
+    $ref: paths/sinks.yaml
+  /api/sinks/{sinkId}:
+    $ref: paths/sinkId.yaml
+  /api/sink/{sinkId}/runExport:
+    $ref: paths/sinkRunExport.yaml
+  /api/sinkSchedules:
+    $ref: paths/sinkSchedules.yaml
+  /api/sinkSchedules/{exportScheduleId}:
+    $ref: paths/sinkScheduleId.yaml
+  /api/sinkTypes:
+    $ref: paths/sinkTypes.yaml
+  /api/sinkTypes/{sinkTypeId}:
+    $ref: paths/sinkTypeId.yaml
+  /api/exportJobs/{exportJobId}/shutdown:
+    $ref: paths/exportJobsShutdown.yaml
+  /api/sourceInstances:
+    $ref: paths/sourceInstances.yaml
+  /api/sourceInstances/{sourceInstanceId}:
+    $ref: paths/sourceInstanceId.yaml
+  /api/sourceTypeDescriptions:
+    $ref: paths/sourceTypeDescriptions.yaml
+  /api/transformJobs/{transformJobId}/shutdown:
+    $ref: paths/transformJobsShutdown.yaml
   # /api/transforms:
   #   $ref: paths/transforms.yaml
   # /api/transforms/{transformId}:

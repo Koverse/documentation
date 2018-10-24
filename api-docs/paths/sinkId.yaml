@@ -7,7 +7,7 @@ get:
   operationId: findSinkById
   tags: ["Sinks"]
   responses:
-    default:
+    200:
       description: Returns the sink data
       schema:
         $ref: "../api.yaml#/definitions/sink"
@@ -22,7 +22,7 @@ delete:
   operationId: deleteSinkById
   tags: ["Sinks"]
   responses:
-    default:
+    200:
       description: Returns the sink that was disabled
       schema:
         $ref: "../api.yaml#/definitions/sink"
@@ -40,7 +40,7 @@ put:
       schema:
         $ref: "../api.yaml#/definitions/sink"
   responses:
-    default:
+    200:
       description: Returns the updated sink data
       schema:
         $ref: "../api.yaml#/definitions/sink"

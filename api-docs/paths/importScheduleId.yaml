@@ -6,7 +6,7 @@ get:
   operationId: findImportScheduleById
   tags: ["Schedules"]
   responses:
-    default:
+    200:
       description: Returns the import schedule data
       schema:
         $ref: "../api.yaml#/definitions/importSchedule"
@@ -20,7 +20,7 @@ delete:
   operationId: deleteImportSchedule
   tags: ["Schedules"]
   responses:
-    default:
+    200:
       description: Returns the import schedule that was deleted
       schema:
         $ref: "../api.yaml#/definitions/importSchedule"

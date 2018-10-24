@@ -4,7 +4,7 @@ get:
   operationId: findSinksTypes
   tags: ["Sinks"]
   responses:
-    default:
+    200:
       description: Returns the matching sink types
       schema:
         type: array

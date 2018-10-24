@@ -1,5 +1,5 @@
 parameters:
-  - $ref: "../api.yaml#/parameters/dataSetId"
+  # - $ref: "../api.yaml#/parameters/dataSetId"
   - $ref: "../api.yaml#/parameters/recordId"
 get:
   summary: Get a single record
@@ -7,27 +7,30 @@ get:
   tags: ["Records"]
   parameters:
     - name: datasetId
+      type: string
       in: query
       required: true
     - name: recordId
+      type: string
       in: query
       required: true
   description:
         Get a single record by data set id and record id.
   responses:
-    default:
+    200:
       description: Returns the single record data.
       schema:
         properties:
-          flatSchema: boolean
+          flatSchema:
+            type: boolean
           records:
             type: array
             items:
               $ref: "../api.yaml#/definitions/record"
-      example:
-        flatSchema: true
-        records:
-          - $ref: "../schemas/recordExample.yaml"
+      # example:
+      #   flatSchema: true
+      #   records:
+      #     - $ref: "../schemas/recordExample.yaml"
 
 post:
   summary: Write a single record
@@ -36,16 +39,18 @@ post:
   description:
     Writes a single record to the specified data set.
   responses:
-    default:
+    200:
       description: Returns the single record data.
       schema:
+        type: object
         properties:
-          flatSchema: boolean
+          flatSchema:
+            type: boolean
           records:
             type: array
             items:
               $ref: "../api.yaml#/definitions/record"
-      example:
-        flatSchema: true
-        records:
-          - $ref: "../schemas/recordExample.yaml"
+      # example:
+      #   flatSchema: true
+      #   records:
+      #     - $ref: "../schemas/recordExample.yaml"

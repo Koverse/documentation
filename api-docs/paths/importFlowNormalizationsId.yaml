@@ -1,5 +1,5 @@
 parameters:
-  - $ref: "../api.yaml#/parameters/importFlowId"
+  - $ref: "../api.yaml#/parameters/importFlowIdPath"
   - $ref: "../api.yaml#/parameters/normalizationId"
 
 get:
@@ -8,7 +8,7 @@ get:
   operationId: findNormalizationById
   tags: ["Import Flows"]
   responses:
-    default:
+    200:
       description: Returns the normalization data
       schema:
         $ref: "../api.yaml#/definitions/normalization"
@@ -26,7 +26,7 @@ put:
       schema:
         $ref: "../api.yaml#/definitions/normalization"
   responses:
-    default:
+    200:
       description: Returns the updated normalization data
       schema:
         $ref: "../api.yaml#/definitions/normalization"
@@ -37,7 +37,7 @@ delete:
   operationId: deleteNormalization
   tags: ["Import Flows"]
   responses:
-    default:
+    200:
       description: Returns the normalization that was deleted
       schema:
         $ref: "../api.yaml#/definitions/normalization"

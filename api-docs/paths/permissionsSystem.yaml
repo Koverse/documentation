@@ -4,13 +4,12 @@ get:
   operationId: systemPermissions
   tags: ["System", "Permissions"]
   responses:
-    default:
+    200:
       description: Returns the users system permissions metadata.
       schema:
         type: array
         items:
-          permission:
-            type: string
+          type: string
         # example:
           # [
           #   {

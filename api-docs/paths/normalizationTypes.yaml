@@ -3,7 +3,7 @@ get:
   operationId: findNormalizationTypes
   tags: ["Normalizations"]
   responses:
-    default:
+    200:
       description: Returns the matching normalization types
       schema:
         type: array

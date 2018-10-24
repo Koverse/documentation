@@ -1,12 +1,12 @@
 parameters:
-  - $ref: "../api.yaml#/parameters/importFlowId"
+  - $ref: "../api.yaml#/parameters/importFlowIdPath"
 
 get:
   summary: Returns all Import Schedules by data flow id
   operationId: findImportSchedules
   tags: ["Import Flows", "Schedules"]
   responses:
-    default:
+    200:
       description: Returns the matching import schedules
       schema:
         type: array

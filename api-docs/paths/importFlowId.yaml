@@ -1,14 +1,13 @@
 parameters:
-  - $ref: "../api.yaml#/parameters/importFlowId"
+  - $ref: "../api.yaml#/parameters/importFlowIdPath"
 
 get:
   summary: Returns an import flow by id
   operationId: findImportFlowById
   tags: ["Import Flows"]
   responses:
-    default:
+    200:
       description: Returns the import flow data
-      code: 200
       schema:
         $ref: "../api.yaml#/definitions/importFlow"
       headers:
@@ -21,9 +20,8 @@ delete:
   operationId: deleteImportFlowById
   tags: ["Import Flows"]
   responses:
-    default:
+    200:
       description: Returns the deleted import flow data
-      code: 200
       schema:
         $ref: "../api.yaml#/definitions/importFlow"
 
@@ -39,7 +37,7 @@ put:
       schema:
         $ref: "../api.yaml#/definitions/importFlow"
   responses:
-    default:
+    200:
       description: Returns the updated import flow data
       schema:
         $ref: "../api.yaml#/definitions/importFlow"

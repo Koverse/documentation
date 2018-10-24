@@ -6,7 +6,7 @@ get:
   operationId: findImportFlowBySourceId
   tags: ["Import Flows", "Sources"]
   responses:
-    default:
+    200:
       description: Returns the import flow data
       schema:
         $ref: "../api.yaml#/definitions/importFlow"

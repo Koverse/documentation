@@ -6,7 +6,7 @@ get:
   operationId: shutdownImportJobById
   tags: ["Jobs"]
   responses:
-    default:
+    200:
       description: Returns an updated job
       schema:
           $ref: "../api.yaml#/definitions/dataSetJob"

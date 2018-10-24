@@ -4,18 +4,16 @@ get:
   operationId: dataSetPermissions
   tags: ["Data Sets", "Permissions"]
   responses:
-    default:
+    200:
       description: Returns avilable data set permissions.
-      code: 200
       schema:
         type: array
         items:
-          permission:
-            type: string
-      example:
-        - readData
-        - manageDataCollectionConfiguration
-        - manageDataCollectionPermissions
-        - writeDeleteData
-        - bulkDownloadData
-        - viewAuditEvents
+          type: string
+      # example:
+      #   - readData
+      #   - manageDataCollectionConfiguration
+      #   - manageDataCollectionPermissions
+      #   - writeDeleteData
+      #   - bulkDownloadData
+      #   - viewAuditEvents

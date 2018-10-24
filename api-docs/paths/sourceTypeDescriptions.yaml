@@ -3,7 +3,7 @@ get:
   operationId: findSourceTypes
   tags: ["Sources"]
   responses:
-    default:
+    200:
       description: Returns all source types with metadata
       schema:
         type: array

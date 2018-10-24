@@ -4,7 +4,7 @@ get:
   operationId: findSinkSchedules
   tags: ["Sinks", "Schedules"]
   responses:
-    default:
+    200:
       description: Returns the matching sink schedules
       schema:
         type: array
@@ -28,8 +28,7 @@ post:
       schema:
         $ref: "../api.yaml#/definitions/exportSchedule"
   responses:
-    default:
+    201:
       description: Returns the newly-added sink schedule
-      code: 201
       schema:
         $ref: "../api.yaml#/definitions/exportSchedule"

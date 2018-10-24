@@ -6,7 +6,7 @@ get:
   operationId: findSourceById
   tags: ["Sources"]
   responses:
-    default:
+    200:
       description: Returns the source data
       schema:
         $ref: "../api.yaml#/definitions/source"
@@ -20,7 +20,7 @@ delete:
   operationId: deleteSourceById
   tags: ["Sources"]
   responses:
-    default:
+    200:
       description: Returns the source that was deleted
       schema:
         $ref: "../api.yaml#/definitions/source"
@@ -37,7 +37,7 @@ put:
       schema:
         $ref: "../api.yaml#/definitions/sourceInstance"
   responses:
-    default:
+    200:
       description: Returns the updated source data
       schema:
         $ref: "../api.yaml#/definitions/sourceInstance"

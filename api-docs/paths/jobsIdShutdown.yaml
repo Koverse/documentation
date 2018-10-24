@@ -6,5 +6,5 @@ get:
   operationId: shutdownJobById
   tags: ["Jobs"]
   responses:
-    default:
+    200:
       description: '200 OK'

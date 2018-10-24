@@ -17,9 +17,8 @@ put:
         items:
           $ref: '../api.yaml#/definitions/dataSetAttributes'
   responses:
-    default:
+    200:
       description: Returns the updated list of data set attributes for the specified data set.
-      code: 200
       schema:
         type: array
         items:

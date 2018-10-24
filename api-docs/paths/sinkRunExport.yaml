@@ -7,8 +7,7 @@ get:
   tags: ["Sinks"]
   description: Run an export by the specified id.
   responses:
-    default:
+    200:
       description: Returns the export job data
-      code: 200
       schema:
         $ref: "../api.yaml#/definitions/job"

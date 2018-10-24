@@ -6,7 +6,7 @@ get:
   operationId: findImportSchedulesById
   tags: ["Schedules"]
   responses:
-    default:
+    200:
       description: Returns the matching import schedules
       schema:
         type: array

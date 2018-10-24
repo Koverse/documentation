@@ -4,7 +4,7 @@ get:
   operationId: findActiveJobs
   tags: ["Jobs"]
   responses:
-    default:
+    200:
       description: Returns the active jobs
       schema:
         type: array

@@ -7,7 +7,7 @@ get:
   operationId: findSinkScheduleById
   tags: ["Sinks", "Schedules"]
   responses:
-    default:
+    200:
       description: Returns the sink schedule data
       schema:
         $ref: "../api.yaml#/definitions/exportSchedule"
@@ -22,7 +22,7 @@ delete:
   operationId: deleteSinkScheduleById
   tags: ["Sinks", "Schedules"]
   responses:
-    default:
+    200:
       description: Returns the sink schedule that was deleted
       schema:
         $ref: "../api.yaml#/definitions/exportSchedule"

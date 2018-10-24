@@ -6,7 +6,7 @@ get:
   operationId: findSinkTypeById
   tags: ["Sinks"]
   responses:
-    default:
+    200:
       description: Returns the sink type data
       schema:
         $ref: "../api.yaml#/definitions/sinkTypeDescription"
