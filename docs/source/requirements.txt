@@ -1,3 +1,4 @@
 -r pip.txt
+-r openapi.txt
 #pip install sphinxcontrib-openapi
 #Sphinx<=1.4.9
