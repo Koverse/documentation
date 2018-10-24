@@ -13,7 +13,6 @@ here = os.path.dirname(__file__)
 setup(
     name='sphinxcontrib-openapi',
     description='OpenAPI (fka Swagger) spec renderer for Sphinx',
-    long_description=long_description,
     license='BSD',
     url='https://github.com/ikalnytskyi/sphinxcontrib-openapi',
     keywords='sphinx openapi swagger rest api renderer docs',
