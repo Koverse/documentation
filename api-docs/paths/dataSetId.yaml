@@ -10,15 +10,10 @@ get:
   operationId: findDataSetById
   tags: ["Data Sets"]
   responses:
-    default:
+    200:
       description: Returns the data set metadata
-      code: 200
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
-      #headers:
-      #  last-modified:
-      #    type: string
-      #    description: The date/time that the label was last modified
 
 put:
   summary: Update data set metadata
@@ -27,9 +22,8 @@ put:
   operationId: updateDataSetById
   tags: ["Data Sets"]
   responses:
-    default:
+    200:
       description: Returns the updated data set metadata.
-      code: 200
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
 
@@ -40,77 +34,7 @@ delete:
   operationId: deleteDataSetById
   tags: ["Data Sets"]
   responses:
-    default:
+    200:
       description: Returns the data set metadata with an updated DELETED dataset name.
-      code: 200
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
-      # example:
-        # {
-            #"id": "best_retail_20180912_162918_485",
-            #"name": "best retail_!DELETED__20180919_165948_938_!",
-            #"description": null,
-            #"deleted": true,
-            #"groupPermissionIds": [],
-            #"indexingPolicyId": 417,
-            #"indexingPolicy": null,
-            #"tags": null,
-            #"userId": 4,
-            #"createdTimestamp": 1536784158486,
-            #"updatedTimestamp": 1537390793137,
-            #"recordCountLastUpdated": 1537390888439,
-            #"recordCount": 0,
-            #"sizeBytes": 0,
-            #"disableFieldStats": false,
-            #"disableSampling": false,
-            #"status": "Ready",
-            #"hadoopDeleteJobIds": [],
-            #"dataStoreAuthRemoved": false,
-            #"version": 2,
-            #"importFlowId": null,
-            #"importFlowIds": [
-              #342
-            #]
-        # }
-
-# commenting out until we have data set permissions documented
-
-# delete:
-#   summary: Delete based on the ID supplied
-#   description: >
-#         This deletes the data set metadata and all records and index entries,
-#         etc. associated with the data set.
-#   operationId: deleteDataSet
-#   tags: ["DataSet"]
-#   responses:
-#     default:
-#       description: Returns the metadata of the data set that was deleted
-#       schema:
-#         $ref: "../api.yaml#/definitions/dataSetMetadata"
-
-# put:
-#   summary: Update metadata by ID
-#   description: >
-#         Use this method to change the name or description.
-#   tags: ["DataSet"]
-#   consumes:
-#     - applications/json
-#   parameters:
-#     - in: body
-#       name: dataSetMetadata
-#       description: New data set metadata
-#       required: true
-#       schema:
-#         type: object
-#         properties:
-#           name:
-#             type: string
-#             minLength: 4
-#             pattern: "^[a-zA-Z0-9- ]+$"
-#           description:
-#             type: string
-#   responses:
-#     default:
-#       description: Returns the updated data set metadata
-#       schema:
-#         $ref: "../api.yaml#/definitions/dataSetMetadata"

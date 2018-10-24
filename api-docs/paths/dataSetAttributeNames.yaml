@@ -9,24 +9,23 @@ get:
         These can be used to inform users of what fields are available so
         they can be used in queries.
   responses:
-    default:
+    200:
       description: Returns all data set attribute names
-      code: 200
       schema:
         type: array
         items:
           type: string
-      example:
-        - aspect_ratio
-        - budget
-        - color
-        - content_rating
-        - country
-        - director_name
-        - duration
-        - genres
-        - gross
-        - language
-        - movie_title
-        - plot_keywords
-        - title_year
+      # example:
+      #   - aspect_ratio
+      #   - budget
+      #   - color
+      #   - content_rating
+      #   - country
+      #   - director_name
+      #   - duration
+      #   - genres
+      #   - gross
+      #   - language
+      #   - movie_title
+      #   - plot_keywords
+      #   - title_year

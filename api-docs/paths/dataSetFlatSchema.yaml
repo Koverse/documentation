@@ -8,20 +8,20 @@ get:
   description: >
     Get flat schema metadata of a data set by data set id.
   responses:
-    default:
+    200:
       description: Returns an array of the metadata of the flat schema of a data set.
-      code: 200
       schema:
         type: object
         properties:
-          root: object
-      example:
-        root:
-          type: STRUCTURE
-          fieldTypes:
-            actor_1_name:
-              type: SCALAR
-              fieldValueType: STRING
-            release_date:
-              type: SCALAR
-              fieldValueType: DATE
+          root:
+            type: object
+      # example:
+      #   root:
+      #     type: STRUCTURE
+      #     fieldTypes:
+      #       actor_1_name:
+      #         type: SCALAR
+      #         fieldValueType: STRING
+      #       release_date:
+      #         type: SCALAR
+      #         fieldValueType: DATE

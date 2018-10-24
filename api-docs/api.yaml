@@ -281,20 +281,20 @@ parameters:
 paths:
   /api/dataSets:
     $ref: paths/dataSets.yaml
-  # /api/dataSets/{dataSetId}:
-  #   $ref: paths/dataSetId.yaml
-  # /api/dataSets/{dataSetId}/attributeNames:
-  #   $ref: paths/dataSetAttributeNames.yaml
-  # /api/dataSets/{dataSetId}/attributes:
-  #   $ref: paths/dataSetAttributes.yaml
-  # /api/dataSets/{dataSetId}/clearDataSet:
-  #   $ref: paths/dataSetClearDataSet.yaml
-  # /api/dataSets/{dataSetId}/flatSchema:
-  #   $ref: paths/dataSetFlatSchema.yaml
-  # /api/dataSets/{dataSetId}/indexingPolicy:
-  #   $ref: paths/dataSetIndexingPolicies.yaml
-  # /api/dataSets/{dataSetId}/permissions:
-  #   $ref: paths/dataSetPermissions.yaml
+  /api/dataSets/{dataSetId}:
+    $ref: paths/dataSetId.yaml
+  /api/dataSets/{dataSetId}/attributeNames:
+    $ref: paths/dataSetAttributeNames.yaml
+  /api/dataSets/{dataSetId}/attributes:
+    $ref: paths/dataSetAttributes.yaml
+  /api/dataSets/{dataSetId}/clearDataSet:
+    $ref: paths/dataSetClearDataSet.yaml
+  /api/dataSets/{dataSetId}/flatSchema:
+    $ref: paths/dataSetFlatSchema.yaml
+  /api/dataSets/{dataSetId}/indexingPolicy:
+    $ref: paths/dataSetIndexingPolicies.yaml
+  /api/dataSets/{dataSetId}/permissions:
+    $ref: paths/dataSetPermissions.yaml
   # /api/dataSets/{dataSetId}/permissions/{permissionId}:
   #   $ref: paths/datasetPermissionId.yaml
   # /api/dataSets/{dataSetId}/jobs:
