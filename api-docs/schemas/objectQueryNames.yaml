@@ -1,4 +1,6 @@
 type: object
+required:
+  - query
 description: >
       This object contains the parameters used to issue a query against one or more data sets. The query is defined as a JSON string
 properties:
@@ -10,7 +12,6 @@ properties:
           A list of data set names. Specifying an empty list will cause the query to be issued to all data sets the user is allowed to query.
   query:
     type: string
-    required: true
     description: |
           A query represented as a JSON string
 
@@ -54,7 +55,6 @@ properties:
           [additional docs](http://koverse.readthedocs.io/en/2.3/dev/dataset.html#compositeindexes)
           for information on building these.
   auths:
-    required: false
     type: array
     items:
       type: string
@@ -63,7 +63,6 @@ properties:
         used for applying record-level filtering of data set results to
         records that have additional security labels applied.
   fieldsToReturn:
-    required: false
     type: array
     items:
       type: string
@@ -72,10 +71,10 @@ properties:
           fields will be excluded. Omitting this parameter will cause
           all fields to be included in records.
   limit:
-    type: int64
+    type: integer
     description: The number of results to fetch in this call
   offset:
-    type: int64
+    type: integer
     description: The number of records in the result set to skip
 example:
   collectionNames:

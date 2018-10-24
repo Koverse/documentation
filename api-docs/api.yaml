@@ -113,164 +113,170 @@ definitions:
   visualizationType:
     $ref: schemas/visualizationType.yaml
 
-# parameters:
-#   dataSet:
-#     name: dataSet
-#     in: body
-#     description: Dataset attributes
-#     required: true
-#     schema:
-#       $ref: schemas/dataSet.yaml
-#   dataSetAttributeUpdateList:
-#     name: dataSetAttributeUpdateList
-#     in: body
-#     description: Attribute update list for masking attributes
-#     required: true
-#     schema:
-#       $ref: schemas/dataSetAttributeUpdateList.yaml
-#   dataSetId:
-#     name: dataSetId
-#     in: path
-#     description: ID of the data set
-#     required: true
-#     type: string
-#   dataSetMetadata:
-#     name: dataSetMetadata
-#     in: body
-#     description: Metadata of a dataset
-#     required: true
-#     type: object
-#     schema:
-#       $ref: schemas/dataSetMetadata.yaml
-#   exportJobId:
-#     name: exportJobId
-#     in: path
-#     description: ID of the export job
-#     required: true
-#     type: string
-#   exportScheduleId:
-#     name: exportScheduleId
-#     in: path
-#     description: ID of an export schedule
-#     required: true
-#     type: string
-#   fileType:
-#     name: fileType
-#     in: path
-#     description: fileType to download
-#     required: false
-#     type: string
-#     enum: [json, csv]
-#   importFlowId:
-#     name: importFlowId
-#     in: query
-#     description: ID of the import flow
-#     required: true
-#     type: string
-#   importJobId:
-#     name: importJobId
-#     in: path
-#     description: ID of the import job
-#     type: integer
-#     format: int64
-#   importScheduleId:
-#     name: importScheduleId
-#     in: path
-#     description: ID of the import schedule
-#     required: true
-#     type: string
-#   jobId:
-#     name: jobId
-#     in: path
-#     description: ID of the job
-#     required: true
-#     type: string
-#   normalizationId:
-#     name: normalizationId
-#     in: path
-#     description: ID of the normalization
-#     required: true
-#     type: string
-#   objectQuery:
-#     name: query
-#     in: body
-#     required: true
-#     schema:
-#       $ref: schemas/objectQuery.yaml
-#   objectQueryNames:
-#     name: query
-#     in: body
-#     required: true
-#     schema:
-#       $ref: schemas/objectQueryNames.yaml
-#   permissionId:
-#     name: permissionId
-#     in: path
-#     description: ID of the permission
-#     required: true
-#     type: string
-#   recordId:
-#     name: recordId
-#     in: query
-#     description: ID of the record
-#     required: true
-#     type: string
-#   recordStyle:
-#     name: recordStyle
-#     in: query
-#     description: >
-#           Requests a more efficient representation of records
-#     required: false
-#     type: string
-#     enum: [2.2]
-#   sink:
-#     name: sink
-#     in: body
-#     required: true
-#     schema:
-#       $ref: "schemas/sink.yaml"
-#   sinkId:
-#     name: sinkId
-#     in: path
-#     description: ID of the sink
-#     required: true
-#   sinkTypeId:
-#     name: sinkTypeId
-#     in: path
-#     description: ID of the sink type
-#     required: true
-#     type: integer
-#     format: int64
-#   sourceId:
-#     name: sourceId
-#     in: path
-#     description: ID of the source
-#     required: true
-#     type: string
-#   sourceInstanceId:
-#     name: sourceInstanceId
-#     in: path
-#     description: ID of the source
-#     required: true
-#     type: string
-#   transformId:
-#     name: transformId
-#     in: path
-#     description: ID of a transform
-#     type: integer
-#     format: int64
-#   transformJobId:
-#     name: transformJobId
-#     in: path
-#     description: ID of the transform job
-#     type: integer
-#     format: int64
-#   transformScheduleId:
-#     name: transformScheduleId
-#     in: path
-#     description: ID of the transform schedule
-#     type: integer
-#     format: int64
+parameters:
+  dataSet:
+    name: dataSet
+    in: body
+    description: Dataset attributes
+    required: true
+    schema:
+      $ref: schemas/dataSet.yaml
+  dataSetAttributeUpdateList:
+    name: dataSetAttributeUpdateList
+    in: body
+    description: Attribute update list for masking attributes
+    required: true
+    schema:
+      $ref: schemas/dataSetAttributeUpdateList.yaml
+  dataSetId:
+    name: dataSetId
+    in: path
+    description: ID of the data set
+    required: true
+    type: string
+  dataSetMetadata:
+    name: dataSetMetadata
+    in: body
+    description: Metadata of a dataset
+    required: true
+    schema:
+      $ref: schemas/dataSetMetadata.yaml
+  exportJobId:
+    name: exportJobId
+    in: path
+    description: ID of the export job
+    required: true
+    type: string
+  exportScheduleId:
+    name: exportScheduleId
+    in: path
+    description: ID of an export schedule
+    required: true
+    type: string
+  fileType:
+    name: fileType
+    in: path
+    description: fileType to download
+    required: true
+    type: string
+    enum:
+      - json
+      - csv
+  importFlowId:
+    name: importFlowId
+    in: query
+    description: ID of the import flow
+    required: true
+    type: string
+  importJobId:
+    name: importJobId
+    in: path
+    description: ID of the import job
+    required: true
+    type: integer
+    format: int64
+  importScheduleId:
+    name: importScheduleId
+    in: path
+    description: ID of the import schedule
+    required: true
+    type: string
+  jobId:
+    name: jobId
+    in: path
+    description: ID of the job
+    required: true
+    type: string
+  normalizationId:
+    name: normalizationId
+    in: path
+    description: ID of the normalization
+    required: true
+    type: string
+  objectQuery:
+    name: query
+    in: body
+    required: true
+    schema:
+      $ref: schemas/objectQuery.yaml
+  objectQueryNames:
+    name: query
+    in: body
+    required: true
+    schema:
+      $ref: schemas/objectQueryNames.yaml
+  permissionId:
+    name: permissionId
+    in: path
+    description: ID of the permission
+    required: true
+    type: string
+  recordId:
+    name: recordId
+    in: query
+    description: ID of the record
+    required: true
+    type: string
+  recordStyle:
+    name: recordStyle
+    in: query
+    description: >
+          Requests a more efficient representation of records
+    required: false
+    type: string
+    enum: [2.2]
+  sink:
+    name: sink
+    in: body
+    required: true
+    schema:
+      $ref: "schemas/sink.yaml"
+  sinkId:
+    name: sinkId
+    in: path
+    description: ID of the sink
+    type: integer
+    required: true
+  sinkTypeId:
+    name: sinkTypeId
+    in: path
+    description: ID of the sink type
+    required: true
+    type: integer
+    format: int64
+  sourceId:
+    name: sourceId
+    in: path
+    description: ID of the source
+    required: true
+    type: string
+  sourceInstanceId:
+    name: sourceInstanceId
+    in: path
+    description: ID of the source
+    required: true
+    type: string
+  transformId:
+    name: transformId
+    in: path
+    description: ID of a transform
+    type: integer
+    required: true
+    format: int64
+  transformJobId:
+    name: transformJobId
+    in: path
+    required: true
+    description: ID of the transform job
+    type: integer
+    format: int64
+  transformScheduleId:
+    name: transformScheduleId
+    in: path
+    required: true
+    description: ID of the transform schedule
+    type: integer
+    format: int64
 
 paths:
   /api/dataSets:
