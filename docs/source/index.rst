@@ -14,3 +14,4 @@ Koverse
    adminguide
    devguide
    accesscontrol
+   REST_specification
