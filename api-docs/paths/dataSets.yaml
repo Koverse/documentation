@@ -6,19 +6,12 @@ get:
         Get a list of data set metadata objects for all data sets the user is
         authorized to see.
   responses:
-    default:
+    200:
       description: Returns metadata for all data sets the user is authorized to see
-      code: 200
       schema:
         type: array
         items:
           $ref: "../api.yaml#/definitions/dataSetMetadata"
-      #headers:
-      #  last-modified:
-      #    type: string
-      #    description: The date/time that a data set was last modified
-
-# commenting this out until we have data set permission methods documented.
 
 post:
   summary: Create a new data set
@@ -35,51 +28,8 @@ post:
       required: true
       schema:
         $ref: '../api.yaml#/definitions/dataSet'
-    # - indexingPolicy:
-    #   in: body
-    #   description: The indexing policy of the new data set.
-    #   required: false
   responses:
-    default:
+    201:
       description: Returns the newly created Data Set metadata
-      code: 201
       schema:
-        type: array
-        items:
-          $ref: "../api.yaml#/definitions/dataSetMetadata"
-
-#post:
-#  summary: Create a new data set
-#  operationId: addDataSet
-#  tags: ["Data Sets"]
-#  description: >
-#        Creates a new empty data set. By default the user who created a data set
-#        is the only user that is allowed to see it. The creator must explicitly
-#        grant access to other groups in order for them to use a data set.
-#
-#        Note that this call will fail if there is already a data set with the
-#        same name as the requested new data set.
-#  parameters:
-#    - name: dataSet
-#      in: body
-#      description: The name of the new data set
-#      required: true
-#      schema:
-#        type: object
-#        required:
-#          - name
-#        properties:
-#          name:
-#            type: string
-#            minLength: 4
-#            pattern: "^[a-zA-Z0-9- ]+$"
-#  responses:
-#    #201:
-#    default:
-#      description: Returns the metadata of the newly-added data set
-#      schema:
-#        $ref: "../api.yaml#/definitions/dataSetMetadata"
-#      #headers:
-#      #  Location:
-#      #    type: string
-#      #    description: The URL of the newly-added data set
+        $ref: "../api.yaml#/definitions/dataSetMetadata"

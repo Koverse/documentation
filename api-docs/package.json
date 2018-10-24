@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deref": "json-dereference -s api.yaml -o api-compiled.yaml",
+    "swagger": "swagger-cli bundle api.yaml -t yaml -o api-compiled.yaml && swagger-cli validate -d api-compiled.yaml",
     "build": "npm run deref && spectacle -a app api-compiled.yaml",
     "start": "npm run deref && spectacle -a app -d api-compiled.yaml",
     "test": "echo \"Error: no test specified\" && exit 1"

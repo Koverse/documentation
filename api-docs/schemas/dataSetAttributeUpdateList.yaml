@@ -4,20 +4,26 @@ required:
 properties:
   attrs:
     type: array
-    properties:
-      id:
-        type: string
-      indexed:
-        type: boolean
-      maskers:
-        type: array
-        properties:
-          descriptionId:
-            type: string
-          exceptedGroupIds:
-            type: array
-          parameters:
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+        indexed:
+          type: boolean
+        maskers:
+          type: array
+          items:
             type: object
             properties:
-              setting:
+              descriptionId:
                 type: string
+              exceptedGroupIds:
+                type: array
+                items:
+                  type: integer
+              parameters:
+                type: object
+                properties:
+                  setting:
+                    type: string

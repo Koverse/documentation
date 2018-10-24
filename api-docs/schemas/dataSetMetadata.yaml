@@ -26,7 +26,7 @@ properties:
   userId:
     type: integer
   useId:
-    type: int64
+    type: integer
     description: The user ID of the creator of this data set.
   createdTimestamp:
     type: integer
@@ -58,7 +58,7 @@ properties:
   importFlowIds:
     type: array
     items:
-      type: int64
+      type: integer
     description: A list of IDs of import flows writing data to this data set.
   ageOffEnabled:
     type: boolean
