@@ -5,22 +5,409 @@
 ================
 Automation Guide
 ================
-.. contents:: :depth: 3
+.. contents:: :depth: 4
 
 Overview
 ========
 
-blah
+This guide will help you write a Koverse automation application.
+It walks though the process of creating, executing, and deleting sources, data sets, and transforms.
+The first section focuses on providing example Java code.
+The second section highlight the HTTP REST calls and provides sample JSON requests and responses.
 
-Create a Data Source
-====================
+Using Java to Perform REST Calls
+================================
+
+While Koverse does not provide a Java SDK to use for automation,
+Java code can be written to invoke the REST HTTP methods that Koverse provides.
+The easiest way to do so is to use the Apache HTTP client and the JSON Simple library.
+This section will walk though creating a Maven project with Java code that can be used for automation.
+
+
+Maven Dependencies
+------------------
+
+This example relies on the Apache HTTP Client and JSON Simple libraries.
+Therefore, your Maven ``pom.xml`` file must have the following dependencies:
+
+.. code-block:: xml
+
+ <dependencies>
+   <dependency>
+     <groupId>org.apache.httpcomponents</groupId>
+     <artifactId>httpclient</artifactId>
+     <version>4.5.6</version>
+   </dependency>
+   <dependency>
+     <groupId>com.googlecode.json-simple</groupId>
+     <artifactId>json-simple</artifactId>
+     <version>1.1.1</version>
+   </dependency>
+   <dependency>
+     <groupId>log4j</groupId>
+     <artifactId>log4j</artifactId>
+     <version>1.2.17</version>
+   </dependency>
+ </dependencies>
+
+
+Main Method
+-----------
+
+The entry point for this example is a main method that will call a series of other Java methods.
+It will create and delete data sets, data sources, and transforms as well as execute sources and transforms.
+
+.. code-block:: java
+
+ private static final String BASE_URL = "http://localhost:8080/api/";
+ private static final CloseableHttpClient HTTP_CLIENT = HttpClients.createDefault();
+ private static final Header ACCEPT_JSON = new BasicHeader("Accept", "application/json");
+ private static final Header CONTENT_TYPE_JSON = new BasicHeader("Content-Type", "application/json");
+ private static final JSONParser JSON_PARSER = new JSONParser();
+
+ public static void main(String[] args) throws Exception {
+   long sourceId;
+   long importFlowId;
+   String sourceDataSetId;
+   long importFlowJobId;
+   String transformDataSetId;
+   long transformId;
+   long transformJobId;
+
+   login();
+   sourceId = addWikipediaSource();
+   importFlowId = addImportFlow(sourceId);
+   sourceDataSetId = addDataSet("wiki");
+   attachDataSetToImportFlow(importFlowId, sourceId, sourceDataSetId);
+   importFlowJobId = executeImportFlow(importFlowId);
+   waitForJobCompletion(importFlowJobId);
+   transformDataSetId = addDataSet("copy");
+   transformId = addSqlTransform(sourceDataSetId, transformDataSetId);
+   transformJobId = executeTransform(transformId);
+   waitForJobCompletion(transformJobId);
+   deleteTransform(transformId);
+   deleteSource(sourceId);
+   deleteDataSet(sourceDataSetId);
+   deleteDataSet(transformDataSetId);
+
+ }
+
+
+This main method:
+ # Logs into Koverse.
+ # Creates a Wikipedia Sources.
+ # Creates an Import Flow.
+ # Creates a Data Set for the source.
+ # Attaches the Data Set and Source to the Import Flow.
+ # Executes the Import Flow.
+ # Waits for the Import Flow to finish.
+ # Creates a SQL Transform that simply copies records from one data set to another.
+ # Creates a Data Set for the Transform to write records to.
+ # Executes the Transform and waits for it to finish
+ # Delete the Transform, Source, and Data Sets.
+
+Helper Methods
+--------------
+
+There are several methods for performing the HTTP operations GET, PUT, POST, and DELETE:
+
+.. code-block:: java
+
+ private static HttpGet get(String path) {
+   return addHeaders(new HttpGet(BASE_URL + path));
+ }
+
+ private static HttpDelete delete(String path) {
+   return addHeaders(new HttpDelete(BASE_URL + path));
+ }
+
+ private static HttpPut put(String path, String body) throws Exception {
+   HttpPut put = addHeaders(new HttpPut(BASE_URL + path));
+
+   put.setEntity(new StringEntity(body));
+
+   return put;
+ }
+
+ private static HttpPost post(String path) {
+   return addHeaders(new HttpPost(BASE_URL + path));
+ }
+
+ private static HttpPost post(String path, String body) throws Exception {
+   HttpPost post = post(path);
+
+   post.setEntity(new StringEntity(body));
+
+   return post;
+ }
+
+These methods construct Apache HTTP verb objects and decorate them using the ``addHeaders()`` method,
+which adds the required HTTP headers needed for REST calls to Koverse to work without error.
+
+That method is below:
+
+.. code-block:: java
+
+ private static <T extends HttpMessage> T addHeaders(T message) {
+   message.addHeader(ACCEPT_JSON);
+   message.addHeader(CONTENT_TYPE_JSON);
+
+   return message;
+ }
+
+Logging In
+----------
+
+Logging in is simple, simply provide the credentials in a JSON HTTP body:
+
+.. code-block:: java
+
+ private static void login() throws Exception {
+
+   JSONObject request = new JSONObject();
+
+   request.put("email", "admin");
+   request.put("password", "admin");
+
+   HTTP_CLIENT.execute(post("login", request.toJSONString())).close();
+ }
+
+This method creates the JSON object, executes a POST to the /api/login endpoint, and closes the HTTP response.
+Note that it is critical that Apache HTTP Response objects are closed.
+
+Creating a Source
+-----------------
+
+This method creates a Wikipedia Pages source:
+
+.. code-block:: java
+
+ private static long addWikipediaSource() throws Exception {;
+   JSONObject request = new JSONObject();
+   JSONObject configurationOptions = new JSONObject();
+
+   request.put("name", "");
+   request.put("sourceTypeId", "wikipedia-pages-source");
+   configurationOptions.put("pageTitleListParam", "Cat Dog");
+   request.put("configurationOptions", configurationOptions);
+
+   try (CloseableHttpResponse httpResponse = HTTP_CLIENT.execute(post("sourceInstances", request.toJSONString()))) {
+     JSONObject response = (JSONObject) JSON_PARSER.parse(
+             new InputStreamReader(
+                     httpResponse.getEntity().getContent()));
+
+     return (Long) response.get("id");
+   }
+ }
+
+
+Since the HTTP response object is needed in this case, the response is enclosed in a Java try with resources block.
+The Simple JSON Parser is used to extract and return the identifier of the created source.
+
+Creating an Import Flow
+-----------------------
+
+This method creates an Import Flow for a Source and returns the identifier:
+
+.. code-block:: java
+
+ private static long addImportFlow(long sourceId) throws Exception {
+    JSONObject request = new JSONObject();
+
+    request.put("sourceInstanceId", sourceId);
+    request.put("type", "manual");
+
+    try (CloseableHttpResponse httpResponse = HTTP_CLIENT.execute(post("importFlows", request.toJSONString()))) {
+      JSONObject response = (JSONObject) JSON_PARSER.parse(
+              new InputStreamReader(
+                      httpResponse.getEntity().getContent()));
+
+      return (Long) response.get("id");
+    }
+  }
+
+Creating a Data Set
+-------------------
+
+This method creates a Data Set and returns its identifier:
+
+.. code-block:: java
+
+ private static String addDataSet(String name) throws Exception {
+   JSONObject request = new JSONObject();
+   JSONObject indexingPolicy = new JSONObject();
+
+   request.put("name", name);
+   indexingPolicy.put("foreignLanguageIndexing", false);
+   indexingPolicy.put("fieldsInclusive", false);
+   request.put("indexingPolicy", indexingPolicy);
+
+   try (CloseableHttpResponse httpResponse = HTTP_CLIENT.execute(post("dataSets", request.toJSONString()))) {
+     JSONObject response = (JSONObject) JSON_PARSER.parse(
+             new InputStreamReader(
+                     httpResponse.getEntity().getContent()));
+
+     return (String) response.get("id");
+   }
+ }
+
+Attach Import Flow
+------------------
+
+Before an Import Flow can be executed, it must be attached to a Source and Data Set.
+To do this, the Import Flow JSON is retrieved with a HTTP GET, updated, and then updated with a PUT:
+
+.. code-block:: java
+
+ private static void attachDataSetToImportFlow(
+        long importFlowId,
+        long sourceId,
+        String dataSetId) throws Exception {
+
+  JSONObject importFlowJson;
+
+  try (CloseableHttpResponse httpResponse = HTTP_CLIENT.execute(get("importFlows/" + importFlowId))) {
+    importFlowJson = (JSONObject) JSON_PARSER.parse(
+            new InputStreamReader(
+                    httpResponse.getEntity().getContent()));
+  }
+
+  importFlowJson.put("sourceInstanceId", sourceId);
+  importFlowJson.put("outputDataSetId", dataSetId);
+
+  HTTP_CLIENT.execute(put("importFlows/" + importFlowId, importFlowJson.toJSONString())).close();
+}
+
+Execute Import Flow
+-------------------
+
+.. code-block:: java
+
+ private static long executeImportFlow(long importFlowId) throws Exception {
+  try (CloseableHttpResponse httpResponse = HTTP_CLIENT.execute(post("importFlows/" + importFlowId + "/execute"))) {
+    JSONObject response = (JSONObject) JSON_PARSER.parse(
+            new InputStreamReader(
+                    httpResponse.getEntity().getContent()));
+
+    return (long) response.get("id");
+  }
+}
+
+Waiting for a Job to Complete
+-----------------------------
+
+By performing a REST GET call to ``/api/jobs``, the complete list of running jobs can be retried.
+Once a job finishes, it will no longer be present in the response.
+Therefore, this method waits for a job to complete by returning when the job is no longer in the result.
+
+.. code-block:: java
+
+ private static void waitForJobCompletion(long jobId) throws Exception {
+
+  while (true) {
+    try (CloseableHttpResponse httpResponse = HTTP_CLIENT.execute(get("jobs"))) {
+      JSONArray jobs = (JSONArray) JSON_PARSER.parse(
+              new InputStreamReader(
+                      httpResponse.getEntity().getContent()));
+
+      if (jobs.stream().anyMatch(t -> jobId == (long) JSONObject.class.cast(t).get("id"))) {
+        System.out.printf("Job %d is still running%n", jobId);
+        Thread.sleep(1000);
+      } else {
+        break;
+      };
+    }
+  }
+ }
+
+Create a SQL Transform
+----------------------
+
+To create a Transform, the type and parameters for it must be specified.
+Additionally, the input and output data sets must be specified.
+
+
+.. code-block:: java
+
+ private static long addSqlTransform(String inputDataSet, String outputDataSet) throws Exception {
+   JSONObject request = new JSONObject();
+   JSONObject configurationOptions = new JSONObject();
+   JSONArray inputDataSetIds = new JSONArray();
+
+   request.put("disabled", false);
+   request.put("scheduleType", "automatic");
+   request.put("inputDataWindowType", "allData");
+   request.put("replaceOutputData", true);
+   request.put("inputDataSlidingWindowOffsetSeconds", 0);
+   request.put("inputDataSlidingWindowSizeSeconds", 0);
+   request.put("transformTypeId", "sparkSqlTransform");
+   request.put("outputDataSetId", outputDataSet);
+   request.put("configurationOptions", configurationOptions);
+   request.put("inputDataSetIds", inputDataSetIds);
+
+   configurationOptions.put("sqlStatement", "SELECT * FROM ?1");
+   configurationOptions.put("termTypeDetectOutputStrings", true);
+
+   inputDataSetIds.add(inputDataSet);
+
+   try (CloseableHttpResponse httpResponse = HTTP_CLIENT.execute(post("transforms", request.toJSONString()))) {
+     JSONObject response = (JSONObject) JSON_PARSER.parse(
+             new InputStreamReader(
+                     httpResponse.getEntity().getContent()));
+
+     return (Long) response.get("id");
+   }
+ }
+
+Execute the Transform
+---------------------
+
+Note that executing a transform uses a HTTP GET:
+
+.. code-block:: java
+
+ private static long executeTransform(long transformId) throws Exception {
+    try (CloseableHttpResponse httpResponse = HTTP_CLIENT.execute(get("transforms/" + transformId + "/runTransform"))) {
+      JSONObject response = (JSONObject) JSON_PARSER.parse(
+              new InputStreamReader(
+                      httpResponse.getEntity().getContent()));
+
+      return (long) response.get("id");
+    }
+ }
+
+Deleting
+--------
+
+Deleting is performed by using the HTTP DELETE verb on the proper REST resource endpoints.
+Here is the example for deleting sources, transforms, and data sets:
+
+.. code-block:: java
+
+ private static void deleteSource(long sourceId) throws Exception {
+   HTTP_CLIENT.execute(delete("sourceInstances/" + sourceId)).close();
+ }
+
+ private static void deleteTransform(long transformId) throws Exception {
+   HTTP_CLIENT.execute(delete("transforms/" + transformId));
+ }
+
+ private static void deleteDataSet(String dataSetId) throws Exception {
+   HTTP_CLIENT.execute(delete("dataSets/" + dataSetId));
+ }
+
+REST with JSON Examples
+=======================
+
+Importing Data
+--------------
 
 To create a data source, the data source types must be obtained first.
 Of the types, one is chosen for the source.
 The type contains information used to create the source.
 
 Getting Source Types
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 Perform a ``GET /api/sourceTypeDescriptions``,
 a response like the following will be returned:
@@ -174,9 +561,9 @@ a response like the following will be returned:
  ]
 
 Create a Source
----------------
+^^^^^^^^^^^^^^^
 
-In this guide, we will create a source for getting a Wikipedia page.
+In this section, we will create a source for getting a Wikipedia page.
 By examining the source type description of the Wikipedia Pages source below,
 we can see that the source has a unique identifier and requires a single parameter.
 We need to set this information to construct the JSON for creating a source.
@@ -238,7 +625,7 @@ with the following JSON to get articles for "Cat" and "Dog":
 Note the ``configurationOptions`` includes the name of the articles to get,
 with the name of the parameter coming the source type description.
 
- The response to this ``POST`` will include the identifeer, among other information:
+ The response to this ``POST`` will include the identifier, among other information:
 
 .. code-block:: json
 
@@ -257,7 +644,7 @@ with the name of the parameter coming the source type description.
 
 
 Creating an Import Flow
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 After creating the source, create an import flow by performing a ``POST /api/importFlows``:
 
@@ -301,7 +688,7 @@ The following JSON will be returned:
 Note that the identifier of the import flow in this example is ``325``.
 
 Creating a DataSet for the Imported Data
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Import Source must have a DataSet to put records into.
 The DataSet must be created with an API call and then the Import Flow must be altered to refer to it.
@@ -387,7 +774,7 @@ This is done by performing a ``PUT api/importFlows/325`` with the following JSON
  }
 
 Executing an Import Flow
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now that the source is tied to an Import Flow, it can be executed.
 To execute an import flow, simply perform a ``POST /api/importFlows/325/execute``
@@ -473,9 +860,9 @@ A response like the following will be returned, which is the job information of 
   "className":null,
   "jobType":"MapReduce",
   "transforms":[
-
   ]
  }
+
 
 To retrieve further information of the job, perform a ``GET /api/jobs``,
 which will return that status of all jobs.
@@ -486,13 +873,11 @@ After the job has completed successfully, the records, field statistics, and sam
 In the next section, a transform will be created and executed.
 However, the transform job should not be executed until the import job has completed.
 
-Creating a Transform
-====================
-
-blah
+Transforming Data
+-----------------
 
 Getting Transform Types
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Transform types are similar to Source Type Descriptions in that they describe how to create a transform.
 To get the available transform type, perform a ``GET /api/transformTypes``, which will return JSON like the following:
@@ -666,7 +1051,7 @@ To get the available transform type, perform a ``GET /api/transformTypes``, whic
 
 
 Getting DataSets
-----------------
+^^^^^^^^^^^^^^^^
 
 Before a transform is created, the identifiers of the input and output Data Sets must be known.
 All Data Sets can be retrieved by performing a ``GET /api/dataSets``, which will return JSON like below:
@@ -724,7 +1109,7 @@ For the purposes of this guide, it is assumed that a Data Set with the identifie
 ``copy_20181024_153510_235`` has already been created.
 
 Creating a Transform
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 To create a Transform, perform a ``POST /api/transforms`` with the definition of the transform as the reqwuest body:
 
@@ -817,38 +1202,8 @@ The response will have the full definition of the transform:
  That identifier will be used to execute the transform.
 
 Executing a Transform
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
-To execute the transform, use its identifier and perform a ``POST /api/transforms/384/runTransform``.
+To execute the transform, use its identifier and perform a ``GET /api/transforms/384/runTransform``.
 Like when executing a source, job status information will be returned.
 The status of the job can be determined by polling for all job status information with ``GET /api/jobs``.
-
-Deleting
-========
-
-blah
-
-Delete a DataSet
-----------------
-
-blah
-
-Getting Transforms
-------------------
-
-blah
-
-Deleting a Transform
---------------------
-
-blah
-
-Getting Sources
----------------
-
-blah
-
-Deleting a Source
------------------
-
-blah
