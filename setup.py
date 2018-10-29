@@ -13,5 +13,6 @@ setup(
     install_requires=[
       'sphinxcontrib-httpdomain >= 1.5.0',
       'sphinxcontrib-openapi',
+      'sphinxcontrib-redoc',
     ],
 )
