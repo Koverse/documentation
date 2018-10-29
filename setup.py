@@ -1,4 +1,5 @@
 import os
+import shutil
 
 from io import open
 from setuptools import setup, find_packages
