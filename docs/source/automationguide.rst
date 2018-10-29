@@ -94,17 +94,17 @@ It will create and delete data sets, data sources, and transforms as well as exe
 
 
 This main method:
- # Logs into Koverse.
- # Creates a Wikipedia Sources.
- # Creates an Import Flow.
- # Creates a Data Set for the source.
- # Attaches the Data Set and Source to the Import Flow.
- # Executes the Import Flow.
- # Waits for the Import Flow to finish.
- # Creates a SQL Transform that simply copies records from one data set to another.
- # Creates a Data Set for the Transform to write records to.
- # Executes the Transform and waits for it to finish
- # Delete the Transform, Source, and Data Sets.
+1. Logs into Koverse.
+2. Creates a Wikipedia Sources.
+3. Creates an Import Flow.
+4. Creates a Data Set for the source.
+5. Attaches the Data Set and Source to the Import Flow.
+6. Executes the Import Flow.
+7. Waits for the Import Flow to finish.
+8. Creates a SQL Transform that simply copies records from one data set to another.
+9. Creates a Data Set for the Transform to write records to.
+10. Executes the Transform and waits for it to finish
+11. Delete the Transform, Source, and Data Sets.
 
 Helper Methods
 --------------
