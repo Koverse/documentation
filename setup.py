@@ -13,7 +13,7 @@ setup(
     description='Koverse Documentation',
     setup_requires=[
         'setuptools_scm',
-    ]
+    ],
     install_requires=[
       'sphinxcontrib-httpdomain >= 1.5.0',
       'sphinxcontrib-openapi',
