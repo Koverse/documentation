@@ -14,5 +14,6 @@ Koverse
    adminguide
    indexqueryguide
    devguide
+   automationguide
    accesscontrol
    REST_specification
