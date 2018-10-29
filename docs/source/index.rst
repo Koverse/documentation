@@ -12,6 +12,7 @@ Koverse
    quickstart
    usageguide
    adminguide
+   indexqueryguide
    devguide
    accesscontrol
    REST_specification
