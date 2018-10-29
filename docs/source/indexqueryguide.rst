@@ -34,9 +34,12 @@ Phrases just need double quotes, such as: ``"cat food"``.
 
 Terms that in the ISO 8601 format will be interpreted as dates.
 This is an international format that takes the form of ``2018-10-30T12:48:29Z``.
-A completed description of this format can be found at
+A complete description of this format can be found at
 https://en.wikipedia.org/wiki/ISO_8601.
 
+Terms that in the form of a number, such as ``123`` or ``123.123`` will be interpreted as numbers.
+
+Terms can also be interpreted as Internet Protocol address, such as ``127.0.0.1``.
 
 
 Fields
@@ -106,6 +109,17 @@ the parenthesis can be escaped with ``\``:
 ``animal:\(four legs\)``.
 Here are all of the reserved search keywords:
 ``+ - && || ! ( ) { } [ ] ^ " ~ * ? : \``.
+
+Unsupported Lucene Features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Relevance ranking: Matching records that are returned from Koverse are not sorted in any particular order.
+
+However, when paging is used, the results are returned in a consistent order.
+For example, when requesting a page multiple times, the same results are returned.
+Thus, it is possible to show the user the first page of results and allow them to then navigate to other pages.
+When doing so, the user will see the same records for each page every time they request them.
+What is not possible is to sort those results globally.
+However, a page's worth of records could be sorted by the client program.
 
 
 Unsupported Lucene Syntax
