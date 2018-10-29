@@ -126,7 +126,7 @@ Unsupported Lucene Syntax
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The full Lucene syntax can be read online at
-https://lucene.apache.org/core/2_9_4/queryparsersyntax.htm .
+https://lucene.apache.org/core/2_9_4/queryparsersyntax.html .
 
 However, note that the following features are not supported in Koverse:
 
