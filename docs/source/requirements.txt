@@ -1,1 +1,2 @@
-Sphinx<=1.4.9
+-r pip.txt
+#Sphinx<=1.4.9

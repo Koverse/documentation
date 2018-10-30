@@ -6,11 +6,14 @@ Koverse
 =======
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   intro
+   releasenotes
    quickstart
    usageguide
    adminguide
+   indexqueryguide
    devguide
+   automationguide
    accesscontrol
+   REST_specification

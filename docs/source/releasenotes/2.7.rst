@@ -1,0 +1,16 @@
+.. _Version26ReleaseNotes:
+
+2.7 Release Notes
+=================
+
+New Features
+------------
+- Field masking is now customizable. See :ref:`FieldMaskers` for details.
+
+Additional Improvements
+-----------------------
+
+- Users can add, modify, or delete Normalizations after a Source has been configured
+- Enable per data set job minimums via API
+- Upgrade Tika Version to 1.17
+- Make normalizations enabled by default

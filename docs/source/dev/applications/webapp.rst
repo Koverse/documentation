@@ -133,7 +133,7 @@ Also we'll install prop-types so our components can signal which properties they
 
   npm install --save prop-types
 
-`Create a new folder in src/ called 'components' and a new file in src/components/ called 'SearchForm.js' and add the following skeleton code::
+Create a new folder in src/ called 'components' and a new file in src/components/ called 'SearchForm.js' and add the following skeleton code::
 
   import React, { Component } from 'react'
   import PropTypes from 'prop-types'

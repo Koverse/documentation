@@ -5,9 +5,10 @@ Administration Guide
 ====================
 
 .. toctree::
-
-   admin/infraguide.rst
-   admin/installguide.rst
-   admin/opsguide.rst
-   admin/tuningguide.rst
-   admin/configurationguide.rst
+  :maxdepth: 1
+  
+  admin/infraguide.rst
+  admin/installguide.rst
+  admin/opsguide.rst
+  admin/tuningguide.rst
+  admin/configurationguide.rst

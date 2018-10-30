@@ -30,7 +30,7 @@ Example Addon JAR directory structure::
 	           | -- mycompany
 	                 | -- myproject
 	                        | -- MyCustomTransform.class
-	                        | -- MyCustomApplication.cass
+	                        | -- MyCustomSource.cass
 	|-- some
 	        | -- other
 	                | -- dependency
