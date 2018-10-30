@@ -167,7 +167,7 @@ const ApiOperationPanel = ({
                 <TableRow key={key}>
                   <TableCell>
                     <Typography variant="body2">
-                      {operation.responses[key].code}
+                      {key}
                     </Typography>
                   </TableCell>
                   <TableCell>
