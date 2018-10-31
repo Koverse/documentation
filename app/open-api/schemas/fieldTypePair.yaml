@@ -1,9 +1,0 @@
-type: object
-required:
-  - fieldName
-  - fieldType
-properties:
-  fieldName:
-    type: string
-  fieldType:
-    type: boolean

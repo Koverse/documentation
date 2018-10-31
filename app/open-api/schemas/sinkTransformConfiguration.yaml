@@ -1,8 +1,0 @@
-type: object
-properties:
-  typeId:
-    type: string
-  implementationClassName:
-    type: string
-  config:
-    type: object
