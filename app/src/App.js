@@ -8,7 +8,7 @@ import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/
 import CssBaseline from '@material-ui/core/CssBaseline'
 import AppBar from '@material-ui/core/AppBar'
 import Typography from '@material-ui/core/Typography'
-import { Logo } from '@koverse/components'
+import Logo from './components/Logo'
 import baseTheme from './theme'
 import ogImage from './assets/cubes2.svg'
 import favicon from './assets/favicon.png'
