@@ -1,3 +1,5 @@
+.. _RESTSpec:
+
 ======================
 REST API Specification
 ======================

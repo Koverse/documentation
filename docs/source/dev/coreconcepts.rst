@@ -119,20 +119,15 @@ This check will also remove NULLs at any any level within complex values such as
   Creating Records Programmatically
   ---------------------------------
 
-Queries
--------
+Searches
+--------
 
-Records in Data Sets can be queried interactively by applications. Koverse provides indexing of values in records automatically.
+Records in Data Sets can be searched interactively by applications.
+Koverse provides indexing of values in records automatically.
 
-Applications can query data using the popular Lucene syntax or by specifying queries as JSON documents.
+Applications can search data using the popular Lucene syntax, by specifying queries as JSON documents, or limited SQL.
+See the Applications API documentation for examples and details of using search to deliver answers to applications, and the :ref:`IndexSearchGuide` for details on search language syntax.
 
-See the Applications API documentation for examples and details of using queries to deliver answers to applications.
-
-..
-  Transforms
-  ----------
-  Sources and Sinks
-  -----------------
 
 .. _Parameters:
 
