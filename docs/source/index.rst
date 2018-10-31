@@ -8,12 +8,10 @@ Koverse
 .. toctree::
    :maxdepth: 1
 
-   releasenotes
+   planningguide
    quickstart
    usageguide
    adminguide
-   indexqueryguide
    devguide
-   automationguide
-   accesscontrol
    REST_specification
+   releasenotes

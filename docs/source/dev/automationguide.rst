@@ -1,11 +1,9 @@
 .. _automationguide:
 
-:tocdepth: 2
 
-================
-Automation Guide
-================
-.. contents:: :depth: 4
+==============
+Automation API
+==============
 
 Overview
 ========
