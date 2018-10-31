@@ -19,6 +19,7 @@ const styles = theme => ({
     flexGrow: 1,
     flexDirection: 'column',
     padding: theme.spacing.unit * 3,
+    marginLeft: theme.spacing.unit * 3,
     overflow: 'scroll',
   },
   bold: {

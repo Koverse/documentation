@@ -151,9 +151,11 @@ const styles = theme => ({
     '& p': {
       ...theme.typography.body2,
       lineHeight: 1.6,
+      maxWidth: '750px',
     },
     '& p, & ul, & ol': {
       lineHeight: 1.6,
+      maxWidth: '750px',
     },
     '& h1, & h2, & h3, & h4': {
       '& code': {

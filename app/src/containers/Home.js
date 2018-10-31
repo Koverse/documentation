@@ -10,12 +10,15 @@ import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
+import cubes from '../assets/cubes2.svg'
 
 const styles = theme => ({
   root: {
     padding: theme.spacing.unit * 3,
+    paddingTop: theme.spacing.unit * 40,
+    background: `url(${cubes}) top ${-theme.spacing.unit * 8}px center no-repeat`,
+    backgroundSize: 'auto 450px',
   },
-  card: {},
 })
 
 const Home = ({ classes, userGuidePages }) => (
@@ -26,13 +29,12 @@ const Home = ({ classes, userGuidePages }) => (
       alignItems="flex-start"
       justify="flex-start"
       wrap="wrap"
-      className={classes.root}
     >
-      <Grid item xs={12} sm={4}>
-        <Card className={classes.card}>
+      <Grid item xs={12} sm={6} md={4}>
+        <Card>
           <CardHeader title="User Guide" />
           <CardContent>
-            <Typography className={classes.title} color="textSecondary" gutterBottom>
+            <Typography color="textSecondary" gutterBottom>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat lacus laoreet non curabitur gravida arcu ac tortor dignissim. Aliquet porttitor lacus luctus accumsan tortor posuere ac.
             </Typography>
           </CardContent>
@@ -48,11 +50,11 @@ const Home = ({ classes, userGuidePages }) => (
           </CardActions>
         </Card>
       </Grid>
-      <Grid item xs={12} sm={4}>
+      <Grid item xs={12} sm={6} md={4}>
         <Card className={classes.card}>
           <CardHeader title="API Reference" />
           <CardContent>
-            <Typography className={classes.title} color="textSecondary" gutterBottom>
+            <Typography color="textSecondary" gutterBottom>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat lacus laoreet non curabitur gravida arcu ac tortor dignissim. Aliquet porttitor lacus luctus accumsan tortor posuere ac.
             </Typography>
           </CardContent>
@@ -68,11 +70,11 @@ const Home = ({ classes, userGuidePages }) => (
           </CardActions>
         </Card>
       </Grid>
-      <Grid item xs={12} sm={4}>
+      <Grid item xs={12} sm={6} md={4}>
         <Card className={classes.card}>
           <CardHeader title="Developer Resources" />
           <CardContent>
-            <Typography className={classes.title} color="textSecondary" gutterBottom>
+            <Typography color="textSecondary" gutterBottom>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat lacus laoreet non curabitur gravida arcu ac tortor dignissim. Aliquet porttitor lacus luctus accumsan tortor posuere ac.
             </Typography>
           </CardContent>
