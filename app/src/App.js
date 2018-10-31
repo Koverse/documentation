@@ -75,7 +75,8 @@ class App extends PureComponent {
     const { classes } = this.props
     return (
       <MuiThemeProvider theme={muiTheme}>
-        <Helmet>
+        <Helmet titleTemplate="Koverse - %s">
+          <title>Documentation</title>
           <meta property="og:site_name" content="Koverse Documentation" />
           <meta property="og:image" content={ogImage} />
           <meta property="og:image:type" content="image/png" />

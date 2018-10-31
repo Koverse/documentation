@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
 import { withRouteData } from 'react-static'
 import { compose } from 'recompose'
 import { withStyles } from '@material-ui/core/styles'
@@ -31,6 +32,9 @@ const styles = theme => ({
 
 const ApiReference = ({ api, classes, tag, operations }) => (
   <div className={classes.root}>
+    <Helmet>
+      <title>Api Reference</title>
+    </Helmet>
     <ApiNavigation api={api} />
     <div className={classes.content}>
       {!tag && (

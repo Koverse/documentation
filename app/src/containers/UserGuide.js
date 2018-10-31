@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouteData, Redirect } from 'react-static'
 import { compose } from 'recompose'
+import Helmet from 'react-helmet'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import UserGuideNavigation from '../components/UserGuideNavigation'
@@ -32,6 +33,9 @@ const styles = theme => ({
 
 const UserGuide = ({ api, classes, page, userGuideSections }) => (
   <div className={classes.root}>
+    <Helmet>
+      <title>User Guide</title>
+    </Helmet>
     <UserGuideNavigation
       api={api}
       sections={userGuideSections}

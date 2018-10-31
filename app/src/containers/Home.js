@@ -17,7 +17,7 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3,
     paddingTop: theme.spacing.unit * 40,
     background: `url(${cubes}) top ${-theme.spacing.unit * 8}px center no-repeat`,
-    backgroundSize: 'auto 450px',
+    backgroundSize: 'auto 550px',
   },
 })
 
