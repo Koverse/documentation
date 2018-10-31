@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "swagger": "swagger-cli bundle ../open-api/api.yaml -r -t json -o public/api.json && swagger-cli validate public/api.json",
+    "swagger": "swagger-cli bundle ./open-api/api.yaml -r -t json -o public/api.json && swagger-cli validate public/api.json",
     "pdf": "node ./scripts/pdf",
     "start": "npm run swagger && react-static start",
     "stage": "npm run swagger && react-static build --staging",

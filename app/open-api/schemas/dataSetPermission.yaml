@@ -1,0 +1,44 @@
+type: object
+required:
+  - groupId
+  - dataSetId
+properties:
+  id:
+    type: string
+  groupId:
+    type: string
+  dataSetId:
+    type: string
+  all:
+    type: boolean
+  read:
+    type: boolean
+  download:
+    type: boolean
+  write:
+    type: boolean
+  delete:
+    type: boolean
+  managePermissions:
+    type: boolean
+  manageConfiguration:
+    type: boolean
+  audit:
+    type: boolean
+  permissionsTypes:
+    type: array
+example:
+  id: 844
+  dataSetId: movies_20171107_172745_048
+  groupId: 1
+  all: false
+  read: false
+  download: false
+  write: false
+  delete: false
+  managePermissions: false
+  manageConfiguration: false
+  audit: false
+  authorizerTypeId: null
+  authorizerGroupId: null
+  permissionsTypes: []

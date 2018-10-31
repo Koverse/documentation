@@ -1,0 +1,10 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/jobId"
+
+get:
+  summary: Unblocks a job by job id.
+  operationId: shutdownImportJob
+  tags: ["Jobs"]
+  responses:
+    200:
+      description: '200 OK'

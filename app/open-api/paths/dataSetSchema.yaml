@@ -1,0 +1,28 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Get full data set schema metadata.
+  operationId: findDataSetSchema
+  tags: ["Data Sets"]
+  description: >
+    Get schema metadata of a data set.
+  responses:
+    200:
+      description: Returns an array of the metadata of the schema for a data set.
+      schema:
+        type: object
+        properties:
+          root:
+            type: object
+      # example:
+      #   root:
+      #     type: STRUCTURE
+      #     fieldTypeCounts:
+      #       actor_1_name:
+      #         fieldType:
+      #           type: SCALAR
+      #           fieldValueTypeCounts:
+      #             - fieldValueType: STRING
+      #               count: 1
+      #         count: 4155

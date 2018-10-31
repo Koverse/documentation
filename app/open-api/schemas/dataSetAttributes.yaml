@@ -1,0 +1,63 @@
+type: object
+required:
+  - name
+properties:
+  id:
+    type: string
+    example: actor_1_name
+  dataSetId:
+    type: string
+    example: movies_20171107_172745_048
+  name:
+    type: string
+    example: actor_1_name
+  presenceCount:
+    type: integer
+    example: 4155
+  uniqueValueCount:
+    type: integer
+    example: 3982
+  valueCount:
+    type: integer
+    example: 4155
+  visualizationType:
+    $ref: "../api.yaml#/definitions/visualizationType"
+  types:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+          displayName:
+            type: string
+          prevalence:
+            type: number
+  values:
+      type: array
+      items:
+        type: object
+        properties:
+          occurrences:
+            type: integer
+          value:
+            type: string
+          coordinates:
+            type: object
+            properties:
+              lat:
+                type: number
+              long:
+                type: number
+          countryId:
+            type: string
+          opacity:
+            type: integer
+  indexed:
+    type: boolean
+  masked:
+    type: boolean
+  maskers:
+    type: array
+    items:
+      type: object

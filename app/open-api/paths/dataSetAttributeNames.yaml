@@ -1,0 +1,31 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+get:
+  summary: Get attribute names
+  operationId: findDataSetAttributeNames
+  tags: ["Data Sets"]
+  description: >
+        Get a list of the names of fields or attributes within a data set.
+        These can be used to inform users of what fields are available so
+        they can be used in queries.
+  responses:
+    200:
+      description: Returns all data set attribute names
+      schema:
+        type: array
+        items:
+          type: string
+      # example:
+      #   - aspect_ratio
+      #   - budget
+      #   - color
+      #   - content_rating
+      #   - country
+      #   - director_name
+      #   - duration
+      #   - genres
+      #   - gross
+      #   - language
+      #   - movie_title
+      #   - plot_keywords
+      #   - title_year

@@ -1,0 +1,33 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/dataSetId"
+
+get:
+  summary: Get indexing policy metadata
+  operationId: findDataSetIndexingPolicyById
+  tags: ["Data Sets", "Indexing"]
+  description: >
+    Get data set indexing policy metadata including indexed fields, composite indexes and foreign language indexing by data set id.
+  responses:
+    200:
+      description: Returns an array of the indexing policy metadata of a data set.
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetIndexingPolicy"
+
+put:
+  summary: Update indexing policy
+  operationId: updateDataSetIndexingPolicyById
+  tags: ["Data Sets", "Indexing"]
+  parameters:
+    - name: dataSetIndexingPolicy
+      in: body
+      description: The updated data set indexing policy
+      required: true
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetIndexingPolicy"
+  description: >
+    Updates the indexing policy for a data set by data set id.
+  responses:
+    200:
+      description: Returns an array of the indexing policy metadata of a data set.
+      schema:
+        $ref: "../api.yaml#/definitions/dataSetIndexingPolicy"

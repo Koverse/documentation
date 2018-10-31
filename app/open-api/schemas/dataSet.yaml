@@ -1,0 +1,24 @@
+type: object
+required:
+  - name
+properties:
+  id:
+    type: string
+  name:
+    type: string
+    minLength: 4
+    pattern: "^[a-zA-Z0-9- ]+$"
+    example: "Movies"
+  description:
+    type: string
+    example: "List of Movies"
+  importFlowIds:
+    type: array
+    items:
+      type: integer
+    example:
+      - 338
+  createdTimestamp:
+    type: integer
+  updatedTimestamp:
+    type: integer
