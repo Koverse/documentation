@@ -2397,6 +2397,16 @@ paths:
 
         It is recommended to use a Source and Import Flow to ingest data into a
         Data Set when many records need to be written.
+
+
+        Note that this method will write the record and it's index entries
+        according to the Indexing Policy associated with the Data Set being
+        written to.
+
+        But the Data Set's stats, samples, and schema information are not
+        automatically updated.
+
+        To update this information, a repair job can be run on the Data Set.
       responses:
         '200':
           description: Returns the single record data.

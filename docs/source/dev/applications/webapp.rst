@@ -4,7 +4,7 @@ Example Web Application
 =======================
 
 In this example we'll build a web application designed to allow users to explore the results of the example Sentiment Analysis analytic described in :ref:`SparkJavaDataFrameTransform`.
-We'll use some common technologies including `React <https://reactjs.org>`_ and `Node.js <https://nodejs.org>`_, but applications can be written using any technology that allows web applications to talk to the `Koverse REST API <https://speaker-diagnostics-47224.netlify.com>`_.
+We'll use some common technologies including `React <https://reactjs.org>`_ and `Node.js <https://nodejs.org>`_, but applications can be written using any technology that allows web applications to talk to the :ref:`RESTSpec`.
 
 A finished copy of the code for this application is included in the koverse-sdk-project repository, in the src/main/example-webapp directory.
 But this tutorial will show all the steps to create that app from the ground up.
@@ -12,7 +12,8 @@ But this tutorial will show all the steps to create that app from the ground up.
 Initial Setup
 -------------
 
-Make sure you're using a recent version of Node installed, such as later than 6. You can use `nvm <https://github.com/creationix/nvm>`_ or nvm-windows to switch node versions::
+Make sure you're using a recent version of Node installed, such as later than 6.
+You can use `nvm <https://github.com/creationix/nvm>`_ or nvm-windows to switch node versions::
 
   node -v
 
@@ -25,8 +26,8 @@ First, we'll create a starting point for our application using `create-react-app
 
 Install some additional modules we'll need::
 
-  npm install --save material-ui@next
-  npm install --save material-ui-icons
+  npm install --save @material-ui/core
+  npm install --save @material-ui/icons
   npm install --save typeface-roboto
 
 Start npm and go to localhost:3000 to verify the app is running::
@@ -37,7 +38,8 @@ Start npm and go to localhost:3000 to verify the app is running::
 Overall Design
 --------------
 
-Most Koverse apps consist of enabling users to query records in one or more data sets and displaying the results. Koverse queries are designed to return fast enough to support multiple users interacting with a single Koverse instance.
+Most Koverse apps consist of enabling users to query records in one or more data sets and displaying the results.
+Koverse queries are designed to return fast enough to support multiple users interacting with a single Koverse instance.
 In our example we'll create an app that allows users to interactively explore and visualize the results of a sentiment analysis algorithm.
 
 Koverse provides the ability for apps to quickly fetch records based on a query using indexes that Koverse maintains.
@@ -56,11 +58,14 @@ Before we begin development, we'll want to enable our app to interact with a Kov
 
 To authorize our app to query records in Koverse, we have several options.
 The simplest scenario is where all users of our application are allowed to see the same data.
-We can restrict what records our application sees, but we won't distinguish users of our application from each other. Other scenarios will be addressed in following tutorials.
+We can restrict what records our application sees, but we won't distinguish users of our application from each other.
+In that security scenario we just need an API token to authenticate to Koverse and query records.
 
-In our security scenario we just need an API token to authenticate to Koverse and query records.
-Perform the steps of the example in the documentation on :ref:`ApiTokens` to create an API token for this example app and return here once you have your API token.
+The other option is to allow multiple users to log into our app and for our app to pass along the user information in calls to the Koverse API.
+In this case different users may see different results depending on the access to data that has been granted to them by owners of data sets in Koverse.
 
+We'll use an API token to develop our application and then add multi-user login capability.
+See the section on on :ref:`ApiTokens` to create an API token for this example app and return here.
 
 Querying using the Koverse REST API
 -----------------------------------
@@ -92,7 +97,7 @@ Paste that ID into koverse.js as::
 
   const datasetId = 'message_sentiment_20180109_235958_313'
 
-Next paste in the API token we obtained via the instructions in :ref:`ApiTokens`::
+Paste in the API token we obtained via the instructions in :ref:`ApiTokens`::
 
   const apiToken = 'your-api-token-here'
 
@@ -108,7 +113,10 @@ We will pass in our API token, the user-provided query string, the ID of the dat
       dataSets: datasetId,
       recordStyle: '2.2',
     })
-    const allResults = await axios.get(`${url}?${params}`)
+
+    const allResults = await axios.get(`${url}?${params}`, {
+      withCredentials: true,
+    })
 
     // for now just log results to the console
     console.log(allResults)
@@ -126,8 +134,7 @@ Create a Search Form Component
 ------------------------------
 
 We'll create a search form component to allow users to search for specific records.
-We'll use `Material-UI <https://material-ui-next.com>`_ for our UI components like buttons and text boxes.
-( Note that in this example we're using the upcoming Material UI v1. )
+We'll use `Material-UI <https://material-ui.com>`_ for our UI components like buttons and text boxes.
 
 Also we'll install prop-types so our components can signal which properties they require::
 
@@ -137,9 +144,9 @@ Create a new folder in src/ called 'components' and a new file in src/components
 
   import React, { Component } from 'react'
   import PropTypes from 'prop-types'
-  import { withStyles } from 'material-ui/styles'
-  import Button from 'material-ui/Button'
-  import TextField from 'material-ui/TextField'
+  import { withStyles } from '@material-ui/core/styles'
+  import Button from '@material-ui/core/Button'
+  import TextField from '@material-ui/core/TextField'
 
   const styles = theme => ({
    input: {
@@ -215,15 +222,12 @@ First we'll import the 'query' method we wrote in koverse.js and our SearchForm 
 We can also delete the lines importing the logo.svg file and App.css so it looks like this::
 
   import React, { Component } from 'react';
-  import { withStyles } from 'material-ui/styles'
-  import Typography from 'material-ui/Typography
+  import { withStyles } from '@material-ui/core/styles'
+  import Typography from '@material-ui/core/Typography'
   import 'typeface-roboto'
   import { query } from './koverse'
   import SearchForm from './components/SearchForm'
 
-..
-  import SearchResults from './components/SearchResults'
-  import SentimentChart from './components/SentimentChart'
 
 Add a styling directive after the set of imports::
 
@@ -325,17 +329,25 @@ First we'll do a little formatting of the query results to make them more amenab
 We're only interested in querying one data set at a time so we'll simply return the records contained in the first data set result, along with the extracted schema so the table knows what columns to draw.
 Modify koverse.js, replacing the code::
 
-  const allResults = await axios.get(`${url}?${params}`)
+  const allResults = await axios.get(`${url}?${params}`, {
+    withCredentials: true,
+  })
   console.log(allResults)
-  return allResults
 
 with the following::
 
-  const allResults = await axios.get(`${url}?${params}`)
+  const allResults = await axios.get(`${url}?${params}`, {
+    withCredentials: true,
+  })
   const sentimentResults = allResults.data.find(r => r.id === datasetId) || {}
 
 Because our app is designed to work with the output of the example Sentiment Analysis Transform described in :ref:`SparkJavaDataFrameTransform`, we'll create a simple list of Javascript objects from each record returned.
-We'll also generate Javascript Date objects for date values, which will help us sort the data and plot these data points on a chart later::
+We'll also generate Javascript Date objects for date values, which will help us sort the data and plot these data points on a chart later.
+Replace the line::
+
+  return allResults
+
+with the following::
 
   const records = (sentimentResults.records || [])
     .map(r => ({
@@ -359,9 +371,9 @@ Create a new file called SearchResults.js under src/components and add the code:
 
   import React, { Component } from 'react'
   import PropTypes from 'prop-types'
-  import { withStyles } from 'material-ui/styles'
-  import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table'
-  import Paper from 'material-ui/Paper'
+  import { withStyles } from '@material-ui/core/styles'
+  import Table, { TableBody, TableCell, TableHead, TableRow } from '@material-ui/core/Table'
+  import Paper from '@material-ui/core/Paper'
 
   const styles = theme => ({
   	root: {
@@ -479,10 +491,10 @@ To start, use the following skeleton of the chart code in a new file in src/comp
 
   import React, { Component } from 'react'
   import PropTypes from 'prop-types'
-  import { withStyles } from 'material-ui/styles'
+  import { withStyles } from '@material-ui/core/styles'
   import {XYPlot, MarkSeries, HorizontalGridLines, XAxis, YAxis} from 'react-vis'
   import "../../node_modules/react-vis/dist/style.css";
-  import Paper from 'material-ui/Paper'
+  import Paper from '@material-ui/core/Paper'
 
   const styles = theme => ({
     root: {
@@ -503,7 +515,7 @@ To start, use the following skeleton of the chart code in a new file in src/comp
         <Paper className={classes.root}>
           <XYPlot width={1000} height={300}>
             <HorizontalGridLines />
-            <MarkSeries data={[]]} />
+            <MarkSeries data={[]} />
             <XAxis />
             <YAxis />
           </XYPlot>
@@ -568,39 +580,55 @@ Your app should now look like this after executing a search:
 
 .. image:: /_static/DevGuide/applications/lightChart.png
 
+Modifying the Look and Feel
+---------------------------
+
 The white dots are hard to read on a white background so we'll change our app to use a dark theme to make our dots easy to see.
+To accomplish that we'll use a Material UI theme provider.
 
 Modify the line App.js that reads::
 
-  import { withStyles } from 'material-ui/styles'
+  import { withStyles } from '@material-ui/core/styles'
 
-so that it looks like::
+so that it also imports what we need to make a theme::
 
-  import { withStyles, createMuiTheme, MuiThemeProvider } from 'material-ui/styles'
+  import { withStyles, createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 
-Farther down, add the following to App.js::
+Under that, add a line that lets us import colors::
+
+  import { cyan, green } from '@material-ui/core/colors'
+
+Farther down, add the following to App.js to make our theme::
 
   const theme = createMuiTheme({
     palette: {
       type: 'dark',
       primary: cyan,
       secondary: green,
-    }
+    },
+    typography: {
+      useNextVariants: true,
+    },
   })
 
-And modify the 'styles' variable to look like this::
+And modify the 'styles' variable to use our theme::
 
   const styles = () => ({
     root: {
       padding: theme.spacing.unit * 4,
       background: theme.palette.background.default
     },
+    '@global': {
+        body: {
+            background: theme.palette.background.default
+        },
+    },
   })
 
-Finally, in the render() method, surround the top level div tag with the tag::
+Finally, in the render() method, surround the top level div tag with a MuiThemeProvider tag so our theme will be applied::
 
   <MuiThemeProvider theme={theme}>
-    <div>
+    <div className={classes.root}>
       ...
     </div>
   </MuiThemeProvider>
@@ -609,7 +637,205 @@ Now our dots should be more visible:
 
 .. image:: /_static/DevGuide/applications/darkChart.png
 
-And that's our example of a first web application on Koverse!
+Adding Support for Multiple Users
+---------------------------------
+
+Our application so far allows all users to see the same data.
+Many applications need to support users logging in and seeing only the data they are authorized to see.
+We'll augment our app to allow different users to login.
+
+In this example, we'll do the simplest thing which is to authenticate users and our application will keep track of the logged in user.
+
+First, add the following function to koverse.js that we'll use to authenticate users against the list of users the Koverse server knows::
+
+  export const login = async ({ username, password }) => {
+    const url = `http://localhost:8080/api/login`
+
+    const params = {
+      email: username,
+      password,
+    }
+
+    const response = await axios.post(`${url}`, params, {
+      withCredentials: true
+    })
+
+    return response.data
+  }
+
+Also, we'll remove the apiToken parameter from our original search request so it reads as follows::
+
+  import axios from 'axios'
+  import queryString from 'query-string'
+
+  const datasetId = 'test_20181031_140006_013'
+  // removed API token var here
+
+  export const query = async (query) => {
+    const url = `http://localhost:8080/api/query`
+    const params = queryString.stringify({
+      // removed API token parameter here
+      query,
+      dataSets: datasetId,
+      recordStyle: '2.2',
+    })
+
+    const allResults = await axios.get(`${url}?${params}`, {
+      withCredentials: true,
+    })
+
+    const sentimentResults = allResults.data.find(r => r.id === datasetId) || {}
+
+    const records = (sentimentResults.records || [])
+      .map(r => ({
+        timestamp: Date.parse(r.value['date']),
+        date: r.value['date'],
+        score: r.value['score'],
+        text: r.value['text'],
+        recordId: r.recordId
+      }))
+      .sort((a,b) => (a['timestamp'] - b['timestamp']))
+    return {
+        schema: ['date','score','text'],
+        records,
+      }
+  }
+
+Next we'll need a simple login form to show users.
+This will be similar to the SearchForm we wrote earlier.
+
+Create a file called LoginForm.js in the components folder and add the following code::
+
+  import React, { Component } from 'react'
+  import PropTypes from 'prop-types'
+  import { withStyles } from '@material-ui/core/styles'
+  import Button from '@material-ui/core/Button'
+  import TextField from '@material-ui/core/TextField'
+
+  const styles = theme => ({
+    input: {
+      marginRight: theme.spacing.unit,
+    }
+  })
+
+  class LoginForm extends Component {
+    static props = {
+      onSubmit: PropTypes.func.isRequired,
+    }
+
+    constructor(props) {
+      super(props);
+      this.state = {
+        username: '',
+        password: '',
+      };
+
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+      if (event.target.name === 'username') {
+        this.setState({username: event.target.value});
+      }
+      if (event.target.name === 'password') {
+        this.setState({password: event.target.value});
+      }
+    }
+
+    handleSubmit(event) {
+      event.preventDefault();
+      this.props.onSubmit({
+        username: this.state.username,
+        password: this.state.password,
+      })
+    }
+
+    render () {
+      const { classes } = this.props
+      return (
+        <form className={classes.root} onSubmit={this.handleSubmit}>
+          <TextField
+            className={classes.input}
+            name="username"
+            placeholder="username"
+            onChange={this.handleChange}
+          />
+          <TextField
+            className={classes.input}
+            name="password"
+            placeholder="password"
+            type="password"
+            onChange={this.handleChange}
+          />
+          <Button variant="contained" type="submit">Login</Button>
+        </form>
+      )
+    }
+  }
+
+  export default withStyles(styles)(LoginForm)
+
+
+Now we'll just need to modify App.js to show our login in case a logged in user is not found.
+First, modify the import line that reads::
+
+  import { query } from './koverse'
+
+and make it also import the login function::
+
+  import { query, login } from './koverse'
+
+and import our new LoginForm::
+
+  import LoginForm from './components/LoginForm'
+
+Now we'll modify the render method to show our form::
+
+  render() {
+      const { classes } = this.props
+      return (
+        <MuiThemeProvider theme={theme}>
+        <div className={classes.root}>
+          <Typography type="title" gutterBottom>
+            Koverse Sentiment Analysis Example
+          </Typography>
+          {this.state.user ? (
+            <React.Fragment>
+              <SearchForm onSubmit={this.handleSubmit}/>
+              {this.state.results.records ? (
+                <div>
+                  <SentimentChart records={this.state.results.records} />
+                  <SearchResults results={this.state.results} />
+                </div>
+              ) : null}
+            </React.Fragment> ) : (
+            <LoginForm onSubmit={this.handleLogin}/>
+          ) }
+        </div>
+        </MuiThemeProvider>
+      );
+    }
+
+And we'll need to add a handleLogin method::
+
+  async handleLogin(values) {
+    const user = await login(values)
+
+    this.setState({ user })
+  }
+
+Now when we run our application we'll see the Login form first.
+Upon successfully authenticating we'll see our application as we saw before.
+
+We don't have a way of logging users out, and refreshing the browser causes the user to be logged out.
+But this is just a simple start to illustrate how to authenticate an individual user and make subsequent calls on behalf of that user.
+
+Wrapping Up
+-----------
+
+That's our example of a first web application on Koverse!
+
 Unlike other toy examples of data-driven web applications, what's significant about what we've done here is that this application is ready to go into production, on potentially much more data with many more users, without any more modification than to point it at the URL of a production instance of Koverse.
 
 The application has been authorized to ready only the results we have authorized it to read.
