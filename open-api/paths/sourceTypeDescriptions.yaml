@@ -1,7 +1,13 @@
 get:
-  summary: Returns all source types
+  summary: List
   operationId: findSourceTypes
-  tags: ["Sources"]
+  tags: ["Source Types"]
+  description: |
+          List the types of Sources available.
+
+          Source types describe the parameters available for a specific type of Source such as an external database or file system from which data can be ingested into a Koverse Data Set.
+
+          A Source that describes how to connect to a specific database or file system can be created by filling out the configuration parameters desribed by the Source type and submitting to /api/sourceInstances.
   responses:
     200:
       description: Returns all source types with metadata

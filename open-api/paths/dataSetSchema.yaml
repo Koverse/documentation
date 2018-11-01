@@ -2,11 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
 
 get:
-  summary: Get full data set schema metadata.
+  summary: Get
   operationId: findDataSetSchema
-  tags: ["Data Sets"]
-  description: >
-    Get schema metadata of a data set.
+  tags: ["Data Set Schemas"]
+  description: |
+        Get schema metadata of a data set.
   responses:
     200:
       description: Returns an array of the metadata of the schema for a data set.

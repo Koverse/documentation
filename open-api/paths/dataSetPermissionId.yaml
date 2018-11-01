@@ -3,9 +3,9 @@ parameters:
   - $ref: "../api.yaml#/parameters/permissionId"
 
 put:
-  summary: Updates a data set permission by id
+  summary: Update
   operationId: updateDataSetPermissionsById
-  tags: ["Data Sets", "Permissions"]
+  tags: ["Data Set Permissions"]
   parameters:
     - name: dataSetPermission
       in: body
@@ -13,8 +13,8 @@ put:
       required: true
       schema:
         $ref: "../api.yaml#/definitions/dataSetPermission"
-  description: >
-    Updates the permissions of a data set speicified by a data set ID.
+  description: |
+          Updates the permissions of a data set specified by a data set ID.
   responses:
     200:
       description: Returns the updated data set permission data
@@ -22,11 +22,13 @@ put:
         $ref: "../api.yaml#/definitions/dataSetPermission"
 
 delete:
-  summary: Deletes a single data set permission based on the id supplied
+  summary: Delete
   operationId: deleteDataSetPermissionsById
-  tags: ["Data Sets", "Permissions"]
-  description: >
-    Deletes a data set permission based on the supplied permission id
+  tags: ["Data Set Permissions"]
+  description: |
+          Deletes a data set permission based on the supplied permission id.
+
+          This effectively revokes access.
   responses:
     200:
       description: Returns the data set permission that was deleted

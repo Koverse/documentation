@@ -1,8 +1,8 @@
 get:
-  summary: List all data sets
+  summary: List
   operationId: findDataSets
   tags: ["Data Sets"]
-  description: >
+  description: |
         Get a list of data set metadata objects for all data sets the user is
         authorized to see.
   responses:
@@ -14,13 +14,13 @@ get:
           $ref: "../api.yaml#/definitions/dataSetMetadata"
 
 post:
-  summary: Create a new data set
+  summary: Create
   operationId: createDataSet
   tags: ["Data Sets"]
-  description: >
-    Creates a new empty data set.
+  description: |
+        Creates a new empty data set.
 
-    Note: This call will fail if there is already a data set with the same name as the requested new data set.
+        Note: This call will fail if there is already a data set with the same name as the requested new data set.
   parameters:
     - name: body
       in: body

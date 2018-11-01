@@ -1,8 +1,9 @@
 get:
-  description: Returns a list Sink Schedules
-  summary: Get sink schedules
+  summary: Get
   operationId: findSinkSchedules
-  tags: ["Sinks", "Schedules"]
+  tags: ["Sink Schedules"]
+  description: |
+            Returns a list of Sink Schedules
   responses:
     200:
       description: Returns the matching sink schedules
@@ -16,10 +17,11 @@ get:
       #     description: The date/time that a schedule was last modified
 
 post:
-  description: Creates a new sink schedule
-  summary: Create sink schedules
+  summary: Create
   operationId: createSinkSchedule
-  tags: ["Sinks", "Schedules"]
+  tags: ["Sink Schedules"]
+  description: |
+            Creates a new schedule associated with the given Sink.
   parameters:
     - name: exportSchedule
       in: body

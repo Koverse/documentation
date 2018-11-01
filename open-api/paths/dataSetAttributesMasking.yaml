@@ -2,11 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
 
 put:
-  summary: Update attributes masking
+  summary: Update masking
   operationId: updateDataSetAttributesMaskingByID
-  tags: ["Data Sets", "Masking"]
-  description: >
-    Updates the masked attributes of a data set.
+  tags: ["Data Set Attributes"]
+  description: |
+        Updates the masked attributes of a data set.
   parameters:
     - name: attrs
       in: body

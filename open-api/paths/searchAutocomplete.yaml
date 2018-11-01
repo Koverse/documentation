@@ -7,15 +7,19 @@ parameters:
   labels:
     name: labels
     in: query
-    description: limits autocomplete results to specified labels
+    description: |
+          Limits autocomplete results to specified labels
     type: string
 get:
-  summary: Returns search autocomplete results
+  summary: Autocomplete
   operationId: searchAutocomplete
   tags: ["Search"]
+  description: |
+            List a set of values that exist in one or more records that can be used in subsequent queries.
   responses:
     default:
-      description: Returns the search autocomplete results
+      description: |
+            Returns a set of values that exist in one or more records that can be used in subsequent queries.
       schema:
         type: array
         items:

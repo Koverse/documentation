@@ -2,9 +2,9 @@ parameters:
   - $ref: "../api.yaml#/parameters/sinkTypeId"
 
 get:
-  summary: Returns a sink type by id
+  summary: Get
   operationId: findSinkTypeById
-  tags: ["Sinks"]
+  tags: ["Sink Types"]
   responses:
     200:
       description: Returns the sink type data

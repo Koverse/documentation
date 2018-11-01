@@ -1,9 +1,55 @@
 post:
-  summary: JSON and data set IDs
+  summary: Object style with IDs
   operationId: queryObject
   tags: ["Query"]
-  description: >
-        Query using a JSON document and data set IDs. Object-based Queries
+  description: |
+        Query using a JSON document and data set IDs.
+
+        ### Object Search Syntax
+
+        For searches that are not written by end-users on the fly but that are constructed programmatically by a web application, we recommend using Koverse's Object Search Syntax.
+        The Object Search Syntax allows applications to specify search criteria by building a Javascript object, converting to JSON, and submitting to a REST endpoint.
+        This way, a search can be more easily manipulated programmatically by Javascript.
+
+        The following table shows the JSON syntax for various types of searches:
+
+
+        |Search Criteria                    | Query Syntax                                  |
+        |-----------------------------------|-----------------------------------------------|
+        | Searching 'any' field for a value | {"$any": "fmv"}                               |
+        | Search specific field for a value | {"field.name": "fmv"}                         |
+        | Search AND                        | {"$and": [{"$any": "fmv"}, {"$any": "blue"}]} |
+        | Search OR                         | {"$or": [{"$any": "fmv"}, {"$any": "blue"}]}  |
+
+        These searches allow various criteria to be combined using operators like AND and OR.
+        Note that the terms of these search are all 'point' terms, meaning they specific an exact value.
+        Searching for a range of values is also supported.
+
+        #### Searching Ranges
+
+        To search for a range of values, use one of the range operators such as $gte, greater than or equals, etc.
+        A few types of ranges are listed in the following table:
+
+        |Search Criteria                         | Query Syntax                                                    |
+        |----------------------------------------|-----------------------------------------------------------------|
+        | Any value greater than or equal to 160 | { "$any": { "$gte": 160 }}                                      |
+        | Date field less than a specific date   | { "date_created": { "$lt": "1980-01-01T00:00:00.000Z }}         |
+        | Geo Range                              | { "fieldName": { "$box": [[sw-lat, sw-long],[ne-lat, ne-long]]}}|
+        |                                        | { "fieldName": { "$box" :[[39.5, -104.9],[40, -104.5]] }}       |
+        |Any value except for 100                | { "$not": { "amount": 100 } }                                   |
+
+
+        The official list of operators includes:
+
+        - $gt greater than
+        - $gte greater than or equal to
+        - $lt less than
+        - $lte less than or equal to
+        - $eq equal to
+        - $any used in place of a field to search for a value in any field
+        - $not used to negate a search criterion. Note that this results in two ranges being searched, those 'above' and 'below' the value specified.
+
+        Note that queries that combine a range with any other criteria, and queries that combine multiple ranges require Composite Indexes on the fields involved.
   parameters:
     - $ref: "../api.yaml#/parameters/objectQuery"
   responses:

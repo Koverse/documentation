@@ -2,7 +2,7 @@ parameters:
   # - $ref: "../api.yaml#/parameters/dataSetId"
   - $ref: "../api.yaml#/parameters/recordId"
 get:
-  summary: Get a single record
+  summary: Get
   operationId: getRecordById
   tags: ["Records"]
   parameters:
@@ -14,8 +14,14 @@ get:
       type: string
       in: query
       required: true
-  description:
+  description: |
         Get a single record by data set id and record id.
+
+        Note that the Record ID must be known in order to use this method.
+        It is intended to be used by applications that need to fetch one record, often one that is related to some other record.
+
+        For example, a Transform may be designed to extract interesting features from original records that may consist of larger documents.
+        Users searching the features may want to fetch the original larger record associated with these features.
   responses:
     200:
       description: Returns the single record data.
@@ -33,11 +39,20 @@ get:
       #     - $ref: "../schemas/recordExample.yaml"
 
 post:
-  summary: Write a single record
+  summary: Create
   operationId: createRecord
   tags: ["Records"]
-  description:
+  description: |
     Writes a single record to the specified data set.
+
+    Note that this syncs the newly written record to Accumulo before returning and so is not suitable for writing many records one after another.
+    It is intended primarily to allow some applications to write new records to a Data Set when a user needs to write one record.
+
+    It is recommended to use a Source and Import Flow to ingest data into a Data Set when many records need to be written.
+
+    Note that this method will write the record and it's index entries according to the Indexing Policy associated with the Data Set being written to.
+    But the Data Set's stats, samples, and schema information are not automatically updated.
+    To update this information, a repair job can be run on the Data Set.
   responses:
     200:
       description: Returns the single record data.

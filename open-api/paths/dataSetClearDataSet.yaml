@@ -2,11 +2,13 @@ parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
 
 get:
-  summary: Clear a Data Set by id
+  summary: Clear
   operationId: clearDataSetById
   tags: ["Data Sets"]
   description:
     Clears a data set of all data.
+
+    This involves dropping data stored in Accumulo using the deleterows command and should be called sparingly.
   responses:
     200:
       description: '200 OK'

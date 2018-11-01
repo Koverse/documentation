@@ -2,11 +2,13 @@ parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
 
 get:
-  summary: Repair a Data Set by id
+  summary: Repair
   operationId: repairDataSetById
   tags: ["Data Sets"]
-  description:
-    Repairs a data set by dataSetId.
+  description: |
+          Repairs a data set by dataSetId.
+
+          This will delete a data set's index entries, attribute statistics, record samples, and schema information and start an asynchronous job to regenerate that information from data set records.
   responses:
     200:
       description: '200 OK'

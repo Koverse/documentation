@@ -2,10 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/exportScheduleId"
 
 get:
-  description: Returns a sink schedule by id
-  summary: Get sink schedule by id
+  summary: Get
   operationId: findSinkScheduleById
-  tags: ["Sinks", "Schedules"]
+  tags: ["Sink Schedules"]
+  description: |
+            Get a Sink Schedule by the schedule's ID.
   responses:
     200:
       description: Returns the sink schedule data
@@ -17,10 +18,11 @@ get:
       #     description: The date/time that the sink schedule was last modified
 
 delete:
-  description: Deletes a single sink schedule based on the id supplied
-  summary: Delete sink schedule by id
+  summary: Delete
   operationId: deleteSinkScheduleById
-  tags: ["Sinks", "Schedules"]
+  tags: ["Sink Schedules"]
+  description: |
+            Deletes a single Sink Schedule based on the ID supplied
   responses:
     200:
       description: Returns the sink schedule that was deleted

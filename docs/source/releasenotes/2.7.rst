@@ -1,4 +1,4 @@
-.. _Version26ReleaseNotes:
+.. _Version27ReleaseNotes:
 
 2.7 Release Notes
 =================

@@ -1,8 +1,9 @@
 get:
-  description: Returns all active jobs
-  summary: Get active jobs
+  summary: Get active
   operationId: findActiveJobs
   tags: ["Jobs"]
+  description: |
+        Returns a list of all active jobs
   responses:
     200:
       description: Returns the active jobs

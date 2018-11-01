@@ -6,9 +6,11 @@ parameters:
     type: string
 
 get:
-  summary: Returns all sinks by data set id
+  summary: Get for data set
   operationId: findSinks
   tags: ["Sinks"]
+  description: |
+            Get a list of Sinks associated with the given Data Set ID.
   responses:
     200:
       description: Returns the matching sinks
@@ -18,9 +20,13 @@ get:
           $ref: "../api.yaml#/definitions/sink"
 
 post:
-  summary: Creates a sink
+  summary: Create
   operationId: createSink
   tags: ["Sinks"]
+  description: |
+        Create a new Sink representing an external system to which data can be exported.
+
+        After a Sink is created, Export Jobs can be started to write data to the system described by the Sink.
   parameters:
     - name: sink
       in: body

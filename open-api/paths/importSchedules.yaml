@@ -1,26 +1,32 @@
 parameters:
   - $ref: "../api.yaml#/parameters/importFlowId"
 
-get:
-  summary: Returns all Import Schedules by data flow id
-  operationId: findImportSchedulesById
-  tags: ["Schedules"]
-  responses:
-    200:
-      description: Returns the matching import schedules
-      schema:
-        type: array
-        items:
-          $ref: "../api.yaml#/definitions/importSchedule"
+# this appears to be redundant
+
+#get:
+#  summary: Get for import flow
+#  operationId: findImportSchedulesById
+#  tags: ["Import Schedules"]
+#  description: |
+#        Get Import Schedules associated with the given Import Flow.
+#  responses:
+#    200:
+#      description: Returns the matching import schedules
+#      schema:
+#        type: array
+#        items:
+#          $ref: "../api.yaml#/definitions/importSchedule"
       # headers:
       #   last-modified:
       #     type: string
       #     description: The date/time that a schedule was last modified
 
 post:
-  summary: Creates a new import schedule
+  summary: Create
   operationId: addImportSchedule
-  tags: ["Schedules"]
+  tags: ["Import Schedules"]
+  description: |
+          Create a new Import Schedule.
   parameters:
     - name: importSchedule
       in: body

@@ -1,11 +1,13 @@
 get:
-  description: Returns the available data set permissions
-  summary: Get data set permissions
+  summary: List
   operationId: dataSetPermissions
-  tags: ["Data Sets", "Permissions"]
+  tags: ["Data Set Permissions"]
+  description: |
+            List available data set permissions
   responses:
     200:
-      description: Returns avilable data set permissions.
+      description: |
+            Returns available data set permissions that can be applied, such as the permission to read, write, etc.
       schema:
         type: array
         items:

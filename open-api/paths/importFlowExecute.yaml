@@ -2,12 +2,14 @@ parameters:
   - $ref: "../api.yaml#/parameters/importFlowIdPath"
 
 post:
-  summary: Runs an import flow by id
+  summary: Start
   operationId: funImportFlowById
-  tags: ["Import Flows"]
+  tags: ["Import Jobs"]
+  description: |
+        Starts a new job to import data from the associated Source into the specified Data Set.
   responses:
     200:
-      description: Returns the success or failure of running the import flow
+      description: Returns the success or failure of starting the job.
       schema:
         type: object
         properties:

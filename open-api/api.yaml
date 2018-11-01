@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  version: 2.4.0
+  version: 2.9.0
   title: Koverse REST API
   description: >
         Specification for interacting with the Koverse Rest API
@@ -13,35 +13,131 @@ produces:
 
 tags:
   - name: Authentication
-    description: Manage User Authentication
+    description: |
+          Methods for logging in individual users.
+
+          These methods only apply when using Koverse's built-in user management.
   - name: Data Sets
-    description: Manage Data Sets
-  - name: Import Flows
-    description: Manage Import Flows
-  - name: Indexing
-    description: Manage Indexing
-  - name: Jobs
-    description: Manage Jobs
-  - name: Masking
-    description: Manage Column Masking
-  - name: Normalizations
-    description: Manage Normalizations
-  - name: Permissions
-    description: Manage Permissions
+    description: |
+          Create, configure, and delete Data Sets.
+  #- name: Data Set Schemas
+  #  description: |
+  #        Data Set Schemas
+  - name: Data Set Attributes
+    description: |
+          List, inspect, and configure masking for data set attributes
+  - name: Data Set Permissions
+    description: |
+          Control access to data in Data Sets.
+
+          Access is controlled on a Group basis and includes actions such as writing to a Data Set, querying, deleting, changing configuration, etc.
+
+          Note that these permissions are distinct from system permission which control things like which Groups can do things like create Data Sets, setup Transforms etc.
+  - name: System Permissions
+    description: |
+          Control access to system functionality.
+  - name: Indexing Policies
+    description: |
+          Control how Koverse indexes data in a data set.
+
+          This includes specifying which attributes to index, how data should be tokenized, and which combinations of attributes should be combined into Composite Indexes.
+          The set of available indexes affects which kinds of interactive queries Koverse can support.
   - name: Query
-    description: Query Data Sets
+    description: |
+          Interactively query Data Sets.
+
+          Queries are designed to retrieve a specific subset of records, in many cases in less than a second.
+          Applications can call query methods in response to user requests.
   - name: Records
-    description: Manage Records
-  - name: Schedules
-    description: Manage Schedules for Sinks, Transforms, and Import Flows
-  - name: Sinks
-    description: Manage Sinks
+    description: |
+          Write and retrieve individual records and sets of sample records.
+  - name: Source Types
+    description: |
+          List available Source types.
+          Source types specify which parameters are available for each type of Source.
   - name: Sources
-    description: Manage Sources
-  - name: System
-    description: System Information
+    description: |
+          Sources are external data systems from which Koverse can ingest data.
+  - name: Import Flows
+    description: |
+          Configure a Source to import external data to a specific Data Set.
+  - name: Normalizations
+    description: |
+          Normalizations allow data to be modified as it is imported.
+  - name: Import Jobs
+    description: |
+          Import jobs are used for importing data from an external Source into a Data Set.
+
+          These jobs are executed by the Hadoop MapReduce or Spark frameworks asynchronously.
+          Note that Koverse submits jobs to YARN which then executes them according to the way the YARN cluster is configured, which is typically a single queue so jobs are started on a first come, first serve basis.
+          Jobs may run simultaneously as cluster resources allow.
+
+          Jobs can be started or shutdown via these methods.
+  - name: Import Schedules
+    description: |
+          Manage schedules for Import Flows.
+
+          Schedules control how Import Jobs are started automatically.
+          Import Jobs can still be created for Import Flows without schedules on an on-demand basis.
+  - name: Transform Types
+    description: |
+          Get a list of transforms available in the system.
+          Transform types specify which parameters are available for each type of Transform.
   - name: Transforms
-    description: Manage Transforms
+    description: |
+          Setup a partiular Transform Type to transform one or more data sets into a new Data Set.
+  - name: Transform Jobs
+    description: |
+          Transform jobs process new data or all data in input Data Sets and write out results to an output Data Set.
+
+          These jobs are executed by the Hadoop MapReduce or Spark frameworks asynchronously.
+          Note that Koverse submits jobs to YARN which then executes them according to the way the YARN cluster is configured, which is typically a single queue so jobs are started on a first come, first serve basis.
+          Jobs may run simultaneously as cluster resources allow.
+
+          Jobs can be started or shutdown via these methods.
+  - name: Transform Schedules
+    description: |
+          Manage schedules for Transforms.
+
+          Schedules control how Transform Jobs are started automatically.
+          Transforms Jobs can still be created for Transforms without schedules on an on-demand basis, or automatically as new data is ingested via Import Jobs into input Data Sets.
+  - name: Sink Types
+    description: |
+          List and get available Sink types.
+          Sinks are external systems to which Koverse can export data.
+  - name: Sinks
+    description: |
+          Create, update, and delete Sinks.
+          Sinks are external systems to which Koverse can export data.
+  - name: Export Jobs
+    description: |
+          Export jobs write new data or all data in input Data Sets to an external Sink.
+
+          These jobs are executed by the Hadoop MapReduce or Spark frameworks asynchronously.
+          Note that Koverse submits jobs to YARN which then executes them according to the way the YARN cluster is configured, which is typically a single queue so jobs are started on a first come, first serve basis.
+          Jobs may run simultaneously as cluster resources allow.
+
+          Jobs can be started or shutdown via these methods.
+  - name: Sink Schedules
+    description: |
+          Manage schedules for exporting to Sinks
+
+          Schedules control how Export Jobs are started automatically.
+          Export Jobs can still be created for Sinks without schedules on an on-demand basis or automatically as new data appears in input Data Sets.
+  - name: Jobs
+    description: |
+          Start, monitor, and cancel data processing jobs.
+
+          Data processing jobs are used for importing, transforming, and exporting data.
+          These jobs are executed by the Hadoop MapReduce or Spark frameworks asynchronously.
+          Koverse monitors the status of jobs, gathering information on the success or failure of a job, including gathering any error information about failed jobs.
+
+          Jobs can be started or shutdown via these methods.
+          Note that Koverse submits jobs to YARN which then executes them according to the way the YARN cluster is configured, which is typically a single queue so jobs are started on a first come, first serve basis.
+          Jobs may run simultaneously as cluster resources allow.
+
+          If two or more jobs will write on the same data set, one job may become blocked to allow the other job to complete its processing without inteference.
+          In some cases a blocked job can be unblocked so it can proceed.
 
 definitions:
   dataSet:
@@ -299,8 +395,8 @@ paths:
     $ref: paths/dataSetAttributes.yaml
   /api/dataSets/{dataSetId}/clearDataSet:
     $ref: paths/dataSetClearDataSet.yaml
-  /api/dataSets/{dataSetId}/flatSchema:
-    $ref: paths/dataSetFlatSchema.yaml
+  #/api/dataSets/{dataSetId}/flatSchema:
+  #  $ref: paths/dataSetFlatSchema.yaml
   /api/dataSets/{dataSetId}/indexingPolicy:
     $ref: paths/dataSetIndexingPolicies.yaml
   /api/dataSets/{dataSetId}/permissions:
@@ -311,8 +407,8 @@ paths:
     $ref: paths/dataSetJobs.yaml
   /api/dataSets/{dataSetId}/records:
     $ref: paths/dataSetRecords.yaml
-  /api/dataSets/{dataSetId}/schema:
-    $ref: paths/dataSetSchema.yaml
+  #/api/dataSets/{dataSetId}/schema:
+  #  $ref: paths/dataSetSchema.yaml
   /api/dataSets/{dataSetId}/repair:
     $ref: paths/dataSetRepair.yaml
   /api/dataSets/{dataSetId}/attributes/masking:
