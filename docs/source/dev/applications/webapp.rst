@@ -4,7 +4,7 @@ Example Web Application
 =======================
 
 In this example we'll build a web application designed to allow users to explore the results of the example Sentiment Analysis analytic described in :ref:`SparkJavaDataFrameTransform`.
-We'll use some common technologies including `React <https://reactjs.org>`_ and `Node.js <https://nodejs.org>`_, but applications can be written using any technology that allows web applications to talk to the `Koverse REST API <https://speaker-diagnostics-47224.netlify.com>`_.
+We'll use some common technologies including `React <https://reactjs.org>`_ and `Node.js <https://nodejs.org>`_, but applications can be written using any technology that allows web applications to talk to the :ref:`RESTSpec`.
 
 A finished copy of the code for this application is included in the koverse-sdk-project repository, in the src/main/example-webapp directory.
 But this tutorial will show all the steps to create that app from the ground up.
@@ -642,14 +642,44 @@ In this example, we'll do the simplest thing which is to authenticate users and 
 First, add the following function to koverse.js that we'll use to authenticate users against the list of users the Koverse server knows::
 
   export const login = async ({ username, password }) => {
-    const url = `https://localhost:8080/api/login`
-    const params = queryString.stringify({
+    const url = `http://localhost:8080/api/login`
+
+    const params = {
       email: username,
       password,
-    })
+    }
 
-    const user = await axios.post(`${url}`, params)
-    return user
+    const response = await axios.post(`${url}`, params)
+
+    return response.data
+  }
+
+Also, we'll remove the apiToken parameter from our original search request so it reads as follows::
+
+  export const query = async (query) => {
+    const url = `http://localhost:8080/api/query`
+    const params = queryString.stringify({
+      query,
+      dataSets: datasetId,
+      recordStyle: '2.2',
+    })
+    const allResults = await axios.get(`${url}?${params}`)
+    console.log(allResults)
+    const sentimentResults = allResults.data.find(r => r.id === datasetId) || {}
+
+    const records = (sentimentResults.records || [])
+      .map(r => ({
+        timestamp: Date.parse(r.value['date']),
+        date: r.value['date'],
+        score: r.value['score'],
+        text: r.value['text'],
+        recordId: r.recordId
+      }))
+      .sort((a,b) => (a['timestamp'] - b['timestamp']))
+    return {
+        schema: ['date','score','text'],
+        records,
+    }
   }
 
 Next we'll need a simple login form to show users.
@@ -686,12 +716,20 @@ Create a file called LoginForm.js in the components folder and add the following
     }
 
     handleChange(event) {
-      this.setState({query: event.target.value});
+      if (event.target.name === 'username') {
+        this.setState({username: event.target.value});
+      }
+      if (event.target.name === 'password') {
+        this.setState({password: event.target.value});
+      }
     }
 
     handleSubmit(event) {
       event.preventDefault();
-      this.props.onSubmit({ query: this.state.query })
+      this.props.onSubmit({
+        username: this.state.username,
+        password: this.state.password,
+      })
     }
 
     render () {
@@ -718,6 +756,7 @@ Create a file called LoginForm.js in the components folder and add the following
   }
 
   export default withStyles(styles)(LoginForm)
+
 
 Now we'll just need to modify App.js to show our login in case a logged in user is not found.
 First, modify the import line that reads::
