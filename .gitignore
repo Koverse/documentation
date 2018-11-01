@@ -1,3 +1,5 @@
 /doctrees
 /docs/build
 node_modules/
+docs/.DS_Store
+docs/npm-debug.log
