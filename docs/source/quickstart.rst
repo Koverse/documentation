@@ -7,7 +7,7 @@ Quick Start Guide
 Read this section to get up and running quickly with Koverse.
 The following topics are included:
 
-*	Installing Koverse: Follow step-by-step instructions for installing the most common Koverse scenarios.
+*	Installing Koverse: Follow step-by-step instructions for getting the :ref:`DevImage`.
 *	Using Import Sources: Log in and start loading your data sets into Koverse from various external sources.
 *	Querying Datasets: Create searches across some or all attributes of the data sets you've added to Koverse. Searches are the central activity for building your solution using Koverse data operations.
 
@@ -18,47 +18,10 @@ Detailed documentation is included elsewhere in the Koverse documentation set:
 *	If you need more details about installing Koverse in other scenarios, read the :ref:`adminguide`. This guide also discusses additional Koverse administrative tasks, including managing user access to the Koverse platform itself.
 *	If you're a developer and you're ready to start creating  your own intelligent solution refer to the :ref:`DeveloperDocumentation`.
 
-Recommendations
----------------
+Installing the Developer Docker Image
+-------------------------------------
 
-The recommended Operating System is RHEL 6.x or Centos 6.x.
-
-Recommended Hadoop Release is Cloudera Manager 5.5 with Accumulo 1.7 Parcel and Service installed.
-See `Accumulo Installation Guide <http://www.cloudera.com/documentation/other/accumulo/1-6-0/PDF/Apache-Accumulo-Installation-Guide.pdf>`_ for more details.
-
-Recommended Koverse release can be found at http://repo.koverse.com/latest/csd
-
-Infrastructure and Software
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Koverse and the open source software it leverages must be run on a system with no less than 10 GB of memory.
-For workloads beyond simple examples and testing we recommend a properly provisioned Hadoop cluster with five or more nodes.
-
-Using the Cloudera QuickStart VM is not recommended.
-
-Installing Koverse
-------------------
-
-Using Koverse with AWS Marketplace
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The paid AMI available in the AWS marketplace is an easy way to get a Koverse instance up and running if you do not need to install on existing infrastructure.
-The instructions below assume a familiarity with AWS and Amazon EC2 instances.
-
-AMI Installation
-^^^^^^^^^^^^^^^^
-
-- Use the AWS Marketplace to select the Koverse AMI and launch an instance using it.
-- Determine the instance type appropriate for your use case.  For simple proof of concept cases, r3.xlarge will be sufficient, more demanding uses will require more resources.
-- Perform the normal launch process for the instance.  Ensure that port 7080 is available in the security group, as this is the port that Koverse uses.
-- Instance launch will take 10-15 minutes while the Hadoop stack is configured.
-- Once Koverse is available, you can login at this URL: http://<hostname>:7080/ using username 'admin' and the password is the instance id (for example, 'i-1234ab567')
-- You can now skip ahead to the Adding a New Data Set section.
-
-Installing on an on premises cluster using Cloudera Manager
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To install on a local cluster using Cloudera Manager, follow the instructions in :ref:`csdInstallation`
+Follow the instructions at :ref:`DevImage` to obtain the Koverse Developer Docker Image.
 
 .. _quickImport:
 
