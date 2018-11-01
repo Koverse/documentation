@@ -1,6 +1,6 @@
 .. _interactiveAnalytics:
 
-Interactive Analytics
+Prototyping Analytics
 =====================
 
 In addition to running transforms to process data sets at scale, Koverse also enables users to perform interactive analysis of data sets at scale via popular tools such as Apache Spark and Jupyter Notebook.

@@ -25,7 +25,7 @@ Projects written on these APIs can pull in the Koverse SDK as a dependency addin
   <dependency>
     <groupId>com.koverse</groupId>
     <artifactId>koverse-sdk</artifactId>
-    <version>2.4.0</version>
+    <version>2.8.1</version>
   <dependency>
   <repositories>
     <repository>

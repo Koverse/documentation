@@ -1,7 +1,7 @@
 .. _PlanningGuide:
 
-Solution Planning
-=================
+Solution Planning Guide
+=======================
 
 Introduction to Intelligent Solutions and Koverse
 -------------------------------------------------

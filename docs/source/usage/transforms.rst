@@ -1,7 +1,7 @@
 .. _transforms:
 
-Analyzing and Transforming a Data Set
-=====================================
+Configuring Transforms
+======================
 
 Beyond storing and securing data sets, and making the information within them available via search, Koverse also supports performing bulk processing and analysis on data sets via a feature called 'Transforms'.
 Transforms allow users to clean up a data set, summarize or aggregate the information in a data set, or combine two or more data sets to produce a new data set.
