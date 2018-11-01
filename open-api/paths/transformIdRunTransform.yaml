@@ -2,9 +2,13 @@ parameters:
   - $ref: "../api.yaml#/parameters/transformId"
 
 get:
-  description: Runs the specified transform
+  summary: Start
   operationId: runTransform
-  tags: ["Transforms"]
+  tags: ["Transform Jobs"]
+  description: |
+        Starts a job to read data from the Transform's input data sets, apply the Transform's logic, and write output to the Transform's output Data Set.
+
+        These jobs run asynchronously and are executed via the Spark or Hadoop MapReduce frameworks.
   responses:
     200:
       description: Returns the success data

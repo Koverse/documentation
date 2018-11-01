@@ -2,9 +2,10 @@ parameters:
   - $ref: "../api.yaml#/parameters/importFlowIdPath"
 
 get:
-  summary: Returns an import flow by id
+  summary: Get
   operationId: findImportFlowById
   tags: ["Import Flows"]
+  description: Gets an import flow by id.
   responses:
     200:
       description: Returns the import flow data
@@ -16,9 +17,10 @@ get:
       #     description: The date/time that the import flow was last modified
 
 delete:
-  summary: Deletes an import flow by id
+  summary: Delete
   operationId: deleteImportFlowById
   tags: ["Import Flows"]
+  description: Deletes the specified import flow if it exists.
   responses:
     200:
       description: Returns the deleted import flow data
@@ -26,9 +28,10 @@ delete:
         $ref: "../api.yaml#/definitions/importFlow"
 
 put:
-  summary: Updates an import flow by id
+  summary: Update
   operationId: updateImportFlowById
   tags: ["Import Flows"]
+  description: Updates the import flow.
   parameters:
     - name: importFlow
       in: body

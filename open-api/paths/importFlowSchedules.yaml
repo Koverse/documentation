@@ -2,9 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/importFlowIdPath"
 
 get:
-  summary: Returns all Import Schedules by data flow id
+  summary: Get by Import Flow
   operationId: findImportSchedules
-  tags: ["Import Flows", "Schedules"]
+  tags: ["Import Schedules"]
+  description: |
+        Get all schedules associated with the given Import Flow.
   responses:
     200:
       description: Returns the matching import schedules

@@ -1,10 +1,11 @@
 parameters:
   - $ref: "../api.yaml#/parameters/importFlowIdPath"
 get:
-  description: Returns all normalizations for an importFlow
-  summary: Get Import Flow Normalizations
-  tags: ["Import Flows"]
+  summary: Get for an import flow
+  tags: ["Normalizations"]
   operationId: findNormalizations
+  description: |
+        Get any Normalizations associated with the specified Import Flow.
   responses:
     200:
       description: Returns the normalizations for an importFlow
@@ -14,10 +15,11 @@ get:
           $ref: "../api.yaml#/definitions/normalization"
 
 post:
-  description: Creates a new normalizations
-  summary: Create Import Flow Normalization
-  tags: ["Import Flows"]
+  summary: Create
+  tags: ["Normalizations"]
   operationId: addNormalization
+  description: |
+          Adds a Normalization to an Import Flow.
   parameters:
     - name: normalization
       in: body

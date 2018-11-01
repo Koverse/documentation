@@ -2,11 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
 
 get:
-  summary: Get permissions metadata.
+  summary: Get
   operationId: findDataSetPermissions
-  tags: ["Data Sets", "Permissions"]
-  description: >
-    Get permissions metadata of a data set by data set id.
+  tags: ["Data Set Permissions"]
+  description: |
+          Get permissions granted for a data set by data set id.
   responses:
     200:
       description: Returns an array of metadata of the permissions of a data set.
@@ -16,9 +16,9 @@ get:
           $ref: "../api.yaml#/definitions/dataSetPermission"
 
 post:
-  summary: Create data set permission
+  summary: Create
   operationId: createDataSetPermission
-  tags: ["Data Sets", "Permissions"]
+  tags: ["Data Set Permissions"]
   parameters:
     - name: dataSetPermission
       in: body
@@ -26,8 +26,8 @@ post:
       required: true
       schema:
         $ref: "../api.yaml#/definitions/dataSetPermission"
-  description: >
-    Assigns group permissions to the specified data set.
+  description: |
+          Assigns group permissions to the specified data set.
   responses:
     201:
       description: Returns an array of metadata of the permissions of a data set.

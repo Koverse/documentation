@@ -2,10 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/sinkId"
 
 get:
-  description: Returns a sink by id
-  summary: Get sink by id
+  summary: Get
   operationId: findSinkById
   tags: ["Sinks"]
+  description: |
+            Get a Sink by ID
   responses:
     200:
       description: Returns the sink data
@@ -17,10 +18,13 @@ get:
       #     description: The date/time that the sink was last modified
 
 delete:
-  description: Disables a single sink based on the id supplied. Sinks are not deleted for auditing purposes.
-  summary: Delete sink by id
+  summary: Delete
   operationId: deleteSinkById
   tags: ["Sinks"]
+  description: |
+          Disables a single Sink based on the ID supplied.
+
+          Sinks are not deleted for auditing purposes.
   responses:
     200:
       description: Returns the sink that was disabled
@@ -28,10 +32,11 @@ delete:
         $ref: "../api.yaml#/definitions/sink"
 
 put:
-  description: Updates a sink by id
-  summary: Update sink by id
+  summary: Update
   operationId: updateSinkById
   tags: ["Sinks"]
+  description: |
+          Updates a Sink by ID
   parameters:
     - name: sink
       in: body

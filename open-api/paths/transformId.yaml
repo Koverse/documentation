@@ -2,9 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/transformId"
 
 get:
-  summary: Returns a transform by id
+  summary: Get
   operationId: findTransformById
   tags: ["Transforms"]
+  description: |
+            Get a Transform by the specified ID.
   responses:
     200:
       description: Returns the transform data
@@ -16,7 +18,7 @@ get:
       #     description: The date/time that the transform was last modified
 
 delete:
-  summary: Deletes a transform based on the id supplied
+  summary: Delete
   operationId: deleteTransformById
   tags: ["Transforms"]
   responses:
@@ -26,7 +28,7 @@ delete:
         $ref: "../api.yaml#/definitions/transform"
 
 put:
-  summary: Updates a transform by id
+  summary: Update
   tags: ["Transforms"]
   operationId: updateTransformById
   parameters:

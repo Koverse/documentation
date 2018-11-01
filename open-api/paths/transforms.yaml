@@ -11,10 +11,12 @@ parameters:
     in: query
 
 get:
-  summary: Returns all transforms for matching data sets.
-  description: Returns all transforms for matching data sets. One of the query parameters must be specified
+  summary: List for a data set
   operationId: findTransforms
   tags: ["Transforms"]
+  description: |
+            List Transforms associated with the specified Data Set.
+            One of the query parameters must be specified, either a Data Set that is associated as the input to a Transform or the Data Set that is associated as the output of a Transform.
   responses:
     200:
       description: Returns the matching transforms
@@ -24,7 +26,7 @@ get:
           $ref: "../api.yaml#/definitions/transform"
 
 post:
-  summary: Creates a new transform
+  summary: Create
   operationId: addTransform
   tags: ["Transforms"]
   parameters:

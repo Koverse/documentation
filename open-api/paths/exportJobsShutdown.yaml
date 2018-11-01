@@ -2,11 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/exportJobId"
 
 get:
-  summary: Shutdown an export job
+  summary: Shutdown
   operationId: exportJobShutdownById
-  tags: ["Sinks", "Jobs"]
-  description: >
-    Shuts down an existing export job.
+  tags: ["Export Jobs"]
+  description: |
+        Shuts down a running export job.
   responses:
     200:
       description: 200 OK

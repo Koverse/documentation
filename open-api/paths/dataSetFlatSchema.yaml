@@ -2,9 +2,9 @@ parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
 
 get:
-  summary: Get flat schema metadata.
+  summary: Get flat
   operationId: findDataSetFlatSchemaById
-  tags: ["Data Sets"]
+  tags: ["Data Set Schemas"]
   description: >
     Get flat schema metadata of a data set by data set id.
   responses:

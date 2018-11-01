@@ -2,11 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
 
 get:
-  summary: Get jobs metadata
+  summary: Get for a data set
   operationId: getJobsMetadata
-  tags: ["Data Sets", "Jobs"]
-  description: >
-    Get the metadata of the jobs run on a data set by data set id.
+  tags: ["Jobs"]
+  description: |
+        Get the metadata of the jobs run on a data set by data set id.
   responses:
     200:
       description: Returns an array of metadata for all jobs run on a data set.

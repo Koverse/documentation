@@ -1,8 +1,8 @@
 post:
-  summary: User login
+  summary: Login
   operationId: loginUser
   tags: ["Authentication"]
-  description: >
+  description: |
       Authenticate a user and create an authenticated web session. This must be
       called before calling other methods.
   parameters:

@@ -2,9 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/importScheduleId"
 
 get:
-  summary: Returns an import schedule by id
+  summary: Get
   operationId: findImportScheduleById
-  tags: ["Schedules"]
+  tags: ["Import Schedules"]
+  description: |
+          Get the specified Import Schedule.
   responses:
     200:
       description: Returns the import schedule data
@@ -16,9 +18,11 @@ get:
       #     description: The date/time that the import schedule was last modified
 
 delete:
-  summary: Deletes a single import schedule based on the id supplied
+  summary: Delete
   operationId: deleteImportSchedule
-  tags: ["Schedules"]
+  tags: ["Import Schedules"]
+  description: |
+          Delete the specified Import Schedule.
   responses:
     200:
       description: Returns the import schedule that was deleted

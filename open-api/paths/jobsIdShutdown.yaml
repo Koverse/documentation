@@ -2,9 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/jobId"
 
 get:
-  summary: Shutdown a job by job id.
+  summary: Shutdown
   operationId: shutdownJobById
   tags: ["Jobs"]
+  description: |
+          Shutdown the specified job.
   responses:
     200:
       description: '200 OK'

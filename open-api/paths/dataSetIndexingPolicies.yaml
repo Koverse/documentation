@@ -2,11 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
 
 get:
-  summary: Get indexing policy metadata
+  summary: Get
   operationId: findDataSetIndexingPolicyById
-  tags: ["Data Sets", "Indexing"]
-  description: >
-    Get data set indexing policy metadata including indexed fields, composite indexes and foreign language indexing by data set id.
+  tags: ["Indexing Policies"]
+  description: |
+        Get data set indexing policy metadata including indexed fields, composite indexes and foreign language indexing by data set id.
   responses:
     200:
       description: Returns an array of the indexing policy metadata of a data set.
@@ -14,9 +14,9 @@ get:
         $ref: "../api.yaml#/definitions/dataSetIndexingPolicy"
 
 put:
-  summary: Update indexing policy
+  summary: Update
   operationId: updateDataSetIndexingPolicyById
-  tags: ["Data Sets", "Indexing"]
+  tags: ["Indexing Policies"]
   parameters:
     - name: dataSetIndexingPolicy
       in: body
@@ -24,8 +24,10 @@ put:
       required: true
       schema:
         $ref: "../api.yaml#/definitions/dataSetIndexingPolicy"
-  description: >
-    Updates the indexing policy for a data set by data set id.
+  description: |
+          Updates the indexing policy for a data set by data set id.
+
+          Changing the indexing policy will trigger an asynchronous reindexing job that will apply the changes.
   responses:
     200:
       description: Returns an array of the indexing policy metadata of a data set.
