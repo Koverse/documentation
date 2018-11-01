@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  version: 2.4.0
+  version: 2.9.0
   title: Koverse REST API
   description: |
     Specification for interacting with the Koverse Rest API
@@ -11,35 +11,196 @@ produces:
   - application/json
 tags:
   - name: Authentication
-    description: Manage User Authentication
+    description: |
+      Methods for logging in individual users.
+
+      These methods only apply when using Koverse's built-in user management.
   - name: Data Sets
-    description: Manage Data Sets
-  - name: Import Flows
-    description: Manage Import Flows
-  - name: Indexing
-    description: Manage Indexing
-  - name: Jobs
-    description: Manage Jobs
-  - name: Masking
-    description: Manage Column Masking
-  - name: Normalizations
-    description: Manage Normalizations
-  - name: Permissions
-    description: Manage Permissions
+    description: |
+      Create, configure, and delete Data Sets.
+  - name: Data Set Attributes
+    description: |
+      List, inspect, and configure masking for data set attributes
+  - name: Data Set Permissions
+    description: >
+      Control access to data in Data Sets.
+
+
+      Access is controlled on a Group basis and includes actions such as writing
+      to a Data Set, querying, deleting, changing configuration, etc.
+
+
+      Note that these permissions are distinct from system permission which
+      control things like which Groups can do things like create Data Sets,
+      setup Transforms etc.
+  - name: System Permissions
+    description: |
+      Control access to system functionality.
+  - name: Indexing Policies
+    description: >
+      Control how Koverse indexes data in a data set.
+
+
+      This includes specifying which attributes to index, how data should be
+      tokenized, and which combinations of attributes should be combined into
+      Composite Indexes.
+
+      The set of available indexes affects which kinds of interactive queries
+      Koverse can support.
   - name: Query
-    description: Query Data Sets
+    description: >
+      Interactively query Data Sets.
+
+
+      Queries are designed to retrieve a specific subset of records, in many
+      cases in less than a second.
+
+      Applications can call query methods in response to user requests.
   - name: Records
-    description: Manage Records
-  - name: Schedules
-    description: 'Manage Schedules for Sinks, Transforms, and Import Flows'
-  - name: Sinks
-    description: Manage Sinks
+    description: |
+      Write and retrieve individual records and sets of sample records.
+  - name: Source Types
+    description: >
+      List available Source types.
+
+      Source types specify which parameters are available for each type of
+      Source.
   - name: Sources
-    description: Manage Sources
-  - name: System
-    description: System Information
+    description: |
+      Sources are external data systems from which Koverse can ingest data.
+  - name: Import Flows
+    description: |
+      Configure a Source to import external data to a specific Data Set.
+  - name: Normalizations
+    description: |
+      Normalizations allow data to be modified as it is imported.
+  - name: Import Jobs
+    description: >
+      Import jobs are used for importing data from an external Source into a
+      Data Set.
+
+
+      These jobs are executed by the Hadoop MapReduce or Spark frameworks
+      asynchronously.
+
+      Note that Koverse submits jobs to YARN which then executes them according
+      to the way the YARN cluster is configured, which is typically a single
+      queue so jobs are started on a first come, first serve basis.
+
+      Jobs may run simultaneously as cluster resources allow.
+
+
+      Jobs can be started or shutdown via these methods.
+  - name: Import Schedules
+    description: >
+      Manage schedules for Import Flows.
+
+
+      Schedules control how Import Jobs are started automatically.
+
+      Import Jobs can still be created for Import Flows without schedules on an
+      on-demand basis.
+  - name: Transform Types
+    description: >
+      Get a list of transforms available in the system.
+
+      Transform types specify which parameters are available for each type of
+      Transform.
   - name: Transforms
-    description: Manage Transforms
+    description: >
+      Setup a partiular Transform Type to transform one or more data sets into a
+      new Data Set.
+  - name: Transform Jobs
+    description: >
+      Transform jobs process new data or all data in input Data Sets and write
+      out results to an output Data Set.
+
+
+      These jobs are executed by the Hadoop MapReduce or Spark frameworks
+      asynchronously.
+
+      Note that Koverse submits jobs to YARN which then executes them according
+      to the way the YARN cluster is configured, which is typically a single
+      queue so jobs are started on a first come, first serve basis.
+
+      Jobs may run simultaneously as cluster resources allow.
+
+
+      Jobs can be started or shutdown via these methods.
+  - name: Transform Schedules
+    description: >
+      Manage schedules for Transforms.
+
+
+      Schedules control how Transform Jobs are started automatically.
+
+      Transforms Jobs can still be created for Transforms without schedules on
+      an on-demand basis, or automatically as new data is ingested via Import
+      Jobs into input Data Sets.
+  - name: Sink Types
+    description: |
+      List and get available Sink types.
+      Sinks are external systems to which Koverse can export data.
+  - name: Sinks
+    description: |
+      Create, update, and delete Sinks.
+      Sinks are external systems to which Koverse can export data.
+  - name: Export Jobs
+    description: >
+      Export jobs write new data or all data in input Data Sets to an external
+      Sink.
+
+
+      These jobs are executed by the Hadoop MapReduce or Spark frameworks
+      asynchronously.
+
+      Note that Koverse submits jobs to YARN which then executes them according
+      to the way the YARN cluster is configured, which is typically a single
+      queue so jobs are started on a first come, first serve basis.
+
+      Jobs may run simultaneously as cluster resources allow.
+
+
+      Jobs can be started or shutdown via these methods.
+  - name: Sink Schedules
+    description: >
+      Manage schedules for exporting to Sinks
+
+
+      Schedules control how Export Jobs are started automatically.
+
+      Export Jobs can still be created for Sinks without schedules on an
+      on-demand basis or automatically as new data appears in input Data Sets.
+  - name: Jobs
+    description: >
+      Start, monitor, and cancel data processing jobs.
+
+
+      Data processing jobs are used for importing, transforming, and exporting
+      data.
+
+      These jobs are executed by the Hadoop MapReduce or Spark frameworks
+      asynchronously.
+
+      Koverse monitors the status of jobs, gathering information on the success
+      or failure of a job, including gathering any error information about
+      failed jobs.
+
+
+      Jobs can be started or shutdown via these methods.
+
+      Note that Koverse submits jobs to YARN which then executes them according
+      to the way the YARN cluster is configured, which is typically a single
+      queue so jobs are started on a first come, first serve basis.
+
+      Jobs may run simultaneously as cluster resources allow.
+
+
+      If two or more jobs will write on the same data set, one job may become
+      blocked to allow the other job to complete its processing without
+      inteference.
+
+      In some cases a blocked job can be unblocked so it can proceed.
 definitions:
   dataSet:
     type: object
@@ -1428,13 +1589,15 @@ parameters:
 paths:
   /api/login:
     post:
-      summary: User login
+      summary: Login
       operationId: loginUser
       tags:
         - Authentication
       description: >
         Authenticate a user and create an authenticated web session. This must
-        be called before calling other methods.
+        be
+
+        called before calling other methods.
       parameters:
         - name: loginParams
           in: body
@@ -1449,13 +1612,15 @@ paths:
             $ref: '#/definitions/user'
   /api/logout:
     get:
-      summary: User log out
+      summary: Logout
       operationId: logoutUser
       tags:
         - Authentication
       description: >
-        Closes the authenticated web session. Subsequent API calls will fail
-        with code 401 Unauthorized until a new session is created via login.
+        Closes the authenticated web session.
+
+        Subsequent API calls will fail with code 401 Unauthorized until a new
+        session is created via login.
       responses:
         '200':
           description: Returns a confirmation of the logout
@@ -1463,11 +1628,11 @@ paths:
             $ref: '#/definitions/logout'
   /api/dataSets:
     get:
-      summary: List all data sets
+      summary: List
       operationId: findDataSets
       tags:
         - Data Sets
-      description: >
+      description: |
         Get a list of data set metadata objects for all data sets the user is
         authorized to see.
       responses:
@@ -1478,12 +1643,13 @@ paths:
             items:
               $ref: '#/definitions/dataSetMetadata'
     post:
-      summary: Create a new data set
+      summary: Create
       operationId: createDataSet
       tags:
         - Data Sets
       description: >
         Creates a new empty data set.
+
 
         Note: This call will fail if there is already a data set with the same
         name as the requested new data set.
@@ -1503,10 +1669,11 @@ paths:
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
-      summary: Get metadata
-      description: >
-        Get the name, description, record count, and other information about the
-        given data set. Does not return any records within the data set.
+      summary: Get
+      description: |
+        Get the name, description, record count, and other information
+        about the given data set. Does not return any records within the
+        data set.
       operationId: findDataSetById
       tags:
         - Data Sets
@@ -1516,7 +1683,7 @@ paths:
           schema:
             $ref: '#/definitions/dataSetMetadata'
     put:
-      summary: Update data set metadata
+      summary: Update
       description: |
         Update the data set metadata.
       operationId: updateDataSetById
@@ -1528,7 +1695,7 @@ paths:
           schema:
             $ref: '#/definitions/dataSetMetadata'
     delete:
-      summary: Delete data set by dataSetId
+      summary: Delete
       description: |
         Delete the data set specified by dataSetId.
       operationId: deleteDataSetById
@@ -1543,14 +1710,20 @@ paths:
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
-      summary: Get attribute names
+      summary: List names
       operationId: findDataSetAttributeNames
       tags:
-        - Data Sets
+        - Data Set Attributes
       description: >
-        Get a list of the names of fields or attributes within a data set. These
-        can be used to inform users of what fields are available so they can be
-        used in queries.
+        Get a list of the names of fields or attributes within a data set.
+
+        These can be used to inform users of what fields are available so
+
+        they can be used in queries.
+
+
+        This method fetches the names of attributes only, and doesn't return any
+        statistics or metadata collected about attributes.
       responses:
         '200':
           description: Returns all data set attribute names
@@ -1562,12 +1735,16 @@ paths:
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
-      summary: Get attribute metadata
+      summary: Get metadata
       operationId: findDataSetAttributes
       tags:
-        - Data Sets
-      description: |
+        - Data Set Attributes
+      description: >
         Get the metadata of all attributes of a data set.
+
+
+        Metadata includes statistical information about the values found in each
+        attribute.
       responses:
         '200':
           description: Returns an array of metadata of each attribute of a data set.
@@ -1579,41 +1756,26 @@ paths:
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
-      summary: Clear a Data Set by id
+      summary: Clear
       operationId: clearDataSetById
       tags:
         - Data Sets
-      description: Clears a data set of all data.
+      description: >-
+        Clears a data set of all data.
+
+        This involves dropping data stored in Accumulo using the deleterows
+        command and should be called sparingly.
       responses:
         '200':
           description: 200 OK
-  '/api/dataSets/{dataSetId}/flatSchema':
-    parameters:
-      - $ref: '#/parameters/dataSetId'
-    get:
-      summary: Get flat schema metadata.
-      operationId: findDataSetFlatSchemaById
-      tags:
-        - Data Sets
-      description: |
-        Get flat schema metadata of a data set by data set id.
-      responses:
-        '200':
-          description: Returns an array of the metadata of the flat schema of a data set.
-          schema:
-            type: object
-            properties:
-              root:
-                type: object
   '/api/dataSets/{dataSetId}/indexingPolicy':
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
-      summary: Get indexing policy metadata
+      summary: Get
       operationId: findDataSetIndexingPolicyById
       tags:
-        - Data Sets
-        - Indexing
+        - Indexing Policies
       description: >
         Get data set indexing policy metadata including indexed fields,
         composite indexes and foreign language indexing by data set id.
@@ -1623,11 +1785,10 @@ paths:
           schema:
             $ref: '#/definitions/dataSetIndexingPolicy'
     put:
-      summary: Update indexing policy
+      summary: Update
       operationId: updateDataSetIndexingPolicyById
       tags:
-        - Data Sets
-        - Indexing
+        - Indexing Policies
       parameters:
         - name: dataSetIndexingPolicy
           in: body
@@ -1635,8 +1796,12 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/dataSetIndexingPolicy'
-      description: |
+      description: >
         Updates the indexing policy for a data set by data set id.
+
+
+        Changing the indexing policy will trigger an asynchronous reindexing job
+        that will apply the changes.
       responses:
         '200':
           description: Returns an array of the indexing policy metadata of a data set.
@@ -1646,13 +1811,12 @@ paths:
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
-      summary: Get permissions metadata.
+      summary: Get
       operationId: findDataSetPermissions
       tags:
-        - Data Sets
-        - Permissions
+        - Data Set Permissions
       description: |
-        Get permissions metadata of a data set by data set id.
+        Get permissions granted for a data set by data set id.
       responses:
         '200':
           description: Returns an array of metadata of the permissions of a data set.
@@ -1661,11 +1825,10 @@ paths:
             items:
               $ref: '#/definitions/dataSetPermission'
     post:
-      summary: Create data set permission
+      summary: Create
       operationId: createDataSetPermission
       tags:
-        - Data Sets
-        - Permissions
+        - Data Set Permissions
       parameters:
         - name: dataSetPermission
           in: body
@@ -1685,11 +1848,10 @@ paths:
       - $ref: '#/parameters/dataSetId'
       - $ref: '#/parameters/permissionId'
     put:
-      summary: Updates a data set permission by id
+      summary: Update
       operationId: updateDataSetPermissionsById
       tags:
-        - Data Sets
-        - Permissions
+        - Data Set Permissions
       parameters:
         - name: dataSetPermission
           in: body
@@ -1698,20 +1860,21 @@ paths:
           schema:
             $ref: '#/definitions/dataSetPermission'
       description: |
-        Updates the permissions of a data set speicified by a data set ID.
+        Updates the permissions of a data set specified by a data set ID.
       responses:
         '200':
           description: Returns the updated data set permission data
           schema:
             $ref: '#/definitions/dataSetPermission'
     delete:
-      summary: Deletes a single data set permission based on the id supplied
+      summary: Delete
       operationId: deleteDataSetPermissionsById
       tags:
-        - Data Sets
-        - Permissions
+        - Data Set Permissions
       description: |
-        Deletes a data set permission based on the supplied permission id
+        Deletes a data set permission based on the supplied permission id.
+
+        This effectively revokes access.
       responses:
         '200':
           description: Returns the data set permission that was deleted
@@ -1721,10 +1884,9 @@ paths:
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
-      summary: Get jobs metadata
+      summary: Get for a data set
       operationId: getJobsMetadata
       tags:
-        - Data Sets
         - Jobs
       description: |
         Get the metadata of the jobs run on a data set by data set id.
@@ -1740,7 +1902,7 @@ paths:
       - $ref: '#/parameters/dataSetId'
       - $ref: '#/parameters/recordStyle'
     get:
-      summary: Get a sample of record data
+      summary: Get sample records
       operationId: findDataSetRecordsById
       tags:
         - Data Sets
@@ -1749,8 +1911,10 @@ paths:
         Returns all the fields and values for a sample of records by data set
         id.
 
-        Note: The recordStyle query parameter defaults to a value of "2.1". To
-        return json output of record(s), you must specify the recordStyle query
+
+        Note: The recordStyle query parameter defaults to a value of "2.1".
+
+        To return json output of records, you must specify the recordStyle query
         parameter "2.2".
       responses:
         '200':
@@ -1764,33 +1928,21 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/record'
-  '/api/dataSets/{dataSetId}/schema':
-    parameters:
-      - $ref: '#/parameters/dataSetId'
-    get:
-      summary: Get full data set schema metadata.
-      operationId: findDataSetSchema
-      tags:
-        - Data Sets
-      description: |
-        Get schema metadata of a data set.
-      responses:
-        '200':
-          description: Returns an array of the metadata of the schema for a data set.
-          schema:
-            type: object
-            properties:
-              root:
-                type: object
   '/api/dataSets/{dataSetId}/repair':
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
-      summary: Repair a Data Set by id
+      summary: Repair
       operationId: repairDataSetById
       tags:
         - Data Sets
-      description: Repairs a data set by dataSetId.
+      description: >
+        Repairs a data set by dataSetId.
+
+
+        This will delete a data set's index entries, attribute statistics,
+        record samples, and schema information and start an asynchronous job to
+        regenerate that information from data set records.
       responses:
         '200':
           description: 200 OK
@@ -1798,11 +1950,10 @@ paths:
     parameters:
       - $ref: '#/parameters/dataSetId'
     put:
-      summary: Update attributes masking
+      summary: Update masking
       operationId: updateDataSetAttributesMaskingByID
       tags:
-        - Data Sets
-        - Masking
+        - Data Set Attributes
       description: |
         Updates the masked attributes of a data set.
       parameters:
@@ -1825,10 +1976,16 @@ paths:
               $ref: '#/definitions/dataSetAttributes'
   /api/importFlows:
     post:
-      summary: Creates an import flow
+      summary: Create
       operationId: addImportFlow
       tags:
         - Import Flows
+      description: >
+        Create a new Import Flow, associating a Source with a Data Set.
+
+
+        Once this is created, an Import Job can be started to ingest data from
+        the external Source into the Data Set.
       parameters:
         - name: importFlow
           in: body
@@ -1845,30 +2002,33 @@ paths:
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     get:
-      summary: Returns an import flow by id
+      summary: Get
       operationId: findImportFlowById
       tags:
         - Import Flows
+      description: Gets an import flow by id.
       responses:
         '200':
           description: Returns the import flow data
           schema:
             $ref: '#/definitions/importFlow'
     delete:
-      summary: Deletes an import flow by id
+      summary: Delete
       operationId: deleteImportFlowById
       tags:
         - Import Flows
+      description: Deletes the specified import flow if it exists.
       responses:
         '200':
           description: Returns the deleted import flow data
           schema:
             $ref: '#/definitions/importFlow'
     put:
-      summary: Updates an import flow by id
+      summary: Update
       operationId: updateImportFlowById
       tags:
         - Import Flows
+      description: Updates the import flow.
       parameters:
         - name: importFlow
           in: body
@@ -1885,13 +2045,16 @@ paths:
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     post:
-      summary: Runs an import flow by id
+      summary: Start
       operationId: funImportFlowById
       tags:
-        - Import Flows
+        - Import Jobs
+      description: >
+        Starts a new job to import data from the associated Source into the
+        specified Data Set.
       responses:
         '200':
-          description: Returns the success or failure of running the import flow
+          description: Returns the success or failure of starting the job.
           schema:
             type: object
             properties:
@@ -1908,11 +2071,12 @@ paths:
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     get:
-      description: Returns all normalizations for an importFlow
-      summary: Get Import Flow Normalizations
+      summary: Get for an import flow
       tags:
-        - Import Flows
+        - Normalizations
       operationId: findNormalizations
+      description: |
+        Get any Normalizations associated with the specified Import Flow.
       responses:
         '200':
           description: Returns the normalizations for an importFlow
@@ -1921,11 +2085,12 @@ paths:
             items:
               $ref: '#/definitions/normalization'
     post:
-      description: Creates a new normalizations
-      summary: Create Import Flow Normalization
+      summary: Create
       tags:
-        - Import Flows
+        - Normalizations
       operationId: addNormalization
+      description: |
+        Adds a Normalization to an Import Flow.
       parameters:
         - name: normalization
           in: body
@@ -1943,22 +2108,22 @@ paths:
       - $ref: '#/parameters/importFlowIdPath'
       - $ref: '#/parameters/normalizationId'
     get:
-      description: Returns a normalization by id
-      summary: Get import flow normalization by id
+      summary: Get
       operationId: findNormalizationById
       tags:
-        - Import Flows
+        - Normalizations
+      description: Get a Normalization
       responses:
         '200':
           description: Returns the normalization data
           schema:
             $ref: '#/definitions/normalization'
     put:
-      description: Updates a normalization by id
-      summary: Update import flow normalization by id
+      summary: Update
       operationId: updateNormalizationById
       tags:
-        - Import Flows
+        - Normalizations
+      description: Update a Normalization
       parameters:
         - name: normalization
           in: body
@@ -1972,11 +2137,11 @@ paths:
           schema:
             $ref: '#/definitions/normalization'
     delete:
-      description: Deletes a single normalization based on the id supplied
-      summary: Delete import flow normalization by id
+      summary: Delete
       operationId: deleteNormalization
       tags:
-        - Import Flows
+        - Normalizations
+      description: Delete a Normalization
       responses:
         '200':
           description: Returns the normalization that was deleted
@@ -1986,11 +2151,12 @@ paths:
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     get:
-      summary: Returns all Import Schedules by data flow id
+      summary: Get by Import Flow
       operationId: findImportSchedules
       tags:
-        - Import Flows
-        - Schedules
+        - Import Schedules
+      description: |
+        Get all schedules associated with the given Import Flow.
       responses:
         '200':
           description: Returns the matching import schedules
@@ -2002,11 +2168,12 @@ paths:
     parameters:
       - $ref: '#/parameters/sourceId'
     get:
-      summary: Returns all import flows for a given source by id
+      summary: Get by source
       operationId: findImportFlowBySourceId
       tags:
         - Import Flows
-        - Sources
+      description: |
+        Get an Import Flow associated with the given Source ID.
       responses:
         '200':
           description: Returns the import flow data
@@ -2016,10 +2183,12 @@ paths:
     parameters:
       - $ref: '#/parameters/importJobId'
     get:
-      summary: Shutdown an import job
+      summary: Shutdown
       operationId: shutdownImportJobById
       tags:
-        - Jobs
+        - Import Jobs
+      description: |
+        Shutdown the specified Import Job.
       responses:
         '200':
           description: Returns an updated job
@@ -2028,23 +2197,13 @@ paths:
   /api/importSchedules:
     parameters:
       - $ref: '#/parameters/importFlowId'
-    get:
-      summary: Returns all Import Schedules by data flow id
-      operationId: findImportSchedulesById
-      tags:
-        - Schedules
-      responses:
-        '200':
-          description: Returns the matching import schedules
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/importSchedule'
     post:
-      summary: Creates a new import schedule
+      summary: Create
       operationId: addImportSchedule
       tags:
-        - Schedules
+        - Import Schedules
+      description: |
+        Create a new Import Schedule.
       parameters:
         - name: importSchedule
           in: body
@@ -2061,20 +2220,24 @@ paths:
     parameters:
       - $ref: '#/parameters/importScheduleId'
     get:
-      summary: Returns an import schedule by id
+      summary: Get
       operationId: findImportScheduleById
       tags:
-        - Schedules
+        - Import Schedules
+      description: |
+        Get the specified Import Schedule.
       responses:
         '200':
           description: Returns the import schedule data
           schema:
             $ref: '#/definitions/importSchedule'
     delete:
-      summary: Deletes a single import schedule based on the id supplied
+      summary: Delete
       operationId: deleteImportSchedule
       tags:
-        - Schedules
+        - Import Schedules
+      description: |
+        Delete the specified Import Schedule.
       responses:
         '200':
           description: Returns the import schedule that was deleted
@@ -2082,11 +2245,12 @@ paths:
             $ref: '#/definitions/importSchedule'
   /api/jobs:
     get:
-      description: Returns all active jobs
-      summary: Get active jobs
+      summary: Get active
       operationId: findActiveJobs
       tags:
         - Jobs
+      description: |
+        Returns a list of all active jobs
       responses:
         '200':
           description: Returns the active jobs
@@ -2098,10 +2262,12 @@ paths:
     parameters:
       - $ref: '#/parameters/jobId'
     get:
-      summary: Shutdown a job by job id.
+      summary: Shutdown
       operationId: shutdownJobById
       tags:
         - Jobs
+      description: |
+        Shutdown the specified job.
       responses:
         '200':
           description: 200 OK
@@ -2109,19 +2275,27 @@ paths:
     parameters:
       - $ref: '#/parameters/jobId'
     get:
-      summary: Unblocks a job by job id.
-      operationId: shutdownImportJob
+      summary: Unblock
+      operationId: unblockJob
       tags:
         - Jobs
+      description: >
+        Unblock the specified blocked job.
+
+
+        This will cause the job to be started as soon as cluster resources
+        allow.
       responses:
         '200':
           description: 200 OK
   /api/normalizationTypes:
     get:
-      summary: Returns all normalization types
+      summary: List types
       operationId: findNormalizationTypes
       tags:
         - Normalizations
+      description: |
+        List all available Normalization types.
       responses:
         '200':
           description: Returns the matching normalization types
@@ -2131,27 +2305,29 @@ paths:
               $ref: '#/definitions/normalizationType'
   /api/permissions/dataset:
     get:
-      description: Returns the available data set permissions
-      summary: Get data set permissions
+      summary: List
       operationId: dataSetPermissions
       tags:
-        - Data Sets
-        - Permissions
+        - Data Set Permissions
+      description: |
+        List available data set permissions
       responses:
         '200':
-          description: Returns avilable data set permissions.
+          description: >
+            Returns available data set permissions that can be applied, such as
+            the permission to read, write, etc.
           schema:
             type: array
             items:
               type: string
   /api/permissions/system:
     get:
-      description: Returns the available system permissions
-      summary: Get system permissions
+      summary: List
       operationId: systemPermissions
       tags:
-        - System
-        - Permissions
+        - System Permissions
+      description: |
+        List the available system permissions
       responses:
         '200':
           description: Returns the users system permissions metadata.
@@ -2163,7 +2339,7 @@ paths:
     parameters:
       - $ref: '#/parameters/recordId'
     get:
-      summary: Get a single record
+      summary: Get
       operationId: getRecordById
       tags:
         - Records
@@ -2176,7 +2352,21 @@ paths:
           type: string
           in: query
           required: true
-      description: Get a single record by data set id and record id.
+      description: >
+        Get a single record by data set id and record id.
+
+
+        Note that the Record ID must be known in order to use this method.
+
+        It is intended to be used by applications that need to fetch one record,
+        often one that is related to some other record.
+
+
+        For example, a Transform may be designed to extract interesting features
+        from original records that may consist of larger documents.
+
+        Users searching the features may want to fetch the original larger
+        record associated with these features.
       responses:
         '200':
           description: Returns the single record data.
@@ -2189,11 +2379,24 @@ paths:
                 items:
                   $ref: '#/definitions/record'
     post:
-      summary: Write a single record
+      summary: Create
       operationId: createRecord
       tags:
         - Records
-      description: Writes a single record to the specified data set.
+      description: >
+        Writes a single record to the specified data set.
+
+
+        Note that this syncs the newly written record to Accumulo before
+        returning and so is not suitable for writing many records one after
+        another.
+
+        It is intended primarily to allow some applications to write new records
+        to a Data Set when a user needs to write one record.
+
+
+        It is recommended to use a Source and Import Flow to ingest data into a
+        Data Set when many records need to be written.
       responses:
         '200':
           description: Returns the single record data.
@@ -2214,10 +2417,12 @@ paths:
         required: true
         type: string
     get:
-      summary: Returns all sinks by data set id
+      summary: Get for data set
       operationId: findSinks
       tags:
         - Sinks
+      description: |
+        Get a list of Sinks associated with the given Data Set ID.
       responses:
         '200':
           description: Returns the matching sinks
@@ -2226,10 +2431,17 @@ paths:
             items:
               $ref: '#/definitions/sink'
     post:
-      summary: Creates a sink
+      summary: Create
       operationId: createSink
       tags:
         - Sinks
+      description: >
+        Create a new Sink representing an external system to which data can be
+        exported.
+
+
+        After a Sink is created, Export Jobs can be started to write data to the
+        system described by the Sink.
       parameters:
         - name: sink
           in: body
@@ -2248,35 +2460,38 @@ paths:
     parameters:
       - $ref: '#/parameters/sinkId'
     get:
-      description: Returns a sink by id
-      summary: Get sink by id
+      summary: Get
       operationId: findSinkById
       tags:
         - Sinks
+      description: |
+        Get a Sink by ID
       responses:
         '200':
           description: Returns the sink data
           schema:
             $ref: '#/definitions/sink'
     delete:
-      description: >-
-        Disables a single sink based on the id supplied. Sinks are not deleted
-        for auditing purposes.
-      summary: Delete sink by id
+      summary: Delete
       operationId: deleteSinkById
       tags:
         - Sinks
+      description: |
+        Disables a single Sink based on the ID supplied.
+
+        Sinks are not deleted for auditing purposes.
       responses:
         '200':
           description: Returns the sink that was disabled
           schema:
             $ref: '#/definitions/sink'
     put:
-      description: Updates a sink by id
-      summary: Update sink by id
+      summary: Update
       operationId: updateSinkById
       tags:
         - Sinks
+      description: |
+        Updates a Sink by ID
       parameters:
         - name: sink
           in: body
@@ -2293,11 +2508,14 @@ paths:
     parameters:
       - $ref: '#/parameters/sinkId'
     get:
-      summary: Run export by id
+      summary: Start
       operationId: exportBySinkId
       tags:
-        - Sinks
-      description: Run an export by the specified id.
+        - Export Jobs
+      description: |
+        Start an Export Job to send data to the external Sink specified by ID.
+
+        The Export Job will run asynchronously.
       responses:
         '200':
           description: Returns the export job data
@@ -2305,12 +2523,12 @@ paths:
             $ref: '#/definitions/job'
   /api/sinkSchedules:
     get:
-      description: Returns a list Sink Schedules
-      summary: Get sink schedules
+      summary: Get
       operationId: findSinkSchedules
       tags:
-        - Sinks
-        - Schedules
+        - Sink Schedules
+      description: |
+        Returns a list of Sink Schedules
       responses:
         '200':
           description: Returns the matching sink schedules
@@ -2319,12 +2537,12 @@ paths:
             items:
               $ref: '#/definitions/exportSchedule'
     post:
-      description: Creates a new sink schedule
-      summary: Create sink schedules
+      summary: Create
       operationId: createSinkSchedule
       tags:
-        - Sinks
-        - Schedules
+        - Sink Schedules
+      description: |
+        Creates a new schedule associated with the given Sink.
       parameters:
         - name: exportSchedule
           in: body
@@ -2341,24 +2559,24 @@ paths:
     parameters:
       - $ref: '#/parameters/exportScheduleId'
     get:
-      description: Returns a sink schedule by id
-      summary: Get sink schedule by id
+      summary: Get
       operationId: findSinkScheduleById
       tags:
-        - Sinks
-        - Schedules
+        - Sink Schedules
+      description: |
+        Get a Sink Schedule by the schedule's ID.
       responses:
         '200':
           description: Returns the sink schedule data
           schema:
             $ref: '#/definitions/exportSchedule'
     delete:
-      description: Deletes a single sink schedule based on the id supplied
-      summary: Delete sink schedule by id
+      summary: Delete
       operationId: deleteSinkScheduleById
       tags:
-        - Sinks
-        - Schedules
+        - Sink Schedules
+      description: |
+        Deletes a single Sink Schedule based on the ID supplied
       responses:
         '200':
           description: Returns the sink schedule that was deleted
@@ -2366,11 +2584,24 @@ paths:
             $ref: '#/definitions/exportSchedule'
   /api/sinkTypes:
     get:
-      description: Returns all sink types
-      summary: Get sink types
+      summary: List
       operationId: findSinksTypes
       tags:
-        - Sinks
+        - Sink Types
+      description: >
+        Returns all Sink types.
+
+
+        A Sink type describes a kind of Sink that can be created.
+
+        For example a Sink type may describe the parameters available for
+        writing to an external database such as Oracle or an external file
+        system.
+
+
+        A Sink can be created to write to a specific database or file system by
+        filling out the configuration parameters listed by the Sink type and
+        creating a Sink.
       responses:
         '200':
           description: Returns the matching sink types
@@ -2382,10 +2613,10 @@ paths:
     parameters:
       - $ref: '#/parameters/sinkTypeId'
     get:
-      summary: Returns a sink type by id
+      summary: Get
       operationId: findSinkTypeById
       tags:
-        - Sinks
+        - Sink Types
       responses:
         '200':
           description: Returns the sink type data
@@ -2395,19 +2626,18 @@ paths:
     parameters:
       - $ref: '#/parameters/exportJobId'
     get:
-      summary: Shutdown an export job
+      summary: Shutdown
       operationId: exportJobShutdownById
       tags:
-        - Sinks
-        - Jobs
+        - Export Jobs
       description: |
-        Shuts down an existing export job.
+        Shuts down a running export job.
       responses:
         '200':
           description: 200 OK
   /api/sourceInstances:
     post:
-      summary: Creates a new source
+      summary: Create
       operationId: addSource
       tags:
         - Sources
@@ -2431,7 +2661,7 @@ paths:
     parameters:
       - $ref: '#/parameters/sourceInstanceId'
     get:
-      summary: Returns a source by id
+      summary: Get
       operationId: findSourceById
       tags:
         - Sources
@@ -2441,7 +2671,7 @@ paths:
           schema:
             $ref: '#/definitions/source'
     delete:
-      summary: Deletes a single source based on the id supplied
+      summary: Delete
       operationId: deleteSourceById
       tags:
         - Sources
@@ -2451,7 +2681,7 @@ paths:
           schema:
             $ref: '#/definitions/source'
     put:
-      summary: Updates a source by id
+      summary: Update
       operationId: updateSourceById
       tags:
         - Sources
@@ -2469,10 +2699,22 @@ paths:
             $ref: '#/definitions/sourceInstance'
   /api/sourceTypeDescriptions:
     get:
-      summary: Returns all source types
+      summary: List
       operationId: findSourceTypes
       tags:
-        - Sources
+        - Source Types
+      description: >
+        List the types of Sources available.
+
+
+        Source types describe the parameters available for a specific type of
+        Source such as an external database or file system from which data can
+        be ingested into a Koverse Data Set.
+
+
+        A Source that describes how to connect to a specific database or file
+        system can be created by filling out the configuration parameters
+        desribed by the Source type and submitting to /api/sourceInstances.
       responses:
         '200':
           description: Returns all source types with metadata
@@ -2484,11 +2726,12 @@ paths:
     parameters:
       - $ref: '#/parameters/transformJobId'
     get:
-      summary: Shutdown a transform job by transform job id.
+      summary: Shutdown
       operationId: shutdownTransformJobById
       tags:
-        - Transforms
-        - Jobs
+        - Transform Jobs
+      description: |
+        Shutdown the Transform job specified by ID.
       responses:
         default:
           description: 200 OK
@@ -2505,13 +2748,16 @@ paths:
         type: string
         in: query
     get:
-      summary: Returns all transforms for matching data sets.
-      description: >-
-        Returns all transforms for matching data sets. One of the query
-        parameters must be specified
+      summary: List for a data set
       operationId: findTransforms
       tags:
         - Transforms
+      description: >
+        List Transforms associated with the specified Data Set.
+
+        One of the query parameters must be specified, either a Data Set that is
+        associated as the input to a Transform or the Data Set that is
+        associated as the output of a Transform.
       responses:
         '200':
           description: Returns the matching transforms
@@ -2520,7 +2766,7 @@ paths:
             items:
               $ref: '#/definitions/transform'
     post:
-      summary: Creates a new transform
+      summary: Create
       operationId: addTransform
       tags:
         - Transforms
@@ -2544,17 +2790,19 @@ paths:
     parameters:
       - $ref: '#/parameters/transformId'
     get:
-      summary: Returns a transform by id
+      summary: Get
       operationId: findTransformById
       tags:
         - Transforms
+      description: |
+        Get a Transform by the specified ID.
       responses:
         '200':
           description: Returns the transform data
           schema:
             $ref: '#/definitions/transform'
     delete:
-      summary: Deletes a transform based on the id supplied
+      summary: Delete
       operationId: deleteTransformById
       tags:
         - Transforms
@@ -2564,7 +2812,7 @@ paths:
           schema:
             $ref: '#/definitions/transform'
     put:
-      summary: Updates a transform by id
+      summary: Update
       tags:
         - Transforms
       operationId: updateTransformById
@@ -2584,10 +2832,18 @@ paths:
     parameters:
       - $ref: '#/parameters/transformId'
     get:
-      description: Runs the specified transform
+      summary: Start
       operationId: runTransform
       tags:
-        - Transforms
+        - Transform Jobs
+      description: >
+        Starts a job to read data from the Transform's input data sets, apply
+        the Transform's logic, and write output to the Transform's output Data
+        Set.
+
+
+        These jobs run asynchronously and are executed via the Spark or Hadoop
+        MapReduce frameworks.
       responses:
         '200':
           description: Returns the success data
@@ -2597,12 +2853,12 @@ paths:
     parameters:
       - $ref: '#/parameters/transformId'
     get:
-      description: Returns all Transform Schedules
       operationId: findTransformSchedules
-      summary: Get transform schedules
+      summary: List
       tags:
-        - Transforms
-        - Schedules
+        - Transform Schedules
+      description: |
+        List Transform Schedules associated with the given Transform ID.
       responses:
         '200':
           description: Returns the matching transform schedules
@@ -2611,12 +2867,12 @@ paths:
             items:
               $ref: '#/definitions/transformSchedule'
     post:
-      description: Creates a new transform schedule
-      summary: Create transform schedule
+      summary: Create
       operationId: addTransformSchedule
       tags:
-        - Transforms
-        - Schedules
+        - Transform Schedules
+      description: |
+        Create Transform Schedule.
       parameters:
         - name: transformSchedule
           in: body
@@ -2634,11 +2890,10 @@ paths:
       - $ref: '#/parameters/transformId'
       - $ref: '#/parameters/transformScheduleId'
     delete:
-      summary: Deletes a single transform schedule based on the id supplied
+      summary: Delete
       operationId: deleteTransformScheduleById
       tags:
-        - Transforms
-        - Schedules
+        - Transform Schedules
       responses:
         '200':
           description: Returns the transform schedule that was deleted
@@ -2646,13 +2901,20 @@ paths:
             $ref: '#/definitions/transformSchedule'
   /api/transformTypes:
     get:
-      summary: Returns all transform types
+      summary: List
       operationId: findTransformTypes
       tags:
-        - Transforms
+        - Transform Types
+      description: >
+        Get a list of descriptions of a specific Transform types that include
+        the available configuration parameters.
+
+
+        This information is used to help create a new Transform that has its
+        configuration parameters filled out properly.
       responses:
         '200':
-          description: Returns the matching transform types
+          description: Returns a list of transform types
           schema:
             type: array
             items:
@@ -2665,10 +2927,21 @@ paths:
         description: The transform type id
         required: true
     get:
-      summary: Returns a data set transform by id
+      summary: Get
       operationId: findDataSetTransformById
       tags:
-        - Transforms
+        - Transform Types
+      description: >
+        Get a description of a specific Transform type that includes the
+        available configuration parameters.
+
+
+        This information is used to help create a new Transform that has its
+        configuration parameters filled out properly.
+
+        For example, a Sentiment Analysis Transform may have a type that
+        describes a parameter that requires the name of a field containing text
+        to be analyzed.
       responses:
         '200':
           description: Returns the transform type
@@ -2676,7 +2949,7 @@ paths:
             $ref: '#/definitions/transformType'
   /api/query/:
     get:
-      summary: Lucene Syntax
+      summary: Lucene style
       operationId: queryLucene
       tags:
         - Query
@@ -2688,257 +2961,218 @@ paths:
         or more data sets simultaneously via the dataSets parameter.
 
 
-        ### Lucene syntax supported
+        ### Lucene Query Syntax
 
 
-        Searching for records that contain a term in any field:
+        #### Overview
 
 
-        `mary`
+        Koverse supports the most important subset of Lucene query features.
 
+        The syntax allows for rich querying by using Boolean logic, term
+        grouping, ranges, and wildcard matching.
 
-        To search for terms that contain spaces, use quotes around the terms:
+        This section will explain the extent of Lucene syntax support and call
+        out the small amount of unsupported features.
 
 
-        `"mary had a"`
 
+        #### Terms
 
-        Searching for records that contain a term in a particular field,
 
-        for example, to find records with the term ‘mary’ in the ‘name’ field:
+        Terms are what values to search for in the records.
 
+        They can be specified as either a string of text or a number.
 
-        `name: mary`
+        When searching for a single word, it is not necessary to use quotes.
 
+        When searching for a phrase, quotes can be used, such "yellow
+        submarine".
 
-        ### Combining Terms
 
+        It is not necessary to specify which field(s) to search under.
 
-        Searching for records that contain a term in one field and another
+        The default is to search all fields.
 
-        term in another field. This is like requesting records that match
 
-        the first clause, AND the second:
+        To search for a term, simply use it, like: ``cat`` or ``123``.
 
+        Phrases just need double quotes, such as: ``"cat food"``.
 
-        `name: mary occupation: shepherd`
 
+        Terms that in the ISO 8601 format will be interpreted as dates.
 
-        Two or more terms may be combined this way. Some terms can be field
+        This is an international format that takes the form of
+        ``2018-10-30T12:48:29Z``.
 
-        specific and others not. For example:
+        A complete description of this format can be found at
 
+        https://en.wikipedia.org/wiki/ISO_8601.
 
-        `name: mary shepherd`
 
+        Terms that in the form of a number, such as ``123`` or ``123.123`` will
+        be interpreted as numbers.
 
-        would return any records where the value “mary” appeared in the
 
-        name field, and where the value “shepherd” appeared in any other
+        Terms can also be interpreted as Internet Protocol address, such as
+        ``127.0.0.1``.
 
-        field, including the name field.
 
 
-        Note that the difference between querying for a two-word phrase with
+        #### Fields
 
-        containing a space and searching for one word within a field and
 
-        one word in any field requires quotes. To search for a two-word
+        It is possible to limit what fields to search within.
 
-        phrase within a single field, use quotes around the two-word phrase:
+        To do so, simply specify the field name followed by a color, such as:
 
+        ``animal:cat``, ``size:123``, or ``eats:"cat food"``.
 
-        `name: "jane doe" shepherd`
 
 
-        The preceding query would search for the entire string “jane doe”
+        #### Wildcards
 
-        in the name field and the word “shepherd” in any field.
 
+        Wild cards are supported for string terms, but only at the end of the
+        term.
 
-        ### Searching Ranges
+        For example: ``animal:cat*``.
 
+        Wildcards are not supported in the beginning or middle of a term,
 
-        To search for records that contain a value within a range, use
+        which is different than what Lucene normally supports.
 
-        square brackets and word ‘TO’:
 
 
-        `height: [60 TO 70]`
+        #### Ranges
 
 
-        For an open-ended search, use an asterisk, * , to indicate positive
+        It is possible to search within a range of terms.
 
-        or negative infinity. The following means return records with a
+        Simply surround the two terms with square brackets,
 
-        value for the height field that is greater than or equal to 60:
+        separated by ``TO``.
 
+        For example, ``size:[2 TO 10]`` will search for all sizes with a number
 
-        `height: [60 TO *]`
+        from 2 to 10, inclusive.
 
+        Exclusive searches can be specified by using curly braces,
 
-        The following returns all records with a value in the height field
+        such as: ``size:{1 TO 11}``.
 
-        less than or equal to 60:
+        Additionally, it is possible to perform an inclusive search on text
+        terms,
 
+        such as: ``name:[chad TO sigrid]``.
 
-        `height: [* TO 60]`
 
 
-        Searches can also be done across ranges of text values using
+        #### Boolean Operators
 
-        wildcard syntax. Only trailing wildcards are supported. The
 
-        following returns records with a value beginning with the letters
+        The following operators are supported: ``AND``, ``OR``, and ``NOT``.
 
-        ‘ma’ in any field:
+        The default operator is ``OR``.
 
+        For example, the query ``chad sigrid`` is equivalent to ``chad OR
+        sigrid``.
 
-        `ma*`
+        An example ``AND`` query would be: ``animal:cat AND owner:sigrid``.
 
+        An example ``NOT`` query is: ``NOT animal:cat`` or ``NOT size:12``.
 
-        Koverse understands the ordering of several types of values
 
-        including numbers, text strings, dates, and IP addresses:
+        ``AND``, ``OR``, and ``NOT`` can also be specified using
 
+        ``&&``, ``||``, and ``!``, respectively.
 
-        `[192.168.1.0 TO 192.168.34.0]`
 
 
-        To query a range of dates, the following formats are recognized:
+        #### Grouping
 
 
-        * "yyyyMMdd hh:mm:ss"
+        A search be be logically grouped by using parenthesis.
 
-        * "EEE MMM d HH:mm:ss Z yyyy"
+        For example, the queries
 
-        * "EEE MMM d HH:mm:ss zzz yyyy"
+        ``(animal:cat OR animal:dog) AND owner:chad``
 
-        * "yyyy-MM-dd"
+        and
 
-        * "yyyy-MM"
+        ``animal:cat OR (animal:dog AND owner:chad)``
 
-        * "yyyy/MM/dd HH:mm:ss"
+        are not the same.
 
-        * "yyyy/MM/dd HH:mm:ss.SSS"
+        The first query searches all cats and dogs owned by chad.
 
-        * "MM/dd/yyyy HH:mm"
+        The second query searches for all cats, or all dogs owned by chad.
 
-        * "ddHHmm'Z' MMM yy"
 
 
-        Date syntax
+        #### Escaping Special Characters
 
 
-        * yyyy - four digit year
+        Characters that are search keywords such as ``:``, ``(``, and ``)`` can
+        be
 
-        * yy - two digit year
+        escaped with a forward slash.
 
-        * MM - two digit month
+        For example, to search for a term that includes a parenthesis,
 
-        * MMM - three letter month
+        the parenthesis can be escaped with ``\``:
 
-        * dd - two digit day
+        ``animal:\(four legs\)``.
 
-        * d - one or two digit day
+        Here are all of the reserved search keywords:
 
-        * HH - two digit hour
+        ``+ - && || ! ( ) { } [ ] ^ " ~ * ? : \``.
 
-        * mm - two digit minute
 
-        * ss - two digit second
 
-        * Z - time zone. such as -0800
+        #### Unsupported Lucene Features
 
-        * zzz - time zone. such as Pacific Standard Time; PST; GMT-08:00
 
+        Relevance ranking: Matching records that are returned from Koverse are
+        not sorted in any particular order.
 
-        An example of a query for a date range is:
 
+        However, when paging is used, the results are returned in a consistent
+        order.
 
-        `creation_date: ["20140211 11:28:08" TO "20140211 13:30:08"]`
+        For example, when requesting a page multiple times, the same results are
+        returned.
 
+        Thus, it is possible to show the user the first page of results and
+        allow them to then navigate to other pages.
 
-        Another example date range is:
+        When doing so, the user will see the same records for each page every
+        time they request them.
 
+        What is not possible is to sort those results globally.
 
-        `["2014-02-11" TO "2014-02-12"]`
+        However, a page's worth of records could be sorted by the client
+        program.
 
 
-        Note that a date format such as “20140211” is indistinguishable
 
-        from a simple number, so dashes should be used if a date is meant.
+        #### Unsupported Lucene Syntax
 
 
-        Searching for records that contain a geographical point value:
+        The full Lucene syntax can be read online at
 
+        https://lucene.apache.org/core/2_9_4/queryparsersyntax.html .
 
-        `coordinate: [-60,-40 TO 30,35]`
 
+        However, note that the following features are not supported in Koverse:
 
-        Searching a single range does not require that a composite index be
-
-        built. To query multiple ranges at once or a range and other terms,
-
-        a composite index must be built. These types of queries are
-
-        described in the following section.
-
-
-        For additional information on Composite Indexes, please refer to
-
-        Indexing Policy and Composite Indexes
-
-
-        ### Combining Ranges
-
-
-        Koverse supports querying for multiple ranges or ranges and single
-
-        terms simultaneously but requires that composite indexes be built
-
-        first before such queries can be executed. This is because
-
-        composite indexes reduce the work done at query time to just a few
-
-        short scans without having to do any set operations so queries with
-
-        multiple ranges can return quickly, without impacting other users
-
-        of the system.
-
-
-        An example of a query that combines a range with a single term. To
-
-        perform this query, a composite index of the height and name field
-
-        is required. See Indexing Policy and Composite Indexes for how to
-
-        build this type of index:
-
-
-        `height: [* TO 10] name: mary`
-
-
-        An example of a query that combines multiple ranges. To perform
-
-        this query, a composite index of the height and weight field is
-
-        required:
-
-
-        `height: [* TO 10] weight: [70 TO 80]`
-
-
-        To query across a range of geos and time simultaneously, do the
-
-        following. To perform this query, a composite index on the geo
-
-        field and time field is required:
-
-
-        `geo: [-60,-40 TO 30,35] time: ["20140211 11:28:08" TO "20140211
-        13:30:08"]`
+         * Any wildcard searches other than suffix-based.
+         * Single character wildcard searches.
+         * Fuzzy searches.
+         * Proximity searches.
+         * Term boosting.
+         * The "required" operator ``+``.
+         * Field grouping.
       parameters:
         - in: query
           name: query
@@ -2994,12 +3228,113 @@ paths:
               $ref: '#/definitions/dataSetResult'
   /api/query/object:
     post:
-      summary: JSON and data set IDs
+      summary: Object style with IDs
       operationId: queryObject
       tags:
         - Query
-      description: |
-        Query using a JSON document and data set IDs. Object-based Queries
+      description: >
+        Query using a JSON document and data set IDs.
+
+
+        ### Object Search Syntax
+
+
+        For searches that are not written by end-users on the fly but that are
+        constructed programmatically by a web application, we recommend using
+        Koverse's Object Search Syntax.
+
+        The Object Search Syntax allows applications to specify search criteria
+        by building a Javascript object, converting to JSON, and submitting to a
+        REST endpoint.
+
+        This way, a search can be more easily manipulated programmatically by
+        Javascript.
+
+
+        The following table shows the JSON syntax for various types of searches:
+
+
+
+        |Search Criteria                    | Query
+        Syntax                                  |
+
+        |-----------------------------------|-----------------------------------------------|
+
+        | Searching 'any' field for a value | {"$any":
+        "fmv"}                               |
+
+        | Search specific field for a value | {"field.name":
+        "fmv"}                         |
+
+        | Search AND                        | {"$and": [{"$any": "fmv"},
+        {"$any": "blue"}]} |
+
+        | Search OR                         | {"$or": [{"$any": "fmv"}, {"$any":
+        "blue"}]}  |
+
+
+        These searches allow various criteria to be combined using operators
+        like AND and OR.
+
+        Note that the terms of these search are all 'point' terms, meaning they
+        specific an exact value.
+
+        Searching for a range of values is also supported.
+
+
+        #### Searching Ranges
+
+
+        To search for a range of values, use one of the range operators such as
+        $gte, greater than or equals, etc.
+
+        A few types of ranges are listed in the following table:
+
+
+        |Search Criteria                         | Query
+        Syntax                                                    |
+
+        |----------------------------------------|-----------------------------------------------------------------|
+
+        | Any value greater than or equal to 160 | { "$any": { "$gte": 160
+        }}                                      |
+
+        | Date field less than a specific date   | { "date_created": { "$lt":
+        "1980-01-01T00:00:00.000Z }}         |
+
+        | Geo Range                              | { "fieldName": { "$box":
+        [[sw-lat, sw-long],[ne-lat, ne-long]]}}|
+
+        |                                        | { "fieldName": { "$box"
+        :[[39.5, -104.9],[40, -104.5]] }}       |
+
+        |Any value except for 100                | { "$not": { "amount": 100 }
+        }                                   |
+
+
+
+        The official list of operators includes:
+
+
+        - $gt greater than
+
+        - $gte greater than or equal to
+
+        - $lt less than
+
+        - $lte less than or equal to
+
+        - $eq equal to
+
+        - $any used in place of a field to search for a value in any field
+
+        - $not used to negate a search criterion. Note that this results in two
+        ranges being searched, those 'above' and 'below' the value specified.
+
+
+        Note that queries that combine a range with any other criteria, and
+        queries that combine multiple ranges require Composite Indexes on the
+        fields involved.
       parameters:
         - $ref: '#/parameters/objectQuery'
       responses:
@@ -3011,12 +3346,113 @@ paths:
               $ref: '#/definitions/dataSetResult'
   /api/query/object/names:
     post:
-      summary: JSON and data set names
+      summary: Object style with names
       operationId: queryObjectNames
       tags:
         - Query
-      description: |
+      description: >
         Query using a JSON document and data set names.
+
+
+        ### Object Search Syntax
+
+
+        For searches that are not written by end-users on the fly but that are
+        constructed programmatically by a web application, we recommend using
+        Koverse's Object Search Syntax.
+
+        The Object Search Syntax allows applications to specify search criteria
+        by building a Javascript object, converting to JSON, and submitting to a
+        REST endpoint.
+
+        This way, a search can be more easily manipulated programmatically by
+        Javascript.
+
+
+        The following table shows the JSON syntax for various types of searches:
+
+
+
+        |Search Criteria                    | Query
+        Syntax                                  |
+
+        |-----------------------------------|-----------------------------------------------|
+
+        | Searching 'any' field for a value | {"$any":
+        "fmv"}                               |
+
+        | Search specific field for a value | {"field.name":
+        "fmv"}                         |
+
+        | Search AND                        | {"$and": [{"$any": "fmv"},
+        {"$any": "blue"}]} |
+
+        | Search OR                         | {"$or": [{"$any": "fmv"}, {"$any":
+        "blue"}]}  |
+
+
+        These searches allow various criteria to be combined using operators
+        like AND and OR.
+
+        Note that the terms of these search are all 'point' terms, meaning they
+        specific an exact value.
+
+        Searching for a range of values is also supported.
+
+
+        #### Searching Ranges
+
+
+        To search for a range of values, use one of the range operators such as
+        $gte, greater than or equals, etc.
+
+        A few types of ranges are listed in the following table:
+
+
+        |Search Criteria                         | Query
+        Syntax                                                    |
+
+        |----------------------------------------|-----------------------------------------------------------------|
+
+        | Any value greater than or equal to 160 | { "$any": { "$gte": 160
+        }}                                      |
+
+        | Date field less than a specific date   | { "date_created": { "$lt":
+        "1980-01-01T00:00:00.000Z }}         |
+
+        | Geo Range                              | { "fieldName": { "$box":
+        [[sw-lat, sw-long],[ne-lat, ne-long]]}}|
+
+        |                                        | { "fieldName": { "$box"
+        :[[39.5, -104.9],[40, -104.5]] }}       |
+
+        |Any value except for 100                | { "$not": { "amount": 100 }
+        }                                   |
+
+
+
+        The official list of operators includes:
+
+
+        - $gt greater than
+
+        - $gte greater than or equal to
+
+        - $lt less than
+
+        - $lte less than or equal to
+
+        - $eq equal to
+
+        - $any used in place of a field to search for a value in any field
+
+        - $not used to negate a search criterion. Note that this results in two
+        ranges being searched, those 'above' and 'below' the value specified.
+
+
+        Note that queries that combine a range with any other criteria, and
+        queries that combine multiple ranges require Composite Indexes on the
+        fields involved.
       parameters:
         - $ref: '#/parameters/objectQueryNames'
       responses:

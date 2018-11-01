@@ -1,10 +1,14 @@
 get:
-  summary: Returns all transform types
+  summary: List
   operationId: findTransformTypes
-  tags: ["Transforms"]
+  tags: ["Transform Types"]
+  description: |
+            Get a list of descriptions of a specific Transform types that include the available configuration parameters.
+
+            This information is used to help create a new Transform that has its configuration parameters filled out properly.
   responses:
     200:
-      description: Returns the matching transform types
+      description: Returns a list of transform types
       schema:
         type: array
         items:

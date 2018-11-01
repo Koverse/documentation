@@ -1,10 +1,10 @@
 parameters:
   - $ref: "../api.yaml#/parameters/transformJobId"
-  
+
 put:
-  summary: Update a transform job
+  summary: Update
   operationId: updateTransformJob
-  tags: ["Transforms", "Jobs"]
+  tags: ["Transform Jobs"]
   parameters:
     - name : transformJob
       in: body

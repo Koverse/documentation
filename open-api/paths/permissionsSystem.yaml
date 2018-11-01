@@ -1,8 +1,9 @@
 get:
-  description: Returns the available system permissions
-  summary: Get system permissions
+  summary: List
   operationId: systemPermissions
-  tags: ["System", "Permissions"]
+  tags: ["System Permissions"]
+  description: |
+            List the available system permissions
   responses:
     200:
       description: Returns the users system permissions metadata.

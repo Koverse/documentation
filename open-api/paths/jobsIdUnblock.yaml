@@ -2,9 +2,13 @@ parameters:
   - $ref: "../api.yaml#/parameters/jobId"
 
 get:
-  summary: Unblocks a job by job id.
-  operationId: shutdownImportJob
+  summary: Unblock
+  operationId: unblockJob
   tags: ["Jobs"]
+  description: |
+          Unblock the specified blocked job.
+
+          This will cause the job to be started as soon as cluster resources allow.
   responses:
     200:
       description: '200 OK'

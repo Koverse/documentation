@@ -3,13 +3,15 @@ parameters:
   - $ref: "../api.yaml#/parameters/fileType"
 
 get:
-  summary: Download all records
+  summary: Download
   operationId: downloadDataSetById
   tags: ["Data Sets"]
-  description: >
-        Starts a download process to deliver all the records in a data set
-        into a file. The fileType parameter allows users to choose what
-        in format records are represented.
+  description: |
+        Starts a download process to deliver all the records in a data set to a file via a web browser.
+        The fileType parameter allows users to choose what in format records are represented.
+
+        Attempts to download large Data Sets may fail due to network timeouts.
+        In these cases, exporting data to an external Sink is preferrable.
   responses:
     default:
       description: Download proceeds

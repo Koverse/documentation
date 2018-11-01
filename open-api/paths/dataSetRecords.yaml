@@ -3,13 +3,14 @@ parameters:
   - $ref: "../api.yaml#/parameters/recordStyle"
 
 get:
-  summary: Get a sample of record data
+  summary: Get sample records
   operationId: findDataSetRecordsById
   tags: ["Data Sets", "Records"]
-  description: >
-    Returns all the fields and values for a sample of records by data set id.
+  description: |
+        Returns all the fields and values for a sample of records by data set id.
 
-    Note: The recordStyle query parameter defaults to a value of "2.1". To return json output of record(s), you must specify the recordStyle query parameter "2.2".
+        Note: The recordStyle query parameter defaults to a value of "2.1".
+        To return json output of records, you must specify the recordStyle query parameter "2.2".
   responses:
     200:
       description: Return a sample of records for a data set.

@@ -2,7 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/sourceInstanceId"
 
 get:
-  summary: Returns a source by id
+  summary: Get
   operationId: findSourceById
   tags: ["Sources"]
   responses:
@@ -16,7 +16,7 @@ get:
       #     description: The date/time that the source was last modified
 
 delete:
-  summary: Deletes a single source based on the id supplied
+  summary: Delete
   operationId: deleteSourceById
   tags: ["Sources"]
   responses:
@@ -26,7 +26,7 @@ delete:
         $ref: "../api.yaml#/definitions/source"
 
 put:
-  summary: Updates a source by id
+  summary: Update
   operationId: updateSourceById
   tags: ["Sources"]
   parameters:

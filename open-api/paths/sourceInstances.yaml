@@ -1,5 +1,5 @@
 post:
-  summary: Creates a new source
+  summary: Create
   operationId: addSource
   tags: ["Sources"]
   parameters:

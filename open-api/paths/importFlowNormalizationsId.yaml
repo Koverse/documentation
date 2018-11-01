@@ -3,10 +3,10 @@ parameters:
   - $ref: "../api.yaml#/parameters/normalizationId"
 
 get:
-  description: Returns a normalization by id
-  summary: Get import flow normalization by id
+  summary: Get
   operationId: findNormalizationById
-  tags: ["Import Flows"]
+  tags: ["Normalizations"]
+  description: Get a Normalization
   responses:
     200:
       description: Returns the normalization data
@@ -14,10 +14,10 @@ get:
         $ref: "../api.yaml#/definitions/normalization"
 
 put:
-  description: Updates a normalization by id
-  summary: Update import flow normalization by id
+  summary: Update
   operationId: updateNormalizationById
-  tags: ["Import Flows"]
+  tags: ["Normalizations"]
+  description: Update a Normalization
   parameters:
     - name: normalization
       in: body
@@ -32,10 +32,10 @@ put:
         $ref: "../api.yaml#/definitions/normalization"
 
 delete:
-  description: Deletes a single normalization based on the id supplied
-  summary: Delete import flow normalization by id
+  summary: Delete
   operationId: deleteNormalization
-  tags: ["Import Flows"]
+  tags: ["Normalizations"]
+  description: Delete a Normalization
   responses:
     200:
       description: Returns the normalization that was deleted

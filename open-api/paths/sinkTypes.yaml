@@ -1,8 +1,14 @@
 get:
-  description: Returns all sink types
-  summary: Get sink types
+  summary: List
   operationId: findSinksTypes
-  tags: ["Sinks"]
+  tags: ["Sink Types"]
+  description: |
+          Returns all Sink types.
+
+          A Sink type describes a kind of Sink that can be created.
+          For example a Sink type may describe the parameters available for writing to an external database such as Oracle or an external file system.
+
+          A Sink can be created to write to a specific database or file system by filling out the configuration parameters listed by the Sink type and creating a Sink.
   responses:
     200:
       description: Returns the matching sink types

@@ -2,10 +2,13 @@ parameters:
   - $ref: "../api.yaml#/parameters/sinkId"
 
 get:
-  summary: Run export by id
+  summary: Start
   operationId: exportBySinkId
-  tags: ["Sinks"]
-  description: Run an export by the specified id.
+  tags: ["Export Jobs"]
+  description: |
+          Start an Export Job to send data to the external Sink specified by ID.
+
+          The Export Job will run asynchronously.
   responses:
     200:
       description: Returns the export job data

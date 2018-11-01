@@ -5,9 +5,14 @@ parameters:
     description: The transform type id
     required: true
 get:
-  summary: Returns a data set transform by id
+  summary: Get
   operationId: findDataSetTransformById
-  tags: ["Transforms"]
+  tags: ["Transform Types"]
+  description: |
+            Get a description of a specific Transform type that includes the available configuration parameters.
+
+            This information is used to help create a new Transform that has its configuration parameters filled out properly.
+            For example, a Sentiment Analysis Transform may have a type that describes a parameter that requires the name of a field containing text to be analyzed.
   responses:
     200:
       description: Returns the transform type

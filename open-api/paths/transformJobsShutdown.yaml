@@ -2,9 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/transformJobId"
 
 get:
-  summary: Shutdown a transform job by transform job id.
+  summary: Shutdown
   operationId: shutdownTransformJobById
-  tags: ["Transforms", "Jobs"]
+  tags: ["Transform Jobs"]
+  description: |
+            Shutdown the Transform job specified by ID.
   responses:
     default:
       description: '200 OK'

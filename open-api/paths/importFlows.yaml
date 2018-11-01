@@ -1,7 +1,11 @@
 post:
-  summary: Creates an import flow
+  summary: Create
   operationId: addImportFlow
   tags: ["Import Flows"]
+  description: |
+          Create a new Import Flow, associating a Source with a Data Set.
+
+          Once this is created, an Import Job can be started to ingest data from the external Source into the Data Set.
   parameters:
     - name: importFlow
       in: body

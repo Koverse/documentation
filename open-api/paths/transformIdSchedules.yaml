@@ -2,10 +2,11 @@ parameters:
   - $ref: "../api.yaml#/parameters/transformId"
 
 get:
-  description: Returns all Transform Schedules
   operationId: findTransformSchedules
-  summary: Get transform schedules
-  tags: ["Transforms", "Schedules"]
+  summary: List
+  tags: ["Transform Schedules"]
+  description: |
+        List Transform Schedules associated with the given Transform ID.
   responses:
     200:
       description: Returns the matching transform schedules
@@ -19,10 +20,11 @@ get:
       #     description: The date/time that a schedule was last modified
 
 post:
-  description: Creates a new transform schedule
-  summary: Create transform schedule
+  summary: Create
   operationId: addTransformSchedule
-  tags: ["Transforms", "Schedules"]
+  tags: ["Transform Schedules"]
+  description: |
+            Create Transform Schedule.
   parameters:
     - name: transformSchedule
       in: body
