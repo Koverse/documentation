@@ -47,4 +47,4 @@ Code built against a major version number earlier than the Koverse instance vers
 Accessing Example Code
 ----------------------
 
-Code to accompany examples in this documentation can be found at https://github.com/Koverse/koverse-sdk-project .
+Code to accompany examples in this documentation can be found at https://github.com/Koverse/koverse-sdk-project/tree/2.4 .

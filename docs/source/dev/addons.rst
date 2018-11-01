@@ -12,7 +12,7 @@ Creating an Addon
 -----------------
 
 AddOns are simply JAR files with some specific files and a well formed directory structure.
-The `koverse-sdk-project <https://github.com/Koverse/koverse-sdk-project/>`_ provides a complete example maven project that builds an appropriately constructed Addon JAR.
+The `koverse-sdk-project <https://github.com/Koverse/koverse-sdk-project/tree/2.4>`_ provides a complete example maven project that builds an appropriately constructed Addon JAR.
 
 You may use any assembly framework you like to produce a JAR file with the following attributes
 
