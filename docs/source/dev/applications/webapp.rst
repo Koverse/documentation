@@ -113,7 +113,10 @@ We will pass in our API token, the user-provided query string, the ID of the dat
       dataSets: datasetId,
       recordStyle: '2.2',
     })
-    const allResults = await axios.get(`${url}?${params}`)
+
+    const allResults = await axios.get(`${url}?${params}`, {
+      withCredentials: true,
+    })
 
     // for now just log results to the console
     console.log(allResults)
@@ -326,12 +329,16 @@ First we'll do a little formatting of the query results to make them more amenab
 We're only interested in querying one data set at a time so we'll simply return the records contained in the first data set result, along with the extracted schema so the table knows what columns to draw.
 Modify koverse.js, replacing the code::
 
-  const allResults = await axios.get(`${url}?${params}`)
+  const allResults = await axios.get(`${url}?${params}`, {
+    withCredentials: true,
+  })
   console.log(allResults)
 
 with the following::
 
-  const allResults = await axios.get(`${url}?${params}`)
+  const allResults = await axios.get(`${url}?${params}`, {
+    withCredentials: true,
+  })
   const sentimentResults = allResults.data.find(r => r.id === datasetId) || {}
 
 Because our app is designed to work with the output of the example Sentiment Analysis Transform described in :ref:`SparkJavaDataFrameTransform`, we'll create a simple list of Javascript objects from each record returned.
@@ -649,22 +656,34 @@ First, add the following function to koverse.js that we'll use to authenticate u
       password,
     }
 
-    const response = await axios.post(`${url}`, params)
+    const response = await axios.post(`${url}`, params, {
+      withCredentials: true
+    })
 
     return response.data
   }
 
 Also, we'll remove the apiToken parameter from our original search request so it reads as follows::
 
+  import axios from 'axios'
+  import queryString from 'query-string'
+
+  const datasetId = 'test_20181031_140006_013'
+  // removed API token var here
+
   export const query = async (query) => {
     const url = `http://localhost:8080/api/query`
     const params = queryString.stringify({
+      // removed API token parameter here
       query,
       dataSets: datasetId,
       recordStyle: '2.2',
     })
-    const allResults = await axios.get(`${url}?${params}`)
-    console.log(allResults)
+
+    const allResults = await axios.get(`${url}?${params}`, {
+      withCredentials: true,
+    })
+
     const sentimentResults = allResults.data.find(r => r.id === datasetId) || {}
 
     const records = (sentimentResults.records || [])
@@ -679,7 +698,7 @@ Also, we'll remove the apiToken parameter from our original search request so it
     return {
         schema: ['date','score','text'],
         records,
-    }
+      }
   }
 
 Next we'll need a simple login form to show users.
