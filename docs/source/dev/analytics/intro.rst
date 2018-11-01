@@ -1,6 +1,6 @@
 .. _AnalyticsAPI:
 
-Analytics API
+Transform API
 =============
 
 Putting analytics into production is a phenomenal challenge for most organizations building on newer scalable technologies.

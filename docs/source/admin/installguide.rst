@@ -291,7 +291,6 @@ KOVERSE-<VERSION>-<ARCHITECTURE>.parcel.sha
   Parcel SHA file (download for offline install)
 
 
-.. include:: /snippets/csdinstall.rst
 
 
 Once both processes have started up, you can access the Koverse user interface from a web browser at

@@ -13,6 +13,7 @@ Usage Guide
    usage/getting_started.rst
    usage/import.rst
    usage/exploring.rst
+   usage/indexsearchguide.rst
    usage/configure.rst
    usage/transforms.rst
    usage/export.rst

@@ -1,7 +1,7 @@
 .. _DeveloperDocumentation:
 
-Developer Documentation
-=======================
+Developer Guide
+===============
 
 .. toctree::
   :maxdepth: 1
@@ -12,4 +12,5 @@ Developer Documentation
   dev/integration/intro.rst
   dev/analytics/intro.rst
   dev/applications/intro.rst
+  dev/automationguide.rst
   dev/addons.rst
