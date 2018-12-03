@@ -1,5 +1,14 @@
+# system files
+.DS_Store
+
+# artifacts
 /doctrees
 /docs/build
-node_modules/
-docs/.DS_Store
 docs/npm-debug.log
+
+# IDE files
+*.iml
+.idea
+
+# node runtime
+node_modules/

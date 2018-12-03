@@ -96,8 +96,8 @@ Boolean Operators
 ^^^^^^^^^^^^^^^^^
 
 The following operators are supported: ``AND``, ``OR``, and ``NOT``.
-The default operator is ``OR``.
-For example, the search ``chad sigrid`` is equivalent to ``chad OR sigrid``.
+The default operator is ``AND``.
+For example, the search ``chad sigrid`` is equivalent to ``chad AND sigrid``.
 An example ``AND`` search would be: ``animal:cat AND owner:sigrid``.
 An example ``NOT`` search is: ``NOT animal:cat`` or ``NOT size:12``.
 
