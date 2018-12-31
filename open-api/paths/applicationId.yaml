@@ -1,0 +1,38 @@
+parameters:
+  - $ref: "../api.yaml#/parameters/applicationId"
+
+get:
+  summary: Get
+  description: |
+        Get the details about the given application.
+  operationId: findApplicationById
+  tags: ["Applications"]
+  responses:
+    200:
+      description: Returns the application details
+      schema:
+        $ref: "../api.yaml#/definitions/apiClient"
+
+put:
+  summary: Update
+  description: |
+        Update the application details.
+  operationId: updateApplicationById
+  tags: ["Applications"]
+  responses:
+    200:
+      description: Returns the updated application details.
+      schema:
+        $ref: "../api.yaml#/definitions/apiClient"
+
+delete:
+  summary: Delete
+  description: |
+          Delete the application specified by id.
+  operationId: deleteApplicationById
+  tags: ["Applications"]
+  responses:
+    200:
+      description: Returns the deleted application.
+      schema:
+        $ref: "../api.yaml#/definitions/apiClient"

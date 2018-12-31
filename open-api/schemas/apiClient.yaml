@@ -1,0 +1,20 @@
+type: object
+required:
+  - clientName
+properties:
+  id:
+    type: string
+  clientName:
+    type: string
+  clientSecret:
+    type: string
+  singleUser:
+    type: boolean
+  websiteUrl:
+    type: string
+  redirectUrl:
+    type: string
+  apiToken:
+    type: string
+  enabled:
+    type: boolean

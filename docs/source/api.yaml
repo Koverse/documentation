@@ -202,6 +202,27 @@ tags:
 
       In some cases a blocked job can be unblocked so it can proceed.
 definitions:
+  apiClient:
+    type: object
+    required:
+      - clientName
+    properties:
+      id:
+        type: string
+      clientName:
+        type: string
+      clientSecret:
+        type: string
+      singleUser:
+        type: boolean
+      websiteUrl:
+        type: string
+      redirectUrl:
+        type: string
+      apiToken:
+        type: string
+      enabled:
+        type: boolean
   dataSet:
     type: object
     required:
@@ -1192,6 +1213,12 @@ definitions:
       - list
       - single-value
 parameters:
+  applicationId:
+    name: applicationId
+    in: path
+    description: ID of the application
+    required: true
+    type: string
   dataSet:
     name: dataSet
     in: body
@@ -1626,6 +1653,80 @@ paths:
           description: Returns a confirmation of the logout
           schema:
             $ref: '#/definitions/logout'
+  /api/applications:
+    get:
+      summary: List
+      operationId: findApplications
+      tags:
+        - Applications
+      description: |
+        Get a list of application objects for all applctations the user is
+        authorized to see.
+      responses:
+        '200':
+          description: Returns metadata for all applications the user is authorized to see
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/apiClient'
+    post:
+      summary: Create
+      operationId: createApplication
+      tags:
+        - Applications
+      description: |
+        Creates a new application.
+      parameters:
+        - name: body
+          in: body
+          description: Application object to create
+          required: true
+          schema:
+            $ref: '#/definitions/apiClient'
+      responses:
+        '201':
+          description: Returns the newly created Application
+          schema:
+            $ref: '#/definitions/apiClient'
+  '/api/applications/{applicationId}':
+    parameters:
+      - $ref: '#/parameters/applicationId'
+    get:
+      summary: Get
+      description: |
+        Get the details about the given application.
+      operationId: findApplicationById
+      tags:
+        - Applications
+      responses:
+        '200':
+          description: Returns the application details
+          schema:
+            $ref: '#/definitions/apiClient'
+    put:
+      summary: Update
+      description: |
+        Update the application details.
+      operationId: updateApplicationById
+      tags:
+        - Applications
+      responses:
+        '200':
+          description: Returns the updated application details.
+          schema:
+            $ref: '#/definitions/apiClient'
+    delete:
+      summary: Delete
+      description: |
+        Delete the application specified by id.
+      operationId: deleteApplicationById
+      tags:
+        - Applications
+      responses:
+        '200':
+          description: Returns the deleted application.
+          schema:
+            $ref: '#/definitions/apiClient'
   /api/dataSets:
     get:
       summary: List
