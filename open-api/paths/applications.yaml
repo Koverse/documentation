@@ -1,0 +1,33 @@
+get:
+  summary: List
+  operationId: findApplications
+  tags: ["Applications"]
+  description: |
+        Get a list of application objects for all applctations the user is
+        authorized to see.
+  responses:
+    200:
+      description: Returns metadata for all applications the user is authorized to see
+      schema:
+        type: array
+        items:
+          $ref: "../api.yaml#/definitions/apiClient"
+
+post:
+  summary: Create
+  operationId: createApplication
+  tags: ["Applications"]
+  description: |
+        Creates a new application.
+  parameters:
+    - name: body
+      in: body
+      description: Application object to create
+      required: true
+      schema:
+        $ref: '../api.yaml#/definitions/apiClient'
+  responses:
+    201:
+      description: Returns the newly created Application
+      schema:
+        $ref: "../api.yaml#/definitions/apiClient"

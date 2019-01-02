@@ -140,6 +140,8 @@ tags:
           In some cases a blocked job can be unblocked so it can proceed.
 
 definitions:
+  apiClient:
+    $ref: schemas/apiClient.yaml
   dataSet:
     $ref: schemas/dataSet.yaml
   dataSetAttributes:
@@ -210,6 +212,12 @@ definitions:
     $ref: schemas/visualizationType.yaml
 
 parameters:
+  applicationId:
+    name: applicationId
+    in: path
+    description: ID of the application
+    required: true
+    type: string
   dataSet:
     name: dataSet
     in: body
@@ -385,6 +393,10 @@ paths:
     $ref: paths/login.yaml
   /api/logout:
     $ref: paths/logout.yaml
+  /api/applications:
+    $ref: paths/applications.yaml
+  /api/applications/{applicationId}:
+    $ref: paths/applicationId.yaml
   /api/dataSets:
     $ref: paths/dataSets.yaml
   /api/dataSets/{dataSetId}:
