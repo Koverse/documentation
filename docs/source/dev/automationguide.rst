@@ -13,16 +13,31 @@ It walks though the process of creating, executing, and deleting sources, data s
 The first section focuses on providing example Java code.
 The second section highlights the Thrift calls and provides sample requests and responses.
 You must have already registered your thrift client with Koverse to run these examples.
-See authentication_. for details.
+See section :ref:`thrift-client-authentication` for details.
 
 Using Java to Perform Thrift Calls
-================================
+==================================
 
 While Koverse does not provide a Java SDK to use for automation,
-Java code can be written to invoke the Thirft methods that Koverse provides.
+Java code can be written to invoke the Thrift methods that Koverse provides.
 The easiest way to do so is to use the Koverse Thrift and Koverse Shaded Dependencies packages.
 This section will walk though creating a Maven project with Java code that can be used for automation.
 
+.. _thrift-client-authentication:
+
+Thrift Client Authentication
+----------------------------
+
+You must have your client application registered with Koverse to acess the Thrift methods.
+To do this go to the "Admin" section in the Koverse UI. Select "API Tokens" from the tabs at the top.
+Click on "Add API Token" on the right hand side. Enter the API Token information and click 'save' at the bottom right.
+Then select the API Token name from the list to view and copy the token.
+
+Then select "API Clients" from the top tab. Select "Add API Client" from the right side. Enter the "Name", this is the clientName in the login example.
+Select "Application acts on behalf of the single user.", then paste the API Token into the API Token space. Click 'save'.
+Select the client Name from the list and copy the secret. This is the clientSecret shown in the login example below.
+
+Now your application is registered and your ready to start using the Thrift methods. See See section :ref:`thrift-client-login`.
 
 Maven Dependencies
 ------------------
@@ -82,16 +97,6 @@ For the below examples we also recommend these dependencies:
   </dependency>
   <!-- end spark-testing-base dependencies -->
 
-Configuration
--------------
-
-You should create a properties file to save your client applications credentials in. The below examples
-assume you have a client.properties file located in src/main/resources that looks like this:
-
-client.name=examples
-client.secret=created-when-registering-your-client
-koverse.host=mykoverseinstalledhost.com
-
 Main Method
 -----------
 
@@ -109,8 +114,10 @@ It will create and delete data sets, data sources, and transforms. It will also 
      executeAndMonitorDataFlow(client, dataFlowName);
  }
 
-Login
------
+.. _thrift_client_login:
+
+Thrift Client Login
+-------------------
 
 First you will need to log in.
 
@@ -138,7 +145,7 @@ Create a Dataset
 ----------------
 
 The main method above called setupDataFlow() and passed the Client(connection) object and the dataSetName.
-Now let's take a look at what the data set setup code looks like.
+Now let's take a look at what the data set setup code looks like. Note: see below for example of :ref:`creating-a-source`.
 
 .. code-block:: java
 
@@ -215,6 +222,7 @@ Next we add data to the data set by executing the import flow.
     }
   });
 
+  // monitor progress
   log.info("waiting for jobs to start ..");
   List<TJobAbstract> jobs = client.getJobsByDataSetId(dataSet.getId());
 
@@ -231,6 +239,8 @@ Next we add data to the data set by executing the import flow.
     jobs = client.getJobsByDataSetId(dataSet.getId());
     System.out.println(jobs.get(0).getStatus());
   }
+
+.. _creating-a-source:
 
 Creating a Source
 -----------------
@@ -348,8 +358,7 @@ Note you will need to have the koverse-sdk package in your pom.xml file.
 Deleting
 --------
 
-Here is the example for clear a data set, clearing specific fields in a data set,
-deleting sources, and transforms:
+While setting up data sets for the first time you may want to clear or delete your test datasets, transforms, or sources:
 
 .. code-block:: java
 
