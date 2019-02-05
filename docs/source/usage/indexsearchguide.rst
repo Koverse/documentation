@@ -89,7 +89,7 @@ from 2 to 10, inclusive.
 Exclusive searches can be specified by using curly braces,
 such as: ``size:{1 TO 11}``.
 Additionally, it is possible to perform an inclusive search on text terms,
-such as: ``name:[chad TO sigrid]``.
+such as: ``name:[aardvark TO zebra]``.
 
 
 Boolean Operators
@@ -97,8 +97,8 @@ Boolean Operators
 
 The following operators are supported: ``AND``, ``OR``, and ``NOT``.
 The default operator is ``AND``.
-For example, the search ``chad sigrid`` is equivalent to ``chad AND sigrid``.
-An example ``AND`` search would be: ``animal:cat AND owner:sigrid``.
+For example, the search ``bob jones`` is equivalent to ``bob AND jones``.
+An example ``AND`` search would be: ``animal:cat AND owner:bob``.
 An example ``NOT`` search is: ``NOT animal:cat`` or ``NOT size:12``.
 
 ``AND``, ``OR``, and ``NOT`` can also be specified using
@@ -110,12 +110,12 @@ Grouping
 
 A search be be logically grouped by using parenthesis.
 For example, the queries
-``(animal:cat OR animal:dog) AND owner:chad``
+``(animal:cat OR animal:dog) AND owner:sally``
 and
-``animal:cat OR (animal:dog AND owner:chad)``
+``animal:cat OR (animal:dog AND owner:sally)``
 are not the same.
-The first search finds all cats and dogs owned by chad.
-The second search finds all cats, or all dogs owned by chad.
+The first search finds all cats and dogs owned by sally.
+The second search finds all cats, or all dogs owned by sally.
 
 
 Escaping Special Characters
