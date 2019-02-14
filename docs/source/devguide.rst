@@ -12,5 +12,5 @@ Developer Guide
   dev/integration/intro.rst
   dev/analytics/intro.rst
   dev/applications/intro.rst
-  dev/automationguide.rst
+  dev/automation/intro.rst
   dev/addons.rst

@@ -7,7 +7,7 @@ API Tokens are used to authenticate and authorize web applications that are desi
 API Tokens are managed like individual users, so you can think of an API Token as representing an application as if an application were a Koverse user.
 This means that your application will not differentiate its own set of users in terms of what information they see, they all see the same data.
 
-In many cases it's useful to create a specific Koverse user to represent your web application.
+In many cases it's useful to create a specific Koverse user to represent your application.
 Then this user can be assigned to a Group that is authorized to read all the Data Sets your application requires.
 
 Generating an API Token Example
