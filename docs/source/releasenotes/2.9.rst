@@ -1,0 +1,28 @@
+.. _Version29ReleaseNotes:
+
+2.9 Release Notes
+=================
+
+Koverse version 2.9 adds more scalable and robust job management.
+
+Improvements
+------------
+
+- Ability to search/filter data set names in data view
+- Provide fine grained timing information for specific calls
+- Improve performance of data set permission checking for queries
+- Improve querying of a single data set
+- Improve query performance related to data set permissions of deleted data sets
+- Support PySpark Transforms on Data With Mixed Types
+- Support job specific YARN settings
+- End hung imports with a timeout
+- Remove Hadoop transform support
+- Improve job processing efficiency
+- Search on encrypted data
+
+Bugs Fixed
+----------
+- Start time is not populated in the History Tab when Import errors
+- Deleting Data Sets updates job statuses
+- Handle Nulls in pyspark transform output gracefully
+- PySpark Transforms Not Using numberOfBuckets Properly
