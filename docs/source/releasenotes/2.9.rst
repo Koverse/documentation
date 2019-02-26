@@ -19,3 +19,21 @@ Improvements
 - Remove Hadoop transform support
 - Improve job processing efficiency
 - Search on encrypted data
+
+2.9.1 Bug Fixes
+---------------
+
+- [KC-5621] - Issue with batch range in background jobs
+- [KC-5639] - Error seen when purging jobs
+- [KC-5640] - NPE when trying to start a job
+- [KC-5645] - Eliminate nulls in old data set index period settings
+
+2.9.2 Bug Fixes
+---------------
+
+- No bugs. 2.9.2 was never released.
+
+2.9.3 Bug Fixes
+---------------
+
+- [KC-5655] - Multiple Instances of a Job spawned at once
