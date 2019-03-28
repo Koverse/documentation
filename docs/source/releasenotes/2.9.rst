@@ -20,9 +20,33 @@ Improvements
 - Improve job processing efficiency
 - Search on encrypted data
 
-Bugs Fixed
-----------
-- Start time is not populated in the History Tab when Import errors
-- Deleting Data Sets updates job statuses
-- Handle Nulls in pyspark transform output gracefully
-- PySpark Transforms Not Using numberOfBuckets Properly
+Bug Fixes
+---------
+
+2.9.1
+^^^^^
+- [KC-5621] - Issue with batch range in background jobs
+- [KC-5639] - Error seen when purging jobs
+- [KC-5640] - NPE when trying to start a job
+- [KC-5645] - Eliminate nulls in old data set index period settings
+
+2.9.2
+^^^^^
+- No bugs. 2.9.2 was never released.
+
+2.9.3
+^^^^^
+- [KC-5655] - Multiple Instances of a Job spawned at once
+
+2.9.4
+^^^^^
+- [KC-5650] - Fix issues with Maps/MapType in DataFrames
+- [KC-5663] - Show Authorization Tokens in UI
+- [KC-5669] - Preserve byte arrays in JVM transforms
+
+2.9.5
+^^^^^
+- [KC-5675] - Fix server OutOfMemoryError: Java heap space
+- [KC-5642] - Add Oracle Export to add ons shipped
+- [KC-5634] - Get spark transform status from YARN RM
+- [KC-5662] - Security Labeling Of Transform Output Records
