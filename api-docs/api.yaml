@@ -64,28 +64,28 @@ parameters:
     schema:
       $ref: schemas/objectQueryNames.yaml
 paths:
-  /api/dataSets:
+  /api/v1/datasets:
     $ref: paths/dataSets.yaml
-  /api/dataSets/{dataSetId}:
+  /api/v1/datasets/{dataSetId}:
     $ref: paths/dataSet.yaml
-  /api/dataSets/{dataSetId}/attributeNames:
+  /api/v1/datasets/{dataSetId}/attribute-names:
     $ref: paths/dataSetAttributeNames.yaml
 
 # this may not belong in a web app API
 
-#  /api/dataSets/{dataSetId}/download/{fileType}:
+#  /api/v1/dataSets/{dataSetId}/download/{fileType}:
 #    $ref: paths/dataSetDownload.yaml
-  /api/dataSets/{dataSetId}/records:
+  /api/v1/datasets/{dataSetId}/records:
     $ref: paths/records.yaml
-  /api/login:
+  /api/v1/login:
     $ref: paths/login.yaml
-  /api/logout:
+  /api/v1/logout:
     $ref: paths/logout.yaml
-  /api/query/:
+  /api/v1/query/:
     $ref: paths/queryLucene.yaml
-  /api/query/object:
+  /api/v1/query/object:
     $ref: paths/queryObject.yaml
-  /api/query/object/names:
+  /api/v1/query/object/names:
     $ref: paths/queryObjectNames.yaml
-  #/api/search/autocomplete:
+  #/api/v1/search/autocomplete:
   #  $ref: paths/searchAutocomplete.yaml

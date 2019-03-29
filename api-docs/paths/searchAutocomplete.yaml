@@ -1,6 +1,6 @@
 parameters:
   dataSets:
-    name: dataSets
+    name: datasets
     in: query
     description: limits autocomplete results to specified data sets
     type: string

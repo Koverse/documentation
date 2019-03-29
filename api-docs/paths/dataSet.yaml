@@ -8,7 +8,7 @@ get:
         about the given data set. Does not return any records within the
         data set.
   operationId: findDataSetById
-  tags: ["DataSets"]
+  tags: ["Dataset"]
   responses:
     default:
       description: Returns the data set metadata

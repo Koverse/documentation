@@ -3,7 +3,7 @@ parameters:
 get:
   summary: Get attribute names
   operationId: findDataSetAttributeNames
-  tags: ["DataSets"]
+  tags: ["Datasets"]
   description: >
         Get a list of the names of fields or attributes within a data set.
         These can be used to inform users of what fields are available so

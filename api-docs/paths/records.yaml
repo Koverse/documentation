@@ -4,7 +4,7 @@ parameters:
 get:
   summary: Get a sample of records
   operationId: getSampleRecords
-  tags: ["DataSets"]
+  tags: ["Datasets"]
   description: |
         Get a list of 100 sample records in a data set. Records are guaranteed
         to be selected uniformly at random. If there are less than 100 records

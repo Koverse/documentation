@@ -2,7 +2,7 @@
 get:
   summary: List all data sets
   operationId: findDataSets
-  tags: ["DataSets"]
+  tags: ["Datasets"]
   description: >
         Get a list of data set metadata objects for all data sets the user is
         authorized to see.
