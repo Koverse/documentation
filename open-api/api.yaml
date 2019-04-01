@@ -389,127 +389,127 @@ parameters:
     format: int64
 
 paths:
-  /api/login:
+  /api/v1/login:
     $ref: paths/login.yaml
-  /api/logout:
+  /api/v1/logout:
     $ref: paths/logout.yaml
-  /api/applications:
+  /api/v1/applications:
     $ref: paths/applications.yaml
-  /api/applications/{applicationId}:
+  /api/v1/applications/{applicationId}:
     $ref: paths/applicationId.yaml
-  /api/dataSets:
+  /api/v1/datasets:
     $ref: paths/dataSets.yaml
-  /api/dataSets/{dataSetId}:
+  /api/v1/datasets/{dataSetId}:
     $ref: paths/dataSetId.yaml
-  /api/dataSets/{dataSetId}/attributeNames:
+  /api/v1/datasets/{dataSetId}/attributeNames:
     $ref: paths/dataSetAttributeNames.yaml
-  /api/dataSets/{dataSetId}/attributes:
+  /api/v1/datasets/{dataSetId}/attributes:
     $ref: paths/dataSetAttributes.yaml
-  /api/dataSets/{dataSetId}/clearDataSet:
+  /api/v1/datasets/{dataSetId}/clearDataSet:
     $ref: paths/dataSetClearDataSet.yaml
-  #/api/dataSets/{dataSetId}/flatSchema:
+  #/api/v1/datasets/{dataSetId}/flatSchema:
   #  $ref: paths/dataSetFlatSchema.yaml
-  /api/dataSets/{dataSetId}/indexingPolicy:
+  /api/v1/datasets/{dataSetId}/indexingPolicy:
     $ref: paths/dataSetIndexingPolicies.yaml
-  /api/dataSets/{dataSetId}/permissions:
-    $ref: paths/dataSetPermissions.yaml
-  /api/dataSets/{dataSetId}/permissions/{permissionId}:
-    $ref: paths/datasetPermissionId.yaml
-  /api/dataSets/{dataSetId}/jobs:
+  /api/v1/datasets/{dataSetId}/jobs:
     $ref: paths/dataSetJobs.yaml
-  /api/dataSets/{dataSetId}/records:
+  /api/v1/datasets/{dataSetId}/records:
     $ref: paths/dataSetRecords.yaml
-  #/api/dataSets/{dataSetId}/schema:
+  #/api/v1/datasets/{dataSetId}/schema:
   #  $ref: paths/dataSetSchema.yaml
-  /api/dataSets/{dataSetId}/repair:
+  /api/v1/datasets/{dataSetId}/repair:
     $ref: paths/dataSetRepair.yaml
-  /api/dataSets/{dataSetId}/attributes/masking:
+  /api/v1/datasets/{dataSetId}/attributes/masking:
     $ref: paths/dataSetAttributesMasking.yaml
-  /api/importFlows:
+  /api/v1/import-flows:
     $ref: paths/importFlows.yaml
-  /api/importFlows/{importFlowId}:
+  /api/v1/import-flows/{importFlowId}:
     $ref: paths/importFlowId.yaml
-  /api/importFlows/{importFlowId}/execute:
+  /api/v1/import-flows/{importFlowId}/execute:
     $ref: paths/importFlowExecute.yaml
-  /api/importFlows/{importFlowId}/normalizations:
+  /api/v1/import-flows/{importFlowId}/normalizations:
     $ref: paths/importFlowNormalizations.yaml
-  /api/importFlows/{importFlowId}/normalizations/{normalizationId}:
+  /api/v1/import-flows/{importFlowId}/normalizations/{normalizationId}:
     $ref: paths/importFlowNormalizationsId.yaml
-  /api/importFlows/{importFlowId}/schedules:
+  /api/v1/import-flows/{importFlowId}/schedules:
     $ref: paths/importFlowSchedules.yaml
-  /api/importFlows/source/{sourceId}:
+  /api/v1/import-flows/source/{sourceId}:
     $ref: paths/importFlowSourceId.yaml
-  /api/importJobs/{importJobId}/shutdown:
+  /api/v1/import-flows/{importJobId}/shutdown:
     $ref: paths/importJobsShutdown.yaml
-  /api/importSchedules:
+  /api/v1/import-schedules:
     $ref: paths/importSchedules.yaml
-  /api/importSchedules/{importScheduleId}:
+  /api/v1/import-schedules/{importScheduleId}:
     $ref: paths/importScheduleId.yaml
-  /api/jobs:
+  /api/v1/jobs:
     $ref: paths/jobs.yaml
-  /api/jobs/{jobId}/shutdown:
+  /api/v1/jobs/{jobId}/shutdown:
     $ref: paths/jobsIdShutdown.yaml
-  /api/jobs/{jobId}/unblock:
+  /api/v1/jobs/{jobId}/unblock:
     $ref: paths/jobsIdUnblock.yaml
-  /api/normalizationTypes:
+  /api/v1/permissions:
+    $ref: paths/dataSetPermissions.yaml
+  /api/v1/permissions/{permissionId}:
+    $ref: paths/datasetPermissionId.yaml
+  /api/v1/normalization-types:
     $ref: paths/normalizationTypes.yaml
-  /api/permissions/dataset:
+  /api/v1/permissions/dataset:
     $ref: paths/permissionsDataSet.yaml
-  /api/permissions/system:
+  /api/v1/permissions/system:
     $ref: paths/permissionsSystem.yaml
-  /api/records:
+  /api/v1/records:
     $ref: paths/records.yaml
-  /api/sinks:
+  /api/v1/sinks:
     $ref: paths/sinks.yaml
-  /api/sinks/{sinkId}:
+  /api/v1/sinks/{sinkId}:
     $ref: paths/sinkId.yaml
-  /api/sink/{sinkId}/runExport:
+  /api/v1/sinks/{sinkId}/run-export:
     $ref: paths/sinkRunExport.yaml
-  /api/sinkSchedules:
+  /api/v1/sink-schedules:
     $ref: paths/sinkSchedules.yaml
-  /api/sinkSchedules/{exportScheduleId}:
+  /api/v1/sink-schedules/{exportScheduleId}:
     $ref: paths/sinkScheduleId.yaml
-  /api/sinkTypes:
+  /api/v1/sink-types:
     $ref: paths/sinkTypes.yaml
-  /api/sinkTypes/{sinkTypeId}:
+  /api/v1/sink-types/{sinkTypeId}:
     $ref: paths/sinkTypeId.yaml
-  /api/exportJobs/{exportJobId}/shutdown:
+  /api/v1/export-jobs/{exportJobId}/shutdown:
     $ref: paths/exportJobsShutdown.yaml
-  /api/sourceInstances:
+  /api/v1/source-instances:
     $ref: paths/sourceInstances.yaml
-  /api/sourceInstances/{sourceInstanceId}:
+  /api/v1/source-instances/{sourceInstanceId}:
     $ref: paths/sourceInstanceId.yaml
-  /api/sourceTypeDescriptions:
+  /api/v1/source-type-descriptions:
     $ref: paths/sourceTypeDescriptions.yaml
-  /api/transformJobs/{transformJobId}/shutdown:
+  /api/v1/transform-jobs/{transformJobId}/shutdown:
     $ref: paths/transformJobsShutdown.yaml
-  /api/transforms:
+  /api/v1/transforms:
     $ref: paths/transforms.yaml
-  /api/transforms/{transformId}:
+  /api/v1/transforms/{transformId}:
     $ref: paths/transformId.yaml
-  /api/transforms/{transformId}/runTransform:
+  /api/v1/transforms/{transformId}/run-transform:
     $ref: paths/transformIdRunTransform.yaml
-  /api/transforms/{transformId}/transformSchedules:
+  /api/v1/transforms/{transformId}/transform-schedules:
     $ref: paths/transformIdSchedules.yaml
-  /api/transforms/{transformId}/transformSchedules/{transformScheduleId}:
+  /api/v1/transforms/{transformId}/transform-schedules/{transformScheduleId}:
     $ref: paths/transformIdScheduleId.yaml
-  /api/transformTypes:
+  /api/v1/transform-types:
     $ref: paths/transformTypes.yaml
-  /api/transformTypes/{typeId}:
+  /api/v1/transform-types/{typeId}:
     $ref: paths/transformTypeId.yaml
-  /api/query/:
+  /api/v1/query/:
     $ref: paths/queryLucene.yaml
-  /api/query/object:
+  /api/v1/query/object:
     $ref: paths/queryObject.yaml
-  /api/query/object/names:
+  /api/v1/query/object/names:
     $ref: paths/queryObjectNames.yaml
 
 
   # this may not belong in a web app API
   #
-  #  /api/dataSets/{dataSetId}/download/{fileType}:
+  #  /api/v1/datasets/{dataSetId}/download/{fileType}:
   #    $ref: paths/dataSetDownload.yaml
-  #  /api/dataSets/{dataSetId}/records:
+  #  /api/v1/datasets/{dataSetId}/records:
   #    $ref: paths/records.yaml
-  #/api/search/autocomplete:
+  #/api/v1/search/autocomplete:
   #  $ref: paths/searchAutocomplete.yaml
