@@ -397,29 +397,29 @@ paths:
     $ref: paths/applications.yaml
   /api/v1/applications/{applicationId}:
     $ref: paths/applicationId.yaml
-  /api/v1/datasets:
+  /api/v1/data-sets:
     $ref: paths/dataSets.yaml
-  /api/v1/datasets/{dataSetId}:
+  /api/v1/data-sets/{dataSetId}:
     $ref: paths/dataSetId.yaml
-  /api/v1/datasets/{dataSetId}/attributeNames:
+  /api/v1/data-sets/{dataSetId}/attributeNames:
     $ref: paths/dataSetAttributeNames.yaml
-  /api/v1/datasets/{dataSetId}/attributes:
+  /api/v1/data-sets/{dataSetId}/attributes:
     $ref: paths/dataSetAttributes.yaml
-  /api/v1/datasets/{dataSetId}/clearDataSet:
+  /api/v1/data-sets/{dataSetId}/clearDataSet:
     $ref: paths/dataSetClearDataSet.yaml
-  #/api/v1/datasets/{dataSetId}/flatSchema:
+  #/api/v1/data-sets/{dataSetId}/flatSchema:
   #  $ref: paths/dataSetFlatSchema.yaml
-  /api/v1/datasets/{dataSetId}/indexingPolicy:
+  /api/v1/data-sets/{dataSetId}/indexingPolicy:
     $ref: paths/dataSetIndexingPolicies.yaml
-  /api/v1/datasets/{dataSetId}/jobs:
+  /api/v1/data-sets/{dataSetId}/jobs:
     $ref: paths/dataSetJobs.yaml
-  /api/v1/datasets/{dataSetId}/records:
+  /api/v1/data-sets/{dataSetId}/records:
     $ref: paths/dataSetRecords.yaml
-  #/api/v1/datasets/{dataSetId}/schema:
+  #/api/v1/data-sets/{dataSetId}/schema:
   #  $ref: paths/dataSetSchema.yaml
-  /api/v1/datasets/{dataSetId}/repair:
+  /api/v1/data-sets/{dataSetId}/repair:
     $ref: paths/dataSetRepair.yaml
-  /api/v1/datasets/{dataSetId}/attributes/masking:
+  /api/v1/data-sets/{dataSetId}/attributes/masking:
     $ref: paths/dataSetAttributesMasking.yaml
   /api/v1/import-flows:
     $ref: paths/importFlows.yaml
@@ -507,9 +507,9 @@ paths:
 
   # this may not belong in a web app API
   #
-  #  /api/v1/datasets/{dataSetId}/download/{fileType}:
+  #  /api/v1/data-sets/{dataSetId}/download/{fileType}:
   #    $ref: paths/dataSetDownload.yaml
-  #  /api/v1/datasets/{dataSetId}/records:
+  #  /api/v1/data-sets/{dataSetId}/records:
   #    $ref: paths/records.yaml
   #/api/v1/search/autocomplete:
   #  $ref: paths/searchAutocomplete.yaml
