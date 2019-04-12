@@ -40,7 +40,7 @@ Distribute and Activate Parcel(s)
 3. Click the *Distribute* button. Once distributed, the button become the *Active* button.
 4. Click the *Activate* button.
 
-As described in the :ref:`InfraGuide`, Koverse depends on Apache Accumulo 1.6 for data storage. If you do not have it installed already, you should now install the ACCUMULO 1.6.0 Parcel. Follow the above Download, Distribute, and Activate process and then install the Accumulo Service.
+As described in the :ref:`InfraGuide`, Koverse depends on Apache Accumulo 1.7.2 for data storage. If you do not have it installed already, you should now install the ACCUMULO 1.7.2 Parcel. Follow the above Download, Distribute, and Activate process and then install the Accumulo Service.
 
 Configuration
 -------------

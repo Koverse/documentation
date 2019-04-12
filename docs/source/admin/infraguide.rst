@@ -21,7 +21,7 @@ A Koverse cluster relies on the following software infrastructure
 +------------------+------------------+
 | ZooKeeper        | 3.4              |
 +------------------+------------------+
-| Accumulo         | 1.6              |
+| Accumulo         | 1.7.2            |
 +------------------+------------------+
 | PostgreSQL       | 8.x or 9.x       |
 +------------------+------------------+

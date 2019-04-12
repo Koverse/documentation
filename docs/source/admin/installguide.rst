@@ -20,7 +20,7 @@ Koverse requires all servers in a cluster to have clocks synchronized within a f
 Here are the recommended operating system for a Cloudera installation:
 
 - RHEL 6.x or Centos 6.x
-- Accumulo 1.6 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
+- Accumulo 1.7.2 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
 
 Software
 --------
@@ -277,7 +277,7 @@ Prerequisites
 - Cloudera Manager version 5.5 or greater
 - CDH installed via Parcel, not Packages
 - RHEL 6 is highly recommended.  The Accumulo Parcel installation is not officially supported on RHEL 7 by Cloudera.  If you require Cloudera on RHEL 7, please contact Koverse technical support for more information about the installation process.
-- Accumulo 1.6 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
+- Accumulo 1.7.2 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
 
 Files
 -----
@@ -401,7 +401,7 @@ For instance, the instance name seen below is 'accumulo'::
 
   Shell - Apache Accumulo Interactive Shell
   -
-  - version: 1.6.0
+  - version: 1.7.2
   - instance name: accumulo
   - instance id: 3056fcc7-edbd-463b-9bab-5def770d79e0
   -
