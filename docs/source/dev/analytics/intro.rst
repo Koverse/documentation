@@ -13,10 +13,9 @@ Transforms can wrap analytics written for the following frameworks and APIs:
 
 * Spark
 * Spark SQL
-* MapReduce
+* Spark SQL
 * Python
 * PySpark
-
 
 What makes Koverse transforms different from “vanilla” analytics written for these frameworks is that:
 
@@ -34,7 +33,33 @@ Koverse adds the following capabilities to make every analytic production-ready:
 - Auditing
 - Job monitoring and reporting
 
+The following new interfaces were introduced in 3.0.0 and should be implemented for custom transforms:
+
+* com.koverse.sdk.transform.java.DataFrameTransform
+* com.koverse.sdk.transform.scala.DataFrameTransform
+`DataFrameTransform Example <https://github.com/Koverse/koverse-examples/blob/3.0/analytics/scala/src/main/scala/com/koverse/example/spark/WordCountDataFrameTransform.scala>`_
+
+* com.koverse.sdk.transform.java.DataSetTransform
+* com.koverse.sdk.transform.scala.DataSetTransform
+`DataSetTransform Example <https://github.com/Koverse/koverse-examples/blob/3.0/analytics/scala/src/main/scala/com/koverse/example/spark/WordCountDatasetTransform.scala>`_
+
+* com.koverse.sdk.transform.java.RDDTransform
+`Java RDDTransform Example <https://github.com/Koverse/koverse-examples/blob/3.0/analytics/java/src/main/java/com/koverse/examples/analytics/JavaWordCountTransform.java>`_
+* com.koverse.sdk.transform.scala.RDDTransform
+`Scala RDDTransform Example <https://github.com/Koverse/koverse-examples/blob/3.0/analytics/scala/src/main/scala/com/koverse/example/spark/WordCountRDDTransform.scala>`_
+
+The following abstract classes are deprecated in 3.0.0 and will be removed in 3.1.0:
+
+* com.koverse.sdk.transform.spark.sql.JavaSparkDataFrameTransform
+* com.koverse.sdk.transform.spark.JavaSparkTransform
+* com.koverse.sdk.transform.spark.sql.JavaSparkSqlTransform
+
+The above abstract classes implement the com.koverse.sdk.transform.spark.SparkTransform interface which is also
+deprecated and will be removed in 3.1.0
+
 Complete code examples from this section can be found at `Koverse SDK Project <https://github.com/Koverse/koverse-sdk-project/tree/2.4/>`_ section .
+
+More details can be found in the Javadocs
 
 Koverse supports prototyping analytics using interactive shells and Notebooks.
 For examples of prototyping analytics using specific technologies, see the following:
