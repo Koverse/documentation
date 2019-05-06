@@ -1,0 +1,34 @@
+.. _Version30ReleaseNotes:
+
+3.0 Release Notes
+==================
+
+Koverse version 3.0 includes an update to underlying components including Spark, Hadoop, Kafka, and Hive.
+This will allow customers to use the latest improvements in those components, including a lot more built-in machine learning algorithms in Spark 2 and better support for using docker images in Hadoop.
+
+Speaking of machine learning, developers can now output Spark DenseVectors and SparseVectors directly to a Koverse data set.
+This makes it easy to store features for machine learning algorithms and storing machine learning models that consist of vectors.
+
+Koverse 3.0 also features an all-new Transform SDK that makes it easy to create reusable analytics by writing Koverse Transforms that can take advantage of the new APIs in Spark 2, including the DataSet API.
+See the new :ref:`AnalyticsAPI` for details.
+
+Developers who are building web applications should note that all of our REST methods have been renamed to be more consistent and now support versioning.
+
+
+New Features
+------------
+
+- [KC-5699] - Upgrade components to match HDP 3.1
+- [KC-5685] - Create a new Transform SDK including DataSets, DataFrames, and Java and Scala RDDs
+- [KC-5592] - Store Spark vectors in Koverse records directly
+
+Improvements
+------------
+
+- [KC-4877] - Java 8 now required
+- [KC-5591] - Provide a build that works with Spark 2.3
+- [KC-5682] - Upgrade to Hadoop 3.1.1
+- [KC-5691] - Upgrade to Zookeeper 3.4.6
+- [KC-5700] - Upgrade to Hive 3.1.0
+- [KC-5701] - Upgrade to Kafka 2.0.0
+- [KC-5704] - Make REST methods consistent
