@@ -21,11 +21,11 @@ A Koverse cluster relies on the following software infrastructure
 +------------------+------------------+
 | ZooKeeper        | 3.4              |
 +------------------+------------------+
-| Accumulo         | 1.6              |
+| Accumulo         | 1.7              |
 +------------------+------------------+
 | PostgreSQL       | 8.x or 9.x       |
 +------------------+------------------+
-| Oracle Java      | 1.7 or 1.8       |
+| Oracle Java      | 1.8 or 1.9       |
 +------------------+------------------+
 
 Cloudera parcels are available for CDH versions 5.5 and later.

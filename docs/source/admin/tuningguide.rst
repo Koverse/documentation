@@ -60,7 +60,7 @@ These would go in koverse-server settings.xml:
 
 HDFS
 ----
-It has come up on some smaller clusters that having HDFS Trash enabled, coupled with decent amounts of ingest, can cause disk space to quickly fill up due to Accumulo's Write-Ahead-Log (WAL) filling up HDFS Trash as files are removed during compaction. In these low disk space environments, you can disable HDFS Trash (fs.trash.interval = 0) or set it to something far lower than a day which is ofter the default value from a Hadoop distribution. Alternatively you can set gc.trash.ignore to true in Accumulo http://accumulo.apache.org/1.6/accumulo_user_manual.html#_gc_trash_ignore.
+It has come up on some smaller clusters that having HDFS Trash enabled, coupled with decent amounts of ingest, can cause disk space to quickly fill up due to Accumulo's Write-Ahead-Log (WAL) filling up HDFS Trash as files are removed during compaction. In these low disk space environments, you can disable HDFS Trash (fs.trash.interval = 0) or set it to something far lower than a day which is ofter the default value from a Hadoop distribution. Alternatively you can set gc.trash.ignore to true in Accumulo http://accumulo.apache.org/1.7/accumulo_user_manual.html#_gc_trash_ignore.
 
 Max Files, Processes
 --------------------
@@ -87,5 +87,5 @@ Additional information on cluster tuning can be found here:
 
 * http://www.cloudera.com/content/www/en-us/documentation/enterprise/5-3-x/topics/cdh_ig_yarn_tuning.html
 * http://blog.cloudera.com/blog/2015/03/how-to-tune-your-apache-spark-jobs-part-2/
-* http://accumulo.apache.org/1.6/accumulo_user_manual.html
+* http://accumulo.apache.org/1.7/accumulo_user_manual.html
 * http://spark.apache.org/docs/latest/running-on-yarn.html
