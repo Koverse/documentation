@@ -36,15 +36,20 @@ The following new interfaces were introduced in 3.0.0 and should be implemented 
 
 * com.koverse.sdk.transform.java.DataFrameTransform
 * com.koverse.sdk.transform.scala.DataFrameTransform
+
 `DataFrameTransform Example <https://github.com/Koverse/koverse-examples/blob/3.0/analytics/scala/src/main/scala/com/koverse/example/spark/WordCountDataFrameTransform.scala>`_
 
 * com.koverse.sdk.transform.java.DataSetTransform
 * com.koverse.sdk.transform.scala.DataSetTransform
+
 `DataSetTransform Example <https://github.com/Koverse/koverse-examples/blob/3.0/analytics/scala/src/main/scala/com/koverse/example/spark/WordCountDatasetTransform.scala>`_
 
 * com.koverse.sdk.transform.java.RDDTransform
+
 `Java RDDTransform Example <https://github.com/Koverse/koverse-examples/blob/3.0/analytics/java/src/main/java/com/koverse/examples/analytics/JavaWordCountTransform.java>`_
+
 * com.koverse.sdk.transform.scala.RDDTransform
+
 `Scala RDDTransform Example <https://github.com/Koverse/koverse-examples/blob/3.0/analytics/scala/src/main/scala/com/koverse/example/spark/WordCountRDDTransform.scala>`_
 
 The following abstract classes are deprecated in 3.0.0 and will be removed in 3.1.0:
