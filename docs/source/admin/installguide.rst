@@ -20,7 +20,7 @@ Koverse requires all servers in a cluster to have clocks synchronized within a f
 Here are the recommended operating system for a Cloudera installation:
 
 - RHEL 6.x or Centos 6.x
-- Accumulo 1.7.2 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
+- Accumulo 1.7 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
 
 Software
 --------
@@ -277,7 +277,7 @@ Prerequisites
 - Cloudera Manager version 5.5 or greater
 - CDH installed via Parcel, not Packages
 - RHEL 6 is highly recommended.  The Accumulo Parcel installation is not officially supported on RHEL 7 by Cloudera.  If you require Cloudera on RHEL 7, please contact Koverse technical support for more information about the installation process.
-- Accumulo 1.7.2 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
+- Accumulo 1.7 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
 
 Files
 -----
@@ -358,7 +358,7 @@ Koverse Configuration
 Environment
 -----------
 The 'koverse' user needs to have the 'java' command in their path for the Koverse startup scripts to execute correctly.
-This needs to be Oracle Java 1.7 or 1.8.
+This needs to be Oracle Java 1.8 or 1.9.
 
 The environment variable *HADOOP_CONF_DIR* needs to be set for the 'koverse' user so Koverse can take advantage of the Hadoop client configuration.
 The startup script */opt/koverse-server/bin/startup.sh* will default this environment variable to */etc/hadoop/conf* if it is not already set.
