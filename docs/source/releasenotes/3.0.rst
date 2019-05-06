@@ -3,8 +3,8 @@
 3.0 Release Notes
 ==================
 
-Koverse version 3.0 includes an update to underlying components including Spark, Hadoop, Kafka, and Hive.
-This will allow customers to use the latest improvements in those components, including a lot more built-in machine learning algorithms in Spark 2 and better support for using docker images in Hadoop.
+Koverse version 3.0 includes an update to underlying components including Spark, Hadoop, and Kafka.
+This will allow customers to use the latest improvements in those components, including a lot more built-in machine learning algorithms in Spark 2.
 
 Speaking of machine learning, developers can now output Spark DenseVectors and SparseVectors directly to a Koverse data set.
 This makes it easy to store features for machine learning algorithms and storing machine learning models that consist of vectors.
