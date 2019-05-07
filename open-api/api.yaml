@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  version: 2.9.0
+  version: 3.0.0
   title: Koverse REST API
   description: >
         Specification for interacting with the Koverse Rest API
@@ -448,7 +448,7 @@ paths:
   /api/v1/jobs/{jobId}/unblock:
     $ref: paths/jobsIdUnblock.yaml
   /api/v1/permissions:
-    $ref: paths/dataSetPermissions.yaml
+    $ref: paths/permissions.yaml
   /api/v1/permissions/{permissionId}:
     $ref: paths/datasetPermissionId.yaml
   /api/v1/normalization-types:
