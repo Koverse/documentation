@@ -1,5 +1,4 @@
 parameters:
-  - $ref: "../api.yaml#/parameters/dataSetId"
   - $ref: "../api.yaml#/parameters/permissionId"
 
 put:

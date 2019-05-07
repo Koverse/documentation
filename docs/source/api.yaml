@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  version: 2.10.0
+  version: 3.0.0
   title: Koverse REST API
   description: |
     Specification for interacting with the Koverse Rest API
@@ -1614,7 +1614,7 @@ parameters:
     type: integer
     format: int64
 paths:
-  /api/login:
+  /api/v1/login:
     post:
       summary: Login
       operationId: loginUser
@@ -1637,7 +1637,7 @@ paths:
           description: Returns the user data
           schema:
             $ref: '#/definitions/user'
-  /api/logout:
+  /api/v1/logout:
     get:
       summary: Logout
       operationId: logoutUser
@@ -1653,7 +1653,7 @@ paths:
           description: Returns a confirmation of the logout
           schema:
             $ref: '#/definitions/logout'
-  /api/applications:
+  /api/v1/applications:
     get:
       summary: List
       operationId: findApplications
@@ -1688,7 +1688,7 @@ paths:
           description: Returns the newly created Application
           schema:
             $ref: '#/definitions/apiClient'
-  '/api/applications/{applicationId}':
+  '/api/v1/applications/{applicationId}':
     parameters:
       - $ref: '#/parameters/applicationId'
     get:
@@ -1727,7 +1727,7 @@ paths:
           description: Returns the deleted application.
           schema:
             $ref: '#/definitions/apiClient'
-  /api/dataSets:
+  /api/v1/data-sets:
     get:
       summary: List
       operationId: findDataSets
@@ -1766,7 +1766,7 @@ paths:
           description: Returns the newly created Data Set metadata
           schema:
             $ref: '#/definitions/dataSetMetadata'
-  '/api/dataSets/{dataSetId}':
+  '/api/v1/data-sets/{dataSetId}':
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
@@ -1807,7 +1807,7 @@ paths:
           description: Returns the data set metadata with an updated DELETED dataset name.
           schema:
             $ref: '#/definitions/dataSetMetadata'
-  '/api/dataSets/{dataSetId}/attributeNames':
+  '/api/v1/data-sets/{dataSetId}/attributeNames':
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
@@ -1832,7 +1832,7 @@ paths:
             type: array
             items:
               type: string
-  '/api/dataSets/{dataSetId}/attributes':
+  '/api/v1/data-sets/{dataSetId}/attributes':
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
@@ -1853,7 +1853,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetAttributes'
-  '/api/dataSets/{dataSetId}/clearDataSet':
+  '/api/v1/data-sets/{dataSetId}/clearDataSet':
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
@@ -1869,7 +1869,7 @@ paths:
       responses:
         '200':
           description: 200 OK
-  '/api/dataSets/{dataSetId}/indexingPolicy':
+  '/api/v1/data-sets/{dataSetId}/indexingPolicy':
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
@@ -1908,80 +1908,7 @@ paths:
           description: Returns an array of the indexing policy metadata of a data set.
           schema:
             $ref: '#/definitions/dataSetIndexingPolicy'
-  '/api/dataSets/{dataSetId}/permissions':
-    parameters:
-      - $ref: '#/parameters/dataSetId'
-    get:
-      summary: Get
-      operationId: findDataSetPermissions
-      tags:
-        - Data Set Permissions
-      description: |
-        Get permissions granted for a data set by data set id.
-      responses:
-        '200':
-          description: Returns an array of metadata of the permissions of a data set.
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/dataSetPermission'
-    post:
-      summary: Create
-      operationId: createDataSetPermission
-      tags:
-        - Data Set Permissions
-      parameters:
-        - name: dataSetPermission
-          in: body
-          description: The data set permission to add
-          required: true
-          schema:
-            $ref: '#/definitions/dataSetPermission'
-      description: |
-        Assigns group permissions to the specified data set.
-      responses:
-        '201':
-          description: Returns an array of metadata of the permissions of a data set.
-          schema:
-            $ref: '#/definitions/dataSetPermission'
-  '/api/dataSets/{dataSetId}/permissions/{permissionId}':
-    parameters:
-      - $ref: '#/parameters/dataSetId'
-      - $ref: '#/parameters/permissionId'
-    put:
-      summary: Update
-      operationId: updateDataSetPermissionsById
-      tags:
-        - Data Set Permissions
-      parameters:
-        - name: dataSetPermission
-          in: body
-          description: The updated data set permission info
-          required: true
-          schema:
-            $ref: '#/definitions/dataSetPermission'
-      description: |
-        Updates the permissions of a data set specified by a data set ID.
-      responses:
-        '200':
-          description: Returns the updated data set permission data
-          schema:
-            $ref: '#/definitions/dataSetPermission'
-    delete:
-      summary: Delete
-      operationId: deleteDataSetPermissionsById
-      tags:
-        - Data Set Permissions
-      description: |
-        Deletes a data set permission based on the supplied permission id.
-
-        This effectively revokes access.
-      responses:
-        '200':
-          description: Returns the data set permission that was deleted
-          schema:
-            $ref: '#/definitions/dataSetPermission'
-  '/api/dataSets/{dataSetId}/jobs':
+  '/api/v1/data-sets/{dataSetId}/jobs':
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
@@ -1998,7 +1925,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetJob'
-  '/api/dataSets/{dataSetId}/records':
+  '/api/v1/data-sets/{dataSetId}/records':
     parameters:
       - $ref: '#/parameters/dataSetId'
       - $ref: '#/parameters/recordStyle'
@@ -2029,7 +1956,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/record'
-  '/api/dataSets/{dataSetId}/repair':
+  '/api/v1/data-sets/{dataSetId}/repair':
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
@@ -2047,7 +1974,7 @@ paths:
       responses:
         '200':
           description: 200 OK
-  '/api/dataSets/{dataSetId}/attributes/masking':
+  '/api/v1/data-sets/{dataSetId}/attributes/masking':
     parameters:
       - $ref: '#/parameters/dataSetId'
     put:
@@ -2075,7 +2002,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetAttributes'
-  /api/importFlows:
+  /api/v1/import-flows:
     post:
       summary: Create
       operationId: addImportFlow
@@ -2099,7 +2026,7 @@ paths:
           description: Returns the newly created import flow
           schema:
             $ref: '#/definitions/importFlow'
-  '/api/importFlows/{importFlowId}':
+  '/api/v1/import-flows/{importFlowId}':
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     get:
@@ -2142,7 +2069,7 @@ paths:
           description: Returns the updated import flow data
           schema:
             $ref: '#/definitions/importFlow'
-  '/api/importFlows/{importFlowId}/execute':
+  '/api/v1/import-flows/{importFlowId}/execute':
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     post:
@@ -2168,7 +2095,7 @@ paths:
             properties:
               failureMessage:
                 type: string
-  '/api/importFlows/{importFlowId}/normalizations':
+  '/api/v1/import-flows/{importFlowId}/normalizations':
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     get:
@@ -2204,7 +2131,7 @@ paths:
           description: Returns the newly-added normalization
           schema:
             $ref: '#/definitions/normalization'
-  '/api/importFlows/{importFlowId}/normalizations/{normalizationId}':
+  '/api/v1/import-flows/{importFlowId}/normalizations/{normalizationId}':
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
       - $ref: '#/parameters/normalizationId'
@@ -2248,7 +2175,7 @@ paths:
           description: Returns the normalization that was deleted
           schema:
             $ref: '#/definitions/normalization'
-  '/api/importFlows/{importFlowId}/schedules':
+  '/api/v1/import-flows/{importFlowId}/schedules':
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     get:
@@ -2265,7 +2192,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/importSchedule'
-  '/api/importFlows/source/{sourceId}':
+  '/api/v1/import-flows/source/{sourceId}':
     parameters:
       - $ref: '#/parameters/sourceId'
     get:
@@ -2280,7 +2207,7 @@ paths:
           description: Returns the import flow data
           schema:
             $ref: '#/definitions/importFlow'
-  '/api/importJobs/{importJobId}/shutdown':
+  '/api/v1/import-flows/{importJobId}/shutdown':
     parameters:
       - $ref: '#/parameters/importJobId'
     get:
@@ -2295,7 +2222,7 @@ paths:
           description: Returns an updated job
           schema:
             $ref: '#/definitions/dataSetJob'
-  /api/importSchedules:
+  /api/v1/import-schedules:
     parameters:
       - $ref: '#/parameters/importFlowId'
     post:
@@ -2317,7 +2244,7 @@ paths:
           description: Returns the newly-added import schedule
           schema:
             $ref: '#/definitions/importSchedule'
-  '/api/importSchedules/{importScheduleId}':
+  '/api/v1/import-schedules/{importScheduleId}':
     parameters:
       - $ref: '#/parameters/importScheduleId'
     get:
@@ -2344,7 +2271,7 @@ paths:
           description: Returns the import schedule that was deleted
           schema:
             $ref: '#/definitions/importSchedule'
-  /api/jobs:
+  /api/v1/jobs:
     get:
       summary: Get active
       operationId: findActiveJobs
@@ -2359,7 +2286,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/job'
-  '/api/jobs/{jobId}/shutdown':
+  '/api/v1/jobs/{jobId}/shutdown':
     parameters:
       - $ref: '#/parameters/jobId'
     get:
@@ -2372,7 +2299,7 @@ paths:
       responses:
         '200':
           description: 200 OK
-  '/api/jobs/{jobId}/unblock':
+  '/api/v1/jobs/{jobId}/unblock':
     parameters:
       - $ref: '#/parameters/jobId'
     get:
@@ -2389,7 +2316,63 @@ paths:
       responses:
         '200':
           description: 200 OK
-  /api/normalizationTypes:
+  /api/v1/permissions:
+    post:
+      summary: Create
+      operationId: createDataSetPermission
+      tags:
+        - Permissions
+      parameters:
+        - name: dataSetPermission
+          in: body
+          description: The data set permission to add
+          required: true
+          schema:
+            $ref: '#/definitions/dataSetPermission'
+      description: |
+        Assigns group permissions to the specified data set.
+      responses:
+        '201':
+          description: Returns an array of metadata of the permissions of a data set.
+          schema:
+            $ref: '#/definitions/dataSetPermission'
+  '/api/v1/permissions/{permissionId}':
+    parameters:
+      - $ref: '#/parameters/permissionId'
+    put:
+      summary: Update
+      operationId: updateDataSetPermissionsById
+      tags:
+        - Data Set Permissions
+      parameters:
+        - name: dataSetPermission
+          in: body
+          description: The updated data set permission info
+          required: true
+          schema:
+            $ref: '#/definitions/dataSetPermission'
+      description: |
+        Updates the permissions of a data set specified by a data set ID.
+      responses:
+        '200':
+          description: Returns the updated data set permission data
+          schema:
+            $ref: '#/definitions/dataSetPermission'
+    delete:
+      summary: Delete
+      operationId: deleteDataSetPermissionsById
+      tags:
+        - Data Set Permissions
+      description: |
+        Deletes a data set permission based on the supplied permission id.
+
+        This effectively revokes access.
+      responses:
+        '200':
+          description: Returns the data set permission that was deleted
+          schema:
+            $ref: '#/definitions/dataSetPermission'
+  /api/v1/normalization-types:
     get:
       summary: List types
       operationId: findNormalizationTypes
@@ -2404,7 +2387,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/normalizationType'
-  /api/permissions/dataset:
+  /api/v1/permissions/dataset:
     get:
       summary: List
       operationId: dataSetPermissions
@@ -2421,7 +2404,7 @@ paths:
             type: array
             items:
               type: string
-  /api/permissions/system:
+  /api/v1/permissions/system:
     get:
       summary: List
       operationId: systemPermissions
@@ -2436,7 +2419,7 @@ paths:
             type: array
             items:
               type: string
-  /api/records:
+  /api/v1/records:
     parameters:
       - $ref: '#/parameters/recordId'
     get:
@@ -2520,7 +2503,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/record'
-  /api/sinks:
+  /api/v1/sinks:
     parameters:
       - name: dataSetId
         in: query
@@ -2567,7 +2550,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/sink'
-  '/api/sinks/{sinkId}':
+  '/api/v1/sinks/{sinkId}':
     parameters:
       - $ref: '#/parameters/sinkId'
     get:
@@ -2615,7 +2598,7 @@ paths:
           description: Returns the updated sink data
           schema:
             $ref: '#/definitions/sink'
-  '/api/sink/{sinkId}/runExport':
+  '/api/v1/sinks/{sinkId}/run-export':
     parameters:
       - $ref: '#/parameters/sinkId'
     get:
@@ -2632,7 +2615,7 @@ paths:
           description: Returns the export job data
           schema:
             $ref: '#/definitions/job'
-  /api/sinkSchedules:
+  /api/v1/sink-schedules:
     get:
       summary: Get
       operationId: findSinkSchedules
@@ -2666,7 +2649,7 @@ paths:
           description: Returns the newly-added sink schedule
           schema:
             $ref: '#/definitions/exportSchedule'
-  '/api/sinkSchedules/{exportScheduleId}':
+  '/api/v1/sink-schedules/{exportScheduleId}':
     parameters:
       - $ref: '#/parameters/exportScheduleId'
     get:
@@ -2693,7 +2676,7 @@ paths:
           description: Returns the sink schedule that was deleted
           schema:
             $ref: '#/definitions/exportSchedule'
-  /api/sinkTypes:
+  /api/v1/sink-types:
     get:
       summary: List
       operationId: findSinksTypes
@@ -2720,7 +2703,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/sinkType'
-  '/api/sinkTypes/{sinkTypeId}':
+  '/api/v1/sink-types/{sinkTypeId}':
     parameters:
       - $ref: '#/parameters/sinkTypeId'
     get:
@@ -2733,7 +2716,7 @@ paths:
           description: Returns the sink type data
           schema:
             $ref: '#/definitions/sinkTypeDescription'
-  '/api/exportJobs/{exportJobId}/shutdown':
+  '/api/v1/export-jobs/{exportJobId}/shutdown':
     parameters:
       - $ref: '#/parameters/exportJobId'
     get:
@@ -2746,7 +2729,7 @@ paths:
       responses:
         '200':
           description: 200 OK
-  /api/sourceInstances:
+  /api/v1/source-instances:
     post:
       summary: Create
       operationId: addSource
@@ -2768,7 +2751,7 @@ paths:
             Location:
               type: string
               description: The URL of the newly-added source
-  '/api/sourceInstances/{sourceInstanceId}':
+  '/api/v1/source-instances/{sourceInstanceId}':
     parameters:
       - $ref: '#/parameters/sourceInstanceId'
     get:
@@ -2808,7 +2791,7 @@ paths:
           description: Returns the updated source data
           schema:
             $ref: '#/definitions/sourceInstance'
-  /api/sourceTypeDescriptions:
+  /api/v1/source-type-descriptions:
     get:
       summary: List
       operationId: findSourceTypes
@@ -2833,7 +2816,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/sourceTypeDescription'
-  '/api/transformJobs/{transformJobId}/shutdown':
+  '/api/v1/transform-jobs/{transformJobId}/shutdown':
     parameters:
       - $ref: '#/parameters/transformJobId'
     get:
@@ -2846,7 +2829,7 @@ paths:
       responses:
         default:
           description: 200 OK
-  /api/transforms:
+  /api/v1/transforms:
     parameters:
       - name: inputDataSetId
         description: dataSet id to use when filtering transforms by inputs
@@ -2897,7 +2880,7 @@ paths:
             Location:
               type: string
               description: The URL of the newly-added transform
-  '/api/transforms/{transformId}':
+  '/api/v1/transforms/{transformId}':
     parameters:
       - $ref: '#/parameters/transformId'
     get:
@@ -2939,7 +2922,7 @@ paths:
           description: Returns the updated transform data
           schema:
             $ref: '#/definitions/transform'
-  '/api/transforms/{transformId}/runTransform':
+  '/api/v1/transforms/{transformId}/run-transform':
     parameters:
       - $ref: '#/parameters/transformId'
     get:
@@ -2960,7 +2943,7 @@ paths:
           description: Returns the success data
           schema:
             $ref: '#/definitions/success'
-  '/api/transforms/{transformId}/transformSchedules':
+  '/api/v1/transforms/{transformId}/transform-schedules':
     parameters:
       - $ref: '#/parameters/transformId'
     get:
@@ -2996,7 +2979,7 @@ paths:
           description: Returns the newly-added transform schedule
           schema:
             $ref: '#/definitions/transformSchedule'
-  '/api/transforms/{transformId}/transformSchedules/{transformScheduleId}':
+  '/api/v1/transforms/{transformId}/transform-schedules/{transformScheduleId}':
     parameters:
       - $ref: '#/parameters/transformId'
       - $ref: '#/parameters/transformScheduleId'
@@ -3010,7 +2993,7 @@ paths:
           description: Returns the transform schedule that was deleted
           schema:
             $ref: '#/definitions/transformSchedule'
-  /api/transformTypes:
+  /api/v1/transform-types:
     get:
       summary: List
       operationId: findTransformTypes
@@ -3030,7 +3013,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/transformType'
-  '/api/transformTypes/{typeId}':
+  '/api/v1/transform-types/{typeId}':
     parameters:
       - name: typeId
         type: string
@@ -3058,7 +3041,7 @@ paths:
           description: Returns the transform type
           schema:
             $ref: '#/definitions/transformType'
-  /api/query/:
+  /api/v1/query/:
     get:
       summary: Lucene style
       operationId: queryLucene
@@ -3337,7 +3320,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetResult'
-  /api/query/object:
+  /api/v1/query/object:
     post:
       summary: Object style with IDs
       operationId: queryObject
@@ -3455,7 +3438,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetResult'
-  /api/query/object/names:
+  /api/v1/query/object/names:
     post:
       summary: Object style with names
       operationId: queryObjectNames
