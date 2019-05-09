@@ -32,3 +32,12 @@ Improvements
 - [KC-5700] - Upgrade to Hive 3.1.0
 - [KC-5701] - Upgrade to Kafka 2.0.0
 - [KC-5704] - Make REST methods consistent
+
+Bug Fixes
+---------
+
+3.0.1
+^^^^^
+
+- [KC-5734] - koverse-spark-datasource for 3.0 is missing htrace dependency
+- [KC-5761] - Add Spark jars to classpath of all jobs
