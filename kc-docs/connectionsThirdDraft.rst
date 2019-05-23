@@ -58,34 +58,13 @@ Clicking on an entity in the seach results will display a profile of that entity
 
 .. image:: ../kc-docs/search_entity_view.png
 
-Create List
-)))))))))))))
-You can save the results of a search to a new list.
+You can also:
 
-To create a list, select one or more entities from your search results and click "CREATE LIST".
-(needs image)
-
-Give the list a name and click "CREATE LIST".
-(needs image)
-This new list will then appear in the Lists tab of the sidebar.
-
-Add to List
-)))))))))))))))))))))))
-You can add the results of a search to an existing list by selecting one or more entities from your search results and clicking "ADD TO LIST"
-
-Select the list you would like to add your selected entities to and click "ADD TO LIST".
-(needs image)
-.. image::
-
-Download CSV
-))))))))))))
-You can download the results of your search to a CSV by selecting one or more entities from your search results and clicking the "CSV" button.
-
-Merge
-)))))
-You can merge entities from your search results by clicking two or more entities you want to merge and clicking the "Merge" button.
-
-You will be asked to select the preferred name for this merged entity.
+- `Create a List`_
+- `Add to a List`_
+- `Download a CSV of Entities`_
+- `Merge Entities`_
+- `Hide or Show Attributes`_
 
 Lists
 +++++
@@ -100,31 +79,13 @@ Clicking on a List will open a view of the entities contained in that list. This
 From the List view you can see the number of entities contained in the List, the entity type in the List, who created the List, when it was last updated, and a toggle to make the List private or public.
 (needs image)
 
-Create List
-)))))))))))
-To create a List from your current list, select one or more entities to be a part of your new List and click "Create List" at the top of the list view.
+You can also:
 
-This will take you through the Create List wizard.
-
-Add to List
-)))))))))))
-To add entities to an existing List, select one or more entities you wish to add to a List and click "Add to List" at the top of the list view.
-
-You will be prompted to select the List where the entity or entities will be added. Click "Add" or "Cancel" to finalize your choice.
-
-Download CSV
-))))))))))))
-To download a CSV of one or more entities from a List, select one or more entities and click "CSV" at the top of the list view.
-
-Merge
-)))))
-To merge one or more entities, select from the List, the entities you want to merge and click "Merge" at the top of the list view.
-
-You will be prompted to select the preferred name for this merged entity.
-
-Hide or Show Attributes
-)))))))))))))))))))))))
-To hide or show specific attribute columns, click on the eye icon and select or deselect the attribute columns you wish to see in the list view.
+- `Create A List`_
+- `Add to a List`_
+- `Download a CSV of Entities`_
+- `Merge Entities`_
+- `Hide or Show Attributes`_
 
 Lookalike Models
 ++++++++++++++++
@@ -133,3 +94,47 @@ A Lookalike Model takes a list as input and creates a new list that has recommen
 Weighted Models
 +++++++++++++++
 A Weighted Model
+
+Profile Views
++++++++++++++
+
+---------
+Reference
+---------
+
+Entity Table Actions
+--------------------
+
+Create a List
++++++++++++++
+
+To create a List, select one or more entities and click "CREATE LIST".
+(needs image)
+
+This will take you through the Create List wizard. Give the list a name and click "CREATE LIST".
+
+This new list will then appear in the Lists tab of the sidebar.
+
+Add to a List
++++++++++++++
+To add entities to an existing List, select one or more entities you wish to add to a List and click "Add to List".
+
+You will be prompted to select the List where the entity or entities will be added. Click "Add" or "Cancel" to finalize your choice.
+(needs image)
+
+Download a CSV of Entities
+++++++++++++++++++++++++++
+To download a CSV of one or more entities, select one or more entities and click the "CSV" button.
+(needs image)
+
+Merge Entities
+++++++++++++++
+You will be asked to select the preferred name for this merged entity.
+To merge two or more entities, select the entities you want to merge and click the "Merge" button.
+
+You will be prompted to select the preferred name for this merged entity.
+(needs image)
+
+Hide or Show Attributes
++++++++++++++++++++++++
+To hide or show specific attribute columns, click on the eye icon and select or deselect the attribute columns you wish to see.
