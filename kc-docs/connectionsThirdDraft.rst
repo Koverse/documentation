@@ -4,6 +4,30 @@ Koverse Connections Documentation
 ------------------
 User Documentation
 ------------------
+Contents
+--------
+`Accessing the User Interface`_
+
+- `Logging in and out`_
+
+`Navigation`_
+
+- `Dashboard`_
+- `Search`_
+- `Lists`_
+- `Lookalike Models`_
+- `Weighted Models`_
+- `Profile Views`_
+
+`Referece`_
+
+- `Entity Table Actions`_
+  - `Create a List`_
+  - `Add to a List`_
+  - `Download a CSV of Entities`_
+  - `Merge Entities`_
+  - `Hide or Show Attributes`_
+
 Accessing the User Interface
 ----------------------------
 Logging in and out
@@ -32,11 +56,11 @@ The main page of the Koverse Connections user interface displays (*the navigatio
 - Logout Button
 
 Dashboard
-+++++++++
+---------
 The dashboard contains a customized view of Lists, Lookalike Models, Weighted Models and other customizable items.
 
 Search
-++++++
+------
 The search page allows you to search for entities based on chosen criteria.
 
 Search criteria can include:
@@ -67,7 +91,7 @@ You can also:
 - `Hide or Show Attributes`_
 
 Lists
-+++++
+-----
 The Lists page displays lists available to the current user. A List is a user-curated list of entities of the same type.
 
 Clicking on the Lists tab in the navigation menu will display the lists available to the current user.
@@ -88,15 +112,47 @@ You can also:
 - `Hide or Show Attributes`_
 
 Lookalike Models
-++++++++++++++++
-A Lookalike Model takes a list as input and creates a new list that has recommendations for entities similar to those on the input list.
+----------------
+A lookalike model takes a list as input and creates a new list that has recommendations for entities similar to those on the input list.
+
+Create a Lookalike Model
+++++++++++++++++++++++++
+
+From the Lookalike Models tab:
+
+- Click "CREATE LOOKALIKE MODEL"
+- Give your lookalike model a name
+- Choose the list your lookalike model will be based on
+- Click "CREATE MODEL"
+
+Your lookalike model will now appear in the Lookalike Models tab.
+
+Lookalike Model Options
++++++++++++++++++++++++
+From the Lookalike Models tab you can click on a lookalike model to access more details or click on the trash can icon to delete the lookalike model.
+
+On the details page of a lookalike model you can:
+
+- View more information about the lookalike model including: Name, Creator, and when the model was last run
+- Make the lookalike model private or public using the "Private" toggle
+- Run the lookalike model
+- Rename the lookalike model
+- See the entity results of the lookalike model
+
+Run a Lookalike Model
++++++++++++++++++++++
+To run a lookalike model, from the Lookalike Models tab, click on the lookalike model you want to run.
+
+On the next page, click on "RUN MODEL". You should see a green prompt in the lower left hand corner of your browser window telling you "Model has been queued". This model will then run...(*NEEDS MORE INFO*)
+
 
 Weighted Models
-+++++++++++++++
-A Weighted Model
+---------------
+A Weighted Model creates a list based on user selected attribute weighting. For example: Potential customers are scored based on an algorithm that is as follows:
+0.2*assets+0.3*last quarter performance+0.25*consultant rating+0.25*percent assets in S&P 500.
 
 Profile Views
-+++++++++++++
+-------------
 
 ---------
 Reference
@@ -138,3 +194,13 @@ You will be prompted to select the preferred name for this merged entity.
 Hide or Show Attributes
 +++++++++++++++++++++++
 To hide or show specific attribute columns, click on the eye icon and select or deselect the attribute columns you wish to see.
+
+Delete
+++++++
+You can use the delete button next to any row to remove it from a list.
+
+Navigating the Entity Table
++++++++++++++++++++++++++++
+At the bottom of the Entity Table you can change the nuber of rows per page displayed (10, 20, 50, or 100).
+
+To move between pages, if there are more rows than your selected display, you can click on the forward and backward arrows, or click on the page number itself.
