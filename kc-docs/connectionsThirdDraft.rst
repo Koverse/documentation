@@ -19,7 +19,7 @@ Contents
 - `Weighted Models`_
 - `Profile Views`_
 
-`Referece`_
+`Reference`_
 
 - `Entity Table Actions`_
   - `Create a List`_
@@ -133,7 +133,7 @@ From the Lookalike Models tab you can click on a lookalike model to access more 
 
 On the details page of a lookalike model you can:
 
-- View more information about the lookalike model including: Name, Creator, and when the model was last run
+- View more information about the lookalike model including: Name, number of entities, who created the model, and when the model was last run
 - Make the lookalike model private or public using the "Private" toggle
 - Run the lookalike model
 - Rename the lookalike model
@@ -153,6 +153,19 @@ A Weighted Model creates a list based on user selected attribute weighting. For 
 
 Profile Views
 -------------
+Profile Views present the properties of an entity. All entity types have a default profile view and may have multiple profile views. Profile views can be created and customized.
+
+To create a new profile view, from the Profile Views tab click on "CREATE PROFILE VIEW". You will be asked to:
+
+- Name your profile view
+- Choose the entity type your profile view will display
+- Create categories of properties
+  - These categories will be grouped together the properties you choose
+- Preview your profile view
+
+In the Profile Views tab you can drag-and-drop profile views for an entity to change their priority. This will determine which profile view is seen first when you open the details of an entity, as well as the order of profile view tabs on the entity details page.
+
+From the Profiles View tab you can also edit, copy, or delete a profile view by clicking on the "ACTIONS" menu on each profile view.
 
 ---------
 Reference
