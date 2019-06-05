@@ -98,7 +98,7 @@ Clicking on the Lists tab in the navigation menu will display the lists availabl
 
 On the Lists page you can click on a List to access it, delete a List (caution: deleting a list is a single click and does not currently require the user to click "OK"), sort the Lists by Name, Type, Owner, Recently Updated, and # of Entities.
 
-Clicking on a List will open a view of the entities contained in that list. This view is configurable and can change based on the entity type associated with the list.
+Clicking on a List will open a view of the entities contained in that list.
 
 From the List view you can see the number of entities contained in the List, the entity type in the List, who created the List, when it was last updated, and a toggle to make the List private or public.
 (needs image)
@@ -151,17 +151,35 @@ Weighted Models
 A Weighted Model creates a list based on user selected attribute weighting. For example: Potential customers are scored based on an algorithm that is as follows:
 0.2*assets+0.3*last quarter performance+0.25*consultant rating+0.25*percent assets in S&P 500.
 
+
+
 Profile Views
 -------------
 Profile Views present the properties of an entity. All entity types have a default profile view and may have multiple profile views. Profile views can be created and customized.
 
 To create a new profile view, from the Profile Views tab click on "CREATE PROFILE VIEW". You will be asked to:
 
-- Name your profile view
-- Choose the entity type your profile view will display
-- Create categories of properties
-  - These categories will be grouped together the properties you choose
-- Preview your profile view
+1. Edit Name
+  - Name your profile view
+2. Edit Categories
+  - Choose the entity type your profile view will display
+  - Create categories of properties
+    - When creating categories, properties contained in a category will be grouped and displayed together in the profile view.
+
+    .. image:: ../kc-docs/create_and_order_cat_properties.png
+
+    - You can rearrange properties via drag-and-drop within categories to change their order. The property listed first will be displayed first within the category.
+    - You can rearrange categories via drag-and-drop to change the order in which they appear in the profile view.
+    - Clicking on the context menu ••• for a category allows you to "Rename" or "Delete" a category.
+
+    .. image:: ../kc-docs/category_options.png
+      :heigh: 250
+      :width: 250
+
+3. Preview Profile View
+  - Here you can see the ordering of categories and properties within categories. If you do not like the way categories or properties are ordered you can go back to the "Edit Categories"
+
+  .. image:: ../kc-docs/category_ordering_example.png
 
 In the Profile Views tab you can drag-and-drop profile views for an entity to change their priority. This will determine which profile view is seen first when you open the details of an entity, as well as the order of profile view tabs on the entity details page.
 
