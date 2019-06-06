@@ -61,7 +61,7 @@ The dashboard contains a customized view of Lists, Lookalike Models, Weighted Mo
 
 Search
 ------
-The search page allows you to search for entities based on chosen criteria.
+The search page allows you to search for entities based on chosen criteria or filters.
 
 Search criteria can include:
 
@@ -78,6 +78,8 @@ Use the "Filter By" selections to choose attribute values of an entity to filter
 To remove a filter, simply click the "X" next to the filter attribute.
 (needs image)
 
+You can also click on "CLEAR FILTERS" to remove all currently applied filters.
+
 Clicking on an entity in the seach results will display a profile of that entity with its associated view tabs. Each view is customizable.
 
 .. image:: ../kc-docs/search_entity_view.png
@@ -89,6 +91,37 @@ You can also:
 - `Download a CSV of Entities`_
 - `Merge Entities`_
 - `Hide or Show Attributes`_
+
+Saved Searches
+--------------
+A saved search allows a user to use the search page to create a search with one or more search criteria or filters and save it so that they may use it again or share it with others.
+
+Unlike Lists which contain static data from a pervious search, saved searches are dynamic. For example:
+
+1. You perform a search and create a saved search
+2. New data is loaded into your Koverse Connections environment after you created a saved search
+3. You access the previously created saved search
+4. Any new data that was loaded will now appear in your saved search if it matches your criteria.
+
+To create a saved search, first navigate to the Search page and apply one or more search criteria or filters to an entity type that you are searching within.
+
+Click on the "SAVE SEARCH" button.
+
+.. image:: ../kc-docs/create_saved_search.png
+
+Once you have created a saved search, you can access the saved search on the "SAVED SEARCHES PAGE".
+
+You can sort saved searches based on: Name, Type, Author, Created Date, Last Run Date, and Privacy. To sort, simply click on the column header you want to sort by.
+
+*ACTIONS MENU STUFF
+(needs image)*
+
+You can delete a saved search by clicking on Delete in the Actions menu.
+(needs image)
+
+By clicking on a saved search, you will be taken to the search page where you can continue to modify the search criteria and filters. This will not affect the saved search.
+
+Once modified, clicking "SAVE SEARCH" and naming the search will create a new saved search.
 
 Lists
 -----
