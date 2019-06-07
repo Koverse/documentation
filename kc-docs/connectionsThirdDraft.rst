@@ -151,14 +151,21 @@ A lookalike model takes a list as input and creates a new list that has recommen
 Create a Lookalike Model
 ++++++++++++++++++++++++
 
-From the Lookalike Models tab:
+To create a lookalike model navigate to the Lookalike Models tab and click "CREATE LOOKALIKE MODEL":
 
-- Click "CREATE LOOKALIKE MODEL"
-- Give your lookalike model a name
-- Choose the list your lookalike model will be based on
-- Click "CREATE MODEL"
+1. Name Your Lookalike Model
+  - Koverse Connections stores all lookalike models in specific Lookalike Models list, so there is no   need to name it 'Weighted model of ...' Instead, try to give it a self explanatory and meaningful to you name.
+2. Select one list from the table below
+  - The list you select is the list your lookalike model will be based upon.
+3. Click "CREATE MODEL"
 
 Your lookalike model will now appear in the Lookalike Models tab.
+
+Run a Lookalike Model
++++++++++++++++++++++
+To run a lookalike model, from the Lookalike Models tab, click on the lookalike model you want to run.
+
+On the next page, click on "RUN MODEL". You should see a green prompt in the lower left hand corner of your browser window telling you "Model has been queued". This model will then run...(*NEEDS MORE INFO*)
 
 Lookalike Model Options
 +++++++++++++++++++++++
@@ -172,19 +179,34 @@ On the details page of a lookalike model you can:
 - Rename the lookalike model
 - See the entity results of the lookalike model
 
-Run a Lookalike Model
-+++++++++++++++++++++
-To run a lookalike model, from the Lookalike Models tab, click on the lookalike model you want to run.
-
-On the next page, click on "RUN MODEL". You should see a green prompt in the lower left hand corner of your browser window telling you "Model has been queued". This model will then run...(*NEEDS MORE INFO*)
-
 
 Weighted Models
 ---------------
 A Weighted Model creates a list based on user selected attribute weighting. For example: Potential customers are scored based on an algorithm that is as follows:
 0.2*assets+0.3*last quarter performance+0.25*consultant rating+0.25*percent assets in S&P 500.
 
+Create a Weighted Model
++++++++++++++++++++++++
 
+To create a weighted model navigate to the Weighted Models tab and click "CREATE WEIGHTED MODEL". You will be asked to:
+
+1. Name Your Weighted Model
+  - Koverse Connections stores all weighted models in specific Weighted Models list, so there is no need to name it 'Weighted model of ...' Instead, try to give it a self explanatory and meaningful to you name.
+2. Choose the entity type your weighted model will run on
+3. Choose the fields and values you would like to focus on for your new weighted model
+  - If a field has more than one value, you may select one or multiple values. On the next page you will be able to individually weight each value. (NEEDS IMAGE)
+4. Assign weights to your chosen properties. These values will be used as multipliers for matching entities when determining their score.
+  - Here you can assign weights to each chosen value from the Edit Properties step.
+  - You can type in a weight or use the slider to choose a weight.
+  - You can also delete a value that you no longer wish to give a weight in your model.
+
+.. image:: ../kc-docs/weighted_model_value_assign_weights.png
+
+Run a Weighted Model
+++++++++++++++++++++
+
+Weighted Model Options
+++++++++++++++++++++++
 
 Profile Views
 -------------
