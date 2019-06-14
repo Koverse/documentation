@@ -14,10 +14,20 @@ Contents
 
 - `Dashboard`_
 - `Search`_
+- `Saved Searches`_
 - `Lists`_
 - `Lookalike Models`_
 - `Weighted Models`_
-- `Profile Views`_
+
+`My Account`_
+
+`Manage Users`_
+
+`Flags`_
+
+`Profile Views`_
+
+`Settings`_
 
 `Reference`_
 
@@ -76,7 +86,8 @@ With the search field, after you enter text, press return to apply the text ente
 Use the "Filter By" selections to choose attribute values of an entity to filter.
 
 To remove a filter, simply click the "X" next to the filter attribute.
-(needs image)
+
+.. image:: ../kc-docs/remove_filter.png
 
 You can also click on "CLEAR FILTERS" to remove all currently applied filters.
 
@@ -111,13 +122,11 @@ Click on the "SAVE SEARCH" button.
 
 Once you have created a saved search, you can access the saved search on the "SAVED SEARCHES PAGE".
 
-You can sort saved searches based on: Name, Type, Author, Created Date, Last Run Date, and Privacy. To sort, simply click on the column header you want to sort by.
+You can sort saved searches based on: Name, Type, Author, Created Date, Updated Date, and Privacy. To sort, simply click on the column header you want to sort by.
 
-*ACTIONS MENU STUFF
-(needs image)*
+From the Actions drop-down menu you can: Rename a saved search, make Public or Private a saved search, or Delete a saved search.
 
-You can delete a saved search by clicking on Delete in the Actions menu.
-(needs image)
+.. image:: ../kc-docs/saved_search_actions.png
 
 By clicking on a saved search, you will be taken to the search page where you can continue to modify the search criteria and filters. This will not affect the saved search.
 
@@ -129,7 +138,11 @@ The Lists page displays lists available to the current user. A List is a user-cu
 
 Clicking on the Lists tab in the navigation menu will display the lists available to the current user.
 
-On the Lists page you can click on a List to access it, delete a List (caution: deleting a list is a single click and does not currently require the user to click "OK"), sort the Lists by Name, Type, Owner, Recently Updated, and # of Entities.
+From the Actions drop-down menu you can: rename a list, make public of private a list, or delete a list.
+
+.. image:: ../kc-docs/list_actions.png
+
+On the Lists page you can click on a List to access it, sort the Lists by Name, Type, Author, Updated Date, and Privacy.
 
 Clicking on a List will open a view of the entities contained in that list.
 
@@ -165,20 +178,25 @@ Run a Lookalike Model
 +++++++++++++++++++++
 To run a lookalike model, from the Lookalike Models tab, click on the lookalike model you want to run.
 
-On the next page, click on "RUN MODEL". You should see a green prompt in the lower left hand corner of your browser window telling you "Model has been queued". This model will then run...(*NEEDS MORE INFO*)
+On the next page, click on "RUN MODEL". You should see a green prompt in the lower left hand corner of your browser window telling you "Model has been queued". This model will then run based on your Koverse Connectons system settings.
 
 Lookalike Model Options
 +++++++++++++++++++++++
-From the Lookalike Models tab you can click on a lookalike model to access more details or click on the trash can icon to delete the lookalike model.
+From the Lookalike Models tab you can click on a lookalike model to access more details.
+
+You can sort the lookalike models by Name, Type, Author, Created Date, Last Run Date, or Privacy. You can also run a lookalike model.
+
+From the actions menu drop-down you can: rename a lookalike model, make public or private a lookalike model, or delete a lookalike model.
+
+.. image:: ../kc-docs/lookalike_model_actions.png
 
 On the details page of a lookalike model you can:
 
 - View more information about the lookalike model including: Name, number of entities, who created the model, and when the model was last run
-- Make the lookalike model private or public using the "Private" toggle
+- Make the lookalike model private or public using the "Public/Private" toggle
 - Run the lookalike model
 - Rename the lookalike model
 - See the entity results of the lookalike model
-
 
 Weighted Models
 ---------------
@@ -205,8 +223,25 @@ To create a weighted model navigate to the Weighted Models tab and click "CREATE
 Run a Weighted Model
 ++++++++++++++++++++
 
+To run a weighted model, from the Weighted Models tab, click on the weighted model you want to run.
+
+On the next page, click on "RUN MODEL". You should see a green prompt in the lower left hand corner of your browser window telling you "Model has been queued". This model will then run based on your Koverse Connectons system settings.
+
 Weighted Model Options
 ++++++++++++++++++++++
+From the Weighted Models tab you can click on a weighted model to access more details.
+
+From the actions menu drop-down you can: rename a weighted model, make public or private a weighted model, copy a weighted model, modify a weighted model, or delete a weighted model.
+
+.. image:: ../kc-docs/weighted_model_actions.png
+
+On the details page of a weighted model you can:
+
+- View more information about the weighted model including: Name, number of entities, who created the model, and when the model was last run
+- Make the weighted model private or public using the "Public/Private" toggle
+- Run the weighted model
+- Rename the weighted model
+- See the entity results of the weighted model
 
 Profile Views
 -------------
@@ -239,6 +274,66 @@ To create a new profile view, from the Profile Views tab click on "CREATE PROFIL
 In the Profile Views tab you can drag-and-drop profile views for an entity to change their priority. This will determine which profile view is seen first when you open the details of an entity, as well as the order of profile view tabs on the entity details page.
 
 From the Profiles View tab you can also edit, copy, or delete a profile view by clicking on the "ACTIONS" menu on each profile view.
+
+Settings
+--------
+
+- Admin Email
+  + This is the administrator Email for your Koverse Connections system.
+
+- Koverse URL
+  + This is the url where you can find your Koverse Connections UI.
+  + Eg: server.koverse.com:3000
+
+- Koverse API Token
+  ***
+
+- Autocomplete Values Dataset IDs (comma-separated)
+  + The data set ID associated with your Autocomplete Values data set. This data set is created by Step 6b of the data flow: gather field values transform which takes the Hydrated Entities data set as input and outputs the Autocomplete Values data set.
+
+- Derived Assertions Dataset IDs (comma-separated)
+  + The data set ID associated with your Scores data set. This data set is created by Step 7a of the data flow: Spark SQL Copy Transform: only select Scores which takes the Raw Scores data set as input and outputs the Scores data set.
+
+- External Assertions Dataset IDs (comma-separated)
+  + The data set ID associated with your Assertions data set. This data set is created by Step 2a of the data flow: Spark SQL Transform: only select assertions (optional) which takes the Raw Assertions data set as input and outputs the Assertions data set.
+
+- User Assertions Dataset ID
+  + The data set ID associated with your User Assertions data set. This data set ingests values from the UI as users score entities.
+
+- Headlines Dataset ID
+  + The data set ID associated with your Headlines data set. This data set is created by Step 8 of the data flow: Headline Generation transform which takes the Hydrated Entities data set and each Scores data set as input and outputs the Headlines data set.
+
+- Hydrated Dataset ID
+  + The data set ID associated with your Hydrated Entities data set. This data set is created by Step 5a of the data flow: Entity Hydration Transform which takes the Assertions data set and the User Assertions data set and outputs the Hydrated Entities data set.
+
+- Ontology Dataset ID
+  + The data set ID associated with your User Ontology data set. This data set ingests data from the UI as users create ontologies.
+
+- Metadata Dataset ID
+  + The data set ID associated with your Metadata data set. This data set is created by Step 9: Metadata Transform which take the Hydrated Entities data set and the Headlines data set as input and outputs the Metadata data set.
+
+- Queue Dataset ID
+  + The data set ID associated with your KISP queue data set. This data set ingests from the UI as users queue jobs such as running Lookalike or Weighted Models.
+
+- SMTP Host
+  + The hostname or IP address to connect to.
+
+- SMTP Port
+  + The port your SMTP connection will use. Set to 465 if you will use a secure connection. Set to 587 or 25 if you will not use a secure connection.
+
+- SMTP secure connection (TLS)
+  + This checkbox enables a TLS encrypted SMTP connection.
+  + If you choose to use a TLS encrypted connection (TLS secure option set to true), your SMTP connection will use port 465.
+  + If you choose to not use a secure TLS encrypted connection (TLS secure option set to false), your SMTP connection will use port 587 or 25.
+
+- SMTP User​
+  + Your SMTP username
+
+- SMTP Password​
+  + Your SMTP password
+
+- From Email Address
+  + This is the email address that your Koverse Connections system will use to send notifications such as lookalike and weighted models being run.
 
 ---------
 Reference
