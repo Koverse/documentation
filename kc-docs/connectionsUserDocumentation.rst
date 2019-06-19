@@ -19,19 +19,19 @@ Contents
 - `Lookalike Models`_
 - `Weighted Models`_
 
-`My Account`_
-
-`Manage Users`_
+`Account`_
 
 `Flags`_
 
-`Profile Views`_
+`Views`_
+
+`Users`_
 
 `Settings`_
 
 `Reference`_
 
-- `Entity Table Actions`_
+- `Object Table Actions`_
   - `Create a List`_
   - `Add to a List`_
   - `Download a CSV of Entities`_
@@ -61,7 +61,7 @@ The main page of the Koverse Connections user interface displays (*the navigatio
 - Weighted Models
 - My Account
 - Manage Users
-- Profile Views
+- Views
 - Account Icon/Menu
 - Logout Button
 
@@ -75,15 +75,15 @@ The search page allows you to search for entities based on chosen criteria or fi
 
 Search criteria can include:
 
-- Entity type
+- Object type
 - Text filter
 - Applicable attribute names
 
-Clicking on an entity type will display all associated entities in the results list.
+Clicking on an object type will display all associated entities in the results list.
 
 With the search field, after you enter text, press return to apply the text entered as a filter.
 
-Use the "Filter By" selections to choose attribute values of an entity to filter.
+Use the "Filter By" selections to choose attribute values of an object to filter.
 
 To remove a filter, simply click the "X" next to the filter attribute.
 
@@ -91,9 +91,9 @@ To remove a filter, simply click the "X" next to the filter attribute.
 
 You can also click on "CLEAR FILTERS" to remove all currently applied filters.
 
-Clicking on an entity in the seach results will display a profile of that entity with its associated view tabs. Each view is customizable.
+Clicking on an object in the seach results will display a view of that object with its associated view tabs. Each view is customizable.
 
-.. image:: ../kc-docs/search_entity_view.png
+.. image:: ../kc-docs/search_object_view.png
 
 You can also:
 
@@ -114,7 +114,7 @@ Unlike Lists which contain static data from a pervious search, saved searches ar
 3. You access the previously created saved search
 4. Any new data that was loaded will now appear in your saved search if it matches your criteria.
 
-To create a saved search, first navigate to the Search page and apply one or more search criteria or filters to an entity type that you are searching within.
+To create a saved search, first navigate to the Search page and apply one or more search criteria or filters to an object type that you are searching within.
 
 Click on the "SAVE SEARCH" button.
 
@@ -146,7 +146,7 @@ On the Lists page you can click on a List to access it, sort the Lists by Name, 
 
 Clicking on a List will open a view of the entities contained in that list.
 
-From the List view you can see the number of entities contained in the List, the entity type in the List, who created the List, when it was last updated, and a toggle to make the List private or public.
+From the List view you can see the number of entities contained in the List, the object type in the List, who created the List, when it was last updated, and a toggle to make the List private or public.
 (needs image)
 
 You can also:
@@ -196,7 +196,7 @@ On the details page of a lookalike model you can:
 - Make the lookalike model private or public using the "Public/Private" toggle
 - Run the lookalike model
 - Rename the lookalike model
-- See the entity results of the lookalike model
+- See the object results of the lookalike model
 
 Weighted Models
 ---------------
@@ -210,7 +210,7 @@ To create a weighted model navigate to the Weighted Models tab and click "CREATE
 
 1. Name Your Weighted Model
   - Koverse Connections stores all weighted models in specific Weighted Models list, so there is no need to name it 'Weighted model of ...' Instead, try to give it a self explanatory and meaningful to you name.
-2. Choose the entity type your weighted model will run on
+2. Choose the object type your weighted model will run on
 3. Choose the fields and values you would like to focus on for your new weighted model
   - If a field has more than one value, you may select one or multiple values. On the next page you will be able to individually weight each value. (NEEDS IMAGE)
 4. Assign weights to your chosen properties. These values will be used as multipliers for matching entities when determining their score.
@@ -241,47 +241,59 @@ On the details page of a weighted model you can:
 - Make the weighted model private or public using the "Public/Private" toggle
 - Run the weighted model
 - Rename the weighted model
-- See the entity results of the weighted model
+- See the object results of the weighted model
 
-Profile Views
--------------
-Profile Views present the properties of an entity. All entity types have a default profile view and may have multiple profile views. Profile views can be created and customized.
 
-To create a new profile view, from the Profile Views tab click on "CREATE PROFILE VIEW". You will be asked to:
+Account
+-------
+
+Flags
+-----
+
+Views
+-----
+Views present the properties of an object. All object types have a default view and may have multiple views. Views can be created and customized.
+
+To create a new view, from the Views tab click on "CREATE VIEW". You will be asked to:
 
 1. Edit Name
-  - Name your profile view
+  - Name your view
 2. Edit Categories
-  - Choose the entity type your profile view will display
+  - Choose the object type your view will display
   - Create categories of properties
-    - When creating categories, properties contained in a category will be grouped and displayed together in the profile view.
+    - When creating categories, properties contained in a category will be grouped and displayed together in the view.
 
     .. image:: ../kc-docs/create_and_order_cat_properties.png
 
     - You can rearrange properties via drag-and-drop within categories to change their order. The property listed first will be displayed first within the category.
-    - You can rearrange categories via drag-and-drop to change the order in which they appear in the profile view.
+    - You can rearrange categories via drag-and-drop to change the order in which they appear in the view.
     - Clicking on the context menu ••• for a category allows you to "Rename" or "Delete" a category.
 
     .. image:: ../kc-docs/category_options.png
       :heigh: 250
       :width: 250
 
-3. Preview Profile View
+3. Preview View
   - Here you can see the ordering of categories and properties within categories. If you do not like the way categories or properties are ordered you can go back to the "Edit Categories"
 
   .. image:: ../kc-docs/category_ordering_example.png
 
-In the Profile Views tab you can drag-and-drop profile views for an entity to change their priority. This will determine which profile view is seen first when you open the details of an entity, as well as the order of profile view tabs on the entity details page.
+In the Views tab you can drag-and-drop views for an object to change their priority. This will determine which view is seen first when you open the details of an object, as well as the order of view tabs on the object details page.
 
-From the Profiles View tab you can also edit, copy, or delete a profile view by clicking on the "ACTIONS" menu on each profile view.
+From the Views tab you can also edit, copy, or delete a view by clicking on the "ACTIONS" menu on each view.
+
+Users
+-----
 
 Settings
 --------
 
 - Admin Email
+
   + This is the administrator Email for your Koverse Connections system.
 
 - Koverse URL
+
   + This is the url where you can find your Koverse Connections UI.
   + Eg: server.koverse.com:3000
 
@@ -354,7 +366,7 @@ Settings
 Reference
 ---------
 
-Entity Table Actions
+Object Table Actions
 --------------------
 
 Create a List
@@ -371,7 +383,7 @@ Add to a List
 +++++++++++++
 To add entities to an existing List, select one or more entities you wish to add to a List and click "Add to List".
 
-You will be prompted to select the List where the entity or entities will be added. Click "Add" or "Cancel" to finalize your choice.
+You will be prompted to select the List where the object or entities will be added. Click "Add" or "Cancel" to finalize your choice.
 (needs image)
 
 Download a CSV of Entities
@@ -381,10 +393,10 @@ To download a CSV of one or more entities, select one or more entities and click
 
 Merge Entities
 ++++++++++++++
-You will be asked to select the preferred name for this merged entity.
+You will be asked to select the preferred name for this merged object.
 To merge two or more entities, select the entities you want to merge and click the "Merge" button.
 
-You will be prompted to select the preferred name for this merged entity.
+You will be prompted to select the preferred name for this merged object.
 (needs image)
 
 Hide or Show Attributes
@@ -395,8 +407,8 @@ Delete
 ++++++
 You can use the delete button next to any row to remove it from a list.
 
-Navigating the Entity Table
+Navigating the Object Table
 +++++++++++++++++++++++++++
-At the bottom of the Entity Table you can change the nuber of rows per page displayed (10, 20, 50, or 100).
+At the bottom of the Object Table you can change the nuber of rows per page displayed (10, 20, 50, or 100).
 
 To move between pages, if there are more rows than your selected display, you can click on the forward and backward arrows, or click on the page number itself.
