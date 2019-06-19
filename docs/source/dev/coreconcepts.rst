@@ -119,6 +119,8 @@ This check will also remove NULLs at any any level within complex values such as
   Creating Records Programmatically
   ---------------------------------
 
+For specific data types support by our DataFrameTransform sdk see :ref:`DataFrameDataTypes`
+
 Searches
 --------
 
