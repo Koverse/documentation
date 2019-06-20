@@ -41,3 +41,12 @@ Bug Fixes
 
 - [KC-5734] - koverse-spark-datasource for 3.0 is missing htrace dependency
 - [KC-5761] - Add Spark jars to classpath of all jobs
+
+3.0.2
+^^^^^
+- [KC-5821] - Classpath Conflict
+- [KC-5788] - Issues with Schema jobs
+- [KC-5786] - Error when trying to update job status
+- [KC-5770] - Old Transformers issues
+- [KC-5769] - Input Transform Widget sometimes didn't display correctly
+- [KC-5767] - Issues with DataFlowThriftServer on startup
