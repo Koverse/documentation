@@ -332,3 +332,71 @@ See :ref:`DataSetSecurityAndAccessControl` for details on grating other groups o
 
 The results of Transforms are also indexed so that interactive applications can query them to retrieve specific results for many concurrent users.
 To see how an example application can be used to present these results to users interactively, see :ref:`ExampleWebApp`.
+
+.. _DataFrameDataTypes:
+
+Data Types supported by DataFrameTransform
+------------------------------------------
+
+Many of the data types supported by Koverse are supported by the DataFrameTransform sdk. They include:
+
++--------------------------------------+--------------------------------------------------+
+| Native Value Type                    | Examples and support string formats              |
++======================================+==================================================+
+| String                               | "A string of text characters"                    |
++--------------------------------------+--------------------------------------------------+
+| Integer                              | 15                                               |
++--------------------------------------+--------------------------------------------------+
+| Long                                 | 10000000000L                                     |
++--------------------------------------+--------------------------------------------------+
+| Float                                | 44.26                                            |
++--------------------------------------+--------------------------------------------------+
+| Double                               | 200.05                                           |
++--------------------------------------+--------------------------------------------------+
+| Date                                 | Unix Timestamp:  1371277293 UTC (GMT)            |
+|                                      |                                                  |
+|                                      | Epoch Timestamp: 1371277293                      |
+|                                      |                                                  |
+|                                      | DTG:   271545ZFEB13                              |
+|                                      |                                                  |
+|                                      | Other various date formats supported and require |
+|                                      | formatting on input (SimpleDateFormat):          |
+|                                      |                                                  |
+|                                      | * yyyyMMdd hh:mm:ss                              |
+|                                      | * EEE MMM d HH:mm:ss Z yyyy                      |
+|                                      | * EEE MMM d HH:mm:ss zzz yyyy                    |
+|                                      | * yyyy-MM-dd                                     |
+|                                      | * yyyy-MM                                        |
+|                                      | * yyyy/MM/dd HH:mm:ss                            |
+|                                      | * yyyy-MM-dd HH:mm:ss                            |
+|                                      | * yyyy/MM/dd HH:mm:ss.SSS                        |
+|                                      | * yyyy-MM-dd HH:mm:ss.SSS                        |
+|                                      | * MM/dd/yyyy HH:mm                               |
+|                                      | * MM-dd-yyyy HH:mm                               |
++--------------------------------------+--------------------------------------------------+
+| KoverseGeoPoint                      | Well Known Text String Format: Point 1.23 60.423 |
+|                                      |                                                  |
+|                                      | Comma separated decimal lat,long: 1.23,60.423    |
++--------------------------------------+--------------------------------------------------+
+| Inet4Address                         | 192.168.1.1                                      |
++--------------------------------------+--------------------------------------------------+
+| Boolean                              | true                                             |
++--------------------------------------+--------------------------------------------------+
+| byte[]                               | An array of binary bytes such as the             |
+|                                      | original bytes of a file                         |
++--------------------------------------+--------------------------------------------------+
+
+As well as Nested types:
+
++--------------------------------------+--------------------------------------------------+
+| Map                                  | Map of String, String ("dog","cat")              |
+|                                      | Map of String, Array  ("dog",{1.0,2.0})          |
++--------------------------------------+--------------------------------------------------+
+| Array                                | Includes array of string, long,                  |
+|                                      | double, bytes, etc.                              |
+|                                      | {"cat","dog","rabbit"}                           |
++--------------------------------------+--------------------------------------------------+
+| List                                 | java.util.List                                   |
++--------------------------------------+--------------------------------------------------+
+| Sequence                             | scala.collection.Seq                             |
++--------------------------------------+--------------------------------------------------+
