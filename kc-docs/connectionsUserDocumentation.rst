@@ -285,6 +285,12 @@ From the Views tab you can also edit, copy, or delete a view by clicking on the 
 Users
 -----
 
+From the Users tab, you will see the User Management page. Here you can change an account to a user (if the account is currently an admin) or change an account to an admin (if the account is currently a user), disable or enable an account, and change the password for an account.
+
+Groups
+------
+
+
 Settings
 --------
 
@@ -298,7 +304,8 @@ Settings
   + Eg: server.koverse.com:3000
 
 - Koverse API Token
-  ***
+
+  + The Koverse API Token comes from the KISP Admin tab and is created so that your Koverse Connections system can communicate with your KISP system. For more information see: https://documentation.koverse.com/en/3.0/dev/applications/api_tokens.html
 
 - Autocomplete Values Dataset IDs (comma-separated)
 
