@@ -30,3 +30,13 @@ Bug Fixes
 - [KC-5642] - Add Oracle Export to add ons shipped
 - [KC-5634] - Get spark transform status from YARN RM
 - [KC-5662] - Security Labeling Of Transform Output Records
+
+2.10.3
+^^^^^^
+- [KC-5719] - Fixing issue with PySpark Transforms
+- [KC-5722] - Create an ingest, transform, export functional test
+- [KC-5745] - Provide a default test client that can be used in tests when server is running in 'test' mode
+
+2.10.4
+^^^^^^
+- [KC-5760] - Fix a classpath issue with File Upload

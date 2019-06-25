@@ -333,6 +333,7 @@ See :ref:`DataSetSecurityAndAccessControl` for details on grating other groups o
 The results of Transforms are also indexed so that interactive applications can query them to retrieve specific results for many concurrent users.
 To see how an example application can be used to present these results to users interactively, see :ref:`ExampleWebApp`.
 
+
 .. _DataFrameDataTypes:
 
 Data Types supported by DataFrameTransform
@@ -359,8 +360,7 @@ Many of the data types supported by Koverse are supported by the DataFrameTransf
 |                                      |                                                  |
 |                                      | DTG:   271545ZFEB13                              |
 |                                      |                                                  |
-|                                      | Other various date formats supported and require |
-|                                      | formatting on input (SimpleDateFormat):          |
+|                                      | Other various date formats supported             |
 |                                      |                                                  |
 |                                      | * yyyyMMdd hh:mm:ss                              |
 |                                      | * EEE MMM d HH:mm:ss Z yyyy                      |
@@ -373,6 +373,8 @@ Many of the data types supported by Koverse are supported by the DataFrameTransf
 |                                      | * yyyy-MM-dd HH:mm:ss.SSS                        |
 |                                      | * MM/dd/yyyy HH:mm                               |
 |                                      | * MM-dd-yyyy HH:mm                               |
+|                                      |                                                  |
+|                                      | requires formatting on input (SimpleDateFormat)  |
 +--------------------------------------+--------------------------------------------------+
 | KoverseGeoPoint                      | Well Known Text String Format: Point 1.23 60.423 |
 |                                      |                                                  |
