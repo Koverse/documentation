@@ -17,7 +17,7 @@ Contents
 - `Saved Searches`_
 - `Lists`_
 - `Lookalike Models`_
-- `Weighted Models`_
+- `Scoring Models`_
 
 `Account`_
 
@@ -58,7 +58,7 @@ The main page of the Koverse Connections user interface displays (*the navigatio
 - Dashboard
 - Search
 - Lookalike Models
-- Weighted Models
+- Scoring Models
 - My Account
 - Manage Users
 - Views
@@ -67,7 +67,7 @@ The main page of the Koverse Connections user interface displays (*the navigatio
 
 Dashboard
 ---------
-The dashboard contains a customized view of Lists, Lookalike Models, Weighted Models and other customizable items.
+The dashboard contains a customized view of Lists, Lookalike Models, Scoring Models and other customizable items.
 
 Search
 ------
@@ -167,7 +167,7 @@ Create a Lookalike Model
 To create a lookalike model navigate to the Lookalike Models tab and click "CREATE LOOKALIKE MODEL":
 
 1. Name Your Lookalike Model
-  - Koverse Connections stores all lookalike models in specific Lookalike Models list, so there is no   need to name it 'Weighted model of ...' Instead, try to give it a self explanatory and meaningful to you name.
+  - Koverse Connections stores all lookalike models in specific Lookalike Models list, so there is no   need to name it 'Lookalike model of ...' Instead, try to give it a self explanatory and meaningful to you name.
 2. Select one list from the table below
   - The list you select is the list your lookalike model will be based upon.
 3. Click "CREATE MODEL"
@@ -198,50 +198,50 @@ On the details page of a lookalike model you can:
 - Rename the lookalike model
 - See the object results of the lookalike model
 
-Weighted Models
+Scoring Models
 ---------------
-A Weighted Model creates a list based on user selected attribute weighting. For example: Potential customers are scored based on an algorithm that is as follows:
+A Scoring Model creates a list based on user selected attribute scoring. For example: Potential customers are scored based on an algorithm that is as follows:
 0.2*assets+0.3*last quarter performance+0.25*consultant rating+0.25*percent assets in S&P 500.
 
-Create a Weighted Model
+Create a Scoring Model
 +++++++++++++++++++++++
 
-To create a weighted model navigate to the Weighted Models tab and click "CREATE WEIGHTED MODEL". You will be asked to:
+To create a scoring model navigate to the Scoring Models tab and click "CREATE WEIGHTED MODEL". You will be asked to:
 
-1. Name Your Weighted Model
-  - Koverse Connections stores all weighted models in specific Weighted Models list, so there is no need to name it 'Weighted model of ...' Instead, try to give it a self explanatory and meaningful to you name.
-2. Choose the object type your weighted model will run on
-3. Choose the fields and values you would like to focus on for your new weighted model
-  - If a field has more than one value, you may select one or multiple values. On the next page you will be able to individually weight each value. (NEEDS IMAGE)
-4. Assign weights to your chosen properties. These values will be used as multipliers for matching entities when determining their score.
-  - Here you can assign weights to each chosen value from the Edit Properties step.
-  - You can type in a weight or use the slider to choose a weight.
-  - You can also delete a value that you no longer wish to give a weight in your model.
+1. Name Your Scoring Model
+  - Koverse Connections stores all scoring models in specific Scoring Models list, so there is no need to name it 'Scoring model of ...' Instead, try to give it a self explanatory and meaningful to you name.
+2. Choose the object type your scoring model will run on
+3. Choose the fields and values you would like to focus on for your new scoring model
+  - If a field has more than one value, you may select one or multiple values. On the next page you will be able to individually score each value. (NEEDS IMAGE)
+4. Assign scores to your chosen properties. These values will be used as multipliers for matching entities when determining their score.
+  - Here you can assign scores to each chosen value from the Edit Properties step.
+  - You can type in a score or use the slider to choose a score.
+  - You can also delete a value that you no longer wish to give a score in your model.
 
-.. image:: ../kc-docs/weighted_model_value_assign_weights.png
+.. image:: ../kc-docs/scoring_model_value_assign_scores.png
 
-Run a Weighted Model
+Run a Scoring Model
 ++++++++++++++++++++
 
-To run a weighted model, from the Weighted Models tab, click on the weighted model you want to run.
+To run a scoring model, from the Scoring Models tab, click on the scoring model you want to run.
 
 On the next page, click on "RUN MODEL". You should see a green prompt in the lower left hand corner of your browser window telling you "Model has been queued". This model will then run based on your Koverse Connectons system settings.
 
-Weighted Model Options
+Scoring Model Options
 ++++++++++++++++++++++
-From the Weighted Models tab you can click on a weighted model to access more details.
+From the Scoring Models tab you can click on a scoring model to access more details.
 
-From the actions menu drop-down you can: rename a weighted model, make public or private a weighted model, copy a weighted model, modify a weighted model, or delete a weighted model.
+From the actions menu drop-down you can: rename a scoring model, make public or private a scoring model, copy a scoring model, modify a scoring model, or delete a scoring model.
 
-.. image:: ../kc-docs/weighted_model_actions.png
+.. image:: ../kc-docs/scoring_model_actions.png
 
-On the details page of a weighted model you can:
+On the details page of a scoring model you can:
 
-- View more information about the weighted model including: Name, number of entities, who created the model, and when the model was last run
-- Make the weighted model private or public using the "Public/Private" toggle
-- Run the weighted model
-- Rename the weighted model
-- See the object results of the weighted model
+- View more information about the scoring model including: Name, number of entities, who created the model, and when the model was last run
+- Make the scoring model private or public using the "Public/Private" toggle
+- Run the scoring model
+- Rename the scoring model
+- See the object results of the scoring model
 
 
 Account
@@ -287,8 +287,17 @@ Users
 
 From the Users tab, you will see the User Management page. Here you can change an account to a user (if the account is currently an admin) or change an account to an admin (if the account is currently a user), disable or enable an account, and change the password for an account.
 
+.. image:: ../kc-docs/user_administration.png
+
 Groups
 ------
+
+Groups can be used to give a number of users specific permissions.
+
+To create a group, click on the Groups tab and click "CREATE GROUP". You will be asked to give the group a name and description.
+
+After clicking on a group you can see the group's name, edit the group, delete the group, see the group members, add or remove group members, see the group's permissions, and add or remove permissions.
+
 
 
 Settings
@@ -341,7 +350,7 @@ Settings
 
 - Queue Dataset ID
 
-  + The data set ID associated with your KISP queue data set. This data set ingests from the UI as users queue jobs such as running Lookalike or Weighted Models.
+  + The data set ID associated with your KISP queue data set. This data set ingests from the UI as users queue jobs such as running Lookalike or Scoring Models.
 
 - SMTP Host
 
@@ -367,7 +376,7 @@ Settings
 
 - From Email Address
 
-  + This is the email address that your Koverse Connections system will use to send notifications such as lookalike and weighted models being run.
+  + This is the email address that your Koverse Connections system will use to send notifications such as lookalike and scoring models being run.
 
 ---------
 Reference
