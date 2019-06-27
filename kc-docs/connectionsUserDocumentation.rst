@@ -309,12 +309,8 @@ Each group can only be assigned permissions for one attribute on one entity.
 Assigning groups permissions is useful in cases such as sales territoties. For example, a company may have a state attribute that is used to set up regions:
 
 - West Coast sales group gets permissions for entities with State attribute values WA, OR, or CA
-- Rocky Mountains sales group gets permissions for entities with State attirbute values ID, MT, WY, CO, AZ, or NM
+- Rocky Mountains sales group gets permissions for entities with State attribute values ID, MT, WY, CO, AZ, or NM
 - A Wesetern Sales VP would be added as a user to both sales groups to be able to view all western states.
-
-Once a searchable field is added as a permission to a group, all values in that field must be assigned to a group (this can be either one group, or spread across multiple groups).
-
-Users must be asigned to one or more groups, otherwise they will not be able to see any entities.
 
 Create a Group
 ++++++++++++++
@@ -351,7 +347,14 @@ On the details page of a group you can:
 Groups Additional information
 +++++++++++++++++++++++++++++
 
+Once an attribute value is assigned to a permission of a group, any attribute values not assigned will not be visible to any other user. This means for all values to be visible, you must assign them to permissions of one or more groups. If you only need a subset of attribute values to be visible, then you only need to assign those values to the groups you create.
 
+If permissions have been assigned to an attribute, any users not part of the group or groups with permissions for those attributes will not be able to see any entities that include those attributes.
+
+To ensure that users can view all entities they should have access to, appropriate users should be added to all appropriate groups that have permissions associated with attributes of the entities the users should have access to. For example, the Sales Territory groups:
+
+- West Coast sales group gets permissions for entities with State attribute values WA, OR, or CA
+- Any user outside sales that needs to view entities with State attribute values WA, OR, or CA, should be added to the West Coast sales group or another group that has permissions associated with attribute values WA, OR, or CA.
 
 Settings
 --------
