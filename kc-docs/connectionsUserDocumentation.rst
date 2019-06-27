@@ -77,15 +77,15 @@ Search criteria can include:
 
 - Object type
 - Text filter
-- Applicable attribute names
+- Applicable value names
 
 Clicking on an object type will display all associated entities in the results list.
 
 With the search field, after you enter text, press return to apply the text entered as a filter.
 
-Use the "Filter By" selections to choose attribute values of an object to filter.
+Use the "Filter By" selections to choose properties of an object to filter.
 
-To remove a filter, simply click the "X" next to the filter attribute.
+To remove a filter, simply click the "X" next to the property.
 
 .. image:: ../kc-docs/remove_filter.png
 
@@ -163,7 +163,6 @@ A lookalike model takes a list as input and creates a new list that has recommen
 
 Create a Lookalike Model
 ++++++++++++++++++++++++
-
 To create a lookalike model navigate to the Lookalike Models tab and click "CREATE LOOKALIKE MODEL":
 
 1. Name Your Lookalike Model
@@ -200,12 +199,11 @@ On the details page of a lookalike model you can:
 
 Scoring Models
 ---------------
-A Scoring Model creates a list based on user selected attribute scoring. For example: Potential customers are scored based on an algorithm that is as follows:
+A Scoring Model creates a list based on user selected value scoring. For example: Potential customers are scored based on an algorithm that is as follows:
 0.2*assets+0.3*last quarter performance+0.25*consultant rating+0.25*percent assets in S&P 500.
 
 Create a Scoring Model
 +++++++++++++++++++++++
-
 To create a scoring model navigate to the Scoring Models tab and click "CREATE WEIGHTED MODEL". You will be asked to:
 
 1. Name Your Scoring Model
@@ -222,7 +220,6 @@ To create a scoring model navigate to the Scoring Models tab and click "CREATE W
 
 Run a Scoring Model
 ++++++++++++++++++++
-
 To run a scoring model, from the Scoring Models tab, click on the scoring model you want to run.
 
 On the next page, click on "RUN MODEL". You should see a green prompt in the lower left hand corner of your browser window telling you "Model has been queued". This model will then run based on your Koverse Connectons system settings.
@@ -243,10 +240,8 @@ On the details page of a scoring model you can:
 - Rename the scoring model
 - See the object results of the scoring model
 
-
 Account
 -------
-
 The Account tab diplays information about your account. Here you can view:
 
 - Type of account (User or Admin)
@@ -257,6 +252,72 @@ The Account tab diplays information about your account. Here you can view:
 Flags
 -----
 
+User Workflow
++++++++++++++
+Flags allow users to call out data inaccuracies. To flag data, from the Search tab:
+
+1. Click on an object
+2. Click on the "ALL DATA" view for the object
+3. Find the value you want to flag and click on the Flag icon
+
+.. image:: ../kc-docs/flag_user_step1.png
+
+4. You will be asked to:
+  - Give a reason for the flag
+    + Data is wrong
+    + Out of date
+  - Add a note (optional)
+  - Provide a new value (optional)
+5. Click submit
+
+Admin Workflow
+++++++++++++++
+In addition to being able to flag data, admins are responsible for reviewing pending flags, approving, dismissing, or editing pending flags for approval.
+
+Navigating the Admin Flags Page
+===============================
+After clicking on the Flags tab you will be brought to a page containing any flags, initially filtered by Pending, sorted by Date. Filter by can be set to "Pending", "Approved", or "Dismissed". Sort by can be set to "Date" or "User".
+
+.. image:: ../kc-docs/flag_admin_landing.png
+
+Clicking on a flag will open details about that flag including:
+
+- The field that was flagged
+- The status of the flag (pending, approved, dismissed)
+- Reason for the flag
+- Old value for the field
+
+Review Flags
+============
+
+- Click on the Flags tab
+  - You will be brought to a page of flags filtered by Pending, sorted by Date
+- Click on the pending flag you want to review
+- Follow one of the below workflows depending on the decision to dismiss or approve a flag
+
+.. image:: ../kc-docs/flag_admin_value.png
+
+There are four cases for an admin reviewing flags:
+
+1. Dismiss a flag (old value remains)
+  - Click on "DISMISS FLAG"
+  - The flag will now appear under "Filter By Dismissed"
+
+2. Approve a flag with a new user value (old value is removed)
+  - Click on "APPROVE FLAG"
+  - The flag will now appear under "Filter By Approved"
+
+3. Approve a flag with a new admin value (old value and user value are removed)
+  - In the new value dialogue box, type in the value want to replace the user suggested new value.
+    - This removes the old value as well as the value the user suggested when initially flagged.
+  - Click on "APPROVE FLAG"
+  - The flag will now appear under "Filter By Approved"
+
+4. Approve a flag with a new empty value (old value and user value are removed)
+  - In the new value dialogue box, delete the user suggested value (the dialogue box should now be empty).
+    - This removes the old value as well as the value the user suggested when initially flagged, but replaces it with no value, instead of a newly created admin value.
+  - Click on "APPROVE FLAG"
+  - The flag will now appear under "Filter By Approved"
 
 Views
 -----
@@ -292,29 +353,26 @@ From the Views tab you can also edit, copy, or delete a view by clicking on the 
 
 Users
 -----
-
 From the Users tab, you will see the User Management page. Here you can change an account to a user (if the account is currently an admin) or change an account to an admin (if the account is currently a user), disable or enable an account, and change the password for an account.
 
 .. image:: ../kc-docs/user_administration.png
 
 Groups
 ------
-
 Groups can be used to give a number of users specific permissions.
 
 To create a group, click on the Groups tab and click "CREATE GROUP". You will be asked to give the group a name and description.
 
-Each group can only be assigned permissions for one attribute on one entity.
+Each group can only be assigned permissions for one  on one object.
 
-Assigning groups permissions is useful in cases such as sales territoties. For example, a company may have a state attribute that is used to set up regions:
+Assigning groups permissions is useful in cases such as sales territoties. For example, a company may have a state field that is used to set up regions:
 
-- West Coast sales group gets permissions for entities with State attribute values WA, OR, or CA
-- Rocky Mountains sales group gets permissions for entities with State attribute values ID, MT, WY, CO, AZ, or NM
+- West Coast sales group gets permissions for entities with State values WA, OR, or CA
+- Rocky Mountains sales group gets permissions for entities with State values ID, MT, WY, CO, AZ, or NM
 - A Wesetern Sales VP would be added as a user to both sales groups to be able to view all western states.
 
 Create a Group
 ++++++++++++++
-
 To create a group, from the Groups tab, click on "CREATE GROUP".
 
 You will be asked to:
@@ -328,7 +386,6 @@ You will be asked to:
 
 Groups Options
 ++++++++++++++
-
 From the Groups tab you can click on a group to access more details.
 
 From the actions menu drop down you can: edit a group, copy a group, or delete a group.
@@ -346,19 +403,17 @@ On the details page of a group you can:
 
 Groups Additional information
 +++++++++++++++++++++++++++++
+Once a value is assigned to a permission of a group, any values not assigned will not be visible to any other user. This means for all values to be visible, you must assign them to permissions of one or more groups. If you only need a subset of values to be visible, then you only need to assign those values to the groups you create.
 
-Once an attribute value is assigned to a permission of a group, any attribute values not assigned will not be visible to any other user. This means for all values to be visible, you must assign them to permissions of one or more groups. If you only need a subset of attribute values to be visible, then you only need to assign those values to the groups you create.
+If permissions have been assigned to a value, any users not part of the group or groups with permissions for those values will not be able to see any entities that include those values.
 
-If permissions have been assigned to an attribute, any users not part of the group or groups with permissions for those attributes will not be able to see any entities that include those attributes.
+To ensure that users can view all entities they should have access to, appropriate users should be added to all appropriate groups that have permissions associated with values of the entities the users should have access to. For example, the Sales Territory groups:
 
-To ensure that users can view all entities they should have access to, appropriate users should be added to all appropriate groups that have permissions associated with attributes of the entities the users should have access to. For example, the Sales Territory groups:
-
-- West Coast sales group gets permissions for entities with State attribute values WA, OR, or CA
-- Any user outside sales that needs to view entities with State attribute values WA, OR, or CA, should be added to the West Coast sales group or another group that has permissions associated with attribute values WA, OR, or CA.
+- West Coast sales group gets permissions for entities with State values WA, OR, or CA
+- Any user outside sales that needs to view entities with State values WA, OR, or CA, should be added to the West Coast sales group or another group that has permissions associated with values WA, OR, or CA.
 
 Settings
 --------
-
 - Admin Email
 
   + This is the administrator Email for your Koverse Connections system.
@@ -443,7 +498,6 @@ Object Table Actions
 
 Create a List
 +++++++++++++
-
 To create a List, select one or more entities and click "CREATE LIST".
 (needs image)
 
@@ -473,7 +527,7 @@ You will be prompted to select the preferred name for this merged object.
 
 Hide or Show Attributes
 +++++++++++++++++++++++
-To hide or show specific attribute columns, click on the eye icon and select or deselect the attribute columns you wish to see.
+  To hide or show specific attribute columns, click on the eye icon and select or deselect the attribute columns you wish to see.
 
 Delete
 ++++++
