@@ -247,8 +247,16 @@ On the details page of a scoring model you can:
 Account
 -------
 
+The Account tab diplays information about your account. Here you can view:
+
+- Type of account (User or Admin)
+- Username for your account
+- Night Mode toggle (on or off)
+- Change password
+
 Flags
 -----
+
 
 Views
 -----
@@ -270,7 +278,7 @@ To create a new view, from the Views tab click on "CREATE VIEW". You will be ask
     - Clicking on the context menu ••• for a category allows you to "Rename" or "Delete" a category.
 
     .. image:: ../kc-docs/category_options.png
-      :heigh: 250
+      :height: 250
       :width: 250
 
 3. Preview View
@@ -296,7 +304,52 @@ Groups can be used to give a number of users specific permissions.
 
 To create a group, click on the Groups tab and click "CREATE GROUP". You will be asked to give the group a name and description.
 
-After clicking on a group you can see the group's name, edit the group, delete the group, see the group members, add or remove group members, see the group's permissions, and add or remove permissions.
+Each group can only be assigned permissions for one attribute on one entity.
+
+Assigning groups permissions is useful in cases such as sales territoties. For example, a company may have a state attribute that is used to set up regions:
+
+- West Coast sales group gets permissions for entities with State attribute values WA, OR, or CA
+- Rocky Mountains sales group gets permissions for entities with State attirbute values ID, MT, WY, CO, AZ, or NM
+- A Wesetern Sales VP would be added as a user to both sales groups to be able to view all western states.
+
+Once a searchable field is added as a permission to a group, all values in that field must be assigned to a group (this can be either one group, or spread across multiple groups).
+
+Users must be asigned to one or more groups, otherwise they will not be able to see any entities.
+
+Create a Group
+++++++++++++++
+
+To create a group, from the Groups tab, click on "CREATE GROUP".
+
+You will be asked to:
+
+1. Name your group
+2. Give your group a description
+
+.. image:: ../kc-docs/create_group.png
+    :height: 250
+    :width: 250
+
+Groups Options
+++++++++++++++
+
+From the Groups tab you can click on a group to access more details.
+
+From the actions menu drop down you can: edit a group, copy a group, or delete a group.
+
+.. image:: ../kc-docs/group_actions.png
+
+On the details page of a group you can:
+
+- View more information about the group including: Name, who created the group edit the group, group members, the permissions given to the group (if they already exist)
+- Edit the group: name, and description
+- Delete the group
+- Add or Remove members from the group
+- Add permissions (if no permissions exist)
+- Edit or Delete permissions (if permissions exist)
+
+Groups Additional information
++++++++++++++++++++++++++++++
 
 
 
