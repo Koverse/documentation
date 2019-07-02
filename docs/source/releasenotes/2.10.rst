@@ -40,3 +40,22 @@ Bug Fixes
 2.10.4
 ^^^^^^
 - [KC-5760] - Fix a classpath issue with File Upload
+
+2.10.5
+^^^^^^
+- [KC-5658] - Execute queries with multiple top-level OR clauses in parallel
+- [KC-5757] - Fix triggering of PySpark Transform Follow-On Jobs
+- [KC-5766] - Allow tablet auto-merging to be disabled
+- [KC-5771] - Eliminate Record Duplication
+- [KC-5773] - Fix functional tests in RPM builds
+- [KC-5787] - Handle NULL char in DB update
+- [KC-5791] - Mark job as failed when update fails
+
+2.10.6
+^^^^^^
+- [KC-5657] - Changing limit param in object query causes incomplete results
+
+2.10.7
+^^^^^^
+- [KC-5796] - Allow PySpark RDD Transforms to succeed when a DataFrame cannot be created.
+- [KC-5736] - Document all supported value types in transforms
