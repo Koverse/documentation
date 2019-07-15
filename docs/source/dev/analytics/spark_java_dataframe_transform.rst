@@ -69,6 +69,8 @@ In this case we'll ask the user to tell our Transform which field in their data 
               .build());
     }
 
+Note that the "inputDataset" parameter can take multiple input datasets, as long as they share the same schema, and if so the union of those will be taken before they are passed into the transform.
+
 Next will implement our *execute()* function which will generate sentiment scores based on the text field and return a new data frame with the new score field and original text and date fields.
 We'll start by extracting the user specified names for the text and date fields::
 

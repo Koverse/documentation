@@ -50,3 +50,7 @@ Bug Fixes
 - [KC-5770] - Old Transformers issues
 - [KC-5769] - Input Transform Widget sometimes didn't display correctly
 - [KC-5767] - Issues with DataFlowThriftServer on startup
+
+3.0.3
+^^^^^
+- KC-5842 - restore ability to reference input datasets by ID in old SDK
