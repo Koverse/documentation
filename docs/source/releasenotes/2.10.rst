@@ -59,3 +59,12 @@ Bug Fixes
 ^^^^^^
 - [KC-5796] - Allow PySpark RDD Transforms to succeed when a DataFrame cannot be created.
 - [KC-5736] - Document all supported value types in transforms
+
+2.10.8
+^^^^^^
+- [KC-5798] - Eliminate possible filename duplicates in S3 exports
+- [KC-5804] - Resolve issue when searching with multiple maskers
+- [KC-5812] - Fix Transform follow on job timing issues
+- [KC-5857] - Fix error when clearing a data set
+- [KC-5595] - Improve server restart time
+- [KC-5709] - Improved test coverage for value types in transforms
