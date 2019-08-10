@@ -39,6 +39,10 @@ The structure of the context object passed is as follows::
   sqlContext: sqlContext
  }
 
+Note that the keys of the inputRdds and inputDataFrames dicts will be the names of the input dataset parameters you specify in the description.yaml file described below.
+This allows transforms to identify specific input datasets by name.
+Also note that if a user selects multiple datasets for one input parameter those datasets will be unioned together.
+
 Each PySpark Transform also requires a description.yaml file in which we'll name our Transform and declare parameters required to configure the Transform at run time. The list of properties that should be filled out in all Transforms is as follows::
 
  id: string - a unique identifier like 'my-pyspark-transform'
@@ -79,6 +83,7 @@ Parameters can have the following types::
  enum - one of a set of values specified in the 'enumerations' option above
  collectionField - the name of a field appearing in an input data set
  collectionMultipleField - a comma-separated set of field names appearing in an input data set
+ inputCollection - one or more Koverse datasets
 
 For this example, we'll write a PySpark Transform that extracts the average sentiment score associated with each subject (noun phrase) mentioned in a set of sentences in a body of text. Our Transform will use the TextBlob library (http://textblob.readthedocs.io) to break text into sentences, identify noun phrases, and assign a sentiment score to each sentence that we will associate with each noun phrase and then average. This is intended to give us a general sense of the sentiment associated with various subjects mentioned in a text document.
 
@@ -91,11 +96,17 @@ First we'll make a description file to define our transform and declare its para
  description: 'Extract the average sentiment associated with subjects mentioned in text'
  parameters:
    -
+       displayName: 'Input Dataset'
+       parameterName: 'inputDataset'
+       type: 'inputCollection'
+   -
        displayName: 'Text field'
-       parameterName: textField
-       type: collectionField
+       parameterName: 'textField'
+       type: 'collectionField'
  version: '0.1.0'
  supportsIncrementalProcessing: true
+
+Note that every transform should have at least one parameter of type 'inputColletion' in order to get input data.
 
 We'll save this in a file called description.yaml.
 
@@ -118,22 +129,22 @@ Next we'll fill in the functions we declared above in our PySparkTransform class
 
 Here, we're simply saving off the value of the 'textField' parameter we declared in our description.yaml file. The id of the parameter must match what we write here.
 
-Next we'll write our execute() function. First we'll simply grab the first data set passed in via the context object::
+Next we'll write our execute() function. First we'll grab the dataset passed in via the context object::
 
   def execute(self, context):
-    inputRdd = context.inputRdds.items()[0][1]
+    inputRdd = context.inputRdds['inputDataset']
 
 Instead of using the RDD we can grab a DataFrame. To use a Data Frame we could have written::
 
   def execute(self, context):
-    inputDF = context.inputDataFrames.items()[0][1]
+    inputDF = context.inputDataFrames['inputDataset']
 
 For the rest of this example we'll stick with an RDD.
 
 Next we'll write a function to extract noun_phrase and sentiment pairs from a blob of text using the TextBlob library. We'll also write a simple function to average a list of numbers::
 
   def execute(self, context):
-    inputRdd = context.inputRdds.items()[0][1]
+    inputRdd = context.inputRdds['inputDataset']
 
     def extractSentimentPerPhrase(doc):
       blob = TextBlob(doc)
@@ -152,10 +163,8 @@ Now we'll apply these functions to our data::
 
     textField = self.textField
 
-    rdd = context.inputRdds.items()[0][1]
-
     # get only the records that have some text
-    textRecords = rdd.filter(lambda r: textField in r and len(r[textField]) > 0)
+    textRecords = inputRdd.filter(lambda r: textField in r and len(r[textField]) > 0)
     # extract the text
     textRdd = textRecords.map(lambda r: r[textField])
     # extract subjects and sentiment pairs
@@ -184,7 +193,7 @@ We can write a simple test program to try out our code on some example data. We'
 
       def testExtractSubjectSentiment(self):
           global text
-          inputDatasets = [[{'text': text}]]
+          inputDatasets = [[{'inputDataset': text}]]
           runner = PySparkTransformTestRunner({'textField': 'text'}, PySparkTransform)
           output = runner.testOnLocalData(inputDatasets).collect()
 
