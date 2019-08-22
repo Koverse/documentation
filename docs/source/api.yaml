@@ -3320,7 +3320,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetResult'
-  /api/v1/query/object:
+  /api/v1/queries/object:
     post:
       summary: Object style with IDs
       operationId: queryObject
@@ -3438,7 +3438,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetResult'
-  /api/v1/query/object/names:
+  /api/v1/queries/object/names:
     post:
       summary: Object style with names
       operationId: queryObjectNames
