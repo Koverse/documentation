@@ -3041,7 +3041,7 @@ paths:
           description: Returns the transform type
           schema:
             $ref: '#/definitions/transformType'
-  /api/v1/query/:
+  /api/v1/queries/:
     get:
       summary: Lucene style
       operationId: queryLucene
