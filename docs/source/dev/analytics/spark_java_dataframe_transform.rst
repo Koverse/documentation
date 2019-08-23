@@ -395,6 +395,9 @@ As well as Nested types:
 +--------------------------------------+--------------------------------------------------+
 | Map                                  | Map of String, String ("dog","cat")              |
 |                                      | Map of String, Array  ("dog",{1.0,2.0})          |
+|                                      |                                                  |
+|                                      | Note: After transforming a dataframe, Map types  |
+|                                      | may be returned as struct types                  |
 +--------------------------------------+--------------------------------------------------+
 | Array                                | Includes array of string, long,                  |
 |                                      | double, bytes, etc.                              |
