@@ -42,5 +42,5 @@ delete:
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
     500:
-      description: 500 Server Error
+      description: Data set not found 
       message: If data set not found message will read 'No content to map to Object due to end of input'
