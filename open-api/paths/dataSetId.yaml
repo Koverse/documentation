@@ -7,6 +7,7 @@ get:
         Get the name, description, record count, and other information
         about the given data set. Does not return any records within the
         data set.
+
   operationId: findDataSetById
   tags: ["Data Sets"]
   responses:
@@ -14,6 +15,8 @@ get:
       description: Returns the data set metadata
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
+    500:
+      description: Returns server error if no data set is found
 
 put:
   summary: Update
@@ -38,3 +41,6 @@ delete:
       description: Returns the data set metadata with an updated DELETED dataset name.
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
+    500:
+      description: 500 Server Error
+      message: If data set not found message will read 'No content to map to Object due to end of input'
