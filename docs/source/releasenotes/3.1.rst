@@ -9,10 +9,14 @@ See the new :ref:`Authentication` for background.
 
 Features
 ------------
-
 - [KC-5903] - Support login via UI with custom web authenticator
 
 
 Bug Fixes
 ---------
 
+3.1.0
+^^^^^
+- [KC-5902] - Fix for setting group permissions on a dataset
+- [KC-5906] - Handle null job name in job scheduling code
+- [KC-5935] - Fix for error logging in pyspark driver
