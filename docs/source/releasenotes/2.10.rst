@@ -68,3 +68,7 @@ Bug Fixes
 - [KC-5857] - Fix error when clearing a data set
 - [KC-5595] - Improve server restart time
 - [KC-5709] - Improved test coverage for value types in transforms
+
+2.10.9
+^^^^^^
+- [KC-5878] - Resolve issue with empty transform outputs
