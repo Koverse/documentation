@@ -53,4 +53,17 @@ Bug Fixes
 
 3.0.3
 ^^^^^
-- KC-5842 - restore ability to reference input datasets by ID in old SDK
+- [KC-5842] - Restore ability to reference input datasets by ID in old SDK
+
+3.0.4
+^^^^^
+- [KC-5867] - Linked multiple datasets in DataFlow UI
+- [KC-5883] - Fix issues with Python transforms
+- [KC-5816] - Fix issues with DataSet transforms for scala users
+- [KC-5850] - Field options now populating correctly in the transform forms
+- [KC-5735] - Jobs scheduler now respects the schedule after a server restart
+- [KC-5711] - FileBasedSink implementations no longer get duplicate filenames
+- [KC-5590] - Improve data set listing time
+- [KC-5549] - Remove logging of message when there is none associated with the exception in pyspark driver
+- [KC-5824] - Fix Export issue in UI
+

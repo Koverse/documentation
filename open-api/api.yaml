@@ -497,11 +497,11 @@ paths:
     $ref: paths/transformTypes.yaml
   /api/v1/transform-types/{typeId}:
     $ref: paths/transformTypeId.yaml
-  /api/v1/query/:
+  /api/v1/queries/:
     $ref: paths/queryLucene.yaml
-  /api/v1/query/object:
+  /api/v1/queries/object:
     $ref: paths/queryObject.yaml
-  /api/v1/query/object/names:
+  /api/v1/queries/object/names:
     $ref: paths/queryObjectNames.yaml
 
 
