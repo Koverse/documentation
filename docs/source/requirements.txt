@@ -1,2 +1,3 @@
 -r pip.txt
 #Sphinx<=1.4.9
+sphinxcontrib-openapi==0.4.0
