@@ -16,3 +16,7 @@ Features
 Bug Fixes
 ---------
 
+2.11.1
+^^^^^^
+
+- [KC-5909] - Synchronizing index entry and record writes
