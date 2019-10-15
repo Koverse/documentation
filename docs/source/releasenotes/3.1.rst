@@ -26,3 +26,8 @@ Bug Fixes
 ^^^^^
 
 - [KC-5946] - Fix for export end-point
+
+3.1.2
+^^^^^
+
+- [KC-5909] - Synchronizing index entry and record writes
