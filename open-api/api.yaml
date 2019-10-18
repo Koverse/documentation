@@ -297,6 +297,15 @@ parameters:
     description: ID of the job
     required: true
     type: string
+#  maxRecords:
+#    name: maxRecords
+#    in: query
+#    description: max number of records to return
+  maxStringValueLength:
+    name: maxStringValueLength
+    in: query
+    description: length to truncate string values, default is -1 for 'no truncate'
+    required: false
   normalizationId:
     name: normalizationId
     in: path
@@ -330,11 +339,18 @@ parameters:
   recordStyle:
     name: recordStyle
     in: query
-    description: >
+    description: |
           Requests a more efficient representation of records
     required: false
     type: string
     enum: [2.2]
+  removeByteArrayFieldValues:
+    name: removeByteArrayFieldValues
+    in: query
+    description: |
+          Removes values with datatype byte array
+    required: false
+    type: boolean
   sink:
     name: sink
     in: body
@@ -401,11 +417,11 @@ paths:
     $ref: paths/dataSets.yaml
   /api/v1/data-sets/{dataSetId}:
     $ref: paths/dataSetId.yaml
-  /api/v1/data-sets/{dataSetId}/attributeNames:
+  /api/v1/data-sets/{dataSetId}/attribute-names:
     $ref: paths/dataSetAttributeNames.yaml
   /api/v1/data-sets/{dataSetId}/attributes:
     $ref: paths/dataSetAttributes.yaml
-  /api/v1/data-sets/{dataSetId}/clearDataSet:
+  /api/v1/data-sets/{dataSetId}/clear:
     $ref: paths/dataSetClearDataSet.yaml
   #/api/v1/data-sets/{dataSetId}/flatSchema:
   #  $ref: paths/dataSetFlatSchema.yaml

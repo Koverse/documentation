@@ -6,7 +6,7 @@ get:
   operationId: getRecordById
   tags: ["Records"]
   parameters:
-    - name: datasetId
+    - name: dataSetId
       type: string
       in: query
       required: true
@@ -37,6 +37,10 @@ get:
       #   flatSchema: true
       #   records:
       #     - $ref: "../schemas/recordExample.yaml"
+    404:
+      description: If record not found.
+    500:
+      description: Returns server error if recordId or dataSetId are missing.
 
 post:
   summary: Create
