@@ -5,6 +5,8 @@ get:
   description: |
         Get a list of data set metadata objects for all data sets the user is
         authorized to see.
+
+        Call will return an empty list if no data sets were found.
   responses:
     200:
       description: Returns metadata for all data sets the user is authorized to see
@@ -20,7 +22,7 @@ post:
   description: |
         Creates a new empty data set.
 
-        Note: This call will fail if there is already a data set with the same name as the requested new data set.
+        Note: This call will succeed if there is already a data set with the same name as the requested new data set. The name will be updated to indicate how many other data sets have that name, such as "Movies (2)".
   parameters:
     - name: body
       in: body
@@ -29,7 +31,7 @@ post:
       schema:
         $ref: '../api.yaml#/definitions/dataSet'
   responses:
-    201:
+    200:
       description: Returns the newly created Data Set metadata
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"

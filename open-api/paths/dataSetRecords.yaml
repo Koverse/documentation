@@ -1,6 +1,8 @@
 parameters:
   - $ref: "../api.yaml#/parameters/dataSetId"
   - $ref: "../api.yaml#/parameters/recordStyle"
+  - $ref: "../api.yaml#/parameters/removeByteArrayFieldValues"
+  - $ref: "../api.yaml#/parameters/maxStringValueLength"
 
 get:
   summary: Get sample records
@@ -9,7 +11,7 @@ get:
   description: |
         Returns all the fields and values for a sample of records by data set id.
 
-        Note: The recordStyle query parameter defaults to a value of "2.1".
+        Note: The recordStyle query parameter defaults to a value of "2.1" which returns a file attachment with the records.
         To return json output of records, you must specify the recordStyle query parameter "2.2".
   responses:
     200:

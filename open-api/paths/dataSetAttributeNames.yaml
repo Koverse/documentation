@@ -31,3 +31,6 @@ get:
       #   - movie_title
       #   - plot_keywords
       #   - title_year
+    500:
+      description: Data set not found 
+      message: "If data set not found message will read 'Internal error processing getDataSetAttributeNames'"
