@@ -132,19 +132,19 @@ Here, we're simply saving off the value of the 'textField' parameter we declared
 Next we'll write our execute() function. First we'll grab the dataset passed in via the context object::
 
   def execute(self, context):
-    inputRdd = context.inputRdds['inputDataset']
+    inputRdd = list(context.inputRdds.items())[0][1]
 
 Instead of using the RDD we can grab a DataFrame. To use a Data Frame we could have written::
 
   def execute(self, context):
-    inputDF = context.inputDataFrames['inputDataset']
+    inputDF = list(context.inputDataFrames.items())[0][1]
 
 For the rest of this example we'll stick with an RDD.
 
 Next we'll write a function to extract noun_phrase and sentiment pairs from a blob of text using the TextBlob library. We'll also write a simple function to average a list of numbers::
 
   def execute(self, context):
-    inputRdd = context.inputRdds['inputDataset']
+    inputRdd = list(context.inputDataFrames.items())[0][1]
 
     def extractSentimentPerPhrase(doc):
       blob = TextBlob(doc)
@@ -178,11 +178,10 @@ Note that Transform should return either an RDD of Python dicts or a DataFrame.
 
 We can write a simple test program to try out our code on some example data. We'll create a file called test.py with the following::
 
-  import unittest
 
   from koverse.transformTest import PySparkTransformTestRunner
-
   from transform import PySparkTransform
+  import unittest
 
   text = '''
   I can't stand writing test cases, I really hate it.
@@ -211,9 +210,6 @@ We can write a simple test program to try out our code on some example data. We'
 
   if __name__ == '__main__':
       unittest.main()
-
-    def execute(self, context):
-      inputDF = context.inputDataFrames.items()[0][1]
 
 
 We can run this test by running spark-submit on our test.py file::
