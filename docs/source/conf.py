@@ -52,7 +52,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Koverse'
-copyright = u'2018, Koverse Inc'
+copyright = u'2019, Koverse Inc'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

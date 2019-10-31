@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/sourceId"
 
 get:
+  deprecated: true
   summary: Get by source
   operationId: findImportFlowBySourceId
   tags: ["Import Flows"]

@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  version: 3.0.0
+  version: "3.0"
   title: Koverse REST API
   description: >
         Specification for interacting with the Koverse Rest API
@@ -28,6 +28,8 @@ tags:
           List, inspect, and configure masking for data set attributes
   - name: Data Set Permissions
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
+
           Control access to data in Data Sets.
 
           Access is controlled on a Group basis and includes actions such as writing to a Data Set, querying, deleting, changing configuration, etc.
@@ -35,9 +37,11 @@ tags:
           Note that these permissions are distinct from system permission which control things like which Groups can do things like create Data Sets, setup Transforms etc.
   - name: System Permissions
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Control access to system functionality.
   - name: Indexing Policies
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Control how Koverse indexes data in a data set.
 
           This includes specifying which attributes to index, how data should be tokenized, and which combinations of attributes should be combined into Composite Indexes.
@@ -53,19 +57,24 @@ tags:
           Write and retrieve individual records and sets of sample records.
   - name: Source Types
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           List available Source types.
           Source types specify which parameters are available for each type of Source.
   - name: Sources
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Sources are external data systems from which Koverse can ingest data.
   - name: Import Flows
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Configure a Source to import external data to a specific Data Set.
   - name: Normalizations
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Normalizations allow data to be modified as it is imported.
   - name: Import Jobs
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Import jobs are used for importing data from an external Source into a Data Set.
 
           These jobs are executed by the Hadoop MapReduce or Spark frameworks asynchronously.
@@ -75,19 +84,23 @@ tags:
           Jobs can be started or shutdown via these methods.
   - name: Import Schedules
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Manage schedules for Import Flows.
 
           Schedules control how Import Jobs are started automatically.
           Import Jobs can still be created for Import Flows without schedules on an on-demand basis.
   - name: Transform Types
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Get a list of transforms available in the system.
           Transform types specify which parameters are available for each type of Transform.
   - name: Transforms
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Setup a partiular Transform Type to transform one or more data sets into a new Data Set.
   - name: Transform Jobs
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Transform jobs process new data or all data in input Data Sets and write out results to an output Data Set.
 
           These jobs are executed by the Hadoop MapReduce or Spark frameworks asynchronously.
@@ -97,20 +110,24 @@ tags:
           Jobs can be started or shutdown via these methods.
   - name: Transform Schedules
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Manage schedules for Transforms.
 
           Schedules control how Transform Jobs are started automatically.
           Transforms Jobs can still be created for Transforms without schedules on an on-demand basis, or automatically as new data is ingested via Import Jobs into input Data Sets.
   - name: Sink Types
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           List and get available Sink types.
           Sinks are external systems to which Koverse can export data.
   - name: Sinks
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Create, update, and delete Sinks.
           Sinks are external systems to which Koverse can export data.
   - name: Export Jobs
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Export jobs write new data or all data in input Data Sets to an external Sink.
 
           These jobs are executed by the Hadoop MapReduce or Spark frameworks asynchronously.
@@ -120,12 +137,14 @@ tags:
           Jobs can be started or shutdown via these methods.
   - name: Sink Schedules
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Manage schedules for exporting to Sinks
 
           Schedules control how Export Jobs are started automatically.
           Export Jobs can still be created for Sinks without schedules on an on-demand basis or automatically as new data appears in input Data Sets.
   - name: Jobs
     description: |
+          Deprecated. Please see Automation Guide for Thrift API usage.
           Start, monitor, and cancel data processing jobs.
 
           Data processing jobs are used for importing, transforming, and exporting data.
@@ -140,6 +159,8 @@ tags:
           In some cases a blocked job can be unblocked so it can proceed.
 
 definitions:
+  500servererror:
+    $ref: schemas/servererror.yaml
   apiClient:
     $ref: schemas/apiClient.yaml
   dataSet:
@@ -306,6 +327,8 @@ parameters:
     in: query
     description: length to truncate string values, default is -1 for 'no truncate'
     required: false
+    type: integer
+    format: int64
   normalizationId:
     name: normalizationId
     in: path
@@ -513,7 +536,7 @@ paths:
     $ref: paths/transformTypes.yaml
   /api/v1/transform-types/{typeId}:
     $ref: paths/transformTypeId.yaml
-  /api/v1/queries/:
+  /api/v1/queries/lucene:
     $ref: paths/queryLucene.yaml
   /api/v1/queries/object:
     $ref: paths/queryObject.yaml
