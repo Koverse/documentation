@@ -202,7 +202,7 @@ definitions:
   parameter:
     $ref: schemas/parameter.yaml
   record:
-    $ref: schemas/record.yaml
+    $ref: schemas/oldjsonrecordformat.yaml
   sink:
     $ref: schemas/sink.yaml
   sinkType:

@@ -653,7 +653,39 @@ definitions:
       flatSchema: true
       recordMatchCountLimited: false
       records:
-        - $ref: '#/definitions/record/example'
+        - recordId: null
+          collectionId: movies_20171107_172745_048
+          securityLabel: ''
+          value:
+            plot_keywords: african american|code|dog|pigeon|samurai
+            country: France
+            aspect_ratio: 1.85
+            actor_3_facebook_likes: 116
+            num_critic_for_reviews: 167
+            color: Color
+            language: English
+            title_year: 1999
+            imdb_score: 7.5
+            duration: 116
+            genres: Action|Crime|Drama|Thriller
+            actor_1_name: Henry Silva
+            director_facebook_likes: 0
+            content_rating: R
+            num_voted_users: 70084
+            gross: 3300230
+            facenumber_in_poster: 1
+            actor_2_name: Gano Grills
+            num_user_for_reviews: 346
+            actor_1_facebook_likes: 251
+            movie_title: Ghost Dog - The Way of the Samurai
+            movie_facebook_likes: 0
+            actor_2_facebook_likes: 147
+            movie_imdb_link: 'http://www.imdb.com/title/tt0165798/?ref_=fn_tt_tt_1'
+            director_name: Jim Jarmusch
+            cast_total_facebook_likes: 675
+            actor_3_name: Richard Portnow
+          matchValues: null
+          isMatch: false
       successful: true
       errorMessage: ''
   dataSetSchemas:
@@ -933,46 +965,19 @@ definitions:
         type: string
       securityLabel:
         type: string
-      value:
+      fields:
         type: object
         description: >
           An object containing the fields and values within this record. The
-          structure of this object will vary from data set to data set. Here we
-          include 'fieldOne', 'fieldTwo', etc. just as an example.
+          structure of this object will vary from data set to data set.
     example:
-      recordId: null
-      collectionId: movies_20171107_172745_048
+      recordId: 1
+      collectionId: wiki_20191101_135232_062
       securityLabel: ''
-      value:
-        plot_keywords: african american|code|dog|pigeon|samurai
-        country: France
-        aspect_ratio: 1.85
-        actor_3_facebook_likes: 116
-        num_critic_for_reviews: 167
-        color: Color
-        language: English
-        title_year: 1999
-        imdb_score: 7.5
-        duration: 116
-        genres: Action|Crime|Drama|Thriller
-        actor_1_name: Henry Silva
-        director_facebook_likes: 0
-        content_rating: R
-        num_voted_users: 70084
-        gross: 3300230
-        facenumber_in_poster: 1
-        actor_2_name: Gano Grills
-        num_user_for_reviews: 346
-        actor_1_facebook_likes: 251
-        movie_title: Ghost Dog - The Way of the Samurai
-        movie_facebook_likes: 0
-        actor_2_facebook_likes: 147
-        movie_imdb_link: 'http://www.imdb.com/title/tt0165798/?ref_=fn_tt_tt_1'
-        director_name: Jim Jarmusch
-        cast_total_facebook_likes: 675
-        actor_3_name: Richard Portnow
-      matchValues: null
-      isMatch: false
+      fields:
+        id: 576
+        name: bob
+        age: 35
   sink:
     type: object
     properties:
@@ -2541,7 +2546,7 @@ paths:
       - $ref: '#/parameters/recordId'
     get:
       summary: Get
-      operationId: getRecordById
+      operationId: getRecord
       tags:
         - Records
       parameters:
@@ -2554,7 +2559,8 @@ paths:
           in: query
           required: true
       description: >
-        Get a single record by data set id and record id.
+        Get a single record by data set id and record id. (Note: recordIds may
+        have a delimiter that is not valid json)
 
 
         Note that the Record ID must be known in order to use this method.
@@ -2579,8 +2585,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/record'
-        '404':
-          description: If record not found.
         '500':
           description: Returns server error if recordId or dataSetId are missing.
           schema:
@@ -3181,7 +3185,7 @@ paths:
           description: Returns the transform type
           schema:
             $ref: '#/definitions/transformType'
-  /api/v1/queries/:
+  /api/v1/queries/lucene:
     get:
       summary: Lucene style
       operationId: queryLucene
