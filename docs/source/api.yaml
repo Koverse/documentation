@@ -36,10 +36,16 @@ tags:
       Note that these permissions are distinct from system permission which
       control things like which Groups can do things like create Data Sets,
       setup Transforms etc.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: System Permissions
     description: |
       Deprecated. Please see Automation Guide for Thrift API usage.
       Control access to system functionality.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Indexing Policies
     description: >
       Deprecated. Please see Automation Guide for Thrift API usage.
@@ -53,6 +59,9 @@ tags:
 
       The set of available indexes affects which kinds of interactive queries
       Koverse can support.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Query
     description: >
       Interactively query Data Sets.
@@ -73,18 +82,30 @@ tags:
 
       Source types specify which parameters are available for each type of
       Source.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Sources
     description: |
       Deprecated. Please see Automation Guide for Thrift API usage.
       Sources are external data systems from which Koverse can ingest data.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Import Flows
     description: |
       Deprecated. Please see Automation Guide for Thrift API usage.
       Configure a Source to import external data to a specific Data Set.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Normalizations
     description: |
       Deprecated. Please see Automation Guide for Thrift API usage.
       Normalizations allow data to be modified as it is imported.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Import Jobs
     description: >
       Deprecated. Please see Automation Guide for Thrift API usage.
@@ -104,6 +125,9 @@ tags:
 
 
       Jobs can be started or shutdown via these methods.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Import Schedules
     description: >
       Deprecated. Please see Automation Guide for Thrift API usage.
@@ -115,6 +139,9 @@ tags:
 
       Import Jobs can still be created for Import Flows without schedules on an
       on-demand basis.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Transform Types
     description: >
       Deprecated. Please see Automation Guide for Thrift API usage.
@@ -123,12 +150,18 @@ tags:
 
       Transform types specify which parameters are available for each type of
       Transform.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Transforms
     description: >
       Deprecated. Please see Automation Guide for Thrift API usage.
 
       Setup a partiular Transform Type to transform one or more data sets into a
       new Data Set.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Transform Jobs
     description: >
       Deprecated. Please see Automation Guide for Thrift API usage.
@@ -148,6 +181,9 @@ tags:
 
 
       Jobs can be started or shutdown via these methods.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Transform Schedules
     description: >
       Deprecated. Please see Automation Guide for Thrift API usage.
@@ -160,16 +196,25 @@ tags:
       Transforms Jobs can still be created for Transforms without schedules on
       an on-demand basis, or automatically as new data is ingested via Import
       Jobs into input Data Sets.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Sink Types
     description: |
       Deprecated. Please see Automation Guide for Thrift API usage.
       List and get available Sink types.
       Sinks are external systems to which Koverse can export data.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Sinks
     description: |
       Deprecated. Please see Automation Guide for Thrift API usage.
       Create, update, and delete Sinks.
       Sinks are external systems to which Koverse can export data.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Export Jobs
     description: >
       Deprecated. Please see Automation Guide for Thrift API usage.
@@ -189,6 +234,9 @@ tags:
 
 
       Jobs can be started or shutdown via these methods.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
   - name: Sink Schedules
     description: >
       Deprecated. Please see Automation Guide for Thrift API usage.
@@ -232,6 +280,9 @@ tags:
       inteference.
 
       In some cases a blocked job can be unblocked so it can proceed.
+    externalDocs:
+      description: Automation Guide
+      url: automation/intro.rst
 definitions:
   500servererror:
     type: string
