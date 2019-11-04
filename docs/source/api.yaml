@@ -35,13 +35,13 @@ tags:
       setup Transforms etc.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: System Permissions
     description: |
       Control access to system functionality.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Indexing Policies
     description: >
       Control how Koverse indexes data in a data set.
@@ -55,7 +55,7 @@ tags:
       Koverse can support.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Query
     description: >
       Interactively query Data Sets.
@@ -76,25 +76,25 @@ tags:
       Source.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Sources
     description: |
       Sources are external data systems from which Koverse can ingest data.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Import Flows
     description: |
       Configure a Source to import external data to a specific Data Set.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Normalizations
     description: |
       Normalizations allow data to be modified as it is imported.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Import Jobs
     description: >
       Import jobs are used for importing data from an external Source into a
@@ -114,7 +114,7 @@ tags:
       Jobs can be started or shutdown via these methods.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Import Schedules
     description: >
       Manage schedules for Import Flows.
@@ -126,7 +126,7 @@ tags:
       on-demand basis.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Transform Types
     description: >
       Get a list of transforms available in the system.
@@ -135,14 +135,14 @@ tags:
       Transform.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Transforms
     description: >
       Setup a partiular Transform Type to transform one or more data sets into a
       new Data Set.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Transform Jobs
     description: >
       Transform jobs process new data or all data in input Data Sets and write
@@ -162,7 +162,7 @@ tags:
       Jobs can be started or shutdown via these methods.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Transform Schedules
     description: >
       Manage schedules for Transforms.
@@ -175,21 +175,21 @@ tags:
       Jobs into input Data Sets.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Sink Types
     description: |
       List and get available Sink types.
       Sinks are external systems to which Koverse can export data.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Sinks
     description: |
       Create, update, and delete Sinks.
       Sinks are external systems to which Koverse can export data.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Export Jobs
     description: >
       Export jobs write new data or all data in input Data Sets to an external
@@ -209,7 +209,7 @@ tags:
       Jobs can be started or shutdown via these methods.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Sink Schedules
     description: >
       Manage schedules for exporting to Sinks
@@ -221,7 +221,7 @@ tags:
       on-demand basis or automatically as new data appears in input Data Sets.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
   - name: Jobs
     description: >
       Start, monitor, and cancel data processing jobs.
@@ -254,7 +254,7 @@ tags:
       In some cases a blocked job can be unblocked so it can proceed.
     externalDocs:
       description: Deprecated. Please see Automation Guide for API usage.
-      url: dev/automation/automationguide.rst
+      url: dev/automation/automationguide.html
 definitions:
   500servererror:
     type: string
