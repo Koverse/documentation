@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/applicationId"
 
 get:
+  deprecated: true
   summary: Get
   description: |
         Get the details about the given application.
@@ -14,6 +15,7 @@ get:
         $ref: "../api.yaml#/definitions/apiClient"
 
 put:
+  deprecated: true
   summary: Update
   description: |
         Update the application details.
@@ -26,6 +28,7 @@ put:
         $ref: "../api.yaml#/definitions/apiClient"
 
 delete:
+  deprecated: true
   summary: Delete
   description: |
           Delete the application specified by id.

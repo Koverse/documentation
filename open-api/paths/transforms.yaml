@@ -37,7 +37,7 @@ post:
       schema:
         $ref: "../api.yaml#/definitions/transform"
   responses:
-    201:
+    200:
       description: Returns the newly-added transform
       schema:
         $ref: "../api.yaml#/definitions/transform"

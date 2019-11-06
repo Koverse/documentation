@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  version: 3.0.0
+  version: "3.0"
   title: Koverse REST API
   description: >
         Specification for interacting with the Koverse Rest API
@@ -33,15 +33,24 @@ tags:
           Access is controlled on a Group basis and includes actions such as writing to a Data Set, querying, deleting, changing configuration, etc.
 
           Note that these permissions are distinct from system permission which control things like which Groups can do things like create Data Sets, setup Transforms etc.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: System Permissions
     description: |
           Control access to system functionality.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Indexing Policies
     description: |
           Control how Koverse indexes data in a data set.
 
           This includes specifying which attributes to index, how data should be tokenized, and which combinations of attributes should be combined into Composite Indexes.
           The set of available indexes affects which kinds of interactive queries Koverse can support.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Query
     description: |
           Interactively query Data Sets.
@@ -55,15 +64,27 @@ tags:
     description: |
           List available Source types.
           Source types specify which parameters are available for each type of Source.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Sources
     description: |
           Sources are external data systems from which Koverse can ingest data.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Import Flows
     description: |
           Configure a Source to import external data to a specific Data Set.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Normalizations
     description: |
           Normalizations allow data to be modified as it is imported.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Import Jobs
     description: |
           Import jobs are used for importing data from an external Source into a Data Set.
@@ -73,19 +94,31 @@ tags:
           Jobs may run simultaneously as cluster resources allow.
 
           Jobs can be started or shutdown via these methods.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Import Schedules
     description: |
           Manage schedules for Import Flows.
 
           Schedules control how Import Jobs are started automatically.
           Import Jobs can still be created for Import Flows without schedules on an on-demand basis.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Transform Types
     description: |
           Get a list of transforms available in the system.
           Transform types specify which parameters are available for each type of Transform.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Transforms
     description: |
           Setup a partiular Transform Type to transform one or more data sets into a new Data Set.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Transform Jobs
     description: |
           Transform jobs process new data or all data in input Data Sets and write out results to an output Data Set.
@@ -95,20 +128,32 @@ tags:
           Jobs may run simultaneously as cluster resources allow.
 
           Jobs can be started or shutdown via these methods.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Transform Schedules
     description: |
           Manage schedules for Transforms.
 
           Schedules control how Transform Jobs are started automatically.
           Transforms Jobs can still be created for Transforms without schedules on an on-demand basis, or automatically as new data is ingested via Import Jobs into input Data Sets.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Sink Types
     description: |
           List and get available Sink types.
           Sinks are external systems to which Koverse can export data.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Sinks
     description: |
           Create, update, and delete Sinks.
           Sinks are external systems to which Koverse can export data.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Export Jobs
     description: |
           Export jobs write new data or all data in input Data Sets to an external Sink.
@@ -118,12 +163,18 @@ tags:
           Jobs may run simultaneously as cluster resources allow.
 
           Jobs can be started or shutdown via these methods.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Sink Schedules
     description: |
           Manage schedules for exporting to Sinks
 
           Schedules control how Export Jobs are started automatically.
           Export Jobs can still be created for Sinks without schedules on an on-demand basis or automatically as new data appears in input Data Sets.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
   - name: Jobs
     description: |
           Start, monitor, and cancel data processing jobs.
@@ -138,8 +189,13 @@ tags:
 
           If two or more jobs will write on the same data set, one job may become blocked to allow the other job to complete its processing without inteference.
           In some cases a blocked job can be unblocked so it can proceed.
+    externalDocs:
+      description: "Deprecated. Please see Automation Guide for API usage."
+      url: "dev/automation/automationguide.html"
 
 definitions:
+  500servererror:
+    $ref: schemas/servererror.yaml
   apiClient:
     $ref: schemas/apiClient.yaml
   dataSet:
@@ -181,7 +237,7 @@ definitions:
   parameter:
     $ref: schemas/parameter.yaml
   record:
-    $ref: schemas/record.yaml
+    $ref: schemas/oldjsonrecordformat.yaml
   sink:
     $ref: schemas/sink.yaml
   sinkType:
@@ -306,6 +362,8 @@ parameters:
     in: query
     description: length to truncate string values, default is -1 for 'no truncate'
     required: false
+    type: integer
+    format: int64
   normalizationId:
     name: normalizationId
     in: path
@@ -513,7 +571,7 @@ paths:
     $ref: paths/transformTypes.yaml
   /api/v1/transform-types/{typeId}:
     $ref: paths/transformTypeId.yaml
-  /api/v1/queries/:
+  /api/v1/queries/lucene:
     $ref: paths/queryLucene.yaml
   /api/v1/queries/object:
     $ref: paths/queryObject.yaml

@@ -15,8 +15,6 @@ properties:
     description: A user-readable description of the data set.
   deleted:
     type: boolean
-  groupPermissionsIds:
-    type: array
   indexingPolicyId:
     type: integer
   indexingPolicy:

@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/importScheduleId"
 
 get:
+  deprecated: true
   summary: Get
   operationId: findImportScheduleById
   tags: ["Import Schedules"]
@@ -18,6 +19,7 @@ get:
       #     description: The date/time that the import schedule was last modified
 
 delete:
+  deprecated: true
   summary: Delete
   operationId: deleteImportSchedule
   tags: ["Import Schedules"]

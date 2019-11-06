@@ -1,4 +1,5 @@
 get:
+  deprecated: true
   summary: List
   operationId: systemPermissions
   tags: ["System Permissions"]

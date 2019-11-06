@@ -1,0 +1,15 @@
+type: object
+properties:
+  recordId:
+    type: string
+  collectionId:
+    type: string
+  securityLabel:
+    type: string
+  fields:
+    type: object
+    description: >
+      An object containing the fields and values within this record.
+      The structure of this object will vary from data set to data set.
+example:
+  $ref: "oldjsonformatexample.yaml"

@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  version: 3.0
+  version: '3.0'
   title: Koverse REST API
   description: |
     Specification for interacting with the Koverse Rest API
@@ -33,9 +33,15 @@ tags:
       Note that these permissions are distinct from system permission which
       control things like which Groups can do things like create Data Sets,
       setup Transforms etc.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: System Permissions
     description: |
       Control access to system functionality.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Indexing Policies
     description: >
       Control how Koverse indexes data in a data set.
@@ -47,6 +53,9 @@ tags:
 
       The set of available indexes affects which kinds of interactive queries
       Koverse can support.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Query
     description: >
       Interactively query Data Sets.
@@ -65,15 +74,27 @@ tags:
 
       Source types specify which parameters are available for each type of
       Source.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Sources
     description: |
       Sources are external data systems from which Koverse can ingest data.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Import Flows
     description: |
       Configure a Source to import external data to a specific Data Set.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Normalizations
     description: |
       Normalizations allow data to be modified as it is imported.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Import Jobs
     description: >
       Import jobs are used for importing data from an external Source into a
@@ -91,6 +112,9 @@ tags:
 
 
       Jobs can be started or shutdown via these methods.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Import Schedules
     description: >
       Manage schedules for Import Flows.
@@ -100,16 +124,25 @@ tags:
 
       Import Jobs can still be created for Import Flows without schedules on an
       on-demand basis.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Transform Types
     description: >
       Get a list of transforms available in the system.
 
       Transform types specify which parameters are available for each type of
       Transform.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Transforms
     description: >
       Setup a partiular Transform Type to transform one or more data sets into a
       new Data Set.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Transform Jobs
     description: >
       Transform jobs process new data or all data in input Data Sets and write
@@ -127,6 +160,9 @@ tags:
 
 
       Jobs can be started or shutdown via these methods.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Transform Schedules
     description: >
       Manage schedules for Transforms.
@@ -137,14 +173,23 @@ tags:
       Transforms Jobs can still be created for Transforms without schedules on
       an on-demand basis, or automatically as new data is ingested via Import
       Jobs into input Data Sets.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Sink Types
     description: |
       List and get available Sink types.
       Sinks are external systems to which Koverse can export data.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Sinks
     description: |
       Create, update, and delete Sinks.
       Sinks are external systems to which Koverse can export data.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Export Jobs
     description: >
       Export jobs write new data or all data in input Data Sets to an external
@@ -162,6 +207,9 @@ tags:
 
 
       Jobs can be started or shutdown via these methods.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Sink Schedules
     description: >
       Manage schedules for exporting to Sinks
@@ -171,6 +219,9 @@ tags:
 
       Export Jobs can still be created for Sinks without schedules on an
       on-demand basis or automatically as new data appears in input Data Sets.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
   - name: Jobs
     description: >
       Start, monitor, and cancel data processing jobs.
@@ -201,7 +252,15 @@ tags:
       inteference.
 
       In some cases a blocked job can be unblocked so it can proceed.
+    externalDocs:
+      description: Deprecated. Please see Automation Guide for API usage.
+      url: dev/automation/automationguide.html
 definitions:
+  500servererror:
+    type: string
+    description: |
+      An error has occurred.
+    example: '500 Server Error, No data sets found.'
   apiClient:
     type: object
     required:
@@ -617,7 +676,39 @@ definitions:
       flatSchema: true
       recordMatchCountLimited: false
       records:
-        - $ref: '#/definitions/record/example'
+        - recordId: null
+          collectionId: movies_20171107_172745_048
+          securityLabel: ''
+          value:
+            plot_keywords: african american|code|dog|pigeon|samurai
+            country: France
+            aspect_ratio: 1.85
+            actor_3_facebook_likes: 116
+            num_critic_for_reviews: 167
+            color: Color
+            language: English
+            title_year: 1999
+            imdb_score: 7.5
+            duration: 116
+            genres: Action|Crime|Drama|Thriller
+            actor_1_name: Henry Silva
+            director_facebook_likes: 0
+            content_rating: R
+            num_voted_users: 70084
+            gross: 3300230
+            facenumber_in_poster: 1
+            actor_2_name: Gano Grills
+            num_user_for_reviews: 346
+            actor_1_facebook_likes: 251
+            movie_title: Ghost Dog - The Way of the Samurai
+            movie_facebook_likes: 0
+            actor_2_facebook_likes: 147
+            movie_imdb_link: 'http://www.imdb.com/title/tt0165798/?ref_=fn_tt_tt_1'
+            director_name: Jim Jarmusch
+            cast_total_facebook_likes: 675
+            actor_3_name: Richard Portnow
+          matchValues: null
+          isMatch: false
       successful: true
       errorMessage: ''
   dataSetSchemas:
@@ -897,46 +988,19 @@ definitions:
         type: string
       securityLabel:
         type: string
-      value:
+      fields:
         type: object
         description: >
           An object containing the fields and values within this record. The
-          structure of this object will vary from data set to data set. Here we
-          include 'fieldOne', 'fieldTwo', etc. just as an example.
+          structure of this object will vary from data set to data set.
     example:
-      recordId: null
-      collectionId: movies_20171107_172745_048
+      recordId: 1
+      collectionId: wiki_20191101_135232_062
       securityLabel: ''
-      value:
-        plot_keywords: african american|code|dog|pigeon|samurai
-        country: France
-        aspect_ratio: 1.85
-        actor_3_facebook_likes: 116
-        num_critic_for_reviews: 167
-        color: Color
-        language: English
-        title_year: 1999
-        imdb_score: 7.5
-        duration: 116
-        genres: Action|Crime|Drama|Thriller
-        actor_1_name: Henry Silva
-        director_facebook_likes: 0
-        content_rating: R
-        num_voted_users: 70084
-        gross: 3300230
-        facenumber_in_poster: 1
-        actor_2_name: Gano Grills
-        num_user_for_reviews: 346
-        actor_1_facebook_likes: 251
-        movie_title: Ghost Dog - The Way of the Samurai
-        movie_facebook_likes: 0
-        actor_2_facebook_likes: 147
-        movie_imdb_link: 'http://www.imdb.com/title/tt0165798/?ref_=fn_tt_tt_1'
-        director_name: Jim Jarmusch
-        cast_total_facebook_likes: 675
-        actor_3_name: Richard Portnow
-      matchValues: null
-      isMatch: false
+      fields:
+        id: 576
+        name: bob
+        age: 35
   sink:
     type: object
     properties:
@@ -1296,6 +1360,13 @@ parameters:
     description: ID of the job
     required: true
     type: string
+  maxStringValueLength:
+    name: maxStringValueLength
+    in: query
+    description: 'length to truncate string values, default is -1 for ''no truncate'''
+    required: false
+    type: integer
+    format: int64
   normalizationId:
     name: normalizationId
     in: path
@@ -1430,7 +1501,8 @@ parameters:
         - query
       description: >
         This object contains the parameters used to issue a query against one or
-        more data sets. The query is defined as a JSON string
+        more data sets. The query is defined as a JSON string. The query will
+        return an empty array '[]' if no records are found.
       properties:
         collectionNames:
           type: array
@@ -1559,6 +1631,13 @@ parameters:
     type: string
     enum:
       - 2.2
+  removeByteArrayFieldValues:
+    name: removeByteArrayFieldValues
+    in: query
+    description: |
+      Removes values with datatype byte array
+    required: false
+    type: boolean
   sink:
     name: sink
     in: body
@@ -1653,6 +1732,7 @@ paths:
             $ref: '#/definitions/logout'
   /api/v1/applications:
     get:
+      deprecated: true
       summary: List
       operationId: findApplications
       tags:
@@ -1667,9 +1747,8 @@ paths:
             type: array
             items:
               $ref: '#/definitions/apiClient'
-        '500':
-          description: Server Error - If data set not found message will read 'Could not find database object in
     post:
+      deprecated: true
       summary: Create
       operationId: createApplication
       tags:
@@ -1684,7 +1763,7 @@ paths:
           schema:
             $ref: '#/definitions/apiClient'
       responses:
-        '201':
+        '200':
           description: Returns the newly created Application
           schema:
             $ref: '#/definitions/apiClient'
@@ -1692,6 +1771,7 @@ paths:
     parameters:
       - $ref: '#/parameters/applicationId'
     get:
+      deprecated: true
       summary: Get
       description: |
         Get the details about the given application.
@@ -1704,6 +1784,7 @@ paths:
           schema:
             $ref: '#/definitions/apiClient'
     put:
+      deprecated: true
       summary: Update
       description: |
         Update the application details.
@@ -1716,6 +1797,7 @@ paths:
           schema:
             $ref: '#/definitions/apiClient'
     delete:
+      deprecated: true
       summary: Delete
       description: |
         Delete the application specified by id.
@@ -1736,6 +1818,8 @@ paths:
       description: |
         Get a list of data set metadata objects for all data sets the user is
         authorized to see.
+
+        Call will return an empty list if no data sets were found.
       responses:
         '200':
           description: Returns metadata for all data sets the user is authorized to see
@@ -1743,8 +1827,6 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetMetadata'
-        '500':
-          description: If data set not found message will read 'No content to map to Object due to end of input'
     post:
       summary: Create
       operationId: createDataSet
@@ -1754,8 +1836,9 @@ paths:
         Creates a new empty data set.
 
 
-        Note: This call will fail if there is already a data set with the same
-        name as the requested new data set.
+        Note: This call will succeed if there is already a data set with the
+        same name as the requested new data set. The name will be updated to
+        indicate how many other data sets have that name, such as "Movies (2)".
       parameters:
         - name: body
           in: body
@@ -1764,7 +1847,7 @@ paths:
           schema:
             $ref: '#/definitions/dataSet'
       responses:
-        '201':
+        '200':
           description: Returns the newly created Data Set metadata
           schema:
             $ref: '#/definitions/dataSetMetadata'
@@ -1785,6 +1868,10 @@ paths:
           description: Returns the data set metadata
           schema:
             $ref: '#/definitions/dataSetMetadata'
+        '500':
+          description: Returns server error if no data set is found
+          schema:
+            $ref: '#/definitions/500servererror'
     put:
       summary: Update
       description: |
@@ -1809,6 +1896,12 @@ paths:
           description: Returns the data set metadata with an updated DELETED dataset name.
           schema:
             $ref: '#/definitions/dataSetMetadata'
+        '500':
+          description: >-
+            If data set not found message will read 'No content to map to Object
+            due to end of input'
+          schema:
+            $ref: '#/definitions/500servererror'
   '/api/v1/data-sets/{dataSetId}/attribute-names':
     parameters:
       - $ref: '#/parameters/dataSetId'
@@ -1835,7 +1928,11 @@ paths:
             items:
               type: string
         '500':
-          description: If data set not found message will read 'Internal error processing getDataSetAttributeNames'
+          description: >-
+            If data set not found message will read 'Internal error processing
+            getDataSetAttributeNames'
+          schema:
+            $ref: '#/definitions/500servererror'
   '/api/v1/data-sets/{dataSetId}/attributes':
     parameters:
       - $ref: '#/parameters/dataSetId'
@@ -1857,7 +1954,13 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetAttributes'
-  '/api/v1/data-sets/{datasetId}/clear':
+        '500':
+          description: >-
+            If data set not found message will read 'Could not find database
+            object in method...'
+          schema:
+            $ref: '#/definitions/500servererror'
+  '/api/v1/data-sets/{dataSetId}/clear':
     parameters:
       - $ref: '#/parameters/dataSetId'
     get:
@@ -1872,9 +1975,13 @@ paths:
         command and should be called sparingly.
       responses:
         '200':
-          description: Data was cleared
+          description: 200 OK
         '500':
-          description: If data set not found message will read 'No content to map to Object due to end of input'
+          description: >-
+            If data set not found message will read 'No content to map to Object
+            due to end of input'
+          schema:
+            $ref: '#/definitions/500servererror'
   '/api/v1/data-sets/{dataSetId}/indexingPolicy':
     parameters:
       - $ref: '#/parameters/dataSetId'
@@ -1935,6 +2042,8 @@ paths:
     parameters:
       - $ref: '#/parameters/dataSetId'
       - $ref: '#/parameters/recordStyle'
+      - $ref: '#/parameters/removeByteArrayFieldValues'
+      - $ref: '#/parameters/maxStringValueLength'
     get:
       summary: Get sample records
       operationId: findDataSetRecordsById
@@ -1945,7 +2054,9 @@ paths:
         Returns all the fields and values for a sample of records by data set
         id.
 
-        Note: The recordStyle query parameter defaults to a value of "2.1" which returns a file attachment with the records.
+
+        Note: The recordStyle query parameter defaults to a value of "2.1" which
+        returns a file attachment with the records.
 
         To return json output of records, you must specify the recordStyle query
         parameter "2.2".
@@ -1978,9 +2089,13 @@ paths:
         regenerate that information from data set records.
       responses:
         '200':
-          description: Repair sucessful
+          description: 200 OK
         '500':
-          description: If data set not found message will read 'No content to map to Object due to end of input'
+          description: >-
+            If data set not found message will read 'No content to map to Object
+            due to end of input'
+          schema:
+            $ref: '#/definitions/500servererror'
   '/api/v1/data-sets/{dataSetId}/attributes/masking':
     parameters:
       - $ref: '#/parameters/dataSetId'
@@ -2011,6 +2126,7 @@ paths:
               $ref: '#/definitions/dataSetAttributes'
   /api/v1/import-flows:
     post:
+      deprecated: true
       summary: Create
       operationId: addImportFlow
       tags:
@@ -2037,6 +2153,7 @@ paths:
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     get:
+      deprecated: true
       summary: Get
       operationId: findImportFlowById
       tags:
@@ -2048,6 +2165,7 @@ paths:
           schema:
             $ref: '#/definitions/importFlow'
     delete:
+      deprecated: true
       summary: Delete
       operationId: deleteImportFlowById
       tags:
@@ -2059,6 +2177,7 @@ paths:
           schema:
             $ref: '#/definitions/importFlow'
     put:
+      deprecated: true
       summary: Update
       operationId: updateImportFlowById
       tags:
@@ -2080,6 +2199,7 @@ paths:
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     post:
+      deprecated: true
       summary: Start
       operationId: funImportFlowById
       tags:
@@ -2106,6 +2226,7 @@ paths:
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     get:
+      deprecated: true
       summary: Get for an import flow
       tags:
         - Normalizations
@@ -2120,6 +2241,7 @@ paths:
             items:
               $ref: '#/definitions/normalization'
     post:
+      deprecated: true
       summary: Create
       tags:
         - Normalizations
@@ -2143,6 +2265,7 @@ paths:
       - $ref: '#/parameters/importFlowIdPath'
       - $ref: '#/parameters/normalizationId'
     get:
+      deprecated: true
       summary: Get
       operationId: findNormalizationById
       tags:
@@ -2154,6 +2277,7 @@ paths:
           schema:
             $ref: '#/definitions/normalization'
     put:
+      deprecated: true
       summary: Update
       operationId: updateNormalizationById
       tags:
@@ -2172,6 +2296,7 @@ paths:
           schema:
             $ref: '#/definitions/normalization'
     delete:
+      deprecated: true
       summary: Delete
       operationId: deleteNormalization
       tags:
@@ -2186,6 +2311,7 @@ paths:
     parameters:
       - $ref: '#/parameters/importFlowIdPath'
     get:
+      deprecated: true
       summary: Get by Import Flow
       operationId: findImportSchedules
       tags:
@@ -2203,6 +2329,7 @@ paths:
     parameters:
       - $ref: '#/parameters/sourceId'
     get:
+      deprecated: true
       summary: Get by source
       operationId: findImportFlowBySourceId
       tags:
@@ -2218,6 +2345,7 @@ paths:
     parameters:
       - $ref: '#/parameters/importJobId'
     get:
+      deprecated: true
       summary: Shutdown
       operationId: shutdownImportJobById
       tags:
@@ -2233,6 +2361,7 @@ paths:
     parameters:
       - $ref: '#/parameters/importFlowId'
     post:
+      deprecated: true
       summary: Create
       operationId: addImportSchedule
       tags:
@@ -2255,6 +2384,7 @@ paths:
     parameters:
       - $ref: '#/parameters/importScheduleId'
     get:
+      deprecated: true
       summary: Get
       operationId: findImportScheduleById
       tags:
@@ -2267,6 +2397,7 @@ paths:
           schema:
             $ref: '#/definitions/importSchedule'
     delete:
+      deprecated: true
       summary: Delete
       operationId: deleteImportSchedule
       tags:
@@ -2280,6 +2411,7 @@ paths:
             $ref: '#/definitions/importSchedule'
   /api/v1/jobs:
     get:
+      deprecated: true
       summary: Get active
       operationId: findActiveJobs
       tags:
@@ -2325,6 +2457,7 @@ paths:
           description: Job unblocked
   /api/v1/permissions:
     post:
+      deprecated: true
       summary: Create
       operationId: createDataSetPermission
       tags:
@@ -2347,6 +2480,7 @@ paths:
     parameters:
       - $ref: '#/parameters/permissionId'
     put:
+      deprecated: true
       summary: Update
       operationId: updateDataSetPermissionsById
       tags:
@@ -2366,6 +2500,7 @@ paths:
           schema:
             $ref: '#/definitions/dataSetPermission'
     delete:
+      deprecated: true
       summary: Delete
       operationId: deleteDataSetPermissionsById
       tags:
@@ -2381,6 +2516,7 @@ paths:
             $ref: '#/definitions/dataSetPermission'
   /api/v1/normalization-types:
     get:
+      deprecated: true
       summary: List types
       operationId: findNormalizationTypes
       tags:
@@ -2396,6 +2532,7 @@ paths:
               $ref: '#/definitions/normalizationType'
   /api/v1/permissions/dataset:
     get:
+      deprecated: true
       summary: List
       operationId: dataSetPermissions
       tags:
@@ -2413,6 +2550,7 @@ paths:
               type: string
   /api/v1/permissions/system:
     get:
+      deprecated: true
       summary: List
       operationId: systemPermissions
       tags:
@@ -2431,11 +2569,11 @@ paths:
       - $ref: '#/parameters/recordId'
     get:
       summary: Get
-      operationId: getRecordById
+      operationId: getRecord
       tags:
         - Records
       parameters:
-        - name: datasetId
+        - name: dataSetId
           type: string
           in: query
           required: true
@@ -2444,7 +2582,8 @@ paths:
           in: query
           required: true
       description: >
-        Get a single record by data set id and record id.
+        Get a single record by data set id and record id. (Note: recordIds may
+        have a delimiter that is not valid json)
 
 
         Note that the Record ID must be known in order to use this method.
@@ -2469,10 +2608,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/record'
-        '404':
-          description: If record not found.
         '500':
           description: Returns server error if recordId or dataSetId are missing.
+          schema:
+            $ref: '#/definitions/500servererror'
     post:
       summary: Create
       operationId: createRecord
@@ -2522,6 +2661,7 @@ paths:
         required: true
         type: string
     get:
+      deprecated: true
       summary: Get for data set
       operationId: findSinks
       tags:
@@ -2536,6 +2676,7 @@ paths:
             items:
               $ref: '#/definitions/sink'
     post:
+      deprecated: true
       summary: Create
       operationId: createSink
       tags:
@@ -2565,6 +2706,7 @@ paths:
     parameters:
       - $ref: '#/parameters/sinkId'
     get:
+      deprecated: true
       summary: Get
       operationId: findSinkById
       tags:
@@ -2577,6 +2719,7 @@ paths:
           schema:
             $ref: '#/definitions/sink'
     delete:
+      deprecated: true
       summary: Delete
       operationId: deleteSinkById
       tags:
@@ -2591,6 +2734,7 @@ paths:
           schema:
             $ref: '#/definitions/sink'
     put:
+      deprecated: true
       summary: Update
       operationId: updateSinkById
       tags:
@@ -2613,6 +2757,7 @@ paths:
     parameters:
       - $ref: '#/parameters/sinkId'
     get:
+      deprecated: true
       summary: Start
       operationId: exportBySinkId
       tags:
@@ -2628,6 +2773,7 @@ paths:
             $ref: '#/definitions/job'
   /api/v1/sink-schedules:
     get:
+      deprecated: true
       summary: Get
       operationId: findSinkSchedules
       tags:
@@ -2642,6 +2788,7 @@ paths:
             items:
               $ref: '#/definitions/exportSchedule'
     post:
+      deprecated: true
       summary: Create
       operationId: createSinkSchedule
       tags:
@@ -2664,6 +2811,7 @@ paths:
     parameters:
       - $ref: '#/parameters/exportScheduleId'
     get:
+      deprecated: true
       summary: Get
       operationId: findSinkScheduleById
       tags:
@@ -2676,6 +2824,7 @@ paths:
           schema:
             $ref: '#/definitions/exportSchedule'
     delete:
+      deprecated: true
       summary: Delete
       operationId: deleteSinkScheduleById
       tags:
@@ -2689,6 +2838,7 @@ paths:
             $ref: '#/definitions/exportSchedule'
   /api/v1/sink-types:
     get:
+      deprecated: true
       summary: List
       operationId: findSinksTypes
       tags:
@@ -2718,6 +2868,7 @@ paths:
     parameters:
       - $ref: '#/parameters/sinkTypeId'
     get:
+      deprecated: true
       summary: Get
       operationId: findSinkTypeById
       tags:
@@ -2742,6 +2893,7 @@ paths:
           description: Job shutdown
   /api/v1/source-instances:
     post:
+      deprecated: true
       summary: Create
       operationId: addSource
       tags:
@@ -2766,6 +2918,7 @@ paths:
     parameters:
       - $ref: '#/parameters/sourceInstanceId'
     get:
+      deprecated: true
       summary: Get
       operationId: findSourceById
       tags:
@@ -2776,6 +2929,7 @@ paths:
           schema:
             $ref: '#/definitions/source'
     delete:
+      deprecated: true
       summary: Delete
       operationId: deleteSourceById
       tags:
@@ -2786,6 +2940,7 @@ paths:
           schema:
             $ref: '#/definitions/source'
     put:
+      deprecated: true
       summary: Update
       operationId: updateSourceById
       tags:
@@ -2804,6 +2959,7 @@ paths:
             $ref: '#/definitions/sourceInstance'
   /api/v1/source-type-descriptions:
     get:
+      deprecated: true
       summary: List
       operationId: findSourceTypes
       tags:
@@ -2883,7 +3039,7 @@ paths:
           schema:
             $ref: '#/definitions/transform'
       responses:
-        '201':
+        '200':
           description: Returns the newly-added transform
           schema:
             $ref: '#/definitions/transform'
@@ -2986,7 +3142,7 @@ paths:
           schema:
             $ref: '#/definitions/transformSchedule'
       responses:
-        '201':
+        '200':
           description: Returns the newly-added transform schedule
           schema:
             $ref: '#/definitions/transformSchedule'
@@ -3052,7 +3208,7 @@ paths:
           description: Returns the transform type
           schema:
             $ref: '#/definitions/transformType'
-  /api/v1/queries/:
+  /api/v1/queries/lucene:
     get:
       summary: Lucene style
       operationId: queryLucene

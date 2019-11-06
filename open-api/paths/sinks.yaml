@@ -6,6 +6,7 @@ parameters:
     type: string
 
 get:
+  deprecated: true
   summary: Get for data set
   operationId: findSinks
   tags: ["Sinks"]
@@ -20,6 +21,7 @@ get:
           $ref: "../api.yaml#/definitions/sink"
 
 post:
+  deprecated: true
   summary: Create
   operationId: createSink
   tags: ["Sinks"]

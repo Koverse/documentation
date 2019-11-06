@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/importFlowIdPath"
 
 post:
+  deprecated: true
   summary: Start
   operationId: funImportFlowById
   tags: ["Import Jobs"]

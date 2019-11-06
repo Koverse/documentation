@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/importFlowIdPath"
 
 get:
+  deprecated: true
   summary: Get by Import Flow
   operationId: findImportSchedules
   tags: ["Import Schedules"]
