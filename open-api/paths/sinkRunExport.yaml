@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/sinkId"
 
 get:
+  deprecated: true
   summary: Start
   operationId: exportBySinkId
   tags: ["Export Jobs"]

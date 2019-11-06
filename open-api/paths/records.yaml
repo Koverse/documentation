@@ -3,7 +3,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/recordId"
 get:
   summary: Get
-  operationId: getRecordById
+  operationId: getRecord
   tags: ["Records"]
   parameters:
     - name: dataSetId
@@ -15,7 +15,7 @@ get:
       in: query
       required: true
   description: |
-        Get a single record by data set id and record id.
+        Get a single record by data set id and record id. (Note: recordIds may have a delimiter that is not valid json)
 
         Note that the Record ID must be known in order to use this method.
         It is intended to be used by applications that need to fetch one record, often one that is related to some other record.
@@ -37,10 +37,10 @@ get:
       #   flatSchema: true
       #   records:
       #     - $ref: "../schemas/recordExample.yaml"
-    404:
-      description: If record not found.
     500:
       description: Returns server error if recordId or dataSetId are missing.
+      schema:
+        $ref: "../api.yaml#/definitions/500servererror"
 
 post:
   summary: Create

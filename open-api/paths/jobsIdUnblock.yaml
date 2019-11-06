@@ -11,4 +11,4 @@ get:
           This will cause the job to be started as soon as cluster resources allow.
   responses:
     200:
-      description: '200 OK'
+      description: Job unblocked
