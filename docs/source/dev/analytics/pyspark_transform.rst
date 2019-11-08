@@ -102,7 +102,7 @@ First we'll make a description file to define our transform and declare its para
    -
        displayName: 'Text field'
        parameterName: 'textField'
-       type: 'collectionField'
+       type: 'string'
  version: '0.1.0'
  supportsIncrementalProcessing: true
 
