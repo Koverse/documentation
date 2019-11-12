@@ -20,3 +20,8 @@ Bug Fixes
 ^^^^^^
 
 - [KC-5909] - Synchronizing index entry and record writes
+
+2.11.2
+^^^^^^
+
+- [KX-839] - Added optional completeValue query parameter to /search/autocomplete/field endpoint
