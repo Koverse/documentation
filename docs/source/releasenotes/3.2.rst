@@ -1,0 +1,16 @@
+.. _Version32ReleaseNotes:
+
+3.2 Release Notes
+==================
+
+Koverse version 3.2 introduces the ability to apply security label parsers to JVM transform outputs.
+
+Koverse 3.2 also introduces an optional query parameter to the /search/autocomplete/field endpoint. When
+set to true, the results will contain the complete text for matching entries rather than just the index
+entries
+
+New Features
+------------
+- [KC-5828] - Developers can apply security label parsers to data frame / dataset JVM transform output
+- [KX-839] - Added optional completeValue query parameter to /search/autocomplete/field endpoint
+
