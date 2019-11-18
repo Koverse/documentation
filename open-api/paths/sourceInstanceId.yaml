@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/sourceInstanceId"
 
 get:
+  deprecated: true
   summary: Get
   operationId: findSourceById
   tags: ["Sources"]
@@ -16,6 +17,7 @@ get:
       #     description: The date/time that the source was last modified
 
 delete:
+  deprecated: true
   summary: Delete
   operationId: deleteSourceById
   tags: ["Sources"]
@@ -26,6 +28,7 @@ delete:
         $ref: "../api.yaml#/definitions/source"
 
 put:
+  deprecated: true
   summary: Update
   operationId: updateSourceById
   tags: ["Sources"]

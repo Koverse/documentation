@@ -1,0 +1,5 @@
+type: string
+description: >
+  An error has occurred.
+example:
+  500 Server Error, No data sets found.

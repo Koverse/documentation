@@ -33,7 +33,7 @@ post:
       schema:
         $ref: "../api.yaml#/definitions/transformSchedule"
   responses:
-    201:
+    200:
       description: Returns the newly-added transform schedule
       schema:
         $ref: "../api.yaml#/definitions/transformSchedule"

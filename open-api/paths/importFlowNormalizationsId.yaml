@@ -3,6 +3,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/normalizationId"
 
 get:
+  deprecated: true
   summary: Get
   operationId: findNormalizationById
   tags: ["Normalizations"]
@@ -14,6 +15,7 @@ get:
         $ref: "../api.yaml#/definitions/normalization"
 
 put:
+  deprecated: true
   summary: Update
   operationId: updateNormalizationById
   tags: ["Normalizations"]
@@ -32,6 +34,7 @@ put:
         $ref: "../api.yaml#/definitions/normalization"
 
 delete:
+  deprecated: true
   summary: Delete
   operationId: deleteNormalization
   tags: ["Normalizations"]

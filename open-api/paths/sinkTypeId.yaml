@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/sinkTypeId"
 
 get:
+  deprecated: true
   summary: Get
   operationId: findSinkTypeById
   tags: ["Sink Types"]

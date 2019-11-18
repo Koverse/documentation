@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/importJobId"
 
 get:
+  deprecated: true
   summary: Shutdown
   operationId: shutdownImportJobById
   tags: ["Import Jobs"]
