@@ -2,7 +2,7 @@ type: object
 required:
   - query
 description: >
-      This object contains the parameters used to issue a query against one or more data sets. The query is defined as a JSON string
+      This object contains the parameters used to issue a query against one or more data sets. The query is defined as a JSON string. The query will return an empty array '[]' if no records are found.
 properties:
   collectionNames:
     type: array

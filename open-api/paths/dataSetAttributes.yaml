@@ -16,5 +16,6 @@ get:
         items:
           $ref: "../api.yaml#/definitions/dataSetAttributes"
     500:
-      description: Data set not found 
-      message: If data set not found message will read 'Could not find database object in method...'
+      description: If data set not found message will read 'Could not find database object in method...'
+      schema:
+        $ref: "../api.yaml#/definitions/500servererror"

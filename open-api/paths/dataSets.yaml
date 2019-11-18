@@ -14,7 +14,6 @@ get:
         type: array
         items:
           $ref: "../api.yaml#/definitions/dataSetMetadata"
-
 post:
   summary: Create
   operationId: createDataSet

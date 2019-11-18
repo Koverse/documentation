@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/importFlowIdPath"
 
 get:
+  deprecated: true
   summary: Get
   operationId: findImportFlowById
   tags: ["Import Flows"]
@@ -17,6 +18,7 @@ get:
       #     description: The date/time that the import flow was last modified
 
 delete:
+  deprecated: true
   summary: Delete
   operationId: deleteImportFlowById
   tags: ["Import Flows"]
@@ -28,6 +30,7 @@ delete:
         $ref: "../api.yaml#/definitions/importFlow"
 
 put:
+  deprecated: true
   summary: Update
   operationId: updateImportFlowById
   tags: ["Import Flows"]

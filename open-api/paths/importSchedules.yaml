@@ -22,6 +22,7 @@ parameters:
       #     description: The date/time that a schedule was last modified
 
 post:
+  deprecated: true
   summary: Create
   operationId: addImportSchedule
   tags: ["Import Schedules"]

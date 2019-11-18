@@ -9,4 +9,4 @@ get:
           Shutdown the specified job.
   responses:
     200:
-      description: '200 OK'
+      description: Shutdown successful

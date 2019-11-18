@@ -2,6 +2,7 @@ parameters:
   - $ref: "../api.yaml#/parameters/exportScheduleId"
 
 get:
+  deprecated: true
   summary: Get
   operationId: findSinkScheduleById
   tags: ["Sink Schedules"]
@@ -18,6 +19,7 @@ get:
       #     description: The date/time that the sink schedule was last modified
 
 delete:
+  deprecated: true
   summary: Delete
   operationId: deleteSinkScheduleById
   tags: ["Sink Schedules"]
