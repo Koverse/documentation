@@ -1,6 +1,7 @@
 parameters:
   - $ref: "../api.yaml#/parameters/importFlowIdPath"
 get:
+  deprecated: true
   summary: Get for an import flow
   tags: ["Normalizations"]
   operationId: findNormalizations
@@ -15,6 +16,7 @@ get:
           $ref: "../api.yaml#/definitions/normalization"
 
 post:
+  deprecated: true
   summary: Create
   tags: ["Normalizations"]
   operationId: addNormalization

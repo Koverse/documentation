@@ -1,4 +1,5 @@
 get:
+  deprecated: true
   summary: List
   operationId: findApplications
   tags: ["Applications"]
@@ -14,6 +15,7 @@ get:
           $ref: "../api.yaml#/definitions/apiClient"
 
 post:
+  deprecated: true
   summary: Create
   operationId: createApplication
   tags: ["Applications"]
@@ -27,7 +29,7 @@ post:
       schema:
         $ref: '../api.yaml#/definitions/apiClient'
   responses:
-    201:
+    200:
       description: Returns the newly created Application
       schema:
         $ref: "../api.yaml#/definitions/apiClient"
