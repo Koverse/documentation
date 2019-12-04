@@ -1,0 +1,32 @@
+.. _Version211ReleaseNotes:
+
+2.11 Release Notes
+==================
+
+Koverse version 2.11 introduces the ability to extend the Koverse UI to allow users to login with a custom web authenticator.
+
+See the new :ref:`Authentication` for background.
+
+Features
+------------
+
+- [KC-5903] - Support login via UI with custom web authenticator
+
+
+Bug Fixes
+---------
+
+2.11.1
+^^^^^^
+
+- [KC-5909] - Synchronizing index entry and record writes
+
+2.11.2
+^^^^^^
+
+- [KX-839] - Added optional completeValue query parameter to /search/autocomplete/field endpoint
+
+2.11.3
+^^^^^^
+
+- [KC-5825] - Fix for importing Avro files
