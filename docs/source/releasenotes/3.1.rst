@@ -38,3 +38,11 @@ Bug Fixes
 - [KC-5962] - Term type detection removed on PySpark transform output
 - [KC-5985] - Error when using Email notifications
 - [KC-5979] - REST API endpoints failing for unrecognized fields
+
+3.1.4
+^^^^^
+
+- [KC-5825] -	Fix for Avro File Parser upload error
+- [KC-5988] - Fix for SquirrelApplication --mode is missing error
+- [KC-5989] - Fix for potential ConcurrentModificationException on import
+
