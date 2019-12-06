@@ -14,3 +14,9 @@ New Features
 - [KC-5828] - Developers can apply security label parsers to data frame / dataset JVM transform output
 - [KX-839] - Added optional completeValue query parameter to /search/autocomplete/field endpoint
 
+3.2.1
+^^^^^
+
+- [KC-5825] -	Fix for Avro File Parser upload error
+- [KC-5988] - Fix for SquirrelApplication --mode is missing error
+- [KC-5989] - Fix for potential ConcurrentModificationException on import
