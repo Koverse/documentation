@@ -20,3 +20,8 @@ New Features
 - [KC-5825] -	Fix for Avro File Parser upload error
 - [KC-5988] - Fix for SquirrelApplication --mode is missing error
 - [KC-5989] - Fix for potential ConcurrentModificationException on import
+
+3.2.2
+^^^^^
+
+- [KC-6011] - Fix for running multiple instances of the same transform concurrently can output zero records
