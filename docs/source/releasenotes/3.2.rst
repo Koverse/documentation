@@ -25,3 +25,10 @@ New Features
 ^^^^^
 
 - [KC-6011] - Fix for running multiple instances of the same transform concurrently can output zero records
+
+3.2.3
+^^^^^
+
+- [KC-6010] - Added logging when record count is incremented in the statistics job
+- [KC-5831] - Added security label parser widget to UI
+- [KC-6019] - Fixed classpath issues on HDP 3.1.4
