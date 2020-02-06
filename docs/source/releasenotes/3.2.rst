@@ -29,6 +29,6 @@ New Features
 3.2.3
 ^^^^^
 
-- [KC-6010] - Add logging when record count is incremented in the statistics job
-- [KC-5831] - Add security label parser widget to UI
-- [KC-6019] - Fix classpath issues on HDP 3.1.4
+- [KC-6010] - Added logging when record count is incremented in the statistics job
+- [KC-5831] - Added security label parser widget to UI
+- [KC-6019] - Fixed classpath issues on HDP 3.1.4
