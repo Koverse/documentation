@@ -31,4 +31,15 @@ New Features
 
 - [KC-6010] - Added logging when record count is incremented in the statistics job
 - [KC-5831] - Added security label parser widget to UI
-- [KC-6019] - Fixed classpath issues on HDP 3.1.4
+- [KC-6019] - Fix for classpath issues on HDP 3.1.4
+
+3.2.4
+^^^^^
+
+- [KC-5891] - Fix for error viewing link for running file upload and kafka source jobs
+- [KC-6007] - Fix for large file timeout in import preview for AWS S3 source
+- [KC-6023] - Fix for NPE in JobService that preventing jobs From running/being updated
+- [KC-6025] - Import files via SFTP
+- [KC-6033] - Report more information on import driver failure
+- [KC-5629] - Fix for import Job Records Processed incorrect in Job History
+- [KC-6016] - New limit query parameter for /v1/search/autocomplete/field REST endpoint
