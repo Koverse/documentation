@@ -483,7 +483,7 @@ paths:
     $ref: paths/dataSetClearDataSet.yaml
   #/api/v1/data-sets/{dataSetId}/flatSchema:
   #  $ref: paths/dataSetFlatSchema.yaml
-  /api/v1/data-sets/{dataSetId}/indexingPolicy:
+  /api/v1/data-sets/{dataSetId}/indexing-policy:
     $ref: paths/dataSetIndexingPolicies.yaml
   /api/v1/data-sets/{dataSetId}/jobs:
     $ref: paths/dataSetJobs.yaml

@@ -73,8 +73,9 @@ properties:
           all fields to be included in records.
   limit:
     type: integer
-    description: The number of results to fetch in this call
-    Note that the query returns max of 20 records by default, if this parameter is not specified.
+    description: >
+          The number of results to fetch in this call
+          Note that the query returns max of 20 records by default, if this parameter is not specified.
   offset:
     type: integer
     description: The number of records in the result set to skip
