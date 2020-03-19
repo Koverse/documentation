@@ -2445,7 +2445,6 @@ paths:
       tags:
         - Records
       parameters:
-        - name: datasetId
         - name: dataSetId
           type: string
           in: query
