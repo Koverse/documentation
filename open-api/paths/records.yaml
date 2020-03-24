@@ -10,10 +10,6 @@ get:
       type: string
       in: query
       required: true
-    - name: recordId
-      type: string
-      in: query
-      required: true
   description: |
         Get a single record by data set id and record id. (Note: recordIds may have a delimiter that is not valid json)
 
