@@ -44,3 +44,9 @@ New Features
 - [KC-6025] - Import files via SFTP
 - [KC-6033] - Report more information on import driver failure
 
+3.2.5
+^^^^^
+
+- [KC-5688] - Koverse UI allows users to see all usernames on the Users tab when permission is removed
+- [KC-6055] - Browser hangs when loading overview for a data set
+
