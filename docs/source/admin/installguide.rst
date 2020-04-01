@@ -175,7 +175,7 @@ Koverse Server Install
 
 To install the Koverse Server from RPM, simply run::
 
- sudo yum localinstall koverse-server-<VERSION>.rpm
+  sudo yum localinstall koverse-server-<VERSION>.rpm
 
 This will install into */opt/koverse-server/* as well as create a script at */etc/init.d/koverse-server* for starting and stopping the process.
 
