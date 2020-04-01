@@ -179,6 +179,12 @@ To install the Koverse Server from RPM, simply run::
 
 This will install into */opt/koverse-server/* as well as create a script at */etc/init.d/koverse-server* for starting and stopping the process.
 
+To enable TLS/SSL add the following JAVA_OPTIONS to */opt/koverse-server/bin/startup.sh:
+
+  JAVA_OPTIONS="$JAVA_OPTIONS -Djavax.net.ssl.enabled=true -Dhttps.protocols=TLSv1.2 -Djdk.tls.client.protocols=TLSv1.2"
+  JAVA_OPTIONS="$JAVA_OPTIONS -Djavax.net.ssl.keyStore=</path/to/>keystore.jks -Djavax.net.ssl.keyStorePassword=<password>"
+  JAVA_OPTIONS="$JAVA_OPTIONS -Dcustom.ssl.trustStore=</path/to/>truststore.jks -Dcustom.ssl.trustStorePassword=<password>"
+
 Koverse Web App Install
 -----------------------
 
@@ -187,6 +193,14 @@ To install the Koverse Web App from RPM, simply run::
   sudo yum localinstall koverse-webapp-<VERSION>.rpm
 
 This will install into */opt/koverse-webapp/* as well as create a script at */etc/init.d/koverse-webapp* for starting and stopping the process.
+
+To enable TLS/SSL add the following JAVA_OPTIONS to */etc/init.d/koverse-webapp:
+
+  JAVA_OPTIONS="$JAVA_OPTIONS -Djavax.net.ssl.enabled=true -Dhttps.protocols=TLSv1.2 -Djdk.tls.client.protocols=TLSv1.2"
+  JAVA_OPTIONS="$JAVA_OPTIONS -Djavax.net.ssl.keyStore=</path/to/>keystore.jks -Djavax.net.ssl.keyStorePassword=<password>"
+  JAVA_OPTIONS="$JAVA_OPTIONS -Dcustom.ssl.trustStore=</path/to/>truststore.jks -Dcustom.ssl.trustStorePassword=<password>"
+
+To enable https, set the https properties according to the Configuration Guide
 
 .. _PostgreSQLSetup:
 

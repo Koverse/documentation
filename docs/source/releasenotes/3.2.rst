@@ -50,3 +50,11 @@ New Features
 - [KC-5688] - Koverse UI allows users to see all usernames on the Users tab when permission is removed
 - [KC-6055] - Browser hangs when loading overview for a data set
 
+3.2.6
+^^^^^
+
+- [KC-4932] - Improve the multiple fields input in the UI
+- [KC-6031] - Thrift API TLS encryption support
+- [KC-6066] - Fix for potential transform errors when Yarn job was successful
+- [KC-6070] - Fix for Koverse Web UI session timeout
+
