@@ -68,7 +68,7 @@ Another key set of configurations, which must be cluster wide, are the max numbe
 
 ulimit -a
 
-It seems Cloudera often takes care of these, per user, in /etc/security/limits.d/<koverse-user>.conf.  However if checking as the koverse user shows defaults of 1024 for each, create a /etc/security/limits.d/<koverse-user>.conf (in this case koverse-user is koverse) with:
+If checking as the koverse user shows defaults of 1024 for each, create a /etc/security/limits.d/<koverse-user>.conf (in this case koverse-user is koverse) with:
 
 * koverse    hard    memlock unlimited
 * koverse    soft    memlock unlimited
