@@ -85,7 +85,5 @@ The number of processes that Koverse uses to read from Accumulo in parallel is c
 
 Additional information on cluster tuning can be found here:
 
-* http://www.cloudera.com/content/www/en-us/documentation/enterprise/5-3-x/topics/cdh_ig_yarn_tuning.html
-* http://blog.cloudera.com/blog/2015/03/how-to-tune-your-apache-spark-jobs-part-2/
 * http://accumulo.apache.org/1.7/accumulo_user_manual.html
 * http://spark.apache.org/docs/latest/running-on-yarn.html
