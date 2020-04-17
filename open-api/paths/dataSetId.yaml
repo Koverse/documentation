@@ -15,10 +15,10 @@ get:
       description: Returns the data set metadata
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
-    500:
+    400:
       description: Returns server error if no data set is found
       schema :
-        $ref: "../api.yaml#/definitions/500servererror"
+        $ref: "../api.yaml#/definitions/400servererror"
 
 put:
   summary: Update
@@ -43,7 +43,7 @@ delete:
       description: Returns the data set metadata with an updated DELETED dataset name.
       schema:
         $ref: "../api.yaml#/definitions/dataSetMetadata"
-    500:
+    400:
       description: If data set not found message will read 'No content to map to Object due to end of input'
       schema:
-        $ref: "../api.yaml#/definitions/500servererror"
+        $ref: "../api.yaml#/definitions/400servererror"

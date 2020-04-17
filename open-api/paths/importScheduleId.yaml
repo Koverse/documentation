@@ -17,6 +17,10 @@ get:
       #   last-modified:
       #     type: string
       #     description: The date/time that the import schedule was last modified
+    400:
+      description: If import flow ID cannot be found.
+      schema:
+        $ref: "../api.yaml#/definitions400servererror"
 
 delete:
   deprecated: true
