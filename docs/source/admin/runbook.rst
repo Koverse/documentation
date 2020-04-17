@@ -82,6 +82,8 @@ Install Koverse Ambari Stack::
 
 Bootstrap
 ^^^^^^^^^^^
+Ensure your disks are formatted at this point.
+
 Setup Ambari and tell it where your java install is located::
 
   ambari-server setup -s -j /usr/lib/jvm/java/
@@ -99,3 +101,27 @@ then post your cluster configuration::
 
   curl -H "X-Requested-By: ambari" -X POST -u admin:admin http://localhost:8080/api/v1/clusters/KoverseCluster -d /home/staging/cluster.json
 Navigate to the Ambari UI on 8080
+
+
+Pyspark Environment Installation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The installation of the python environment can be done on every node of the cluster during the build process.
+
+Install Miniconda::
+
+  sudo mkdir -p ${MINICONDA_DIR}
+  sudo -u koverse bash -c "curl -s https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /home/staging/miniconda3-latest-Linux-x86_64.sh"
+  sudo chmod +x /home/staging//miniconda3-latest-Linux-x86_64.sh
+  sudo bash /home/staging//miniconda3-latest-Linux-x86_64.sh -bu -p /home/koverse/miniconda3
+  sudo chown -R koverse:koverse /home/koverse/miniconda3
+  sudo echo -e "export PATH=\$PATH:/home/koverse/miniconda3/bin" | sudo tee -i /etc/profile.d/miniconda3.sh
+
+Install Python and Koverse Library::
+
+  sudo mkdir -p /opt/koverse-pyspark-env
+  sudo chown -R koverse:koverse /opt/koverse-pyspark-env
+  #yaml file to update environment with all python libraries used
+  sudo -u koverse bash -c "unset SUDO_GID  SUDO_USER SUDO_UID; ${MINICONDA_DIR}/bin/conda create -y --prefix /opt/koverse-pyspark-env python=3.7"
+  sudo -u koverse bash -c "unset SUDO_GID  SUDO_USER SUDO_UID; ${MINICONDA_DIR}/bin/conda install -y --prefix /opt/koverse-pyspark-env numpy pandas scikit-learn matplotlib"
+  sudo -u koverse bash -c "unset SUDO_GID  SUDO_USER SUDO_UID; /opt/koverse-pyspark-env/bin/pip install koverse"
+
