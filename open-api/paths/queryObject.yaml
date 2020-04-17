@@ -59,3 +59,7 @@ post:
         type: array
         items:
           $ref: "../api.yaml#/definitions/dataSetResult"
+    400:
+      description: If data set not found message will read 'No content to map to Object due to end of input'
+      schema:
+        $ref: "../api.yaml#/definitions400servererror"
