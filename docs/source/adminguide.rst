@@ -9,6 +9,6 @@ Administration Guide
   
   admin/infraguide.rst
   admin/installguide.rst
-  admin/opsguide.rst
+  admin/runbook.rst
   admin/tuningguide.rst
   admin/configurationguide.rst
