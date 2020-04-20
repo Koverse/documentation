@@ -52,7 +52,8 @@ Grab Ambari blueprint and cluster configuration down and place in staging direct
     sudo curl -s https://location-where-blueprint-is/x-node-blueprint.json -o /home/staging/blueprint.json
     sudo curl -s https://location-where-blueprint-is/x-node-cluster.json -o /home/staging/cluster.json
 
-Here you can learn more about Ambari `Blueprints and Cluster Connfigurations <https://cwiki.apache.org/confluence/display/AMBARI/Blueprints>`_
+Here you can learn more about Ambari `Blueprints and Cluster Configurations <https://cwiki.apache.org/confluence/display/AMBARI/Blueprints>`_
+
 Grab your bootstrap scripts::
 
     sudo curl -s https://location-where-bootstrap-is/bootstrap.sh -o /home/staging/bootstrap.sh
