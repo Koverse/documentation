@@ -65,6 +65,8 @@ Optional Cloud Formation set up for bootstrap, highly recommended, OS must suppo
 
 
 For more information on AWS CloudFormation look `here <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.Walkthrough.html>`_ and for Azure Cloud Formation Supported OS look `here <https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init>`_
+
+
 Grab Koverse RPMs::
 
   sudo curl https://nexus.koverse.com/nexus/content/repositories/releases/com/koverse/koverse-server/${KOVERSE_VERSION}/koverse-server-${KOVERSE_VERSION}.rpm -o /home/staging/koverse-server-${KOVERSE_VERSION}.rpm
