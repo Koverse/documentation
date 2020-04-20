@@ -55,7 +55,7 @@ Ambari provides REST APIs that are easy to use. Ambari consist of an Ambari Serv
 Prerequisites
 ^^^^^^^^^^^^^^
 
-You can use Ambari whether a system is online or offline you will only need the repositories for downloading all related RPMs. Repos includes the Ambari Server, Agent and Monitoring Packages.
+You can use Ambari whether a system is online or offline, you will only need the repositories for downloading all related RPMs. Repos include the Ambari Server, Agent and Monitoring Packages.
 
 Repositories required
 
