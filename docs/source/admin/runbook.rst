@@ -48,13 +48,13 @@ By default, logging levels are set to "INFO".  If logging levels need to be chan
 Apache Ambari
 --------------
 
-`Apache Ambari <https://ambari.apache.org/>`_ has many features that make it appealing for cluster management; Platform Independent, Pluggable Component, Version Management and Upgrade, Configuration Management, Metrics Visualization and Dashboarding, Complete Visibility to Cluster Health  Extensibility, Failure Recovery and Centralized Security.
-Ambari provides REST APIs that are easy to use. Ambari consist of an Ambari Server/Webpage and Ambari Agents that help to provide the health status of services on the cluster. The Agents run on the nodes which take commands from the server, they also provide heartbeats to the server to let it know which nodes are available for tasks. The agents also collect metrics from the nodes like ram and CPU usage which is presented in the web UI as graphs.
+`Apache Ambari <https://ambari.apache.org/>`_ has many features that make it appealing for cluster management; platform independence, pluggable components, version management and upgrade, configuration management, metrics visualization and dashboarding, complete visibility to cluster health, extensibility, failure recovery and centralized security.
+Ambari provides REST APIs that are easy to use. Ambari consist of an Ambari Server, Webpage and Agents. Agents that help to provide the health status of services on the cluster. The Agents run on the nodes which take commands from the server, they also provide heartbeats to the server to let it know which nodes are available for tasks. The agents also collect metrics from the nodes like RAM and CPU usage which is presented in the web UI as graphs.
 
 Prerequisites
 ^^^^^^^^^^^^^^
 
-You can use Ambari whether a system is online or offline you will only need the Repository for downloading all related RPMs. Repo includes the Ambari Server, Agent and Monitoring Packages.
+You can use Ambari whether a system is online or offline you will only need the repositories for downloading all related RPMs. Repos includes the Ambari Server, Agent and Monitoring Packages.
 
 Repositories required
 
