@@ -1,56 +1,73 @@
-.. _interactiveAnalytics:
+.. _InteractiveAnalytics:
 
 Prototyping Analytics
 =====================
 
-In addition to running transforms to process data sets at scale, Koverse also enables users to perform interactive analysis of data sets at scale via popular tools such as Apache Spark and Jupyter Notebook.
+In addition to running transforms to process data sets at scale, Koverse also enables users to perform interactive analysis of data sets at scale via popular tools such as Apache Spark and Zeppelin Notebook and Spark shells, including pyspark, spark-shell, and sparkR.  Users may want to retrieve and analyze part or a whole data set.  As mentioned  in the “Indexing and Search Guide” users may query the whole system or a set of datasets this can be performed in notebooks and shells.   Many of the examples here will be from a dataset that can be downloaded from here, follow the instructions to upload a dataset to put this into Koverse.
+https://s3.amazonaws.com/koverse-datasets/financial+demo/employees.csv
 
-Using Python with Koverse
--------------------------
 
-Python is a popular interpreted programming language.
+Analytics Setup
+---------------
+Please reference the :ref:`OptionalInstalls` to setup each of the following. The python client and Koverse Spark Data Sourse must be installed before performing these exercises.
 
-Koverse ships with a Python client to allow Python scripts to access the Koverse API.
-The Koverse Python client uses Apache Thrift to communicate with the Koverse server. It is possible to generate clients for other languages as well.
+ * Python Client
+ * Koverse Spark Data Source
+ * Zeppelin
 
-To use the Koverse Python client, do the following::
+API Token
+---------
+For these examples you should also have an API Token, setting this up is as described in the :ref:`ApiTokens` section it should be something like the following image. These examples will be referencing the token.
+Note the hostname and the apiToken.
 
- sudo pip install koverse
- Downloading/unpacking koverse
-  Downloading koverse-X.X.X-py2.py3-none-any.whl (144kB): 144kB downloaded
- Requirement already satisfied (use --upgrade to upgrade): thrift in /Library/Python/2.7/site-packages (from koverse)
- Requirement already satisfied (use --upgrade to upgrade): kafka-python in /Library/Python/2.7/site-packages (from koverse)
- Requirement already satisfied (use --upgrade to upgrade): six in /Library/Python/2.7/site-packages (from kafka-python->koverse)
- Installing collected packages: koverse
- Successfully installed koverse
- Cleaning up...
+- :code:`hostname`: The FQDN of the server running the koverse-server process, this could be 'localhost'
+- :code:`apiToken`: A Koverse API Token that will have the required access to the Data Set being loaded. You can create API Tokens via the Koverse Admin UI. Use the API Token UUID, not its name.
 
-The Koverse Python client can then be used in Python scripts by importing the koverse module::
+  .. image:: /_static/UsageGuide/zeppelinAPIToken2.png
 
- $ python
- Python 2.7.6 (default, Sep  9 2014, 15:04:36)
- [GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
- Type "help", "copyright", "credits" or "license" for more information.
+Launching Pyspark
+-----------------
+In this document we will discuss using Pyspark but these examples can be performed in a notebook as well.  An example of starting the Python Spark shell is seen below, note the datasource should be changed to the data source version and the location where you downloaded the jar file for the Koverse Spark Data Source.
+
+ $ pyspark --jars /home/koverse/<your path>/koverse-spark-datasource-3.2.6.jar
+
+You can also run using the nexus.koverse.com repository.
+
+ $ pyspark --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:3.2.6
+
+Note that at this point the SparkContext :code:`sc` and the SQLContext :code:`sqlContext` are initialized. To load a Koverse Data Set into a DataFrame:
+
+.. code-block:: python
+
+  >>> df = sqlContext.read.format('com.koverse.spark').options(hostname='<your koverse fqdn>', apiToken='<your api token>').load('<your data set name>')
+
+.. code-block:: python
+
+  >>> df = sqlContext.read.format('com.koverse.spark').options(hostname='localhost', apiToken='11111111-11111-1111-1111111111111111').load('employees')
+
+Now you have access to the Koverse Data Set via the Spark DataFrame API.
+
+Note that at this point the SparkContext sc and the SQLContext sqlContext are initialized.   Koverse ships with a Python client to allow Python scripts to access the Koverse API. The Koverse Python client uses Apache Thrift to communicate with the Koverse server. It is possible to generate clients for other languages as well.
+The Koverse Python client can then be used in Python scripts by importing the koverse module:
+
  >>> from koverse import client
+
 
 Connecting to the Koverse Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Python client can connect to the hostname of the Koverse Server (note: this is not the address of the Koverse Web App):
+The Python client can connect to the hostname of the Koverse Server (note: this is not the address of the Koverse Web App) and the authenticatorId and apiTokenId have been created in Koverse:
 
 .. code-block:: python
 
-  >>> client.connect('localhost')
-
-If for some reason the client loses the connection to the Koverse Server, such as when the Koverse Server is restarted, the client can reconnect simply by calling client.connect() again.
-
-Users can authenticate themselves to the Koverse server using their username and base-64 encoded passwords:
-
-.. code-block:: python
-
-  >>> import base64
-  >>> client.authenticateUser('myusername', base64.b64encode('mypassword'))
-  >>>
+ from koverse import client
+ from koverse.thriftgen.security.ttypes import TAuthInfo
+ client.connect('localhost')
+ client.auth = TAuthInfo()
+ client.auth.authenticatorId = 'zeppelin'
+ client.auth.apiTokenId = '11111111-11111-1111-1111111111111111'
+ client.auth.externalTokens = []
+ client.auth.externalGroups = []
 
 If the authentication is unsuccessful an exception is raised:
 
@@ -69,29 +86,32 @@ If the authentication is unsuccessful an exception is raised:
 Querying Koverse Data Sets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Koverse Python client can be used to interactively query data sets, fetch samples, create data sets and run transforms.
+The Koverse Python Client can be used to interactively query data sets, fetch samples, create data sets and run transforms.
 
-To query one or more data sets, use the client's query() method. In this example, we'll query Koverse for any data set that has a value above 100 in a field named 'Close'.
+To query one or more data sets, use the client's query() method. In this example, we’ll query Koverse for any data set that has a value “INTR-345” in a field named ‘name’.
 
 .. code-block:: python
 
-  >>> results = client.query({'Close': {'$gt': 100.0}})
-  >>> len(results)
-  736
+  >>> results = client.query({'orgCode': 'INTR-345'})
+  >>> print("Datasets Containing query",len(results))
+  >>> print("Number of records in first dataset",len(list(results[0].records)))
+  Datasets Containing query 1
+  Number of records in first dataset 19
 
 Results are returned as a list of Python dicts, each representing a record from a Koverse data set:
 
 .. code-block:: python
 
   >>> import pprint
-  >>> pprint.pprint(results[0])
-  {'AdjClose': 34.9,
-  'Close': 256.88,
-  'Date': time.struct_time(tm_year=42304, tm_mon=11, tm_mday=6, tm_hour=0, tm_min=0, tm_sec=0, tm_wday=6, tm_yday=311, tm_isdst=0),
-  'High': 267.88,
-  'Low': 199.25,
-  'Open': 263.84,
-  'Volume': 236228300}
+  >>> pprint.pprint(list(results[0].records)[0])
+  {'businessUnit': 'IN',
+ 'hireDate': time.struct_time(tm_year=45199, tm_mon=12, tm_mday=31, tm_hour=0,   tm_min=3, tm_sec=20, tm_wday=4, tm_yday=365, tm_isdst=0),
+ 'name': 'James Barlow',
+ 'orgCategory': 'INTR',
+ 'orgCategoryDescription': 'Investments - Trading',
+ 'orgCode': 'INTR-345',
+ 'traderId': 'TRD0050299'}
+
 
 Koverse records contain fields and values. Values may be of a simple type such as int and date, but may also contain lists or dicts.
 
@@ -99,7 +119,7 @@ To query a specific set of data sets, specify an optional parameter with a list 
 
 .. code-block:: python
 
-  >>> client.query({'Close': {'$gt': 100.0}}, ['stocks'])
+  >>> results = client.query({'orgCode': 'INTR-345'}, ['employees'])
 
 or, by using the name parameter 'datasets':
 
@@ -132,16 +152,27 @@ Clients can also request that the Koverse Server return only a subset of the fie
 Fetching Data Set Samples
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Because Python runs on a single machine, and because Koverse data sets may contain a large volume of records, it can be useful to
-work with a sample of a data set's records, especially when building statistical models designed to be trained on a representative sample.
-
+Koverse data sets may contain a large volume of records, it can be useful to work with a sample of a data set’s records, especially when building statistical models designed to be trained on a representative sample.
 Koverse maintains representative samples for all data sets by default. These samples can be retrieved by the client using the getSamples() method:
 
 .. code-block:: python
 
-  >>> samples = client.getSamples('stocks')
-  >>> len(samples)
-  1000
+  >>> samples = client.getSamples(dataset = 'employees', maxRecords=100, removeByteArrays=False, maxStringLength=100)
+  >>> pprint.pprint(list(samples))
+  [{'businessUnit': 'IN',
+  'hireDate': time.struct_time(tm_year=40242, tm_mon=4, tm_mday=22, tm_hour=20, tm_min=3, tm_sec=20, tm_wday=4, tm_yday=112, tm_isdst=0),
+  'name': 'Charde Moore',
+  'orgCategory': 'INTR',
+  'orgCategoryDescription': 'Investments - Trading',
+  'orgCode': 'INTR-345',
+  'traderId': 'TRD0050376'},
+ {'businessUnit': 'PB',
+  'hireDate': time.struct_time(tm_year=40008, tm_mon=8, tm_mday=22, tm_hour=16, tm_min=20, tm_sec=0, tm_wday=4, tm_yday=235, tm_isdst=0),
+  'name': 'Evelyn Carr',
+  'orgCategory': 'PBCS',
+  'orgCategoryDescription': 'Private Banking - Client Services',
+  'orgCode': 'PBCS-67',
+  'traderId': 'TRD0050130'},
 
 
 ..
@@ -301,47 +332,13 @@ Koverse maintains representative samples for all data sets by default. These sam
   The Python client can also be used in the context of Python tools such as iPython Notebook (http://ipython.org/notebook.html).
   Simply use the same methods described above in iPython Notebooks.
 
-Koverse Spark Data Source
--------------------------
-
-The Koverse Spark Data Source provides an easy way to load a Koverse Data Set as a Spark DataFrame for interactive analysis in Spark shells, including pyspark, spark-shell, and sparkR. To reference the Koverse Spark Data Source package, use the following coordinates::
-
- group: com.koverse
- artifactId: koverse-spark-datasource
- version: 2.1.8
-
-This package can be added to Spark using the :code:`--packages` command line option when also referencing the Koverse Maven repository. For example, to include it when starting the spark shell::
-
-  $ spark-shell --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
-
-Alternatively you can download the koverse-spark-datasource JAR file from the Maven repository and reference it with the :code:`--jars` option.
-
-Options
-
-- :code:`hostname`: The FQDN of the server running the koverse-server process
-- :code:`apiToken`: A Koverse API Token that will have the required access to the Data Set being loaded. You can create API Tokens via the Koverse Admin UI. Use the API Token UUID, not its name.
-
-PySpark
---------
-
-An example of starting the Python Spark shell is seen below::
-
-  $ pyspark --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
-
-Note that at this point the SparkContext :code:`sc` and the SQLContext :code:`sqlContext` are initialized. To load a Koverse Data Set into a DataFrame:
-
-.. code-block:: python
-
-  >>> df = sqlContext.read.format('com.koverse.spark').options(hostname='<your koverse fqdn>', apiToken='<your api token>').load('<your data set name>')
-
-Now you have access to the Koverse Data Set via the Spark DataFrame API.
 
 Spark Shell (Scala)
 ---------------------
 
 An example of starting the Scala Spark shell is seen below::
 
- $ spark-shell --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
+ $ spark-shell --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:3.2.6
 
 Like with the PySpark shell, at this point the SparkContext :code:`sc` and the SQLContext :code:`sqlContext` are initialized. To load a Koverse Data Set into a DataFrame::
 
@@ -352,72 +349,18 @@ SparkR
 
 An example of starting the R Spark shell is seen below. Note, this has the prerequisite of the R runtime already being installed::
 
-  $ sparkR --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
+  $ sparkR --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:3.2.6
 
 To load a Koverse Data Set into a DataFrame::
 
   df <- read.df(sqlContext, "com.koverse.spark", hostname="<your koverse fqdn>", apiToken="<your api token>", path="<your data set name")
 
-Jupyter Notebook
-------------------
-
-`Jupyter <http://jupyter.org/>`_ is a development tool that allows users to create notebooks containing comments and code using different programming languages/environments call kernels. This example will show how to use a Jupyter notebook that leverages the Koverse Spark Data Source in Python. Juypter requires Python 2.7 or Python 3.3+. For simplicity, this example shows how to install the required Python runtime and Jupyter via `Anaconda <https://www.continuum.io/downloads>`_ on a single node. For multi-node clusters, the required Python runtime must be available throughout your cluster so Spark can use it when executing your code.
-
-Setup
-
-* Download the Anaconda installer for Python 2.7 https://repo.continuum.io/archive/Anaconda2-4.2.0-Linux-x86_64.sh
-* Run the installer. This does not need to be done by the root user :code:`bash Anaconda2-4.2.0-Linux-x86_64.sh` Follow the prompts and choose the location of the install
-
-* Set the following environment variables based on the Anaconda home directory chosen in the previous step::
-
-  $ export PYSPARK_DRIVER_PYTHON=$ANACONDA_HOME/bin/jupyter
-  $ export PYSPARK_DRIVER_PYTHON_OPTS="notebook --NotebookApp.open_browser=False --NotebookApp.ip='*' --NotebookApp.port=8880"
-  $ export PYSPARK_PYTHON=$ANACONDA_HOME/bin/python
-
-* Create a directory where you want to save your Jupyter notebook files and change into this notebook directory.
-* Run the following command to start Jupyter::
-
-  $ pyspark --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:2.1.8
-
-* Go to http://notebook-server:8880 and from the *New* dropdown, select *Python [default]*. This will launch the Spark driver and just like in the PySpark shell the SparkContext :code:`sc` and the SQLContext :code:`sqlContext` are initialized and available in your notebok. You can now access Koverse Data Sets using the Spark Data Source as seen in the screenshot below.
-
-.. image:: /_static/UsageGuide/jupyterPySpark.png
-
 Apache Zeppelin
 ------------------
 
 Apache Zeppelin is a notebook tool that allows developers to create code and comments in an interactive manner without
-requiring a full development environment.  It supports a variety of interpreters for different programming languages.  This
-documentation will detail how to use Apache Zeppelin with Scala to analyze data in Koverse via the Koverse Spark Data Source.
-
-Setup
-
-* Apache Spark 1.6 is required by Zeppelin to work with the Koverse Spark Data Source, so this will need to be available on your cluster.
-* The Koverse Spark Data Source is not distributed as part of the core product, so you will need to download the correct JAR file for your version of Koverse from http://nexus.koverse.com/nexus/content/repositories/releases/com/koverse/koverse-spark-datasource/
-  This JAR file will need to be placed on the system where Zeppelin will run and the operating system user running Zeppelin will need to be able to access it.  For example, this shows downloading the file for Koverse 2.1.10 and placing it in the /home/zeppelin directory::
-
-    cd /home/zeppelin
-    wget http://nexus.koverse.com/nexus/content/repositories/releases/com/koverse/koverse-spark-datasource/2.1.10/koverse-spark-datasource-2.1.10.jar
-    chown zeppelin:zeppelin /home/zeppelin/koverse-spark-datasource-2.1.10.jar
-
-* Zeppelin an Ambari stack available in HDP 2.5 and later to allow for easy integration into these common control panels.  There are instructions at https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_zeppelin-component-guide/content/ch_installation.html for installing Zeppelin using on HDP 2.5 and later.
-
-* If you need to install Zeppelin manually, you can follow the instructions at https://zeppelin.apache.org/docs/0.6.2/install/install.html to install it from source:
-
-* Once Zeppelin is installed, you will need to configure Zeppelin to connect to the Koverse data source. Edit the zeppelin-env.sh file and add the location of the Koverse Spark Data Source JAR to the SPARK_SUBMIT_OPTIONS variable, for example::
-
-    export SPARK_SUBMIT_OPTIONS="--jars /home/zeppelin/koverse-spark-datasource-2.1.10.jar"
-
-  Restart Zeppelin to make these configuration changes active.
-* To authenticate from Zeppelin to Koverse, you will need to create an API token in Koverse and assign it a group with permissions to the data sets you wish to access from Zeppelin.
-
-  .. image:: /_static/UsageGuide/zeppelinAPIToken1.png
-
-Once the API token is created, click on it to see the token string to use.
-
-  .. image:: /_static/UsageGuide/zeppelinAPIToken2.png
-
-* You can now proceed with creating Zeppelin notebooks that access Koverse. Simply create a new notebook and then create a new data frame using the Koverse Spark Data Source as follows::
+requiring a full development environment.  Refer to the :ref:`OptionalInstalls` to install Zeppelin.
+You can now proceed with creating Zeppelin notebooks that access Koverse. Simply create a new notebook and then create a new data frame using the Koverse Spark Data Source as follows::
 
     // Connect to the Koverse Spark Data Source on localhost and create a data frame using the data set named "employees"
     val df = sqlContext.read.format("com.koverse.spark").option("hostname", "localhost").option("apiToken", "99ff62de-42ac-4b8b-b7dd-79b02bb50da2").load("employees")
