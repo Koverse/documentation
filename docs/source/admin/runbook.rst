@@ -123,7 +123,7 @@ Copy the entire koverse-server and koverse-webapp directories - specifically the
 
 **Add-ons**
 
-Koverse Addons are located in HDFS in the /koverse/kv/addons directory. Use`Hadoop's Distributed Copy (discp) <https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html>`_ to copy the addons to your selected backup storage account.
+Koverse Addons are located in HDFS in the /koverse/kv/addons directory. Use `Hadoop's Distributed Copy (discp) <https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html>`_ to copy the addons to your selected backup storage account.
 
 
 
@@ -150,7 +150,7 @@ When systems do not depend on each other they can be started at the same time.
 1. Coordination Layer - these can be started first after system boot.
 	* PostgreSQL
 	* ZooKeeper
-  * HDFS JournalNodes (High Availability (HA) Configuration)
+	* HDFS JournalNodes (High Availability (HA) Configuration)
 
 2. Data Storage - these can be started second after system boot.
 	* HDFS DataNodes
@@ -190,9 +190,9 @@ Processes should be stopped in reverse of the startup layer order.
 	* HDFS NameNode
 
 4. Coordination Layer
-   * ZooKeeper
-	 * PostgreSQL
-   * HDFS JournalNodes (High Availability (HA) Configuration)
+	* ZooKeeper
+	* PostgreSQL
+	* HDFS JournalNodes (High Availability (HA) Configuration)
 
 
 If a process in say, the Data Storage or Coordination Layer, is stopped before all processes in the Data Services and Application Layers, system state may become unstable or corrupt.
