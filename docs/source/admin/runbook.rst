@@ -123,7 +123,7 @@ Copy the entire koverse-server and koverse-webapp directories - specifically the
 
 **Add-ons**
 
-Koverse Addons are located in HDFS in the /koverse/kv/addons directory. Use Hadoop's Distributed Copy (discp) to copy the addons to your selected backup storage account.
+Koverse Addons are located in HDFS in the /koverse/kv/addons directory. Use`Hadoop's Distributed Copy (discp) <https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html>`_ to copy the addons to your selected backup storage account.
 
 
 
