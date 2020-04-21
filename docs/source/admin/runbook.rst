@@ -118,7 +118,13 @@ Koverse Tables of Interest
 
 **Configuration Files**
 
-Copy the entire koverse-server directory - specifically the /conf directory must be included.
+Copy the entire koverse-server and koverse-webapp directories - specifically the /conf directory must be included.
+
+
+**Add-ons**
+
+Koverse Addons are located in HDFS in the /koverse/kv/addons directory. Use Hadoop's Distributed Copy (discp) to copy the addons to your selected backup storage account.
+
 
 
 Distributed System Operations
