@@ -13,7 +13,7 @@ As mentioned in the :ref:`InstallGuide`, the two Koverse software components can
 	service koverse-server stop|start|status
 	service koverse-webapp stop|start|status
 
-Both the koverse-server and koverse-webapp processes are configured to run as the 'koverse' user.
+Both the koverse-server and koverse-webapp processes are configured to run as the 'koverse' user. If using Apache Ambari for management, it is recommended that an admin can go to the Ambari webpage and select the Koverse to start and stop services. 
 
 Logging
 ^^^^^^^
