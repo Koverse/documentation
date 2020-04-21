@@ -69,4 +69,5 @@ New Features
 - [KC-6076] - S3 Source now hides Secret Key parameter
 - [KC-6088] - Fix for User changing their password throws error unless they have "Create and remove users and groups" permission
 - [KC-6111] - Fix for transforms with "Only new data" selected not always working
+- [KC-6146] - Fix for TLS client certificate authentication to webapp not working with user specified trust store
 
