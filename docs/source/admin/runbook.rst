@@ -99,6 +99,7 @@ Koverse relies on Accumulo for data storage, PostgreSQL for metadata storage, an
 Use the `pg_dump <http://www.postgresql.org/docs/9.1/static/backup-dump.html>`_ command. To restore, simply re-create the postgres database from the backup.
 
 **Accumulo**
+
 Use the `Accumulo Export Tables <http://accumulo.apache.org/1.6/examples/export.html>`_ feature to backup the "kv_*" tables::
 
   root@test17 table1> clonetable table1 table1_exp
@@ -113,6 +114,7 @@ Koverse Tables of Interest
 * kv_samples
 * kv_field_stats
 * kv_schema
+
 
 **Configuration Files**
 
