@@ -30,7 +30,7 @@ By default, logging levels are set to "INFO".  If logging levels need to be chan
 #. Change the Log4J configuration as needed.
 #. Restart Koverse Server (If you do not restart, the new log level property will not take effect.)
 
-Additional logs may be found in */opt/koverse-server/logs/server.err* and */opt/koverse-server/logs/server.out*. These files are where the stderr and stdout of the Koverse Server process are redirected to and may contain messages, especially in the case of fatal startup issues. Additionally, the server.err file contains the output of any Spark drivers that run and may be useful in debugging issues with Spark Transforms.
+Additional logs may be found in */var/log/koverse-server/stderr* and */var/log/koverse-server/stdout*. These files are where the stderr and stdout of the Koverse Server process are redirected to and may contain messages, especially in the case of fatal startup issues. Additionally, the server.err file contains the output of any Spark drivers that run and may be useful in debugging issues with Spark Transforms.
 
 Koverse Web App Logging
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,7 +73,7 @@ To monitor the cluster health you can view the service panel. The green light in
 
 To view the cluster meterics go to the Dashboard view on the Ambari Webpage. There you can customize and view various useful information like HDFS Utilization, CPU/Network/Memory Usage and Cluster Load.
 
-.. image:: /_static/Runbook/image2.png
+.. image:: /_static/Runbook/image4.png
 
 For more on managing cluster health see `here <https://docs.cloudera.com/HDPDocuments/Ambari-2.7.5.0/managing-and-monitoring-ambari/content/amb_view_cluster_health.html>`_
 
@@ -87,7 +87,7 @@ Ambari uses the service indicators to convey the status of a service, when issue
 
 A user can also set up email or slack alerting that is customizable.
 
-.. image:: /_static/Runbook/image4.png
+.. image:: /_static/Runbook/image2.png
 
 
 Backup and Recovery
@@ -99,8 +99,20 @@ Koverse relies on Accumulo for data storage, PostgreSQL for metadata storage, an
 Use the `pg_dump <http://www.postgresql.org/docs/9.1/static/backup-dump.html>`_ command. To restore, simply re-create the postgres database from the backup.
 
 **Accumulo**
+Use the `Accumulo Export Tables <http://accumulo.apache.org/1.6/examples/export.html>`_ feature to backup the "kv_*" tables::
 
-Use the `Accumulo Export Tables <http://accumulo.apache.org/1.6/examples/export.html>`_ feature to backup the "kv_*" tables.
+  root@test17 table1> clonetable table1 table1_exp
+  root@test17 table1> offline table1_exp
+  root@test17 table1> exporttable -t table1_exp /tmp/table1_export
+
+
+Koverse Tables of Interest
+
+* kv_index
+* kv_record
+* kv_samples
+* kv_field_stats
+* kv_schema
 
 **Configuration Files**
 
