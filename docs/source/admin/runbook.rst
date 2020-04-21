@@ -147,19 +147,21 @@ Total System Startup
 There is an order to which the underlying systems should be brought online.
 When systems do not depend on each other they can be started at the same time.
 
-1. Data Storage and Coordination Layer - these can be started first after system boot.
+1. Coordination Layer - these can be started first after system boot.
+	* PostgreSQL
+	* ZooKeeper
+
+2. Data Storage - these can be started second after system boot.
 	* HDFS DataNodes
 	* HDFS NameNode
-	* ZooKeeper
-	* PostgreSQL
 
-2. Data Services Layer - all of these depend on one or more processes in the Storage and Coordination Layer.
+3. Data Services Layer - all of these depend on one or more processes in the Storage and Coordination Layer.
 	* YARN ResourceManager
 	* YARN NodeManagers
 	* Accumulo Tablet Servers
 	* Accumulo Master
 
-3. Application Layer - all of these depend on one or more process in the Data Services Layer
+4. Application Layer - all of these depend on one or more process in the Data Services Layer
 	* Accumulo Monitor
 	* Accumulo Garbage Collector
 	* Koverse Server
@@ -182,13 +184,15 @@ Processes should be stopped in reverse of the startup layer order.
 	* Accumulo Tablet Servers
 	* Accumulo Master
 
-3. Data Storage and Coordination Layer
+3. Data Storage Layer
 	* HDFS DataNodes
 	* HDFS NameNode
-	* ZooKeeper
-	* PostgreSQL
 
-If a process in say, the Data Storage and Coordination Layer, is stopped before all processes in the Data Services and Application Layers, system state may become unstable or corrupt.
+4. Coordination Layer
+   * ZooKeeper
+	 * PostgreSQL
+
+If a process in say, the Data Storage or Coordination Layer, is stopped before all processes in the Data Services and Application Layers, system state may become unstable or corrupt.
 All processes in one layer should be stopped before stopping any processes in the next layer.
 
 Sometimes a single worker process in a lower layer can be stopped and restarted without stopping higher layers.
