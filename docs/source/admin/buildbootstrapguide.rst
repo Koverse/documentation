@@ -77,6 +77,12 @@ Install Koverse then clean up rpms after::
     sudo yum install -y /home/staging/koverse-server-$KOVERSE_VERSION.rpm
     sudo yum install -y /home/staging/koverse-webapp-$KOVERSE_VERSION.rpm
     sudo rm -f /home/staging/*.rpm
+
+Update limits.d configuration for Koverse and Accumulo::
+
+  sudo curl -s https://s3.amazonaws.com/koverse-bdaas/koverse.conf -o /etc/security/limits.d/koverse.conf
+  sudo curl -s https://s3.amazonaws.com/koverse-bdaas/accumulo.conf -o /etc/security/limits.d/accumulo.conf
+
 Install Koverse Ambari Stack::
 
   sudo mkdir /var/lib/ambari-server/resources/stacks/HDP/3.1/services/KOVERSE
