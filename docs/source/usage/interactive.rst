@@ -27,11 +27,15 @@ Note the hostname and the apiToken.
 
 Launching Pyspark
 -----------------
-In this document we will discuss using Pyspark but these examples can be performed in a notebook as well.  An example of starting the Python Spark shell is seen below, note the datasource should be changed to the data source version and the location where you downloaded the jar file for the Koverse Spark Data Source.
+In this document we will discuss using Pyspark but these examples can be performed in a notebook as well.  An example of starting the Python Spark shell is seen below, note the datasource should be changed to the data source version and the location where you downloaded the jar file for the Koverse Spark Data Source:
+
+.. code-block:: python
 
  $ pyspark --jars /home/koverse/<your path>/koverse-spark-datasource-3.2.6.jar
 
 You can also run using the nexus.koverse.com repository.
+
+.. code-block:: python
 
  $ pyspark --repositories http://nexus.koverse.com/nexus/content/groups/public/ --packages com.koverse:koverse-spark-datasource:3.2.6
 
@@ -47,14 +51,14 @@ Note that at this point the SparkContext :code:`sc` and the SQLContext :code:`sq
 
 Now you have access to the Koverse Data Set via the Spark DataFrame API.
 
-Note that at this point the SparkContext sc and the SQLContext sqlContext are initialized.   Koverse ships with a Python client to allow Python scripts to access the Koverse API. The Koverse Python client uses Apache Thrift to communicate with the Koverse server. It is possible to generate clients for other languages as well.
+Connecting to the Koverse Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Note that at this point the SparkContext sc and the SQLContext sqlContext are initialized.   Koverse ships with a Python client to allow Python scripts to access the Koverse API. The Koverse Python client uses Apache Thrift to communicate with the Koverse server. It is possible to generate clients for other languages as well. Follows instructions in :ref:`OptionalInstalls` to get python client set up.
 The Koverse Python client can then be used in Python scripts by importing the koverse module:
 
  >>> from koverse import client
 
-
-Connecting to the Koverse Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Python client can connect to the hostname of the Koverse Server (note: this is not the address of the Koverse Web App) and the authenticatorId and apiTokenId have been created in Koverse:
 
@@ -86,7 +90,7 @@ If the authentication is unsuccessful an exception is raised:
 Querying Koverse Data Sets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Koverse Python Client can be used to interactively query data sets, fetch samples, create data sets and run transforms.
+The Koverse Python Client can be used to interactively query data sets, fetch samples, create data sets and run transforms. For additional information about queries see :ref:`IndexSearchGuide`
 
 To query one or more data sets, use the client's query() method. In this example, we’ll query Koverse for any data set that has a value “INTR-345” in a field named ‘name’.
 
@@ -369,3 +373,39 @@ You can now proceed with creating Zeppelin notebooks that access Koverse. Simply
   using the sample bank employee data available at https://s3.amazonaws.com/koverse-datasets/financial+demo/employees.csv
 
   .. image:: /_static/UsageGuide/zeppelinNotebook.png
+
+Writing Data to Koverse
+------------------------
+
+The examples above describe fetching data, or querying a dataset.  Koverse also provides the ability to write back to a new dataset.  This allows you fetch data, transform it, then write it back.
+The paragraphs below are inside a Zeppelin, but they could also be done in Pyspark or other shells.   The first paragraph is retrieving data from the employees table the same way it was done in examples above.
+
+  .. image:: /_static/UsageGuide/baseDataFrame.png
+
+Next this paragraph shows manipulating this dataframe and selecting a subset of the columns, and adding one column.
+
+  .. image:: /_static/UsageGuide/newDataframe.png
+
+Then just as you retrieved data from Koverse it can be easily written to Koverse as well, note the mode::
+
+  %pyspark
+  df2.write.format('com.koverse.spark').options(hostname='localhost', apiToken='11111111-11111111-11111111-11111111').mode('Overwrite').save('employeesSalary')
+
+Now this can be used inside of Koverse, and if indexing is set it can be queried like any other dataset.
+
+  .. image:: /_static/UsageGuide/koverseScreen2.png
+
+SQL on Koverse
+------------------------
+
+Often a user may need to do some Spark SQL on a dataset inside a notebook like Zeppelin.
+In the two paragraphs below you can see how a dataset can be registered then used in a sql query generating a Pie Chart.
+
+First register the temp table, this is using the df1 that was created above::
+
+  %pyspark
+  df1.registerTempTable("EmployeeData")
+
+Then add a SQL query and using the built in functionality to create a pie chart.
+
+  .. image:: /_static/UsageGuide/piechart.png
