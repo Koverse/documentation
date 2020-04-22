@@ -28,7 +28,6 @@ A Koverse cluster relies on the following software infrastructure
 | Oracle Java      | 1.8 or 1.9       |
 +------------------+------------------+
 
-Cloudera parcels are available for CDH versions 5.5 and later.
 
 Koverse leverages Hadoop MapReduce and Spark for data processing and analytics, but these components run as applications on YARN, so besides some very lightweight Job History servers, they don't require any running infrastructure besides YARN.
 
