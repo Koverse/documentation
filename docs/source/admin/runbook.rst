@@ -1,7 +1,7 @@
-.. _Ops Guide:
+.. _Run book:
 
-Operations Guide
-============================
+Run Book
+=============
 
 Koverse Operations
 ------------------
@@ -13,7 +13,7 @@ As mentioned in the :ref:`InstallGuide`, the two Koverse software components can
 	service koverse-server stop|start|status
 	service koverse-webapp stop|start|status
 
-Both the koverse-server and koverse-webapp processes are configured to run as the 'koverse' user.
+Both the koverse-server and koverse-webapp processes are configured to run as the 'koverse' user. If using Apache Ambari for management, it is recommended that an admin can go to the Ambari webpage and select the Koverse to start and stop services.
 
 Logging
 ^^^^^^^
@@ -30,7 +30,7 @@ By default, logging levels are set to "INFO".  If logging levels need to be chan
 #. Change the Log4J configuration as needed.
 #. Restart Koverse Server (If you do not restart, the new log level property will not take effect.)
 
-Additional logs may be found in */opt/koverse-server/logs/server.err* and */opt/koverse-server/logs/server.out*. These files are where the stderr and stdout of the Koverse Server process are redirected to and may contain messages, especially in the case of fatal startup issues. Additionally, the server.err file contains the output of any Spark drivers that run and may be useful in debugging issues with Spark Transforms.
+Additional logs may be found in */var/log/koverse-server/stderr* and */var/log/koverse-server/stdout*. These files are where the stderr and stdout of the Koverse Server process are redirected to and may contain messages, especially in the case of fatal startup issues. Additionally, the server.err file contains the output of any Spark drivers that run and may be useful in debugging issues with Spark Transforms.
 
 Koverse Web App Logging
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,6 +45,51 @@ By default, logging levels are set to "INFO".  If logging levels need to be chan
 #. Restart Koverse Web App (If you do not restart, the new log level property will not take effect.)
 
 
+Apache Ambari
+--------------
+
+`Apache Ambari <https://ambari.apache.org/>`_ has many features that make it appealing for cluster management; platform independence, pluggable components, version management and upgrade, configuration management, metrics visualization and dashboarding, complete visibility to cluster health, extensibility, failure recovery and centralized security.
+
+Ambari provides REST APIs that are easy to use. Ambari consist of an Ambari Server, Webpage and Agents. Agents help to provide the health status of services on the cluster. The Agents run on the nodes which take commands from the server, they also provide heartbeats to the server to let it know which nodes are available for tasks. The agents also collect metrics from the nodes like RAM and CPU usage which is presented in the web UI as graphs.
+
+Prerequisites
+^^^^^^^^^^^^^^
+
+You can use Ambari whether a system is online or offline, you will only need the repositories for downloading all related RPMs. Repos include the Ambari Server, Agent and Monitoring Packages.
+
+Repositories required
+
+* HDP ( Hadoop packages including full stack for Hadoop Ecosystem )
+* HDP_UTIL ( Utility packages for Ambari include HDP, monitoring, compression, rrd, etc )
+* EPEL ( Extra Packages for Enterprise Linux )
+
+
+Ambari Health Info
+^^^^^^^^^^^^^^^^^^^
+
+To monitor the cluster health you can view the service panel. The green light indicates that the service is up and running successfully.
+
+.. image:: /_static/Runbook/image1.png
+
+To view the cluster meterics go to the Dashboard view on the Ambari Webpage. There you can customize and view various useful information like HDFS Utilization, CPU/Network/Memory Usage and Cluster Load.
+
+.. image:: /_static/Runbook/image4.png
+
+For more on managing cluster health see `here <https://docs.cloudera.com/HDPDocuments/Ambari-2.7.5.0/managing-and-monitoring-ambari/content/amb_view_cluster_health.html>`_
+
+
+Ambari Alerts
+^^^^^^^^^^^^^^
+
+Ambari uses the service indicators to convey the status of a service, when issues arise you can view detailed information on the Alerts page.
+
+.. image:: /_static/Runbook/image3.png
+
+A user can also set up email or slack alerting that is customizable.
+
+.. image:: /_static/Runbook/image2.png
+
+
 Backup and Recovery
 ^^^^^^^^^^^^^^^^^^^
 Koverse relies on Accumulo for data storage, PostgreSQL for metadata storage, and a set of configuration files. A production backup strategy must incorporate all three. Here are some suggestions for each.
@@ -55,11 +100,31 @@ Use the `pg_dump <http://www.postgresql.org/docs/9.1/static/backup-dump.html>`_ 
 
 **Accumulo**
 
-Use the `Accumulo Export Tables <http://accumulo.apache.org/1.6/examples/export.html>`_ feature to backup the "kv_*" tables.
+Use the `Accumulo Export Tables <http://accumulo.apache.org/1.6/examples/export.html>`_ feature to backup the "kv_*" tables::
+
+  root@test17 table1> clonetable table1 table1_exp
+  root@test17 table1> offline table1_exp
+  root@test17 table1> exporttable -t table1_exp /tmp/table1_export
+
+
+Koverse Tables of Interest
+
+* kv_index
+* kv_record
+* kv_samples
+* kv_field_stats
+* kv_schema
+
 
 **Configuration Files**
 
-Copy the entire koverse-server directory - specifically the /conf directory must be included.
+Copy the entire koverse-server and koverse-webapp directories - specifically the /conf directory must be included.
+
+
+**Add-ons**
+
+Koverse Addons are located in HDFS in the /koverse/kv/addons directory. Use `Hadoop's Distributed Copy (discp) <https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html>`_ to copy the addons to your selected backup storage account.
+
 
 
 Distributed System Operations
@@ -82,19 +147,22 @@ Total System Startup
 There is an order to which the underlying systems should be brought online.
 When systems do not depend on each other they can be started at the same time.
 
-1. Data Storage and Coordination Layer - these can be started first after system boot.
+1. Coordination Layer - these can be started first after system boot.
+	* PostgreSQL
+	* ZooKeeper
+	* HDFS JournalNodes (High Availability (HA) Configuration)
+
+2. Data Storage - these can be started second after system boot.
 	* HDFS DataNodes
 	* HDFS NameNode
-	* ZooKeeper
-	* PostgreSQL
 
-2. Data Services Layer - all of these depend on one or more processes in the Storage and Coordination Layer.
+3. Data Services Layer - all of these depend on one or more processes in the Storage and Coordination Layer.
 	* YARN ResourceManager
 	* YARN NodeManagers
 	* Accumulo Tablet Servers
 	* Accumulo Master
 
-3. Application Layer - all of these depend on one or more process in the Data Services Layer
+4. Application Layer - all of these depend on one or more process in the Data Services Layer
 	* Accumulo Monitor
 	* Accumulo Garbage Collector
 	* Koverse Server
@@ -117,13 +185,17 @@ Processes should be stopped in reverse of the startup layer order.
 	* Accumulo Tablet Servers
 	* Accumulo Master
 
-3. Data Storage and Coordination Layer
+3. Data Storage Layer
 	* HDFS DataNodes
 	* HDFS NameNode
+
+4. Coordination Layer
 	* ZooKeeper
 	* PostgreSQL
+	* HDFS JournalNodes (High Availability (HA) Configuration)
 
-If a process in say, the Data Storage and Coordination Layer, is stopped before all processes in the Data Services and Application Layers, system state may become unstable or corrupt.
+
+If a process in say, the Data Storage or Coordination Layer, is stopped before all processes in the Data Services and Application Layers, system state may become unstable or corrupt.
 All processes in one layer should be stopped before stopping any processes in the next layer.
 
 Sometimes a single worker process in a lower layer can be stopped and restarted without stopping higher layers.
@@ -207,3 +279,4 @@ While systems that depend on them are running:
 * Unavailability of all TabletServers at once
 * Unavailability of the NameNode (Single point of failure if not using HA Namenode)
 * Loss of the PostgreSQL DB (Single point of failure)
+
