@@ -50,7 +50,7 @@ Here are recommended hardware specifications for a decicated Koverse installatio
 - 50 GB disk space for /var/log
 - tmpwatch configured to clear /tmp every three days
 
-The above specs are based on an AWS d3.xlarge instance.  The disk space for logging that goes in /var/log is for the rolling koverse-server and koverse-webapp logs, and can be tuned via the log4j configuration to use less than 50 GB.  However 50 GB is a safe starting point.  Also note Koverse uses /tmp for small temporary data for each job run on the cluster by Koverse - these are small artifacts, and certianly does not fill up 40 GB in three days even on a very busy cluster, however this is again a safe starting point to accomodate for other processes (with the Centos tmpwatch clearing it every three days).
+The above specs are based on an AWS r5.xlarge instance.  The disk space for logging that goes in /var/log is for the rolling koverse-server and koverse-webapp logs, and can be tuned via the log4j configuration to use less than 50 GB.  However 50 GB is a safe starting point.  Also note Koverse uses /tmp for small temporary data for each job run on the cluster by Koverse - these are small artifacts, and certianly does not fill up 40 GB in three days even on a very busy cluster, however this is again a safe starting point to accomodate for other processes (with the Centos tmpwatch clearing it every three days).
 
 .. _RpmInstallation:
 
@@ -246,7 +246,7 @@ The Koverse Server redirects stdout and stderr to */opt/koverse-server/logs/serv
 
 The Koverse Web App logs to */var/log/koverse-webapp/koverse-webapp.log* with stdout and stderr redirected to the same directory.
 
-More information on the operations of Koverse can be found in the :ref:`Ops Guide`
+More information on the operations of Koverse can be found in the :ref:`Run book`
 
 .. _AmbariStackInstallation:
 
@@ -255,9 +255,11 @@ Apache Ambari Installation
 
 The Ambari control panel allows for custom services to be integrated into its management interface.  The method for this integration is known as a Stack, which contains all the information necessary for Ambari to configure, control and monitor the Service.  Koverse provides a Stack that Ambari users can use to easily install and manage Koverse.
 
+More information on the Ambari can be found in the :ref:`Run book`
+
 Prerequisites
 -------------
-- Apache Ambari version 1.7 or greater
+- Apache Ambari version 2.7 or greater
 - Linux distribution that uses yum for software package management.  RHEL 6 is recommended.
 - Accumulo Service Installed
 
@@ -298,6 +300,26 @@ Once both processes have started up, you can access the Koverse user interface f
 ``http://<hostname>:7080``
 
 The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.
+
+
+High-Availability (HA) and Failover with Apache Ambari
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ambari offers HA for the Hadoop Infrastructure via the NameNode, after following this guide you will have a Standby NameNode in addition to your existing NameNode along with Journal Nodes.
+
+Prerequistes
+-------------
+- Verify HDFS and Zookeepers are NOT on maintenance mode.
+- Confirm you have three servers in your cluster running at least three Zookeeper Servers
+
+Installation
+-------------
+
+It is recommended to use this `guide <https://docs.cloudera.com/HDPDocuments/Ambari-2.7.5.0/managing-high-availability/content/amb_enable_namenode_high_availability.html>`_ for enabling HA of the NameNode with automatic failover via Ambari
+
+After the install using the wizard you should see a Standby NameNode like so
+
+.. image:: /_static/InstallGuide/image1.png
 
 
 Koverse Configuration
