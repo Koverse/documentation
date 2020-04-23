@@ -30,7 +30,7 @@ To setup a multi-node cluster quickly on AWS `CloudFormation <https://docs.aws.a
 
 Prerequistes
 ^^^^^^^^^^^^^
-* An AMI built for the base of you images. A build we recommend is in the :ref:`BuildBootstrapGuide` section of the Admin Guide.
+* An AMI built for the base of your VMs. A build we recommend is in the :ref:`BuildBootstrapGuide` section of the Admin Guide.
 * A Cloud Formation Template to load. An example of a template for a cluster with a master, standby master, three zookeepers and three workers can be found `here <https://koverse-bdaas.s3.amazonaws.com/hdp3-ami/cloudformation.template>`_.
 
 To start the process visit the `AWS Console for CloudFormation <https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/template>`_
