@@ -58,3 +58,16 @@ New Features
 - [KC-6066] - Fix for potential transform errors when Yarn job was successful
 - [KC-6070] - Fix for Koverse Web UI session timeout
 
+3.2.7
+^^^^^
+
+- [KC-4076] - Removed extra Transform text in description after clicking 'Add Transform'
+- [KC-4526] - Fix for Jobs in a Blocked status displaying activity on that dataset when none is actually happening
+- [KC-5361] - Improve searching and clicking on a Dataset result causing UI to freeze
+- [KC-5923] - Fix for REST API /api/v1/data-sets/{datasetId}/records requiring maxStringLength query parameter
+- [KC-6074] - Changing user password no longer displayed in clear text in log
+- [KC-6076] - S3 Source now hides Secret Key parameter
+- [KC-6088] - Fix for User changing their password throws error unless they have "Create and remove users and groups" permission
+- [KC-6111] - Fix for transforms with "Only new data" selected not always working
+- [KC-6146] - Fix for TLS client certificate authentication to webapp not working with user specified trust store
+

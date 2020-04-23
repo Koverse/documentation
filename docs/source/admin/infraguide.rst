@@ -17,7 +17,9 @@ A Koverse cluster relies on the following software infrastructure
 +------------------+------------------+
 | Hadoop - YARN    | 3.1.1            |
 +------------------+------------------+
-| Spark            | 2.3.2            |
+| Hadoop - MR2     | 3.1.1            |
++------------------+------------------+
+| Spark2           | 2.3.2            |
 +------------------+------------------+
 | ZooKeeper        | 3.4              |
 +------------------+------------------+
@@ -28,9 +30,8 @@ A Koverse cluster relies on the following software infrastructure
 | Oracle Java      | 1.8 or 1.9       |
 +------------------+------------------+
 
-Cloudera parcels are available for CDH versions 5.5 and later.
 
-Koverse leverages Hadoop MapReduce and Spark for data processing and analytics, but these components run as applications on YARN, so besides some very lightweight Job History servers, they don't require any running infrastructure besides YARN.
+Koverse leverages Hadoop MapReduce2 and Spark2 for data processing and analytics, but these components run as applications on YARN, so besides some very lightweight Job History servers, they don't require any running infrastructure besides YARN.
 
 Additionally the Koverse software runs as
 
@@ -54,6 +55,7 @@ Some processes, such as the YARN ResourceManager, have a single instance. Others
   * HDFS DataNode
   * YARN NodeManager
   * Accumulo Tablet Server
+  * Various Clients (Spark2, YARN, etc)
 
 * "Master" processes (1 process per cluster)
 
@@ -79,7 +81,7 @@ In all cases, 1GbE is the minimum recommended network interface, with 10GbE pref
 
 1-Node Proof-Of-Value (POV)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Example Minimum HW: EC2 d2.4xlarge with 16 CPU, 122G memory
+Example Minimum HW: EC2 r5.4xlarge with 16 CPU, 128G memory
 
 **NOTE: Not production ready with no data replication and a single ZK. If you lose a disk, you will likely lose data and have to rebuild your system.**
 
@@ -120,7 +122,7 @@ Example Minimum HW: EC2 d2.4xlarge with 16 CPU, 122G memory
 
 3-Node Proof-Of-Value (POV)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Example Minimum HW: EC2 d2.2xlarge with 8 CPU, 61G memory
+Example Minimum HW: EC2 r5.2xlarge with 8 CPU, 64G memory
 
 **NOTE: Not production ready with a single ZK.** HDFS replication factor of 2.
 
@@ -163,7 +165,7 @@ Example Minimum HW: EC2 d2.2xlarge with 8 CPU, 61G memory
 
 5-Node Production
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Example Minimum HW: EC2 d2.2xlarge with 8 CPU, 61G memory
+Example Minimum HW: EC2 r5.2xlarge with 8 CPU, 64G memory
 
 3-node ZK quorum. HDFS replication of 2
 
@@ -222,7 +224,7 @@ ZooKeeper is sensitive to resource contention and thus it is recommended to have
 ZooKeeper doesn't require large amounts of physical resources, so these nodes can be significantly smaller/cheaper.
 This example configuration specifies a different node type for the dedicated ZooKeeper servers.
 
-Example Minimum HW: EC2 d2.2xlarge with 8 CPU, 61G memory
+Example Minimum HW: EC2 r5.2xlarge with 8 CPU, 64G memory
 
 Example ZooKeeper HW: EC2 m3.medium with 1 CPU, 3.75G memory, and 4G local SSD storage for ZooKeeper data
 

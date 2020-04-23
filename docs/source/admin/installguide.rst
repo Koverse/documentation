@@ -17,27 +17,15 @@ Koverse requires a Linux operating system. Installation packages (RPMs) are prov
 
 Koverse requires all servers in a cluster to have clocks synchronized within a few seconds of each other, so it is recommended to use ntpd for this purpose.
 
-Here are the recommended operating system for a Cloudera installation:
-
-- RHEL 6.x or Centos 6.x
-- Accumulo 1.7 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
 
 Software
 --------
 As described in the :ref:`InfraGuide`, Koverse runs atop several distributed systems.
 All of these dependent systems need to be properly installed and configured for Koverse to execute successfully.
 The proper installation of Hadoop and associated software infrastructure is not within the scope of this document, nor is it a trivial undertaking.
-If your organization does not have well established provisioning tools and/or experience installing Hadoop ecosystem software, we highly recommend tools like `Cloudera Manager`_ or `Apache Ambari`_ to help automate and manage the installation of the required software infrastructure.
+If your organization does not have well established provisioning tools and/or experience installing Hadoop ecosystem software, we highly recommend tools like `Apache Ambari`_ to help automate and manage the installation of the required software infrastructure.
 
-.. _Cloudera Manager: https://cloudera.com/products/cloudera-manager.html
 .. _Apache Ambari: http://hortonworks.com/hadoop/ambari/
-
-Koverse is supported on the latest distributions from Cloudera, Hortonworks, and MapR.
-Koverse also requires the Hadoop client binaries and configuration to be installed on the server.
-
-The latest Koverse parcel can be found here:
-
-- http://repo.koverse.com/latest/csd
 
 
 Hardware
@@ -209,27 +197,8 @@ PostgreSQL Setup
 
 Koverse stores metadata about Data Collections, Users, Transforms, etc in an RDBMS such as PostgreSQL.
 These instructions assume PostgreSQL has already been installed.
-In an environment where Cloudera Manager is used, Koverse can leverage the PostgreSQL database that is installed via Cloudera Manager.
 If you wish to use a different password than the default 'koverse1234', you will need to follow the procedure in :ref:`AppendixA` for encoding this password before putting it into the *koverse-server.properties* file.
 
-Cloudera Manager Environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To get the password needed to log into the existing PostgreSQL database, read the following file::
-
-  cat /var/lib/cloudera-scm-server-db/data/generated_password.txt
-
-Then login with the user 'cloudera-scm'::
-
-  psql -U cloudera-scm -h localhost -p 7432 -d postgres
-
-Create the 'koverse' user with a password of 'koverse1234'::
-
-  postgres=# CREATE ROLE koverse LOGIN PASSWORD 'koverse1234';
-
-And finally create the database that Koverse will use::
-
-  postgres=# CREATE DATABASE koverse OWNER koverse ENCODING 'UTF-8';
 
 Manually Installed
 ~~~~~~~~~~~~~~~~~~
@@ -278,41 +247,6 @@ The Koverse Server redirects stdout and stderr to */opt/koverse-server/logs/serv
 The Koverse Web App logs to */var/log/koverse-webapp/koverse-webapp.log* with stdout and stderr redirected to the same directory.
 
 More information on the operations of Koverse can be found in the :ref:`Ops Guide`
-
-.. _ClouderaParcelInstallation:
-
-Cloudera Manager Installation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Koverse provides a Cloudera Manager Parcel and Custom Service Descriptor (CSD) for easy installation and management through Cloudera Manager.
-
-Prerequisites
--------------
-- Cloudera Manager version 5.5 or greater
-- CDH installed via Parcel, not Packages
-- RHEL 6 is highly recommended.  The Accumulo Parcel installation is not officially supported on RHEL 7 by Cloudera.  If you require Cloudera on RHEL 7, please contact Koverse technical support for more information about the installation process.
-- Accumulo 1.7 Parcel and Service installed. See http://www.cloudera.com/documentation/other/accumulo/latest/PDF/Apache-Accumulo-Installation-Guide.pdf for more details.
-
-Files
------
-The following files are provided to support both online and offline installs.
-
-KOVERSE-<VERSION>.jar
-  CSD for Koverse
-KOVERSE-<VERSION>-<ARCHITECTURE>.parcel
-  Parcel file (download for offline install)
-KOVERSE-<VERSION>-<ARCHITECTURE>.parcel.sha
-  Parcel SHA file (download for offline install)
-
-
-
-
-Once both processes have started up, you can access the Koverse user interface from a web browser at
-
-``http://<hostname>:8080``
-
-The default username and password are 'admin' and 'admin'. The password can be changed immediately after logging in.  It is recommended that you also change the e-mail address of the admin user to a real e-mail address,
-so that in the event that the password is lost, you are able to reset the password.  It is also recommended to change the e-mail settings in koverse-server.properties to support automated password resets.
 
 .. _AmbariStackInstallation:
 
