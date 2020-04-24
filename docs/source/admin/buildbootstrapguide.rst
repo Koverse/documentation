@@ -34,6 +34,7 @@ Install Ambari Repos::
     sudo curl -s http://public-repo-1.hortonworks.com/HDP/centos7/3.x/updates/3.1.4.0/hdp.repo -o /etc/yum.repos.d/hdp.repo
     sudo curl -s http://public-repo-1.hortonworks.com/HDP/centos7/3.x/updates/3.1.4.0/HDP-3.1.4.0-315.xml -o /home/staging/HDP-3.1.4.0-315.xml
   fi
+
 Install Ambari and components::
 
   sudo yum -y install ambari-server ambari-agent zookeeper zookeeper-server hadoop hadoop-hdfs hadoop-libhdfs hadoop-yarn hadoop-mapreduce hadoop-client openssl hive hive-jdbc hive-hcatalog hive-webhcat hive-webhcat-server hive-hcatalog-server hive-server2 hive-metastore hive_warehouse_connector spark2 spark2-master spark2-python spark2-worker spark2-yarn-shuffle accumulo zeppelin hbase livy2 spark_schema_registry libtirpc snappy-devel python34-tkinter python-virtualenv python-tools python34-pip spark_schema_registry mysql-connector-java unzip hdp-select ambari-metrics-collector ambari-metrics-monitor ambari-metrics-hadoop-sink python-kerberos ambari-metrics-grafana mariadb-server pig datafu tez spark-atlas-connector
@@ -64,7 +65,7 @@ Optional Cloud Formation set up for bootstrap, highly recommended, OS must suppo
   sudo curl https://location-where-bootstrap-is/bootstrap.cfg -o /etc/cloud/cloud.cfg.d/99_bootstrap.cfg
 
 
-For more information on AWS CloudFormation look `here <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.Walkthrough.html>`_ and for Azure Cloud Formation Supported OS look `here <https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init>`_
+For more information on `AWS CloudFormation <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.Walkthrough.html>`_ and for `Azure Cloud Formation Supported OS <https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init>`_
 
 
 Grab Koverse RPMs::
@@ -107,6 +108,7 @@ stop Ambari and set the master hostname::
 wait for Ambari to be up and running then post your blueprint::
 
   curl -H "X-Requested-By: ambari" -X POST -u admin:admin http://localhost:8080/api/v1/blueprints/koverse-cluster -d /home/staging/blueprint.json
+
 then post your cluster configuration::
 
   curl -H "X-Requested-By: ambari" -X POST -u admin:admin http://localhost:8080/api/v1/clusters/KoverseCluster -d /home/staging/cluster.json
