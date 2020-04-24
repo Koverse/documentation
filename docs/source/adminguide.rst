@@ -9,6 +9,7 @@ Administration Guide
   
   admin/infraguide.rst
   admin/installguide.rst
+  admin/awsinstall.rst
   admin/buildbootstrapguide.rst
   admin/runbook.rst
   admin/tuningguide.rst

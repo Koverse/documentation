@@ -112,6 +112,7 @@ wait for Ambari to be up and running then post your blueprint::
 then post your cluster configuration::
 
   curl -H "X-Requested-By: ambari" -X POST -u admin:admin http://localhost:8080/api/v1/clusters/KoverseCluster -d /home/staging/cluster.json
+
 Navigate to the Ambari UI on 8080
 
 
@@ -121,7 +122,7 @@ The installation of the python environment can be done on every node of the clus
 
 Install Miniconda::
 
-  sudo mkdir -p ${MINICONDA_DIR}
+  sudo mkdir -p /home/staging/miniconda3
   sudo -u koverse bash -c "curl -s https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /home/staging/miniconda3-latest-Linux-x86_64.sh"
   sudo chmod +x /home/staging//miniconda3-latest-Linux-x86_64.sh
   sudo bash /home/staging//miniconda3-latest-Linux-x86_64.sh -bu -p /home/koverse/miniconda3
