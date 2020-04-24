@@ -70,6 +70,8 @@ Ambari Health Info
 To monitor the cluster health you can view the service panel. The green light indicates that the service is up and running successfully.
 
 .. image:: /_static/Runbook/image01.png
+   :scale: 50
+   :align: center
 
 To view the cluster meterics go to the Dashboard view on the Ambari Webpage. There you can customize and view various useful information like HDFS Utilization, CPU/Network/Memory Usage and Cluster Load.
 
@@ -88,6 +90,8 @@ Ambari uses the service indicators to convey the status of a service, when issue
 A user can also set up email or slack alerting that is customizable.
 
 .. image:: /_static/Runbook/image02.png
+   :scale: 50
+   :align: center
 
 
 
