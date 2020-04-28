@@ -533,8 +533,6 @@ definitions:
         type: string
       hadoopDeleteJobIds:
         type: array
-        items:
-          type: integer
       dataStoreAuthRemoved:
         type: boolean
       version:
@@ -601,8 +599,6 @@ definitions:
         type: boolean
       permissionsTypes:
         type: array
-        items:
-          type: string
     example:
       id: 844
       dataSetId: movies_20171107_172745_048
@@ -936,8 +932,6 @@ definitions:
         type: string
       parameters:
         type: array
-        items:
-          type: string
   parameter:
     type: object
     required:
@@ -1044,8 +1038,6 @@ definitions:
         type: string
       parameters:
         type: array
-        items:
-          type: string
   sinkTypeDescription:
     type: object
     required:
@@ -1068,7 +1060,6 @@ definitions:
       sinkParameters:
         type: array
         items:
-          type: string
           $ref: '#/definitions/parameter'
       disabled:
         type: boolean
@@ -1146,12 +1137,8 @@ definitions:
         type: string
       parameters:
         type: array
-        items:
-          type: string
       flowParameters:
         type: array
-        items:
-          type: string
       disabled:
         type: boolean
       executionMethod:
@@ -1185,8 +1172,6 @@ definitions:
         type: string
       inputDataSetIds:
         type: array
-        items:
-          type: string
       outputDataSetId:
         type: string
       replaceOutputData:
@@ -1243,8 +1228,6 @@ definitions:
         type: string
       parameters:
         type: array
-        items:
-          type: string
   searchAutocomplete:
     type: object
     required:
