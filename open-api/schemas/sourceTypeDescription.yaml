@@ -16,8 +16,10 @@ properties:
     type: string
   parameters:
     type: array
+    items: {}
   flowParameters:
     type: array
+    items: {}
   disabled:
     type: boolean
   executionMethod:

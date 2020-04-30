@@ -13,3 +13,4 @@ properties:
     type: string
   parameters:
     type: array
+    items: {}
