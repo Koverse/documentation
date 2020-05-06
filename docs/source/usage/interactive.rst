@@ -378,7 +378,7 @@ Writing Data to Koverse
 ------------------------
 
 The examples above describe fetching data, or querying a dataset.  Koverse also provides the ability to write back to a new dataset.  This allows you fetch data, transform it, then write it back.
-The paragraphs below are inside a Zeppelin, but they could also be done in Pyspark or other shells.   The first paragraph is retrieving data from the employees table the same way it was done in examples above.
+The paragraphs below are inside a Zeppelin, but they could also be done in Pyspark or other shells.  The first paragraph is retrieving data from the employees table the same way it was done in examples above.
 
   .. image:: /_static/UsageGuide/baseDataFrame.png
 
