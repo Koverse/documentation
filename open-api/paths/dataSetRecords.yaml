@@ -25,6 +25,10 @@ get:
             type: array
             items:
               $ref: "../api.yaml#/definitions/record"
+    400:
+      description: Returns client error if no data set is found
+      schema :
+        $ref: "../api.yaml#/definitions/400servererror"
       # example:
       #   flatSchema: true,
       #   records:
