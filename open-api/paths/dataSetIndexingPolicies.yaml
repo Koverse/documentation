@@ -12,10 +12,6 @@ get:
       description: Returns an array of the indexing policy metadata of a data set.
       schema:
         $ref: "../api.yaml#/definitions/dataSetIndexingPolicy"
-    400:
-      description: Returns 400 is dataset cannot be found
-      schema:
-        $ref: "../api.yaml#/definitions/400servererror"
 
 put:
   summary: Update

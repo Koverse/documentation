@@ -1,5 +1,0 @@
-type: string
-description: >
-  An error has occurred.
-example:
-  400 Server Error, Request is malformed, please check input and resubmit.
