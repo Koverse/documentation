@@ -7,6 +7,12 @@ get:
         authorized to see.
 
         Call will return an empty list if no data sets were found.
+  parameters:
+    - name: calculateRecordCounts
+      type: boolean
+      description: Calculate record counts within the response, this offers a performance improvement if set to false.
+      in: query
+      required: false
   responses:
     200:
       description: Returns metadata for all data sets the user is authorized to see
