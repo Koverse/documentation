@@ -533,6 +533,7 @@ definitions:
         type: string
       hadoopDeleteJobIds:
         type: array
+        items: {}
       dataStoreAuthRemoved:
         type: boolean
       version:
@@ -599,6 +600,7 @@ definitions:
         type: boolean
       permissionsTypes:
         type: array
+        items: {}
     example:
       id: 844
       dataSetId: movies_20171107_172745_048
@@ -932,6 +934,7 @@ definitions:
         type: string
       parameters:
         type: array
+        items: {}
   parameter:
     type: object
     required:
@@ -1038,6 +1041,7 @@ definitions:
         type: string
       parameters:
         type: array
+        items: {}
   sinkTypeDescription:
     type: object
     required:
@@ -1137,8 +1141,10 @@ definitions:
         type: string
       parameters:
         type: array
+        items: {}
       flowParameters:
         type: array
+        items: {}
       disabled:
         type: boolean
       executionMethod:
@@ -1172,6 +1178,7 @@ definitions:
         type: string
       inputDataSetIds:
         type: array
+        items: {}
       outputDataSetId:
         type: string
       replaceOutputData:
@@ -1228,6 +1235,7 @@ definitions:
         type: string
       parameters:
         type: array
+        items: {}
   searchAutocomplete:
     type: object
     required:
@@ -1599,7 +1607,10 @@ parameters:
             included in records.
         limit:
           type: integer
-          description: The number of results to fetch in this call
+          description: >
+            The number of results to fetch in this call Note that the query
+            returns max of 20 records by default, if this parameter is not
+            specified.
         offset:
           type: integer
           description: The number of records in the result set to skip

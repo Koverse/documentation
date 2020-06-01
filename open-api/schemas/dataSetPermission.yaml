@@ -27,6 +27,7 @@ properties:
     type: boolean
   permissionsTypes:
     type: array
+    items: {}
 example:
   id: 844
   dataSetId: movies_20171107_172745_048
