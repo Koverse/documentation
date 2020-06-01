@@ -196,8 +196,6 @@ tags:
 definitions:
   500servererror:
     $ref: schemas/servererror.yaml
-  400servererror:
-    $ref: schemas/badrequest.yaml
   apiClient:
     $ref: schemas/apiClient.yaml
   dataSet:
@@ -565,9 +563,9 @@ paths:
     $ref: paths/transformId.yaml
   /api/v1/transforms/{transformId}/run-transform:
     $ref: paths/transformIdRunTransform.yaml
-  /api/v1/transforms/{transformId}/schedules:
+  /api/v1/transforms/{transformId}/transform-schedules:
     $ref: paths/transformIdSchedules.yaml
-  /api/v1/transforms/{transformId}/schedules/{transformScheduleId}:
+  /api/v1/transforms/{transformId}/transform-schedules/{transformScheduleId}:
     $ref: paths/transformIdScheduleId.yaml
   /api/v1/transform-types:
     $ref: paths/transformTypes.yaml

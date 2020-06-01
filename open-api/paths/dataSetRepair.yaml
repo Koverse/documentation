@@ -12,7 +12,7 @@ get:
   responses:
     200:
       description: '200 OK'
-    400:
+    500:
       description: If data set not found message will read 'No content to map to Object due to end of input'
       schema:
-        $ref: "../api.yaml#/definitions400servererror"
+        $ref: "../api.yaml#/definitions/500servererror"

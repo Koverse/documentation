@@ -16,10 +16,6 @@ get:
       #   last-modified:
       #     type: string
       #     description: The date/time that the transform was last modified
-    400:
-      description: Returns client error if no dataset is found.
-      schema :
-        $ref: "../api.yaml#/definitions/400servererror"
 
 delete:
   summary: Delete
