@@ -4,6 +4,12 @@ get:
   summary: Get metadata
   operationId: findDataSetAttributes
   tags: ["Data Set Attributes"]
+  parameters:
+    - name: detailLevel
+      type: string
+      in: query
+      description: Can be low | medium | high defaults to low
+      required: false
   description: |
         Get the metadata of all attributes of a data set.
 
