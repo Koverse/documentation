@@ -87,7 +87,6 @@ New Features
 - [KC-4970] -	Recent Search Functionality
 - [KC-5074] -	Fix for Export job status has unclear messaging
 - [KC-5130] -	Data Stats Data Type Percentage Rounding Can Be Misleading
-- [KC-5712] -	Uploading Files into Existing Data Set Does Not Use Security Label Parser Configuration
 - [KC-5845] -	Create new REST endpoint that lists all datasets without calling getRecordCount for each
 - [KC-5928] -	Add way to verify through the automation api that an addon is installed
 - [KC-6073] -	The koverse-webapp should have logging in Common Log Format
