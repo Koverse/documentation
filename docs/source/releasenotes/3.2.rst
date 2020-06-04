@@ -71,3 +71,42 @@ New Features
 - [KC-6111] - Fix for transforms with "Only new data" selected not always working
 - [KC-6146] - Fix for TLS client certificate authentication to webapp not working with user specified trust store
 
+3.2.8
+^^^^^
+
+-	[KC-4110]	- History - zero or no data state needs messaging letting the users know there is no history
+- [KC-4291] -	When external authentication fails, do NOT show the login page
+- [KC-4507] -	Import Preview - Selecting back button should go back to the configuration of the source and not pick import source
+- [KC-4508] -	File Source should not have the option for Continuously importing
+- [KC-4776] -	Feature Request: API for list of distinct values for a field in a data set
+- [KC-4794]	- Fix for Custom security label parser not available until refresh
+- [KC-4797] -	New User Confused By "Next" button on Step 2 of Import
+- [KC-4822] -	Removed unused permission levels
+- [KC-4827] -	Data Set Group Permissions 2-Step Process is Confusing
+- [KC-4852] -	Improve User Experience of Data Set Permissions at Import
+- [KC-4970] -	Recent Search Functionality
+- [KC-5074] -	Fix for Export job status has unclear messaging
+- [KC-5130] -	Data Stats Data Type Percentage Rounding Can Be Misleading
+- [KC-5845] -	Create new REST endpoint that lists all datasets without calling getRecordCount for each
+- [KC-5928] -	Add way to verify through the automation api that an addon is installed
+- [KC-6073] -	The koverse-webapp should have logging in Common Log Format
+- [KC-6077] -	Fix for User Unable to Download after Permissions Granted to do so
+-	[KC-6083] -	Update data-sets/id/attributes endpoint to include more specific type information
+- [KC-6089] -	Fix for Missing "Records Processed" in Job History for Imports
+- [KC-6091] -	Additional Thrift functionality to make Airflow integration easier
+- [KC-6108] -	Fix for Security Label Parsers Not Being Applied
+- [KC-6118] -	Fix for Job type REINDEXING does not have a status message in the UI
+- [KC-6142] -	Expose source 'name' parameter when creating sources.
+- [KC-6156] -	Populate the "Dataset containing input records field" when creating transforms from within a data set
+- [KC-6158] -	Add total number of fields/columns to the top-level Data Set metadata in UI
+- [KC-6159] -	Add Koverse Manual Job Scheduling
+-	[KC-6171]	- Group permissions should grant read access by default
+-	[KC-6178]	- Fix for Spark SQL transform only works with one table
+- [KC-6190] -	Fix for Koverse Web Data Connector (WDC) is Outdated & Errors
+- [KC-6212] -	Fix for Users can lose access to the data set catalogue if they do not have read access to first data set
+
+
+
+
+
+
