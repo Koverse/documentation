@@ -5,7 +5,7 @@ get:
   operationId: findDataSetAttributes
   tags: ["Data Set Attributes"]
   parameters:
-    - name: detailLevel
+    - name: detail
       type: string
       in: query
       description: Can be low | medium | high defaults to low
