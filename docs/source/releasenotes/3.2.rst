@@ -105,6 +105,32 @@ New Features
 - [KC-6190] -	Fix for Koverse Web Data Connector (WDC) is Outdated & Errors
 - [KC-6212] -	Fix for Users can lose access to the data set catalogue if they do not have read access to first data set
 
+3.2.9
+^^^^^
+
+- [KC-4594] - Confusing UX With Catalog-visible Data Sets
+- [KC-4799] - Improve Color Palette For Pie Charts
+- [KC-4943] - Add permissions for datasets to current user.
+- [KC-4956] - On the data flow tab, I need to scroll a long way to rerun a transform with a large number of data sets
+- [KC-5712] - UI: Uploading Files into Existing Data Set Does Not Display Security Label Parser Configuration
+- [KC-5980] - Difficulties changing a transform from importing "all data" to "only new data"
+- [KC-6012] - Searches with an OR clause with many criteria are still slow when combined with an AND clause
+- [KC-6170] - SSL configuration is overwritten by upgrade
+- [KC-6177] - koverse-spark-datasource needs to bundle relocated guava
+- [KC-6197] - Numerical Data Type Specificity in Data Set Overview
+- [KC-6199] - KISP feature request: ability to tag a dataset when creating it on ingest
+- [KC-6200] - Search GUI improvement suggestion
+- [KC-6211] - Table cell overflow or word break failure makes neighboring cells hard to read
+- [KC-6213] - UI: Overview Visual column shows nulls and weird formatting before job is complete
+- [KC-6218] - External Groups Not Providing Data Set Access
+- [KC-6236] - Spike: User Account management on KISP
+- [KC-6247] - Improve the form state for Group Permissions
+- [KC-6251] - Information Disclosure via Response Header
+- [KC-6266] - Allow KISP to lock out users after a number of failed attempts
+- [KC-6271] - Attribute overview is not showing Integer number type correctly
+- [KC-6267] - Update UI notification with the message from password validation/login failures
+
+
 
 
 
