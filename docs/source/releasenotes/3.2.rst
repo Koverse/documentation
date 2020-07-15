@@ -127,8 +127,8 @@ New Features
 - [KC-6247] - Improve the form state for Group Permissions
 - [KC-6251] - Information Disclosure via Response Header
 - [KC-6266] - Allow KISP to lock out users after a number of failed attempts
-- [KC-6271] - Attribute overview is not showing Integer number type correctly
 - [KC-6267] - Update UI notification with the message from password validation/login failures
+- [KC-6271] - Attribute overview is not showing Integer number type correctly
 
 
 
