@@ -123,7 +123,7 @@ New Features
 - [KC-6211] - Fix for Table cell overflow or word break failure makes neighboring cells hard to read
 - [KC-6213] - Fix for UI: Overview Visual column shows nulls and weird formatting before job is complete
 - [KC-6218] - Fix for External Groups Not Providing Data Set Access
-- [KC-6236] - Spike: User Account management on KISP
+- [KC-6236] - User Account management on KISP
 - [KC-6247] - Improve the form state for Group Permissions
 - [KC-6251] - Information Disclosure via Response Header
 - [KC-6266] - Allow KISP to lock out users after a number of failed attempts
