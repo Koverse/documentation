@@ -20,7 +20,7 @@ parameters:
       name: completeValues
       in: query
       description: |
-            Get complete values from field
+            If true match only what is in query string rather than all values within field
       type: boolean
     limit:
       name: limit
@@ -40,5 +40,3 @@ parameters:
               Returns a set of values that exist in a field that can be used in subsequent queries.
         schema:
           type: array
-          items:
-            $ref: "../api.yaml#/definitions/searchAutocompleteField"
