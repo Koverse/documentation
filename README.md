@@ -1,6 +1,7 @@
 ## Updating the Docs
 
-Make the appropriate changes to the `.rst` files ([helpful .rst cheat sheet](https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html)). Static assets should be added to the `_static` directory.
+Make the appropriate changes to the `.rst` files ([helpful .rst cheat sheet](https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html)). 
+Static assets should be added to the `_static` directory.
 
 ## Updating the OpenAPI specification
 
@@ -21,10 +22,13 @@ Otherwise download the latest here: https://www.python.org/
 
 Check if the installer is available: `pip --version` 
 Otherwise follow the instructions here: https://packaging.python.org/tutorials/installing-packages/#id13 
+
 **Note: In some cases if you have both Python 2 and Python 3 installed the `pip` command may be `pip3` (e.g. `pip3 install ...`)**
 
 After Python is set up `cd` into `docs` 
+
 run `pip install -r ./source/requirements.txt` to install packages 
+
 run `make html` to generate HTML in `./build/html` 
 
 Preview the results by opening the `index.html` file in your browser 
