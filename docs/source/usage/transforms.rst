@@ -22,7 +22,22 @@ Note that not all transforms are designed to operate on more than one input data
 If two or more data sets have the same schema (i.e. set of attributes) then a transform designed for one input data set can process their records as if they were one data set.
 This makes it easy to combine data sets with information of the same general type together.
 
+.. image:: /_static/UsageGuide/windowedInputCollection.png
+  :scale: 50%
+
 Some transforms, like the Spark SQL Transform, are capable of joining two data sets that have differing schemas.
+
+Select how much input data this transform should process each time it is run per windowed input dataset collection.
+
+Choosing ‘All data’ means that a transform will read all of the data available in selected input data sets every time it runs.
+This is appropriate if the transform computes some properties of an entire data set that cannot be updated incrementally.
+In this case you may want to leave the checkbox labeled ‘Replace Output Data’ checked, but this is not always the case.
+
+Choosing ‘Only new data’ will allow a transform to process only the data that is newly written to the selected input data sets since the last time the transform ran.
+This is appropriate if a transform is able to produce useful information from a subset of the input data.
+In this case you may want to uncheck the box labeled ‘Replace Output Data’ so that a transform appends newly transformed data to the output of previous runs, but this is not always the case.
+
+Choosing 'Data within a sliding window' allows a transform to process data within a window of time. See :ref:`ConfigureTransformWindows` for more detail.
 
 .. _ConfigureTransforms:
 
@@ -38,24 +53,17 @@ Fill out the transform parameters.
 In some cases, transform parameters expect the names of attributes from input data sets.
 In this case you will see a drop-down that allows you to select the attributes you want from a list.
 
+.. image:: /_static/UsageGuide/additionalOptions.png
+  :scale: 50 %
+
+After the transform is configured, choose whether this transform will run 'Automatically', 'Manually', or 'Periodically on a schedule'.
+Choosing 'Automatically' means that the transform will execute whenever one of the input data sets is updated with new data.
+Choosing 'Manually' means the transform will need to be started by the user on the Data Flow page, see :ref:`RunningATransform`.
+Choosing 'Periodically on a schedule' will allow you to add one or more specific schedules that define when a transform will run.
+
 Email notifications are also available for when the transform completes.
 They work in the same way as they do for imports and exports.
 See :ref:`EmailNotifications` for more information.
-
-After the transform is configured, choose whether this transform will run 'Automatically' or 'Periodically on a schedule'.
-Choosing 'Automatically' means that the transform will execute whenever one of the input data sets is updated with new data.
-Choosing 'Periodically on a schedule' will allow you to add one or more specific schedules that define when a transform will run.
-
-After choosing when a transform should run, select how much input data this transform should process each time it is run.
-Choosing 'All data' means that a transform will read all of the data available in all input data sets every time it runs.
-This is appropriate if the transform computes some properties of an entire data set that cannot be updated incrementally.
-In this case you may want to leave the checkbox labeled 'Replace Output Data' checked, but this is not always the case.
-
-Choosing 'Only new data' will allow a transform to process only the data that is newly written to input data sets since the last time the transform ran.
-This is appropriate if a transform is able to produce useful information from a subset of the input data.
-In this case you may want to uncheck the box labeled 'Replace Output Data' so that a transform appends newly transformed data to the output of previous runs, but this is not always the case.
-
-Choosing 'Data within a sliding window' allows a transform to process data within a window of time. See :ref:`ConfigureTransformWindows` for more detail.
 
 Finally, select whether to write output to a new data set, or an existing data set.
 For a new data set, provide a name for this new data set.
@@ -66,6 +74,9 @@ You will be navigated to the data set detail page, on the settings tab, of the o
 The new transform will be listed in the list of inputs to this data set.
 You can run or edit a transform from this table.
 
+
+Example
+^^^^^^^
 
 For example we'll combine some of our synthetic bank data to create a weak 'Key Risk Indicator' or KRI for short.
 
@@ -121,6 +132,8 @@ The "Window duration" slider specifies the duration of the time window.
 For example, to process all data in the past two hours, set both sliders to two hours.
 To specify all data that is older than one hour but newer than two hours, make the start time to two hours and the duration to one hour.
 
+.. _RunningATransform:
+
 Running a Transform
 -------------------
 
@@ -131,11 +144,14 @@ After saving, the transform can also be run manually at a later time.
 To run a transform manually, click on the 'Data' button on the primary navigation menu on the left, and then the 'Data Flow' tab.
 Select the output data set of the transform (if you just created the transform you will be navigated to this page).
 
-.. image:: /_static/UsageGuide/runTransform.png
-
 Next to the transform type desired, click the circular arrow icon for that transform.
 This will start a new transform job.
+
+.. image:: /_static/UsageGuide/dataFlowTab.png
+
 The job will appear in the History table under the Settings tab.
+
+.. image:: /_static/UsageGuide/runTransform.png
 
 You can view the status of this running transform job and optionally stop a running job by clicking the X next to the progress bar of a running job.
 
