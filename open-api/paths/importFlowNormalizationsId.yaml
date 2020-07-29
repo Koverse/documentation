@@ -13,6 +13,10 @@ get:
       description: Returns the normalization data
       schema:
         $ref: "../api.yaml#/definitions/normalization"
+    400:
+      description: If import flow or normalization cannot be found failureMessage will read 'Could not find database object in method 'getNormalizationById' with arguments []'
+      schema:
+        $ref: "../api.yaml#/definitions400servererror"
 
 put:
   deprecated: true
