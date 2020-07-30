@@ -36,6 +36,8 @@ Otherwise, login using the username (often your email address) and password that
 
 If your password is incorrect you will see an error.
 
+Note: If your password is incorrect three times in a row, with in a period of an hour, you will be locked out of the system for an hour. Try again after one hour.
+
 Once logged in successfully, you will now see elements of the Koverse user interface, which are described below.
 
 .. image:: /_static/UsageGuide/ui.png
@@ -80,6 +82,17 @@ Account
 ^^^^^^^
 
 Access your user information, and make changes such as setting a new password.
+
+Requirements of a valid password:
+
+A minimum password length of 8 (eight) characters required.
+
+Also the password should satisfy 3 (three) of the following :
+
+-upper-case letters
+-lower-case letters
+-one number
+-one non-alphnumeric symbol
 
 .. image:: /_static/UsageGuide/adminButton.png
   :width: 80px
