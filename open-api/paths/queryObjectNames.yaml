@@ -36,7 +36,7 @@ post:
         | Date field less than a specific date   | { "date_created": { "$lt": "1980-01-01T00:00:00.000Z }}         |
         | Geo Range                              | { "fieldName": { "$box": [[sw-lat, sw-long],[ne-lat, ne-long]]}}|
         |                                        | { "fieldName": { "$box" :[[39.5, -104.9],[40, -104.5]] }}       |
-        |Any value except for 100                | { "$not": { "amount": 100 } }                                   |
+        |Any value except for 100                | {"amount": {"$not" :{"$eq": 100}}}                                   |
 
 
         The official list of operators includes:
