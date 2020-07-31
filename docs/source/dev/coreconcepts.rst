@@ -228,6 +228,10 @@ TYPE_COLLECTION_FIELD
 TYPE_COLLECTION_MULTIPLE_FIELD
   allows the user to choose a set of fields from a collection selected as an input or output collection parameter. This is useful for informing classes of a specific set of fields to use.
 
+TYPE_WINDOWED_INPUT_COLLECTION
+  a windowed input collection parameter is a JSON string that includes datasetIds (a list of collections from which the user is authorized to read), windowType (NEW_DATA, ALL_DATA or SLIDING_WINDOW), slidingWindowOffset and slidingWindowSize. The UI then fills in this parameter with the internal unique ID of the collection the user chose.
+  The user can select the windowType and sliding window fields if applicable. This component generally allows the end-user to select multiple input collections and window types. The contents of all input collections and window types are read into transform jobs.
+
 ..
   TODO: verify this
   TYPE_FILE
