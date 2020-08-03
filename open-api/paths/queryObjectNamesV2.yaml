@@ -1,9 +1,9 @@
 post:
-  summary: Object style with IDs
-  operationId: queryObject
+  summary: Object style with names
+  operationId: queryObjectNamesV2
   tags: ["Query"]
   description: |
-        Query using a JSON document and data set IDs.
+        Query using a JSON document and data set names.
 
         ### Object Search Syntax
 
@@ -51,7 +51,7 @@ post:
 
         Note that queries that combine a range with any other criteria, and queries that combine multiple ranges require Composite Indexes on the fields involved.
   parameters:
-    - $ref: "../api.yaml#/parameters/objectQuery"
+    - $ref: "../api.yaml#/parameters/objectQueryNames"
   responses:
     200:
       description: Query results

@@ -59,3 +59,7 @@ post:
         type: array
         items:
           $ref: "../api.yaml#/definitions/dataSetResult"
+    400:
+      description: If query is malformed will show 400 error.
+      schema:
+        $ref: "../api.yaml#/definitions/400servererror"

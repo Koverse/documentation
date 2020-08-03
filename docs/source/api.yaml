@@ -261,6 +261,11 @@ definitions:
     description: |
       An error has occurred.
     example: '500 Server Error, No data sets found.'
+  400servererror:
+    type: string
+    description: |
+      An error has occurred.
+    example: '400 Server Error, Request is malformed, please check input and resubmit.'
   apiClient:
     type: object
     required:
@@ -1834,6 +1839,14 @@ paths:
         authorized to see.
 
         Call will return an empty list if no data sets were found.
+      parameters:
+        - name: calculateRecordCounts
+          type: boolean
+          description: >-
+            Calculate record counts within the response, this offers a
+            performance improvement if set to false.
+          in: query
+          required: false
       responses:
         '200':
           description: Returns metadata for all data sets the user is authorized to see
@@ -1882,10 +1895,10 @@ paths:
           description: Returns the data set metadata
           schema:
             $ref: '#/definitions/dataSetMetadata'
-        '500':
+        '400':
           description: Returns server error if no data set is found
           schema:
-            $ref: '#/definitions/500servererror'
+            $ref: '#/definitions/400servererror'
     put:
       summary: Update
       description: |
@@ -1910,12 +1923,12 @@ paths:
           description: Returns the data set metadata with an updated DELETED dataset name.
           schema:
             $ref: '#/definitions/dataSetMetadata'
-        '500':
+        '400':
           description: >-
             If data set not found message will read 'No content to map to Object
             due to end of input'
           schema:
-            $ref: '#/definitions/500servererror'
+            $ref: '#/definitions/400servererror'
   '/api/v1/data-sets/{dataSetId}/attribute-names':
     parameters:
       - $ref: '#/parameters/dataSetId'
@@ -1941,12 +1954,12 @@ paths:
             type: array
             items:
               type: string
-        '500':
+        '400':
           description: >-
             If data set not found message will read 'Internal error processing
             getDataSetAttributeNames'
           schema:
-            $ref: '#/definitions/500servererror'
+            $ref: '#/definitions/400servererror'
   '/api/v1/data-sets/{dataSetId}/attributes':
     parameters:
       - $ref: '#/parameters/dataSetId'
@@ -1955,6 +1968,12 @@ paths:
       operationId: findDataSetAttributes
       tags:
         - Data Set Attributes
+      parameters:
+        - name: detail
+          type: string
+          in: query
+          description: Can be low | medium | high defaults to low
+          required: false
       description: >
         Get the metadata of all attributes of a data set.
 
@@ -1968,12 +1987,12 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetAttributes'
-        '500':
+        '400':
           description: >-
             If data set not found message will read 'Could not find database
             object in method...'
           schema:
-            $ref: '#/definitions/500servererror'
+            $ref: '#/definitions/400servererror'
   '/api/v1/data-sets/{dataSetId}/clear':
     parameters:
       - $ref: '#/parameters/dataSetId'
@@ -1990,12 +2009,12 @@ paths:
       responses:
         '200':
           description: 200 OK
-        '500':
+        '400':
           description: >-
             If data set not found message will read 'No content to map to Object
             due to end of input'
           schema:
-            $ref: '#/definitions/500servererror'
+            $ref: '#/definitions/400servererror'
   '/api/v1/data-sets/{dataSetId}/indexing-policy':
     parameters:
       - $ref: '#/parameters/dataSetId'
@@ -2012,6 +2031,10 @@ paths:
           description: Returns an array of the indexing policy metadata of a data set.
           schema:
             $ref: '#/definitions/dataSetIndexingPolicy'
+        '400':
+          description: Returns 400 is dataset cannot be found
+          schema:
+            $ref: '#/definitions/400servererror'
     put:
       summary: Update
       operationId: updateDataSetIndexingPolicyById
@@ -2086,6 +2109,41 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/record'
+        '400':
+          description: Returns client error if no data set is found
+          schema:
+            $ref: '#/definitions/400servererror'
+  '/api/v2/data-sets/{dataSetId}/records':
+    parameters:
+      - $ref: '#/parameters/dataSetId'
+      - $ref: '#/parameters/recordStyle'
+      - $ref: '#/parameters/removeByteArrayFieldValues'
+      - $ref: '#/parameters/maxStringValueLength'
+    get:
+      summary: Get sample records
+      operationId: findDataSetRecordsByIdV2
+      tags:
+        - Data Sets
+        - Records
+      description: >
+        Returns all the fields and values for a sample of records by data set
+        id.
+      responses:
+        '200':
+          description: Return a sample of records for a data set.
+          schema:
+            type: object
+            properties:
+              flatSchema:
+                type: boolean
+              records:
+                type: array
+                items:
+                  $ref: '#/definitions/record'
+        '400':
+          description: Returns client error if no data set is found
+          schema:
+            $ref: '#/definitions/400servererror'
   '/api/v1/data-sets/{dataSetId}/repair':
     parameters:
       - $ref: '#/parameters/dataSetId'
@@ -2104,12 +2162,12 @@ paths:
       responses:
         '200':
           description: 200 OK
-        '500':
+        '400':
           description: >-
             If data set not found message will read 'No content to map to Object
             due to end of input'
           schema:
-            $ref: '#/definitions/500servererror'
+            $ref: '#/definitions/400servererror'
   '/api/v1/data-sets/{dataSetId}/attributes/masking':
     parameters:
       - $ref: '#/parameters/dataSetId'
@@ -2178,6 +2236,13 @@ paths:
           description: Returns the import flow data
           schema:
             $ref: '#/definitions/importFlow'
+        '400':
+          description: >-
+            If import flow cannot be found failureMessage will read 'Could not
+            find database object in method 'getImportFlowById' with arguments
+            []'
+          schema:
+            $ref: '#/definitions/400servererror'
     delete:
       deprecated: true
       summary: Delete
@@ -2254,6 +2319,13 @@ paths:
             type: array
             items:
               $ref: '#/definitions/normalization'
+        '400':
+          description: >-
+            If import flow or normalization cannot be found failureMessage will
+            read 'Could not find database object in method
+            'listNormalizationsByImportFlowId' with arguments []'
+          schema:
+            $ref: '#/definitions/400servererror'
     post:
       deprecated: true
       summary: Create
@@ -2290,6 +2362,13 @@ paths:
           description: Returns the normalization data
           schema:
             $ref: '#/definitions/normalization'
+        '400':
+          description: >-
+            If import flow or normalization cannot be found failureMessage will
+            read 'Could not find database object in method
+            'getNormalizationById' with arguments []'
+          schema:
+            $ref: '#/definitions/400servererror'
     put:
       deprecated: true
       summary: Update
@@ -2410,6 +2489,10 @@ paths:
           description: Returns the import schedule data
           schema:
             $ref: '#/definitions/importSchedule'
+        '400':
+          description: If import flow ID cannot be found.
+          schema:
+            $ref: '#/definitions/400servererror'
     delete:
       deprecated: true
       summary: Delete
@@ -2618,10 +2701,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/definitions/record'
-        '500':
+        '400':
           description: Returns server error if recordId or dataSetId are missing.
           schema:
-            $ref: '#/definitions/500servererror'
+            $ref: '#/definitions/400servererror'
     post:
       summary: Create
       operationId: createRecord
@@ -3036,6 +3119,12 @@ paths:
             type: array
             items:
               $ref: '#/definitions/transform'
+        '400':
+          description: >-
+            If data set not found message will read 'Could not find database
+            object in method 'listOutputDataSetTransforms' with arguments []'
+          schema:
+            $ref: '#/definitions/400servererror'
     post:
       summary: Create
       operationId: addTransform
@@ -3072,6 +3161,10 @@ paths:
           description: Returns the transform data
           schema:
             $ref: '#/definitions/transform'
+        '400':
+          description: Returns client error if no dataset is found.
+          schema:
+            $ref: '#/definitions/400servererror'
     delete:
       summary: Delete
       operationId: deleteTransformById
@@ -3120,7 +3213,7 @@ paths:
           description: Returns the success data
           schema:
             $ref: '#/definitions/success'
-  '/api/v1/transforms/{transformId}/transform-schedules':
+  '/api/v1/transforms/{transformId}/schedules':
     parameters:
       - $ref: '#/parameters/transformId'
     get:
@@ -3156,7 +3249,7 @@ paths:
           description: Returns the newly-added transform schedule
           schema:
             $ref: '#/definitions/transformSchedule'
-  '/api/v1/transforms/{transformId}/transform-schedules/{transformScheduleId}':
+  '/api/v1/transforms/{transformId}/schedules/{transformScheduleId}':
     parameters:
       - $ref: '#/parameters/transformId'
       - $ref: '#/parameters/transformScheduleId'
@@ -3615,6 +3708,10 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetResult'
+        '400':
+          description: If query is malformed will show 400 error.
+          schema:
+            $ref: '#/definitions/400servererror'
   /api/v1/queries/object/names:
     post:
       summary: Object style with names
@@ -3733,3 +3830,530 @@ paths:
             type: array
             items:
               $ref: '#/definitions/dataSetResult'
+        '400':
+          description: If query is malformed will show 400 error.
+          schema:
+            $ref: '#/definitions/400servererror'
+  /api/v2/queries/lucene:
+    get:
+      summary: Lucene style
+      operationId: queryLuceneV2
+      tags:
+        - Query
+      description: >
+        This method is useful for apps that want to allow users to create
+
+        their own queries using Lucene syntax. Queries can be issued for one
+
+        or more data sets simultaneously via the dataSets parameter.
+
+
+        ### Lucene Query Syntax
+
+
+        #### Overview
+
+
+        Koverse supports the most important subset of Lucene query features.
+
+        The syntax allows for rich querying by using Boolean logic, term
+        grouping, ranges, and wildcard matching.
+
+        This section will explain the extent of Lucene syntax support and call
+        out the small amount of unsupported features.
+
+
+
+        #### Terms
+
+
+        Terms are what values to search for in the records.
+
+        They can be specified as either a string of text or a number.
+
+        When searching for a single word, it is not necessary to use quotes.
+
+        When searching for a phrase, quotes can be used, such "yellow
+        submarine".
+
+
+        It is not necessary to specify which field(s) to search under.
+
+        The default is to search all fields.
+
+
+        To search for a term, simply use it, like: ``cat`` or ``123``.
+
+        Phrases just need double quotes, such as: ``"cat food"``.
+
+
+        Terms that in the ISO 8601 format will be interpreted as dates.
+
+        This is an international format that takes the form of
+        ``2018-10-30T12:48:29Z``.
+
+        A complete description of this format can be found at
+
+        https://en.wikipedia.org/wiki/ISO_8601.
+
+
+        Terms that in the form of a number, such as ``123`` or ``123.123`` will
+        be interpreted as numbers.
+
+
+        Terms can also be interpreted as Internet Protocol address, such as
+        ``127.0.0.1``.
+
+
+
+        #### Fields
+
+
+        It is possible to limit what fields to search within.
+
+        To do so, simply specify the field name followed by a color, such as:
+
+        ``animal:cat``, ``size:123``, or ``eats:"cat food"``.
+
+
+
+        #### Wildcards
+
+
+        Wild cards are supported for string terms, but only at the end of the
+        term.
+
+        For example: ``animal:cat*``.
+
+        Wildcards are not supported in the beginning or middle of a term,
+
+        which is different than what Lucene normally supports.
+
+
+
+        #### Ranges
+
+
+        It is possible to search within a range of terms.
+
+        Simply surround the two terms with square brackets,
+
+        separated by ``TO``.
+
+        For example, ``size:[2 TO 10]`` will search for all sizes with a number
+
+        from 2 to 10, inclusive.
+
+        Exclusive searches can be specified by using curly braces,
+
+        such as: ``size:{1 TO 11}``.
+
+        Additionally, it is possible to perform an inclusive search on text
+        terms,
+
+        such as: ``name:[chad TO sigrid]``.
+
+
+
+        #### Boolean Operators
+
+
+        The following operators are supported: ``AND``, ``OR``, and ``NOT``.
+
+        The default operator is ``OR``.
+
+        For example, the query ``chad sigrid`` is equivalent to ``chad OR
+        sigrid``.
+
+        An example ``AND`` query would be: ``animal:cat AND owner:sigrid``.
+
+        An example ``NOT`` query is: ``NOT animal:cat`` or ``NOT size:12``.
+
+
+        ``AND``, ``OR``, and ``NOT`` can also be specified using
+
+        ``&&``, ``||``, and ``!``, respectively.
+
+
+
+        #### Grouping
+
+
+        A search be be logically grouped by using parenthesis.
+
+        For example, the queries
+
+        ``(animal:cat OR animal:dog) AND owner:chad``
+
+        and
+
+        ``animal:cat OR (animal:dog AND owner:chad)``
+
+        are not the same.
+
+        The first query searches all cats and dogs owned by chad.
+
+        The second query searches for all cats, or all dogs owned by chad.
+
+
+
+        #### Escaping Special Characters
+
+
+        Characters that are search keywords such as ``:``, ``(``, and ``)`` can
+        be
+
+        escaped with a forward slash.
+
+        For example, to search for a term that includes a parenthesis,
+
+        the parenthesis can be escaped with ``\``:
+
+        ``animal:\(four legs\)``.
+
+        Here are all of the reserved search keywords:
+
+        ``+ - && || ! ( ) { } [ ] ^ " ~ * ? : \``.
+
+
+
+        #### Unsupported Lucene Features
+
+
+        Relevance ranking: Matching records that are returned from Koverse are
+        not sorted in any particular order.
+
+
+        However, when paging is used, the results are returned in a consistent
+        order.
+
+        For example, when requesting a page multiple times, the same results are
+        returned.
+
+        Thus, it is possible to show the user the first page of results and
+        allow them to then navigate to other pages.
+
+        When doing so, the user will see the same records for each page every
+        time they request them.
+
+        What is not possible is to sort those results globally.
+
+        However, a page's worth of records could be sorted by the client
+        program.
+
+
+
+        #### Unsupported Lucene Syntax
+
+
+        The full Lucene syntax can be read online at
+
+        https://lucene.apache.org/core/2_9_4/queryparsersyntax.html .
+
+
+        However, note that the following features are not supported in Koverse:
+
+         * Any wildcard searches other than suffix-based.
+         * Single character wildcard searches.
+         * Fuzzy searches.
+         * Proximity searches.
+         * Term boosting.
+         * The "required" operator ``+``.
+         * Field grouping.
+      parameters:
+        - in: query
+          name: query
+          type: string
+          required: true
+          description: >
+            Lucene syntax query string. See above description for details on
+            syntax.
+        - in: query
+          name: dataSets
+          type: string
+          required: true
+          description: >
+            A comma separated list of dataSetIds. Specifying a blank string will
+            cause the query to be issued to all data sets the user is allowed to
+            query.
+        - in: query
+          name: auths
+          type: string
+          required: false
+          description: >
+            An optional comma separated list of authorization tokens. These are
+            used for applying record-level filtering of data set results to
+            records that have additional security labels applied.
+        - in: query
+          name: numRecords
+          type: integer
+          format: int32
+          required: false
+          description: |
+            The number of records to include in the response.
+        - in: query
+          name: recordOffset
+          type: integer
+          format: int64
+          required: false
+          description: >
+            The number of records in the query response to skip. This is used to
+            implement paging in applications.
+        - in: query
+          name: fieldsToReturn
+          type: string
+          required: false
+          description: >
+            A comma separated list of field names which can be used to restrict
+            the fields included in the response records returned.
+      responses:
+        '200':
+          description: Query results
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/dataSetResult'
+  /api/v2/queries/object:
+    post:
+      summary: Object style with IDs
+      operationId: queryObjectV2
+      tags:
+        - Query
+      description: >
+        Query using a JSON document and data set IDs.
+
+
+        ### Object Search Syntax
+
+
+        For searches that are not written by end-users on the fly but that are
+        constructed programmatically by a web application, we recommend using
+        Koverse's Object Search Syntax.
+
+        The Object Search Syntax allows applications to specify search criteria
+        by building a Javascript object, converting to JSON, and submitting to a
+        REST endpoint.
+
+        This way, a search can be more easily manipulated programmatically by
+        Javascript.
+
+
+        The following table shows the JSON syntax for various types of searches:
+
+
+
+        |Search Criteria                    | Query
+        Syntax                                  |
+
+        |-----------------------------------|-----------------------------------------------|
+
+        | Searching 'any' field for a value | {"$any":
+        "fmv"}                               |
+
+        | Search specific field for a value | {"field.name":
+        "fmv"}                         |
+
+        | Search AND                        | {"$and": [{"$any": "fmv"},
+        {"$any": "blue"}]} |
+
+        | Search OR                         | {"$or": [{"$any": "fmv"}, {"$any":
+        "blue"}]}  |
+
+
+        These searches allow various criteria to be combined using operators
+        like AND and OR.
+
+        Note that the terms of these search are all 'point' terms, meaning they
+        specific an exact value.
+
+        Searching for a range of values is also supported.
+
+
+        #### Searching Ranges
+
+
+        To search for a range of values, use one of the range operators such as
+        $gte, greater than or equals, etc.
+
+        A few types of ranges are listed in the following table:
+
+
+        |Search Criteria                         | Query
+        Syntax                                                    |
+
+        |----------------------------------------|-----------------------------------------------------------------|
+
+        | Any value greater than or equal to 160 | { "$any": { "$gte": 160
+        }}                                      |
+
+        | Date field less than a specific date   | { "date_created": { "$lt":
+        "1980-01-01T00:00:00.000Z }}         |
+
+        | Geo Range                              | { "fieldName": { "$box":
+        [[sw-lat, sw-long],[ne-lat, ne-long]]}}|
+
+        |                                        | { "fieldName": { "$box"
+        :[[39.5, -104.9],[40, -104.5]] }}       |
+
+        |Any value except for 100                | { "$not": { "amount": 100 }
+        }                                   |
+
+
+
+        The official list of operators includes:
+
+
+        - $gt greater than
+
+        - $gte greater than or equal to
+
+        - $lt less than
+
+        - $lte less than or equal to
+
+        - $eq equal to
+
+        - $any used in place of a field to search for a value in any field
+
+        - $not used to negate a search criterion. Note that this results in two
+        ranges being searched, those 'above' and 'below' the value specified.
+
+
+        Note that queries that combine a range with any other criteria, and
+        queries that combine multiple ranges require Composite Indexes on the
+        fields involved.
+      parameters:
+        - $ref: '#/parameters/objectQuery'
+      responses:
+        '200':
+          description: Query results
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/dataSetResult'
+        '400':
+          description: If query is malformed will show 400 error.
+          schema:
+            $ref: '#/definitions/400servererror'
+  /api/v2/queries/object/names:
+    post:
+      summary: Object style with names
+      operationId: queryObjectNamesV2
+      tags:
+        - Query
+      description: >
+        Query using a JSON document and data set names.
+
+
+        ### Object Search Syntax
+
+
+        For searches that are not written by end-users on the fly but that are
+        constructed programmatically by a web application, we recommend using
+        Koverse's Object Search Syntax.
+
+        The Object Search Syntax allows applications to specify search criteria
+        by building a Javascript object, converting to JSON, and submitting to a
+        REST endpoint.
+
+        This way, a search can be more easily manipulated programmatically by
+        Javascript.
+
+
+        The following table shows the JSON syntax for various types of searches:
+
+
+
+        |Search Criteria                    | Query
+        Syntax                                  |
+
+        |-----------------------------------|-----------------------------------------------|
+
+        | Searching 'any' field for a value | {"$any":
+        "fmv"}                               |
+
+        | Search specific field for a value | {"field.name":
+        "fmv"}                         |
+
+        | Search AND                        | {"$and": [{"$any": "fmv"},
+        {"$any": "blue"}]} |
+
+        | Search OR                         | {"$or": [{"$any": "fmv"}, {"$any":
+        "blue"}]}  |
+
+
+        These searches allow various criteria to be combined using operators
+        like AND and OR.
+
+        Note that the terms of these search are all 'point' terms, meaning they
+        specific an exact value.
+
+        Searching for a range of values is also supported.
+
+
+        #### Searching Ranges
+
+
+        To search for a range of values, use one of the range operators such as
+        $gte, greater than or equals, etc.
+
+        A few types of ranges are listed in the following table:
+
+
+        |Search Criteria                         | Query
+        Syntax                                                    |
+
+        |----------------------------------------|-----------------------------------------------------------------|
+
+        | Any value greater than or equal to 160 | { "$any": { "$gte": 160
+        }}                                      |
+
+        | Date field less than a specific date   | { "date_created": { "$lt":
+        "1980-01-01T00:00:00.000Z }}         |
+
+        | Geo Range                              | { "fieldName": { "$box":
+        [[sw-lat, sw-long],[ne-lat, ne-long]]}}|
+
+        |                                        | { "fieldName": { "$box"
+        :[[39.5, -104.9],[40, -104.5]] }}       |
+
+        |Any value except for 100                | { "$not": { "amount": 100 }
+        }                                   |
+
+
+
+        The official list of operators includes:
+
+
+        - $gt greater than
+
+        - $gte greater than or equal to
+
+        - $lt less than
+
+        - $lte less than or equal to
+
+        - $eq equal to
+
+        - $any used in place of a field to search for a value in any field
+
+        - $not used to negate a search criterion. Note that this results in two
+        ranges being searched, those 'above' and 'below' the value specified.
+
+
+        Note that queries that combine a range with any other criteria, and
+        queries that combine multiple ranges require Composite Indexes on the
+        fields involved.
+      parameters:
+        - $ref: '#/parameters/objectQueryNames'
+      responses:
+        '200':
+          description: Query results
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/dataSetResult'
+        '400':
+          description: If query is malformed will show 400 error.
+          schema:
+            $ref: '#/definitions/400servererror'

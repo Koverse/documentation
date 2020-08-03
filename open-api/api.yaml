@@ -196,6 +196,8 @@ tags:
 definitions:
   500servererror:
     $ref: schemas/servererror.yaml
+  400servererror:
+    $ref: schemas/badrequest.yaml
   apiClient:
     $ref: schemas/apiClient.yaml
   dataSet:
@@ -489,6 +491,8 @@ paths:
     $ref: paths/dataSetJobs.yaml
   /api/v1/data-sets/{dataSetId}/records:
     $ref: paths/dataSetRecords.yaml
+  /api/v2/data-sets/{dataSetId}/records:
+    $ref: paths/dataSetRecordsV2.yaml
   #/api/v1/data-sets/{dataSetId}/schema:
   #  $ref: paths/dataSetSchema.yaml
   /api/v1/data-sets/{dataSetId}/repair:
@@ -563,9 +567,9 @@ paths:
     $ref: paths/transformId.yaml
   /api/v1/transforms/{transformId}/run-transform:
     $ref: paths/transformIdRunTransform.yaml
-  /api/v1/transforms/{transformId}/transform-schedules:
+  /api/v1/transforms/{transformId}/schedules:
     $ref: paths/transformIdSchedules.yaml
-  /api/v1/transforms/{transformId}/transform-schedules/{transformScheduleId}:
+  /api/v1/transforms/{transformId}/schedules/{transformScheduleId}:
     $ref: paths/transformIdScheduleId.yaml
   /api/v1/transform-types:
     $ref: paths/transformTypes.yaml
@@ -577,6 +581,12 @@ paths:
     $ref: paths/queryObject.yaml
   /api/v1/queries/object/names:
     $ref: paths/queryObjectNames.yaml
+  /api/v2/queries/lucene:
+    $ref: paths/queryLuceneV2.yaml
+  /api/v2/queries/object:
+    $ref: paths/queryObjectV2.yaml
+  /api/v2/queries/object/names:
+    $ref: paths/queryObjectNamesV2.yaml
 
 
   # this may not belong in a web app API

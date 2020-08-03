@@ -1,6 +1,6 @@
 post:
   summary: Object style with IDs
-  operationId: queryObject
+  operationId: queryObjectV2
   tags: ["Query"]
   description: |
         Query using a JSON document and data set IDs.
