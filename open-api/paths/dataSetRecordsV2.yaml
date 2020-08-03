@@ -4,38 +4,37 @@ parameters:
     - $ref: "../api.yaml#/parameters/removeByteArrayFieldValues"
     - $ref: "../api.yaml#/parameters/maxStringValueLength"
   
-  get:
-    summary: Get sample records
-    operationId: findDataSetRecordsById
-    tags: ["Data Sets", "Records"]
-    description: |
-          Returns all the fields and values for a sample of records by data set id.
-  
-    responses:
-      200:
-        description: Return a sample of records for a data set.
-        schema:
-          type: object
-          properties:
-            flatSchema:
-              type: boolean
-            records:
-              type: array
-              items:
-                $ref: "../api.yaml#/definitions/record"
-      400:
-        description: Returns client error if no data set is found
-        schema :
-          $ref: "../api.yaml#/definitions/400servererror"
-        # example:
-        #   flatSchema: true,
-        #   records:
-        #     - recordId: movies_20171107_172745_048_record_354809
-        #       collectionId: movies_20171107_172745_048
-        #       securityLabel: ''
-        #       value:
-        #         movie_title: Titanic
-        #         actor_1_name: Leonardo DiCaprio
-        #         actor_2_name: Kate Winslet
-        #         title_year: 1997
-  
+get:
+  summary: Get sample records
+  operationId: findDataSetRecordsByIdV2
+  tags: ["Data Sets", "Records"]
+  description: |
+        Returns all the fields and values for a sample of records by data set id.
+
+  responses:
+    200:
+      description: Return a sample of records for a data set.
+      schema:
+        type: object
+        properties:
+          flatSchema:
+            type: boolean
+          records:
+            type: array
+            items:
+              $ref: "../api.yaml#/definitions/record"
+    400:
+      description: Returns client error if no data set is found
+      schema :
+        $ref: "../api.yaml#/definitions/400servererror"
+      # example:
+      #   flatSchema: true,
+      #   records:
+      #     - recordId: movies_20171107_172745_048_record_354809
+      #       collectionId: movies_20171107_172745_048
+      #       securityLabel: ''
+      #       value:
+      #         movie_title: Titanic
+      #         actor_1_name: Leonardo DiCaprio
+      #         actor_2_name: Kate Winslet
+      #         title_year: 1997

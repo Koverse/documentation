@@ -19,7 +19,7 @@ get:
     400:
       description: If import flow cannot be found failureMessage will read 'Could not find database object in method 'getImportFlowById' with arguments []'
       schema:
-        $ref: "../api.yaml#/definitions400servererror"
+        $ref: "../api.yaml#/definitions/400servererror"
       
 delete:
   deprecated: true

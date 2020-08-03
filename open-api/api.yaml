@@ -582,11 +582,11 @@ paths:
   /api/v1/queries/object/names:
     $ref: paths/queryObjectNames.yaml
   /api/v2/queries/lucene:
-    $ref: paths/queryLucene.yaml
+    $ref: paths/queryLuceneV2.yaml
   /api/v2/queries/object:
-    $ref: paths/queryObject.yaml
+    $ref: paths/queryObjectV2.yaml
   /api/v2/queries/object/names:
-    $ref: paths/queryObjectNames.yaml
+    $ref: paths/queryObjectNamesV2.yaml
 
 
   # this may not belong in a web app API

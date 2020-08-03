@@ -20,7 +20,7 @@ get:
     400:
       description: If import flow ID cannot be found.
       schema:
-        $ref: "../api.yaml#/definitions400servererror"
+        $ref: "../api.yaml#/definitions/400servererror"
 
 delete:
   deprecated: true

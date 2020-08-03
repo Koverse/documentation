@@ -62,4 +62,4 @@ post:
     400:
       description: If query is malformed will show 400 error.
       schema:
-        $ref: "../api.yaml#/definitions400servererror"
+        $ref: "../api.yaml#/definitions/400servererror"
