@@ -21,6 +21,6 @@ Bug Fixes
 
 - [KC-6147] - Arrays no longer display as objects with index keys
 - [KC-6268] - Fix an issue where "NOT" query triggers full table scan
-- [KC-6278] - Fix an issue where the query search fails if a dataset has no matches
+- [KC-6278] - Fix an issue where the query search fails if a data set has no matches
 - [KC-6281] - Fix an issue where /attributes was being called for each data set on login
 - [KC-5978] - Update REST api to return correct rest status codes
