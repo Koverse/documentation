@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  version: '3.2'
+  version: '3.4'
   title: Koverse REST API
   description: |
     Specification for interacting with the Koverse Rest API
@@ -1491,7 +1491,7 @@ parameters:
         limit:
           type: integer
           description: >
-            The number of results to fetch in this call Note that the query
+            The number of results to fetch in this call. Note that the query
             returns max of 20 records by default, if this parameter is not
             specified.
         offset:
@@ -3794,8 +3794,8 @@ paths:
         |                                        | { "fieldName": { "$box"
         :[[39.5, -104.9],[40, -104.5]] }}       |
 
-        |Any value except for 100                | { "$not": { "amount": 100 }
-        }                                   |
+        |Any value except for 100                | {"amount": {"$not" :{"$eq":
+        100}}}                                   |
 
 
 

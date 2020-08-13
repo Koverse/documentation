@@ -1,0 +1,16 @@
+.. _Version33ReleaseNotes:
+
+3.3 Release Notes
+==================
+
+New Features
+------------
+- [KC-6039] - Import mappers can take more than one file each
+
+Bug Fixes
+---------
+
+3.3.0
+^^^^^
+
+- [KC-6038] - Fix an issue with Import Map tasks hanging causing long import jobs
