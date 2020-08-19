@@ -12,3 +12,6 @@ docs/npm-debug.log
 
 # node runtime
 node_modules/
+
+#python environments
+/venv
