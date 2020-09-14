@@ -24,3 +24,11 @@ Bug Fixes
 - [KC-6268] - Fix an issue where "NOT" query triggers full table scan
 - [KC-6278] - Fix an issue where the query search fails if a data set has no matches
 - [KC-6281] - Fix an issue where /attributes was being called for each data set on login
+
+3.4.1
+^^^^^
+
+- [KC-6216] - file upload with security parsers doesn't work
+- [KC-6297] - Users can load data from G Drive
+- [KC-6308] - KISP External Authentication Error in 3.2.9+
+- [KC-6338] - Transform Errors even with successful Completion in Yarn
