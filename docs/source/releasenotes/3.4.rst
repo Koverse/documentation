@@ -28,7 +28,7 @@ Bug Fixes
 3.4.1
 ^^^^^
 
-- [KC-6216] - file upload with security parsers doesn't work
+- [KC-6216] - Fixed error uploading to existing dataset with security parsers
 - [KC-6297] - Users can load data from G Drive
-- [KC-6308] - KISP External Authentication Error in 3.2.9+
-- [KC-6338] - Transform Errors even with successful Completion in Yarn
+- [KC-6308] - Fixed KISP External Authentication Error
+- [KC-6338] - Fixed transform errors even with successful completion in Yarn
