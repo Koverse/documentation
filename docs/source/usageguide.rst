@@ -20,3 +20,4 @@ Usage Guide
    usage/interactive.rst
    usage/access_control.rst
    usage/additional.rst
+   usage/addons.rst
