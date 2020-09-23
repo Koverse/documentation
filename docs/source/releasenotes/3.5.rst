@@ -1,0 +1,21 @@
+.. _Version34ReleaseNotes:
+
+3.5 Release Notes
+==================
+
+New Features
+------------
+- [KC-6300] - Update remaining switches to checkboxes
+
+Bug Fixes
+---------
+
+3.5.0
+^^^^^
+
+- [KC-5871] - Fix issue with some ImportProcesses not exiting
+- [KC-6340] - Added CSV parser multiline value support
+- [KC-6347] - Fixed External Groups showing up under Internal Groups
+- [KC-6348] - Fixed Composite Index creation UI not showing numeric fields
+
+
