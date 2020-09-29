@@ -226,6 +226,12 @@ definitions:
     $ref: schemas/importFlow.yaml
   importSchedule:
     $ref: schemas/importSchedule.yaml
+  indexFieldConfiguration:
+    $ref: schemas/indexFieldConfiguration.yaml
+  indexTermTransformerConfiguration:
+    $ref: schemas/indexTermTransformerConfiguration.yaml
+  indexTermTransformerConfigurationParameter:
+    $ref: schemas/indexTermTransformerConfigurationParameter.yaml
   job:
     $ref: schemas/job.yaml
   login:
