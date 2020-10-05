@@ -37,3 +37,9 @@ Preview the results by opening the `index.html` file in your browser
 
 ## Pull Requests
 Please build and preview locally before submitting a pull request. If applicable, capture screen shots of the proposed changes and include them for review, thank you! 
+
+## New Minor Releases
+For new minor release:
+1. Update the version in `open-api/api.yaml` and `docs/source/conf.py`
+2. Run `npm run build`
+3. Add the new version, activate and build it here: https://readthedocs.org/projects/koverse/builds/
