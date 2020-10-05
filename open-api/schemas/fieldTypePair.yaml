@@ -5,7 +5,7 @@ required:
 properties:
   fieldName:
     type: string
-    example: make
+    example: actor_1_name
   fieldType:
     type: string
     example: java.lang.String

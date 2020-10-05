@@ -6,7 +6,7 @@ properties:
   fieldName:
     type: string
     example:
-      -caseSensitive
+      caseSensitive
     description: Allowed values - caseSensitive, tokenize
   fieldType:
     type: boolean

@@ -446,7 +446,7 @@ definitions:
       createValueOnlyIndices:
         type: boolean
         example: true
-        description: 'If true, enable search for any term, without specifying the column'
+        description: 'If true, enable search for any term, without specifying its field name'
       fieldConfigurations:
         type: array
         items:
