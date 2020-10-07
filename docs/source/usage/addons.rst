@@ -96,6 +96,20 @@ Sources
 Structured Data
 ###############
 
+Formats
+*******
+
+* Avro
+* EdiX13
+* MS Excel
+* GeoJSON
+* JSON
+* JSON Stream
+* Parquet
+* CSV
+* TSV
+* XML
+
 Structured Data Export
 ######################
 
@@ -119,6 +133,19 @@ Transforms
 
 Text
 ####
+
+MS Office, Text and PDF
+
+Formats
+*******
+
+* Vector Documents (pdf, eps, ai, ps)
+* MS Office (ppt, pptx, doc, docx, xls, xlsx, msg, pst)
+* Textual Documents (pub, wri, rtf, txt)
+* Web (css)
+* Images (jpg, jpeg, psd, bmp, bpg, png, gif, tiff)
+* Video (mp4, ogg, mov)
+* Audio (mp3, wav, aac, flac)
 
 Transforms
 **********
