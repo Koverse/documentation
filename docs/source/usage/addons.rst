@@ -65,6 +65,11 @@ Sources
 E-Mail
 ######
 
+Formats
+*******
+
+* mbox
+
 Sources
 *******
 
@@ -85,6 +90,13 @@ Sources
 Web
 ###
 
+Formats
+*******
+
+* html
+* htm
+* xhtml
+
 Sources
 *******
 
@@ -99,22 +111,30 @@ Structured Data
 Formats
 *******
 
-* Avro
-* EdiX13
-* MS Excel
-* GeoJSON
-* JSON
-* JSON Stream
-* Parquet
-* CSV
-* TSV
-* XML
+* avro
+* csv
+* edi
+* geo json
+* json
+* jsonstream
+* parquet
+* psv
+* tsv
+* txt (tab-separated)
+* xls
+* xlsx
+* xml
 
 Structured Data Export
 ######################
 
 Genomics
 ########
+
+Formats
+*******
+
+* fasta
 
 Transforms
 **********
