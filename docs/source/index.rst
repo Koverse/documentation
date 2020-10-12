@@ -15,3 +15,4 @@ Koverse
    devguide
    REST_specification
    releasenotes
+   add-ons-releasenotes
