@@ -132,19 +132,19 @@ Here, we're simply saving off the value of the 'textField' parameter we declared
 Next we'll write our execute() function. First we'll grab the dataset passed in via the context object::
 
   def execute(self, context):
-    inputRdd = list(context.inputRdds.items())[0][1]
+    inputRdd = context.inputRdds['inputDataset']
 
 Instead of using the RDD we can grab a DataFrame. To use a Data Frame we could have written::
 
   def execute(self, context):
-    inputDF = list(context.inputDataFrames.items())[0][1]
+    inputDF = context.inputDataFrames['inputDataset']
 
 For the rest of this example we'll stick with an RDD.
 
 Next we'll write a function to extract noun_phrase and sentiment pairs from a blob of text using the TextBlob library. We'll also write a simple function to average a list of numbers::
 
   def execute(self, context):
-    inputRdd = list(context.inputDataFrames.items())[0][1]
+    inputRdd = context.inputDataFrames['inputDataset']
 
     def extractSentimentPerPhrase(doc):
       blob = TextBlob(doc)
