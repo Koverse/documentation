@@ -192,6 +192,13 @@ We can write a simple test program to try out our code on some example data. We'
 
       def testExtractSubjectSentiment(self):
           global text
+
+          # When runner.testOnLocalData is called with named=True, inputDatasets is a list of named inputDatasets
+          inputDatasets = {‘inputDataset’:[{‘text’: ‘This is a test Sentence’}]}
+          runner = PySparkTransformTestRunner({'textField': 'text'}, PySparkTransform)
+          output = runner.testOnLocalData(inputDatasets, named=True).collect()
+
+          # When runner.testOnLocalData is called without named (default value is false), inputDatasets is an array of records
           inputDatasets = [[{'inputDataset': text}]]
           runner = PySparkTransformTestRunner({'textField': 'text'}, PySparkTransform)
           output = runner.testOnLocalData(inputDatasets).collect()
