@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  version: '3.5'
+  version: '3.6'
   title: Koverse REST API
   description: |
     Specification for interacting with the Koverse Rest API
@@ -756,7 +756,7 @@ definitions:
     properties:
       fieldName:
         type: string
-        example: make
+        example: actor_1_name
       fieldType:
         type: string
         example: java.lang.String
@@ -887,7 +887,7 @@ definitions:
     properties:
       fieldName:
         type: string
-        example: '-caseSensitive'
+        example: caseSensitive
         description: 'Allowed values - caseSensitive, tokenize'
       fieldType:
         type: boolean
