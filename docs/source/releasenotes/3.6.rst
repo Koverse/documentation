@@ -1,0 +1,7 @@
+.. _Version36ReleaseNotes:
+
+3.6 Release Notes
+==================
+
+Bug Fixes
+---------

@@ -6,37 +6,31 @@
 Move koverse-addons to separate repo in Github
 
 
-Dependency upgrades
--------------------
-
-3.0.4
-^^^^^
-
-changed koverse-sdk version to 3.4.1
-
-
 Bug Fixes
 ---------
-
-3.0.4
-^^^^^
-
-- [KC-6340] - CSV parser doesn't have support for multiline values
-
-
-3.0.3
-^^^^^
-
-- [KC-6297] - Users can load data from G Drive
-
-
-3.0.2
-^^^^^
-
-- [KC-6329] - S3 source ignoring Tika parser
-- [KC-6323] - testing-update-param-names
-
 
 3.0.1
 ^^^^^
 - [KC-6320] - Kafka Job History Backend Status Page url for running jobs returns a 500
+
+
+3.0.2
+^^^^^
+- [KC-6329] - S3 source ignoring Tika parser
+- [KC-6323] - testing-update-param-names
+
+
+3.0.3
+^^^^^
+- [KC-6297] - Users can load data from G Drive
+
+
+3.0.4
+^^^^^
+- [KC-6340] - CSV parser doesn't have support for multiline values
+
+
+
+
+
+

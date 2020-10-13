@@ -12,7 +12,7 @@ Bug Fixes
 
 3.5.0
 ^^^^^
-
+- Add-ons version: 3.0.4
 - [KC-5871] - Some ImportProcesses not exiting
 - [KC-6340] - CSV parser doesn't have support for multiline values
 - [KC-6347] - External Groups Showing Up Under Internal Groups
