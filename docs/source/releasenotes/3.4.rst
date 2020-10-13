@@ -5,7 +5,7 @@
 
 New Features
 ------------
-- [KC-6024] - Allow each transform input data set to have it's own inputDataWindowType: allData, lastBatch (new data only), slidingWindow.
+- [KC-6024] - Allow each transform input data set to have its own inputDataWindowType: allData, lastBatch (new data only), slidingWindow.
 - [KC-6172] - Update transform creation/update workflow to allow multiple inputDataSetWindow types (by source data set)
 - [KC-6174] - Update UI to handle new parameter type (windowedInputCollection)
 - [KC-6214] - Improve output data set selection by adding search and ordering the list

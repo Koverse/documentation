@@ -1,0 +1,9 @@
+type: object
+required:
+  - fieldTypePair
+  - indexTermTransformerConfiguration
+properties:
+  fieldTypePair:
+    $ref: "../api.yaml#/definitions/fieldTypePair"
+  indexTermTransformerConfiguration:
+    $ref: "../api.yaml#/definitions/indexTermTransformerConfiguration"

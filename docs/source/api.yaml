@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  version: '3.5'
+  version: '3.6'
   title: Koverse REST API
   description: |
     Specification for interacting with the Koverse Rest API
@@ -415,6 +415,7 @@ definitions:
       - fields
       - compositeIndexes
       - createValueOnlyIndices
+      - fieldConfigurations
     properties:
       id:
         type: integer
@@ -445,6 +446,11 @@ definitions:
       createValueOnlyIndices:
         type: boolean
         example: true
+        description: 'If true, enable search for any term, without specifying a field name'
+      fieldConfigurations:
+        type: array
+        items:
+          $ref: '#/definitions/indexFieldConfiguration'
   dataSetJob:
     type: object
     required:
@@ -750,8 +756,10 @@ definitions:
     properties:
       fieldName:
         type: string
+        example: actor_1_name
       fieldType:
-        type: boolean
+        type: string
+        example: java.lang.String
   importFlow:
     type: object
     required:
@@ -847,6 +855,42 @@ definitions:
       endAfter:
         type: integer
         format: int64
+  indexFieldConfiguration:
+    type: object
+    required:
+      - fieldTypePair
+      - indexTermTransformerConfiguration
+    properties:
+      fieldTypePair:
+        $ref: '#/definitions/fieldTypePair'
+      indexTermTransformerConfiguration:
+        $ref: '#/definitions/indexTermTransformerConfiguration'
+  indexTermTransformerConfiguration:
+    type: object
+    required:
+      - indexTermTransformerClassName
+      - parameters
+    properties:
+      indexTermTransformerClassName:
+        type: string
+        example:
+          indexTermTransformerClassName: com.koverse.server.manager.data.indexing.text.LuceneTermTransformer
+      parameters:
+        type: array
+        items:
+          $ref: '#/definitions/indexTermTransformerConfigurationParameter'
+  indexTermTransformerConfigurationParameter:
+    type: object
+    required:
+      - fieldName
+      - fieldType
+    properties:
+      fieldName:
+        type: string
+        example: caseSensitive
+        description: 'Allowed values - caseSensitive, tokenize'
+      fieldType:
+        type: boolean
   job:
     type: object
     required:

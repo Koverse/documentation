@@ -5,5 +5,7 @@ required:
 properties:
   fieldName:
     type: string
+    example: actor_1_name
   fieldType:
-    type: boolean
+    type: string
+    example: java.lang.String
