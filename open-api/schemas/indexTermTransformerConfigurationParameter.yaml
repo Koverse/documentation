@@ -1,0 +1,13 @@
+type: object
+required:
+  - fieldName
+  - fieldType
+properties:
+  fieldName:
+    type: string
+    example:
+      caseSensitive
+    description: Allowed values - caseSensitive, tokenize
+  fieldType:
+    type: boolean
+

@@ -6,6 +6,7 @@ required:
   - fields
   - compositeIndexes
   - createValueOnlyIndices
+  - fieldConfigurations
 properties:
   id:
     type: integer
@@ -34,3 +35,9 @@ properties:
   createValueOnlyIndices:
     type: boolean
     example: true
+    description: "If true, enable search for any term, without specifying a field name"
+  fieldConfigurations:
+    type: array
+    items:
+      $ref: "../api.yaml#/definitions/indexFieldConfiguration"
+

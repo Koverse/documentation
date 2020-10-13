@@ -1,0 +1,13 @@
+type: object
+required:
+  - indexTermTransformerClassName
+  - parameters
+properties:
+  indexTermTransformerClassName:
+    type: string
+    example:
+      "indexTermTransformerClassName": "com.koverse.server.manager.data.indexing.text.LuceneTermTransformer"
+  parameters:
+    type: array
+    items:
+      $ref: "../api.yaml#/definitions/indexTermTransformerConfigurationParameter"
