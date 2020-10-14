@@ -1,0 +1,12 @@
+.. _Version36ReleaseNotes:
+
+3.6 Release Notes
+==================
+
+
+Bug Fixes
+---------
+
+3.6.0
+^^^^^
+- Add-ons version: 3.0.5
