@@ -9,4 +9,4 @@ Bug Fixes
 
 3.6.0
 ^^^^^
-- Add-ons version: 3.0.4
+- Add-ons version: 3.0.5
