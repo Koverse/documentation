@@ -537,6 +537,10 @@ paths:
     $ref: paths/permissionsSystem.yaml
   /api/v1/records:
     $ref: paths/records.yaml
+  /api/v1/search/autocomplete:
+    $ref: paths/searchAutocomplete.yaml
+  /api/v1/search/autocomplete/field:
+    $ref: paths/searchAutocompleteField.yaml
   /api/v1/sinks:
     $ref: paths/sinks.yaml
   /api/v1/sinks/{sinkId}:
