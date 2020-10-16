@@ -1,0 +1,42 @@
+parameters:
+    dataSets:
+      name: dataSets
+      in: query
+      description: limits autocomplete results to specified data sets
+      type: string
+    query:
+      name: query
+      in: query
+      description: |
+            String to search for
+      type: string
+    field:
+      name: field
+      in: query
+      description: |
+            Field within dataset to select
+      type: string
+    completeValues:
+      name: completeValues
+      in: query
+      description: |
+            If true match only what is in query string rather than all values within field
+      type: boolean
+    limit:
+      name: limit
+      in: query
+      description: |
+            Number of unique values to return
+      type: number
+  get:
+    summary: Autocomplete Fields
+    operationId: searchAutocompleteFields
+    tags: ["Search"]
+    description: |
+              Lists a set of unique values for a field within a dataset
+    responses:
+      default:
+        description: |
+              Returns a set of values that exist in a field that can be used in subsequent queries.
+        schema:
+          type: array
