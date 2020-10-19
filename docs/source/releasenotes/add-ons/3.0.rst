@@ -29,6 +29,11 @@ Bug Fixes
 ^^^^^
 - [KC-6340] - CSV parser doesn't have support for multiline values
 
+3.0.5
+^^^^^
+
+- [KC-6380] - CSV Parser Incorrectly Parsing Pipe-delimited file
+
 
 
 
