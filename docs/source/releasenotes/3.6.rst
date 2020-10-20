@@ -3,6 +3,9 @@
 3.6 Release Notes
 ==================
 
+New Features
+------------
+- [KC-6350] - AbstractFileBasedSource SDK now allows source specific fields
 
 Bug Fixes
 ---------
@@ -10,3 +13,15 @@ Bug Fixes
 3.6.0
 ^^^^^
 - Add-ons version: 3.0.5
+
+[KC-5148] - Fix for Error on Import Preview using Postgres source when trying to limit query to 100 rows
+[KC-5514] - Fix for Query range syntax that is logically the same executes differently
+[KC-5606] - Fixed kv_index table.split.threshold flapping
+[KC-6167] - Fixed caseSensitive indexing policy issue
+[KC-6332] - Fixed Issue with PySparkTransformTestRunner and datasets as parameters
+[KC-6342] - Fix for IndexingPolicy info not being passed
+[KC-6373] - Python transforms no longer support 'Only New Data' option
+[KC-6375] - Remove duplicates from query results in a page
+[KC-6380] - CSV Parser Incorrectly Parsing Pipe-delimited file
+
+
