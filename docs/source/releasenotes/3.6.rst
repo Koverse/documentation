@@ -21,7 +21,7 @@ Bug Fixes
 [KC-6332] - Fixed Issue with PySparkTransformTestRunner and datasets as parameters
 [KC-6342] - Fix for IndexingPolicy info not being passed
 [KC-6373] - Python transforms no longer support 'Only New Data' option
-[KC-6375] - Remove duplicates from query results
+[KC-6375] - Remove duplicates from query results in a page
 [KC-6380] - CSV Parser Incorrectly Parsing Pipe-delimited file
 
 
