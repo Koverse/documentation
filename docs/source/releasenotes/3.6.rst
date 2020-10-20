@@ -14,6 +14,7 @@ Bug Fixes
 ^^^^^
 - Add-ons version: 3.0.5
 
+[KC-5148] - Fix for Error on Import Preview using Postgres source when trying to limit query to 100 rows
 [KC-5514] - Fix for Query range syntax that is logically the same executes differently
 [KC-5606] - Fixed kv_index table.split.threshold flapping
 [KC-6167] - Fixed caseSensitive indexing policy issue
