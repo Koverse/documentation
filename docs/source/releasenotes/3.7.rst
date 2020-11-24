@@ -8,15 +8,14 @@ New Features
 - [KC-6398] - Azure Blob Storage Source/Sink
 - [KC-6405] - Job input output record count
 - [KC-6428] - Response codes for queries with multiple data sets
-
-Bug Fixes
----------
+- [KC-5588] - Update S3 Source To Work Without Files In A Directory
 
 3.7.0
 ^^^^^
 - Add-ons version: 3.0.6
 
-[KC-5588] - Update S3 Source To Work Without Files In A Directory
+Bug Fixes
+---------
 [KC-6201] - Confusion over number of values in Histogram vs. Est Unique Values
 [KC-6221] - REST API Query Response Codes
 [KC-6402] - Remove duplicates between query result pages
