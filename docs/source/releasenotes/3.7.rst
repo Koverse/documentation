@@ -5,10 +5,10 @@
 
 New Features
 ------------
+- [KC-5588] - Update S3 Source to no longer require folder and add region as a field
 - [KC-6398] - Azure Blob Storage Source/Sink
 - [KC-6405] - Job input output record count
 - [KC-6428] - Response codes for queries with multiple data sets
-- [KC-5588] - Update S3 Source To Work Without Files In A Directory
 
 3.7.0
 ^^^^^
