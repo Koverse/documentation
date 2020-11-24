@@ -4,7 +4,7 @@
 ===================
 
 Move koverse-addons to separate repo in Github
-
+- [KC-6398] - Azure Blob Storage Source/Sink
 
 Bug Fixes
 ---------
@@ -34,7 +34,9 @@ Bug Fixes
 
 - [KC-6380] - CSV Parser Incorrectly Parsing Pipe-delimited file
 
-
+3.0.6
+^^^^^
+- [KC-5588] - Update S3 Source To Work Without Files In A Directory
 
 
 
