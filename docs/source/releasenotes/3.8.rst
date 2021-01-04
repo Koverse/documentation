@@ -1,0 +1,17 @@
+.. _Version38ReleaseNotes:
+
+3.8 Release Notes
+==================
+
+New Features
+------------
+- [KC-6460] - Record counts for Transform jobs
+- [KC-6461] - Add HTTPOnly to Authentication cookie
+
+3.8.0
+^^^^^
+- Add-ons version: 3.0.6
+
+Bug Fixes
+---------
+None
