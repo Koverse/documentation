@@ -1,0 +1,17 @@
+.. _Version39ReleaseNotes:
+
+3.9 Release Notes
+==================
+- [KC-6459] Simple field masking for transforms
+
+New Features
+------------
+
+3.9.0
+^^^^^
+- Add-ons version: 3.0.6
+
+Bug Fixes
+---------
+- [KDP-51] Job History for existing dataset throws error after upgrading to Koverse Data Platform version 3.8
+- [KDP-75] Fix data set query to exclude deleted datasets while querying all datasets for a user
