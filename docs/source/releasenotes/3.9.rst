@@ -14,3 +14,4 @@ New Features
 Bug Fixes
 ---------
 - [KDP-51] Job History for existing dataset throws error after upgrading to Koverse Data Platform version 3.8
+- [KDP-75] Fix data set query to exclude deleted datasets while querying all datasets for a user
