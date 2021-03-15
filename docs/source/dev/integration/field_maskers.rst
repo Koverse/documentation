@@ -5,6 +5,8 @@ Field Maskers
 
 Koverse supports applying policies for obfuscating the values in certain fields for particular groups of users. This capability allows data owners to use fine-grained controls to protect sensitive information as required by company policies or privacy regulations such as HIPAA and GDPR. The obfuscation logic is provided by custom code extensions to Koverse called Field Maskers.
 
+All masked fields will be removed while processing a transform unless the transform owner has access to view those fields unmasked.
+
 A Field Masker takes a single value and returns an obfuscated value.
 
 To create a custom Field Masker simply create a class that implements the FieldMasker interface.
