@@ -23,3 +23,11 @@ Bug Fixes
 Bug Fixes
 ---------
 - [KDP-156] Fix for /tmp directory filling up and crashing KDP
+
+3.9.2
+^^^^^
+- Add-ons version: 3.0.7
+
+Bug Fixes
+---------
+- [KDP-423] Fixed issue with data catalog list. Now if user has data catalog permission they can see disabled list items in the dataset list. If not, they can only see the datasets they own or belong to.
