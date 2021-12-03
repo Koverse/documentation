@@ -184,7 +184,7 @@ Reviewing the Koverse APIs
 
 Koverse includes a set of APIs developers can access to build a customized solution.  There are four APIs availible
 
-*	**Integration API.** Use API to create custom ingest sources, export sinks, integrate with external authentiion systems and customize indexing.
+*	**Integration API.** Use this API to create custom ingest sources, export sinks, integrate with external authentication systems and customize indexing.
 *	**Transform API.** Use the Transform API to prototype transforms with Jupyter Notebooks and productionize them with Java or Python.
 *	**Web Application API.** Use this API for application search access to data within Koverse.
 *	**Automation API.** Use this to automate your solution with an external application.    The Koverse UI provides an alternative to the Automation API, providing all functionality in the Automation API via an easy to use interface.  Information on how to use the Automation API is in the Koverse User Guide.
