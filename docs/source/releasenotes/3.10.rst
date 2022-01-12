@@ -1,4 +1,4 @@
-.. _Version39ReleaseNotes:
+.. _Version310ReleaseNotes:
 
 3.10 Release Notes
 ==================
