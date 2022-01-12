@@ -11,6 +11,6 @@ New Features
 - [KDP-1241] Upgraded JQuery version to v3.6.0
 
 3.10.0
-^^^^^
+^^^^^^
 - Add-ons version: 3.0.7
 
