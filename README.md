@@ -41,5 +41,6 @@ Please build and preview locally before submitting a pull request. If applicable
 ## New Minor Releases
 For new minor release:
 1. Update the version in `open-api/api.yaml` and `docs/source/conf.py`
-2. Run `npm run build`
-3. Add the new version, activate and build it here: https://readthedocs.org/projects/koverse/builds/
+2. Add version to source/releasenotes.rst
+3. Run `npm run build`
+4. Add the new version, activate and build it here: https://readthedocs.org/projects/koverse/builds/
