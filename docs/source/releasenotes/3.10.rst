@@ -17,3 +17,11 @@ Bug Fixes
 ---------
 None
 
+3.10.1
+^^^^^^
+- Add-ons version: 3.0.7
+
+Bug Fixes
+---------
+- [KDP-1642] Fix for download results with compound lucene queries failing
+
