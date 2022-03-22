@@ -1,11 +1,10 @@
 .. _Version310ReleaseNotes:
 
 3.10 Release Notes
-==================
+===================
 
 New Features
 ------------
-
 - [KDP-1238] Password length is now configurable (default length is 8)
 - [KDP-1239] Added showDoDBanner property that will show consent banner on login when enabled
 - [KDP-1241] Upgraded JQuery version to v3.6.0
@@ -13,4 +12,16 @@ New Features
 3.10.0
 ^^^^^^
 - Add-ons version: 3.0.7
+
+Bug Fixes
+---------
+None
+
+3.10.1
+^^^^^^
+- Add-ons version: 3.0.7
+
+Bug Fixes
+---------
+- [KDP-1642] Fix for download results with compound lucene queries failing
 
