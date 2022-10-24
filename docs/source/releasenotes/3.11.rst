@@ -1,0 +1,14 @@
+.. _Version311ReleaseNotes:
+
+3.11 Release Notes
+==================
+
+New Features
+------------
+
+- Adds support to the KDP login and logout features to handle Keycloak OIDC redirects and logout functionality.
+
+3.11.0
+^^^^^^
+- Add-ons version: 3.0.7
+
